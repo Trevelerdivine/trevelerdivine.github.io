@@ -1,8 +1,48 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<script type="text/javascript">alert('Hello World');</script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>原神ダメージ計算機</title>
+  </head>
+  <body>
+    <h1>原神ダメージ計算機</h1>
+    <label for="base_attack">基礎攻撃力:</label>+"%"
+    <input type="number" id="base_attack" min="1"><br>
+    <label for="attack_bonus">攻撃力ボーナス:</label>
+    <input type="number" id="attack_bonus" min="0"><br>
+    <label for="crit_rate">会心率:</label>
+    <input type="number" id="crit_rate" min="0" max="1" step="0.01"><br>
+    <label for="crit_damage">会心ダメージ倍率:</label>
+    <input type="number" id="crit_damage" min="1" step="0.01"><br>
+    <label for="elemental_bonus">属性ダメージボーナス:</label>
+    <input type="number" id="elemental_bonus" min="0" step="0.01"><br>
+    <button onclick="calculateDamage()">計算する</button><br>
+    <p id="result"></p>
+    <script>
+      function calculateDamage() {
+        var base_attack = parseInt(document.getElementById("base_attack").value);
+        var attack_bonus = parseInt(document.getElementById("attack_bonus").value);
+        var crit_rate = parseFloat(document.getElementById("crit_rate").value);
+        var crit_damage = parseFloat(document.getElementById("crit_damage").value);
+        var elemental_bonus = parseFloat(document.getElementById("elemental_bonus").value);
+        
+        // 基礎ダメージを計算
+        var base_damage = base_attack * (1 + attack_bonus / 100);
+        
+        // 会心計算
+        var is_critical = Math.random() < crit_rate;
+        var crit_damage_multiplier = is_critical ? crit_damage : 1;
+        
+        // 属性ダメージボーナスを適用
+        var final_damage = base_damage * crit_damage_multiplier * (1 + elemental_bonus / 100);
+        
+        var result = "与えるダメージ: " + final_damage.toFixed(2);
+        if (is_critical) {
+          result += " (会心)";
+        }
+        
+        document.getElementById("result").innerHTML = result;
+      }
+    </script>
+  </body>
 </html>
