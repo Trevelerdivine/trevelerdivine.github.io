@@ -1,141 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>原神ダメージ計算機</title>
-  </head>
-  <body>
-    <h1>原神ダメージ計算機</h1>
-    <label for="atprof">攻撃力:</label>
-    <input type="number" id="atprof" min="1"><br>
-    <label for="bat">基礎攻撃力:</label>
-    <input type="number" id="bat" min="1"><br>
-    <label for="atc">サブステ攻撃力実数値:</label>
-    <input type="number" id="atc" min="0"><br>
-    <label for="emc">サブステ元素熟知:</label>
-    <input type="number" id="emc" min="0"><br>
-    <label for="crprof">会心率(%):</label>
-    <input type="number" id="crprof" min="0" max="100" step="1"><br>
-    <label for="cdprof">会心ダメージ(%):</label>
-    <input type="number" id="cdprof" min="50" step="1"><br>
-    <button onclick="calculateDamage()">計算する</button><br>
-    <p id="result"></p>
-    <script>
-      function calculateDamage() {
-        let atprof = parseInt(document.getElementById("atprof").value);//atprof=attack_profile=プロフィール攻撃力
-        let bat = parseInt(document.getElementById("bat").value);//ba=base_attack=基礎攻撃力
-        let atc = parseInt(document.getElementById("atc").value);//atc=attack_const=サブステ攻撃力実数値
-        let ems = parseInt(document.getElementById("emc").value);//ems=elemental_mastary_sub=サブステ元素熟知
-        let crprof= parseFloat(document.getElementById("crprof").value);//cr=crit_rate=会心率
-        let cdprof = parseFloat(document.getElementById("cdprof").value);//cd=crit_damage=会心ダメージ
-	    let dar = 0.006;//微小攻撃力幅
-	    let emc = 115+265+187*2;//固定元素熟知
-        let crs = 5;
-        let cds = 112.2;
-        let m = 0;//ループ回数
+<head>
+	<meta charset="UTF-8">
+	<title>年齢選択</title>
+</head>
+<body>
+	<label for="age">年齢:</label>
+	<select id="age">
+		<option value="0">選択してください</option>
+		<option value="10">10歳未満</option>
+		<option value="10-19">10代</option>
+		<option value="20-29">20代</option>
+		<option value="30-39">30代</option>
+		<option value="40-49">40代</option>
+		<option value="50-59">50代</option>
+		<option value="60-69">60代</option>
+		<option value="70-79">70代</option>
+		<option value="80-89">80代</option>
+		<option value="90-99">90代</option>
+		<option value="100">100歳以上</option>
+	</select>
+	<br>
+	<button onclick="submitAge()">送信</button>
 
-        let arstnd = (atprof-atc-311)/bat-1;//基礎攻撃力％
-        let ar = arstnd;//聖遺物攻撃力％
-        let cr = crs;//会心率基準値
-        let cd = cds;//会心ダメージ基準値
-        let em = 0; 
-        let sc = (crprof-crs)*2+(cdprof-cds)+arstnd*100+ems/3;//sc=score=スコア arstndの値を後で修正
-        let emaf = (sc*3-(ar-arstnd)*400) ; 
-        let tcr;
-        let tdb;
-        let tcd;
-        let agdb;
-        let at;
-        let aged;
-        let paged = 0;//激化ダメージ期待値の初期値
-        let faged = 0;//激化ダメージ期待値の初期値
-		let pcr;
-		let pcd;
-		let pat;
-		let pem;
-		let fcr;
-		let fcd;
-		let fat;
-		let fem;
-
-
-	while (dar*m*400/3 < sc)
-	{
-	while (emaf > 0)
-	{
-        // スコア配分元素熟知
-        emaf = (sc*3-(ar-arstnd+dar*m)*400);
-        em = emc + emaf;
-
-        // 天賦バフ
-        tcr = cr/100+(em-200)*0.0003;
-        tdb = 0.466+(em-200)*0.001;
-        if (em > 1000) 
-        {
-        	tcr = cr/100+0.24;
-         tdb = 0.466+0.8;
-        }
-		tcd = cd/100
-        //聖遺物会心系統のバフ
-        if (tcr*2 < cd) 
-        {
-			tcr=tcr+dar*m*2/3;
-        		if(tcr*2 > cd) 
-        		{
-		 		tcr = (tcr*2+cd)/4;
-		 		tcd = tcr*2;
-			}
-
-		}
-		else 
-		{
-			tcd=cd+dar*m*4/3;
-			if (tcr*2 < tcd) 
-			{
-				tcr = (tcr*2+cd)/4;
-				tcd=tcr*2;
+	<script>
+		function submitAge() {
+			const age = document.getElementById("age").value;
+			if (age == "0") {
+				alert("年齢を選択してください。");
+			} else {
+				alert("あなたの年齢は" + age + "です。");
 			}
 		}
-		
-		//激化ボーナスの計算
-		agdb = 1.25*1446 * (1 + 5 * em / (em + 1200));//激化ダメージボーナス
-
-		//攻撃力の計算
-		at = bat*(ar+1)+311+atc;
-		
-		//激化ダメージ期待値の計算
-		aged = (at*1.858+em*3.715+agdb)*(1+(tcr*tcd))*(tdb+1)*0.55;
-
-		if (paged < aged)
-		{
-			paged = aged;
-			pcr = tcr;
-			pcd = tcd;
-			pat = at;
-			pem = em;
-		}
-		
-		ar = ar+ dar;
-
-	}
-
-	if (faged < paged)
-	{
-		faged = paged;
-		fcr = pcr;
-		fcd = pcd;
-		fat = pat;
-		fem = pem;
-	}
-
-	m = m+1;
-	paged = 0;
-	ar = arstnd;
-	}	
-        let result = "ループ回数: " + m.toFixed(0)+"  聖遺物スコア: " + sc.toFixed(1)+"  攻撃力: " + fat.toFixed(0)+"  元素熟知: "+fem.toFixed(0)+"  会心率: " + fcr.toFixed(2)+"  会心ダメージ："+fcd.toFixed(2) + "激化ダメージ期待値: "+faged.toFixed(0);
-        
-        document.getElementById("result").innerHTML = result;
-      }
-    </script>
-  </body>
+	</script>
+</body>
 </html>
+
