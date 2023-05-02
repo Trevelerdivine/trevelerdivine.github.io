@@ -83,12 +83,12 @@
 
         		// 天賦バフ
         		tlnt_cr = base_cr  + (elm - 200) * 0.0003;
-        		tlnt_dmg_buff = 0.466 + (elm - 200) * 0.001;
+        		tlnt_dmg_buff = (elm - 200) * 0.001+0.15;
         		tlnt_cd = base_cd;
         		if (elm > 1000)
        			{
         			tlnt_cr = base_cr + 0.24;
-        			tlnt_dmg_buff =0.8;
+        			tlnt_dmg_buff =0.8+0.15;
         		}
 				
         		//聖遺物の会心系の配分
