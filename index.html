@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,7 +30,7 @@
         const elm_sub = parseInt(document.getElementById("elm_sub").value);//サブステ元素熟知
         const cr_prof= parseFloat(document.getElementById("cr_prof").value);//プロフィール会心率
         const cd_prof = parseFloat(document.getElementById("cd_prof").value);//プロフィール会心ダメージ
-	      const dlt_attck_r = 0.006;//微小攻撃力％幅
+	      const dlt_attck_r = 0.0001;//微小攻撃力％幅
 	      const elm_const = 115 + 265 + 187 * 2;//元素熟知最低値
         const base_cr = 5 / 100;//基礎会心率
         const base_cd = 112.2 / 100;//基礎会心ダメージ
@@ -61,18 +62,20 @@
 				let temp_cd;
 				let temp_attck;
 				let temp_elm;
+				let temp_tlnt_dmg_buff
 
 				//頭文字f_,最終的に出力するデータ
 				let f_cr;
 				let f_cd;
 				let f_attck;
 				let f_elm;
+				let f_dmg_buff
 				let f_agg_exp_dmg = 0;//激化ダメージ期待値の初期値
 				
 
 				while (dlt_attck_r * m * 400 / 3 < score)
 				{
-					for (let i = 0; i < 100; i++) 
+					while (af_elm >= 0)
 					{
       			// スコア配分元素熟知
        			elm = elm_const + af_elm;
@@ -85,7 +88,7 @@
         		if (elm > 1000)
        			{
         			tlnt_cr = base_cr + 0.24;
-        			tlnt_dmg_buff = 0.466+0.8;
+        			tlnt_dmg_buff =0.8;
         		}
 				
         		//聖遺物の会心系の配分
@@ -124,7 +127,7 @@
 							temp_cd = tlnt_cd;
 							temp_attck = attck;
 							temp_elm = elm;
-						  	temp_tlnt_dmg_buff = tlnt_dmg_buff;
+							temp_tlnt_dmg_buff = tlnt_dmg_buff
 						}
 
 						af_attck_r = af_attck_r + dlt_attck_r;
@@ -139,13 +142,14 @@
 						f_cd = temp_cd;
 						f_attck = temp_attck;
 						f_elm = temp_elm;
-						f_tlnt_dmg_buff = temp_tlnt_dmg_buff;
+						f_dmg_buff = temp_tlnt_dmg_buff
 					}
 					m = m+1;
 					temp_agg_exp_dmg = 0;
 					af_attck_r = 0;
+					af_elm =  score * 3 - (af_attck_r + dlt_attck_r * m) * 400;//聖遺物元素熟知
 				}
-				result = "ループ回数1: " + n.toFixed(2) +"  ループ回数2: " + m.toFixed(1) +"  攻撃力: " + f_attck.toFixed(0)+"  元素熟知: " + f_elm.toFixed(0) +"  会心率: " + f_cr.toFixed(3) + "  会心ダメージ：" + f_cd.toFixed(3) + "激化ダメージ期待値: "+f_agg_exp_dmg.toFixed(0)+ "  ダメージバフ：" + f_tlnt_dmg_buff.toFixed(3);
+				result = "ループ回数: " + n.toFixed(2) +"  聖遺物スコア: " + score.toFixed(1) +"  攻撃力: " + f_attck.toFixed(0)+"  元素熟知: " + f_elm.toFixed(0) +"  会心率: " + f_cr.toFixed(3) + "  会心ダメージ：" + f_cd.toFixed(3) + "激化ダメージ期待値: "+f_agg_exp_dmg.toFixed(0) + "ダメージバフ: "+f_dmg_buff.toFixed(3);
 
         document.getElementById("result").innerHTML = result;
       }
