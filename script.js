@@ -3,7 +3,7 @@ function jsonOutput() {
     let request = new XMLHttpRequest();
   
     // JSONファイルが置いてあるパスを記述
-    request.open('GET', 'output.json');
+    request.open('GET', './output.json');
     request.send();
   
     // JSON読み込み時の処理
