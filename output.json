@@ -1,0 +1,16 @@
+[
+    {
+      "display": "link",
+      "url": "リンク先のURL",
+      "image": "画像パス",
+      "title": "タイトル2",
+      "text": ""
+    },
+     {
+      "display": "popup",
+      "url": "リンク先のURL",
+      "image": "画像パス",
+      "title": "タイトル1",
+      "text": "テストテキスト"
+    }
+  ]
