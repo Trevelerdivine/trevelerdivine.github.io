@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html　lang="ja" dir="ltr">
+<html lang="ja" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title>原神最適化計算機</title>
@@ -28,20 +28,20 @@
     <input type="number" id="cr_prof" min="0" max="100" step="1"><br>
     <label for="cd_prof">会心ダメージ(%):</label>
     <input type="number" id="cd_prof" min="50" step="1"><br>
-    <button onclick="calculateDamage()">計算する</button><br>
+    <button onclick="base_status()">計算する</button><br>
     <p id="result"></p>
-    <p id="hp_test"></p>
+    <p id="hp"></p>
     <h1>JSON data</h1>
     <pre id="data"></pre>
     <script>
       function base_status() 
       {
+        const char_name = document.getElementById("char_name").value;
         fetch("./"+char_name)
   .then(response => response.json())
   .then(data => {
     const hp = data.ステータス.基礎HP["20"];
     document.getElementById("hp").textContent = hp;
-    document.getElementById("hp_test").innerHTML = hp;
   })
   .catch(error => console.error(error));
       }
