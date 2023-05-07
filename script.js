@@ -5,7 +5,7 @@ function base_status()
 .then(response => response.json())
 .then(data => {
 const hp = data.ステータス.基礎HP["80"];
-document.getElementById("hp").textContent = hp*10000;
+document.getElementById("hp").textContent = hp;
 })
 .catch(error => console.error(error));
 }

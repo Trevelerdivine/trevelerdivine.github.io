@@ -6,14 +6,22 @@
     <script src="./script.js"></script>
   </head>
   <body>
-    <div>     
+  <div>     
     <h1>原神ダメージ計算機</h1>
     <label for="char_name">キャラクター:</label>
- <select id="char_name">
-  <option value="nahida.json">ナヒーダ</option>
-  <option value="raiden.json">雷電将軍</option>
-  <option value="zhongli.json">鍾離</option>
- </select>
+      <select id="char_name" multiple size="4">
+        <optgroup label="草元素">
+          <option value="nahida.json">ナヒーダ</option>
+          <option value="yaoyao.json">ヨォーヨ</option>
+          <option value="tighnari.json">ティナリ</option>
+        </optgroup>
+        <optgroup label="雷元素">
+          <option value="raiden.json">雷電将軍</option>
+          <option value="yaemiko.json">八重神子</option>
+          <option value="Kuki_Shinobu.json">久岐忍</option>
+        </optgroup>
+      </select>
+    </label>
 </div> 
  <button onclick="base_status()">決定</button>
  <p id="hp"></p>
@@ -35,6 +43,11 @@
     <h1>JSON data</h1>
     <pre id="data"></pre>
     <script>
-    
+    fetch('./nahida.json')
+    .then(response => response.json())
+    .then(data => {
+      // Display the data
+      document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+      });
     </script>
   </body>
