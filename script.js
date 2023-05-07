@@ -14,6 +14,11 @@ document.getElementById("base_elm").textContent = base_elm;
 .catch(error => console.error(error));
 }
 
+function showTable() {
+  document.getElementById("myTable").style.display = "table";
+  base_status();
+}
+
 
 
 
