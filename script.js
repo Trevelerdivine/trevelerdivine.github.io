@@ -10,16 +10,17 @@ function base_status()
 {
   const char_name = document.getElementById("char_name").value;
   fetch("./data/character/"+char_name)
-.then(response => response.json())
-.then(data => {
-const base_hp = data.ステータス.基礎HP["90"];
-document.getElementById("base_hp").textContent = base_hp;
-const base_attck = data.ステータス.基礎攻撃力["90"];
-document.getElementById("base_attck").textContent = base_attck;
-const base_elm = data.ステータス.元素熟知["90"];
-document.getElementById("base_elm").textContent = base_elm;
-})
-.catch(error => console.error(error));
+  .then(response => response.json())
+  .then(data => 
+    {
+    const base_hp = data.ステータス.基礎HP["90"];
+    document.getElementById("base_hp").textContent = base_hp;
+    const base_attck = data.ステータス.基礎攻撃力["90"];
+    document.getElementById("base_attck").textContent = base_attck;
+    const base_elm = data.ステータス.元素熟知["90"];
+    document.getElementById("base_elm").textContent = base_elm;
+  })
+  .catch(error => console.error(error));
 }
 
 /////////////////////////
@@ -161,3 +162,6 @@ fetch('./nahida.json')
 　// Display the data
 document.getElementById('data').textContent = JSON.stringify(data, null, 2);
   });
+
+
+/////////////////////
