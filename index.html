@@ -7,11 +7,11 @@
   <body>
     <div>     
     <h1>原神ダメージ計算機</h1>
-    <label for="age">キャラクター:</label>
- <select id="age">
-  <option value="0">ナヒーダ</option>
-  <option value="10">雷電将軍</option>
-  <option value="10-19">鍾離</option>
+    <label for="char_name">キャラクター:</label>
+ <select id="char_name">
+  <option value="nahida.json">ナヒーダ</option>
+  <option value="raiden.json">雷電将軍</option>
+  <option value="zhongli.json">鍾離</option>
  </select>
 </div> 
  <button onclick="base_status()">決定</button>
@@ -30,20 +30,20 @@
     <input type="number" id="cd_prof" min="50" step="1"><br>
     <button onclick="calculateDamage()">計算する</button><br>
     <p id="result"></p>
+    <p id="hp_test"></p>
     <h1>JSON data</h1>
     <pre id="data"></pre>
     <script>
       function base_status() 
       {
-        const age = document.getElementById("age").value;
-        if (age == "0") 
-        {
-        alert("年齢を選択してください。");
-        } 
-        else 
-        {
-        alert("あなたの年齢は" + age + "です。");
-        }
+        fetch(char_name)
+  .then(response => response.json())
+  .then(data => {
+    const hp = data.ステータス.基礎HP["20"];
+    document.getElementById("hp").textContent = hp;
+    document.getElementById("hp_test").innerHTML = hp;
+  })
+  .catch(error => console.error(error));
       }
       function calculateDamage ()
       {
