@@ -1,7 +1,15 @@
+function showTable() {
+  document.getElementById("myTable").style.display = "table";
+  base_status();
+}
+
+//////////////////
+
+
 function base_status() 
 {
   const char_name = document.getElementById("char_name").value;
-  fetch("./"+char_name)
+  fetch("./data/character/"+char_name)
 .then(response => response.json())
 .then(data => {
 const base_hp = data.ステータス.基礎HP["90"];
@@ -14,12 +22,7 @@ document.getElementById("base_elm").textContent = base_elm;
 .catch(error => console.error(error));
 }
 
-function showTable() {
-  document.getElementById("myTable").style.display = "table";
-  base_status();
-}
-
-
+/////////////////////////
 
 
 function calculateDamage ()
