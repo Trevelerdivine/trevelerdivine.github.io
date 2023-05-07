@@ -30,9 +30,23 @@
     <input type="number" id="cd_prof" min="50" step="1"><br>
     <button onclick="calculateDamage()">計算する</button><br>
     <p id="result"></p>
+    <h1>JSON data</h1>
+    <pre id="data"></pre>
     <script>
+      function base_status() 
+      {
+        const age = document.getElementById("age").value;
+        if (age == "0") 
+        {
+        alert("年齢を選択してください。");
+        } 
+        else 
+        {
+        alert("あなたの年齢は" + age + "です。");
+        }
+      }
       function calculateDamage ()
-
+      {
         const attck_prof = parseInt(document.getElementById("attck_prof").value);//プロフィール攻撃力
         const base_attck = parseInt(document.getElementById("base_attck").value);//基礎攻撃力
         const attck_sub = parseInt(document.getElementById("attck_sub").value);//サブステ攻撃力実数値
@@ -159,7 +173,13 @@
 					af_elm =  score * 3 - (af_attck_r + dlt_attck_r * m) * 400;//聖遺物元素熟知
 				}
 				result = "ループ回数: " + n.toFixed(2) +"  聖遺物スコア: " + score.toFixed(1) +"  攻撃力: " + f_attck.toFixed(0)+"  元素熟知: " + f_elm.toFixed(0) +"  会心率: " + f_cr.toFixed(3) + "  会心ダメージ：" + f_cd.toFixed(3) + "激化ダメージ期待値: "+f_agg_exp_dmg.toFixed(0) + "ダメージバフ: "+f_dmg_buff.toFixed(3);
-
+      }
         document.getElementById("result").innerHTML = result;
+      fetch('./data.json')
+      .then(response => response.json())
+      .then(data => {
+      　// Display the data
+      document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+        });
     </script>
   </body>
