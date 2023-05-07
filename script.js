@@ -156,7 +156,7 @@ function calculateDamage ()
   result = "ループ回数: " + n.toFixed(2) +"  聖遺物スコア: " + score.toFixed(1) +"  攻撃力: " + f_attck.toFixed(0)+"  元素熟知: " + f_elm.toFixed(0) +"  会心率: " + f_cr.toFixed(3) + "  会心ダメージ：" + f_cd.toFixed(3) + "激化ダメージ期待値: "+f_agg_exp_dmg.toFixed(0) + "ダメージバフ: "+f_dmg_buff.toFixed(3);
   document.getElementById("result").innerHTML = result;
 }
-fetch('./nahida.json')
+fetch('./data/character/nahida.json')
 .then(response => response.json())
 .then(data => {
 　// Display the data
