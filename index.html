@@ -50,4 +50,14 @@
     <input type="number" id="cd_prof" min="50" step="1"><br>
     <button onclick="calculateDamage()">計算する</button><br>
     <p id="result"></p>
+    <h1>JSON data</h1>
+    <pre id="data"></pre>
+    <script>
+    fetch('./nahida.json')
+    .then(response => response.json())
+    .then(data => {
+      // Display the data
+      document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+      });
+    </script>
   </body>
