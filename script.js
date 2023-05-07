@@ -17,8 +17,8 @@ function base_status()
     document.getElementById("base_hp").textContent = base_hp;
     const base_attck = data.ステータス.基礎攻撃力["90"];
     document.getElementById("base_attck").textContent = base_attck;
-    const base_elem = data.ステータス.元素熟知["90"];
-    document.getElementById("base_elem").textContent = base_eelm;
+    const base_elm = data.ステータス.元素熟知["90"];
+    document.getElementById("base_elm").textContent = base_elm;
   })
   .catch(error => console.error(error));
 }
