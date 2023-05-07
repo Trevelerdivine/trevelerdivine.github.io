@@ -23,11 +23,18 @@
       </select>
     </label>
 </div> 
- <button onclick="base_status()">決定
-  <p id="base_hp"></p>
-  <p id="base_attck"></p>
-  <p id="base_elm"></p>
-</button>
+ <button onclick="base_status()">決定</button>
+ <table border="1">
+  <tr>
+    <td>基礎HP</td><td>id="base_hp"</td>
+  </tr>
+  <tr>
+    <td>基礎攻撃力</td><td>id="base_attck"</td>
+  </tr>
+  <tr>
+    <td>元素熟知</td><td>id="base_elm"</td>
+  </tr>
+ </table>
  <br>
     <label for="attck_prof">攻撃力:</label>
     <input type="number" id="attck_prof" min="1"><br>
