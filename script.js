@@ -17,8 +17,8 @@ function base_status()
     document.getElementById("base_hp").textContent = base_hp;
     const base_attck = data.ステータス.基礎攻撃力["90"];
     document.getElementById("base_attck").textContent = base_attck;
-    const base_elm = data.ステータス.元素熟知["90"];
-    document.getElementById("base_elm").textContent = base_elm;
+    const base_elem = data.ステータス.元素熟知["90"];
+    document.getElementById("base_elem").textContent = base_eelm;
   })
   .catch(error => console.error(error));
 }
@@ -29,7 +29,6 @@ function base_status()
 function calculateDamage ()
 {
   const attck_prof = parseInt(document.getElementById("attck_prof").value);//プロフィール攻撃力
-  const base_attck = parseInt(document.getElementById("base_attck").value);//基礎攻撃力
   const attck_sub = parseInt(document.getElementById("attck_sub").value);//サブステ攻撃力実数値
   const elm_sub = parseInt(document.getElementById("elm_sub").value);//サブステ元素熟知
   const cr_prof= parseFloat(document.getElementById("cr_prof").value);//プロフィール会心率
