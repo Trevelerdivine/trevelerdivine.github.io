@@ -4,8 +4,12 @@ function base_status()
   fetch("./"+char_name)
 .then(response => response.json())
 .then(data => {
-const hp = data.ステータス.基礎HP["80"];
-document.getElementById("hp").textContent = hp;
+const base_hp = data.ステータス.基礎HP["90"];
+document.getElementById("base_hphp").textContent = base_hp;
+const base_attck = data.ステータス.基礎攻撃力["90"];
+document.getElementById("base_attck").textContent = base_attck;
+const base_elm = data.ステータス.元素熟知["90"];
+document.getElementById("base_elm").textContent = base_elm;
 })
 .catch(error => console.error(error));
 }
