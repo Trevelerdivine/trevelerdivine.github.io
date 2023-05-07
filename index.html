@@ -31,18 +31,6 @@
     <button onclick="calculateDamage()">計算する</button><br>
     <p id="result"></p>
     <script>
-      function base_status() 
-      {
-        const age = document.getElementById("age").value;
-        if (age == "0") 
-        {
-        alert("年齢を選択してください。");
-        } 
-        else 
-        {
-        alert("あなたの年齢は" + age + "です。");
-        }
-      }
       function calculateDamage ()
 
         const attck_prof = parseInt(document.getElementById("attck_prof").value);//プロフィール攻撃力
