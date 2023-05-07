@@ -15,8 +15,8 @@ function base_status()
     {
     const base_hp = data.ステータス.基礎HP["90"];
     document.getElementById("base_hp").textContent = base_hp;
-    const base_attck = data.ステータス.基礎攻撃力["90"];
-    document.getElementById("base_attck").textContent = base_attck;
+    const bas_attck = data.ステータス.基礎攻撃力["90"];
+    document.getElementById("bas_attck").textContent = bas_attck;
     const base_elm = data.ステータス.元素熟知["90"];
     document.getElementById("base_elm").textContent = base_elm;
   })
@@ -29,6 +29,7 @@ function base_status()
 function calculateDamage ()
 {
   const attck_prof = parseInt(document.getElementById("attck_prof").value);//プロフィール攻撃力
+  const base_attck = parseInt(document.getElementById("base_attck").value);//基礎攻撃力
   const attck_sub = parseInt(document.getElementById("attck_sub").value);//サブステ攻撃力実数値
   const elm_sub = parseInt(document.getElementById("elm_sub").value);//サブステ元素熟知
   const cr_prof= parseFloat(document.getElementById("cr_prof").value);//プロフィール会心率
@@ -154,13 +155,6 @@ function calculateDamage ()
   }
   result = "ループ回数: " + n.toFixed(2) +"  聖遺物スコア: " + score.toFixed(1) +"  攻撃力: " + f_attck.toFixed(0)+"  元素熟知: " + f_elm.toFixed(0) +"  会心率: " + f_cr.toFixed(3) + "  会心ダメージ：" + f_cd.toFixed(3) + "激化ダメージ期待値: "+f_agg_exp_dmg.toFixed(0) + "ダメージバフ: "+f_dmg_buff.toFixed(3);
   document.getElementById("result").innerHTML = result;
-}
-fetch('./data/character/nahida.json')
-.then(response => response.json())
-.then(data => {
-　// Display the data
-document.getElementById('data').textContent = JSON.stringify(data, null, 2);
-  });
 
 
 /////////////////////
