@@ -7,7 +7,7 @@
   </head>
   <body>
   <div>     
-    <h1>原神ダメージ計算機</h1>
+    <h1>原神換算最適化スコア計算機</h1>
     <label for="char_name">キャラクター:</label>
       <select id="char_name" multiple size="4">
         <optgroup label="草元素">
@@ -23,10 +23,11 @@
       </select>
     </label>
 </div> 
- <button onclick="base_status()">決定</button>
- <p id="base_hp"></p>
- <p id="base_attck"></p>
- <p id="base_elm"></p>
+ <button onclick="base_status()">決定
+  <p id="base_hp"></p>
+  <p id="base_attck"></p>
+  <p id="base_elm"></p>
+</button>
  <br>
     <label for="attck_prof">攻撃力:</label>
     <input type="number" id="attck_prof" min="1"><br>
