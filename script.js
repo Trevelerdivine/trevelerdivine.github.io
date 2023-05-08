@@ -1,6 +1,7 @@
 function showTable() {
   document.getElementById("myTable").style.display = "table";
   calculate_char_base_status();
+  calculate_weapon_base_status();
 }
 
 //////////////////
@@ -188,3 +189,38 @@ function calculate_char_base_status()
       })
       .catch(error => console.error(error));
   }
+
+///////////////  
+
+
+function calculate_weapon_base_status()
+ {
+  const weapon_name = document.getElementById("").value;
+  fetch("./data/weapon/" + weapon_name + ".json")
+    .then(response => response.json())
+    .then(data => {
+       const weapon_base_hp = data.ステータス.基礎HP["90"];
+       document.getElementById("weapon_base_hp").textContent = weapon_base_hp;
+       const weapon_base_attck = data.ステータス.基礎攻撃力["90"];
+       document.getElementById("weapon_base_attck").textContent = weapon_base_attck;
+       const weapon_base_deff = data.ステータス.基礎防御力["90"];
+       document.getElementById("weapon_base_deff").textContent = weapon_base_deff;
+       const weapon_base_elm = data.ステータス.基礎元素熟知["90"];
+       document.getElementById("weapon_base_elm").textContent = weapon_base_elm;
+       const weapon_base_elm_charge = data.ステータス.基礎元素チャージ効率["90"];
+       document.getElementById("weapon_base_elm_charge").textContent = weapon_base_elm_charge;
+       const weapon_base_cr = data.ステータス.基礎会心率["90"];
+       document.getElementById("weapon_base_cr").textContent = weapon_base_cr;
+       const weapon_base_cd = data.ステータス.基礎会心ダメージ["90"];
+       document.getElementById("weapon_base_cd").textContent = weapon_base_cd;
+       const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
+       document.getElementById("weapon_base_dmg_buff").textContent = weapon_base_dmg_buff;
+        
+       const weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
+       console.log(weapon_base_status);
+      })
+      .catch(error => console.error(error));
+  }
+////////
+
+

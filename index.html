@@ -22,6 +22,20 @@
         </optgroup>
       </select>
     </label>
+    <label for="weapon_name">武器:</label>
+    <select id="weapon_name" multiple size="4">
+      <optgroup label="法器">
+        <option value="AThousandFloatingDreams">千夜に浮かぶ夢</option>
+        <option value="Kagura'sVerity">神楽の真意</option>
+        <option value="SacrificialFragments">祭礼の断片</option>
+      </optgroup>
+      <optgroup label="長柄">
+        <option value="StaffofHoma">護摩の杖</option>
+        <option value="EngulfingLightning">草薙の稲光</option>
+        <option value="TheCatch">漁獲</option>
+      </optgroup>
+    </select>
+  </label>
 </div> 
 <button onclick="showTable()">決定</button>
 <table border="1" id="myTable" style="display:none;">
@@ -36,6 +50,18 @@
   </tr>  
   <tr>
     <td>基礎元素熟知</td><td id="char_base_elm"></td>
+  </tr>
+  <tr>
+    <td>基礎HP</td><td id="weapon_base_hp"></td>
+  </tr>
+  <tr>
+    <td>基礎攻撃力</td><td id="weapon_base_attck"></td>
+  </tr>
+  <tr>
+    <td>基礎防御力</td><td id="weapon_base_deff"></td>
+  </tr>  
+  <tr>
+    <td>基礎元素熟知</td><td id="weapon_base_elm"></td>
   </tr>
 </table>
  <br>
