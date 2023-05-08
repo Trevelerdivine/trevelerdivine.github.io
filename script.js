@@ -166,24 +166,24 @@ function calculate_char_base_status()
   fetch("./data/character/" + char_name + ".json")
     .then(response => response.json())
     .then(data => {
-       const base_hp = data.ステータス.基礎HP["90"];
-       document.getElementById("base_hp").textContent = base_hp;
-       const base_attck = data.ステータス.基礎攻撃力["90"];
-       document.getElementById("base_attck").textContent = base_attck;
-       const base_deff = data.ステータス.基礎防御力["90"];
-       document.getElementById("base_deff").textContent = base_deff;
-       const base_elm = data.ステータス.基礎元素熟知["90"];
-       document.getElementById("base_elm").textContent = base_elm;
-       const base_elm_charge = data.ステータス.基礎元素チャージ効率["90"];
-       document.getElementById("base_elm_charge").textContent = base_elm_charge;
-       const base_cr = data.ステータス.基礎会心率["90"];
-       document.getElementById("base_cr").textContent = base_cr;
-       const base_cd = data.ステータス.基礎会心ダメージ["90"];
-       document.getElementById("base_cd").textContent = base_cd;
-       const base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
-       document.getElementById("base_dmg_buff").textContent = base_dmg_buff;
+       const char_base_hp = data.ステータス.基礎HP["90"];
+       document.getElementById("char_base_hp").textContent = char_base_hp;
+       const char_base_attck = data.ステータス.基礎攻撃力["90"];
+       document.getElementById("char_base_attck").textContent = char_base_attck;
+       const char_base_deff = data.ステータス.基礎防御力["90"];
+       document.getElementById("char_base_deff").textContent = char_base_deff;
+       const char_base_elm = data.ステータス.基礎元素熟知["90"];
+       document.getElementById("char_base_elm").textContent = char_base_elm;
+       const char_base_elm_charge = data.ステータス.基礎元素チャージ効率["90"];
+       document.getElementById("char_base_elm_charge").textContent = char_base_elm_charge;
+       const char_base_cr = data.ステータス.基礎会心率["90"];
+       document.getElementById("char_base_cr").textContent = char_base_cr;
+       const char_base_cd = data.ステータス.基礎会心ダメージ["90"];
+       document.getElementById("char_base_cd").textContent = char_base_cd;
+       const char_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
+       document.getElementById("char_base_dmg_buff").textContent = char_base_dmg_buff;
         
-       const char_base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
+       const char_base_status = [char_base_hp, char_base_attck, char_base_deff, char_base_elm, char_base_elm_charge, char_base_cr, char_base_cd, char_base_dmg_buff];
        console.log(char_base_status);
       })
       .catch(error => console.error(error));
