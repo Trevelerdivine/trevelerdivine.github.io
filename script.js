@@ -159,28 +159,30 @@ function calculateDamage ()
 
 /////////
 
-function calculate_char_base_status() 
-{
+
+function calculate_char_base_status()
+ {
   const char_name = document.getElementById("char_name").value;
-  fetch("./data/character/"+char_name)
-  .then(response => response.json())
-  .then(data => 
-    {
-    const base_hp = data.ステータス.基礎HP["90"];
-    document.getElementById("base_hp").textContent = base_hp;
-    const base_attck = data.ステータス.基礎攻撃力["90"];
-    document.getElementById("base_attck").textContent = bas_attck;
-    const base_deff = data.ステータス.基礎防御力["90"];
-    document.getElementById("base_deff").textContent = base_deff;
-    const base_elm = data.ステータス.基礎元素熟知["90"];
-    document.getElementById("base_elm").textContent = base_elm;
-    const base_elm_charge = data.ステータス.基礎元素チャージ効率["90"];
-    document.getElementById("base_elm_charge").textContent = base_elm_charge;
-    const base_cr = data.ステータス.基礎会心率["90"];
-    document.getElementById("base_cr").textContent = base_cr;
-    const base_cd = data.ステータス.基礎会心ダメージ["90"];
-    document.getElementById("base_cd").textContent = base_cd;
-  })
-  .catch(error => console.error(error));
-  let char_base_status = [base_hp, base_atttck, base_deff, base_elm, base_elm_charge, base_cr, base_cd];
-}
+  fetch("./data/character/" + char_name + ".json")
+    .then(response => response.json())
+    .then(data => {
+       const base_hp = data.ステータス.基礎HP["90"];
+       document.getElementById("base_hp").textContent = base_hp;
+       const base_attck = data.ステータス.基礎攻撃力["90"];
+       document.getElementById("base_attck").textContent = base_attck;
+       const base_deff = data.ステータス.基礎防御力["90"];
+       document.getElementById("base_deff").textContent = base_deff;
+       const base_elm = data.ステータス.基礎元素熟知["90"];
+       document.getElementById("base_elm").textContent = base_elm;
+       const base_elm_charge = data.ステータス.基礎元素チャージ効率["90"];
+       document.getElementById("base_elm_charge").textContent = base_elm_charge;
+       const base_cr = data.ステータス.基礎会心率["90"];
+       document.getElementById("base_cr").textContent = base_cr;
+       const base_cd = data.ステータス.基礎会心ダメージ["90"];
+       document.getElementById("base_cd").textContent = base_cd;
+        
+       const char_base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd];
+       console.log(char_base_status);
+      })
+      .catch(error => console.error(error));
+  }
