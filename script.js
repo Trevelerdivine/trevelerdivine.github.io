@@ -1,6 +1,6 @@
 function showTable() {
   document.getElementById("myTable").style.display = "table";
-  base_status();
+  calculate_char_base_status();
 }
 
 //////////////////
