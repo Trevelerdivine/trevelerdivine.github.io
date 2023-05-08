@@ -180,8 +180,10 @@ function calculate_char_base_status()
        document.getElementById("base_cr").textContent = base_cr;
        const base_cd = data.ステータス.基礎会心ダメージ["90"];
        document.getElementById("base_cd").textContent = base_cd;
+       const base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
+       document.getElementById("base_dmg_buff").textContent = base_dmg_buff;
         
-       const char_base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd];
+       const char_base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
        console.log(char_base_status);
       })
       .catch(error => console.error(error));
