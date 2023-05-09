@@ -215,7 +215,6 @@ function calculate_weapon_base_status()
        document.getElementById("weapon_base_cd").textContent = weapon_base_cd;
        const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
        document.getElementById("weapon_base_dmg_buff").textContent = weapon_base_dmg_buff;
-        
        const weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
        console.log(weapon_base_status);
       })
