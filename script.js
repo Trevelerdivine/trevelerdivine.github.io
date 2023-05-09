@@ -1,3 +1,5 @@
+let base_status = [0,0,0,0,0,0,0,0];
+
 function showTable() {
   document.getElementById("myTable").style.display = "table";
   calculate_base_status();
@@ -72,6 +74,6 @@ async function calculate_base_status() {
   const base_cr = char_base_status[5] + weapon_base_status[5];
   const base_cd = char_base_status[6] + weapon_base_status[6];
   const base_dmg_buff = char_base_status[7] + weapon_base_status[7];
-  const base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
+  base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
   return base_status;
   }
