@@ -1,4 +1,7 @@
 let base_status = [0,0,0,0,0,0,0,0];
+let char_base_status = [0,0,0,0,0,0,0,0];
+let weapon_base_status = [0,0,0,0,0,0,0,0];
+
 
 function showTable() {
   document.getElementById("myTable").style.display = "table";
@@ -30,7 +33,6 @@ async function calculate_char_base_status()
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
   document.getElementById("char_base_dmg_buff").textContent = char_base_dmg_buff;
   const char_base_status = [char_base_hp, char_base_attck, char_base_deff, char_base_elm, char_base_elm_charge, char_base_cr, char_base_cd, char_base_dmg_buff];
-  return char_base_status;
   console.log(char_base_status);
 }
 
@@ -57,8 +59,8 @@ async function calculate_weapon_base_status() {
   document.getElementById("weapon_base_cd").textContent = weapon_base_cd;
   const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
   document.getElementById("weapon_base_dmg_buff").textContent = weapon_base_dmg_buff;
-  const weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
-  return weapon_base_status;
+  weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
+
   }
 ////////
 
