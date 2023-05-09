@@ -8,17 +8,31 @@
   <body>
   <div>     
     <h1>原神換算最適化スコア計算機</h1>
-    <label for="char_name">キャラクター:</label>
+    <label for="char_name">キャラクター:
       <select id="char_name" multiple size="4">
         <optgroup label="草元素">
-          <option value="nahida.json">ナヒーダ</option>
-          <option value="yaoyao.json">ヨォーヨ</option>
-          <option value="tighnari.json">ティナリ</option>
+          <option value="nahida">ナヒーダ</option>
+          <option value="yaoyao">ヨォーヨ</option>
+          <option value="tighnari">ティナリ</option>
         </optgroup>
         <optgroup label="雷元素">
-          <option value="raiden.json">雷電将軍</option>
-          <option value="yaemiko.json">八重神子</option>
-          <option value="Kuki_Shinobu.json">久岐忍</option>
+          <option value="raiden">雷電将軍</option>
+          <option value="yaemiko">八重神子</option>
+          <option value="Kuki_Shinobu">久岐忍</option>
+        </optgroup>
+      </select>
+    </label>
+    <label for="weapon_name">武器:
+      <select id="weapon_name" multiple size="4">
+        <optgroup label="法器">
+          <option value="AThousandFloatingDreams">千夜に浮かぶ夢</option>
+          <option value="Kagura'sVerity">神楽の真意</option>
+          <option value="SacrificialFragments">祭礼の断片</option>
+        </optgroup>
+        <optgroup label="長柄">
+          <option value="StaffofHoma">護摩の杖</option>
+          <option value="EngulfingLightning">草薙の稲光</option>
+          <option value="TheCatch">漁獲</option>
         </optgroup>
       </select>
     </label>
@@ -32,7 +46,22 @@
     <td>基礎攻撃力</td><td id="base_attck"></td>
   </tr>
   <tr>
-    <td>元素熟知</td><td id="base_elm"></td>
+    <td>基礎防御力</td><td id="base_deff"></td>
+  </tr>  
+  <tr>
+    <td>基礎元素熟知</td><td id="base_elm"></td>
+  </tr>
+  <tr>
+    <td>基礎元素チャージ効率</td><td id="base_elm_charge"></td>
+  </tr>
+  <tr>
+    <td>基礎会心率</td><td id="base_cr"></td>
+  </tr>
+  <tr>
+    <td>基礎会心率</td><td id="base_cd"></td>
+  </tr>  
+  <tr>
+    <td>基礎ダメージバフ</td><td id="base_dmg_buff"></td>
   </tr>
 </table>
  <br>
@@ -50,14 +79,5 @@
     <input type="number" id="cd_prof" min="50" step="1"><br>
     <button onclick="calculateDamage()">計算する</button><br>
     <p id="result"></p>
-    <h1>JSON data</h1>
-    <pre id="data"></pre>
-    <script>
-    fetch('./nahida.json')
-    .then(response => response.json())
-    .then(data => {
-      // Display the data
-      document.getElementById('data').textContent = JSON.stringify(data, null, 2);
-      });
-    </script>
+
   </body>
