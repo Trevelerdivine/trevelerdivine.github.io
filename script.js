@@ -237,5 +237,3 @@ function calculate_base_status()
   const base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
   console.log(weapon_base_status);  
   }
-
-  
