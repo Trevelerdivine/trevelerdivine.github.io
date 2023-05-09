@@ -195,7 +195,7 @@ function calculate_char_base_status()
 
 function calculate_weapon_base_status()
  {
-  const weapon_name = document.getElementById("").value;
+  const weapon_name = document.getElementById("weapon_name").value;
   fetch("./data/weapon/" + weapon_name + ".json")
     .then(response => response.json())
     .then(data => {
