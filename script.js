@@ -2,6 +2,15 @@ function showTable() {
   document.getElementById("myTable").style.display = "table";
   calculate_char_base_status();
   calculate_weapon_base_status();
+  const base_hp = char_base_hp + weapon_base_hp
+  const base_attck = char_base_attck + weapon_base_attck
+  const base_deff = char_base_deff + weapon_base_deff
+  const base_elm = char_base_elm + weapon_base_elm
+  const base_elm_charge = char_base_elm_charge + weapon_base_elm_charge
+  const base_cr = char_base_cr + weapon_base_cr
+  const base_cd = char_base_cd + weapon_base_cd
+  const base_dmg_buff = char_base_dmg_buff + weapon_base_dmg_buff
+
 }
 
 //////////////////
