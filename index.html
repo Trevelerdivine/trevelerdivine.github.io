@@ -40,28 +40,28 @@
 <button onclick="showTable()">決定</button>
 <table border="1" id="myTable" style="display:none;">
   <tr>
-    <td>基礎HP</td><td id="char_base_hp"></td>
+    <td>基礎HP</td><td id="base_hp"></td>
   </tr>
   <tr>
-    <td>基礎攻撃力</td><td id="char_base_attck"></td>
+    <td>基礎攻撃力</td><td id="base_attck"></td>
   </tr>
   <tr>
-    <td>基礎防御力</td><td id="char_base_deff"></td>
+    <td>基礎防御力</td><td id="base_deff"></td>
   </tr>  
   <tr>
-    <td>基礎元素熟知</td><td id="char_base_elm"></td>
+    <td>基礎元素熟知</td><td id="base_elm"></td>
   </tr>
   <tr>
-    <td>基礎HP</td><td id="weapon_base_hp"></td>
+    <td>基礎元素チャージ効率</td><td id="base_elm_charge"></td>
   </tr>
   <tr>
-    <td>基礎攻撃力</td><td id="weapon_base_attck"></td>
+    <td>基礎会心率</td><td id="base_cr"></td>
   </tr>
   <tr>
-    <td>基礎防御力</td><td id="weapon_base_deff"></td>
+    <td>基礎会心率</td><td id="base_cd"></td>
   </tr>  
   <tr>
-    <td>基礎元素熟知</td><td id="weapon_base_elm"></td>
+    <td>基礎ダメージバフ</td><td id="base_dmg_buff"></td>
   </tr>
 </table>
  <br>
@@ -79,51 +79,6 @@
     <input type="number" id="cd_prof" min="50" step="1"><br>
     <button onclick="calculateDamage()">計算する</button><br>
     <p id="result"></p>
-    <h1>JSON data</h1>
-    <pre id="data"></pre>
-    <table>
-      <thead>
-        <tr>
-          <th>Stat</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>HP</td>
-          <td id="weapon_base_hp"></td>
-        </tr>
-        <tr>
-          <td>Attack</td>
-          <td id="weapon_base_attck"></td>
-        </tr>
-        <tr>
-          <td>Defense</td>
-          <td id="weapon_base_deff"></td>
-        </tr>
-        <tr>
-          <td>Elemental Mastery</td>
-          <td id="weapon_base_elm"></td>
-        </tr>
-        <tr>
-          <td>Elemental Recharge</td>
-          <td id="weapon_base_elm_charge"></td>
-        </tr>
-        <tr>
-          <td>Crit Rate</td>
-          <td id="weapon_base_cr"></td>
-        </tr>
-        <tr>
-          <td>Crit Damage</td>
-          <td id="weapon_base_cd"></td>
-        </tr>
-        <tr>
-          <td>Damage Buff</td>
-          <td id="weapon_base_dmg_buff"></td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <button onclick="calculate_weapon_base_status()">Calculate Weapon Base Status</button>
-  
+
   </body>
+
