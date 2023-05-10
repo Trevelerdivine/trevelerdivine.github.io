@@ -69,6 +69,7 @@ async function calculate_weapon_base_status() {
   const weapon_base_cd = data.ステータス.基礎会心ダメージ["90"];
   const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
   weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
+  console.log(weapon_base_status);
   return weapon_base_status;
   }
 ////////
@@ -86,5 +87,6 @@ async function calculate_base_status() {
   base_cd = char_base_status[6] + weapon_base_status[6];
   base_dmg_buff = char_base_status[7] + weapon_base_status[7];
   base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
+  console.log(base_status);
   return base_status;
   }
