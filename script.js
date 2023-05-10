@@ -1,14 +1,14 @@
 let base_status = [0,0,0,0,0,0,0,0];
 let char_base_status = [0,0,0,0,0,0,0,0];
 let weapon_base_status = [0,0,0,0,0,0,0,0];
-const base_hp;
-const base_attck;
-const base_deff;
-const base_elm;
-const base_elm_charge;
-const base_cr;
-const base_cd;
-const base_dmg_buff;
+let base_hp = 0;
+let base_attck = 0;
+let base_deff = 0;
+let base_elm = 0;
+let base_elm_charge = 0;
+let base_cr = 0;
+let base_cd = 0;
+let base_dmg_buff = 0;
 
 
 function showTable() {
