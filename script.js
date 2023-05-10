@@ -14,6 +14,14 @@ let base_dmg_buff = 0;
 function showTable() {
   document.getElementById("myTable").style.display = "table";
   calculate_base_status();
+  base_hp = base_status[0];
+  base_attck = base_status[1];
+  base_deff = base_status[2];
+  base_elm = base_status[3];
+  base_elm_charge = base_status[4];
+  base_cr = base_status[5];
+  base_cd = base_status[6];
+  base_dmg_buff = base_status[7];
 }
 
 /////////
@@ -40,7 +48,7 @@ async function calculate_char_base_status()
   document.getElementById("char_base_cd").textContent = char_base_cd;
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
   document.getElementById("char_base_dmg_buff").textContent = char_base_dmg_buff;
-  const char_base_status = [char_base_hp, char_base_attck, char_base_deff, char_base_elm, char_base_elm_charge, char_base_cr, char_base_cd, char_base_dmg_buff];
+  char_base_status = [char_base_hp, char_base_attck, char_base_deff, char_base_elm, char_base_elm_charge, char_base_cr, char_base_cd, char_base_dmg_buff];
   console.log(char_base_status);
   return char_base_status;
 }
