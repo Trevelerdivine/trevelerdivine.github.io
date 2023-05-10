@@ -1,4 +1,4 @@
-//let base_status = [0,0,0,0,0,0,0,0];
+let base_status = [0,0,0,0,0,0,0,0];
 let char_base_status = [0,0,0,0,0,0,0,0];
 let weapon_base_status = [0,0,0,0,0,0,0,0];
 let base_hp = 0;
@@ -11,9 +11,9 @@ let base_cd = 0;
 let base_dmg_buff = 0;
 
 
-function showTable() {
+async function showTable() {
   document.getElementById("myTable").style.display = "table";
-  calculate_base_status();
+  base_status = await calculate_base_status();
   base_hp = base_status[0];
   document.getElementById("base_hp").textContent = base_hp;
   base_attck = base_status[1];
@@ -90,3 +90,11 @@ async function calculate_base_status() {
   console.log(base_status);
   return base_status;
   }
+///////////
+async function calculate_af_score() {
+  char_base_status = await calculate_base_status();
+  console.log(base_status);
+  return base_status;
+  }
+
+
