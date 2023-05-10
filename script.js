@@ -1,4 +1,4 @@
-let base_status = [0,0,0,0,0,0,0,0];
+//let base_status = [0,0,0,0,0,0,0,0];
 let char_base_status = [0,0,0,0,0,0,0,0];
 let weapon_base_status = [0,0,0,0,0,0,0,0];
 let base_hp = 0;
