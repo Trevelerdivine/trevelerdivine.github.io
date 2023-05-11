@@ -98,3 +98,36 @@ async function calculate_af_score() {
   }
 
 
+  function showForm() {
+    // フォームを表示するために、フォームのコンテナーを表示に変更します。
+    document.getElementById("form-container").style.display = "block";
+  
+    // 選択されたキャラクターを取得し、ステータス入力フォームのラベルに設定します。
+    const character = document.getElementById("character-select").value;
+    const attackLabel = document.querySelector("label[for='attack']");
+    const defenseLabel = document.querySelector("label[for='defense']");
+    const healthLabel = document.querySelector("label[for='health']");
+  
+    switch (character) {
+      case "nahida":
+        attackLabel.innerText = "剣の攻撃力:";
+        defenseLabel.innerText = "鎧の防御力:";
+        healthLabel.innerText = "体力:";
+        break;
+      case "yaoyao":
+        attackLabel.innerText = "魔法の攻撃力:";
+        defenseLabel.innerText = "魔法の防御力:";
+        healthLabel.innerText = "魔法力:";
+        break;
+      case "raiden":
+        attackLabel.innerText = "短剣の攻撃力:";
+        defenseLabel.innerText = "革鎧の防御力:";
+        healthLabel.innerText = "スタミナ:";
+        break;
+      default:
+        attackLabel.innerText = "攻撃力:";
+        defenseLabel.innerText = "防御力:";
+        healthLabel.innerText = "体力:";
+        break;
+    }
+  }
