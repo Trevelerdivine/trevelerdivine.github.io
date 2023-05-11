@@ -108,30 +108,37 @@ async function calculate_af_score() {
     document.getElementById("form-container").style.display = "block";
     if (depend_status[0] == 1)
     {
+      const af_hp = document.getElementById("af_hp");
       document.getElementById("af_hp").style.display = "block";
     }
     if (depend_status[1] == 1)
     {
+      const af_attck = document.getElementById("af_attck");
       document.getElementById("af_attck").style.display = "block";
     }
     if (depend_status[2] == 1)
     {
+      const af_deff = document.getElementById("af_deff");
       document.getElementById("af_deff").style.display = "block";
     }
     if (depend_status[3] == 1)
     {
+      const af_elm = document.getElementById("af_elm");
       document.getElementById("af_elm").style.display = "block";
     }
     if (depend_status[4] == 1)
     {
+      const af_elm_charge = document.getElementById("af_elm_charge");
       document.getElementById("af_elm_charge").style.display = "block";
     }
     if (depend_status[5] == 1)
     {
+      const af_cr = document.getElementById("af_cr");
       document.getElementById("af_cr").style.display = "block";
     }
     if (depend_status[6] == 1)
     {
+      const af_cd = document.getElementById("af_cd");
       document.getElementById("af_cd").style.display = "block";
     }
   }
