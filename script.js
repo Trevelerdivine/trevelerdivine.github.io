@@ -98,13 +98,13 @@ async function calculate_af_score() {
   }
 
 
-  async function showForm() {
+  async function showForm()
+   {
     const char_name = document.getElementById("char_name").value;
     const response = await fetch("./data/character/" + char_name + ".json");
     const data = await response.json();
     const depend_status = data.ステータス.依存ステータス;
     // フォームを表示するために、フォームのコンテナーを表示に変更します。
-    const formContainer = document.getElementById("formContainer");
     document.getElementById("form-container").style.display = "block";
     if (depend_status[0] == 1)
     {
