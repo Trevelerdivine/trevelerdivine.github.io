@@ -102,39 +102,37 @@ async function calculate_af_score() {
     // フォームを表示するために、フォームのコンテナーを表示に変更します。
     document.getElementById("form-container").style.display = "block";
     const char_name = document.getElementById("char_name").value;
-    const response = await fetch("./data/weapon/" + weapon_name + ".json");
+    const response = await fetch("./data/character/" + char_name + ".json");
     const data = await response.json();
     // 選択されたキャラクターを取得し、ステータス入力フォームのラベルに設定します。
     const depend_status = data.ステータス.依存ステータス;
   
-    if (depend_status[0] = 1)
+    if (depend_status[0] == 1)
     {
       document.getElementById("af_hp").style.display = "block";
     }
-    if (depend_status[1] = 1)
+    if (depend_status[1] == 1)
     {
       document.getElementById("af_attck").style.display = "block";
     }
-    if (depend_status[2] = 1)
+    if (depend_status[2] == 1)
     {
       document.getElementById("af_deff").style.display = "block";
     }
-    if (depend_status[3] = 1)
+    if (depend_status[3] == 1)
     {
       document.getElementById("af_elm").style.display = "block";
     }
-    if (depend_status[4] = 1)
+    if (depend_status[4] == 1)
     {
       document.getElementById("af_elm_charge").style.display = "block";
     }
-    if (depend_status[5] = 1)
+    if (depend_status[5] == 1)
     {
       document.getElementById("af_cr").style.display = "block";
     }
-    if (depend_status[6] = 1)
+    if (depend_status[6] == 1)
     {
       document.getElementById("af_cd").style.display = "block";
     }
-
-
   }
