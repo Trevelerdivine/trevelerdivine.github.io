@@ -99,14 +99,13 @@ async function calculate_af_score() {
 
 
   async function showForm() {
-    // フォームを表示するために、フォームのコンテナーを表示に変更します。
-    document.getElementById("form-container").style.display = "block";
     const char_name = document.getElementById("char_name").value;
     const response = await fetch("./data/character/" + char_name + ".json");
     const data = await response.json();
-    // 選択されたキャラクターを取得し、ステータス入力フォームのラベルに設定します。
     const depend_status = data.ステータス.依存ステータス;
-  
+    // フォームを表示するために、フォームのコンテナーを表示に変更します。
+    const formContainer = document.getElementById("formContainer");
+    document.getElementById("form-container").style.display = "block";
     if (depend_status[0] == 1)
     {
       document.getElementById("af_hp").style.display = "block";
