@@ -81,15 +81,23 @@
  </select>
 
  <div id="form-container" style="display:none">
-   <h2>ステータスを入力してください:</h2>
+   <h2>聖遺物ステータス上昇量:</h2>
    <form>
-     <label for="attack">攻撃力:</label>
-     <input type="number" id="attack" name="attack"><br><br>
-     <label for="defense">防御力:</label>
-     <input type="number" id="defense" name="defense"><br><br>
-     <label for="health">体力:</label>
-     <input type="number" id="health" name="health"><br><br>
-     <button type="submit">送信</button>
+    <label for="af_hp" style="display:none">HP:</label>
+    <input type="number" id="af_hp" min="0"><br>
+    <label for="af_attck" style="display:none">攻撃力:</label>
+    <input type="number" id="af_attck" min="0"><br>
+    <label for="af_deff" style="display:none">防御力:</label>
+    <input type="number" id="af_deff" min="0"><br>
+    <label for="af_elm" style="display:none">元素熟知:</label>
+    <input type="number" id="af_elm" min="0"><br>
+    <label for="af_elm_charge" style="display:none">元素チャージ効率:</label>
+    <input type="number" id="af_elm_charge" min="0"><br>
+    <label for="af_cr" style="display:none">会心率(%):</label>
+    <input type="number" id="af_cr" min="0" max="100"><br>
+    <label for="af_cd" style="display:none">会心ダメージ(%):</label>
+    <input type="number" id="af_cd" min="50"><br>
+    <button onclick="calculateDamage()">計算する</button><br>
    </form>
  </div>
 

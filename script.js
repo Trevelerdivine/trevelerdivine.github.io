@@ -98,36 +98,43 @@ async function calculate_af_score() {
   }
 
 
-  function showForm() {
+  async function showForm() {
     // フォームを表示するために、フォームのコンテナーを表示に変更します。
     document.getElementById("form-container").style.display = "block";
-  
+    const char_name = document.getElementById("char_name").value;
+    const response = await fetch("./data/weapon/" + weapon_name + ".json");
+    const data = await response.json();
     // 選択されたキャラクターを取得し、ステータス入力フォームのラベルに設定します。
-    const character = document.getElementById("character-select").value;
-    const attackLabel = document.querySelector("label[for='attack']");
-    const defenseLabel = document.querySelector("label[for='defense']");
-    const healthLabel = document.querySelector("label[for='health']");
+    const depend_status = data.ステータス.依存ステータス;
   
-    switch (character) {
-      case "nahida":
-        attackLabel.innerText = "剣の攻撃力:";
-        defenseLabel.innerText = "鎧の防御力:";
-        healthLabel.innerText = "体力:";
-        break;
-      case "yaoyao":
-        attackLabel.innerText = "魔法の攻撃力:";
-        defenseLabel.innerText = "魔法の防御力:";
-        healthLabel.innerText = "魔法力:";
-        break;
-      case "raiden":
-        attackLabel.innerText = "短剣の攻撃力:";
-        defenseLabel.innerText = "革鎧の防御力:";
-        healthLabel.innerText = "スタミナ:";
-        break;
-      default:
-        attackLabel.innerText = "攻撃力:";
-        defenseLabel.innerText = "防御力:";
-        healthLabel.innerText = "体力:";
-        break;
+    if (depend_status[0] = 1)
+    {
+      document.getElementById("af_hp").style.display = "block";
     }
+    if (depend_status[1] = 1)
+    {
+      document.getElementById("af_attck").style.display = "block";
+    }
+    if (depend_status[2] = 1)
+    {
+      document.getElementById("af_deff").style.display = "block";
+    }
+    if (depend_status[3] = 1)
+    {
+      document.getElementById("af_elm").style.display = "block";
+    }
+    if (depend_status[4] = 1)
+    {
+      document.getElementById("af_elm_charge").style.display = "block";
+    }
+    if (depend_status[5] = 1)
+    {
+      document.getElementById("af_cr").style.display = "block";
+    }
+    if (depend_status[6] = 1)
+    {
+      document.getElementById("af_cd").style.display = "block";
+    }
+
+
   }
