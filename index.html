@@ -6,70 +6,11 @@
     <script src="./script.js"></script>
   </head>
   <body>
-  <div>     
-    <h1>原神換算最適化スコア計算機</h1>
-    <label for="char_name">キャラクター:
-      <select id="char_name" multiple size="4">
-        <optgroup label="草元素">
-          <option value="nahida">ナヒーダ</option>
-          <option value="yaoyao">ヨォーヨ</option>
-          <option value="tighnari">ティナリ</option>
-        </optgroup>
-        <optgroup label="雷元素">
-          <option value="raiden">雷電将軍</option>
-          <option value="yaemiko">八重神子</option>
-          <option value="Kuki_Shinobu">久岐忍</option>
-        </optgroup>
-      </select>
-    </label>
-    <label for="weapon_name">武器:
-      <select id="weapon_name" multiple size="4">
-        <optgroup label="法器">
-          <option value="AThousandFloatingDreams">千夜に浮かぶ夢</option>
-          <option value="Kagura'sVerity">神楽の真意</option>
-          <option value="SacrificialFragments">祭礼の断片</option>
-        </optgroup>
-        <optgroup label="長柄">
-          <option value="StaffofHoma">護摩の杖</option>
-          <option value="EngulfingLightning">草薙の稲光</option>
-          <option value="TheCatch">漁獲</option>
-        </optgroup>
-      </select>
-    </label>
-</div> 
-<button onclick="showTable()">決定</button>
-<table border="1" id="myTable" style="display:none;">
-  <tr>
-    <td>基礎HP</td><td id="base_hp"></td>
-  </tr>
-  <tr>
-    <td>基礎攻撃力</td><td id="base_attck"></td>
-  </tr>
-  <tr>
-    <td>基礎防御力</td><td id="base_deff"></td>
-  </tr>  
-  <tr>
-    <td>基礎元素熟知</td><td id="base_elm"></td>
-  </tr>
-  <tr>
-    <td>基礎元素チャージ効率</td><td id="base_elm_charge"></td>
-  </tr>
-  <tr>
-    <td>基礎会心率</td><td id="base_cr"></td>
-  </tr>
-  <tr>
-    <td>基礎会心ダメージ</td><td id="base_cd"></td>
-  </tr>  
-  <tr>
-    <td>基礎ダメージバフ</td><td id="base_dmg_buff"></td>
-  </tr>
-</table>
- <br>
-
- <h1>キャラクター選択:</h1>
-  <label for="character">キャラクター:</label>
+ <div>
+ <h1>キャラクター選択      武器選択</h1>
+  <label for="char_name">キャラクター:</label>
   <br>
-  <select id="character" onchange="showStatsForm()" multiple size="4">
+  <select id="char_name" onchange="showStatsForm()" multiple size="4">
   <optgroup label="草元素">
     <option value="nahida">ナヒーダ</option>
     <option value="yaoyao">ヨォーヨ</option>
@@ -80,7 +21,23 @@
     <option value="yaemiko">八重神子</option>
     <option value="Kuki_Shinobu">久岐忍</option>
   </optgroup>
- </select>
+ </select>  
+ 
+  <label for="weapon_name">武器:
+    <select id="weapon_name" multiple size="4">
+      <optgroup label="法器">
+        <option value="AThousandFloatingDreams">千夜に浮かぶ夢</option>
+        <option value="Kagura'sVerity">神楽の真意</option>
+        <option value="SacrificialFragments">祭礼の断片</option>
+      </optgroup>
+      <optgroup label="長柄">
+        <option value="StaffofHoma">護摩の杖</option>
+        <option value="EngulfingLightning">草薙の稲光</option>
+        <option value="TheCatch">漁獲</option>
+      </optgroup>
+    </select>
+  </label>
+</div> 
  
  <div id="hp_form" style="display: none;">
   <label for="af_hp">HP:</label>
