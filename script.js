@@ -98,47 +98,56 @@ async function calculate_af_score() {
   }
 
 
-  async function showForm()
+  async function showStatsForm()
    {
-    const charname = document.getElementById("charname").value;
-    const response = await fetch("./data/character/" + charname + ".json");
+    const characterSelect = document.getElementById("character");
+    const response = await fetch("./data/charcter/" + characterSelect + ".json");
     const data = await response.json();
     const depend_status = data.ステータス.依存ステータス;
-    // フォームを表示するために、フォームのコンテナーを表示に変更します。
-    document.getElementById("form-container").style.display = "block";
-    if (depend_status[0] == 1)
+
+    let hp_form = document.getElementById("hp_form");
+    let attck_form = document.getElementById("attck_form");
+    let deff_form = document.getElementById("deff_form");
+    let elm_form = document.getElementById("elm_form");
+    let elm_charge_form = document.getElementById("elm_charge_form");
+    let cr_form = document.getElementById("cr_form");
+    let cd_form = document.getElementById("cd_form");
+    
+    hp_form.style.display = "none";  // HPフォームを非表示
+    attck_form.style.display = "none";  // 攻撃力フォームを非表示
+    deff_form.style.display = "none";  // 防御力フォームを非表示
+    elm_form.style.display = "none";  // 元素熟知を非表示
+    elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
+    cr_form.style.display = "none";  // 会心率フォームを非表示
+    cd_form.style.display = "none";  // 会心ダメージフォームを非表示
+    
+    if (depend_status[0] == 1) 
     {
-      const af_hp = document.getElementById("af_hp");
-      document.getElementById("af_hp").style.display = "block";
+      hp_form.style.display = "block";  // hpフォームを表示
     }
-    if (depend_status[1] == 1)
+    
+    if (depend_status[1] == 1) 
     {
-      const af_attck = document.getElementById("af_attck");
-      document.getElementById("af_attck").style.display = "block";
+      attck_form.style.display = "block";  // 攻撃力フォームを表示
     }
-    if (depend_status[2] == 1)
+    if (depend_status[2] == 1) 
     {
-      const af_deff = document.getElementById("af_deff");
-      document.getElementById("af_deff").style.display = "block";
+      deff_form.style.display = "block";  // 防御力フォームを表示
     }
-    if (depend_status[3] == 1)
+    if (depend_status[3] == 1) 
     {
-      const af_elm = document.getElementById("af_elm");
-      document.getElementById("af_elm").style.display = "block";
+      elm_form.style.display = "block";  // 元素熟知フォームを表示
     }
-    if (depend_status[4] == 1)
+    if (depend_status[4] == 1) 
     {
-      const af_elm_charge = document.getElementById("af_elm_charge");
-      document.getElementById("af_elm_charge").style.display = "block";
+      elm_charge_form.style.display = "block";  // 元素チャージ効率フォームを表示
     }
-    if (depend_status[5] == 1)
+    if (depend_status[5] == 1) 
     {
-      const af_cr = document.getElementById("af_cr");
-      document.getElementById("af_cr").style.display = "block";
+      cr_form.style.display = "block";  // 会心率フォームを表示
     }
-    if (depend_status[6] == 1)
+    if (depend_status[6] == 1) 
     {
-      const af_cd = document.getElementById("af_cd");
-      document.getElementById("af_cd").style.display = "block";
+      cd_form.style.display = "block";  // 会心ダメージフォームを表示
     }
-  }
+}
