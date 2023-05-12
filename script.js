@@ -32,7 +32,7 @@ async function showTable() {
   document.getElementById("base_dmg_buff").textContent = base_dmg_buff;
 }
 
-/////////
+/////////////////////
 
 
 async function calculate_char_base_status() 
@@ -72,7 +72,7 @@ async function calculate_weapon_base_status() {
   console.log(weapon_base_status);
   return weapon_base_status;
   }
-////////
+///////////////////
 
 
 async function calculate_base_status() {
@@ -90,14 +90,7 @@ async function calculate_base_status() {
   console.log(base_status);
   return base_status;
   }
-///////////
-async function calculate_af_score() {
-  char_base_status = await calculate_base_status();
-  console.log(base_status);
-  return base_status;
-  }
-
-
+////////////////////
   async function showStatsForm()
    {
     const char_name = document.getElementById("char_name").value;
@@ -151,3 +144,4 @@ async function calculate_af_score() {
       cd_form.style.display = "block";  // 会心ダメージフォームを表示
     }
 }
+//////////////////////
