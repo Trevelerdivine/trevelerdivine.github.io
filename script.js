@@ -1,6 +1,7 @@
 let base_status = [0,0,0,0,0,0,0,0];
 let char_base_status = [0,0,0,0,0,0,0,0];
 let weapon_base_status = [0,0,0,0,0,0,0,0];
+let depend_status = [0,0,0,0,0,0,0,0];
 let base_hp = 0;
 let base_attck = 0;
 let base_deff = 0;
@@ -9,7 +10,7 @@ let base_elm_charge = 0;
 let base_cr = 0;
 let base_cd = 0;
 let base_dmg_buff = 0;
-
+let af_score = 0
 
 async function showTable() {
   document.getElementById("myTable").style.display = "table";
@@ -96,7 +97,7 @@ async function calculate_base_status() {
     const char_name = document.getElementById("char_name").value;
     const response = await fetch("./data/character/" + char_name + ".json");
     const data = await response.json();
-    const depend_status = data.ステータス.依存ステータス;
+    depend_status = data.ステータス.依存ステータス;
 
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
@@ -105,6 +106,7 @@ async function calculate_base_status() {
     let elm_charge_form = document.getElementById("elm_charge_form");
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
+    let calculateButton = document.getElementById("calculateButton");
     
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
@@ -113,6 +115,7 @@ async function calculate_base_status() {
     elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
     cr_form.style.display = "none";  // 会心率フォームを非表示
     cd_form.style.display = "none";  // 会心ダメージフォームを非表示
+    calculateButton.style.display = "block";
     
     if (depend_status[0] == 1) 
     {
@@ -145,3 +148,46 @@ async function calculate_base_status() {
     }
 }
 //////////////////////
+
+
+async function calculate_af_score() 
+{
+  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
+  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
+  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
+  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
+  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
+  const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
+  const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
+  base_status = await calculate_base_status();
+  af_score = 0
+  for (let i = 0; i < 7; i++){
+    if (depend_status[i]==0){
+      continue;
+    }
+    switch (i)
+    {
+      case 0:
+       af_score = af_score+((af_hp - 4780)/base_status[0])*400/3
+       break;
+      case 1:
+        af_score = af_score+((af_attck - 311)/base_status[1])*400/3
+        break;
+      case 2:
+        af_score = af_score + (af_deff/base_status[1])*1600/15
+        break;
+      case 3:
+        af_score = af_score + af_elm/3
+        break;
+      case 4:
+        af_score = af_score + af_elm_charge*120
+        break;
+      case 5:
+        af_score = af_score + af_cr*200
+        break
+      case 6:
+        af_score = af_score + af_cd*100
+    }
+  }
+  document.getElementById("af_score").innerHTML = af_score;
+}
