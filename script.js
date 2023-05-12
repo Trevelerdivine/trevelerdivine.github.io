@@ -100,7 +100,7 @@ async function calculate_af_score() {
 
   async function showStatsForm()
    {
-    const characterSelect = document.getElementById("character");
+    const characterSelect = document.getElementById("character").value;
     const response = await fetch("./data/charcter/" + characterSelect + ".json");
     const data = await response.json();
     const depend_status = data.ステータス.依存ステータス;
