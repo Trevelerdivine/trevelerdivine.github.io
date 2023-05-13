@@ -214,6 +214,7 @@ async function calculate_af_score()
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
+  const af_main_status = [0.466,0.466,0.583,187,0.518,31.1,62.2]
   base_status = await calculate_base_status();
   af_score = 0
   for (let i = 0; i < 7; i++){
