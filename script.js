@@ -214,9 +214,20 @@ async function calculate_af_score()
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
-  const af_main_status = [0.466,0.466,0.583,187,0.518,31.1,62.2]
+  const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
+  const goblet_mainstatus = parseInt(document.getElementById("goblet_mainstatus").value);
+  const circlet_mainstatus = parseInt(document.getElementById("circlet_mainstatus").value);
+  const af_main_status = [0.466,0.466,0.583,187,51.8,31.1,62.2,0.466];
+  let set_main_status = [0,0,0,0,0,0,0,0];
+  let af_main_status_buff = [0,0,0,0,0,0,0,0];
   base_status = await calculate_base_status();
   af_score = 0
+  set_main_status[clock_mainstatus] = set_main_status[clock_mainstatus] + 1;
+  set_main_status[goblet_mainstatus] = set_main_status[goblet_mainstatus] + 1;
+  set_main_status[circlet_mainstatus] = set_main_status[circlet_mainstatus] + 1;
+  for (let i = 0; i < 8; i++){
+    af_main_status_buff[i] = af_main_status[i] *  set_main_status[i]
+  }    
   for (let i = 0; i < 7; i++){
     if (depend_status[i]==0){
       continue;
@@ -224,25 +235,25 @@ async function calculate_af_score()
     switch (i)
     {
       case 0:
-       af_score = af_score+((af_hp - 4780)/base_status[0])*400/3
+       af_score = af_score+((af_hp - 4780)/base_status[0] - af_main_status_buff[0])*400/3
        break;
       case 1:
-        af_score = af_score+((af_attck - 311)/base_status[1])*400/3
+        af_score = af_score+((af_attck - 311)/base_status[1] -  af_main_status_buff[1])*400/3
         break;
       case 2:
-        af_score = af_score + (af_deff/base_status[1])*1600/15
+        af_score = af_score + (af_deff/base_status[1] -  af_main_status_buff[2])*1600/15
         break;
       case 3:
-        af_score = af_score + af_elm/3
+        af_score = af_score + (af_elm -  af_main_status_buff[3])/3
         break;
       case 4:
-        af_score = af_score + af_elm_charge*1.2
+        af_score = af_score + (af_elm_charge - af_main_status_buff[4])*1.2
         break;
       case 5:
-        af_score = af_score + af_cr*2
+        af_score = af_score + (af_cr - af_main_status_buff[5])*2
         break
       case 6:
-        af_score = af_score + af_cd*1
+        af_score = af_score + (af_cd - af_main_status_buff[6])
     }
   }
   document.getElementById("af_score").innerHTML = af_score;
