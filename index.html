@@ -25,7 +25,7 @@
 <br>
   <label for="weapon_name">武器: </label>
 <br>
-    <select id="weapon_name" multiple size="4">
+    <select id="weapon_name" onchange="showStatsForm()" multiple size="4">
       <optgroup label="法器">
         <option value="AThousandFloatingDreams">千夜に浮かぶ夢</option>
         <option value="Kagura'sVerity">神楽の真意</option>
@@ -38,6 +38,7 @@
       </optgroup>
     </select>
 </div> 
+ <br>
  
  <div id="hp_form" style="display: none;">
   <label for="af_hp">HP:</label>
