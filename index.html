@@ -8,6 +8,7 @@
   <body>
  <div>
  <h1>換算最適化スコア計算機</h1>
+ <div>
   <label for="char_name">キャラクター:</label>
   <br>
   <select id="char_name" onchange="show_char_statsform()" size="4">
@@ -25,7 +26,7 @@
 <br>
   <label for="weapon_name">武器: </label>
 <br>
-    <select id="weapon_name" onchange="show_weapon_statsform()"　size="4">
+    <select id="weapon_name" onchange="show_weapon_statsform()" size="4">
       <optgroup label="法器">
         <option value="AThousandFloatingDreams">千夜に浮かぶ夢</option>
         <option value="Kagura'sVerity">神楽の真意</option>
@@ -63,16 +64,19 @@
 <div id="elm_charge_form" style="display: none;">
   <label for="af_elm_charge">元素チャージ効率:</label>
   <input type="number" id="af_elm_charge" name="af_elm_charge">
+  <span>(%)</span>
 </div>
 
 <div id="cr_form" style="display: none;">
   <label for="af_cr">会心率:</label>
   <input type="number" id="af_cr" name="af_cr">
+  <span>(%)</span>
 </div>
 
 <div id="cd_form" style="display: none;">
   <label for="af_cd">会心ダメージ:</label>
   <input type="number" id="af_cd" name="af_cd">
+  <span>(%)</span>
 </div>
 
 <button id="calculateButton" style="display: none;" onclick="calculate_af_score()">スコア計算</button>

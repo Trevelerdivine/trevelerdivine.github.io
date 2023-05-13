@@ -235,13 +235,13 @@ async function calculate_af_score()
         af_score = af_score + af_elm/3
         break;
       case 4:
-        af_score = af_score + af_elm_charge*120
+        af_score = af_score + af_elm_charge*1.2
         break;
       case 5:
-        af_score = af_score + af_cr*200
+        af_score = af_score + af_cr*2
         break
       case 6:
-        af_score = af_score + af_cd*100
+        af_score = af_score + af_cd*1
     }
   }
   document.getElementById("af_score").innerHTML = af_score;
