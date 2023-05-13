@@ -72,7 +72,7 @@ async function calculate_weapon_base_status() {
   const weapon_base_cr = data.ステータス.基礎会心率["90"];
   const weapon_base_cd = data.ステータス.基礎会心ダメージ["90"];
   const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
-  weapon_depend_status = data.ステータス.依存ステータス;
+  _depend_status = data.ステータス.依存ステータス;
   weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
   console.log(weapon_base_status);
   return weapon_base_status;
@@ -99,20 +99,9 @@ async function calculate_base_status() {
   async function showStatsForm()
    {
     const char_name = document.getElementById("char_name").value;
-    const char_response = await fetch("./data/character/" + char_name + ".json");
-    const data = await char_response.json();
-    const weapon_name = document.getElementById("weapon_name").value;
-    const weapon_response = await fetch("./data/weapon/" + weapon_name + ".json");
-    const weapon_data = await weapon_response.json();
-    char_depend_status = data.ステータス.依存ステータス;
-    weapon_depend_status = weapon_data.ステータス.依存ステータス;
-    for (let i = 0; i < 7; i++){
-      depend_status[i] = char_depend_status[i] +  weapon_depend_status[i]
-      if (depend_status[i] > 1)
-      {
-        depend_status[i] = 1;
-      }
-    }
+    const response = await fetch("./data/character/" + char_name + ".json");
+    const data = await response.json();
+    depend_status = data.ステータス.依存ステータス;
 
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
@@ -123,50 +112,44 @@ async function calculate_base_status() {
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
     
-    if (char_name && weapon_name)
+    hp_form.style.display = "none";  // HPフォームを非表示
+    attck_form.style.display = "none";  // 攻撃力フォームを非表示
+    deff_form.style.display = "none";  // 防御力フォームを非表示
+    elm_form.style.display = "none";  // 元素熟知を非表示
+    elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
+    cr_form.style.display = "none";  // 会心率フォームを非表示
+    cd_form.style.display = "none";  // 会心ダメージフォームを非表示
+    calculateButton.style.display = "block";
+    
+    if (depend_status[0] == 1) 
     {
-      if (depend_status[0] == 1) 
-      {
-        hp_form.style.display = "block";  // hpフォームを表示
-      }
-      
-      if (depend_status[1] == 1) 
-      {
-        attck_form.style.display = "block";  // 攻撃力フォームを表示
-      }
-      if (depend_status[2] == 1) 
-      {
-        deff_form.style.display = "block";  // 防御力フォームを表示
-      }
-      if (depend_status[3] == 1) 
-      {
-        elm_form.style.display = "block";  // 元素熟知フォームを表示
-      }
-      if (depend_status[4] == 1) 
-      {
-        elm_charge_form.style.display = "block";  // 元素チャージ効率フォームを表示
-      }
-      if (depend_status[5] == 1) 
-      {
-        cr_form.style.display = "block";  // 会心率フォームを表示
-      }
-      if (depend_status[6] == 1) 
-      {
-        cd_form.style.display = "block";  // 会心ダメージフォームを表示
-      }
+      hp_form.style.display = "block";  // hpフォームを表示
     }
-    else
+    
+    if (depend_status[1] == 1) 
     {
-      hp_form.style.display = "none";  // HPフォームを非表示
-      attck_form.style.display = "none";  // 攻撃力フォームを非表示
-      deff_form.style.display = "none";  // 防御力フォームを非表示
-      elm_form.style.display = "none";  // 元素熟知を非表示
-      elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
-      cr_form.style.display = "none";  // 会心率フォームを非表示
-      cd_form.style.display = "none";  // 会心ダメージフォームを非表示
-      calculateButton.style.display = "block";
+      attck_form.style.display = "block";  // 攻撃力フォームを表示
     }
-    return depend_status
+    if (depend_status[2] == 1) 
+    {
+      deff_form.style.display = "block";  // 防御力フォームを表示
+    }
+    if (depend_status[3] == 1) 
+    {
+      elm_form.style.display = "block";  // 元素熟知フォームを表示
+    }
+    if (depend_status[4] == 1) 
+    {
+      elm_charge_form.style.display = "block";  // 元素チャージ効率フォームを表示
+    }
+    if (depend_status[5] == 1) 
+    {
+      cr_form.style.display = "block";  // 会心率フォームを表示
+    }
+    if (depend_status[6] == 1) 
+    {
+      cd_form.style.display = "block";  // 会心ダメージフォームを表示
+    }
 }
 //////////////////////
 
