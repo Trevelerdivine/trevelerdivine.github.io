@@ -226,7 +226,7 @@ async function calculate_af_score()
   set_main_status[goblet_mainstatus] = set_main_status[goblet_mainstatus] + 1;
   set_main_status[circlet_mainstatus] = set_main_status[circlet_mainstatus] + 1;
   for (let i = 0; i < 8; i++){
-    af_main_status_buff[i] = af_main_status[i] *  set_main_status[i]
+    af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
   }    
   for (let i = 0; i < 7; i++){
     if (depend_status[i]==0){
@@ -235,25 +235,25 @@ async function calculate_af_score()
     switch (i)
     {
       case 0:
-       af_score = af_score+((af_hp - 4780)/base_status[0] - af_main_status_buff[0])*400/3
+       af_score = af_score+((af_hp - 4780)/base_status[0] - af_main_status_buff[0])*400/3;
        break;
       case 1:
-        af_score = af_score+((af_attck - 311)/base_status[1] -  af_main_status_buff[1])*400/3
+        af_score = af_score+((af_attck - 311)/base_status[1] - af_main_status_buff[1])*400/3;
         break;
       case 2:
-        af_score = af_score + (af_deff/base_status[1] -  af_main_status_buff[2])*1600/15
+        af_score = af_score + (af_deff/base_status[1] - af_main_status_buff[2])*1600/15;
         break;
       case 3:
-        af_score = af_score + (af_elm -  af_main_status_buff[3])/3
+        af_score = af_score + (af_elm -  af_main_status_buff[3])/3;
         break;
       case 4:
-        af_score = af_score + (af_elm_charge - af_main_status_buff[4])*1.2
+        af_score = af_score + (af_elm_charge - af_main_status_buff[4])*1.2;
         break;
       case 5:
-        af_score = af_score + (af_cr - af_main_status_buff[5])*2
+        af_score = af_score + (af_cr - af_main_status_buff[5])*2;
         break
       case 6:
-        af_score = af_score + (af_cd - af_main_status_buff[6])
+        af_score = af_score + (af_cd - af_main_status_buff[6]);
     }
   }
   document.getElementById("af_score").innerHTML = af_score;
