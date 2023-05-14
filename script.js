@@ -220,6 +220,7 @@ async function calculate_af_main_status_buff()
   for (let i = 0; i < 8; i++){
     af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
   }    
+  console.log(af_main_status_buff);
   return af_main_status_buff;
 }
 
@@ -266,6 +267,7 @@ async function calculate_af_score()
         af_score = af_score + (af_cd - af_main_status_buff[6]);
     }
   }
+  console.log(af_score);
   //document.getElementById("af_score").innerHTML = af_score.toFixed(1);
   return af_score
 }
@@ -289,6 +291,7 @@ async function calculate_depend_status()
         depend_status[i] = 1
       }
    }
+   console.log(depend_status);
    return depend_status
   }
 
