@@ -286,7 +286,6 @@ async function calculate_depend_status()
 
 async function score_distribute()
 {
-  let j = 0;
   let k = 0;
   let rundom_count = 0;
   let distribute = [];
@@ -300,10 +299,10 @@ async function score_distribute()
   const randomNumbers = Array.from({ length: rundom_count - 1 }, () => af_score*Math.random());
   randomNumbers.sort((a, b) => a - b);
   distribute[0] = randomNumbers[0];
-  for ( j = 1; j < randomNumbers.length; j++) {
+  for (let j = 1; j < randomNumbers.length; j++) {
     distribute[j] = randomNumbers[j] - randomNumbers[j - 1];
   }
-  distribute[rundom_count - 1] = af_score - randomNumbers[rundom_count - 1];
+  distribute[rundom_count - 1] = af_score - randomNumbers[rundom_count - 2];
   for (let i = 0; i < 7; i++)
   {
     if (depend_status[i]==0)
