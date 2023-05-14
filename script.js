@@ -213,7 +213,6 @@ async function calculate_af_main_status_buff()
   let set_main_status = [0,0,0,0,0,0,0,0];
   let af_main_status_buff = [0,0,0,0,0,0,0,0];
   base_status = await calculate_base_status();
-  af_score = 0
   set_main_status[clock_mainstatus] = set_main_status[clock_mainstatus] + 1;
   set_main_status[goblet_mainstatus] = set_main_status[goblet_mainstatus] + 1;
   set_main_status[circlet_mainstatus] = set_main_status[circlet_mainstatus] + 1;
@@ -239,6 +238,7 @@ async function calculate_af_score()
   const af_main_status_buff = await calculate_af_main_status_buff() 
   const depend_status = calculate_depend_status()
   const base_status = calculate_base_status()
+  af_score = 0
   for (let i = 0; i < 7; i++){
     if (depend_status[i]==0){
       continue;
