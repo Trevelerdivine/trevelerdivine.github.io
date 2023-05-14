@@ -256,7 +256,7 @@ async function calculate_af_score()
         af_score = af_score + (af_cd - af_main_status_buff[6]);
     }
   }
-  document.getElementById("af_score").innerHTML = af_score.toFixed(1);
+  //document.getElementById("af_score").innerHTML = af_score.toFixed(1);
   return af_score
 }
 
