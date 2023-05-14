@@ -303,7 +303,7 @@ async function score_distribute()
   for ( j = 1; j < randomNumbers.length; j++) {
     distribute[j] = randomNumbers[j] - randomNumbers[j - 1];
   }
-  distribute[rundom_count - 1] = af_score - randomNumbers[j];
+  distribute[rundom_count - 1] = af_score - randomNumbers[rundom_count - 1];
   for (let i = 0; i < 7; i++)
   {
     if (depend_status[i]==0)
