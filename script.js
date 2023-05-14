@@ -311,6 +311,9 @@ async function score_distribute()
     score_distribution[i] = depend_status[i] * distribute[k];
     k = k + 1; 
   }
+  console.log(af_score);
+  console.log(randomNumbers);
+  console.log(distribute);
   document.getElementById("score_distribution").innerHTML = score_distribution.toString();
   return score_distribution;
 }
