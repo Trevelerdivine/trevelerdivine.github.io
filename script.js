@@ -72,7 +72,7 @@ async function calculate_weapon_base_status() {
   const weapon_base_cr = data.ステータス.基礎会心率["90"];
   const weapon_base_cd = data.ステータス.基礎会心ダメージ["90"];
   const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
-  _depend_status = data.ステータス.依存ステータス;
+  weapon_depend_status = data.ステータス.依存ステータス;
   weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
   console.log(weapon_base_status);
   return weapon_base_status;
@@ -204,16 +204,8 @@ async function show_weapon_statsform()
 
 
 /////////////////////
-
-async function calculate_af_score() 
+async function calculate_af_main_status_buff() 
 {
-  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
-  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
-  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
-  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
-  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
-  const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
-  const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
   const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
   const goblet_mainstatus = parseInt(document.getElementById("goblet_mainstatus").value);
   const circlet_mainstatus = parseInt(document.getElementById("circlet_mainstatus").value);
@@ -228,6 +220,23 @@ async function calculate_af_score()
   for (let i = 0; i < 8; i++){
     af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
   }    
+  return af_main_status_buff;
+}
+
+
+//////////////////////////
+
+async function calculate_af_score() 
+{
+  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
+  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
+  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
+  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
+  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
+  const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
+  const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
+  const af_main_status_buff = await calculate_af_main_status_buff() 
+  const depend_status = calculate_depend_status()
   for (let i = 0; i < 7; i++){
     if (depend_status[i]==0){
       continue;
@@ -290,13 +299,13 @@ async function score_distribute()
   let rundom_count = 0;
   let distribute = [];
   let score_distribution = [];
-  let af_score = await calculate_af_score();
-  let depend_status = await calculate_depend_status();
+  const af_score = await calculate_af_score();
+  const depend_status = await calculate_depend_status();
   for (let i = 0; i < 7; i++)
   {
     rundom_count = rundom_count + depend_status[i];
   }
-  const randomNumbers = Array.from({ length: rundom_count - 1 }, () => af_score*Math.random());
+  let randomNumbers = Array.from({ length: rundom_count - 1 }, () => af_score*Math.random());
   randomNumbers.sort((a, b) => a - b);
   distribute[0] = randomNumbers[0];
   for (let j = 1; j < randomNumbers.length; j++) {
@@ -318,10 +327,23 @@ async function score_distribute()
 }
 
 
+////////////////////////////////
 
 
 
+async function calculate_fixed_status()
+{
+  af_score = await calculate_af_score()
+  base_status = await calculate_base_status();
+  fixed_status = [0,0,0,0,0,0,0];
+  fixed_status[0] = base_status[0]*(1 + af_score[0]*3/400) + 4780;
+  fixed_status[1] = base_status[1]*(1 + af_score[1]*3/400) + 311;
+  fixed_status[2] = base_status[2]*(1 + af_score[2]*15/1600);
+  fixed_status[3] = base_status[3] + af_score[3]*3;
+  fixed_status[4] = base_status[4] + af_score[4]/120;
+  fixed_status[5] = base_status[5]*(1 + af_score[1]*3/400) + 311;
 
+}
 
 
 
