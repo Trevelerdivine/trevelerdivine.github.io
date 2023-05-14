@@ -237,6 +237,7 @@ async function calculate_af_score()
   const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
   const af_main_status_buff = await calculate_af_main_status_buff() 
   const depend_status = calculate_depend_status()
+  const base_status = calculate_base_status()
   for (let i = 0; i < 7; i++){
     if (depend_status[i]==0){
       continue;
@@ -276,11 +277,11 @@ async function calculate_depend_status()
     const char_name = document.getElementById("char_name").value;
     const char_response = await fetch("./data/character/" + char_name + ".json");
     const char_data = await char_response.json();
-    char_depend_status = char_data.ステータス.依存ステータス;
+    const char_depend_status = char_data.ステータス.依存ステータス;
     const weapon_name = document.getElementById("weapon_name").value;
     const weapon_response = await fetch("./data/weapon/" + weapon_name + ".json");
     const weapon_data = await weapon_response.json();
-    weapon_depend_status = weapon_data.ステータス.依存ステータス;
+    const weapon_depend_status = weapon_data.ステータス.依存ステータス;
     for (let i = 0; i < 7; i++){
       depend_status[i] = char_depend_status[i] + weapon_depend_status[i]
       if (depend_status[i]>1)
@@ -333,15 +334,17 @@ async function score_distribute()
 
 async function calculate_fixed_status()
 {
-  af_score = await calculate_af_score()
-  base_status = await calculate_base_status();
-  fixed_status = [0,0,0,0,0,0,0];
-  fixed_status[0] = base_status[0]*(1 + af_score[0]*3/400) + 4780;
-  fixed_status[1] = base_status[1]*(1 + af_score[1]*3/400) + 311;
-  fixed_status[2] = base_status[2]*(1 + af_score[2]*15/1600);
-  fixed_status[3] = base_status[3] + af_score[3]*3;
-  fixed_status[4] = base_status[4] + af_score[4]/120;
-  fixed_status[5] = base_status[5]*(1 + af_score[1]*3/400) + 311;
+  const af_score = await calculate_af_score()
+  const base_status = await calculate_base_status();
+  const af_main_status_buff = calculate_af_main_status_buff(); 
+  let fixed_status = [0,0,0,0,0,0,0];
+  fixed_status[0] = base_status[0]*(1 + af_score[0]*3/400 + af_main_status_buff[0]) + 4780;
+  fixed_status[1] = base_status[1]*(1 + af_score[1]*3/400 + af_main_status_buff[1]) + 311;
+  fixed_status[2] = base_status[2]*(1 + af_score[2]*15/1600 + af_main_status_buff[2]);
+  fixed_status[3] = base_status[3] + af_score[3]*3 + af_main_status_buff[3];
+  fixed_status[4] = base_status[4] + af_score[4]/120 + af_main_status_buff[4]/100;
+  fixed_status[5] = base_status[5] + af_score[5]/200 + af_main_status_buff[5]/100;
+  fixed_status[6] = base_status[6] + af_score[6]/100 + af_main_status_buff[6]/100;
 
 }
 
