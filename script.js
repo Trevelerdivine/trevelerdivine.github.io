@@ -297,7 +297,7 @@ async function score_distribute()
   {
     rundom_count = rundom_count + depend_status[i];
   }
-  const randomNumbers = Array.from({ length: rundom_count }, () => af_score*Math.random());
+  const randomNumbers = Array.from({ length: rundom_count - 1 }, () => af_score*Math.random());
   randomNumbers.sort((a, b) => a - b);
   distribute[0] = randomNumbers[0];
   for ( j = 1; j < randomNumbers.length; j++) {
