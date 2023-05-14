@@ -257,6 +257,7 @@ async function calculate_af_score()
     }
   }
   document.getElementById("af_score").innerHTML = af_score.toFixed(1);
+  return af_score
 }
 
 
@@ -282,6 +283,38 @@ async function calculate_depend_status()
   }
 
 ///////////////////
+
+async function score_distribute()
+{
+  let j = 0;
+  let k = 0;
+  let rundom_count = 0;
+  let distribute = [];
+  let score_distribution = [];
+  let af_score = await calculate_af_score();
+  let depend_status = await calculate_depend_status();
+  for (let i = 0; i < 7; i++)
+  {
+    let rundom_count = rundom_count + depend_status[i]
+  }
+  const randomNumbers = Array.from({ length: rundom_count }, () => af_score*Math.random());
+  randomNumbers.sort((a, b) => a - b);
+  distribute[0] = randomNumbers[0];
+  for ( j = 1; j < randomNumbers.length; j++) {
+    distribute[j] = randomNumbers[j] - randomNumbers[j - 1];
+  }
+  distribute[j+1] = af_score - randomNumbers[j]
+  for (let i = 0; i < 7; i++)
+  {
+    if (depend_status[i]==0)
+    continue
+    score_distribution[i] = depend_status[i] * distribute[k];
+    k = k + 1; 
+  }
+  document.getElementById("score_distribution").innerHTML = score_distribution.toString();
+  return score_distribution;
+}
+
 
 
 
