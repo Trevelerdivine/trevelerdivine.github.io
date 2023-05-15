@@ -459,38 +459,40 @@ async function monte_carlo_calculate()
 {
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
+  let fixed_status;
+  let result_status;
   const char_instance = await create_char_instance();
   const weapon_instance = await create_weapon_instance();
   let depend_status = await calculate_depend_status();
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
 
   let score_distribute = await calculate_score_distribute(af_score,depend_status);
-  let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
-  let result_status = fixed_status;
+  fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
+  result_status = fixed_status;
 
- result_status[0] = char_instance.calculate_char_HP();
- result_status[0] = weapon_instance.caculate_weapon_HP();
+ result_status[0] += await char_instance.calculate_char_HP();
+ result_status[0] += await weapon_instance.caculate_weapon_HP();
 
- result_status[1] = char_instance.calculate_char_attck();
- result_status[1] = weapon_instance.calculate_weapon_attck();
+ result_status[1] += await char_instance.calculate_char_attck();
+ result_status[1] += await weapon_instance.calculate_weapon_attck();
 
- result_status[2] = char_instance.calculate_char_deff();
- result_status[2] = weapon_instance.calculate_weapon_deff();
+ result_status[2] += await char_instance.calculate_char_deff();
+ result_status[2] += await weapon_instance.calculate_weapon_deff();
 
- result_status[3] = char_instance.calculate_char_elm();
- result_status[3] = weapon_instance.calculate_weapon_elm();
+ result_status[3] += await char_instance.calculate_char_elm();
+ result_status[3] += await weapon_instance.calculate_weapon_elm();
 
- result_status[4] = char_instance.calculate_char_elm_charge();
- result_status[4] = weapon_instance.calculate_weapon_elm_charge();
+ result_status[4] += await char_instance.calculate_char_elm_charge();
+ result_status[4] += await weapon_instance.calculate_weapon_elm_charge();
 
- result_status[5] = char_instance.calculate_char_cr();
- result_status[5] = weapon_instance.calculate_weapon_cr();
+ result_status[5] += await char_instance.calculate_char_cr();
+ result_status[5] += await weapon_instance.calculate_weapon_cr();
 
- result_status[6] = char_instance.calculate_char_cd();
- result_status[6] = weapon_instance.calculate_weapon_cd();
+ result_status[6] += await char_instance.calculate_char_cd();
+ result_status[6] += await weapon_instance.calculate_weapon_cd();
 
- result_status[7] = char_instance.calculate_char_dmg_buff();
- result_status[7] = weapon_instance.calculate_weapon_dmg_buff();
+ result_status[7] += await char_instance.calculate_char_dmg_buff();
+ result_status[7] += await weapon_instance.calculate_weapon_dmg_buff();
  document.getElementById("result_status").innerHTML = result_status.toString();
  return result_status;
 }
