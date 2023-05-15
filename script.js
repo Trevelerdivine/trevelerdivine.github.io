@@ -436,7 +436,7 @@ class AThousandFloatingDreams {
 
 ////////////////////////
 
-async function create_char_instance() {
+async function create_char_instance(base_status, fixed_status, result_status) {
   const char_name = document.getElementById("char_name").value;
   if (char_name === "nahida") {
     // ナヒーダのインスタンスを生成
@@ -446,7 +446,7 @@ async function create_char_instance() {
 }
 ///////////////////////
 
-async function create_weapon_instance() {
+async function create_weapon_instance(base_status, fixed_status, result_status) {
   const weapon_name = document.getElementById("weapon_name").value;
   if (weapon_name === "AThousandFloatingDreams") {
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
@@ -457,12 +457,12 @@ async function create_weapon_instance() {
 //////////////////////
 async function monte_carlo_calculate()
 {
-  const base_status = await calculate_base_status();
-  const af_main_status_buff = await calculate_af_main_status_buff();
   let fixed_status;
   let result_status;
-  const char_instance = await create_char_instance();
-  const weapon_instance = await create_weapon_instance();
+  const base_status = await calculate_base_status();
+  const af_main_status_buff = await calculate_af_main_status_buff();
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status);
+  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   let depend_status = await calculate_depend_status();
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
 
@@ -494,6 +494,8 @@ async function monte_carlo_calculate()
  result_status[7] += await char_instance.calculate_char_dmg_buff();
  result_status[7] += await weapon_instance.calculate_weapon_dmg_buff();
  document.getElementById("result_status").innerHTML = result_status.toString();
+
+ console.log(result_status);
  return result_status;
 }
 
