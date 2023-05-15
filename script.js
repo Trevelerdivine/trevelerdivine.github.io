@@ -313,7 +313,7 @@ async function calculate_score_distribute(af_score,depend_status)
   {
     if (depend_status[i]==0)
     score_distribution[i] = 0;
-    continue
+    continue;
     score_distribution[i] = depend_status[i] * distribute[k];
     k = k + 1; 
   }
