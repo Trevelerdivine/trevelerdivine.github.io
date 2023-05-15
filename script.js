@@ -312,7 +312,7 @@ async function calculate_score_distribute(af_score,depend_status)
   for (let i = 0; i < 7; i++)
   {
     if (depend_status[i]==0)
-    score_distribution[i] = 0
+    score_distribution[i] = 0;
     continue
     score_distribution[i] = depend_status[i] * distribute[k];
     k = k + 1; 
