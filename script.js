@@ -347,96 +347,96 @@ async function calculate_fixed_status(sd,bs,amsb,ds)
 //////////////////////
 
 class nahida {
-  constructor(base_status_array, fixed_status_array, result_status_array) 
+  constructor(base_status, fixed_status, result_status) 
   {
-    this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
+    this.base_status = base_status;
+    this.fixed_status = fixed_status;
+    this.result_status = result_status;
   }
 
   calculate_char_HP() {
-    return this.result_status_array[0];
+    return this.result_status[0];
   }
 
   calculate_char_attck() {
-    return this.result_status_array[1];
+    return this.result_status[1];
   }
 
   calculate_char_deff() {
-    return this.result_status_array[2];
+    return this.result_status[2];
   }
 
   calculate_char_elm() {
-    return this.result_status_array[3];
+    return this.result_status[3];
   }
 
   calculate_char_elm_charge() {
-    return this.result_status_array[4];
+    return this.result_status[4];
   }
 
-  calculate_char_cr(result_status_array) {
-    return Math.min(1,(this.result_status_array[5] +  Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003));
+  calculate_char_cr(result_status) {
+    return Math.min(1,(this.result_status[5] +  Math.min(Math.max(0,(this.result_status[3]-200)),800)*0.0003));
   }
 
   calculate_char_cd() {
-    return this.result_status_array[6];
+    return this.result_status[6];
   }
 
   calculate_char_dmg_buff() {
-    return this.result_status_array[7] + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
+    return this.result_status[7] + Math.min(Math.max(0,(this.result_status[3]-200)),800)*0.001;
   }
 
 }
 
 class AThousandFloatingDreams {
-  constructor(base_status_array, fixed_status_array, result_status_array) 
+  constructor(base_status, fixed_status, result_status) 
   {
-    this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
+    this.base_status = base_status;
+    this.fixed_status = fixed_status;
+    this.result_status = result_status;
   }
 
   calculate_weapon_HP() {
-    return this.result_status_array[0];
+    return this.result_status[0];
   }
 
   calculate_weapon_attck() {
-    return this.result_status_array[1];
+    return this.result_status[1];
   }
 
   calculate_weapon_deff() {
-    return this.result_status_array[2];
+    return this.result_status[2];
   }
 
   calculate_weapon_elm() {
-    fixed_status_array[3] = base_status_array[3] + 32;
-    this.result_status_array[3] = this.result_status_array[3] + 32;
-    return this.result_status_array[3];
+    fixed_status[3] = base_status[3] + 32;
+    this.result_status[3] = this.result_status[3] + 32;
+    return this.result_status[3];
   }
 
   calculate_weapon_elm_charge() {
-    return this.result_status_array[4];
+    return this.result_status[4];
   }
 
   calculate_weapon_cr() {
-    return this.result_status_array[5];
+    return this.result_status[5];
   }
 
   calculate_weapon_cd() {
-    return this.result_status_array[6];
+    return this.result_status[6];
   }
 
   calculate_weapon_dmg_buff() {
-    base_status_array[7] = base_status_array[7] + 0.2;
-    this.result_status_array[7] = this.result_status_array[7] + 0.2;;
-    return this.result_status_array[7];
+    base_status[7] = base_status[7] + 0.2;
+    this.result_status[7] = this.result_status[7] + 0.2;;
+    return this.result_status[7];
   }
 
 }
 
 ////////////////////////
 
-async function create_char_instance(base_status, fixed_status, result_status) {
+async function create_char_instance() {
   const char_name = document.getElementById("char_name").value;
   if (char_name === "nahida") {
     // ナヒーダのインスタンスを生成
@@ -446,7 +446,7 @@ async function create_char_instance(base_status, fixed_status, result_status) {
 }
 ///////////////////////
 
-async function create_weapon_instance(base_status, fixed_status, result_status) {
+async function create_weapon_instance() {
   const weapon_name = document.getElementById("weapon_name").value;
   if (weapon_name === "AThousandFloatingDreams") {
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
