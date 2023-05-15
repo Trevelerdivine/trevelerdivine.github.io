@@ -318,8 +318,8 @@ async function calculate_score_distribute(af_score,depend_status)
     k = k + 1; 
   }
   console.log(af_score);
-  console.log(randomNumbers);
   console.log(distribute);
+  console.log(score_distribution);
   return score_distribution;
 }
 
@@ -328,7 +328,7 @@ async function calculate_score_distribute(af_score,depend_status)
 
 
 
-async function calculate_fixed_status(sd,bs,amsb)
+async function calculate_fixed_status(sd,bs,amsb,ds)
 //変数は左から（score_distribution,base_status,af_main_status_buff,depend_status）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
@@ -340,6 +340,7 @@ async function calculate_fixed_status(sd,bs,amsb)
   fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
   fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
   fixed_status[7] = bs[7] + amsb[7];
+  console.log(fixed_status);
   return fixed_status;
 }
 
@@ -445,7 +446,7 @@ async function monte_carlo_calculate()
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   
   let score_distribute = await calculate_score_distribute(af_score,depend_status);
-  let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
+  let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
   document.getElementById("fixed_status").innerHTML = fixed_status.toString();
   return fixed_status;
 }
