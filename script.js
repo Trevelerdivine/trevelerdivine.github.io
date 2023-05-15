@@ -335,24 +335,44 @@ async function score_distribute()
 
 
 
-async function calculate_fixed_status()
+async function calculate_fixed_status(sd,bs,amsb,ds)
+//変数は左から（score_distribution,base_status,af_main_status_buff,depend_status）
 {
-  const af_score = await calculate_af_score()
-  const base_status = await calculate_base_status();
-  const af_main_status_buff = calculate_af_main_status_buff(); 
-  let fixed_status = [0,0,0,0,0,0,0];
-  fixed_status[0] = base_status[0]*(1 + af_score[0]*3/400 + af_main_status_buff[0]) + 4780;
-  fixed_status[1] = base_status[1]*(1 + af_score[1]*3/400 + af_main_status_buff[1]) + 311;
-  fixed_status[2] = base_status[2]*(1 + af_score[2]*15/1600 + af_main_status_buff[2]);
-  fixed_status[3] = base_status[3] + af_score[3]*3 + af_main_status_buff[3];
-  fixed_status[4] = base_status[4] + af_score[4]/120 + af_main_status_buff[4]/100;
-  fixed_status[5] = base_status[5] + af_score[5]/200 + af_main_status_buff[5]/100;
-  fixed_status[6] = base_status[6] + af_score[6]/100 + af_main_status_buff[6]/100;
-  fixed_status[6] = base_status[7] + af_main_status_buff[7];
+  let fixed_status = [0,0,0,0,0,0,0,0];
+  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780;
+  fixed_status[1] = bs[1]*(1 + sd[1]*3/400 + amsb[1]) + 311;
+  fixed_status[2] = bs[2]*(1 + sd[2]*3/320 + amsb[2]);
+  fixed_status[3] = bs[3] + sd[3]*3 + amsb[3];
+  fixed_status[4] = bs[4] + sd[4]/120 + amsb[4]/100;
+  fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
+  fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
+  fixed_status[7] = bs[7] + amsb[7];
+  return fixed_status;
 }
 
 
+//////////////////////
 
+class nahida {
+  constructor(base_status_array, base_status_array, result_status_array) 
+  {
+    this.baseHP = baseHP;
+    this.baseAttack = baseAttack;
+    this.baseElementalMastery = baseElementalMastery;
+  }
+
+  calculateHP(artifactHP) {
+    return this.baseHP + artifactHP;
+  }
+
+  calculateAttack(artifactAttack) {
+    return this.baseAttack + artifactAttack;
+  }
+
+  calculateElementalMastery(artifactElementalMastery) {
+    return this.baseElementalMastery + artifactElementalMastery;
+  }
+}
 
 
 
