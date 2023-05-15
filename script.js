@@ -319,9 +319,6 @@ async function calculate_score_distribute(af_score,depend_status)
     score_distribution[i] = depend_status[i] * distribute[k];
     k = k + 1; 
   }
-  console.log(af_score);
-  console.log(distribute);
-  console.log(score_distribution);
   return score_distribution;
 }
 
@@ -439,17 +436,62 @@ class AThousandFloatingDreams {
 
 ////////////////////////
 
+async function create_char_instance() {
+  const char_name = document.getElementById("char_name").value;
+  if (char_name === "nahida") {
+    // ナヒーダのインスタンスを生成
+    const char_instance = new nahida(base_status, fixed_status, result_status);
+    return char_instance;
+  }
+}
+///////////////////////
 
+async function create_weapon_instance() {
+  const weapon_name = document.getElementById("weapon_name").value;
+  if (weapon_name === "AThousandFloatingDreams") {
+    const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
+    return weapon_instance;
+  }
+}
+
+//////////////////////
 async function monte_carlo_calculate()
 {
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
+  const char_instance = await create_char_instance();
+  const weapon_instance = await create_weapon_instance();
   let depend_status = await calculate_depend_status();
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
-  
+
   let score_distribute = await calculate_score_distribute(af_score,depend_status);
   let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
-  document.getElementById("fixed_status").innerHTML = fixed_status.toString();
-  return fixed_status;
+  let result_status = fixed_status;
+
+ result_status[0] = char_instance.calculate_char_HP();
+ result_status[0] = weapon_instance.caculate_weapon_HP();
+
+ result_status[1] = char_instance.calculate_char_attck();
+ result_status[1] = weapon_instance.calculate_weapon_attck();
+
+ result_status[2] = char_instance.calculate_char_deff();
+ result_status[2] = weapon_instance.calculate_weapon_deff();
+
+ result_status[3] = char_instance.calculate_char_elm();
+ result_status[3] = weapon_instance.calculate_weapon_elm();
+
+ result_status[4] = char_instance.calculate_char_elm_charge();
+ result_status[4] = weapon_instance.calculate_weapon_elm_charge();
+
+ result_status[5] = char_instance.calculate_char_cr();
+ result_status[5] = weapon_instance.calculate_weapon_cr();
+
+ result_status[6] = char_instance.calculate_char_cd();
+ result_status[6] = weapon_instance.calculate_weapon_cd();
+
+ result_status[7] = char_instance.calculate_char_dmg_buff();
+ result_status[7] = weapon_instance.calculate_weapon_dmg_buff();
+ document.getElementById("result_status").innerHTML = result_status.toString();
+ return result_status;
 }
 
