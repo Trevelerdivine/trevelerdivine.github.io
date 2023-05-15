@@ -292,7 +292,7 @@ async function calculate_depend_status()
 
 ///////////////////
 
-async function score_distribute(af_score,depend_status)
+async function calculate_score_distribute(af_score,depend_status)
 {
   let k = 0;
   let rundom_count = 0;
@@ -443,7 +443,7 @@ async function monte_carlo_calculate()
   let depend_status = await calculate_depend_status();
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   
-  let score_distribute = await score_distribute(af_score,depend_status);
+  let score_distribute = await calculate_score_distribute(af_score,depend_status);
   let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
   document.getElementById("fixed_status").innerHTML = fixed_status.toString();
   return fixed_status;
