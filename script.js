@@ -436,7 +436,7 @@ class AThousandFloatingDreams {
 ////////////////////////
 
 
-async function monte_carlo_caluculate()
+async function monte_carlo_calculate()
 {
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
