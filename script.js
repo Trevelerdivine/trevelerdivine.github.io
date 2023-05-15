@@ -353,25 +353,41 @@ async function calculate_fixed_status(sd,bs,amsb,ds)
 
 //////////////////////
 
-class nahida {
-  constructor(base_status_array, base_status_array, result_status_array) 
+//class nahida {
+  constructor(base_status_array, fixed_status_array, result_status_array) 
   {
-    this.baseHP = baseHP;
-    this.baseAttack = baseAttack;
-    this.baseElementalMastery = baseElementalMastery;
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
   }
 
-  calculateHP(artifactHP) {
-    return this.baseHP + artifactHP;
+  calculate_char_HP() {
+    return this.result_status_array[0];
   }
 
-  calculateAttack(artifactAttack) {
-    return this.baseAttack + artifactAttack;
+  calculate_char_attck() {
+    return this.result_status_array[1];
   }
 
-  calculateElementalMastery(artifactElementalMastery) {
-    return this.baseElementalMastery + artifactElementalMastery;
+  calculate_char_deff() {
+    return this.result_status_array[2];
   }
+
+  calculate_char_elm() {
+    return this.result_status_array[3]
+  }
+
+  calculate_char_elm_charge() {
+    return this.result_status_array[4]
+  }
+
+  calculate_char_cr(result_status_array) {
+    return this.result_status_array[5] +  Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003
+  }
+
+
+
+
 }
 
 
