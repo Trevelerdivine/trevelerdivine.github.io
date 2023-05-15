@@ -212,7 +212,6 @@ async function calculate_af_main_status_buff()
   const af_main_status = [0.466,0.466,0.583,187,51.8,31.1,62.2,0.466];
   let set_main_status = [0,0,0,0,0,0,0,0];
   let af_main_status_buff = [0,0,0,0,0,0,0,0];
-  base_status = await calculate_base_status();
   set_main_status[clock_mainstatus] = set_main_status[clock_mainstatus] + 1;
   set_main_status[goblet_mainstatus] = set_main_status[goblet_mainstatus] + 1;
   set_main_status[circlet_mainstatus] = set_main_status[circlet_mainstatus] + 1;
@@ -226,7 +225,7 @@ async function calculate_af_main_status_buff()
 
 //////////////////////////
 
-async function calculate_af_score() 
+async function calculate_af_score(af_main_status_buff,depend_status,base_status) 
 {
   const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
   const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
@@ -235,9 +234,6 @@ async function calculate_af_score()
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
-  const af_main_status_buff = await calculate_af_main_status_buff() 
-  const depend_status = await calculate_depend_status()
-  const base_status = await calculate_base_status()
   let af_score = 0
   for (let i = 0; i < 7; i++){
     if (depend_status[i]==0){
@@ -268,7 +264,6 @@ async function calculate_af_score()
     }
   }
   console.log(af_score);
-  //document.getElementById("af_score").innerHTML = af_score.toFixed(1);
   return af_score
 }
 
@@ -297,14 +292,12 @@ async function calculate_depend_status()
 
 ///////////////////
 
-async function score_distribute()
+async function score_distribute(af_score,depend_status)
 {
   let k = 0;
   let rundom_count = 0;
   let distribute = [];
   let score_distribution = [];
-  const af_score = await calculate_af_score();
-  const depend_status = await calculate_depend_status();
   for (let i = 0; i < 7; i++)
   {
     rundom_count = rundom_count + depend_status[i];
@@ -326,7 +319,6 @@ async function score_distribute()
   console.log(af_score);
   console.log(randomNumbers);
   console.log(distribute);
-  document.getElementById("score_distribution").innerHTML = score_distribution.toString();
   return score_distribution;
 }
 
@@ -374,20 +366,86 @@ class nahida {
   }
 
   calculate_char_elm() {
-    return this.result_status_array[3]
+    return this.result_status_array[3];
   }
 
   calculate_char_elm_charge() {
-    return this.result_status_array[4]
+    return this.result_status_array[4];
   }
 
   calculate_char_cr(result_status_array) {
-    return this.result_status_array[5] +  Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003
+    return Math.min(1,(this.result_status_array[5] +  Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003));
   }
 
+  calculate_char_cd() {
+    return this.result_status_array[6];
+  }
 
-
+  calculate_char_dmg_buff() {
+    return this.result_status_array[7] + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
+  }
 
 }
 
+class AThousandFloatingDreams {
+  constructor(base_status_array, fixed_status_array, result_status_array) 
+  {
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
+  calculate_weapon_HP() {
+    return this.result_status_array[0];
+  }
+
+  calculate_weapon_attck() {
+    return this.result_status_array[1];
+  }
+
+  calculate_weapon_deff() {
+    return this.result_status_array[2];
+  }
+
+  calculate_weapon_elm() {
+    fixed_status_array[3] = base_status_array[3] + 32;
+    this.result_status_array[3] = this.result_status_array[3] + 32;
+    return this.result_status_array[3];
+  }
+
+  calculate_weapon_elm_charge() {
+    return this.result_status_array[4];
+  }
+
+  calculate_weapon_cr() {
+    return this.result_status_array[5];
+  }
+
+  calculate_weapon_cd() {
+    return this.result_status_array[6];
+  }
+
+  calculate_weapon_dmg_buff() {
+    base_status_array[7] = base_status_array[7] + 0.2;
+    this.result_status_array[7] = this.result_status_array[7] + 0.2;;
+    return this.result_status_array[7];
+  }
+
+}
+
+////////////////////////
+
+
+async function monte_carlo_caluculate()
+{
+  const base_status = await calculate_base_status();
+  const af_main_status_buff = await calculate_af_main_status_buff();
+  let depend_status = await calculate_depend_status();
+  let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+  
+  let score_distribute = await score_distribute(af_score,depend_status);
+  let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
+  document.getElementById("fixed_status").innerHTML = fixed_status.toString();
+  return fixed_status;
+}
 
