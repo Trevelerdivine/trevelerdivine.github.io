@@ -348,7 +348,7 @@ async function calculate_fixed_status()
   fixed_status[4] = base_status[4] + af_score[4]/120 + af_main_status_buff[4]/100;
   fixed_status[5] = base_status[5] + af_score[5]/200 + af_main_status_buff[5]/100;
   fixed_status[6] = base_status[6] + af_score[6]/100 + af_main_status_buff[6]/100;
-
+  fixed_status[6] = base_status[7] + af_main_status_buff[7];
 }
 
 
