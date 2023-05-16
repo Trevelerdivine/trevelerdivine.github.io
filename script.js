@@ -369,11 +369,11 @@ class nahida {
   }
 
   calculate_char_result_deff() {
-    return　0;
+    return 0;
   }
 
   calculate_char_fixed_elm() {
-    return　0;
+    return 0;
   }
 
   calculate_char_result_elm() {
@@ -381,7 +381,7 @@ class nahida {
   }
 
   calculate_char_fixed_elm_charge() {
-    return　0;
+    return 0;
   }
 
   calculate_char_result_elm_charge() {
@@ -393,7 +393,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3));
+    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3))*0.0003;
   }
 
   calculate_char_fixed_cd() {
@@ -579,7 +579,8 @@ async function monte_carlo_calculate()
  result_status[7] = result_status[7].toFixed(4);
 
  document.getElementById("result_status").innerHTML = result_status.toString();
- console.log(result_status);
+ console.log(base_status);
+ console.log(fixed_status);
  console.log(result_status);
  return result_status;
 }
