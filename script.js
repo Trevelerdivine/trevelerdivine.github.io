@@ -457,8 +457,6 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
 //////////////////////
 async function monte_carlo_calculate()
 {
-  let fixed_status;
-  let result_status;
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   let depend_status = await calculate_depend_status();
