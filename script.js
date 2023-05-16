@@ -470,7 +470,7 @@ async function monte_carlo_calculate()
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
  result_status[0] += await char_instance.calculate_char_HP();
- result_status[0] += await weapon_instance.caculate_weapon_HP();
+ result_status[0] += await weapon_instance.calculate_weapon_HP();
 
  result_status[1] += await char_instance.calculate_char_attck();
  result_status[1] += await weapon_instance.calculate_weapon_attck();
