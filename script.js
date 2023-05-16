@@ -411,6 +411,12 @@ class nahida {
     return 0.15 + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
   }
 
+  update_status(fixed_status_array, result_status_array) {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
+
 }
 
 class AThousandFloatingDreams {
@@ -486,6 +492,11 @@ class AThousandFloatingDreams {
     return 0.2;
   }
 
+  update_status(fixed_status_array, result_status_array) {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
 }
 
 ////////////////////////
@@ -494,7 +505,7 @@ async function create_char_instance(base_status, fixed_status, result_status) {
   const char_name = document.getElementById("char_name").value;
   if (char_name === "nahida") {
     // ナヒーダのインスタンスを生成
-    const char_instance = new nahida(base_status, fixed_status.slice(), result_status.slice());
+    const char_instance = new nahida(base_status, fixed_status, result_status);
     return char_instance;
   }
 }
@@ -525,37 +536,51 @@ async function monte_carlo_calculate()
 
   fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
   result_status = fixed_status.slice();
+  char_instance.updateStatus(fixed_status, result_status);
+  weapon_instance.updateStatus(fixed_status, result_status);
 
 
  fixed_status[0] += await char_instance.calculate_char_fixed_hp();
  fixed_status[0] += await weapon_instance.calculate_weapon_fixed_hp();
  result_status[0] += await char_instance.calculate_char_result_hp();
  result_status[0] += await weapon_instance.calculate_weapon_result_hp();
+ char_instance.updateStatus(fixed_status, result_status);
+ weapon_instance.updateStatus(fixed_status, result_status);
 
  fixed_status[2] += await char_instance.calculate_char_fixed_deff();
  fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
  result_status[2] += await char_instance.calculate_char_result_deff();
  result_status[2] += await weapon_instance.calculate_weapon_result_deff();
+ char_instance.updateStatus(fixed_status, result_status);
+ weapon_instance.updateStatus(fixed_status, result_status);
 
  fixed_status[3] += await char_instance.calculate_char_fixed_elm();
  fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
  result_status[3] += await char_instance.calculate_char_result_elm();
  result_status[3] += await weapon_instance.calculate_weapon_result_elm();
+ char_instance.updateStatus(fixed_status, result_status);
+ weapon_instance.updateStatus(fixed_status, result_status);
 
  fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
  fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
  result_status[4] += await char_instance.calculate_char_result_elm_charge();
  result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
+ char_instance.updateStatus(fixed_status, result_status);
+ weapon_instance.updateStatus(fixed_status, result_status);
 
  fixed_status[1] += await char_instance.calculate_char_fixed_attck();
  fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
  result_status[1] += await char_instance.calculate_char_result_attck();
  result_status[1] += await weapon_instance.calculate_weapon_result_attck();
+ char_instance.updateStatus(fixed_status, result_status);
+ weapon_instance.updateStatus(fixed_status, result_status);
 
  fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
  fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
  result_status[7] += await char_instance.calculate_char_result_dmg_buff();
  result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
+ char_instance.updateStatus(fixed_status, result_status);
+ weapon_instance.updateStatus(fixed_status, result_status);
 
  fixed_status[5] += await char_instance.calculate_char_fixed_cr();
  fixed_status[5] += await weapon_instance.calculate_weapon_fixed_cr();
@@ -569,12 +594,16 @@ async function monte_carlo_calculate()
 {
   result_status[5] = 1;
 }
+char_instance.updateStatus(fixed_status, result_status);
+weapon_instance.updateStatus(fixed_status, result_status);
+
 
  fixed_status[6] += await char_instance.calculate_char_fixed_cd();
  fixed_status[6] += await weapon_instance.calculate_weapon_fixed_cd();
  result_status[6] += await char_instance.calculate_char_result_cd();
  result_status[6] += await weapon_instance.calculate_weapon_result_cd();
-
+ char_instance.updateStatus(fixed_status, result_status);
+ weapon_instance.updateStatus(fixed_status, result_status);
 
  result_status[0] = result_status[0].toFixed(0);
  result_status[1] = result_status[1].toFixed(0);
