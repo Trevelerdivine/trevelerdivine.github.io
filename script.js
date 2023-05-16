@@ -431,7 +431,7 @@ class AThousandFloatingDreams {
   }
 
   calculate_weapon_fixed_attck() {
-    return 0;
+    return 10000000;
   }
 
   calculate_weapon_result_attck() {
