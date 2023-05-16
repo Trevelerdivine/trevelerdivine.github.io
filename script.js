@@ -53,7 +53,6 @@ async function calculate_char_base_status()
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_attck, char_base_deff, char_base_elm, char_base_elm_charge, char_base_cr, char_base_cd, char_base_dmg_buff];
-  console.log(char_base_status);
   return char_base_status;
 }
 
@@ -74,7 +73,6 @@ async function calculate_weapon_base_status() {
   const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
   weapon_depend_status = data.ステータス.依存ステータス;
   weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
-  console.log(weapon_base_status);
   return weapon_base_status;
   }
 ///////////////////
@@ -92,7 +90,6 @@ async function calculate_base_status() {
   base_cd = char_base_status[6] + weapon_base_status[6];
   base_dmg_buff = char_base_status[7] + weapon_base_status[7];
   base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
-  console.log(base_status);
   return base_status;
   }
 ////////////////////
@@ -218,7 +215,6 @@ async function calculate_af_main_status_buff()
   for (let i = 0; i < 8; i++){
     af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
   }    
-  console.log(af_main_status_buff);
   return af_main_status_buff;
 }
 
@@ -263,7 +259,6 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
         af_score = af_score + (af_cd - af_main_status_buff[6]);
     }
   }
-  console.log(af_score);
   return af_score
 }
 
@@ -286,7 +281,6 @@ async function calculate_depend_status()
         depend_status[i] = 1
       }
    }
-   console.log(depend_status);
    return depend_status
   }
 
@@ -398,8 +392,8 @@ class nahida {
     return  0;
   }
 
-  calculate_char_result_cr(result_status_array) {
-    return Math.min(1,(this.result_status_array[5] +  Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003));
+  calculate_char_result_cr() {
+    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003));
   }
 
   calculate_char_fixed_cd() {
