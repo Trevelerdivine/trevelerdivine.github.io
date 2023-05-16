@@ -354,35 +354,67 @@ class nahida {
     this.result_status_array = result_status_array;
   }
 
-  calculate_char_HP() {
-    return this.result_status_array[0] = 0;
+  calculate_char_fixed_hp() {
+    return  0;
   }
 
-  calculate_char_attck() {
-    return this.result_status_array[1] = 0;
+  calculate_char_result_hp() {
+    return 0;
   }
 
-  calculate_char_deff() {
-    return this.result_status_array[2] = 0;
+  calculate_char_fixed_attck() {
+    return 0;
   }
 
-  calculate_char_elm() {
-    return this.result_status_array[3] = 0;
+  calculate_char_result_attck() {
+    return 0;
   }
 
-  calculate_char_elm_charge() {
-    return this.result_status_array[4] = 0;
+  calculate_char_fixed_deff() {
+    return 0;
   }
 
-  calculate_char_cr(result_status_array) {
+  calculate_char_result_deff() {
+    return　0;
+  }
+
+  calculate_char_fixed_elm() {
+    return　0;
+  }
+
+  calculate_char_result_elm() {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge() {
+    return　0;
+  }
+
+  calculate_char_result_elm_charge() {
+    return 0;
+  }
+
+  calculate_char_fixed_cr() {
+    return  0;
+  }
+
+  calculate_char_result_cr(result_status_array) {
     return Math.min(1,(this.result_status_array[5] +  Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003));
   }
 
-  calculate_char_cd() {
-    return this.result_status_array[6] = 0;
+  calculate_char_fixed_cd() {
+    return 0;
   }
 
-  calculate_char_dmg_buff() {
+  calculate_char_result_cd() {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff() {
+    return 0.15;
+  }
+
+  calculate_char_result_dmg_buff() {
     return Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
   }
 
@@ -396,40 +428,69 @@ class AThousandFloatingDreams {
     this.result_status_array = result_status_array;
   }
 
-  calculate_weapon_HP() {
-    return this.result_status_array[0] = 0;
+  calculate_weapon_fixed_hp() {
+    return 0;
   }
 
-  calculate_weapon_attck() {
-    return this.result_status_array[1] = 0;
+  calculate_weapon_result_hp() {
+    return 0;
   }
 
-  calculate_weapon_deff() {
+  calculate_weapon_fixed_attck() {
+    return 0;
+  }
+
+  calculate_weapon_result_attck() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff() {
+    return 0;
+  }
+
+  calculate_weapon_result_deff() {
     return this.result_status_array[2] = 0;
   }
 
-  calculate_weapon_elm() {
-    this.fixed_status_array[3] = 32;
-    this.result_status_array[3] = 32;
-    return this.result_status_array[3];
+  calculate_weapon_fixed_elm() {
+    return 32;
   }
 
-  calculate_weapon_elm_charge() {
-    return this.result_status_array[4] = 0;
+  calculate_weapon_result_elm() {
+
+    return 32;
   }
 
-  calculate_weapon_cr() {
-    return this.result_status_array[5] = 0;
+  calculate_weapon_fixed_elm_charge() {
+    return 0;
   }
 
-  calculate_weapon_cd() {
-    return this.result_status_array[6] = 0;
+  calculate_weapon_result_elm_charge() {
+    return 0;
   }
 
-  calculate_weapon_dmg_buff() {
-    this.base_status_array[7] =  0.2;
-    this.result_status_array[7] = 0.2;;
-    return this.result_status_array[7];
+  calculate_weapon_fixed_cr() {
+    return 0;
+  }
+
+  calculate_weapon_result_cr() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd() {
+    return 0;
+  }
+
+  calculate_weapon_result_cd() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff() {
+    return 0.2;
+  }
+
+  calculate_weapon_result_dmg_buff() {
+    return 0.2;
   }
 
 }
@@ -464,7 +525,7 @@ async function monte_carlo_calculate()
 
   let score_distribute = await calculate_score_distribute(af_score,depend_status);
   
-  let fixed_status = [0,0,0,0,0,0,0];
+  let fixed_status = [0,0,0,0,0,0,0,0];
   let result_status = fixed_status;
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
@@ -473,29 +534,46 @@ async function monte_carlo_calculate()
   result_status = fixed_status;
 
 
- result_status[0] += await char_instance.calculate_char_HP();
- result_status[0] += await weapon_instance.calculate_weapon_HP();
+ fixed_status[0] += await char_instance.calculate_char_fixed_hp();
+ fixed_status[0] += await weapon_instance.calculate_weapon_fixed_hp();
+ result_status[0] += await char_instance.calculate_weapon_result_hp();
+ result_status[0] += await weapon_instance.calculate_weapon_result_hp();
 
- result_status[1] += await char_instance.calculate_char_attck();
- result_status[1] += await weapon_instance.calculate_weapon_attck();
+ fixed_status[1] += await char_instance.calculate_char_fixed_attck();
+ fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
+ result_status[1] += await char_instance.calculate_weapon_result_attck();
+ result_status[1] += await weapon_instance.calculate_weapon_result_attck();
 
- result_status[2] += await char_instance.calculate_char_deff();
- result_status[2] += await weapon_instance.calculate_weapon_deff();
+ fixed_status[2] += await char_instance.calculate_char_fixed_deff();
+ fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
+ result_status[2] += await char_instance.calculate_weapon_result_deff();
+ result_status[2] += await weapon_instance.calculate_weapon_result_deff();
 
- result_status[3] += await char_instance.calculate_char_elm();
- result_status[3] += await weapon_instance.calculate_weapon_elm();
+ fixed_status[3] += await char_instance.calculate_char_fixed_elm();
+ fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
+ result_status[3] += await char_instance.calculate_weapon_result_elm();
+ result_status[3] += await weapon_instance.calculate_weapon_result_elm();
 
- result_status[4] += await char_instance.calculate_char_elm_charge();
- result_status[4] += await weapon_instance.calculate_weapon_elm_charge();
+ fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
+ fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
+ result_status[4] += await char_instance.calculate_weapon_result_elm_charge();
+ result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
 
- result_status[5] += await char_instance.calculate_char_cr();
- result_status[5] += await weapon_instance.calculate_weapon_cr();
+ fixed_status[5] += await char_instance.calculate_char_fixed_cr();
+ fixed_status[5] += await weapon_instance.calculate_weapon_fixed_cr();
+ result_status[5] += await char_instance.calculate_weapon_result_cr();
+ result_status[5] += await weapon_instance.calculate_weapon_result_cr();
 
- result_status[6] += await char_instance.calculate_char_cd();
- result_status[6] += await weapon_instance.calculate_weapon_cd();
+ fixed_status[6] += await char_instance.calculate_char_fixed_cd();
+ fixed_status[6] += await weapon_instance.calculate_weapon_fixed_cd();
+ result_status[6] += await char_instance.calculate_weapon_result_cd();
+ result_status[6] += await weapon_instance.calculate_weapon_result_cd();
 
- result_status[7] += await char_instance.calculate_char_dmg_buff();
- result_status[7] += await weapon_instance.calculate_weapon_dmg_buff();
+ fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
+ fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
+ result_status[7] += await char_instance.calculate_weapon_result_dmg_buff();
+ result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
+
 
  result_status[0] = result_status[0].toFixed(0);
  result_status[1] = result_status[1].toFixed(0);
@@ -504,7 +582,7 @@ async function monte_carlo_calculate()
  result_status[4] = result_status[4].toFixed(1);
  result_status[5] = result_status[5].toFixed(3);
  result_status[6] = result_status[6].toFixed(4);
- result_status[7] = result_status[7].toFixed(1);
+ result_status[7] = result_status[7].toFixed(4);
 
  document.getElementById("result_status").innerHTML = result_status.toString();
 
