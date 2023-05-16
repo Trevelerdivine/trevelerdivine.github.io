@@ -286,7 +286,7 @@ async function calculate_depend_status()
 
 ///////////////////
 
-async function find_indices(array)
+async function calculate_depend_status_index(array)
 {
   depend_status_index = [];
   for (let i = 0; i < array.length; i++) {
@@ -541,7 +541,7 @@ async function monte_carlo_calculate()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   let depend_status = await calculate_depend_status();
-  let depend_status_index = await depend_status_index(depend_status);
+  let depend_status_index = await calculate_depend_status_index(depend_status);
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let score_distribute;
   let fixed_status;
