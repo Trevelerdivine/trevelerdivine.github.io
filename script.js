@@ -494,7 +494,7 @@ async function create_char_instance(base_status, fixed_status, result_status) {
   const char_name = document.getElementById("char_name").value;
   if (char_name === "nahida") {
     // ナヒーダのインスタンスを生成
-    const char_instance = new nahida(base_status, fixed_status, result_status);
+    const char_instance = new nahida(base_status, fixed_status.slice(), result_status.slice());
     return char_instance;
   }
 }
@@ -503,7 +503,7 @@ async function create_char_instance(base_status, fixed_status, result_status) {
 async function create_weapon_instance(base_status, fixed_status, result_status) {
   const weapon_name = document.getElementById("weapon_name").value;
   if (weapon_name === "AThousandFloatingDreams") {
-    const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
+    const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status.slice(), result_status.slice());
     return weapon_instance;
   }
 }
