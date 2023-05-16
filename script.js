@@ -286,6 +286,22 @@ async function calculate_depend_status()
 
 ///////////////////
 
+async function find_indices(array)
+{
+  depend_status_index = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === 1) 
+    {
+      depend_status_index.push(i);
+    }
+  }
+  return depend_status_index;
+}
+
+
+
+/////////////////////////
+
 async function calculate_score_distribute(af_score,depend_status)
 {
   let k = 0;
@@ -525,13 +541,20 @@ async function monte_carlo_calculate()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   let depend_status = await calculate_depend_status();
+  let depend_status_index = await depend_status_index(depend_status);
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let score_distribute;
   let fixed_status;
   let result_status;
+  let random_1;
+  let random_2;
   let exp_dmg = 0;
   let temp_exp_dmg = 0;
+  let dlt_score = 0.1;
   let temp_status = [0,0,0,0,0,0,0,0];
+  let temp_score_distribute = [0,0,0,0,0,0,0];
+  let old_score_distribution = [0,0,0,0,0,0,0];
+  let new_score_distribution = [0,0,0,0,0,0,0];
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
@@ -636,11 +659,143 @@ async function monte_carlo_calculate()
 
     if (temp_exp_dmg < exp_dmg)
     {
+      temp_score_distribute = score_distribute;
       temp_status = result_status.slice();
       temp_exp_dmg = exp_dmg;
     }
   }
 
+  old_score_distribution = temp_score_distribute.slice();
+  new_score_distribution = temp_score_distribute.slice();
+
+  for (let k = 0; k < 2000; i++)
+  {
+  
+    random_1 = Math.floor(depend_status_index.length * Math.random());
+    random_2 = Math.floor(depend_status_index.length * Math.random());
+
+    if (random_1 == random_2)
+    {
+      random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
+    }
+    if (new_score_distribution[depend_status_index[random_1]] == 0 || new_score_distribution[depend_status_index[random_2]] == 0)
+    {
+      continue;
+    }
+    new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] + dlt_score;
+    new_score_distribution[depend_status_index[random_2]] =  new_score_distribution[depend_status_index[random_2]] - dlt_score;
+
+    if (new_score_distribution[depend_status_index[random_2]] < 0)
+    {
+      new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] +  new_score_distribution[depend_status_index[random_2]];
+      new_score_distribution[depend_status_index[random_2]] = 0;
+    }
+
+    fixed_status = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
+    result_status = fixed_status.slice();
+
+    if (depend_status[0] == 1)
+    {
+      fixed_status[0] += await char_instance.calculate_char_fixed_hp();
+      fixed_status[0] += await weapon_instance.calculate_weapon_fixed_hp();
+      result_status[0] += await char_instance.calculate_char_result_hp();
+      result_status[0] += await weapon_instance.calculate_weapon_result_hp();
+      char_instance.update_status(fixed_status, result_status);
+      weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[2] == 1)
+    {
+    fixed_status[2] += await char_instance.calculate_char_fixed_deff();
+    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
+    result_status[2] += await char_instance.calculate_char_result_deff();
+    result_status[2] += await weapon_instance.calculate_weapon_result_deff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[3] == 1)
+    {
+    fixed_status[3] += await char_instance.calculate_char_fixed_elm();
+    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
+    result_status[3] += await char_instance.calculate_char_result_elm();
+    result_status[3] += await weapon_instance.calculate_weapon_result_elm();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[4] == 1)
+    {
+    fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
+    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
+    result_status[4] += await char_instance.calculate_char_result_elm_charge();
+    result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[1] == 1)
+    {
+    fixed_status[1] += await char_instance.calculate_char_fixed_attck();
+    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
+    result_status[1] += await char_instance.calculate_char_result_attck();
+    result_status[1] += await weapon_instance.calculate_weapon_result_attck();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    
+    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
+    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
+    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
+    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    if (depend_status[5] == 1)
+    {
+    fixed_status[5] += await char_instance.calculate_char_fixed_cr();
+    fixed_status[5] += await weapon_instance.calculate_weapon_fixed_cr();
+    result_status[5] += await char_instance.calculate_char_result_cr();
+    result_status[5] += await weapon_instance.calculate_weapon_result_cr();
+    if (fixed_status[5] > 1)
+    {
+      fixed_status[5] = 1;
+    }
+    if (result_status[5] > 1)
+    {
+      result_status[5] = 1;
+    }
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+  }
+
+   if (depend_status[6] == 1)
+    {
+    fixed_status[6] += await char_instance.calculate_char_fixed_cd();
+    fixed_status[6] += await weapon_instance.calculate_weapon_fixed_cd();
+    result_status[6] += await char_instance.calculate_char_result_cd();
+    result_status[6] += await weapon_instance.calculate_weapon_result_cd();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
+      (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
+      *(1 + result_status[7])*0.55;
+    
+    if (temp_exp_dmg < exp_dmg)
+  {
+    temp_status = result_status.slice();
+    temp_exp_dmg = exp_dmg;
+    old_score_distribution = new_score_distribution.slice;
+  }
+    else
+  {
+    new_score_distribution = old_score_distribution;
+  }
+
+ }
   temp_status[0] = temp_status[0].toFixed(0);
   temp_status[1] = temp_status[1].toFixed(0);
   temp_status[2] = temp_status[2].toFixed(0);
