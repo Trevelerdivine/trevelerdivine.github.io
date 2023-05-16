@@ -790,7 +790,7 @@ async function monte_carlo_calculate()
   {
     temp_status = result_status.slice();
     temp_exp_dmg = exp_dmg;
-    old_score_distribution = new_score_distribution.slice;
+    old_score_distribution = new_score_distribution.slice();
   }
     else
   {
