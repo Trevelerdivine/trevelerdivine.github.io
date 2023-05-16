@@ -393,7 +393,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003));
+    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3));
   }
 
   calculate_char_fixed_cd() {
@@ -579,7 +579,7 @@ async function monte_carlo_calculate()
  result_status[7] = result_status[7].toFixed(4);
 
  document.getElementById("result_status").innerHTML = result_status.toString();
-
+ console.log(result_status);
  console.log(result_status);
  return result_status;
 }
