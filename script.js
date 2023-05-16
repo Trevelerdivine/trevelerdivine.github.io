@@ -794,7 +794,7 @@ async function monte_carlo_calculate()
   }
     else
   {
-    new_score_distribution = old_score_distribution;
+    new_score_distribution = old_score_distribution.slice();
   }
 
  }
