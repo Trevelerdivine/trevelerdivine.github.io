@@ -492,6 +492,16 @@ async function monte_carlo_calculate()
 
  result_status[7] += await char_instance.calculate_char_dmg_buff();
  result_status[7] += await weapon_instance.calculate_weapon_dmg_buff();
+
+ result_status[0] = result_status[0].toFixed(0);
+ result_status[1] = result_status[1].toFixed(0);
+ result_status[2] = result_status[2].toFixed(0);
+ result_status[3] = result_status[3].toFixed(0);
+ result_status[4] = result_status[4].toFixed(1);
+ result_status[5] = result_status[5].toFixed(3);
+ result_status[6] = result_status[6].toFixed(4);
+ result_status[7] = result_status[7].toFixed(1);
+
  document.getElementById("result_status").innerHTML = result_status.toString();
 
  console.log(result_status);
