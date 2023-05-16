@@ -333,7 +333,6 @@ async function calculate_fixed_status(sd,bs,amsb,ds)
   fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
   fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
   fixed_status[7] = bs[7] + amsb[7];
-  console.log(fixed_status);
   return fixed_status;
 }
 
@@ -409,7 +408,7 @@ class nahida {
   }
 
   calculate_char_result_dmg_buff() {
-    return Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
+    return 0.15 + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
   }
 
 }
