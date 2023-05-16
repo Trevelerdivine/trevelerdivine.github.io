@@ -631,7 +631,7 @@ async function monte_carlo_calculate()
 
   result = "  聖遺物スコア: " + af_score + "  HP: " + temp_status[0] + "  攻撃力: " + temp_status[1] +"  防御力: " + 
   temp_status[2]+"  元素熟知: " + temp_status[3] + "  元素チャージ効率: " + temp_status[4] + "  会心率: " + temp_status[5] +
-   "  会心ダメージ：" + temp_status[6] + "  ダメージバフ: " + temp_status[7];
+   "  会心ダメージ：" + temp_status[6] + "  ダメージバフ: " + temp_status[7] + "  ダメージ期待値: " + exp_dmg;
   document.getElementById("result").innerHTML = result;
 
   return result;
