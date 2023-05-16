@@ -392,7 +392,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3))*0.0003;
+    return Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003;
   }
 
   calculate_char_fixed_cd() {
@@ -561,6 +561,14 @@ async function monte_carlo_calculate()
  fixed_status[5] += await weapon_instance.calculate_weapon_fixed_cr();
  result_status[5] += await char_instance.calculate_char_result_cr();
  result_status[5] += await weapon_instance.calculate_weapon_result_cr();
+ if (fixed_status[5] > 1)
+{
+  fixed_status[5] = 1;
+}
+ if (result_status[5] > 1)
+{
+  result_status[5] = 1;
+}
 
  fixed_status[6] += await char_instance.calculate_char_fixed_cd();
  fixed_status[6] += await weapon_instance.calculate_weapon_fixed_cd();
