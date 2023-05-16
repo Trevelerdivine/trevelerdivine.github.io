@@ -347,89 +347,89 @@ async function calculate_fixed_status(sd,bs,amsb,ds)
 //////////////////////
 
 class nahida {
-  constructor(base_status, fixed_status, result_status) 
+  constructor(base_status_array, fixed_status_array, result_status_array) 
   {
-    this.base_status = base_status;
-    this.fixed_status = fixed_status;
-    this.result_status = result_status;
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
   }
 
   calculate_char_HP() {
-    return this.result_status[0];
+    return this.result_status_array[0];
   }
 
   calculate_char_attck() {
-    return this.result_status[1];
+    return this.result_status_array[1];
   }
 
   calculate_char_deff() {
-    return this.result_status[2];
+    return this.result_status_array[2];
   }
 
   calculate_char_elm() {
-    return this.result_status[3];
+    return this.result_status_array[3];
   }
 
   calculate_char_elm_charge() {
-    return this.result_status[4];
+    return this.result_status_array[4];
   }
 
-  calculate_char_cr(result_status) {
-    return Math.min(1,(this.result_status[5] +  Math.min(Math.max(0,(this.result_status[3]-200)),800)*0.0003));
+  calculate_char_cr(result_status_array) {
+    return Math.min(1,(this.result_status_array[5] +  Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003));
   }
 
   calculate_char_cd() {
-    return this.result_status[6];
+    return this.result_status_array[6];
   }
 
   calculate_char_dmg_buff() {
-    return this.result_status[7] + Math.min(Math.max(0,(this.result_status[3]-200)),800)*0.001;
+    return this.result_status_array[7] + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
   }
 
 }
 
 class AThousandFloatingDreams {
-  constructor(base_status, fixed_status, result_status) 
+  constructor(base_status_array, fixed_status_array, result_status_array) 
   {
-    this.base_status = base_status;
-    this.fixed_status = fixed_status;
-    this.result_status = result_status;
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
   }
 
   calculate_weapon_HP() {
-    return this.result_status[0];
+    return this.result_status_array[0];
   }
 
   calculate_weapon_attck() {
-    return this.result_status[1];
+    return this.result_status_array[1];
   }
 
   calculate_weapon_deff() {
-    return this.result_status[2];
+    return this.result_status_array[2];
   }
 
   calculate_weapon_elm() {
-    fixed_status[3] = base_status[3] + 32;
-    this.result_status[3] = this.result_status[3] + 32;
-    return this.result_status[3];
+    fixed_status_array[3] = base_status_array[3] + 32;
+    this.result_status_array[3] = this.result_status_array[3] + 32;
+    return this.result_status_array[3];
   }
 
   calculate_weapon_elm_charge() {
-    return this.result_status[4];
+    return this.result_status_array[4];
   }
 
   calculate_weapon_cr() {
-    return this.result_status[5];
+    return this.result_status_array[5];
   }
 
   calculate_weapon_cd() {
-    return this.result_status[6];
+    return this.result_status_array[6];
   }
 
   calculate_weapon_dmg_buff() {
-    base_status[7] = base_status[7] + 0.2;
-    this.result_status[7] = this.result_status[7] + 0.2;;
-    return this.result_status[7];
+    base_status_array[7] = base_status_array[7] + 0.2;
+    this.result_status_array[7] = this.result_status_array[7] + 0.2;;
+    return this.result_status_array[7];
   }
 
 }
@@ -461,14 +461,15 @@ async function monte_carlo_calculate()
   let result_status;
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status);
-  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   let depend_status = await calculate_depend_status();
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
 
   let score_distribute = await calculate_score_distribute(af_score,depend_status);
-  fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
-  result_status = fixed_status;
+  
+  let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
+  let result_status = fixed_status;
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status);
+  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
  result_status[0] += await char_instance.calculate_char_HP();
  result_status[0] += await weapon_instance.caculate_weapon_HP();
