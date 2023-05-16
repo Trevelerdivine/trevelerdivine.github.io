@@ -806,6 +806,7 @@ async function monte_carlo_calculate()
   temp_status[5] = temp_status[5].toFixed(3);
   temp_status[6] = temp_status[6].toFixed(4);
   temp_status[7] = temp_status[7].toFixed(4);
+  temp_exp_dmg = temp_exp_dmg.toFixed(0)
   console.log(temp_status);
 
   result = "  聖遺物スコア: " + af_score + "  HP: " + temp_status[0] + "  攻撃力: " + temp_status[1] +"  防御力: " + 
