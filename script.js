@@ -618,6 +618,10 @@ weapon_instance.update_status(fixed_status, result_status);
  console.log(base_status);
  console.log(fixed_status);
  console.log(result_status);
- return result_status;
+
+ result = "  聖遺物スコア: " + af_score + "  HP: " + result_status[0] + "  攻撃力: " + result_status[1] +"  防御力: " + result_status[2]+"  元素熟知: " + result_status[3] + "  元素チャージ効率: " + result_status[4] + "  会心率: " + result_status[5] + "  会心ダメージ：" + result_status[6] + "  ダメージバフ: " + result_status[7];
+ document.getElementById("result").innerHTML = result;
+
+ return result;
 }
 
