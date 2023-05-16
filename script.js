@@ -668,7 +668,7 @@ async function monte_carlo_calculate()
   old_score_distribution = temp_score_distribute.slice();
   new_score_distribution = temp_score_distribute.slice();
 
-  for (let k = 0; k < 2000; i++)
+  for (let k = 0; k < 2000; k++)
   {
   
     random_1 = Math.floor(depend_status_index.length * Math.random());
