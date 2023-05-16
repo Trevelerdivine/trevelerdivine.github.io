@@ -514,7 +514,7 @@ async function create_char_instance(base_status, fixed_status, result_status) {
 async function create_weapon_instance(base_status, fixed_status, result_status) {
   const weapon_name = document.getElementById("weapon_name").value;
   if (weapon_name === "AThousandFloatingDreams") {
-    const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status.slice(), result_status.slice());
+    const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
     return weapon_instance;
   }
 }
