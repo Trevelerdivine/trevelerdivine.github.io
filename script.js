@@ -536,7 +536,7 @@ async function monte_carlo_calculate()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
-  for (let i = 0; i < 10000; i++)
+  for (let i = 0; i < 5000; i++)
   {
     score_distribute = await calculate_score_distribute(af_score,depend_status);
     fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
@@ -610,7 +610,7 @@ async function monte_carlo_calculate()
 
     exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
       (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
-      *(1 + result_status[7])*0.64706;
+      *(1 + result_status[7])*0.55;
 
     if (temp_exp_dmg < exp_dmg)
     {
