@@ -614,7 +614,6 @@ weapon_instance.update_status(fixed_status, result_status);
  result_status[6] = result_status[6].toFixed(4);
  result_status[7] = result_status[7].toFixed(4);
 
- document.getElementById("result_status").innerHTML = result_status.toString();
  console.log(base_status);
  console.log(fixed_status);
  console.log(result_status);
