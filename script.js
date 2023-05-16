@@ -393,7 +393,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3))*0.0003;
+    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3))*3;
   }
 
   calculate_char_fixed_cd() {
@@ -431,7 +431,7 @@ class AThousandFloatingDreams {
   }
 
   calculate_weapon_fixed_attck() {
-    return 10000000;
+    return 0;
   }
 
   calculate_weapon_result_attck() {
@@ -520,7 +520,7 @@ async function monte_carlo_calculate()
   let score_distribute = await calculate_score_distribute(af_score,depend_status);
   
   let fixed_status = [0,0,0,0,0,0,0,0];
-  let result_status = fixed_status;
+  let result_status = [0,0,0,0,0,0,0,0];
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
