@@ -464,10 +464,14 @@ async function monte_carlo_calculate()
 
   let score_distribute = await calculate_score_distribute(af_score,depend_status);
   
-  let fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
+  let fixed_status = [0,0,0,0,0,0,0];
   let result_status = fixed_status;
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+
+  fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
+  result_status = fixed_status;
+
 
  result_status[0] += await char_instance.calculate_char_HP();
  result_status[0] += await weapon_instance.calculate_weapon_HP();
