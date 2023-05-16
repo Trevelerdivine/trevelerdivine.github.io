@@ -393,7 +393,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3))*3;
+    return Math.min(1,(Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*3))*0.0003;
   }
 
   calculate_char_fixed_cd() {
@@ -525,7 +525,7 @@ async function monte_carlo_calculate()
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
   fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
-  result_status = fixed_status;
+  result_status = fixed_status.slice();
 
 
  fixed_status[0] += await char_instance.calculate_char_fixed_hp();
