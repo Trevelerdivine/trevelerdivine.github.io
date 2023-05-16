@@ -355,23 +355,23 @@ class nahida {
   }
 
   calculate_char_HP() {
-    return this.result_status_array[0];
+    return this.result_status_array[0] = 0;
   }
 
   calculate_char_attck() {
-    return this.result_status_array[1];
+    return this.result_status_array[1] = 0;
   }
 
   calculate_char_deff() {
-    return this.result_status_array[2];
+    return this.result_status_array[2] = 0;
   }
 
   calculate_char_elm() {
-    return this.result_status_array[3];
+    return this.result_status_array[3] = 0;
   }
 
   calculate_char_elm_charge() {
-    return this.result_status_array[4];
+    return this.result_status_array[4] = 0;
   }
 
   calculate_char_cr(result_status_array) {
@@ -379,11 +379,11 @@ class nahida {
   }
 
   calculate_char_cd() {
-    return this.result_status_array[6];
+    return this.result_status_array[6] = 0;
   }
 
   calculate_char_dmg_buff() {
-    return this.result_status_array[7] + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
+    return Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
   }
 
 }
@@ -397,38 +397,38 @@ class AThousandFloatingDreams {
   }
 
   calculate_weapon_HP() {
-    return this.result_status_array[0];
+    return this.result_status_array[0] = 0;
   }
 
   calculate_weapon_attck() {
-    return this.result_status_array[1];
+    return this.result_status_array[1] = 0;
   }
 
   calculate_weapon_deff() {
-    return this.result_status_array[2];
+    return this.result_status_array[2] = 0;
   }
 
   calculate_weapon_elm() {
-    this.fixed_status_array[3] = this.base_status_array[3] + 32;
-    this.result_status_array[3] = this.result_status_array[3] + 32;
+    this.fixed_status_array[3] = 32;
+    this.result_status_array[3] = 32;
     return this.result_status_array[3];
   }
 
   calculate_weapon_elm_charge() {
-    return this.result_status_array[4];
+    return this.result_status_array[4] = 0;
   }
 
   calculate_weapon_cr() {
-    return this.result_status_array[5];
+    return this.result_status_array[5] = 0;
   }
 
   calculate_weapon_cd() {
-    return this.result_status_array[6];
+    return this.result_status_array[6] = 0;
   }
 
   calculate_weapon_dmg_buff() {
-    this.base_status_array[7] = this.base_status_array[7] + 0.2;
-    this.result_status_array[7] = this.result_status_array[7] + 0.2;;
+    this.base_status_array[7] =  0.2;
+    this.result_status_array[7] = 0.2;;
     return this.result_status_array[7];
   }
 
