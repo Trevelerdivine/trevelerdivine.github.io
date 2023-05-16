@@ -409,7 +409,7 @@ class AThousandFloatingDreams {
   }
 
   calculate_weapon_elm() {
-    fixed_status_array[3] = base_status_array[3] + 32;
+    this.fixed_status_array[3] = this.base_status_array[3] + 32;
     this.result_status_array[3] = this.result_status_array[3] + 32;
     return this.result_status_array[3];
   }
@@ -427,7 +427,7 @@ class AThousandFloatingDreams {
   }
 
   calculate_weapon_dmg_buff() {
-    base_status_array[7] = base_status_array[7] + 0.2;
+    this.base_status_array[7] = this.base_status_array[7] + 0.2;
     this.result_status_array[7] = this.result_status_array[7] + 0.2;;
     return this.result_status_array[7];
   }
