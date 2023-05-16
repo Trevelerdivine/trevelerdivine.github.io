@@ -609,7 +609,7 @@ async function monte_carlo_calculate()
     weapon_instance.update_status(fixed_status, result_status);
 
     exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
-      (1 + 5 * result_status[3]/(result_status + 1200)))*(1 + result_status[5]*result_status[6])
+      (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.64706;
 
     if (temp_exp_dmg < exp_dmg)
@@ -627,7 +627,7 @@ async function monte_carlo_calculate()
   temp_status[5] = temp_status[5].toFixed(3);
   temp_status[6] = temp_status[6].toFixed(4);
   temp_status[7] = temp_status[7].toFixed(4);
-
+  console.log(temp_status);
 
   result = "  聖遺物スコア: " + af_score + "  HP: " + temp_status[0] + "  攻撃力: " + temp_status[1] +"  防御力: " + 
   temp_status[2]+"  元素熟知: " + temp_status[3] + "  元素チャージ効率: " + temp_status[4] + "  会心率: " + temp_status[5] +
