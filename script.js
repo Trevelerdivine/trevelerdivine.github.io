@@ -526,101 +526,114 @@ async function monte_carlo_calculate()
   const af_main_status_buff = await calculate_af_main_status_buff();
   let depend_status = await calculate_depend_status();
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+  let score_distribute;
+  let fixed_status;
+  let result_status;
+  let exp_dmg = 0;
+  let temp_exp_dmg = 0;
+  let temp_status = [0,0,0,0,0,0,0,0];
 
-  let score_distribute = await calculate_score_distribute(af_score,depend_status);
-  
-  let fixed_status = [0,0,0,0,0,0,0,0];
-  let result_status = [0,0,0,100000,0,0,0,0];
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
-  fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
-  result_status = fixed_status.slice();
-  char_instance.update_status(fixed_status, result_status);
-  weapon_instance.update_status(fixed_status, result_status);
+  for (let i = 0; i < 10000; i++)
+  {
+    score_distribute = await calculate_score_distribute(af_score,depend_status);
+    fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
+    result_status = fixed_status.slice();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[0] += await char_instance.calculate_char_fixed_hp();
+    fixed_status[0] += await weapon_instance.calculate_weapon_fixed_hp();
+    result_status[0] += await char_instance.calculate_char_result_hp();
+    result_status[0] += await weapon_instance.calculate_weapon_result_hp();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[2] += await char_instance.calculate_char_fixed_deff();
+    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
+    result_status[2] += await char_instance.calculate_char_result_deff();
+    result_status[2] += await weapon_instance.calculate_weapon_result_deff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[3] += await char_instance.calculate_char_fixed_elm();
+    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
+    result_status[3] += await char_instance.calculate_char_result_elm();
+    result_status[3] += await weapon_instance.calculate_weapon_result_elm();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
+    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
+    result_status[4] += await char_instance.calculate_char_result_elm_charge();
+    result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[1] += await char_instance.calculate_char_fixed_attck();
+    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
+    result_status[1] += await char_instance.calculate_char_result_attck();
+    result_status[1] += await weapon_instance.calculate_weapon_result_attck();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
+    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
+    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
+    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[5] += await char_instance.calculate_char_fixed_cr();
+    fixed_status[5] += await weapon_instance.calculate_weapon_fixed_cr();
+    result_status[5] += await char_instance.calculate_char_result_cr();
+    result_status[5] += await weapon_instance.calculate_weapon_result_cr();
+    if (fixed_status[5] > 1)
+    {
+      fixed_status[5] = 1;
+    }
+    if (result_status[5] > 1)
+    {
+      result_status[5] = 1;
+    }
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    fixed_status[6] += await char_instance.calculate_char_fixed_cd();
+    fixed_status[6] += await weapon_instance.calculate_weapon_fixed_cd();
+    result_status[6] += await char_instance.calculate_char_result_cd();
+    result_status[6] += await weapon_instance.calculate_weapon_result_cd();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+    exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
+      (1 + 5 * result_status[3]/(result_status + 1200)))*(1 + result_status[5]*result_status[6])
+      *(1 + result_status[7])*0.64706;
+
+    if (temp_exp_dmg < exp_dmg)
+    {
+      temp_status = result_status.slice();
+      temp_exp_dmg = exp_dmg;
+    }
+  }
+
+  temp_status[0] = temp_status[0].toFixed(0);
+  temp_status[1] = temp_status[1].toFixed(0);
+  temp_status[2] = temp_status[2].toFixed(0);
+  temp_status[3] = temp_status[3].toFixed(0);
+  temp_status[4] = temp_status[4].toFixed(1);
+  temp_status[5] = temp_status[5].toFixed(3);
+  temp_status[6] = temp_status[6].toFixed(4);
+  temp_status[7] = temp_status[7].toFixed(4);
 
 
- fixed_status[0] += await char_instance.calculate_char_fixed_hp();
- fixed_status[0] += await weapon_instance.calculate_weapon_fixed_hp();
- result_status[0] += await char_instance.calculate_char_result_hp();
- result_status[0] += await weapon_instance.calculate_weapon_result_hp();
- char_instance.update_status(fixed_status, result_status);
- weapon_instance.update_status(fixed_status, result_status);
+  result = "  聖遺物スコア: " + af_score + "  HP: " + temp_status[0] + "  攻撃力: " + temp_status[1] +"  防御力: " + 
+  temp_status[2]+"  元素熟知: " + temp_status[3] + "  元素チャージ効率: " + temp_status[4] + "  会心率: " + temp_status[5] +
+   "  会心ダメージ：" + temp_status[6] + "  ダメージバフ: " + temp_status[7];
+  document.getElementById("result").innerHTML = result;
 
- fixed_status[2] += await char_instance.calculate_char_fixed_deff();
- fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
- result_status[2] += await char_instance.calculate_char_result_deff();
- result_status[2] += await weapon_instance.calculate_weapon_result_deff();
- char_instance.update_status(fixed_status, result_status);
- weapon_instance.update_status(fixed_status, result_status);
-
- fixed_status[3] += await char_instance.calculate_char_fixed_elm();
- fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
- result_status[3] += await char_instance.calculate_char_result_elm();
- result_status[3] += await weapon_instance.calculate_weapon_result_elm();
- char_instance.update_status(fixed_status, result_status);
- weapon_instance.update_status(fixed_status, result_status);
-
- fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
- fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
- result_status[4] += await char_instance.calculate_char_result_elm_charge();
- result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
- char_instance.update_status(fixed_status, result_status);
- weapon_instance.update_status(fixed_status, result_status);
-
- fixed_status[1] += await char_instance.calculate_char_fixed_attck();
- fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
- result_status[1] += await char_instance.calculate_char_result_attck();
- result_status[1] += await weapon_instance.calculate_weapon_result_attck();
- char_instance.update_status(fixed_status, result_status);
- weapon_instance.update_status(fixed_status, result_status);
-
- fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
- fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
- result_status[7] += await char_instance.calculate_char_result_dmg_buff();
- result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
- char_instance.update_status(fixed_status, result_status);
- weapon_instance.update_status(fixed_status, result_status);
-
- fixed_status[5] += await char_instance.calculate_char_fixed_cr();
- fixed_status[5] += await weapon_instance.calculate_weapon_fixed_cr();
- result_status[5] += await char_instance.calculate_char_result_cr();
- result_status[5] += await weapon_instance.calculate_weapon_result_cr();
- if (fixed_status[5] > 1)
-{
-  fixed_status[5] = 1;
+  return result;
+  
 }
- if (result_status[5] > 1)
-{
-  result_status[5] = 1;
-}
-char_instance.update_status(fixed_status, result_status);
-weapon_instance.update_status(fixed_status, result_status);
-
-
- fixed_status[6] += await char_instance.calculate_char_fixed_cd();
- fixed_status[6] += await weapon_instance.calculate_weapon_fixed_cd();
- result_status[6] += await char_instance.calculate_char_result_cd();
- result_status[6] += await weapon_instance.calculate_weapon_result_cd();
- char_instance.update_status(fixed_status, result_status);
- weapon_instance.update_status(fixed_status, result_status);
-
- result_status[0] = result_status[0].toFixed(0);
- result_status[1] = result_status[1].toFixed(0);
- result_status[2] = result_status[2].toFixed(0);
- result_status[3] = result_status[3].toFixed(0);
- result_status[4] = result_status[4].toFixed(1);
- result_status[5] = result_status[5].toFixed(3);
- result_status[6] = result_status[6].toFixed(4);
- result_status[7] = result_status[7].toFixed(4);
-
- console.log(base_status);
- console.log(fixed_status);
- console.log(result_status);
-
- result = "  聖遺物スコア: " + af_score + "  HP: " + result_status[0] + "  攻撃力: " + result_status[1] +"  防御力: " + result_status[2]+"  元素熟知: " + result_status[3] + "  元素チャージ効率: " + result_status[4] + "  会心率: " + result_status[5] + "  会心ダメージ：" + result_status[6] + "  ダメージバフ: " + result_status[7];
- document.getElementById("result").innerHTML = result;
-
- return result;
-}
-
