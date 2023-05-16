@@ -540,8 +540,8 @@ async function monte_carlo_calculate()
 {
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
-  let depend_status = await calculate_depend_status();
-  let depend_status_index = await calculate_depend_status_index(depend_status);
+  const depend_status = await calculate_depend_status();
+  const depend_status_index = await calculate_depend_status_index(depend_status);
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let score_distribute;
   let fixed_status;
@@ -550,7 +550,7 @@ async function monte_carlo_calculate()
   let random_2;
   let exp_dmg = 0;
   let temp_exp_dmg = 0;
-  let dlt_score = 0.1;
+  const dlt_score = 0.1;
   let temp_status = [0,0,0,0,0,0,0,0];
   let temp_score_distribute = [0,0,0,0,0,0,0];
   let old_score_distribution = [0,0,0,0,0,0,0];
@@ -693,6 +693,8 @@ async function monte_carlo_calculate()
 
     fixed_status = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
     result_status = fixed_status.slice();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
 
     if (depend_status[0] == 1)
     {
