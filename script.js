@@ -510,8 +510,7 @@ async function monte_carlo_calculate()
   let result_status;
   let random_1;
   let random_2;
-  let exp_dmg = 0;
-  let temp_exp_dmg = 0;
+  let output_exp_dmg = Infinity;
   const dlt_score = 0.1;
   let temp_status = [0,0,0,0,0,0,0,0];
   let temp_score_distribute = [0,0,0,0,0,0,0];
@@ -520,6 +519,11 @@ async function monte_carlo_calculate()
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+while (my_exp_dmg > output_exp_dmg)
+{
+  let exp_dmg = 0;
+  let temp_exp_dmg = 0;
+
 
   for (let i = 0; i < 5000; i++)
   {
@@ -760,6 +764,8 @@ async function monte_carlo_calculate()
   }
 
  }
+ af_score = af_score - 0.1;
+}
   temp_status[0] = temp_status[0].toFixed(0);
   temp_status[1] = temp_status[1].toFixed(0);
   temp_status[2] = temp_status[2].toFixed(0);
