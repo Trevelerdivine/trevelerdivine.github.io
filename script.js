@@ -755,7 +755,9 @@ while (my_exp_dmg !== output_exp_dmg)
     
     if (temp_exp_dmg < exp_dmg)
   {
-    
+    temp_exp_dmg = exp_dmg;
+    temp_status = result_status.slice();
+    old_score_distribution = new_score_distribution.slice();
   }
     else
   {
@@ -783,7 +785,6 @@ while (my_exp_dmg !== output_exp_dmg)
   temp_status[5] = (temp_status[5]*100).toFixed(1);
   temp_status[6] = (temp_status[6]*100).toFixed(1);
   temp_status[7] = (temp_status[7]*100).toFixed(1);
-  output_exp_dmg = output_exp_dmg.toFixed(0)
   console.log(temp_status);
   console.log(my_exp_dmg);
 
