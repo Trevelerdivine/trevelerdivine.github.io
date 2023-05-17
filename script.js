@@ -526,7 +526,7 @@ while (my_exp_dmg !== output_exp_dmg)
   let temp_exp_dmg = 0;
 
 
-  for (let i = 0; i < 5000; i++)
+  for (let i = 0; i < 10000; i++)
   {
     score_distribute = await calculate_score_distribute(af_score,depend_status);
     fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
@@ -635,7 +635,7 @@ while (my_exp_dmg !== output_exp_dmg)
   old_score_distribution = temp_score_distribute.slice();
   new_score_distribution = temp_score_distribute.slice();
 
-  for (let k = 0; k < 1000; k++)
+  for (let k = 0; k < 5000; k++)
   {
   
     random_1 = Math.floor(depend_status_index.length * Math.random());
