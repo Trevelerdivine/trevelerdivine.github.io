@@ -37,7 +37,6 @@ async function showTable() {
 
 /////////////////////
 
-
 async function calculate_char_base_status() 
 {
   const char_name = document.getElementById("char_name").value;
@@ -58,7 +57,6 @@ async function calculate_char_base_status()
 
 ///////////////  
 
-
 async function calculate_weapon_base_status() {
   const weapon_name = document.getElementById("weapon_name").value;
   const response = await fetch("./data/weapon/" + weapon_name + ".json");
@@ -75,8 +73,8 @@ async function calculate_weapon_base_status() {
   weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
   return weapon_base_status;
   }
-///////////////////
 
+///////////////////
 
 async function calculate_base_status() {
   char_base_status = await calculate_char_base_status();
@@ -92,7 +90,9 @@ async function calculate_base_status() {
   base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
   return base_status;
   }
+
 ////////////////////
+
   async function show_char_statsform()
    {
     await calculate_depend_status()
@@ -145,7 +145,9 @@ async function calculate_base_status() {
       cd_form.style.display = "block";  // 会心ダメージフォームを表示
     }
 }
+
 //////////////////////
+
 async function show_weapon_statsform()
    {
     await calculate_depend_status()
@@ -199,8 +201,8 @@ async function show_weapon_statsform()
     }
 }
 
-
 /////////////////////
+
 async function calculate_af_main_status_buff() 
 {
   const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
@@ -217,7 +219,6 @@ async function calculate_af_main_status_buff()
   }    
   return af_main_status_buff;
 }
-
 
 //////////////////////////
 
@@ -262,8 +263,8 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
   return af_score
 }
 
-
 ///////////////////
+
 async function calculate_depend_status()
   {
     const char_name = document.getElementById("char_name").value;
@@ -298,8 +299,6 @@ async function calculate_depend_status_index(array)
   return depend_status_index;
 }
 
-
-
 /////////////////////////
 
 async function calculate_score_distribute(af_score,depend_status)
@@ -332,10 +331,7 @@ async function calculate_score_distribute(af_score,depend_status)
   return score_distribution;
 }
 
-
 ////////////////////////////////
-
-
 
 async function calculate_fixed_status(sd,bs,amsb,ds)
 //変数は左から（score_distribution,base_status,af_main_status_buff,depend_status）
@@ -352,7 +348,6 @@ async function calculate_fixed_status(sd,bs,amsb,ds)
   return fixed_status;
 }
 
-
 ////////////////////////
 
 async function create_char_instance(base_status, fixed_status, result_status) {
@@ -363,6 +358,7 @@ async function create_char_instance(base_status, fixed_status, result_status) {
     return char_instance;
   }
 }
+
 ///////////////////////
 
 async function create_weapon_instance(base_status, fixed_status, result_status) {
@@ -372,6 +368,8 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     return weapon_instance;
   }
 }
+
+///////////////////////
 
 async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_status)
 {
@@ -495,8 +493,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
 //////////////////////
 
-
-
 async function monte_carlo_calculate()
 {
   const base_status = await calculate_base_status();
@@ -510,7 +506,7 @@ async function monte_carlo_calculate()
   let result_status;
   let random_1;
   let random_2;
-  let output_exp_dmg = Infinity;
+  let output_exp_dmg = 100000;
   const dlt_score = 0.1;
   let temp_status = [0,0,0,0,0,0,0,0];
   let temp_score_distribute = [0,0,0,0,0,0,0];
