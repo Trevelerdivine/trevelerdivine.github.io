@@ -635,7 +635,7 @@ while (my_exp_dmg !== output_exp_dmg)
   old_score_distribution = temp_score_distribute.slice();
   new_score_distribution = temp_score_distribute.slice();
 
-  for (let k = 0; k < 2000; k++)
+  for (let k = 0; k < 1000; k++)
   {
   
     random_1 = Math.floor(depend_status_index.length * Math.random());
@@ -785,6 +785,7 @@ while (my_exp_dmg !== output_exp_dmg)
   temp_status[5] = (temp_status[5]*100).toFixed(1);
   temp_status[6] = (temp_status[6]*100).toFixed(1);
   temp_status[7] = (temp_status[7]*100).toFixed(1);
+  af_score = af_score.toFixed(1;)
   console.log(temp_status);
   console.log(my_exp_dmg);
 
