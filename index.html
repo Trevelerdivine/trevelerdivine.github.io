@@ -14,6 +14,7 @@
   <label for="char_name">キャラクター:</label>
   <br>
   <select id="char_name" onchange="show_char_statsform()" size="4">
+    <option hidden>キャラクター選択</option>
   <optgroup label="草元素">
     <option value="nahida">ナヒーダ</option>
     <option value="yaoyao">ヨォーヨ</option>
@@ -25,10 +26,28 @@
     <option value="Kuki_Shinobu">久岐忍</option>
   </optgroup>
  </select>  
+ <select id="char_level" size="4">
+  <option hidden>キャラクターレベル</option>
+    <option value="1+">1+</option>
+    <option value="20">20</option>
+    <option value="20+">20+</option>
+    <option value="40">40</option>
+    <option value="40+">40+</option>
+    <option value="50">50</option>
+    <option value="50+">50+</option>
+    <option value="60">60</option>
+    <option value="60+">60+</option>
+    <option value="70">70</option>
+    <option value="70+">70+</option>
+    <option value="80">80</option>
+    <option value="80+">80+</option>
+    <option value="90">90</option>
+ </select>
 <br>
   <label for="weapon_name">武器: </label>
 <br>
     <select id="weapon_name" onchange="show_weapon_statsform()" size="4">
+      <option hidden>武器選択</option>
       <optgroup label="法器">
         <option value="AThousandFloatingDreams">千夜に浮かぶ夢</option>
         <option value="Kagura'sVerity">神楽の真意</option>
@@ -40,9 +59,28 @@
         <option value="TheCatch">漁獲</option>
       </optgroup>
     </select>
+    <select id="weapon_level" size="4">
+      <option hidden>武器レベル</option>
+        <option value="1+">1+</option>
+        <option value="20">20</option>
+        <option value="20+">20+</option>
+        <option value="40">40</option>
+        <option value="40+">40+</option>
+        <option value="50">50</option>
+        <option value="50+">50+</option>
+        <option value="60">60</option>
+        <option value="60+">60+</option>
+        <option value="70">70</option>
+        <option value="70+">70+</option>
+        <option value="80">80</option>
+        <option value="80+">80+</option>
+        <option value="90">90</option>
+     </select>
 </div> 
+
  <br>
   <select id="clock_mainstatus">
+    <option hidden>時計</option>
     <option value="0">HP％</option>
     <option value="1">攻撃力％</option>
     <option value="2">防御力％</option>
@@ -50,6 +88,7 @@
     <option value="4">元素チャージ効率</option>
   </select>
   <select id="goblet_mainstatus">
+    <option hidden>杯</option>
     <option value="0">HP％</option>
     <option value="1">攻撃力％</option>
     <option value="2">防御力％</option>
@@ -57,6 +96,7 @@
     <option value="7">ダメージバフ</option>  
   </select>
   <select id="circlet_mainstatus">
+    <option hidden>冠</option>
     <option value="0">HP％</option>
     <option value="1">攻撃力％</option>
     <option value="2">防御力％</option>
