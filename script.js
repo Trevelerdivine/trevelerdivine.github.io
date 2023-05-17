@@ -379,16 +379,14 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
   const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
   const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
-  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
-  const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
-  const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
+  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物会心率上昇量
+  const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
+  const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_attck, af_deff, af_elm, af_elm_charge, af_cr, af_cd]
   let exp_dmg;
 
   let fixed_status = base_status.slice();
   let result_status;
-  const dlt_score = 0.1;
-
   for (let i = 0; i < 7; i++)
   {
     fixed_status[i] = fixed_status[i] + af_buff[i];
