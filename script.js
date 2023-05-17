@@ -499,14 +499,15 @@ async function monte_carlo_calculate()
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();
   const depend_status_index = await calculate_depend_status_index(depend_status);
-  const my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
-  let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+  const my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status).toFixed(1);
+
+  let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status)/2;
   let score_distribute;
   let fixed_status;
   let result_status;
   let random_1;
   let random_2;
-  let output_exp_dmg = Infinity;
+  let output_exp_dmg = 0;
   const dlt_score = 0.1;
   let temp_status = [0,0,0,0,0,0,0,0];
   let temp_score_distribute = [0,0,0,0,0,0,0];
@@ -515,7 +516,7 @@ async function monte_carlo_calculate()
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
-while (my_exp_dmg < output_exp_dmg)
+while (my_exp_dmg == output_exp_dmg)
 {
   let exp_dmg = 0;
   let temp_exp_dmg = 0;
@@ -750,9 +751,7 @@ while (my_exp_dmg < output_exp_dmg)
     
     if (temp_exp_dmg < exp_dmg)
   {
-    temp_status = result_status.slice();
-    temp_exp_dmg = exp_dmg;
-    old_score_distribution = new_score_distribution.slice();
+    
   }
     else
   {
@@ -760,8 +759,15 @@ while (my_exp_dmg < output_exp_dmg)
   }
 
  }
- af_score = af_score - 1;
- output_exp_dmg = temp_exp_dmg;
+ output_exp_dmg = temp_exp_dmg.toFixed(1);
+ if (my_exp_dmg < output_exp_dmg)
+ {
+  af_score = af_score/2;
+ }
+ else
+ {
+  af_score = af_score*1.5;
+ }
 }
   temp_status[0] = temp_status[0].toFixed(0);
   temp_status[1] = temp_status[1].toFixed(0);
