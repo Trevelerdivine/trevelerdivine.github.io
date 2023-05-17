@@ -765,6 +765,7 @@ while (my_exp_dmg > output_exp_dmg)
 
  }
  af_score = af_score - 0.1;
+ output_exp_dmg = temp_exp_dmg;
 }
   temp_status[0] = temp_status[0].toFixed(0);
   temp_status[1] = temp_status[1].toFixed(0);
@@ -774,11 +775,11 @@ while (my_exp_dmg > output_exp_dmg)
   temp_status[5] = (temp_status[5]*100).toFixed(1);
   temp_status[6] = (temp_status[6]*100).toFixed(1);
   temp_status[7] = (temp_status[7]*100).toFixed(1);
-  temp_exp_dmg = temp_exp_dmg.toFixed(0)
+  output_exp_dmg = output_exp_dmg.toFixed(0)
   console.log(temp_status);
   console.log(my_exp_dmg);
 
-  result = "  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + temp_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[1] + "<br>" +"  防御力: " + 
+  result = "  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + output_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[1] + "<br>" +"  防御力: " + 
   temp_status[2] + "<br>"+"  元素熟知: " + temp_status[3] + "<br>" + "  元素チャージ効率: " + temp_status[4] + "%" + "<br>" + "  会心率: " + temp_status[5] + "%" + "<br>" +
    "  会心ダメージ：" + temp_status[6] + "%" + "<br>" + "  ダメージバフ: " + temp_status[7] + "%";
   document.getElementById("result").innerHTML = result;
