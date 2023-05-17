@@ -519,7 +519,7 @@ async function monte_carlo_calculate()
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
-while (my_exp_dmg > output_exp_dmg)
+while (my_exp_dmg < output_exp_dmg)
 {
   let exp_dmg = 0;
   let temp_exp_dmg = 0;
