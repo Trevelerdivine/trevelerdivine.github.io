@@ -499,7 +499,7 @@ async function monte_carlo_calculate()
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();
   const depend_status_index = await calculate_depend_status_index(depend_status);
-  const my_exp_dmg = calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
+  const my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let score_distribute;
   let fixed_status;
