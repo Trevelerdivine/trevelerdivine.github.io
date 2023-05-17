@@ -802,16 +802,16 @@ async function monte_carlo_calculate()
   temp_status[1] = temp_status[1].toFixed(0);
   temp_status[2] = temp_status[2].toFixed(0);
   temp_status[3] = temp_status[3].toFixed(0);
-  temp_status[4] = temp_status[4].toFixed(1);
-  temp_status[5] = temp_status[5].toFixed(3);
-  temp_status[6] = temp_status[6].toFixed(3);
-  temp_status[7] = temp_status[7].toFixed(3)*100;
+  temp_status[4] = (temp_status[4]*100).toFixed(1);
+  temp_status[5] = (temp_status[5]*100).toFixed(1);
+  temp_status[6] = (temp_status[6]*100).toFixed(1);
+  temp_status[7] = (temp_status[7]*100).toFixed(1);
   temp_exp_dmg = temp_exp_dmg.toFixed(0)
   console.log(temp_status);
 
   result = "  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + temp_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[1] + "<br>" +"  防御力: " + 
-  temp_status[2] + "<br>"+"  元素熟知: " + temp_status[3] + "<br>" + "  元素チャージ効率: " + temp_status[4]*100 + "%" + "<br>" + "  会心率: " + temp_status[5]*100 + "%" + "<br>" +
-   "  会心ダメージ：" + temp_status[6]*100 + "%" + "<br>" + "  ダメージバフ: " + temp_status[7] + "%";
+  temp_status[2] + "<br>"+"  元素熟知: " + temp_status[3] + "<br>" + "  元素チャージ効率: " + temp_status[4] + "%" + "<br>" + "  会心率: " + temp_status[5] + "%" + "<br>" +
+   "  会心ダメージ：" + temp_status[6] + "%" + "<br>" + "  ダメージバフ: " + temp_status[7] + "%";
   document.getElementById("result").innerHTML = result;
 
   return result;
