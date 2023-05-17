@@ -785,7 +785,7 @@ while (my_exp_dmg !== output_exp_dmg)
   temp_status[5] = (temp_status[5]*100).toFixed(1);
   temp_status[6] = (temp_status[6]*100).toFixed(1);
   temp_status[7] = (temp_status[7]*100).toFixed(1);
-  af_score = af_score.toFixed(1;)
+  af_score = af_score.toFixed(1);
   console.log(temp_status);
   console.log(my_exp_dmg);
 
