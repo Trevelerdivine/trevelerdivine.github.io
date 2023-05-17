@@ -40,16 +40,17 @@ async function showTable() {
 async function calculate_char_base_status() 
 {
   const char_name = document.getElementById("char_name").value;
+  const char_level = document.getElementById("char_level").value;
   const response = await fetch("./data/character/" + char_name + ".json");
   const data = await response.json();
-  const char_base_hp = data.ステータス.基礎HP["90"];
-  const char_base_attck = data.ステータス.基礎攻撃力["90"];
-  const char_base_deff = data.ステータス.基礎防御力["90"];
-  const char_base_elm = data.ステータス.基礎元素熟知["90"];
-  const char_base_elm_charge = data.ステータス.基礎元素チャージ効率["90"];
-  const char_base_cr = data.ステータス.基礎会心率["90"];
-  const char_base_cd = data.ステータス.基礎会心ダメージ["90"];
-  const char_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
+  const char_base_hp = data.ステータス.基礎HP[char_level];
+  const char_base_attck = data.ステータス.基礎攻撃力[char_level];
+  const char_base_deff = data.ステータス.基礎防御力[char_level];
+  const char_base_elm = data.ステータス.基礎元素熟知[char_level];
+  const char_base_elm_charge = data.ステータス.基礎元素チャージ効率[char_level];
+  const char_base_cr = data.ステータス.基礎会心率[char_level];
+  const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
+  const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_attck, char_base_deff, char_base_elm, char_base_elm_charge, char_base_cr, char_base_cd, char_base_dmg_buff];
   return char_base_status;
@@ -59,16 +60,17 @@ async function calculate_char_base_status()
 
 async function calculate_weapon_base_status() {
   const weapon_name = document.getElementById("weapon_name").value;
+  const weapon_level = document.getElementById("weapon_level").value;
   const response = await fetch("./data/weapon/" + weapon_name + ".json");
   const data = await response.json();
-  const weapon_base_hp = data.ステータス.基礎HP["90"];
-  const weapon_base_attck = data.ステータス.基礎攻撃力["90"];
-  const weapon_base_deff = data.ステータス.基礎防御力["90"];
-  const weapon_base_elm = data.ステータス.基礎元素熟知["90"];
-  const weapon_base_elm_charge = data.ステータス.基礎元素チャージ効率["90"];
-  const weapon_base_cr = data.ステータス.基礎会心率["90"];
-  const weapon_base_cd = data.ステータス.基礎会心ダメージ["90"];
-  const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["90"];
+  const weapon_base_hp = data.ステータス.基礎HP["weapon_level"];
+  const weapon_base_attck = data.ステータス.基礎攻撃力["weapon_level"];
+  const weapon_base_deff = data.ステータス.基礎防御力["weapon_level"];
+  const weapon_base_elm = data.ステータス.基礎元素熟知["weapon_level"];
+  const weapon_base_elm_charge = data.ステータス.基礎元素チャージ効率["weapon_level"];
+  const weapon_base_cr = data.ステータス.基礎会心率["weapon_level"];
+  const weapon_base_cd = data.ステータス.基礎会心ダメージ["weapon_level"];
+  const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ["weapon_level"];
   weapon_depend_status = data.ステータス.依存ステータス;
   weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
   return weapon_base_status;
