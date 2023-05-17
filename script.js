@@ -501,8 +501,12 @@ async function monte_carlo_calculate()
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   my_exp_dmg = my_exp_dmg.toFixed(1)
-  let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status)/2;
+  let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let score_distribute;
+  let af_score_upper_limit = af_score;
+  let af_score_lower_limit = 0;
+  af_score = af_score/2;
+
   let fixed_status;
   let result_status;
   let random_1;
@@ -762,11 +766,13 @@ while (my_exp_dmg == output_exp_dmg)
  output_exp_dmg = temp_exp_dmg.toFixed(1);
  if (my_exp_dmg < output_exp_dmg)
  {
-  af_score = af_score/2;
+  af_score_upper_limit = af_score;
+  af_score = (af_score_upper_limit + af_score_lower_limit)/2;
  }
  else
  {
-  af_score = af_score*1.5;
+  af_score_lower_limit = af_score;
+  af_score = (af_score_upper_limit + af_score_lower_limit)/2;
  }
 }
   temp_status[0] = temp_status[0].toFixed(0);
