@@ -506,7 +506,7 @@ async function monte_carlo_calculate()
   let result_status;
   let random_1;
   let random_2;
-  let output_exp_dmg = 100000;
+  let output_exp_dmg = Infinity;
   const dlt_score = 0.1;
   let temp_status = [0,0,0,0,0,0,0,0];
   let temp_score_distribute = [0,0,0,0,0,0,0];
@@ -760,7 +760,7 @@ while (my_exp_dmg < output_exp_dmg)
   }
 
  }
- af_score = af_score - 0.1;
+ af_score = af_score - 1;
  output_exp_dmg = temp_exp_dmg;
 }
   temp_status[0] = temp_status[0].toFixed(0);
