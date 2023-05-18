@@ -80,8 +80,8 @@ class nahida {
     }
 
     calculate_basic_dmg(dmg_rate) {
-      return (this.result_status[1]*dmg_rate[1] + 
-        result_status[3]*dmg_rate[3]+ 1807.5*(1 + 5 * this.result_status[3]/(this.result_status[3] + 1200)));
+      return (this.result_status[1]*dmg_rate[1]/100 + 
+        this.result_status[3]*dmg_rate[3]/100+ 1807.5*(1 + 5 * this.result_status[3]/(this.result_status[3] + 1200)));
     }
 
     update_status(fixed_status_array, result_status_array) {
