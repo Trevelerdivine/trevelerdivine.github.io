@@ -763,7 +763,7 @@ while (my_exp_dmg !== output_exp_dmg)
     weapon_instance.update_status(fixed_status, result_status);
     }
 
-    basic_dmg = await char_instance.calculate_basic_dmg(const_dmg_rate);
+    basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
     
