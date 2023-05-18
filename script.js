@@ -289,31 +289,6 @@ async function calculate_depend_status()
 
 ///////////////////
 
-async function calculate_depend_status_of_basic_dmg()
-{
-  const char_name = document.getElementById("char_name").value;
-  const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/" + char_name + ".json");
-  const data = await response.json();
-  const depend_status = data.元素スキル.依存ステータス;
-  const basic_dmg = [0,0,0,0,0,0,0];
-
-  if (depend_status[0] = 1)
-    {
-      basic_dmg[0] = data["元素スキル"]["詳細"][2]["数値"]["HP"]["10"];
-    }
-  if (depend_status[1] = 1)
-  {
-    basic_dmg[1] = data["元素スキル"]["詳細"][2]["数値"]["攻撃力"]["10"]/100;
-  }
-  if (depend_status[3] = 1)
-  {
-    basic_dmg[3] = data["元素スキル"]["詳細"][2]["数値"]["元素熟知"]["10"]/100;
-  }
-
-  return basic_dmg;
-}
-
 
 ///////////////////
 
@@ -380,11 +355,11 @@ async function calculate_fixed_status(sd,bs,amsb,ds)
 
 ////////////////////////
 
-async function create_char_instance(base_status, fixed_status, result_status,basic_dmg) {
+async function create_char_instance(base_status, fixed_status, result_status) {
   const char_name = document.getElementById("char_name").value;
   if (char_name === "nahida") {
     // ナヒーダのインスタンスを生成
-    const char_instance = new nahida(base_status, fixed_status, result_status,basic_dmg);
+    const char_instance = new nahida(base_status, fixed_status, result_status);
     return char_instance;
   }
 }
@@ -529,12 +504,10 @@ async function monte_carlo_calculate()
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();
   const depend_status_index = await calculate_depend_status_index(depend_status);
-  const basic_dmg = await calculate_depend_status_of_basic_dmg();
   let my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   my_exp_dmg = my_exp_dmg.toFixed(0)
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let score_distribute;
-  let sum_basic_dmg = 0
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
   af_score = af_score/2;
@@ -551,7 +524,7 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let n_count = 0;
 
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status, basic_dmg);
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 while (my_exp_dmg !== output_exp_dmg)
 {
@@ -653,10 +626,8 @@ while (my_exp_dmg !== output_exp_dmg)
     weapon_instance.update_status(fixed_status, result_status);
     }
 
-    sum_basic_dmg = await char_instance.calculate_depend_status_of_basic_dmg + result_status[3]*3.715+ 1807.5*
-    (1 + 5 * result_status[3]/(result_status[3] + 1200));
-
-    exp_dmg = sum_basic_dmg * (1 + result_status[5]*result_status[6])
+    exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
+      (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
 
     if (temp_exp_dmg < exp_dmg)
@@ -784,10 +755,8 @@ while (my_exp_dmg !== output_exp_dmg)
     weapon_instance.update_status(fixed_status, result_status);
     }
 
-    sum_basic_dmg = await char_instance.calculate_depend_status_of_basic_dmg + result_status[3]*3.715+ 1807.5*
-    (1 + 5 * result_status[3]/(result_status[3] + 1200));
-
-    exp_dmg = sum_basic_dmg*(1 + result_status[5]*result_status[6])
+    exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
+      (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
     
     if (temp_exp_dmg < exp_dmg)

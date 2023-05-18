@@ -1,10 +1,9 @@
 class nahida {
-    constructor(base_status_array, fixed_status_array, result_status_array,basic_dmg_array) 
+    constructor(base_status_array, fixed_status_array,) 
     {
       this.base_status_array = base_status_array;
       this.fixed_status_array = fixed_status_array;
       this.result_status_array = result_status_array;
-      this.basic_dmg_array = this.basic_dmg_array;
     }
   
     calculate_char_fixed_hp() {
@@ -73,10 +72,5 @@ class nahida {
 
     calculate_basic_dmg() {
       return this.basic_dmg_array [1]* this.result_status_array[1] + this.basic_dmg_array [3]* this.result_status_array[3]
-    }
-
-    update_status(fixed_status_array, result_status_array) {
-      this.fixed_status_array = fixed_status_array;
-      this.result_status_array = result_status_array;
     }
   }
