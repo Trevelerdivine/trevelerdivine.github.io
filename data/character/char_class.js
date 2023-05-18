@@ -4,7 +4,6 @@ class nahida {
       this.base_status_array = base_status_array;
       this.fixed_status_array = fixed_status_array;
       this.result_status_array = result_status_array;
-      this.dmg_rate_array = dmg_rate_array;
     }
 
     async dmg_rate_data() {
