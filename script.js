@@ -395,10 +395,10 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
   const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
   const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
-  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物会心率上昇量
+  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
-  const af_buff = [af_hp, af_attck, af_deff, af_elm, af_elm_charge, af_cr, af_cd]
+  const af_buff = [af_hp, af_attck, af_deff, af_elm, af_elm_charge, af_cr, af_cd];
   let exp_dmg;
 
   let fixed_status = base_status.slice();
@@ -514,11 +514,15 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 async function monte_carlo_calculate()
 {
   const base_status = await calculate_base_status();
+  console.log(base_status);
   const af_main_status_buff = await calculate_af_main_status_buff();
+  console.log(af_main_status_buff);
   const depend_status = await calculate_depend_status();
+  console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   my_exp_dmg = my_exp_dmg.toFixed(0)
+  console.log(my_exp_dmg);
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
 
   if (af_score < 0 || af_score>500 || !Number.isFinite(af_score))
