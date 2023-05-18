@@ -13,10 +13,10 @@
  <div>
   <label for="char_name">キャラクター:</label>
   <br>
-  <select id="char_name" onchange="show_char_statsform()" size="4">
+  <select id="char_name" required onchange="show_char_statsform()" size="4">
     <option hidden>キャラクター選択</option>
   <optgroup label="草元素">
-    <option value="nahida" selected>ナヒーダ</option>
+    <option value="nahida">ナヒーダ</option>
     <option value="yaoyao">ヨォーヨ</option>
     <option value="tighnari">ティナリ</option>
   </optgroup>
@@ -41,15 +41,15 @@
     <option value="70+">70+</option>
     <option value="80">80</option>
     <option value="80+">80+</option>
-    <option value="90" selected>90</option>
+    <option value="90" >90</option>
  </select>
 <br>
   <label for="weapon_name">武器: </label>
 <br>
-    <select id="weapon_name" onchange="show_weapon_statsform()" size="4">
+    <select id="weapon_name" required onchange="show_weapon_statsform()" size="4">
       <option hidden>武器選択</option>
       <optgroup label="法器">
-        <option value="AThousandFloatingDreams" selected>千夜に浮かぶ夢</option>
+        <option value="AThousandFloatingDreams" >千夜に浮かぶ夢</option>
         <option value="Kagura'sVerity">神楽の真意</option>
         <option value="SacrificialFragments">祭礼の断片</option>
       </optgroup>
@@ -107,39 +107,39 @@
  <br>
  <div id="hp_form" style="display: none;">
   <label for="af_hp">HP:</label>
-  <input type="number" id="af_hp" value = "0" mim = "0" name="af_hp" required>
+  <input type="number" id="af_hp" required mim = "0" name="af_hp">
 </div>
 
 <div id="attck_form" style="display: none;">
   <label for="af_attck">攻撃力:</label>
-  <input type="number" id="af_attck"  value = "0" mim = "0" name="af_attck" required>
+  <input type="number" id="af_attck"  required mim = "0" name="af_attck">
 </div>
 
 <div id="deff_form" style="display: none;">
   <label for="af_deff">防御力:</label>
-  <input type="number" id="af_deff" value = "0" mim = "0" name="af_deff" required>
+  <input type="number" id="af_deff" required mim = "0" name="af_deff">
 </div>
 
 <div id="elm_form" style="display: none;">
   <label for="af_elm">元素熟知:</label>
-  <input type="number" id="af_elm" value = "0" mim = "0" name="af_elm" required >
+  <input type="number" id="af_elm" required mim = "0" name="af_elm" >
 </div>
 
 <div id="elm_charge_form" style="display: none;">
   <label for="af_elm_charge">元素チャージ効率:</label>
-  <input type="number" id="af_elm_charge" value = "0" mim = "0" name="af_elm_charge" required>
+  <input type="number" id="af_elm_charge" required mim = "0" name="af_elm_charge">
   <span>(%)</span>
 </div>
 
 <div id="cr_form" style="display: none;">
   <label for="af_cr">会心率:</label>
-  <input type="number" id="af_cr" value = "0" mim = "0" name="af_cr" required>
+  <input type="number" id="af_cr" required mim = "0" name="af_cr">
   <span>(%)</span>
 </div>
 
 <div id="cd_form" style="display: none;">
   <label for="af_cd">会心ダメージ:</label>
-  <input type="number" id="af_cd" value = "0" mim = "0" name="af_cd" required>
+  <input type="number" id="af_cd" required mim = "0" name="af_cd">
   <span>(%)</span>
 </div>
 
