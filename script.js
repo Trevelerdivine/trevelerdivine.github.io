@@ -512,7 +512,7 @@ async function monte_carlo_calculate()
   my_exp_dmg = my_exp_dmg.toFixed(0)
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
 
-  if (af_score < 0 || af_score>500 || af_score !=='number')
+  if (af_score < 0 || af_score>500 || typeof af_score !=='number')
   {
     result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("result").innerHTML = result;
