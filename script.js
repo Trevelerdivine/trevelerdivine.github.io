@@ -381,6 +381,10 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     const weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
     return weapon_instance;
   }
+  if (weapon_name === "EngulfingLightning") {
+    const weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
+    return weapon_instance;
+  }
 }
 
 ///////////////////////
