@@ -372,6 +372,10 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
     return weapon_instance;
   }
+  if (weapon_name === "SacrificialFragments") {
+    const weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
+    return weapon_instance;
+  }
 }
 
 ///////////////////////
