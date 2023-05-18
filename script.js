@@ -399,6 +399,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_attck, af_deff, af_elm, af_elm_charge, af_cr, af_cd];
+  let basic_dmg;
   let exp_dmg;
 
   let fixed_status = base_status.slice();
@@ -413,6 +414,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
+  const dmg_rate = await char_instance.dmg_rate_data();
   char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
 
@@ -501,9 +503,8 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
-
-    exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
-      (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
+    basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
+    exp_dmg =   basic_dmg *(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
 
     return exp_dmg;
