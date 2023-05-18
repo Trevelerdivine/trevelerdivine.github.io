@@ -1,5 +1,5 @@
 class nahida {
-    constructor(base_status_array, fixed_status_array,result_status_array) 
+    constructor(base_status_array, fixed_status_array, result_status_array,) 
     {
       this.base_status_array = base_status_array;
       this.fixed_status_array = fixed_status_array;
@@ -70,7 +70,8 @@ class nahida {
       return 0.15 + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
     }
 
-    calculate_basic_dmg() {
-      return this.basic_dmg_array [1]* this.result_status_array[1] + this.basic_dmg_array [3]* this.result_status_array[3]
+    update_status(fixed_status_array, result_status_array) {
+      this.fixed_status_array = fixed_status_array;
+      this.result_status_array = result_status_array;
     }
   }
