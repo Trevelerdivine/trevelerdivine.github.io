@@ -69,6 +69,14 @@ class nahida {
     calculate_char_result_dmg_buff() {
       return 0.15 + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
     }
+
+    calculate_basic_dmg() {
+
+
+
+      
+    }
+
   
     update_status(fixed_status_array, result_status_array) {
       this.fixed_status_array = fixed_status_array;
