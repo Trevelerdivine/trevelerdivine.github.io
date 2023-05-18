@@ -47,7 +47,7 @@ async function calculate_char_base_status()
   const char_base_attck = data.ステータス.基礎攻撃力[char_level];
   const char_base_deff = data.ステータス.基礎防御力[char_level];
   const char_base_elm = data.ステータス.基礎元素熟知[char_level];
-  const char_base_elm_charge = data.ステータス.基礎元素チャージ効率[char_level];
+  const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[char_level];
   const char_base_cr = data.ステータス.基礎会心率[char_level];
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
@@ -360,6 +360,11 @@ async function create_char_instance(base_status, fixed_status, result_status) {
   if (char_name === "nahida") {
     // ナヒーダのインスタンスを生成
     const char_instance = new nahida(base_status, fixed_status, result_status);
+    return char_instance;
+  }
+  if (char_name === "raiden") {
+    // 雷電将軍のインスタンスを生成
+    const char_instance = new raiden(base_status, fixed_status, result_status);
     return char_instance;
   }
 }
