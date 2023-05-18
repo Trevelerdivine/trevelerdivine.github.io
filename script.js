@@ -511,6 +511,13 @@ async function monte_carlo_calculate()
   let my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   my_exp_dmg = my_exp_dmg.toFixed(0)
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+
+  if (af_score < 0 || af_score>500)
+  {
+    result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
+    document.getElementById("result").innerHTML = result;
+    return result;
+  }
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
@@ -539,7 +546,7 @@ while (my_exp_dmg !== output_exp_dmg)
   let temp_exp_dmg = 0;
   n_count = n_count + 1;
 
-  for (let i = 0; i < 5000; i++)
+  for (let i = 0; i < 10000; i++)
   {
     score_distribute = await calculate_score_distribute(af_score,depend_status);
     fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
@@ -649,7 +656,7 @@ while (my_exp_dmg !== output_exp_dmg)
   old_score_distribution = temp_score_distribute.slice();
   new_score_distribution = temp_score_distribute.slice();
 
-  for (let k = 0; k < 3000; k++)
+  for (let k = 0; k < 5000; k++)
   {
   
     random_1 = Math.floor(depend_status_index.length * Math.random());
