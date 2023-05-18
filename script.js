@@ -526,10 +526,12 @@ async function monte_carlo_calculate()
   let temp_score_distribute = [0,0,0,0,0,0,0];
   let old_score_distribution = [0,0,0,0,0,0,0];
   let new_score_distribution = [0,0,0,0,0,0,0];
+  let basic_dmg;
   let n_count = 0;
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+  const_dmg_rate = await char_instance.const_dmg_rate_data();
 while (my_exp_dmg !== output_exp_dmg)
 {
   let exp_dmg = 0;
@@ -630,8 +632,9 @@ while (my_exp_dmg !== output_exp_dmg)
     weapon_instance.update_status(fixed_status, result_status);
     }
 
-    exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
-      (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
+    basic_dmg = await char_instance.calculate_basic_dmg(const_dmg_rate);
+
+    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
 
     if (temp_exp_dmg < exp_dmg)
@@ -759,8 +762,8 @@ while (my_exp_dmg !== output_exp_dmg)
     weapon_instance.update_status(fixed_status, result_status);
     }
 
-    exp_dmg = (result_status[1]*1.858 + result_status[3]*3.715+ 1807.5*
-      (1 + 5 * result_status[3]/(result_status[3] + 1200)))*(1 + result_status[5]*result_status[6])
+    basic_dmg = await char_instance.calculate_basic_dmg(const_dmg_rate);
+    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
     
     if (temp_exp_dmg < exp_dmg)
