@@ -573,7 +573,7 @@ async function monte_carlo_calculate()
   const dmg_rate = await char_instance.dmg_rate_data();
   console.log(dmg_rate);
 
-while (dlt_exp_dmg < 1)
+while (dlt_exp_dmg > 1)
 {
    exp_dmg = 0;
    temp_exp_dmg = 0;
