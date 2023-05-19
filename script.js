@@ -405,7 +405,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   let fixed_status = base_status.slice();
   let result_status;
   for (let i = 0; i < 7; i++)
-  console.log();
   {
     fixed_status[i] = fixed_status[i] + af_buff[i];
   }
