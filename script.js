@@ -522,16 +522,23 @@ async function monte_carlo_calculate()
   console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
-  my_exp_dmg = my_exp_dmg.toFixed(0)
-  console.log(my_exp_dmg);
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
 
+  if (my_exp_dmg < 0 || !Number.isFinite(af_score))
+  {
+    result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
+    document.getElementById("result").innerHTML = result;
+    return result;
+  }
+  
   if (af_score < 0 || af_score>500 || !Number.isFinite(af_score))
   {
     result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("result").innerHTML = result;
     return result;
   }
+  my_exp_dmg = my_exp_dmg.toFixed(0);
+  console.log(my_exp_dmg);
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
