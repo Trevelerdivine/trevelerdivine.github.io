@@ -563,20 +563,15 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let basic_dmg;
   let n_count = 0;
-  let exp_dmg = 0;
-  let temp_exp_dmg = 0;
-  let old_exp_dmg = 0;
-  let dlt_exp_dmg = 0;
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   console.log(dmg_rate);
-
-while (dlt_exp_dmg > 1)
+while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
-   exp_dmg = 0;
-   temp_exp_dmg = 0;
+  let exp_dmg = 0;
+  let temp_exp_dmg = 0;
   n_count = n_count + 1;
 
   for (let i = 0; i < 10000; i++)
@@ -822,10 +817,7 @@ while (dlt_exp_dmg > 1)
   }
 
  }
- old_exp_dmg = output_exp_dmg;
- output_exp_dmg = temp_exp_dmg;
- dlt_exp_dmg = Math.abs(old_exp_dmg - output_exp_dmg);
-
+ output_exp_dmg = temp_exp_dmg.toFixed(0);
  if (my_exp_dmg < output_exp_dmg)
  {
   af_score_upper_limit = af_score;
@@ -845,8 +837,7 @@ while (dlt_exp_dmg > 1)
   temp_status[5] = (temp_status[5]*100).toFixed(1);
   temp_status[6] = (temp_status[6]*100).toFixed(1);
   temp_status[7] = (temp_status[7]*100).toFixed(1);
-  temp_critical_dmg = temp_critical_dmg.toFixed(0);
-  output_exp_dmg = output_exp_dmg.toFixed(0);
+  temp_critical_dmg = temp_critical_dmg.toFixed(0)
   af_score = af_score.toFixed(1);
   console.log(temp_status);
   console.log(my_exp_dmg);
