@@ -531,6 +531,7 @@ async function monte_carlo_calculate()
   {
     result = "  ダメージ期待値: " + my_exp_dmg + "<br>" + "ダメージ期待値が異常値を示しています。再入力してください。"
     document.getElementById("result").innerHTML = result;
+    console.log(my_exp_dmg);
     return result;
   }
   

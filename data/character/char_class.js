@@ -149,7 +149,7 @@ class nahida {
     }
   
     calculate_char_fixed_cr() {
-      return  0;
+      return 0;
     }
   
     calculate_char_result_cr() {
