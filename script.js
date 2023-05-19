@@ -504,7 +504,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     weapon_instance.update_status(fixed_status, result_status);
     }
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
-    exp_dmg =   basic_dmg *(1 + result_status[5]*result_status[6])
+    exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
 
     return exp_dmg;
@@ -525,6 +525,13 @@ async function monte_carlo_calculate()
   my_exp_dmg = my_exp_dmg.toFixed(0)
   console.log(my_exp_dmg);
   let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+
+  if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
+  {
+    result = "ダメージ期待値: " + my_exp_dmg + "<br>" + "バグあり"
+    document.getElementById("result").innerHTML = result;
+    return result;
+  }
 
   if (af_score < 0 || af_score>500 || !Number.isFinite(af_score))
   {
