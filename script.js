@@ -568,7 +568,7 @@ async function monte_carlo_calculate()
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   console.log(dmg_rate);
-while (my_exp_dmg !== output_exp_dmg)
+while (my_exp_dmg !== output_exp_dmg || n_count == 15)
 {
   let exp_dmg = 0;
   let temp_exp_dmg = 0;
@@ -842,7 +842,7 @@ while (my_exp_dmg !== output_exp_dmg)
   console.log(temp_status);
   console.log(my_exp_dmg);
 
-  result = "my聖遺物スコア" + my_af_score +"  会心ダメージ: " + temp_critical_dmg + "<br>" +"  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + output_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[1] + "<br>" +"  防御力: " + 
+  result ="ループ回数" + n_count + "<br>" + "my聖遺物スコア" + my_af_score + "<br>" + "  会心ダメージ: " + temp_critical_dmg + "<br>" +"  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + output_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[1] + "<br>" +"  防御力: " + 
   temp_status[2] + "<br>"+"  元素熟知: " + temp_status[3] + "<br>" + "  元素チャージ効率: " + temp_status[4] + "%" + "<br>" + "  会心率: " + temp_status[5] + "%" + "<br>" +
    "  会心ダメージ：" + temp_status[6] + "%" + "<br>" + "  ダメージバフ: " + temp_status[7] + "%";
   document.getElementById("result").innerHTML = result;
