@@ -526,7 +526,7 @@ async function monte_carlo_calculate()
 
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
-    result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
+    result = "  ダメージ期待値: " + my_exp_dmg + "<br>" + "ダメージ期待値が異常値を示しています。再入力してください。"
     document.getElementById("result").innerHTML = result;
     return result;
   }
