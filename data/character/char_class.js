@@ -139,11 +139,11 @@ class nahida {
     }
   
     calculate_char_fixed_elm_charge() {
-      return 0;
+      return 0.2;
     }
   
     calculate_char_result_elm_charge() {
-      return 0;
+      return 0.2;
     }
   
     calculate_char_fixed_cr() {
@@ -163,11 +163,11 @@ class nahida {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return 0.004*(this.result_status_array[4]-1) + 0.47 + Math.min(0.75,(this.result_status_array[4])/4);
+      return 0.004*(this.result_status_array[4]-1) + 0.27 + Math.min(0.75,(this.result_status_array[4])/4);
     }
   
     calculate_char_result_dmg_buff() {
-      return 0.004*(this.result_status_array[4]-1) + 0.47 + Math.min(0.75,(this.result_status_array[4])/4);
+      return 0.004*(this.result_status_array[4]-1) + 0.27 + Math.min(0.75,(this.result_status_array[4])/4);
     }
 
     calculate_basic_dmg(dmg_rate) {
