@@ -505,7 +505,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     weapon_instance.update_status(fixed_status, result_status);
     }
     console.log(result_status);
-
+    console.log(dmg_rate);
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
     exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
