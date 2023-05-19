@@ -568,7 +568,7 @@ async function monte_carlo_calculate()
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   console.log(dmg_rate);
-while (my_exp_dmg !== output_exp_dmg && n_count < 15)
+while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
   let exp_dmg = 0;
   let temp_exp_dmg = 0;
