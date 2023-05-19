@@ -845,8 +845,8 @@ while (dlt_exp_dmg > 1)
   temp_status[5] = (temp_status[5]*100).toFixed(1);
   temp_status[6] = (temp_status[6]*100).toFixed(1);
   temp_status[7] = (temp_status[7]*100).toFixed(1);
-  temp_critical_dmg = temp_critical_dmg.toFixed(0)
-  output_exp_dmg = output_exp_dmg.toFixed(0)
+  temp_critical_dmg = temp_critical_dmg.toFixed(0);
+  output_exp_dmg = output_exp_dmg.toFixed(0);
   af_score = af_score.toFixed(1);
   console.log(temp_status);
   console.log(my_exp_dmg);
