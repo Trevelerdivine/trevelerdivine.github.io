@@ -183,7 +183,7 @@ class AThousandFloatingDreams {
     }
   
     calculate_weapon_result_attck() {
-      return Math.min(this.result_status_array[3] - 1, 0.8/0.28)*this.base_status_array[1]/100;
+      return Math.min(this.result_status_array[4] - 1, 0.8/0.28)*this.base_status_array[1]/100;
     }
   
     calculate_weapon_fixed_deff() {
