@@ -48,11 +48,11 @@ class nahida {
     }
   
     calculate_char_fixed_elm_charge() {
-      return 0;
+      return 0.2;
     }
   
     calculate_char_result_elm_charge() {
-      return 0;
+      return 0.2;
     }
   
     calculate_char_fixed_cr() {
