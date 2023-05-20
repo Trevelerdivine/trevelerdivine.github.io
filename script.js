@@ -322,7 +322,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_attck, af_deff, af_elm, af_elm_charge, af_cr, af_cd];
-  console.log(af_buff);
   let basic_dmg;
   let exp_dmg;
 
@@ -441,9 +440,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 async function monte_carlo_calculate()
 {
   const base_status = await calculate_base_status();
-  console.log(base_status);
   const af_main_status_buff = await calculate_af_main_status_buff();
-  console.log(af_main_status_buff);
   const depend_status = await calculate_depend_status();
   console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
