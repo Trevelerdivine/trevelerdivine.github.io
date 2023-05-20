@@ -57,7 +57,7 @@ async function show_char_statsform()
     // チェックボックスの表示をクリア
     characterInfo.innerHTML = "";
 
-    if (selectedCharacter === "nahida") {
+    if (selectedCharacter === "0") {
       // ナヒーダの特性を考慮するかを選ぶチェックボックスを表示
       const traitCheckbox = document.createElement("input");
       traitCheckbox.type = "checkbox";
@@ -70,7 +70,7 @@ async function show_char_statsform()
 
       characterInfo.appendChild(traitCheckbox);
       characterInfo.appendChild(traitLabel);
-    } else if (selectedCharacter === "raiden") {
+    } else if (selectedCharacter === "3") {
       // 雷電将軍の特性を考慮するかを選ぶチェックボックスを表示
       const traitCheckbox = document.createElement("input");
       traitCheckbox.type = "checkbox";

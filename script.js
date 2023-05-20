@@ -12,36 +12,16 @@ let base_elm_charge = 0;
 let base_cr = 0;
 let base_cd = 0;
 let base_dmg_buff = 0;
-let af_score = 0
-
-async function showTable() {
-  document.getElementById("myTable").style.display = "table";
-  base_status = await calculate_base_status();
-  base_hp = base_status[0];
-  document.getElementById("base_hp").textContent = base_hp;
-  base_attck = base_status[1];
-  document.getElementById("base_attck").textContent = base_attck;
-  base_deff = base_status[2];
-  document.getElementById("base_deff").textContent = base_deff;
-  base_elm = base_status[3];
-  document.getElementById("base_elm").textContent = base_elm;
-  base_elm_charge = base_status[4];
-  document.getElementById("base_elm_charge").textContent = base_elm_charge;
-  base_cr = base_status[5];
-  document.getElementById("base_cr").textContent = base_cr;
-  base_cd = base_status[6];
-  document.getElementById("base_cd").textContent = base_cd;
-  base_dmg_buff = base_status[7];
-  document.getElementById("base_dmg_buff").textContent = base_dmg_buff;
-}
+let af_score = 0;
+const char_name = [nahida,yaoyao,tighnari,raiden];
 
 /////////////////////
 
 async function calculate_char_base_status() 
 {
-  const char_name = document.getElementById("char_name").value;
+  const char_index = document.getElementById("char_index").value;
   const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/" + char_name + ".json");
+  const response = await fetch("./data/character/" + char_name[char_index] + ".json");
   const data = await response.json();
   const char_base_hp = data.ステータス.基礎HP[char_level];
   const char_base_attck = data.ステータス.基礎攻撃力[char_level];
@@ -92,9 +72,6 @@ async function calculate_base_status() {
   base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
   return base_status;
   }
-
-////////////////////
-
 
 //////////////////////
 
@@ -217,8 +194,8 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
 
 async function calculate_depend_status()
   {
-    const char_name = document.getElementById("char_name").value;
-    const char_response = await fetch("./data/character/" + char_name + ".json");
+    const char_index = document.getElementById("char_index").value;
+    const char_response = await fetch("./data/character/" + char_name[char_index] + ".json");
     const char_data = await char_response.json();
     const char_depend_status = char_data.ステータス.依存ステータス;
     const weapon_name = document.getElementById("weapon_name").value;
@@ -234,8 +211,6 @@ async function calculate_depend_status()
    }
    return depend_status
   }
-
-///////////////////
 
 
 ///////////////////
@@ -304,13 +279,13 @@ async function calculate_fixed_status(sd,bs,amsb,ds)
 ////////////////////////
 
 async function create_char_instance(base_status, fixed_status, result_status) {
-  const char_name = document.getElementById("char_name").value;
-  if (char_name === "nahida") {
+  const char_index = document.getElementById("char_index").value;
+  if (char_index === "0") {
     // ナヒーダのインスタンスを生成
     const char_instance = new nahida(base_status, fixed_status, result_status);
     return char_instance;
   }
-  if (char_name === "raiden") {
+  if (char_name === "3") {
     // 雷電将軍のインスタンスを生成
     const char_instance = new raiden(base_status, fixed_status, result_status);
     return char_instance;
