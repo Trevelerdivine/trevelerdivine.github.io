@@ -99,7 +99,6 @@ async function calculate_base_status() {
    {
     await calculate_depend_status();
 
-
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
     let deff_form = document.getElementById("deff_form");
@@ -108,41 +107,6 @@ async function calculate_base_status() {
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
-
-    const characterSelect = document.getElementById("char_name");
-    const selectedCharacter = characterSelect.value;
-    const characterInfo = document.getElementById("characterInfo");
-
-    // チェックボックスの表示をクリア
-    characterInfo.innerHTML = "";
-
-    if (selectedCharacter === "nahida") {
-      // ナヒーダの特性を考慮するかを選ぶチェックボックスを表示
-      const traitCheckbox = document.createElement("input");
-      traitCheckbox.type = "checkbox";
-      traitCheckbox.id = "traitCheckbox";
-      traitCheckbox.value = "traitCheckbox";
-
-      const traitLabel = document.createElement("label");
-      traitLabel.htmlFor = "traitCheckbox";
-      traitLabel.textContent = "心景幻成: 元素熟知+250";
-
-      characterInfo.appendChild(traitCheckbox);
-      characterInfo.appendChild(traitLabel);
-    } else if (selectedCharacter === "raiden") {
-      // 雷電将軍の特性を考慮するかを選ぶチェックボックスを表示
-      const traitCheckbox = document.createElement("input");
-      traitCheckbox.type = "checkbox";
-      traitCheckbox.id = "traitCheckbox";
-      traitCheckbox.value = "traitCheckbox";
-
-      const traitLabel = document.createElement("label");
-      traitLabel.htmlFor = "traitCheckbox";
-      traitLabel.textContent = "神変·悪曜開眼: 元素爆発ダメージ+27%";
-
-      characterInfo.appendChild(traitCheckbox);
-      characterInfo.appendChild(traitLabel);
-    }
     
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
@@ -182,7 +146,52 @@ async function calculate_base_status() {
     {
       cd_form.style.display = "block";  // 会心ダメージフォームを表示
     }
+
+    const characterSelect = document.getElementById("char_name");
+    const selectedCharacter = characterSelect.value;
+    const characterInfo = document.getElementById("characterInfo");
+
+    // チェックボックスの表示をクリア
+    characterInfo.innerHTML = "";
+
+    if (selectedCharacter === "nahida") {
+      // ナヒーダの特性を考慮するかを選ぶチェックボックスを表示
+      const traitCheckbox = document.createElement("input");
+      traitCheckbox.type = "checkbox";
+      traitCheckbox.id = "traitCheckbox";
+      traitCheckbox.value = "traitCheckbox";
+
+      const traitLabel = document.createElement("label");
+      traitLabel.htmlFor = "traitCheckbox";
+      traitLabel.textContent = "心景幻成: 元素熟知+250";
+
+      characterInfo.appendChild(traitCheckbox);
+      characterInfo.appendChild(traitLabel);
+    } else if (selectedCharacter === "raiden") {
+      // 雷電将軍の特性を考慮するかを選ぶチェックボックスを表示
+      const traitCheckbox = document.createElement("input");
+      traitCheckbox.type = "checkbox";
+      traitCheckbox.id = "traitCheckbox";
+      traitCheckbox.value = "traitCheckbox";
+
+      const traitLabel = document.createElement("label");
+      traitLabel.htmlFor = "traitCheckbox";
+      traitLabel.textContent = "神変·悪曜開眼: 元素爆発ダメージ+27%";
+
+      const traitCheckbox2 = document.createElement("input");
+      traitCheckbox2.type = "checkbox";
+      traitCheckbox2.id = "traitCheckbox2";
+      traitCheckbox2.value = "traitCheckbox2";
+
+      const traitLabel2 = document.createElement("label");
+      traitLabel2.htmlFor = "traitCheckbox2";
+      traitLabel2.textContent = "絶縁";
+
+      characterInfo.appendChild(traitCheckbox);
+      characterInfo.appendChild(traitLabel);
+    }
 }
+
 
 //////////////////////
 
