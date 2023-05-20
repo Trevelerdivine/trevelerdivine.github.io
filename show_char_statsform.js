@@ -50,7 +50,7 @@ async function show_char_statsform()
       cd_form.style.display = "block";  // 会心ダメージフォームを表示
     }
 
-    const characterSelect = document.getElementById("char_name");
+    const characterSelect = document.getElementById("char_index");
     const selectedCharacter = characterSelect.value;
     const characterInfo = document.getElementById("characterInfo");
 
