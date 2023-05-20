@@ -285,7 +285,7 @@ async function create_char_instance(base_status, fixed_status, result_status) {
     const char_instance = new nahida(base_status, fixed_status, result_status);
     return char_instance;
   }
-  if (char_name === "3") {
+  if (char_index === "3") {
     // 雷電将軍のインスタンスを生成
     const char_instance = new raiden(base_status, fixed_status, result_status);
     return char_instance;
