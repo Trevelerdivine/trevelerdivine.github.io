@@ -10,7 +10,6 @@ async function show_char_statsform()
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
-    const characterInfo = document.getElementById("characterInfo");
     
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
@@ -20,7 +19,6 @@ async function show_char_statsform()
     cr_form.style.display = "none";  // 会心率フォームを非表示
     cd_form.style.display = "none";  // 会心ダメージフォームを非表示
     calculateButton.style.display = "block";
-    characterInfo.style.display = "block";
 
     
     if (depend_status[0] == 1) 
@@ -56,6 +54,7 @@ async function show_char_statsform()
     const characterSelect = document.getElementById("char_index");
     const selectedCharacter = characterSelect.value;
     const characterInfo = document.getElementById("characterInfo");
+    characterInfo.style.display = "block";
 
     // チェックボックスの表示をクリア
     characterInfo.innerHTML = "";
