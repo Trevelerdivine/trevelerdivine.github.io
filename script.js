@@ -13,7 +13,7 @@ let base_cr = 0;
 let base_cd = 0;
 let base_dmg_buff = 0;
 let af_score = 0;
-const char_name = [nahida,yaoyao,tighnari,raiden];
+const char_name = ["nahida","yaoyao","tighnari","raiden"];
 
 /////////////////////
 
