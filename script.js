@@ -189,6 +189,8 @@ async function calculate_base_status() {
 
       characterInfo.appendChild(traitCheckbox);
       characterInfo.appendChild(traitLabel);
+      characterInfo.appendChild(traitCheckbox2);
+      characterInfo.appendChild(traitLabel2);
     }
 }
 
