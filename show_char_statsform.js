@@ -31,6 +31,7 @@ async function show_char_statsform()
     const characterSelect = document.getElementById("char_index");
     const selectedCharacter = characterSelect.value;
     const characterInfo = document.getElementById("characterInfo");
+    const checkboxStates = []; // チェックボックスの状態を格納する配列
     characterInfo.style.display = "block";
 
     // チェックボックスの表示をクリア
@@ -71,7 +72,10 @@ async function show_char_statsform()
           characterInfo.appendChild(traitLabel);
           const lineBreak = document.createElement("br");
           characterInfo.appendChild(lineBreak);
+
+          checkboxStates.push(traitCheckbox.checked); // チェックボックスの状態を配列に追加
         }
+        console.log(checkboxStates); // チェックボックスの状態の配列を表示
       }
     } else if (selectedCharacter === "3") {
         const traits = [
@@ -109,8 +113,10 @@ async function show_char_statsform()
             characterInfo.appendChild(traitLabel);
             const lineBreak = document.createElement("br");
             characterInfo.appendChild(lineBreak);
-          
+
+            checkboxStates.push(traitCheckbox.checked); // チェックボックスの状態を配列に追加
           }
+          console.log(checkboxStates); // チェックボックスの状態の配列を表示
         }
       }
   }
