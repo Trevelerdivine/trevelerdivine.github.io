@@ -12,21 +12,7 @@ async function show_char_statsform()
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
     
-    // すべてのフォームを非表示にする
-    const forms = [hp_form, attck_form, deff_form, elm_form, elm_charge_form, cr_form, cd_form];
-    forms.forEach((form) => {
-      form.style.display = "none";
-    });
-    calculateButton.style.display = "block";
   
-    // 必要なフォームを表示する
-    const formIndices = [0, 1, 2, 3, 4, 5, 6];
-    formIndices.forEach((index) => {
-      if (depend_status[index] == 1) {
-        forms[index].style.display = "block";
-      }
-    });
-
     const characterSelect = document.getElementById("char_index");
     const selectedCharacter = characterSelect.value;
     const characterInfo = document.getElementById("characterInfo");
@@ -35,28 +21,44 @@ async function show_char_statsform()
     // チェックボックスの表示をクリア
     characterInfo.innerHTML = "";
 
-      if (selectedCharacter === "0") {
-    // ナヒーダの特性情報を表示
-    const traits = [
-      { label: "1重：心識蘊蔵の種", value: "traitCheckbox" },
-      { label: "2重：正覚善見の根 激化で防御力-20%", value: "traitCheckbox2" },
-      { label: "4重：正覚善見の根 激化で防御力-20%", value: "traitCheckbox3" }
-    ];
-
-    traits.forEach((trait) => {
+    if (selectedCharacter === "0") {
+      // ナヒーダの特性を考慮するかを選ぶチェックボックスを表示
       const traitCheckbox = document.createElement("input");
       traitCheckbox.type = "checkbox";
-      traitCheckbox.id = trait.value;
-      traitCheckbox.value = trait.value;
+      traitCheckbox.id = "traitCheckbox";
+      traitCheckbox.value = "traitCheckbox";
 
       const traitLabel = document.createElement("label");
-      traitLabel.htmlFor = trait.value;
-      traitLabel.textContent = trait.label;
+      traitLabel.htmlFor = "traitCheckbox";
+      traitLabel.textContent = "1重：心識蘊蔵の種";
+
+      const traitCheckbox2 = document.createElement("input");
+      traitCheckbox2.type = "checkbox";
+      traitCheckbox2.id = "traitCheckbox2";
+      traitCheckbox2.value = "traitCheckbox2";
+
+      const traitLabel2 = document.createElement("label");
+      traitLabel2.htmlFor = "traitCheckbox2";
+      traitLabel2.textContent = "2重：正覚善見の根 激化で防御力-20%";
+
+      const traitCheckbox3 = document.createElement("input");
+      traitCheckbox3.type = "checkbox";
+      traitCheckbox3.id = "traitCheckbox3";
+      traitCheckbox3.value = "traitCheckbox3";
+
+      const traitLabel3 = document.createElement("label");
+      traitLabel3.htmlFor = "traitCheckbox3";
+      traitLabel3.textContent = "4重：正覚善見の根 激化で防御力-20%";
 
       characterInfo.appendChild(traitCheckbox);
       characterInfo.appendChild(traitLabel);
       characterInfo.appendChild(lineBreak);
-    });
+      characterInfo.appendChild(traitCheckbox2);
+      characterInfo.appendChild(traitLabel2);
+      characterInfo.appendChild(lineBreak);
+      characterInfo.appendChild(traitCheckbox3);
+      characterInfo.appendChild(traitLabel3);
+    } else if (selectedCharacter === "3") {
       // 雷電将軍の特性を考慮するかを選ぶチェックボックスを表示
       const traitCheckbox = document.createElement("input");
       traitCheckbox.type = "checkbox";
