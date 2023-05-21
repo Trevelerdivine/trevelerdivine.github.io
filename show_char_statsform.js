@@ -19,9 +19,7 @@ async function show_char_statsform()
 
     // チェックボックスの表示をクリア
     characterInfo.innerHTML = "";
-
     if (selectedCharacter === "0") {
-      // ナヒーダの特性を考慮するかを選ぶチェックボックスを表示
       const traits = [
         {
           id: "traitCheckbox",
@@ -37,25 +35,26 @@ async function show_char_statsform()
         },
         {
           id: "traitCheckbox4",
-          label: "6重：正覚善見の根 激化で防御力-20%"
+          label: "6重：大辯円成の実 追撃"
         }
       ];
       
-      for (const trait of traits) {
+      for (let i = 0; i < traits.length; i++) {
         const traitCheckbox = document.createElement("input");
         traitCheckbox.type = "checkbox";
-        traitCheckbox.id = trait.id;
-        traitCheckbox.value = trait.id;
+        traitCheckbox.id = traits[i].id;
+        traitCheckbox.value = traits[i].id;
       
         const traitLabel = document.createElement("label");
-        traitLabel.htmlFor = trait.id;
-        traitLabel.textContent = trait.label;
+        traitLabel.htmlFor = traits[i].id;
+        traitLabel.textContent = traits[i].label;
       
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
         const lineBreak = document.createElement("br");
         characterInfo.appendChild(lineBreak);
       }
+      
     } else if (selectedCharacter === "3") {
       // 雷電将軍の特性を考慮するかを選ぶチェックボックスを表示
       const traitCheckbox = document.createElement("input");
