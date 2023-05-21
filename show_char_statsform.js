@@ -10,6 +10,7 @@ async function show_char_statsform()
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
+    const char_constellations = document.getElementById("char_constellations").value;
     
     const formElements = [
       { form: hp_form, index: 0 },
@@ -53,21 +54,24 @@ async function show_char_statsform()
           label: "6重：大辯円成の実 追撃"
         }
       ];
-      
-      for (let i = 0; i < traits.length; i++) {
-        const traitCheckbox = document.createElement("input");
-        traitCheckbox.type = "checkbox";
-        traitCheckbox.id = traits[i].id;
-        traitCheckbox.value = traits[i].id;
-      
-        const traitLabel = document.createElement("label");
-        traitLabel.htmlFor = traits[i].id;
-        traitLabel.textContent = traits[i].label;
-      
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        const lineBreak = document.createElement("br");
-        characterInfo.appendChild(lineBreak);
+      if (char_constellations > 0)
+      {
+        for (let i = 0; i < char_constellations; i++) {
+          const traitCheckbox = document.createElement("input");
+          traitCheckbox.type = "checkbox";
+          traitCheckbox.id = traits[i].id;
+          traitCheckbox.value = traits[i].id;
+          traitCheckbox.checked = true;
+        
+          const traitLabel = document.createElement("label");
+          traitLabel.htmlFor = traits[i].id;
+          traitLabel.textContent = traits[i].label;
+        
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          const lineBreak = document.createElement("br");
+          characterInfo.appendChild(lineBreak);
+        }
       }
       
     } else if (selectedCharacter === "3") {
