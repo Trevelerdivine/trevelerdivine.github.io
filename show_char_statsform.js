@@ -43,7 +43,7 @@ async function show_char_statsform()
         },
         {
           id: "traitCheckbox2",
-          label: "2重：正覚善見の根 激化で防御力-20%"
+          label: "2重：正覚善見の根 激化で防御力-30%"
         },
         {
           id: "traitCheckbox3",
@@ -71,9 +71,11 @@ async function show_char_statsform()
           characterInfo.appendChild(traitLabel);
           const lineBreak = document.createElement("br");
           characterInfo.appendChild(lineBreak);
+
+          checkboxStates.push(traitCheckbox.checked); // チェックボックスの状態を配列に追加
         }
+        console.log(checkboxStates); // チェックボックスの状態の配列を表示
       }
-      
     } else if (selectedCharacter === "3") {
         const traits = [
           {
@@ -110,7 +112,10 @@ async function show_char_statsform()
             characterInfo.appendChild(traitLabel);
             const lineBreak = document.createElement("br");
             characterInfo.appendChild(lineBreak);
+
+            checkboxStates.push(traitCheckbox.checked); // チェックボックスの状態を配列に追加
           }
+          console.log(checkboxStates); // チェックボックスの状態の配列を表示
         }
       }
   }
