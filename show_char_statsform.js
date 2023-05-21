@@ -75,29 +75,42 @@ async function show_char_statsform()
       }
       
     } else if (selectedCharacter === "3") {
-      // 雷電将軍の特性を考慮するかを選ぶチェックボックスを表示
-      const traitCheckbox = document.createElement("input");
-      traitCheckbox.type = "checkbox";
-      traitCheckbox.id = "traitCheckbox";
-      traitCheckbox.value = "traitCheckbox";
-
-      const traitLabel = document.createElement("label");
-      traitLabel.htmlFor = "traitCheckbox";
-      traitLabel.textContent = "神変·悪曜開眼: 元素爆発ダメージ+27%";
-
-      const traitCheckbox2 = document.createElement("input");
-      traitCheckbox2.type = "checkbox";
-      traitCheckbox2.id = "traitCheckbox2";
-      traitCheckbox2.value = "traitCheckbox2";
-
-      const traitLabel2 = document.createElement("label");
-      traitLabel2.htmlFor = "traitCheckbox2";
-      traitLabel2.textContent = "絶縁";
-
-      characterInfo.appendChild(traitCheckbox);
-      characterInfo.appendChild(traitLabel);
-      characterInfo.appendChild(lineBreak);
-      characterInfo.appendChild(traitCheckbox2);
-      characterInfo.appendChild(traitLabel2);
-    }
-}
+        const traits = [
+          {
+            id: "traitCheckbox",
+            label: "1重：悪曜の呪詛 眼力溜まりやすさup"
+          },
+          {
+            id: "traitCheckbox2",
+            label: "2重：斬鉄断金 防御力60%無視"
+          },
+          {
+            id: "traitCheckbox3",
+            label: "4重：常道への誓い 雷電将軍以外の攻撃力+30%"
+          },
+          {
+            id: "traitCheckbox4",
+            label: "6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
+          }
+        ];
+        if (char_constellations > 0)
+        {
+          for (let i = 0; i < char_constellations; i++) {
+            const traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[i].id;
+            traitCheckbox.value = traits[i].id;
+            traitCheckbox.checked = true;
+          
+            const traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[i].id;
+            traitLabel.textContent = traits[i].label;
+          
+            characterInfo.appendChild(traitCheckbox);
+            characterInfo.appendChild(traitLabel);
+            const lineBreak = document.createElement("br");
+            characterInfo.appendChild(lineBreak);
+          }
+        }
+      }
+  }
