@@ -46,6 +46,8 @@ async function show_char_statsform()
     const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
     for (const checkbox of existingCheckboxes) {
       checkbox.remove();
+      const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
+      associatedLabel.remove();
     }
     if (selectedCharacter === "0") {
       const traits = [
