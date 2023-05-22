@@ -443,13 +443,16 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 async function monte_carlo_calculate()
 {
 
-    const checkboxStates = [0,0,0,0,0,0];
+    const checkboxStates = [];
     const characterInfo = document.getElementById("characterInfo");
     const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
   
     checkboxes.forEach((checkbox) => {
       checkboxStates.push(checkbox.checked);
     });
+    while (checkboxStates.length < 4) {
+      checkboxStates.push(false);
+    }
   console.log(checkboxStates); // チェックボックスの入力結果の配列を表示
 
 
