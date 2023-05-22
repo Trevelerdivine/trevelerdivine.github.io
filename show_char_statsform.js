@@ -11,6 +11,7 @@ async function show_char_statsform()
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
     const char_constellations = document.getElementById("char_constellations").value;
+    calculateButton.style.display = "block";
     
     const formElements = [
       { form: hp_form, index: 0 },
