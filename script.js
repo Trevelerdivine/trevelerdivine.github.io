@@ -74,61 +74,6 @@ async function calculate_base_status() {
   return base_status;
   }
 
-//////////////////////
-
-async function show_weapon_statsform()
-   {
-    await calculate_depend_status()
-
-    let hp_form = document.getElementById("hp_form");
-    let attck_form = document.getElementById("attck_form");
-    let deff_form = document.getElementById("deff_form");
-    let elm_form = document.getElementById("elm_form");
-    let elm_charge_form = document.getElementById("elm_charge_form");
-    let cr_form = document.getElementById("cr_form");
-    let cd_form = document.getElementById("cd_form");
-    let calculateButton = document.getElementById("calculateButton");
-    
-    hp_form.style.display = "none";  // HPフォームを非表示
-    attck_form.style.display = "none";  // 攻撃力フォームを非表示
-    deff_form.style.display = "none";  // 防御力フォームを非表示
-    elm_form.style.display = "none";  // 元素熟知を非表示
-    elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
-    cr_form.style.display = "none";  // 会心率フォームを非表示
-    cd_form.style.display = "none";  // 会心ダメージフォームを非表示
-    calculateButton.style.display = "block";
-    
-    if (depend_status[0] == 1) 
-    {
-      hp_form.style.display = "block";  // hpフォームを表示
-    }
-    
-    if (depend_status[1] == 1) 
-    {
-      attck_form.style.display = "block";  // 攻撃力フォームを表示
-    }
-    if (depend_status[2] == 1) 
-    {
-      deff_form.style.display = "block";  // 防御力フォームを表示
-    }
-    if (depend_status[3] == 1) 
-    {
-      elm_form.style.display = "block";  // 元素熟知フォームを表示
-    }
-    if (depend_status[4] == 1) 
-    {
-      elm_charge_form.style.display = "block";  // 元素チャージ効率フォームを表示
-    }
-    if (depend_status[5] == 1) 
-    {
-      cr_form.style.display = "block";  // 会心率フォームを表示
-    }
-    if (depend_status[6] == 1) 
-    {
-      cd_form.style.display = "block";  // 会心ダメージフォームを表示
-    }
-}
-
 /////////////////////
 
 async function calculate_af_main_status_buff() 

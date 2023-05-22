@@ -37,89 +37,66 @@ async function show_char_statsform()
       }
     }
   
-    const characterSelect = document.getElementById("char_index");
-    const selectedCharacter = characterSelect.value;
+    const weaponSelect = document.getElementById("weapon_index");
+    const selectedWeapon = weaponSelect.value;
     const characterInfo = document.getElementById("characterInfo");
     const checkboxStates = []; // チェックボックスの状態を格納する配列
-    characterInfo.style.display = "block";
 
-    // チェックボックスの表示をクリア
-    characterInfo.innerHTML = "";
-    if (selectedCharacter === "0") {
+// チェックボックスと説明テキストの表示をクリア
+const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
+for (const checkbox of existingCheckboxes) {
+  checkbox.remove();
+  const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
+  associatedLabel.remove();
+}
+
+// 改行を削除
+const lineBreaks = characterInfo.querySelectorAll("br");
+for (const lineBreak of lineBreaks) {
+  lineBreak.remove();
+}
+    if (selectedWeapon === "0") {
       const traits = [
         {
           id: "traitCheckbox",
-          label: "第1重：心識蘊蔵の種"
+          label: "千夜の暁歌：チーム内の他キャラに応じてバフ"
         },
-        {
-          id: "traitCheckbox2",
-          label: "第2重：正覚善見の根 激化で防御力-30%"
-        },
-        {
-          id: "traitCheckbox3",
-          label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ"
-        },
-        {
-          id: "traitCheckbox4",
-          label: "第6重：大辯円成の実 追撃"
-        }
       ];
-      if (char_constellations > 0)
-      {
-        for (let i = 0; i < char_constellations; i++) {
           const traitCheckbox = document.createElement("input");
           traitCheckbox.type = "checkbox";
-          traitCheckbox.id = traits[i].id;
-          traitCheckbox.value = traits[i].id;
+          traitCheckbox.id = traits[0].id;
+          traitCheckbox.value = traits[0].id;
           traitCheckbox.checked = true;
         
           const traitLabel = document.createElement("label");
-          traitLabel.htmlFor = traits[i].id;
-          traitLabel.textContent = traits[i].label;
+          traitLabel.htmlFor = traits[0].id;
+          traitLabel.textContent = traits[0].label;
         
           characterInfo.appendChild(traitCheckbox);
           characterInfo.appendChild(traitLabel);
           const lineBreak = document.createElement("br");
           characterInfo.appendChild(lineBreak);
-        }
-      }
-    } else if (selectedCharacter === "3") {
+        } 
+    else if (selectedCharacter === "2") {
         const traits = [
           {
             id: "traitCheckbox",
-            label: "第1重：悪曜の呪詛 眼力溜まりやすさup"
+            label: "落ち着き：一定確率でスキルクールタイム0"
           },
-          {
-            id: "traitCheckbox2",
-            label: "第2重：斬鉄断金 防御力60%無視"
-          },
-          {
-            id: "traitCheckbox3",
-            label: "第4重：常道への誓い 雷電将軍以外の攻撃力+30%"
-          },
-          {
-            id: "traitCheckbox4",
-            label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
-          }
         ];
-        if (char_constellations > 0)
-        {
-          for (let i = 0; i < char_constellations; i++) {
             const traitCheckbox = document.createElement("input");
             traitCheckbox.type = "checkbox";
-            traitCheckbox.id = traits[i].id;
-            traitCheckbox.value = traits[i].id;
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
             traitCheckbox.checked = true;
           
             const traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[i].id;
-            traitLabel.textContent = traits[i].label;
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
           
             characterInfo.appendChild(traitCheckbox);
             characterInfo.appendChild(traitLabel);
             const lineBreak = document.createElement("br");
             characterInfo.appendChild(lineBreak);
-          }
         }
       }
-  }
