@@ -40,14 +40,11 @@ async function show_char_statsform()
     const characterSelect = document.getElementById("char_index");
     const selectedCharacter = characterSelect.value;
     const characterInfo = document.getElementById("characterInfo");
-    const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
     const checkboxStates = []; // チェックボックスの状態を格納する配列
     characterInfo.style.display = "block";
 
-    for (const checkbox of existingCheckboxes) {
-      checkbox.remove();
-    }
-
+    // チェックボックスの表示をクリア
+    characterInfo.innerHTML = "";
     if (selectedCharacter === "0") {
       const traits = [
         {

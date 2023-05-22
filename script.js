@@ -14,6 +14,7 @@ let base_cd = 0;
 let base_dmg_buff = 0;
 let af_score = 0;
 const char_name = ["nahida","yaoyao","tighnari","raiden"];
+const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
 
 /////////////////////
 
@@ -39,9 +40,9 @@ async function calculate_char_base_status()
 ///////////////  
 
 async function calculate_weapon_base_status() {
-  const weapon_name = document.getElementById("weapon_name").value;
+  const weapon_index = document.getElementById("weapon_index").value;
   const weapon_level = document.getElementById("weapon_level").value;
-  const response = await fetch("./data/weapon/" + weapon_name + ".json");
+  const response = await fetch("./data/weapon/" + weapon_name[weapon_index] + ".json");
   const data = await response.json();
   const weapon_base_hp = data.ステータス.基礎HP[weapon_level];
   const weapon_base_attck = data.ステータス.基礎攻撃力[weapon_level];
@@ -198,8 +199,8 @@ async function calculate_depend_status()
     const char_response = await fetch("./data/character/" + char_name[char_index] + ".json");
     const char_data = await char_response.json();
     const char_depend_status = char_data.ステータス.依存ステータス;
-    const weapon_name = document.getElementById("weapon_name").value;
-    const weapon_response = await fetch("./data/weapon/" + weapon_name + ".json");
+    const weapon_index = document.getElementById("weapon_index").value;
+    const weapon_response = await fetch("./data/weapon/" + weapon_name[weapon_index] + ".json");
     const weapon_data = await weapon_response.json();
     const weapon_depend_status = weapon_data.ステータス.依存ステータス;
     for (let i = 0; i < 7; i++){
@@ -295,20 +296,20 @@ async function create_char_instance(base_status, fixed_status, result_status) {
 ///////////////////////
 
 async function create_weapon_instance(base_status, fixed_status, result_status) {
-  const weapon_name = document.getElementById("weapon_name").value;
-  if (weapon_name === "AThousandFloatingDreams") {
+  const weapon_index = document.getElementById("weapon_index").value;
+  if (weapon_index === "0") {
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_name === "SacrificialFragments") {
+  if (weapon_index === "2") {
     const weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_name === "EngulfingLightning") {
+  if (weapon_index === "4") {
     const weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_name === "TheCatch") {
+  if (weapon_index === "5") {
     const weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
     return weapon_instance;
   }
