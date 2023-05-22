@@ -77,7 +77,7 @@ for (const lineBreak of lineBreaks) {
           const lineBreak = document.createElement("br");
           characterInfo.appendChild(lineBreak);
         } 
-    else if (selectedCharacter === "2") {
+    else if (selectedWeapon === "2") {
         const traits = [
           {
             id: "traitCheckbox",
