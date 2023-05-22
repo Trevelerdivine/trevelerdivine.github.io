@@ -49,12 +49,12 @@ for (const checkbox of existingCheckboxes) {
   checkbox.remove();
   const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
   associatedLabel.remove();
-  const lineBreak = associatedLabel.nextElementSibling;
-  if (lineBreak && lineBreak.nodeName === "BR") {
-    lineBreak.remove();
-  }
 }
 
+// 改行を削除
+const lineBreaks = characterInfo.querySelectorAll("br");
+for (const lineBreak of lineBreaks) {
+  lineBreak.remove();
     if (selectedCharacter === "0") {
       const traits = [
         {
