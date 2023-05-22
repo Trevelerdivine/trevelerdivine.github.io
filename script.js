@@ -455,12 +455,6 @@ async function monte_carlo_calculate()
     }
   console.log(checkboxStates); // チェックボックスの入力結果の配列を表示
 
-
-
-
-
-
-
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();

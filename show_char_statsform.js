@@ -11,6 +11,14 @@ async function show_char_statsform()
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
     const char_constellations = document.getElementById("char_constellations").value;
+
+    hp_form.style.display = "none";  // HPフォームを非表示
+    attck_form.style.display = "none";  // 攻撃力フォームを非表示
+    deff_form.style.display = "none";  // 防御力フォームを非表示
+    elm_form.style.display = "none";  // 元素熟知を非表示
+    elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
+    cr_form.style.display = "none";  // 会心率フォームを非表示
+    cd_form.style.display = "none";  // 会心ダメージフォームを非表示
     calculateButton.style.display = "block";
     
     const formElements = [
