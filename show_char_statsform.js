@@ -49,19 +49,19 @@ async function show_char_statsform()
       const traits = [
         {
           id: "traitCheckbox",
-          label: "1重：心識蘊蔵の種"
+          label: "第1重：心識蘊蔵の種"
         },
         {
           id: "traitCheckbox2",
-          label: "2重：正覚善見の根 激化で防御力-30%"
+          label: "第2重：正覚善見の根 激化で防御力-30%"
         },
         {
           id: "traitCheckbox3",
-          label: "4重：比量現行の茎 敵の人数に応じて熟知バフ"
+          label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ"
         },
         {
           id: "traitCheckbox4",
-          label: "6重：大辯円成の実 追撃"
+          label: "第6重：大辯円成の実 追撃"
         }
       ];
       if (char_constellations > 0)
@@ -87,19 +87,19 @@ async function show_char_statsform()
         const traits = [
           {
             id: "traitCheckbox",
-            label: "1重：悪曜の呪詛 眼力溜まりやすさup"
+            label: "第1重：悪曜の呪詛 眼力溜まりやすさup"
           },
           {
             id: "traitCheckbox2",
-            label: "2重：斬鉄断金 防御力60%無視"
+            label: "第2重：斬鉄断金 防御力60%無視"
           },
           {
             id: "traitCheckbox3",
-            label: "4重：常道への誓い 雷電将軍以外の攻撃力+30%"
+            label: "第4重：常道への誓い 雷電将軍以外の攻撃力+30%"
           },
           {
             id: "traitCheckbox4",
-            label: "6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
+            label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
           }
         ];
         if (char_constellations > 0)

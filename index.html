@@ -17,7 +17,7 @@
   <select id="char_index" required onchange="show_char_statsform()" size="4">
     <option hidden>キャラクター選択</option>
   <optgroup label="草元素">
-    <option value="0">ナヒーダ</option>
+    <option value="0" selected>ナヒーダ</option>
     <option value="1">ヨォーヨ</option>
     <option value="2">ティナリ</option>
   </optgroup>
@@ -182,6 +182,13 @@
     <input type="number" id="cd_prof" min="50" step="1"><br>
     <button onclick="calculateDamage()">計算する</button><br>
     <p id="result"></p>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+        show_char_statsform();
+      });
+    </script>
+
   </body>
 
 
