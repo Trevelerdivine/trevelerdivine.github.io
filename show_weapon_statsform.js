@@ -1,4 +1,4 @@
-async function show_char_statsform()
+async function show_weapon_statsform()
    {
 
     await calculate_depend_status();
