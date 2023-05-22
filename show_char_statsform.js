@@ -43,12 +43,18 @@ async function show_char_statsform()
     const checkboxStates = []; // チェックボックスの状態を格納する配列
     characterInfo.style.display = "block";
 
-    const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
-    for (const checkbox of existingCheckboxes) {
-      checkbox.remove();
-      const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
-      associatedLabel.remove();
-    }
+// チェックボックスと説明テキストの表示をクリア
+const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
+for (const checkbox of existingCheckboxes) {
+  checkbox.remove();
+  const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
+  associatedLabel.remove();
+  const lineBreak = associatedLabel.nextElementSibling;
+  if (lineBreak && lineBreak.nodeName === "BR") {
+    lineBreak.remove();
+  }
+}
+
     if (selectedCharacter === "0") {
       const traits = [
         {
