@@ -35,5 +35,68 @@ async function show_weapon_statsform()
       if (depend_status[element.index] === 1) {
         element.form.style.display = "block";
       }
-    }
-  }
+      const weaponSelect = document.getElementById("weapon_index");
+    const selectedWeapon = weaponSelect.value;
+    const characterInfo = document.getElementById("characterInfo");
+    const checkboxStates = []; // チェックボックスの状態を格納する配列
+    characterInfo.style.display = "block";
+
+// チェックボックスと説明テキストの表示をクリア
+const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
+for (const checkbox of existingCheckboxes) {
+  checkbox.remove();
+  const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
+  associatedLabel.remove();
+}
+
+// 改行を削除
+const lineBreaks = characterInfo.querySelectorAll("br");
+for (const lineBreak of lineBreaks) {
+  lineBreak.remove();
+}
+    if (selectedWeapon === "0") {
+      const traits = [
+        {
+          id: "traitCheckbox",
+          label: "千夜の暁歌：チーム内の他のキャラクターの元素に依ってバフ"
+        },
+      ];
+          const traitCheckbox = document.createElement("input");
+          traitCheckbox.type = "checkbox";
+          traitCheckbox.id = traits[0].id;
+          traitCheckbox.value = traits[0].id;
+          traitCheckbox.checked = true;
+        
+          const traitLabel = document.createElement("label");
+          traitLabel.htmlFor = traits[0].id;
+          traitLabel.textContent = traits[0].label;
+        
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          const lineBreak = document.createElement("br");
+          characterInfo.appendChild(lineBreak);
+        }
+        else if (selectedWeapon === "2") {
+        const traits = [
+          {
+            id: "traitCheckbox",
+            label: "落ち着き：一定確率でスキルクールタイム0"
+          },
+        ];
+            const traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+          
+            const traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+          
+            characterInfo.appendChild(traitCheckbox);
+            characterInfo.appendChild(traitLabel);
+            const lineBreak = document.createElement("br");
+            characterInfo.appendChild(lineBreak);
+          }
+        }
+      }
