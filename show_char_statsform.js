@@ -55,6 +55,7 @@ for (const checkbox of existingCheckboxes) {
 const lineBreaks = characterInfo.querySelectorAll("br");
 for (const lineBreak of lineBreaks) {
   lineBreak.remove();
+}
     if (selectedCharacter === "0") {
       const traits = [
         {
@@ -132,4 +133,4 @@ for (const lineBreak of lineBreaks) {
           }
         }
       }
-  }
+    }
