@@ -29,7 +29,7 @@ async function show_weapon_statsform() {
   const existingCheckboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
   for (const weaponcheckbox of existingCheckboxes) {
     weaponcheckbox.remove();
-    const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
+    const associatedLabel = document.querySelector(`label[for="${weaponcheckbox.id}"]`);
     associatedLabel.remove();
   }
   
