@@ -27,8 +27,8 @@ async function show_weapon_statsform() {
 
   // チェックボックスと説明テキストの表示をクリア
   const existingCheckboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
-  for (const checkbox of existingCheckboxes) {
-    checkbox.remove();
+  for (const weaponcheckbox of existingCheckboxes) {
+    weaponcheckbox.remove();
     const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
     associatedLabel.remove();
   }
