@@ -28,19 +28,8 @@ async function show_char_statsform()
     const checkboxStates = []; // チェックボックスの状態を格納する配列
     characterInfo.style.display = "block";
 
-// チェックボックスと説明テキストの表示をクリア
-const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
-for (const checkbox of existingCheckboxes) {
-  checkbox.remove();
-  const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
-  associatedLabel.remove();
-}
-
-// 改行を削除
-const lineBreaks = characterInfo.querySelectorAll("br");
-for (const lineBreak of lineBreaks) {
-  lineBreak.remove();
-}
+    characterInfo.innerHTML = "";
+    
     if (selectedCharacter === "0") {
       const traits = [
         {

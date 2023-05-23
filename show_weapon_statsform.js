@@ -25,19 +25,9 @@ async function show_weapon_statsform() {
   const checkboxStates = []; // チェックボックスの状態を格納する配列
   weaponInfo.style.display = "block";
 
-  // チェックボックスと説明テキストの表示をクリア
-  const existingCheckboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
-  for (const weaponcheckbox of existingCheckboxes) {
-    weaponcheckbox.remove();
-    const weaponassociatedLabel = document.querySelector(`label[for="${weaponcheckbox.id}"]`);
-    weaponassociatedLabel.remove();
-  }
-  
-  // 改行を削除
-  const lineBreaks = weaponInfo.querySelectorAll("br");
-  for (const lineBreak of lineBreaks) {
+
+  weaponInfo.innerHTML = "";
     lineBreak.remove();
-  }
 
   if (selectedweapon === "0") {
     const traits = [
