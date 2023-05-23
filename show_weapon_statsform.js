@@ -35,18 +35,18 @@ async function show_weapon_statsform()
       if (depend_status[element.index] === 1) {
         element.form.style.display = "block";
       }
-      const weaponSelect = document.getElementById("weapon_index");
+    const weaponSelect = document.getElementById("weapon_index");
     const selectedWeapon = weaponSelect.value;
     const weaponInfo = document.getElementById("weaponInfo");
     const checkboxStates = []; // チェックボックスの状態を格納する配列
     weaponInfo.style.display = "block";
 
 // チェックボックスと説明テキストの表示をクリア
-const existingCheckboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
-for (const checkbox of existingCheckboxes) {
+const Checkboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
+for (const checkbox of Checkboxes) {
   checkbox.remove();
-  const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
-  associatedLabel.remove();
+  const associateLabel = document.querySelector(`label[for="${checkbox.id}"]`);
+  associateLabel.remove();
 }
 
 // 改行を削除
