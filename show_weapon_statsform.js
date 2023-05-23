@@ -25,9 +25,7 @@ async function show_weapon_statsform() {
   const checkboxStates = []; // チェックボックスの状態を格納する配列
   weaponInfo.style.display = "block";
 
-
   weaponInfo.innerHTML = "";
-    lineBreak.remove();
 
   if (selectedweapon === "0") {
     const traits = [
