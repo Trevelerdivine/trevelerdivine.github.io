@@ -31,77 +31,42 @@ async function show_weapon_statsform() {
     const traits = [
       {
         id: "traitCheckbox",
-        label: "第1重：心識蘊蔵の種"
-      },
-      {
-        id: "traitCheckbox2",
-        label: "第2重：正覚善見の根 激化で防御力-30%"
-      },
-      {
-        id: "traitCheckbox3",
-        label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ"
-      },
-      {
-        id: "traitCheckbox4",
-        label: "第6重：大辯円成の実 追撃"
+        label: "千夜の暁歌：チームキャラの元素に応じてバフ"
       }
     ];
-    if (weapon_rank > 0) {
-      for (let i = 0; i < weapon_rank; i++) {
         const traitCheckbox = document.createElement("input");
         traitCheckbox.type = "checkbox";
-        traitCheckbox.id = traits[i].id;
-        traitCheckbox.value = traits[i].id;
+        traitCheckbox.id = traits[0].id;
+        traitCheckbox.value = traits[0].id;
         traitCheckbox.checked = true;
 
         const traitLabel = document.createElement("label");
-        traitLabel.htmlFor = traits[i].id;
-        traitLabel.textContent = traits[i].label;
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
 
         weaponInfo.appendChild(traitCheckbox);
         weaponInfo.appendChild(traitLabel);
-        const lineBreak = document.createElement("br");
-        weaponInfo.appendChild(lineBreak);
-      }
-    }
-  } else if (selectedweapon === "3") {
+      } 
+      else if (selectedweapon === "4") {
     const traits = [
       {
         id: "traitCheckbox",
-        label: "第1重：悪曜の呪詛 眼力溜まりやすさup"
-      },
-      {
-        id: "traitCheckbox2",
-        label: "第2重：斬鉄断金 防御力60%無視"
-      },
-      {
-        id: "traitCheckbox3",
-        label: "第4重：常道への誓い 雷電将軍以外の攻撃力+30%"
-      },
-      {
-        id: "traitCheckbox4",
-        label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
+        label: "非時の夢·常世竈食: 元素チャージ効率が100%を超えた部分の28%分、攻撃力がアップ。最大80%まで。元素チャージ効率+30%"
       }
     ];
-    if (weapon_rank > 0) {
-      for (let i = 0; i < weapon_rank; i++) {
         const traitCheckbox = document.createElement("input");
         traitCheckbox.type = "checkbox";
-        traitCheckbox.id = traits[i].id;
-        traitCheckbox.value = traits[i].id;
+        traitCheckbox.id = traits[0].id;
+        traitCheckbox.value = traits[0].id;
         traitCheckbox.checked = true;
 
         const traitLabel = document.createElement("label");
-        traitLabel.htmlFor = traits[i].id;
-        traitLabel.textContent = traits[i].label;
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
 
         weaponInfo.appendChild(traitCheckbox);
         weaponInfo.appendChild(traitLabel);
-        const lineBreak = document.createElement("br");
-        weaponInfo.appendChild(lineBreak);
       }
-    }
-  }
 
   const formElements = [
     { form: hp_form, index: 0 },
