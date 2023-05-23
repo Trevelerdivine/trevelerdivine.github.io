@@ -38,8 +38,6 @@ async function show_weapon_statsform() {
   for (const lineBreak of lineBreaks) {
     lineBreak.remove();
   }
-  
-  }
 
   if (selectedweapon === "0") {
     const traits = [
