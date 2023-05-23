@@ -10,7 +10,7 @@ async function show_weapon_statsform()
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
     let calculateButton = document.getElementById("calculateButton");
-    const char_constellations = document.getElementById("char_constellations").value;
+    const weapon_rank = document.getElementById("weapon_rank").value;
 
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
