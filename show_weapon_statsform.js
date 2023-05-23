@@ -29,7 +29,7 @@ async function show_weapon_statsform() {
   const existingCheckboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
   for (const weaponcheckbox of existingCheckboxes) {
     weaponcheckbox.remove();
-    const weaponassociatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
+    const weaponassociatedLabel = document.querySelector(`label[for="${weaponcheckbox.id}"]`);
     weaponassociatedLabel.remove();
   }
   
@@ -37,6 +37,8 @@ async function show_weapon_statsform() {
   const lineBreaks = weaponInfo.querySelectorAll("br");
   for (const lineBreak of lineBreaks) {
     lineBreak.remove();
+  }
+  
   }
 
   if (selectedweapon === "0") {
