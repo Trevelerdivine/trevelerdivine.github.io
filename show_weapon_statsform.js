@@ -37,12 +37,12 @@ async function show_weapon_statsform()
       }
       const weaponSelect = document.getElementById("weapon_index");
     const selectedWeapon = weaponSelect.value;
-    const characterInfo = document.getElementById("characterInfo");
+    const weaponInfo = document.getElementById("weaponInfo");
     const checkboxStates = []; // チェックボックスの状態を格納する配列
-    characterInfo.style.display = "block";
+    weaponInfo.style.display = "block";
 
 // チェックボックスと説明テキストの表示をクリア
-const existingCheckboxes = characterInfo.querySelectorAll("input[type=checkbox]");
+const existingCheckboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
 for (const checkbox of existingCheckboxes) {
   checkbox.remove();
   const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
@@ -50,7 +50,7 @@ for (const checkbox of existingCheckboxes) {
 }
 
 // 改行を削除
-const lineBreaks = characterInfo.querySelectorAll("br");
+const lineBreaks = weaponInfo.querySelectorAll("br");
 for (const lineBreak of lineBreaks) {
   lineBreak.remove();
 }
@@ -71,10 +71,10 @@ for (const lineBreak of lineBreaks) {
           traitLabel.htmlFor = traits[0].id;
           traitLabel.textContent = traits[0].label;
         
-          characterInfo.appendChild(traitCheckbox);
-          characterInfo.appendChild(traitLabel);
+          weaponInfo.appendChild(traitCheckbox);
+          weaponInfo.appendChild(traitLabel);
           const lineBreak = document.createElement("br");
-          characterInfo.appendChild(lineBreak);
+          weaponInfo.appendChild(lineBreak);
         }
         else if (selectedWeapon === "2") {
         const traits = [
@@ -93,10 +93,10 @@ for (const lineBreak of lineBreaks) {
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
           
-            characterInfo.appendChild(traitCheckbox);
-            characterInfo.appendChild(traitLabel);
+            weaponInfo.appendChild(traitCheckbox);
+            weaponInfo.appendChild(traitLabel);
             const lineBreak = document.createElement("br");
-            characterInfo.appendChild(lineBreak);
+            weaponInfo.appendChild(lineBreak);
           }
         }
       }
