@@ -21,21 +21,6 @@ async function show_char_statsform()
     cd_form.style.display = "none";  // 会心ダメージフォームを非表示
     calculateButton.style.display = "block";
     
-    const formElements = [
-      { form: hp_form, index: 0 },
-      { form: attck_form, index: 1 },
-      { form: deff_form, index: 2 },
-      { form: elm_form, index: 3 },
-      { form: elm_charge_form, index: 4 },
-      { form: cr_form, index: 5 },
-      { form: cd_form, index: 6 }
-    ];
-    
-    for (const element of formElements) {
-      if (depend_status[element.index] === 1) {
-        element.form.style.display = "block";
-      }
-    }
   
     const characterSelect = document.getElementById("char_index");
     const selectedCharacter = characterSelect.value;
@@ -131,6 +116,21 @@ for (const lineBreak of lineBreaks) {
             const lineBreak = document.createElement("br");
             characterInfo.appendChild(lineBreak);
           }
+        }
+      }
+      const formElements = [
+        { form: hp_form, index: 0 },
+        { form: attck_form, index: 1 },
+        { form: deff_form, index: 2 },
+        { form: elm_form, index: 3 },
+        { form: elm_charge_form, index: 4 },
+        { form: cr_form, index: 5 },
+        { form: cd_form, index: 6 }
+      ];
+      
+      for (const element of formElements) {
+        if (depend_status[element.index] === 1) {
+          element.form.style.display = "block";
         }
       }
     }
