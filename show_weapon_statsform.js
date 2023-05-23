@@ -20,9 +20,8 @@ async function show_weapon_statsform() {
   cd_form.style.display = "none"; // 会心ダメージフォームを非表示
   calculateButton.style.display = "block";
 
-  const weaponSelect = document.getElementById("char_index");
+  const weaponSelect = document.getElementById("weapon_index");
   const selectedweapon = weaponSelect.value;
-  const weaponInfo = document.getElementById("weaponInfo");
   const checkboxStates = []; // チェックボックスの状態を格納する配列
   weaponInfo.style.display = "block";
 
