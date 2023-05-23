@@ -20,11 +20,6 @@ async function show_weapon_statsform() {
   cd_form.style.display = "none"; // 会心ダメージフォームを非表示
   calculateButton.style.display = "block";
 
-  const weaponSelect = document.getElementById("weapon_index");
-  const selectedweapon = weaponSelect.value;
-  const checkboxStates = []; // チェックボックスの状態を格納する配列
-  weaponInfo.style.display = "block";
-
   // チェックボックスと説明テキストの表示をクリア
   const existingCheckboxes = weaponInfo.querySelectorAll("input[type=checkbox]");
   for (const checkbox of existingCheckboxes) {
@@ -32,7 +27,7 @@ async function show_weapon_statsform() {
     const associatedLabel = document.querySelector(`label[for="${checkbox.id}"]`);
     associatedLabel.remove();
   }
-
+  
   // 改行を削除
   const lineBreaks = weaponInfo.querySelectorAll("br");
   for (const lineBreak of lineBreaks) {
