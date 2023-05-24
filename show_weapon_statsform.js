@@ -34,85 +34,75 @@ async function show_weapon_statsform() {
         label: "千夜の暁歌：チームキャラの元素に応じてバフ"
       }
     ];
-    
+  
     const traitCheckbox = document.createElement("input");
     traitCheckbox.type = "checkbox";
     traitCheckbox.id = traits[0].id;
     traitCheckbox.value = traits[0].id;
     traitCheckbox.checked = true;
-    
+  
     const traitLabel = document.createElement("label");
     traitLabel.htmlFor = traits[0].id;
     traitLabel.textContent = traits[0].label;
-    
+  
     const textNode1 = document.createTextNode("同じ元素のキャラ数");
     const textNode2 = document.createTextNode("異なる元素のキャラ数");
     const traitContainer = document.createElement("div"); // テキストとチェックボックスを包むコンテナ要素
-    
+  
     traitContainer.classList.add("checkbox-container");
     traitContainer.appendChild(traitCheckbox);
     traitContainer.appendChild(traitLabel);
-    
+  
     const selectList1 = createSelectList("traitSelect1", 4); // 1つ目のプルダウンリストを生成
     const selectList2 = createSelectList("traitSelect2", 4); // 2つ目のプルダウンリストを生成
   
     weaponInfo.appendChild(traitContainer);
-    traitContainer.appendChild(traitLabel);
     weaponInfo.appendChild(textNode1);
     weaponInfo.appendChild(selectList1);
-    weaponInfo.appendChild(document.createElement("br")); // 改行を追加
     weaponInfo.appendChild(textNode2);
     weaponInfo.appendChild(selectList2);
-    
-    // チェックボックスが初期状態でチェックされている場合、プルダウンリストを表示
+  
+    const brCount = 3; // 追加する改行の数
+    for (let i = 0; i < brCount; i++) {
+      weaponInfo.appendChild(document.createElement("br")); // 改行を追加
+    }
+  
+    // 初期状態でチェックされている場合、プルダウンリストを表示
     if (traitCheckbox.checked) {
       selectList1.classList.remove("hidden");
       selectList2.classList.remove("hidden");
+    } else {
+      selectList1.classList.add("hidden");
+      selectList2.classList.add("hidden");
     }
-    
+  
     traitCheckbox.addEventListener("change", function() {
       if (traitCheckbox.checked) {
-        selectList1.classList.remove("hidden"); // チェックされたら表示
+        selectList1.classList.remove("hidden");
         selectList2.classList.remove("hidden");
       } else {
-        selectList1.classList.add("hidden"); // チェックが解除されたら非表示
+        selectList1.classList.add("hidden");
         selectList2.classList.add("hidden");
       }
     });
-    
+  
     // プルダウンリストを生成する関数
     function createSelectList(id, optionCount) {
       const selectList = document.createElement("select");
       selectList.id = id;
       selectList.classList.add("hidden"); // 初期状態では非表示
-    
+  
       for (let i = 0; i <= optionCount; i++) {
         const option = document.createElement("option");
         option.value = `option${i}`;
         option.text = `${i}人`;
         selectList.appendChild(option);
       }
-    
+  
       return selectList;
     }
-    
-    // プルダウンリストを生成する関数
-    function createSelectList(id, optionCount) {
-      const selectList = document.createElement("select");
-      selectList.id = id;
-      selectList.classList.add("hidden"); // 初期状態では非表示
-    
-      for (let i = 0; i <= optionCount; i++) {
-        const option = document.createElement("option");
-        option.value = `option${i}`;
-        option.text = `${i}人`;
-        selectList.appendChild(option);
-      }
-    
-      return selectList;
-    }
-    
-      } 
+  }
+  
       else if (selectedweapon === "4") {
     const traits = [
       {
