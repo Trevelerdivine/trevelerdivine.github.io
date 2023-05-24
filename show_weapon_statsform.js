@@ -53,8 +53,8 @@ async function show_weapon_statsform() {
     traitContainer.appendChild(traitCheckbox);
     traitContainer.appendChild(traitLabel);
   
-    const selectList1 = createSelectList("traitSelect1", 4); // 1つ目のプルダウンリストを生成
-    const selectList2 = createSelectList("traitSelect2", 4); // 2つ目のプルダウンリストを生成
+    const selectList1 = createSelectList("traitSelect1", 3); // 1つ目のプルダウンリストを生成
+    const selectList2 = createSelectList("traitSelect2", 3); // 2つ目のプルダウンリストを生成
   
     weaponInfo.appendChild(traitContainer);
     weaponInfo.appendChild(textNode1);
