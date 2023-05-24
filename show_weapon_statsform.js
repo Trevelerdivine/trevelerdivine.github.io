@@ -45,20 +45,25 @@ async function show_weapon_statsform() {
     traitLabel.htmlFor = traits[0].id;
     traitLabel.textContent = traits[0].label;
     
+    const textNode1 = document.createTextNode("同じ元素のキャラ数");
+    const textNode2 = document.createTextNode("異なる元素のキャラ数");
+    weaponInfo.appendChild(textNode);
     const traitContainer = document.createElement("div"); // テキストとチェックボックスを包むコンテナ要素
     
     traitContainer.classList.add("checkbox-container");
-    traitContainer.appendChild(traitLabel);
     traitContainer.appendChild(traitCheckbox);
+    traitContainer.appendChild(traitLabel);
     
     const selectList1 = createSelectList("traitSelect1", 4); // 1つ目のプルダウンリストを生成
     const selectList2 = createSelectList("traitSelect2", 4); // 2つ目のプルダウンリストを生成
-    
-    const weaponInfo = document.getElementById("weaponInfo");
+  
     weaponInfo.appendChild(traitContainer);
     weaponInfo.appendChild(document.createElement("br")); // 改行を追加
+    traitContainer.appendChild(traitLabel);
+    weaponInfo.appendChild(textNode1);
     weaponInfo.appendChild(selectList1);
     weaponInfo.appendChild(document.createElement("br")); // 改行を追加
+    weaponInfo.appendChild(textNode2);
     weaponInfo.appendChild(selectList2);
     
     // チェックボックスが初期状態でチェックされている場合、プルダウンリストを表示
@@ -86,7 +91,7 @@ async function show_weapon_statsform() {
       for (let i = 0; i <= optionCount; i++) {
         const option = document.createElement("option");
         option.value = `option${i}`;
-        option.text = `オプション${i}`;
+        option.text = `${i}人`;
         selectList.appendChild(option);
       }
     
