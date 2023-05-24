@@ -366,10 +366,13 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
     exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
-      *(1 + result_status[7])*0.55;
+      *(1 + result_status[7])*0.45;
     console.log(result_status);
     return exp_dmg;
   }
+
+//////////////////////
+
 //////////////////////
 
 async function monte_carlo_calculate()
@@ -523,7 +526,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
 
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-      *(1 + result_status[7])*0.55;
+      *(1 + result_status[7])*0.45;
 
     if (temp_exp_dmg < exp_dmg)
     {
@@ -635,9 +638,9 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-      *(1 + result_status[7])*0.55;
+      *(1 + result_status[7])*0.45;
     critical_dmg = basic_dmg*(1 + result_status[6])
-      *(1 + result_status[7])*0.55;
+      *(1 + result_status[7])*0.45;
     
     if (temp_exp_dmg < exp_dmg)
   {

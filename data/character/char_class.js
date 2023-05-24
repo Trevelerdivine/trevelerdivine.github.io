@@ -4,6 +4,9 @@ class nahida {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
+    this.constellations = 0;
+    this.level = 90;
+    this.updateSelectValues();
   }
 
   async dmg_rate_data() {
@@ -88,13 +91,24 @@ class nahida {
     const resultStatusArray = this.result_status_array;
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-    const basicDmg = attckRate + elmRate + 1807.5 * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200));
+    let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)))*1.1/0.9;
+    if (this.constellations > 1)
+    {
+      basicDmg = basicDmg*2/1.7;
+    }
     return basicDmg;
   }
 
   update_status(fixed_status_array, result_status_array) {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
+  }
+
+  updateSelectValues() {
+    const char_constellations = document.getElementById("char_constellations");
+    const char_level = document.getElementById("char_level");
+    this.constellations = char_constellations.value;
+    this.level = char_level.value;
   }
 }
 
