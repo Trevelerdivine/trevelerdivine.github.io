@@ -45,37 +45,46 @@ async function show_weapon_statsform() {
     traitLabel.htmlFor = traits[0].id;
     traitLabel.textContent = traits[0].label;
     
-    const selectList = document.createElement("select");
-    selectList.id = "traitSelect";
-    selectList.classList.add("hidden"); // 初期状態では非表示
-    
-    const option1 = document.createElement("option");
-    option1.value = "option1";
-    option1.text = "オプション1";
-    selectList.appendChild(option1);
-    
-    const option2 = document.createElement("option");
-    option2.value = "option2";
-    option2.text = "オプション2";
-    selectList.appendChild(option2);
+    const selectList1 = createSelectList("traitSelect1", 4); // 1つ目のプルダウンリストを生成
+    const selectList2 = createSelectList("traitSelect2", 3); // 2つ目のプルダウンリストを生成
     
     const weaponInfo = document.getElementById("weaponInfo");
     weaponInfo.appendChild(traitCheckbox);
     weaponInfo.appendChild(traitLabel);
-    weaponInfo.appendChild(selectList);
+    weaponInfo.appendChild(selectList1);
+    weaponInfo.appendChild(selectList2);
     
     // チェックボックスが初期状態でチェックされている場合、プルダウンリストを表示
     if (traitCheckbox.checked) {
-      selectList.classList.remove("hidden");
+      selectList1.classList.remove("hidden");
+      selectList2.classList.remove("hidden");
     }
     
     traitCheckbox.addEventListener("change", function() {
       if (traitCheckbox.checked) {
-        selectList.classList.remove("hidden"); // チェックされたら表示
+        selectList1.classList.remove("hidden"); // チェックされたら表示
+        selectList2.classList.remove("hidden");
       } else {
-        selectList.classList.add("hidden"); // チェックが解除されたら非表示
+        selectList1.classList.add("hidden"); // チェックが解除されたら非表示
+        selectList2.classList.add("hidden");
       }
     });
+    
+    // プルダウンリストを生成する関数
+    function createSelectList(id, optionCount) {
+      const selectList = document.createElement("select");
+      selectList.id = id;
+      selectList.classList.add("hidden"); // 初期状態では非表示
+    
+      for (let i = 1; i <= optionCount; i++) {
+        const option = document.createElement("option");
+        option.value = `option${i}`;
+        option.text = `オプション${i}`;
+        selectList.appendChild(option);
+      }
+    
+      return selectList;
+    }
     
       } 
       else if (selectedweapon === "4") {
