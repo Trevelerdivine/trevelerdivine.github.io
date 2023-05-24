@@ -45,21 +45,17 @@ async function show_weapon_statsform() {
     traitLabel.htmlFor = traits[0].id;
     traitLabel.textContent = traits[0].label;
     
-    const checkboxContainer = document.createElement("div");
-    checkboxContainer.classList.add("checkbox-container");
+    const traitContainer = document.createElement("div"); // テキストとチェックボックスを包むコンテナ要素
     
-    const textContainer = document.createElement("div");
-    textContainer.textContent = "同元素キャラ数";
-    
-    checkboxContainer.appendChild(textContainer);
-    checkboxContainer.appendChild(traitCheckbox);
-    checkboxContainer.appendChild(traitLabel);
+    traitContainer.classList.add("checkbox-container");
+    traitContainer.appendChild(traitLabel);
+    traitContainer.appendChild(traitCheckbox);
     
     const selectList1 = createSelectList("traitSelect1", 4); // 1つ目のプルダウンリストを生成
     const selectList2 = createSelectList("traitSelect2", 4); // 2つ目のプルダウンリストを生成
     
     const weaponInfo = document.getElementById("weaponInfo");
-    weaponInfo.appendChild(checkboxContainer);
+    weaponInfo.appendChild(traitContainer);
     weaponInfo.appendChild(document.createElement("br")); // 改行を追加
     weaponInfo.appendChild(selectList1);
     weaponInfo.appendChild(document.createElement("br")); // 改行を追加
@@ -80,6 +76,22 @@ async function show_weapon_statsform() {
         selectList2.classList.add("hidden");
       }
     });
+    
+    // プルダウンリストを生成する関数
+    function createSelectList(id, optionCount) {
+      const selectList = document.createElement("select");
+      selectList.id = id;
+      selectList.classList.add("hidden"); // 初期状態では非表示
+    
+      for (let i = 0; i <= optionCount; i++) {
+        const option = document.createElement("option");
+        option.value = `option${i}`;
+        option.text = `オプション${i}`;
+        selectList.appendChild(option);
+      }
+    
+      return selectList;
+    }
     
     // プルダウンリストを生成する関数
     function createSelectList(id, optionCount) {
