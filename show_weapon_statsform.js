@@ -92,7 +92,7 @@ async function show_weapon_statsform() {
   
       for (let i = 0; i <= optionCount; i++) {
         const option = document.createElement("option");
-        option.value = `option${i}`;
+        option.value = i;
         option.text = `${i}人`;
         selectList.appendChild(option);
       }

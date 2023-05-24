@@ -4,7 +4,12 @@ class AThousandFloatingDreams {
       this.base_status_array = base_status_array;
       this.fixed_status_array = fixed_status_array;
       this.result_status_array = result_status_array;
+      this.selectList1 = document.getElementById("traitSelect1");
+      this.selectList2 = document.getElementById("traitSelect2");
+      this.select1 = selectList1.value;
+      this.select2 = selectList2.value;
     }
+    
   
     calculate_weapon_fixed_hp() {
       return 0;
@@ -31,12 +36,13 @@ class AThousandFloatingDreams {
     }
   
     calculate_weapon_fixed_elm() {
-      return 32;
+      
+      return 32 * this.select1;
     }
   
     calculate_weapon_result_elm() {
   
-      return 32;
+      return 32 * this.select1;
     }
   
     calculate_weapon_fixed_elm_charge() {
@@ -64,11 +70,11 @@ class AThousandFloatingDreams {
     }
   
     calculate_weapon_fixed_dmg_buff() {
-      return 0.2;
+      return 0.1 * this.select2;
     }
   
     calculate_weapon_result_dmg_buff() {
-      return 0.2;
+      return 0.1 * this.select2;
     }
   
     update_status(fixed_status_array, result_status_array) {
