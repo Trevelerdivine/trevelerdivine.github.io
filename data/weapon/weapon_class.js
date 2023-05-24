@@ -38,9 +38,7 @@ class AThousandFloatingDreams {
     }
   
     calculate_weapon_result_elm() {
-      const selectList1 = document.getElementById("traitSelect1");
-      const select1 = selectList1.value;
-      return 32 * select1;
+      return 0;
     }
   
     calculate_weapon_fixed_elm_charge() {
@@ -74,9 +72,7 @@ class AThousandFloatingDreams {
     }
   
     calculate_weapon_result_dmg_buff() {
-      const selectList2 = document.getElementById("traitSelect2");
-      const select2 = selectList2.value;
-      return 0.1 * select2;
+      return 0;
     }
   
     update_status(fixed_status_array, result_status_array) {
@@ -216,7 +212,7 @@ class AThousandFloatingDreams {
     }
   
     calculate_weapon_result_elm_charge() {
-      return 0.3;
+      return 0;
     }
   
     calculate_weapon_fixed_cr() {
