@@ -33,7 +33,7 @@ async function calculate_char_base_status()
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
   char_depend_status = data.ステータス.依存ステータス;
-  char_base_status = [char_base_hp, char_base_attck, char_base_deff, char_base_elm, char_base_elm_charge, char_base_cr, char_base_cd, char_base_dmg_buff];
+  char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];
   return char_base_status;
 }
 
@@ -53,7 +53,7 @@ async function calculate_weapon_base_status() {
   const weapon_base_cd = data.ステータス.基礎会心ダメージ[weapon_level];
   const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ[weapon_level];
   weapon_depend_status = data.ステータス.依存ステータス;
-  weapon_base_status = [weapon_base_hp, weapon_base_attck, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
+  weapon_base_status = [weapon_base_hp, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_attck, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
   return weapon_base_status;
   }
 
@@ -67,10 +67,10 @@ async function calculate_base_status() {
   base_deff = char_base_status[2] + weapon_base_status[2];
   base_elm = char_base_status[3] + weapon_base_status[3];
   base_elm_charge = char_base_status[4] + weapon_base_status[4];
-  base_cr = char_base_status[5] + weapon_base_status[5];
-  base_cd = char_base_status[6] + weapon_base_status[6];
-  base_dmg_buff = char_base_status[7] + weapon_base_status[7];
-  base_status = [base_hp, base_attck, base_deff, base_elm, base_elm_charge, base_cr, base_cd, base_dmg_buff];
+  base_dmg_buff = char_base_status[5] + weapon_base_status[5];
+  base_cr = char_base_status[6] + weapon_base_status[6];
+  base_cd = char_base_status[7] + weapon_base_status[7];
+  base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
   return base_status;
   }
 
@@ -81,7 +81,7 @@ async function calculate_af_main_status_buff()
   const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
   const goblet_mainstatus = parseInt(document.getElementById("goblet_mainstatus").value);
   const circlet_mainstatus = parseInt(document.getElementById("circlet_mainstatus").value);
-  const af_main_status = [0.466,0.466,0.583,187,51.8,31.1,62.2,0.466];
+  const af_main_status = [0.466,0.583,187,51.8,0.466,31.1,62.2,0.466];
   let set_main_status = [0,0,0,0,0,0,0,0];
   let af_main_status_buff = [0,0,0,0,0,0,0,0];
   set_main_status[clock_mainstatus] = set_main_status[clock_mainstatus] + 1;
@@ -115,16 +115,16 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
        af_score = af_score+((af_hp - 4780)/base_status[0] - af_main_status_buff[0])*400/3;
        break;
       case 1:
-        af_score = af_score+((af_attck - 311)/base_status[1] - af_main_status_buff[1])*400/3;
+        af_score = af_score+((af_attck - 311)/base_status[4] - af_main_status_buff[4])*400/3;
         break;
       case 2:
-        af_score = af_score + (af_deff/base_status[1] - af_main_status_buff[2])*1600/15;
+        af_score = af_score + (af_deff/base_status[1] - af_main_status_buff[1])*1600/15;
         break;
       case 3:
-        af_score = af_score + (af_elm -  af_main_status_buff[3])/3;
+        af_score = af_score + (af_elm -  af_main_status_buff[2])/3;
         break;
       case 4:
-        af_score = af_score + (af_elm_charge - af_main_status_buff[4])*1.2;
+        af_score = af_score + (af_elm_charge - af_main_status_buff[3])*1.2;
         break;
       case 5:
         af_score = af_score + (af_cr - af_main_status_buff[5])*2;
@@ -207,15 +207,15 @@ async function calculate_score_distribute(af_score,depend_status)
 
 ////////////////////////////////
 
-async function calculate_fixed_status(sd,bs,amsb,ds)
-//変数は左から（score_distribution,base_status,af_main_status_buff,depend_status）
+async function calculate_fixed_status(sd,bs,amsb)
+//変数は左から（score_distribution,base_status,af_main_status_buff）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
   fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780;
-  fixed_status[1] = bs[1]*(1 + sd[1]*3/400 + amsb[1]) + 311;
-  fixed_status[2] = bs[2]*(1 + sd[2]*3/320 + amsb[2]);
-  fixed_status[3] = bs[3] + sd[3]*3 + amsb[3];
-  fixed_status[4] = bs[4] + sd[4]/120 + amsb[4]/100;
+  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1]);
+  fixed_status[2] = bs[2] + sd[2]*3 + amsb[2];
+  fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100;
+  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311;
   fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
   fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
   fixed_status[7] = bs[7] + amsb[7];
@@ -271,7 +271,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
-  const af_buff = [af_hp, af_attck, af_deff, af_elm, af_elm_charge, af_cr, af_cd];
+  const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   let basic_dmg;
   let exp_dmg;
 
@@ -301,53 +301,45 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
       weapon_instance.update_status(fixed_status, result_status);
     }
 
+    if (depend_status[1] == 1)
+    {
+    fixed_status[1] += await char_instance.calculate_char_fixed_deff();
+    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_deff();
+    result_status[1] += await char_instance.calculate_char_result_deff();
+    result_status[1] += await weapon_instance.calculate_weapon_result_deff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
     if (depend_status[2] == 1)
     {
-    fixed_status[2] += await char_instance.calculate_char_fixed_deff();
-    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
-    result_status[2] += await char_instance.calculate_char_result_deff();
-    result_status[2] += await weapon_instance.calculate_weapon_result_deff();
+    fixed_status[2] += await char_instance.calculate_char_fixed_elm();
+    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_elm();
+    result_status[2] += await char_instance.calculate_char_result_elm();
+    result_status[2] += await weapon_instance.calculate_weapon_result_elm();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[3] == 1)
     {
-    fixed_status[3] += await char_instance.calculate_char_fixed_elm();
-    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
-    result_status[3] += await char_instance.calculate_char_result_elm();
-    result_status[3] += await weapon_instance.calculate_weapon_result_elm();
+    fixed_status[3] += await char_instance.calculate_char_fixed_elm_charge();
+    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm_charge();
+    result_status[3] += await char_instance.calculate_char_result_elm_charge();
+    result_status[3] += await weapon_instance.calculate_weapon_result_elm_charge();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[4] == 1)
     {
-    fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
-    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
-    result_status[4] += await char_instance.calculate_char_result_elm_charge();
-    result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
+    fixed_status[4] += await char_instance.calculate_char_fixed_attck();
+    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_attck();
+    result_status[4] += await char_instance.calculate_char_result_attck();
+    result_status[4] += await weapon_instance.calculate_weapon_result_attck();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
-
-    if (depend_status[1] == 1)
-    {
-    fixed_status[1] += await char_instance.calculate_char_fixed_attck();
-    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
-    result_status[1] += await char_instance.calculate_char_result_attck();
-    result_status[1] += await weapon_instance.calculate_weapon_result_attck();
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-    }
-
-    
-    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
-    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
-    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
-    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
 
     if (depend_status[5] == 1)
     {
@@ -376,8 +368,17 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
+
+    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
+    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
+    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
+    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
     console.log(result_status);
     console.log(dmg_rate);
+
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
     exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.55;
@@ -459,7 +460,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   for (let i = 0; i < 10000; i++)
   {
     score_distribute = await calculate_score_distribute(af_score,depend_status);
-    fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff,depend_status);
+    fixed_status = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
     result_status = fixed_status.slice();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
@@ -474,53 +475,45 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
       weapon_instance.update_status(fixed_status, result_status);
     }
 
+    if (depend_status[1] == 1)
+    {
+    fixed_status[1] += await char_instance.calculate_char_fixed_deff();
+    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_deff();
+    result_status[1] += await char_instance.calculate_char_result_deff();
+    result_status[1] += await weapon_instance.calculate_weapon_result_deff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
     if (depend_status[2] == 1)
     {
-    fixed_status[2] += await char_instance.calculate_char_fixed_deff();
-    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
-    result_status[2] += await char_instance.calculate_char_result_deff();
-    result_status[2] += await weapon_instance.calculate_weapon_result_deff();
+    fixed_status[2] += await char_instance.calculate_char_fixed_elm();
+    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_elm();
+    result_status[2] += await char_instance.calculate_char_result_elm();
+    result_status[2] += await weapon_instance.calculate_weapon_result_elm();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[3] == 1)
     {
-    fixed_status[3] += await char_instance.calculate_char_fixed_elm();
-    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
-    result_status[3] += await char_instance.calculate_char_result_elm();
-    result_status[3] += await weapon_instance.calculate_weapon_result_elm();
+    fixed_status[3] += await char_instance.calculate_char_fixed_elm_charge();
+    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm_charge();
+    result_status[3] += await char_instance.calculate_char_result_elm_charge();
+    result_status[3] += await weapon_instance.calculate_weapon_result_elm_charge();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[4] == 1)
     {
-    fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
-    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
-    result_status[4] += await char_instance.calculate_char_result_elm_charge();
-    result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
+    fixed_status[4] += await char_instance.calculate_char_fixed_attck();
+    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_attck();
+    result_status[4] += await char_instance.calculate_char_result_attck();
+    result_status[4] += await weapon_instance.calculate_weapon_result_attck();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
-
-    if (depend_status[1] == 1)
-    {
-    fixed_status[1] += await char_instance.calculate_char_fixed_attck();
-    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
-    result_status[1] += await char_instance.calculate_char_result_attck();
-    result_status[1] += await weapon_instance.calculate_weapon_result_attck();
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-    }
-
-    
-    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
-    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
-    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
-    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
 
     if (depend_status[5] == 1)
     {
@@ -549,6 +542,13 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
+
+    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
+    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
+    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
+    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
 
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
 
@@ -604,53 +604,45 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
       weapon_instance.update_status(fixed_status, result_status);
     }
 
+    if (depend_status[1] == 1)
+    {
+    fixed_status[1] += await char_instance.calculate_char_fixed_deff();
+    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_deff();
+    result_status[1] += await char_instance.calculate_char_result_deff();
+    result_status[1] += await weapon_instance.calculate_weapon_result_deff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
     if (depend_status[2] == 1)
     {
-    fixed_status[2] += await char_instance.calculate_char_fixed_deff();
-    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_deff();
-    result_status[2] += await char_instance.calculate_char_result_deff();
-    result_status[2] += await weapon_instance.calculate_weapon_result_deff();
+    fixed_status[2] += await char_instance.calculate_char_fixed_elm();
+    fixed_status[2] += await weapon_instance.calculate_weapon_fixed_elm();
+    result_status[2] += await char_instance.calculate_char_result_elm();
+    result_status[2] += await weapon_instance.calculate_weapon_result_elm();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[3] == 1)
     {
-    fixed_status[3] += await char_instance.calculate_char_fixed_elm();
-    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm();
-    result_status[3] += await char_instance.calculate_char_result_elm();
-    result_status[3] += await weapon_instance.calculate_weapon_result_elm();
+    fixed_status[3] += await char_instance.calculate_char_fixed_elm_charge();
+    fixed_status[3] += await weapon_instance.calculate_weapon_fixed_elm_charge();
+    result_status[3] += await char_instance.calculate_char_result_elm_charge();
+    result_status[3] += await weapon_instance.calculate_weapon_result_elm_charge();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[4] == 1)
     {
-    fixed_status[4] += await char_instance.calculate_char_fixed_elm_charge();
-    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_elm_charge();
-    result_status[4] += await char_instance.calculate_char_result_elm_charge();
-    result_status[4] += await weapon_instance.calculate_weapon_result_elm_charge();
+    fixed_status[4] += await char_instance.calculate_char_fixed_attck();
+    fixed_status[4] += await weapon_instance.calculate_weapon_fixed_attck();
+    result_status[4] += await char_instance.calculate_char_result_attck();
+    result_status[4] += await weapon_instance.calculate_weapon_result_attck();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
-
-    if (depend_status[1] == 1)
-    {
-    fixed_status[1] += await char_instance.calculate_char_fixed_attck();
-    fixed_status[1] += await weapon_instance.calculate_weapon_fixed_attck();
-    result_status[1] += await char_instance.calculate_char_result_attck();
-    result_status[1] += await weapon_instance.calculate_weapon_result_attck();
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-    }
-
-    
-    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
-    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
-    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
-    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
 
     if (depend_status[5] == 1)
     {
@@ -679,6 +671,13 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
+
+    fixed_status[7] += await char_instance.calculate_char_fixed_dmg_buff();
+    fixed_status[7] += await weapon_instance.calculate_weapon_fixed_dmg_buff();
+    result_status[7] += await char_instance.calculate_char_result_dmg_buff();
+    result_status[7] += await weapon_instance.calculate_weapon_result_dmg_buff();
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
 
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
@@ -714,8 +713,8 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   temp_status[0] = temp_status[0].toFixed(0);
   temp_status[1] = temp_status[1].toFixed(0);
   temp_status[2] = temp_status[2].toFixed(0);
-  temp_status[3] = temp_status[3].toFixed(0);
-  temp_status[4] = (temp_status[4]*100).toFixed(1);
+  temp_status[3] = (temp_status[3]*100).toFixed(1);
+  temp_status[4] = temp_status[4].toFixed(0);
   temp_status[5] = (temp_status[5]*100).toFixed(1);
   temp_status[6] = (temp_status[6]*100).toFixed(1);
   temp_status[7] = (temp_status[7]*100).toFixed(1);
@@ -724,8 +723,8 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   console.log(temp_status);
   console.log(my_exp_dmg);
 
-  result ="ループ回数" + n_count + "<br>" + "my聖遺物スコア" + my_af_score + "<br>" + "  会心ダメージ: " + temp_critical_dmg + "<br>" +"  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + output_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[1] + "<br>" +"  防御力: " + 
-  temp_status[2] + "<br>"+"  元素熟知: " + temp_status[3] + "<br>" + "  元素チャージ効率: " + temp_status[4] + "%" + "<br>" + "  会心率: " + temp_status[5] + "%" + "<br>" +
+  result ="ループ回数" + n_count + "<br>" + "my聖遺物スコア" + my_af_score + "<br>" + "  会心ダメージ: " + temp_critical_dmg + "<br>" +"  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + output_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[4] + "<br>" +"  防御力: " + 
+  temp_status[1] + "<br>"+"  元素熟知: " + temp_status[2] + "<br>" + "  元素チャージ効率: " + temp_status[3] + "%" + "<br>" + "  会心率: " + temp_status[5] + "%" + "<br>" +
    "  会心ダメージ：" + temp_status[6] + "%" + "<br>" + "  ダメージバフ: " + temp_status[7] + "%";
   document.getElementById("result").innerHTML = result;
 
