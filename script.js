@@ -413,7 +413,7 @@ async function monte_carlo_calculate()
   let critical_dmg;
   let temp_critical_dmg;
   let my_af_score = await calculate_af_score(af_main_status_buff,depend_status,base_status);
-
+  console.log(my_exp_dmg);
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
     result = "  ダメージ期待値: " + my_exp_dmg + "<br>" + "ダメージ期待値が異常値を示しています。再入力してください。"
@@ -424,6 +424,7 @@ async function monte_carlo_calculate()
   
   if (af_score < 0 || af_score>500 || !Number.isFinite(af_score))
   {
+    console.log(af_score);
     result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("result").innerHTML = result;
     return result;
