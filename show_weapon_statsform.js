@@ -47,7 +47,6 @@ async function show_weapon_statsform() {
     
     const textNode1 = document.createTextNode("同じ元素のキャラ数");
     const textNode2 = document.createTextNode("異なる元素のキャラ数");
-    weaponInfo.appendChild(textNode);
     const traitContainer = document.createElement("div"); // テキストとチェックボックスを包むコンテナ要素
     
     traitContainer.classList.add("checkbox-container");
