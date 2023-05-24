@@ -46,6 +46,30 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitCheckbox);
         weaponInfo.appendChild(traitLabel);
+
+        const selectList = document.createElement("select");
+        selectList.id = "traitSelect";
+        selectList.style.display = "none"; // 初期状態では非表示
+
+        const option1 = document.createElement("option");
+        option1.value = "option1";
+        option1.text = "オプション1";
+        selectList.appendChild(option1);
+
+        const option2 = document.createElement("option");
+        option2.value = "option2";
+        option2.text = "オプション2";
+        selectList.appendChild(option2);
+
+        weaponInfo.appendChild(selectList);
+
+        traitCheckbox.addEventListener("change", function() {
+          if (traitCheckbox.checked) {
+            selectList.style.display = "block"; // チェックされたら表示
+          } else {
+            selectList.style.display = "none"; // チェックが解除されたら非表示
+  }
+});
       } 
       else if (selectedweapon === "4") {
     const traits = [
