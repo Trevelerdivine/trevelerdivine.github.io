@@ -5,7 +5,7 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level = 90;
+    this.level = 0;
     this.updateSelectValues();
     this.calculateConstValue();
   }
@@ -95,7 +95,7 @@ class nahida {
     let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)))*1.1/0.9;
     if (this.constellations > 1)
     {
-      basicDmg = basicDmg*this.constValue;
+      basicDmg = basicDmg*2/1.7;
     }
     return basicDmg;
   }
