@@ -45,12 +45,21 @@ async function show_weapon_statsform() {
     traitLabel.htmlFor = traits[0].id;
     traitLabel.textContent = traits[0].label;
     
+    const checkboxContainer = document.createElement("div");
+    checkboxContainer.classList.add("checkbox-container");
+    
+    const textContainer = document.createElement("div");
+    textContainer.textContent = "同元素キャラ数";
+    
+    checkboxContainer.appendChild(textContainer);
+    checkboxContainer.appendChild(traitCheckbox);
+    checkboxContainer.appendChild(traitLabel);
+    
     const selectList1 = createSelectList("traitSelect1", 4); // 1つ目のプルダウンリストを生成
     const selectList2 = createSelectList("traitSelect2", 4); // 2つ目のプルダウンリストを生成
     
     const weaponInfo = document.getElementById("weaponInfo");
-    weaponInfo.appendChild(traitCheckbox);
-    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(checkboxContainer);
     weaponInfo.appendChild(document.createElement("br")); // 改行を追加
     weaponInfo.appendChild(selectList1);
     weaponInfo.appendChild(document.createElement("br")); // 改行を追加
