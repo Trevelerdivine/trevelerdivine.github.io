@@ -1,86 +1,93 @@
 class AThousandFloatingDreams {
-    constructor(base_status_array, fixed_status_array, result_status_array) 
-    {
-      this.base_status_array = base_status_array;
-      this.fixed_status_array = fixed_status_array;
-      this.result_status_array = result_status_array;
-    }
-    
-  
-    calculate_weapon_fixed_hp() {
-      return 0;
-    }
-  
-    calculate_weapon_result_hp() {
-      return 0;
-    }
-  
-    calculate_weapon_fixed_attck() {
-      return 0;
-    }
-  
-    calculate_weapon_result_attck() {
-      return 0;
-    }
-  
-    calculate_weapon_fixed_deff() {
-      return 0;
-    }
-  
-    calculate_weapon_result_deff() {
-      return 0;
-    }
-  
-    calculate_weapon_fixed_elm() {
-      const selectList1 = document.getElementById("traitSelect1");
-      const select1 = selectList1.value;
-      return 32 * select1;
-    }
-  
-    calculate_weapon_result_elm() {
-      return 0;
-    }
-  
-    calculate_weapon_fixed_elm_charge() {
-      return 0;
-    }
-  
-    calculate_weapon_result_elm_charge() {
-      return 0;
-    }
-  
-    calculate_weapon_fixed_cr() {
-      return 0;
-    }
-  
-    calculate_weapon_result_cr() {
-      return 0;
-    }
-  
-    calculate_weapon_fixed_cd() {
-      return 0;
-    }
-  
-    calculate_weapon_result_cd() {
-      return 0;
-    }
-  
-    calculate_weapon_fixed_dmg_buff() {
-      const selectList2 = document.getElementById("traitSelect2");
-      const select2 = selectList2.value;
-      return 0.1 * select2;
-    }
-  
-    calculate_weapon_result_dmg_buff() {
-      return 0;
-    }
-  
-    update_status(fixed_status_array, result_status_array) {
-      this.fixed_status_array = fixed_status_array;
-      this.result_status_array = result_status_array;
-    }
-  
+  constructor(base_status_array, fixed_status_array, result_status_array) {
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+    this.select1 = 0; // select1の初期値を0に設定
+    this.select2 = 0; // select2の初期値を0に設定
+    this.weapon_rank = 1;
+    this.updateSelectValues(); // 初期値を取得するためにupdateSelectValuesを呼び出す
   }
+
+  calculate_weapon_fixed_hp() {
+    return 0;
+  }
+
+  calculate_weapon_result_hp() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck() {
+    return 0;
+  }
+
+  calculate_weapon_result_attck() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff() {
+    return 0;
+  }
+
+  calculate_weapon_result_deff() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm() {
+    return (32 + 8 * (this.weapon_rank - 1)) * this.select1; // キャッシュしたselect1の値を使用する
+  }
+
+  calculate_weapon_result_elm() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge() {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr() {
+    return 0;
+  }
+
+  calculate_weapon_result_cr() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd() {
+    return 0;
+  }
+
+  calculate_weapon_result_cd() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff() {
+    return (0.1 + 0.04 * (this.weapon_rank - 1))* this.select2; // キャッシュしたselect2の値を使用する
+  }
+
+  calculate_weapon_result_dmg_buff() {
+    return 0;
+  }
+
+  update_status(fixed_status_array, result_status_array) {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
+  updateSelectValues() {
+    const selectList1 = document.getElementById("traitSelect1");
+    const selectList2 = document.getElementById("traitSelect2");
+    const weapon_rank = document.getElementById("traitSelect2");
+    this.select1 = selectList1.value;
+    this.select2 = selectList2.value;
+    this.weapon_rank = weapon_rank.value;
+  }
+}
+
 
   ////////////////////
 
