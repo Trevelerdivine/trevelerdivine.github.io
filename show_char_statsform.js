@@ -109,10 +109,10 @@ async function show_char_statsform()
       }
       const formElements = [
         { form: hp_form, index: 0 },
-        { form: attck_form, index: 1 },
-        { form: deff_form, index: 2 },
-        { form: elm_form, index: 3 },
-        { form: elm_charge_form, index: 4 },
+        { form: attck_form, index: 4 },
+        { form: deff_form, index: 1 },
+        { form: elm_form, index: 2 },
+        { form: elm_charge_form, index: 3 },
         { form: cr_form, index: 5 },
         { form: cd_form, index: 6 }
       ];
