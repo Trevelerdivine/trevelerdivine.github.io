@@ -46,7 +46,7 @@ async function show_weapon_statsform() {
     traitLabel.textContent = traits[0].label;
     
     const selectList1 = createSelectList("traitSelect1", 4); // 1つ目のプルダウンリストを生成
-    const selectList2 = createSelectList("traitSelect2", 3); // 2つ目のプルダウンリストを生成
+    const selectList2 = createSelectList("traitSelect2", 4); // 2つ目のプルダウンリストを生成
     
     const weaponInfo = document.getElementById("weaponInfo");
     weaponInfo.appendChild(traitCheckbox);
@@ -78,10 +78,10 @@ async function show_weapon_statsform() {
       selectList.id = id;
       selectList.classList.add("hidden"); // 初期状態では非表示
     
-      for (let i = 1; i <= optionCount; i++) {
+      for (let i = 0; i <= optionCount; i++) {
         const option = document.createElement("option");
         option.value = `option${i}`;
-        option.text = `オプション${i}`;
+        option.text = `${i}人`;
         selectList.appendChild(option);
       }
     
