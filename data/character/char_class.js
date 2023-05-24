@@ -7,6 +7,7 @@ class nahida {
     this.constellations = 0;
     this.level = 90;
     this.updateSelectValues();
+    this.calculateConstValue();
   }
 
   async dmg_rate_data() {
@@ -94,9 +95,13 @@ class nahida {
     let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)))*1.1/0.9;
     if (this.constellations > 1)
     {
-      basicDmg = basicDmg*2/1.7;
+      basicDmg = basicDmg*this.constValue;
     }
     return basicDmg;
+  }
+
+  calculateConstValue() {
+    this.constValue = (290 + this.level) / (190 * 0.7 + 100 + this.char_level);
   }
 
   update_status(fixed_status_array, result_status_array) {
