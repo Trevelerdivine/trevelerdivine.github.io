@@ -63,13 +63,13 @@ async function calculate_base_status() {
   char_base_status = await calculate_char_base_status();
   weapon_base_status = await calculate_weapon_base_status();
   base_hp = char_base_status[0] + weapon_base_status[0];
-  base_attck = char_base_status[1] + weapon_base_status[1];
-  base_deff = char_base_status[2] + weapon_base_status[2];
-  base_elm = char_base_status[3] + weapon_base_status[3];
-  base_elm_charge = char_base_status[4] + weapon_base_status[4];
-  base_dmg_buff = char_base_status[5] + weapon_base_status[5];
-  base_cr = char_base_status[6] + weapon_base_status[6];
-  base_cd = char_base_status[7] + weapon_base_status[7];
+  base_attck = char_base_status[4] + weapon_base_status[4];
+  base_deff = char_base_status[1] + weapon_base_status[1];
+  base_elm = char_base_status[2] + weapon_base_status[2];
+  base_elm_charge = char_base_status[3] + weapon_base_status[3];
+  base_dmg_buff = char_base_status[7] + weapon_base_status[7];
+  base_cr = char_base_status[5] + weapon_base_status[5];
+  base_cd = char_base_status[6] + weapon_base_status[6];
   base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
   return base_status;
   }
