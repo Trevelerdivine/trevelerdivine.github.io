@@ -39,6 +39,7 @@ async function show_weapon_statsform() {
     traitCheckbox.type = "checkbox";
     traitCheckbox.id = traits[0].id;
     traitCheckbox.value = traits[0].id;
+    traitCheckbox.checked = true;
     
     const traitLabel = document.createElement("label");
     traitLabel.htmlFor = traits[0].id;
@@ -46,16 +47,16 @@ async function show_weapon_statsform() {
     
     const selectList = document.createElement("select");
     selectList.id = "traitSelect";
-    selectList.style.display = "none"; // 初期状態では非表示
+    selectList.classList.add("hidden"); // 初期状態では非表示
     
     const option1 = document.createElement("option");
-    option1.value = "0";
-    option1.text = "0人";
+    option1.value = "option1";
+    option1.text = "オプション1";
     selectList.appendChild(option1);
     
     const option2 = document.createElement("option");
-    option2.value = "1";
-    option2.text = "1人";
+    option2.value = "option2";
+    option2.text = "オプション2";
     selectList.appendChild(option2);
     
     const weaponInfo = document.getElementById("weaponInfo");
@@ -63,13 +64,19 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(traitLabel);
     weaponInfo.appendChild(selectList);
     
+    // チェックボックスが初期状態でチェックされている場合、プルダウンリストを表示
+    if (traitCheckbox.checked) {
+      selectList.classList.remove("hidden");
+    }
+    
     traitCheckbox.addEventListener("change", function() {
       if (traitCheckbox.checked) {
-        selectList.style.display = "block"; // チェックされたら表示
+        selectList.classList.remove("hidden"); // チェックされたら表示
       } else {
-        selectList.style.display = "none"; // チェックが解除されたら非表示
+        selectList.classList.add("hidden"); // チェックが解除されたら非表示
       }
     });
+    
       } 
       else if (selectedweapon === "4") {
     const traits = [
