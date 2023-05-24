@@ -59,13 +59,11 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(traitContainer);
     weaponInfo.appendChild(textNode1);
     weaponInfo.appendChild(selectList1);
+    weaponInfo.appendChild(document.createElement("br"));
     weaponInfo.appendChild(textNode2);
     weaponInfo.appendChild(selectList2);
   
-    const brCount = 3; // 追加する改行の数
-    for (let i = 0; i < brCount; i++) {
-      weaponInfo.appendChild(document.createElement("br")); // 改行を追加
-    }
+
   
     // 初期状態でチェックされている場合、プルダウンリストを表示
     if (traitCheckbox.checked) {
