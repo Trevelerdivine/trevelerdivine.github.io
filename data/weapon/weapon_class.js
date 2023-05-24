@@ -74,6 +74,8 @@ class AThousandFloatingDreams {
     }
   
     calculate_weapon_result_dmg_buff() {
+      const selectList2 = document.getElementById("traitSelect2");
+      const select2 = selectList2.value;
       return 0.1 * select2;
     }
   
