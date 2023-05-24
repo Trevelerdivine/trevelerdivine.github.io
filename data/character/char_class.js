@@ -101,7 +101,7 @@ class nahida {
   }
 
   calculateConstValue() {
-    this.constValue = (290 + this.level) / (190 * 0.7 + 100 + this.char_level);
+    this.constValue = (290 + this.level) / (190 * 0.7 + 100 + this.level);
   }
 
   update_status(fixed_status_array, result_status_array) {
