@@ -60,7 +60,7 @@ class nahida {
     }
   
     calculate_char_result_cr() {
-      return Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.0003;
+      return Math.min(Math.max(0,(this.result_status_array[2]-200)),800)*0.0003;
     }
   
     calculate_char_fixed_cd() {
@@ -76,12 +76,12 @@ class nahida {
     }
   
     calculate_char_result_dmg_buff() {
-      return 0.15 + Math.min(Math.max(0,(this.result_status_array[3]-200)),800)*0.001;
+      return 0.15 + Math.min(Math.max(0,(this.result_status_array[2]-200)),800)*0.001;
     }
 
     calculate_basic_dmg(dmg_rate) {
-      return (this.result_status_array[1]*dmg_rate[1]/100 + 
-        this.result_status_array[3]*dmg_rate[3]/100+ 1807.5*(1 + 5 * this.result_status_array[3]/(this.result_status_array[3] + 1200)));
+      return (this.result_status_array[4]*dmg_rate[4]/100 + 
+        this.result_status_array[2]*dmg_rate[2]/100+ 1807.5*(1 + 5 * this.result_status_array[2]/(this.result_status_array[2] + 1200)));
     }
 
     update_status(fixed_status_array, result_status_array) {
@@ -163,15 +163,15 @@ class nahida {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return 0.4*(this.result_status_array[4]-1) + 0.27 + Math.min(0.75,(this.result_status_array[4])/4);
+      return 0.4*(this.result_status_array[3]-1) + 0.27 + Math.min(0.75,(this.result_status_array[3])/4);
     }
   
     calculate_char_result_dmg_buff() {
-      return 0.4*(this.result_status_array[4]-1) + 0.27 + Math.min(0.75,(this.result_status_array[4])/4);
+      return 0.4*(this.result_status_array[3]-1) + 0.27 + Math.min(0.75,(this.result_status_array[3])/4);
     }
 
     calculate_basic_dmg(dmg_rate) {
-      return this.result_status_array[1] * dmg_rate[1]/100;
+      return this.result_status_array[4] * dmg_rate[4]/100;
     }
 
     update_status(fixed_status_array, result_status_array) {

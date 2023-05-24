@@ -272,6 +272,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
+  console.log(af_buff);
   let basic_dmg;
   let exp_dmg;
 
