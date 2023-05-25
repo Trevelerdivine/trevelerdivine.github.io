@@ -120,7 +120,7 @@ class nahida {
     const level = document.getElementById("char_level");
     this.constellations = char_constellations.value;
     const level_index = level.value;
-    return this.level = parseInt(level_value.レベル["level_index"]);
+    return this.level = level_value.レベル["level_index"];
   }
 
   calculateCheckboxStates() {
