@@ -111,15 +111,13 @@ class nahida {
     this.result_status_array = result_status_array;
   }
 
-  async updatelevel() {
+   updatelevel() {
     if (this.level) {
       return this.level;
     }
-    const response = await fetch("./data/element.json");
-    const level_value = await response.json();
     const level = document.getElementById("char_level");
-    const level_index = level.value;
-    return this.level = parseInt(level_value.レベル["level_index"]);
+    this.level_index = level.value;
+    return this.level
   }
 
 updataselectvalue (){
