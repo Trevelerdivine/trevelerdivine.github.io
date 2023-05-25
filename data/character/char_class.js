@@ -122,7 +122,7 @@ class nahida {
 
 updataselectvalue (){
   const char_constellations = document.getElementById("char_constellations");
-  this.constellations = char_constellations.value;
+  this.constellations = perseint(char_constellations.value);
 }
 
 
