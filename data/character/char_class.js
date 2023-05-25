@@ -5,9 +5,8 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level = null;
+    this.level = 90;
     this.constValue = 0;
-    this.updatelevel();
     this.updataselectvalue();
     this.calculateConstValue();
     this.calculateCheckboxStates();
@@ -109,15 +108,6 @@ class nahida {
   update_status(fixed_status_array, result_status_array) {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
-  }
-
-   updatelevel() {
-    if (this.level) {
-      return this.level;
-    }
-    const level = document.getElementById("char_level");
-    this.level_index = level.value;
-    return this.level
   }
 
 updataselectvalue (){
