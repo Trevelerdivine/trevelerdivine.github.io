@@ -5,7 +5,7 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level = 0;
+    this.level;
     this.constValue = 0;
     this.updateSelectValues();
     this.calculateConstValue();
@@ -116,7 +116,7 @@ class nahida {
     const char_constellations = document.getElementById("char_constellations");
     const level = document.getElementById("char_level");
     this.constellations = char_constellations.value;
-    const level_index = char_level.value;
+    const level_index = level.value;
     this.level = parseInt(level_value.レベル[level_index]);
 
   }
