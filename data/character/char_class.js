@@ -5,7 +5,7 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level = 90;
+    this.level = null;
     this.constValue = 0;
     this.updateSelectValues();
     this.calculateConstValue();
@@ -102,7 +102,7 @@ class nahida {
   }
 
   calculateConstValue() {
-    this.constValue = (290 + this.level) / (190 * 0.7 + 100 + this.level);
+    this.constValue = (290 + 90) / (190 * 0.7 + 100 + 90);
   }
 
   update_status(fixed_status_array, result_status_array) {
