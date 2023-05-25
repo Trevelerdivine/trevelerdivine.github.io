@@ -7,7 +7,6 @@ class nahida {
     this.constellations = 0;
     this.level = 0;
     this.constValue = 0;
-    this.fixed_value = 0;
     this.updateSelectValues();
     this.calculateConstValue();
     this.calculateCheckboxStates();
@@ -19,13 +18,10 @@ class nahida {
     }
 
     const response = await fetch("./data/character/nahida.json");
-    const reaction = await fetch("./data/element.json");
     const data = await response.json();
-    const fixed_value = await reaction.json();
     const dmg_attck_rate = data.元素スキル.数値.攻撃力[10];
     const dmg_elm_rate = data.元素スキル.数値.元素熟知[10];
     const dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
-    this.fixed_value = fixed_value.反応固有値[this.level];
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
   }
@@ -98,7 +94,7 @@ class nahida {
     const resultStatusArray = this.result_status_array;
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-    let basicDmg = (attckRate + elmRate + (1.25*this.fixed_value) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
+    let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
     if (this.constellations > 1 && this.checkboxStates[1]===true) {
       basicDmg = basicDmg * this.constValue;
     }
@@ -116,9 +112,9 @@ class nahida {
 
   updateSelectValues() {
     const char_constellations = document.getElementById("char_constellations");
-    const char_level_index = document.getElementById("char_level_index");
+    const char_level = document.getElementById("char_level");
     this.constellations = char_constellations.value;
-    this.level = char_level_value[char_level_index];
+    this.level = parseInt(char_level.value);
   }
 
   calculateCheckboxStates() {
