@@ -110,7 +110,7 @@ class nahida {
     this.result_status_array = result_status_array;
   }
 
-  updateSelectValues() {
+  async updateSelectValues() {
     const reaction = await fetch("./data/element.json");
     const level_value = await reaction.json();
     const char_constellations = document.getElementById("char_constellations");
