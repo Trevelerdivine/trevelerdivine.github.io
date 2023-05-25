@@ -98,7 +98,7 @@ class nahida {
     const attckRate = status4 * dmg_rate[4] / 100;
     const elmRate = status2 * dmg_rate[2] / 100;
     let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * status2 / (status2 + 1200))) * 1.1 / 0.9;
-    if (this.constellations > 1 && this.checkboxStates[1]===true) {
+    if (this.constellations > 1) {
       basicDmg *= this.constValue;
     }
     return basicDmg;
