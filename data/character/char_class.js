@@ -5,7 +5,7 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level;
+    this.level = null;
     this.constValue = 0;
     this.updateSelectValues();
     this.calculateConstValue();
@@ -111,14 +111,16 @@ class nahida {
   }
 
   async updateSelectValues() {
+    if (this.level) {
+      return this.level;
+    }
     const reaction = await fetch("./data/element.json");
     const level_value = await reaction.json();
     const char_constellations = document.getElementById("char_constellations");
     const level = document.getElementById("char_level");
     this.constellations = char_constellations.value;
     const level_index = level.value;
-    this.level = parseInt(level_value.レベル[level_index]);
-
+    return this.level = parseInt(level_value.レベル[level_index]);
   }
 
   calculateCheckboxStates() {
