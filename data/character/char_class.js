@@ -7,7 +7,6 @@ class nahida {
     this.constellations = 0;
     this.level = 0;
     this.constValue = 0;
-    this.checkboxStates;
     this.updateSelectValues();
     this.calculateConstValue();
     this.calculateCheckboxStates();
@@ -72,8 +71,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    const status2 = this.result_status_array[2];
-    return Math.min(Math.max(0, status2 - 200), 800) * 0.0003;
+    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.0003;
   }
 
   calculate_char_fixed_cd() {
@@ -89,24 +87,22 @@ class nahida {
   }
 
   calculate_char_result_dmg_buff() {
-    const status2 = this.result_status_array[2];
-    return Math.min(Math.max(0, status2 - 200), 800) * 0.001;
+    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.001;
   }
 
   calculate_basic_dmg(dmg_rate) {
-    const [status4, status2] = this.result_status_array;
-    const attckRate = status4 * dmg_rate[4] / 100;
-    const elmRate = status2 * dmg_rate[2] / 100;
-    let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * status2 / (status2 + 1200))) * 1.1 / 0.9;
-    if (this.constellations > 1) {
-      basicDmg *= this.constValue;
+    const resultStatusArray = this.result_status_array;
+    const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+    const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
+    let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
+    if (this.constellations > 1 && this.checkboxStates[1]===true) {
+      basicDmg = basicDmg * this.constValue;
     }
     return basicDmg;
   }
 
   calculateConstValue() {
-    const level = this.level;
-    this.constValue = (290 + level) / (190 * 0.7 + 100 + level);
+    this.constValue = (290 + this.level) / (190 * 0.7 + 100 + this.level);
   }
 
   update_status(fixed_status_array, result_status_array) {
@@ -115,21 +111,28 @@ class nahida {
   }
 
   updateSelectValues() {
-    const char_constellations = document.getElementById("char_constellations").value;
-    const char_level = parseInt(document.getElementById("char_level").value);
-    this.constellations = char_constellations;
-    this.level = char_level;
+    const char_constellations = document.getElementById("char_constellations");
+    const char_level = document.getElementById("char_level");
+    this.constellations = char_constellations.value;
+    this.level = parseInt(char_level.value);
   }
 
   calculateCheckboxStates() {
-    const checkboxStates = Array.from(document.querySelectorAll('#characterInfo input[type="checkbox"]')).map(checkbox => checkbox.checked);
+    const checkboxStates = [];
+    const characterInfo = document.getElementById("characterInfo");
+    const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach((checkbox) => {
+      checkboxStates.push(checkbox.checked);
+    });
+
     while (checkboxStates.length < 4) {
       checkboxStates.push(false);
     }
+
     this.checkboxStates = checkboxStates;
   }
 }
-
 
 
   class raiden {
