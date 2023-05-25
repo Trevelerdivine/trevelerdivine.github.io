@@ -21,7 +21,7 @@ class nahida {
     const response = await fetch("./data/character/nahida.json");
     const reaction = await fetch("./data/element.json");
     const data = await response.json();
-    const fixed_value = await response.json();
+    const fixed_value = await reaction.json();
     const dmg_attck_rate = data.元素スキル.数値.攻撃力[10];
     const dmg_elm_rate = data.元素スキル.数値.元素熟知[10];
     const dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
