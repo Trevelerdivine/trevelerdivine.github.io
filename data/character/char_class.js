@@ -116,7 +116,7 @@ class nahida {
     const char_constellations = document.getElementById("char_constellations");
     const level = document.getElementById("char_level");
     this.constellations = char_constellations.value;
-    const level_index = level.value;
+    const level_index = char_level.value;
     this.level = parseInt(level_value.レベル[level_index]);
 
   }
