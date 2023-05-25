@@ -102,7 +102,7 @@ class nahida {
   }
 
   calculateConstValue() {
-    this.constValue = (290 + 90) / (190 * 0.7 + 100 + 90);
+    this.constValue = (290 + this.level) / (190 * 0.7 + 100 + this.level);
   }
 
   update_status(fixed_status_array, result_status_array) {
@@ -114,7 +114,7 @@ class nahida {
     const char_constellations = document.getElementById("char_constellations");
     const char_level = document.getElementById("char_level");
     this.constellations = char_constellations.value;
-    this.level = char_level.value;
+    this.level = parseInt(char_level.value);
   }
 }
 
