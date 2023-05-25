@@ -13,6 +13,8 @@ let base_cr = 0;
 let base_cd = 0;
 let base_dmg_buff = 0;
 let af_score = 0;
+const char_level_value = [1,20,20,40,40,50,50,60,60,70,70,80,80,90];
+const char_level_state = ["1+",20,"20+",40,"40+",50,"50+",60,"60+",70,"70+",80,"80+",90];
 const char_name = ["nahida","yaoyao","tighnari","raiden"];
 const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
 
@@ -21,17 +23,17 @@ const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFrag
 async function calculate_char_base_status() 
 {
   const char_index = document.getElementById("char_index").value;
-  const char_level = document.getElementById("char_level").value;
+  const char_level_index = document.getElementById("char_level_index").value;
   const response = await fetch("./data/character/" + char_name[char_index] + ".json");
   const data = await response.json();
-  const char_base_hp = data.ステータス.基礎HP[char_level];
-  const char_base_attck = data.ステータス.基礎攻撃力[char_level];
-  const char_base_deff = data.ステータス.基礎防御力[char_level];
-  const char_base_elm = data.ステータス.基礎元素熟知[char_level];
-  const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[char_level];
-  const char_base_cr = data.ステータス.基礎会心率[char_level];
-  const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
-  const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
+  const char_base_hp = data.ステータス.基礎HP[char_level_state[char_level_index]];
+  const char_base_attck = data.ステータス.基礎攻撃力[char_level_state[char_level_index]];
+  const char_base_deff = data.ステータス.基礎防御力[char_level_state[char_level_index]];
+  const char_base_elm = data.ステータス.基礎元素熟知[char_level_state[char_level_index]];
+  const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[char_level_state[char_level_index]];
+  const char_base_cr = data.ステータス.基礎会心率[char_level_state[char_level_index]];
+  const char_base_cd = data.ステータス.基礎会心ダメージ[char_level_state[char_level_index]];
+  const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level_state[char_level_index]];
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];
   return char_base_status;
