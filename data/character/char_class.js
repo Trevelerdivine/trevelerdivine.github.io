@@ -111,10 +111,14 @@ class nahida {
   }
 
   updateSelectValues() {
+    const reaction = await fetch("./data/element.json");
+    const level_value = await reaction.json();
     const char_constellations = document.getElementById("char_constellations");
-    const char_level = document.getElementById("char_level");
+    const level = document.getElementById("char_level");
     this.constellations = char_constellations.value;
-    this.level = parseInt(char_level.value);
+    const level_index = level.value;
+    this_level = level_value.レベル[level_index];
+
   }
 
   calculateCheckboxStates() {
