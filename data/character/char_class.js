@@ -5,11 +5,11 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level = null;
+    this.level = 90;
     this.constValue = 0;
-    await this.updateSelectValues();
-    await this.calculateConstValue();
-    await this.calculateCheckboxStates();
+    this.updateSelectValues();
+    this.calculateConstValue();
+    this.calculateCheckboxStates();
   }
 
   async dmg_rate_data() {
