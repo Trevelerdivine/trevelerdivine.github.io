@@ -224,7 +224,7 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 ////////////////////////
 
-async function create_char_instance(base_status, fixed_status, result_status) {
+async function create_char_instance(base_status, fixed_status, result_status,) {
   const char_index = document.getElementById("char_index").value;
   if (char_index === "0") {
     // ナヒーダのインスタンスを生成
@@ -369,6 +369,16 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
       *(1 + result_status[7])*0.45;
     console.log(result_status);
     return exp_dmg;
+
+    const levelSelect = document.getElementById("char_level");
+    const level_index = levelSelect.value;
+    const response = await fetch("./data/element.json");
+    const levelData = await response.json();
+    const levelObject = levelData["レベル"];
+    const selectedLevel = levelObject[level_index];
+    console.log(selectedLevel);
+
+    return selectedLevel;
   }
 
 //////////////////////

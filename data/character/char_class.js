@@ -110,6 +110,8 @@ class nahida {
     this.result_status_array = result_status_array;
   }
 
+
+  
   cal_constellations (){
   const char_constellations = document.getElementById("char_constellations");
   this.constellations = parseInt(char_constellations.value);
