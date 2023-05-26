@@ -224,16 +224,16 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 ////////////////////////
 
-async function create_char_instance(base_status, fixed_status, result_status,level) {
+async function create_char_instance(base_status, fixed_status, result_status,parameter) {
   const char_index = document.getElementById("char_index").value;
   if (char_index === "0") {
     // ナヒーダのインスタンスを生成
-    const char_instance = new nahida(base_status, fixed_status, result_status,level);
+    const char_instance = new nahida(base_status, fixed_status, result_status,parameter);
     return char_instance;
   }
   if (char_index === "3") {
     // 雷電将軍のインスタンスを生成
-    const char_instance = new raiden(base_status, fixed_status, result_status, level);
+    const char_instance = new raiden(base_status, fixed_status, result_status, parameter);
     return char_instance;
   }
 }
@@ -272,7 +272,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
-  const char_level = await import_char_level();
+  const char_parameter = await import_char_parameter();
   console.log(af_buff);
   let basic_dmg;
   let exp_dmg;
@@ -373,16 +373,19 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   }
 
 //////////////////////
-async function import_char_level()
+async function import_char_parameter()
 {
 const levelSelect = document.getElementById("char_level");
 const level_index = levelSelect.value;
 const response = await fetch("./data/element.json");
 const levelData = await response.json();
 const levelObject = levelData["レベル"];
+const aggobject = levelData["反応固有値"]; 
 const selectedLevel = levelObject[level_index];
+const agg_fixed_value = aggobject[selectedLevel];
+const parameter = [selectedLevel,agg_fixed_value];
 console.log(selectedLevel);
-return selectedLevel;
+return parameter;
 }
 
 
@@ -394,7 +397,7 @@ async function monte_carlo_calculate()
     const checkboxStates = [];
     const characterInfo = document.getElementById("characterInfo");
     const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
-    const char_level = await import_char_level();
+    const char_parameter = await import_char_parameter();
 
     checkboxes.forEach((checkbox) => {
       checkboxStates.push(checkbox.checked);
@@ -423,7 +426,7 @@ async function monte_carlo_calculate()
     return result;
   }
   
-  if (af_score < 0 || af_score>500 || !Number.isFinite(af_score))
+  if (af_score < 0 || af_score > 500 || !Number.isFinite(af_score))
   {
     console.log(af_score);
     result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"

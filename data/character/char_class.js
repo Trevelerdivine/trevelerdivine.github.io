@@ -1,11 +1,11 @@
 class nahida {
-  constructor(base_status_array, fixed_status_array, result_status_array,level) {
+  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level =level;
+    this.parameter = parameter;
     this.constValue = 0;
     this.cal_constellations();
     this.calculateConstValue();
@@ -94,7 +94,7 @@ class nahida {
     const resultStatusArray = this.result_status_array;
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-    let basicDmg = (attckRate + elmRate + 1807.5 * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
+    let basicDmg = (attckRate + elmRate + 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
     if (this.constellations > 1 && this.checkboxStates[1]===true) {
       basicDmg = basicDmg * this.constValue;
     }
@@ -102,7 +102,7 @@ class nahida {
   }
 
   calculateConstValue() {
-    this.constValue = (290 + this.level) / (190 * 0.7 + 100 + this.level);
+    this.constValue = (290 + this.parameter[0]) / (190 * 0.7 + 100 + this.parameter[0]);
   }
 
   update_status(fixed_status_array, result_status_array) {
