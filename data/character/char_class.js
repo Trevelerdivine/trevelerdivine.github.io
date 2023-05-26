@@ -95,7 +95,7 @@ class nahida {
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
     let basicDmg = (attckRate + elmRate + 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
-    if (this.constellations > 1 && this.checkboxStates[1]===true) {
+    if (this.parameter[2]> 1 && this.checkboxStates[1]===true) {
       basicDmg = basicDmg * this.constValue;
     }
     return basicDmg;
@@ -109,15 +109,6 @@ class nahida {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
   }
-
-
-  
-  cal_constellations (){
-  const char_constellations = document.getElementById("char_constellations");
-  this.constellations = parseInt(char_constellations.value);
-}
-
-
 
   calculateCheckboxStates() {
     const checkboxStates = [];
