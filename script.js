@@ -453,7 +453,7 @@ async function monte_carlo_calculate()
   let basic_dmg;
   let n_count = 0;
 
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_level);
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   console.log(dmg_rate);
