@@ -383,7 +383,7 @@ const levelObject = levelData["レベル"];
 const aggobject = levelData["反応固有値"]; 
 const selectedLevel = levelObject[level_index];
 const agg_fixed_value = aggobject[selectedLevel];
-const char_constellations = document.getElementById("char_constellations");
+const char_constellations = document.getElementById(char_constellations);
 const parameter = [selectedLevel,agg_fixed_value,char_constellations];
 console.log(parameter);
 return parameter;
