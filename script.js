@@ -368,7 +368,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.45;
     console.log(result_status);
-    return exp_dmg;
 
     const levelSelect = document.getElementById("char_level");
     const level_index = levelSelect.value;
@@ -377,8 +376,8 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     const levelObject = levelData["レベル"];
     const selectedLevel = levelObject[level_index];
     console.log(selectedLevel);
-
-    return selectedLevel;
+    
+    return exp_dmg;
   }
 
 //////////////////////
