@@ -224,11 +224,11 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 ////////////////////////
 
-async function create_char_instance(base_status, fixed_status, result_status,) {
+async function create_char_instance(base_status, fixed_status, result_status,level) {
   const char_index = document.getElementById("char_index").value;
   if (char_index === "0") {
     // ナヒーダのインスタンスを生成
-    const char_instance = new nahida(base_status, fixed_status, result_status);
+    const char_instance = new nahida(base_status, fixed_status, result_status,level);
     return char_instance;
   }
   if (char_index === "3") {
@@ -368,19 +368,22 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.45;
     console.log(result_status);
-
-    const levelSelect = document.getElementById("char_level");
-    const level_index = levelSelect.value;
-    const response = await fetch("./data/element.json");
-    const levelData = await response.json();
-    const levelObject = levelData["レベル"];
-    const selectedLevel = levelObject[level_index];
-    console.log(selectedLevel);
-    
     return exp_dmg;
   }
 
 //////////////////////
+async function import_char_level()
+{
+const levelSelect = document.getElementById("char_level");
+const level_index = levelSelect.value;
+const response = await fetch("./data/element.json");
+const levelData = await response.json();
+const levelObject = levelData["レベル"];
+const selectedLevel = levelObject[level_index];
+console.log(selectedLevel);
+return selectedLevel;
+}
+
 
 //////////////////////
 
@@ -390,7 +393,8 @@ async function monte_carlo_calculate()
     const checkboxStates = [];
     const characterInfo = document.getElementById("characterInfo");
     const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
-  
+    const char_level = await import_char_level();
+
     checkboxes.forEach((checkbox) => {
       checkboxStates.push(checkbox.checked);
     });
@@ -445,7 +449,7 @@ async function monte_carlo_calculate()
   let basic_dmg;
   let n_count = 0;
 
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status);
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_level);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   console.log(dmg_rate);

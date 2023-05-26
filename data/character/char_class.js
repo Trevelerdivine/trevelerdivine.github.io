@@ -1,11 +1,11 @@
 class nahida {
-  constructor(base_status_array, fixed_status_array, result_status_array) {
+  constructor(base_status_array, fixed_status_array, result_status_array,level) {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.constellations = 0;
-    this.level = 90;
+    this.level =level;
     this.constValue = 0;
     this.cal_constellations();
     this.calculateConstValue();
