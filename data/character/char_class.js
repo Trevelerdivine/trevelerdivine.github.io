@@ -4,10 +4,8 @@ class nahida {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
-    this.constellations = 0;
     this.parameter = parameter;
     this.constValue = 0;
-    this.cal_constellations();
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
