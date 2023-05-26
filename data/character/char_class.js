@@ -5,7 +5,7 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
-    this.constValue = 0;
+    this.constValue = null;
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
@@ -100,6 +100,9 @@ class nahida {
   }
 
   calculateConstValue() {
+    if (this.constValue ) {
+      return this.constValue;
+    }
     this.constValue = (290 + this.parameter[0]) / (190 * 0.7 + 100 + this.parameter[0]);
   }
 
