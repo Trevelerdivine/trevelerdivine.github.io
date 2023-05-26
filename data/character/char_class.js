@@ -7,7 +7,7 @@ class nahida {
     this.constellations = 0;
     this.level = 90;
     this.constValue = 0;
-    this.updataselectvalue();
+    this.constellations();
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
@@ -110,7 +110,7 @@ class nahida {
     this.result_status_array = result_status_array;
   }
 
-  constellations (){
+constellations (){
   const char_constellations = document.getElementById("char_constellations");
   this.constellations = parseInt(char_constellations.value);
 }
