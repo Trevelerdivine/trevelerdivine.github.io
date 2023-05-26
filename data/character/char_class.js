@@ -93,7 +93,7 @@ class nahida {
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
     let basicDmg = (attckRate + elmRate + 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
-    if (this.parameter[2]> 1 && this.checkboxStates[1]===true) {
+    if (this.parameter[2] > 1 && this.checkboxStates[1]===true) {
       basicDmg = basicDmg * this.constValue;
     }
     return basicDmg;
