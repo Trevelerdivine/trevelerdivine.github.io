@@ -286,7 +286,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   fixed_status[7] = af_main_status_buff[7];
   result_status = fixed_status.slice();
 
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_level);
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
   const dmg_rate = await char_instance.dmg_rate_data();
