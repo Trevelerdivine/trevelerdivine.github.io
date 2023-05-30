@@ -145,7 +145,7 @@ async function calculate_depend_status()
     const char_data = await char_response.json();
     const char_depend_status = char_data.ステータス.依存ステータス;
     const weapon_index = document.getElementById("weapon_index").value;
-    const weapon_response = await fetch("./data/weapon/" + weapon_name[weapon_index] + ".json");
+    const weapon_response = await fetch("./data/weapon/weapon_data" + weapon_name[weapon_index] + ".json");
     const weapon_data = await weapon_response.json();
     const weapon_depend_status = weapon_data.ステータス.依存ステータス;
     for (let i = 0; i < 7; i++){
