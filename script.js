@@ -141,7 +141,7 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
 async function calculate_depend_status()
   {
     const char_index = document.getElementById("char_index").value;
-    const char_response = await fetch("./data/character/" + char_name[char_index] + ".json");
+    const char_response = await fetch("./data/character/char_data/" + char_name[char_index] + ".json");
     const char_data = await char_response.json();
     const char_depend_status = char_data.ステータス.依存ステータス;
     const weapon_index = document.getElementById("weapon_index").value;
