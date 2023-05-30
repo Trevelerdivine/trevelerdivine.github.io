@@ -123,7 +123,7 @@ async function show_char_statsform()
         }
         else
         {
-            elment.form.value = 0;
+            element.form.value = 0;
         }
       }
     }

@@ -138,7 +138,7 @@ async function show_weapon_statsform() {
     }
     else
     {
-        elment.form.value = 0;
+        element.form.value = 0;
     }
   }
 }
