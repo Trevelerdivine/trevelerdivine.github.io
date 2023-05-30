@@ -136,5 +136,9 @@ async function show_weapon_statsform() {
     if (depend_status[element.index] === 1) {
       element.form.style.display = "block";
     }
+    else
+    {
+        elment.form.value = 0;
+    }
   }
 }
