@@ -240,7 +240,7 @@ async function create_char_instance(base_status, fixed_status, result_status,par
 
 ///////////////////////
 
-async function calculate_table_status(depend_status)
+async function calculate_table_status()
 {
   const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
   const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
