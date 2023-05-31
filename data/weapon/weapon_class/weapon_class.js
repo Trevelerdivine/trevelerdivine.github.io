@@ -309,7 +309,7 @@ class TheCatch {
   }
 
   calculate_weapon_result_cr() {
-    return 0.12;
+    return 0;
   }
 
   calculate_weapon_fixed_cd() {
@@ -325,7 +325,7 @@ class TheCatch {
   }
 
   calculate_weapon_result_dmg_buff() {
-    return 0.32;
+    return 0;
   }
 
   update_status(fixed_status_array, result_status_array) {

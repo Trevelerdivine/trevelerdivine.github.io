@@ -420,11 +420,11 @@ async function calculate_table_status()
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
 
-    document.getElementById("table_final_hp").innerHTML = result_status[0];
-    document.getElementById("table_final_deff").innerHTML = result_status[1];
-    document.getElementById("table_final_elm").innerHTML = result_status[2];
+    document.getElementById("table_final_hp").innerHTML = result_status[0].toFixed(0);
+    document.getElementById("table_final_deff").innerHTML = result_status[1].toFixed(0);
+    document.getElementById("table_final_elm").innerHTML = result_status[2]/toFixed(0);
     document.getElementById("table_final_elm_charge").innerHTML = (result_status[3]*100).toFixed(1) + "％";
-    document.getElementById("table_final_attck").innerHTML = result_status[4];
+    document.getElementById("table_final_attck").innerHTML = result_status[4]/toFixed(0);
     document.getElementById("table_final_cr").innerHTML = (result_status[5]*100).toFixed(1) + "％";
     document.getElementById("table_final_cd").innerHTML = (result_status[6]*100).toFixed(1) + "％";
     document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
