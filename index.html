@@ -110,42 +110,44 @@
 <fieldset id="weaponInfo" style="width: 400px;"></fieldset>
 
  <br>
+ <div id="status_setting">
  <div id="hp_form" style="display: none;">
   <label for="af_hp">HP:</label>
-  <input type="number" id="af_hp" required mim = "0" name="af_hp">
+  <input type="number" id="af_hp" required min = "0" name="af_hp">
 </div>
 
 <div id="attck_form" style="display: none;">
   <label for="af_attck">攻撃力:</label>
-  <input type="number" id="af_attck"  required mim = "0" name="af_attck">
+  <input type="number" id="af_attck"  required min = "0" name="af_attck">
 </div>
 
 <div id="deff_form" style="display: none;">
   <label for="af_deff">防御力:</label>
-  <input type="number" id="af_deff" required mim = "0" name="af_deff">
+  <input type="number" id="af_deff" required min = "0" name="af_deff">
 </div>
 
 <div id="elm_form" style="display: none;">
   <label for="af_elm">元素熟知:</label>
-  <input type="number" id="af_elm" required mim = "0" name="af_elm" >
+  <input type="number" id="af_elm" required min = "0" name="af_elm" >
 </div>
 
 <div id="elm_charge_form" style="display: none;">
   <label for="af_elm_charge">元素チャージ効率:</label>
-  <input type="number" id="af_elm_charge" required mim = "0" name="af_elm_charge">
+  <input type="number" id="af_elm_charge" required min = "0" name="af_elm_charge">
   <span>(%)</span>
 </div>
 
 <div id="cr_form" style="display: none;">
   <label for="af_cr">会心率:</label>
-  <input type="number" id="af_cr" required mim = "0" name="af_cr">
+  <input type="number" id="af_cr" required min = "0" name="af_cr">
   <span>(%)</span>
 </div>
 
 <div id="cd_form" style="display: none;">
   <label for="af_cd">会心ダメージ:</label>
-  <input type="number" id="af_cd" required mim = "0" name="af_cd">
+  <input type="number" id="af_cd" required min = "0" name="af_cd">
   <span>(%)</span>
+</div>
 </div>
 
 <button id="calculateButton" style="display: none;" onclick="monte_carlo_calculate()">ステータス計算</button>
@@ -279,6 +281,8 @@
         show_char_statsform();
         show_weapon_statsform();
       });
+
+      document.getElementById('status_setting').addEventListener('input', calculate_table_status);
     </script>
 
   </body>

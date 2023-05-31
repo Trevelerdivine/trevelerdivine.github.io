@@ -240,6 +240,128 @@ async function create_char_instance(base_status, fixed_status, result_status,par
 
 ///////////////////////
 
+async function calculate_table_status(depend_status)
+{
+  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
+  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
+  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
+  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
+  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
+  const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
+  const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
+  const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
+  const base_status = await calculate_base_status();
+  const depend_status = await calculate_depend_status();
+  const af_main_status_buff = await calculate_af_main_status_buff();
+
+  document.getElementById("table_base_hp").innerHTML = base_status[0];
+  document.getElementById("table_base_deff").innerHTML = base_status[1];
+  document.getElementById("table_base_elm").innerHTML = base_status[2];
+  document.getElementById("table_base_elm_charge").innerHTML = base_status[3];
+  document.getElementById("table_base_attck").innerHTML = base_status[4];
+  document.getElementById("table_base_cr").innerHTML = base_status[5];
+  document.getElementById("table_base_cd").innerHTML = base_status[6];
+  document.getElementById("table_base_dmg_buff").innerHTML = base_status[7];
+
+  document.getElementById("table_af_hp").innerHTML = af_buff[0];
+  document.getElementById("table_af_deff").innerHTML = af_buff[1];
+  document.getElementById("table_af_elm").innerHTML = af_buff[2];
+  document.getElementById("table_af_elm_charge").innerHTML = af_buff[3];
+  document.getElementById("table_af_attck").innerHTML = af_buff[4];
+  document.getElementById("table_af_cr").innerHTML = af_buff[5];
+  document.getElementById("table_af_cd").innerHTML = af_buff[6];
+  document.getElementById("table_af_dmg_buff").innerHTML = af_buff[7];
+
+
+  let fixed_status = base_status.slice();
+  let result_status;
+  for (let i = 0; i < 7; i++)
+  {
+    fixed_status[i] = fixed_status[i] + af_buff[i];
+  }
+  fixed_status[7] = af_main_status_buff[7];
+  result_status = fixed_status.slice();
+
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
+  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+
+  char_instance.update_status(fixed_status, result_status);
+  weapon_instance.update_status(fixed_status, result_status);
+
+    if (depend_status[0] == 1)
+    {
+      fixed_status[0] += await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
+      result_status[0] = fixed_status[0] + await (char_instance.calculate_char_result_hp() + weapon_instance.calculate_weapon_result_hp());
+      char_instance.update_status(fixed_status, result_status);
+      weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[1] == 1)
+    {
+      fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
+      result_status[1] = fixed_status[1] + await (char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff());
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[2] == 1)
+    {
+      fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
+      result_status[2] = fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[3] == 1)
+    {
+      fixed_status[3] += await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
+      result_status[3] = fixed_status[3] + await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[4] == 1)
+    {
+      fixed_status[4] += await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
+      result_status[4] = fixed_status[4] + await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    if (depend_status[5] == 1)
+    {
+      fixed_status[5] += await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
+      result_status[5] = fixed_status[5] + await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
+    if (fixed_status[5] > 1)
+    {
+      fixed_status[5] = 1;
+    }
+    if (result_status[5] > 1)
+    {
+      result_status[5] = 1;
+    }
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+  }
+
+   if (depend_status[6] == 1)
+    {
+      fixed_status[6] += await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
+      result_status[6] = fixed_status[6] + await (char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd());
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+    }
+
+    fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
+    result_status[7] = fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+    char_instance.update_status(fixed_status, result_status);
+    weapon_instance.update_status(fixed_status, result_status);
+
+
+  }
+
+///////////////////////
+
 async function create_weapon_instance(base_status, fixed_status, result_status) {
   const weapon_index = document.getElementById("weapon_index").value;
   if (weapon_index === "0") {
