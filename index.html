@@ -10,9 +10,10 @@
     <script src="./show_weapon_statsform.js"></script>
   </head>
   <body>
+
  <div>
  <h1>換算最適化スコア計算機</h1>
- <div>
+ <div id = choose_char_weapon>
   <label for="char_name">キャラクター:</label>
   <br>
   <select id="char_index" required onchange="show_char_statsform()" size="4">
@@ -283,6 +284,7 @@
       });
 
       document.getElementById('status_setting').addEventListener('input', calculate_table_status);
+      document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
     </script>
 
   </body>
