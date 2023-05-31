@@ -483,15 +483,7 @@ async function calculate_table_status()
     document.getElementById("table_final_cd").innerHTML = "-";
     }
 
-    if (depend_status[7]==1)
-    {
     document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
-    }
-    else
-    {
-    document.getElementById("table_final_dmg_buff").innerHTML = "-";
-    }
-
   }
 
 ///////////////////////
