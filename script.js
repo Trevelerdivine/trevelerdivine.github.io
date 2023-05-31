@@ -333,7 +333,7 @@ async function calculate_table_status()
   }
   else
   {
-  document.getElementById("table_af_cd").innerHTML = "-";
+  document.getElementById("table_af_dmg_buff").innerHTML = "-";
   }
 
   let fixed_status = base_status.slice();
@@ -571,7 +571,6 @@ const agg_fixed_value = aggobject[selectedLevel];
 const char_constellations = document.getElementById("char_constellations");
 const constellations = char_constellations.value;
 const parameter = [selectedLevel,agg_fixed_value,constellations];
-console.log(parameter);
 return parameter;
 }
 
