@@ -120,7 +120,6 @@ async function show_char_statsform()
       for (const element of formElements) {
         if (depend_status[element.index] === 1) {
           element.form.style.display = "block";
-          element.form.value = 0;
         }
       }
     }
