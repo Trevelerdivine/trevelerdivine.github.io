@@ -253,6 +253,7 @@ async function calculate_table_status()
   const base_status = await calculate_base_status();
   const depend_status = await calculate_depend_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
+  const char_parameter = await import_char_parameter();
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
