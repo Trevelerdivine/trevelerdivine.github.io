@@ -258,20 +258,20 @@ async function calculate_table_status()
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
   document.getElementById("table_base_elm").innerHTML = base_status[2];
-  document.getElementById("table_base_elm_charge").innerHTML = base_status[3];
+  document.getElementById("table_base_elm_charge").innerHTML = base_status[3]*100 + "％";
   document.getElementById("table_base_attck").innerHTML = base_status[4];
-  document.getElementById("table_base_cr").innerHTML = base_status[5];
-  document.getElementById("table_base_cd").innerHTML = base_status[6];
-  document.getElementById("table_base_dmg_buff").innerHTML = base_status[7];
+  document.getElementById("table_base_cr").innerHTML = base_status[5]*100 + "％";
+  document.getElementById("table_base_cd").innerHTML = base_status[6]*100 + "％";
+  document.getElementById("table_base_dmg_buff").innerHTML = base_status[7]*100 + "％";
 
   document.getElementById("table_af_hp").innerHTML = af_buff[0];
   document.getElementById("table_af_deff").innerHTML = af_buff[1];
   document.getElementById("table_af_elm").innerHTML = af_buff[2];
-  document.getElementById("table_af_elm_charge").innerHTML = af_buff[3]*100;
+  document.getElementById("table_af_elm_charge").innerHTML = af_buff[3]*100+ "％";
   document.getElementById("table_af_attck").innerHTML = af_buff[4];
-  document.getElementById("table_af_cr").innerHTML = af_buff[5]*100;
-  document.getElementById("table_af_cd").innerHTML = af_buff[6]*100;
-  document.getElementById("table_af_dmg_buff").innerHTML = af_main_status_buff[7]*100;
+  document.getElementById("table_af_cr").innerHTML = af_buff[5]*100+ "％";
+  document.getElementById("table_af_cd").innerHTML = af_buff[6]*100+ "％";
+  document.getElementById("table_af_dmg_buff").innerHTML = af_main_status_buff[7]*100+ "％";
 
 
   let fixed_status = base_status.slice();
