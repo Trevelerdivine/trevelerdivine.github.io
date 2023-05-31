@@ -22,7 +22,7 @@ async function calculate_char_base_status()
 {
   const char_index = document.getElementById("char_index").value;
   const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/" + char_name[char_index] + ".json");
+  const response = await fetch("./data/character/char_data/" + char_name[char_index] + ".json");
   const data = await response.json();
   const char_base_hp = data.ステータス.基礎HP[char_level];
   const char_base_attck = data.ステータス.基礎攻撃力[char_level];
@@ -42,7 +42,7 @@ async function calculate_char_base_status()
 async function calculate_weapon_base_status() {
   const weapon_index = document.getElementById("weapon_index").value;
   const weapon_level = document.getElementById("weapon_level").value;
-  const response = await fetch("./data/weapon/" + weapon_name[weapon_index] + ".json");
+  const response = await fetch("./data/weapon/weapon_data/" + weapon_name[weapon_index] + ".json");
   const data = await response.json();
   const weapon_base_hp = data.ステータス.基礎HP[weapon_level];
   const weapon_base_attck = data.ステータス.基礎攻撃力[weapon_level];
