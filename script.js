@@ -445,7 +445,7 @@ async function calculate_table_status()
       document.getElementById("table_af_cd").innerHTML = "-";
       document.getElementById("table_final_cd").innerHTML = "-";
     }
-
+    console.log(af_main_status_buff[7])
     document.getElementById("table_buff_dmg_buff").innerHTML = (buff_status[7]*100).toFixed(1) + "％";
     document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
     document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
