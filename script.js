@@ -621,7 +621,7 @@ async function monte_carlo_calculate()
     return result;
   }
   
-  if (af_score < 0 || af_score > 500 || !Number.isFinite(af_score))
+  if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
     console.log(af_score);
     result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
@@ -640,7 +640,6 @@ async function monte_carlo_calculate()
   let random_1;
   let random_2;
   let output_exp_dmg = Infinity;
-  const dlt_score = 0.1;
   let temp_status = [0,0,0,0,0,0,0,0];
   let temp_score_distribute = [0,0,0,0,0,0,0];
   let old_score_distribution = [0,0,0,0,0,0,0];
