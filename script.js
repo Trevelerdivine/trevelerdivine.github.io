@@ -1024,7 +1024,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   }
 
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
-  document.getElementById("appro_result_dmg_buf").innerHTML = (result_status[7]*100).toFixed(1) + "％";
+  document.getElementById("appro_result_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
 
   return result; 
 }
