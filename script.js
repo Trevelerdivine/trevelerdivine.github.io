@@ -911,99 +911,120 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 
   if (depend_status[1] == 1)
   {
-    fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
-    result_status[1] = fixed_status[1] + await (char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff());
-    buff_status[1] = result_status[1] - af_buff[1] - base_status[1];
-    document.getElementById("table_buff_deff").innerHTML = buff_status[1].toFixed(0);
-    document.getElementById("table_af_deff").innerHTML = af_buff[1].toFixed(0);
-    document.getElementById("table_final_deff").innerHTML = result_status[1].toFixed(0);
+    document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(0);
+    document.getElementById("appro_result_deff").innerHTML =result_status[1].toFixed(0);
+    document.getElementById("my_deff_score").innerHTML = my_af_score_distribution[1].toFixed(1);
+    document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(1);
+    document.getElementById("dlt_deff_score").innerHTML = my_af_score_distribution[1].toFixed(1) - old_score_distribution[1].toFixed(1);
+    document.getElementById("count_deff_score").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
   }
   else
   {
-    document.getElementById("table_buff_deff").innerHTML = "-";
-    document.getElementById("table_af_deff").innerHTML = "-";
-    document.getElementById("table_final_deff").innerHTML = "-";
+    document.getElementById("my_result_deff").innerHTML = "-";
+    document.getElementById("appro_result_deff").innerHTML = "-";
+    document.getElementById("my_deff_score").innerHTML = "-";
+    document.getElementById("appro_deff_score").innerHTML = "-";
+    document.getElementById("dlt_deff_score").innerHTML = "-";
+    document.getElementById("count_deff_score").innerHTML = "-";
   }
 
   if (depend_status[2] == 1)
   {
-    fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
-    result_status[2] = fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
-    buff_status[2] = result_status[2] - af_buff[2] - base_status[2];
-    document.getElementById("table_buff_elm").innerHTML = buff_status[2].toFixed(0);
-    document.getElementById("table_af_elm").innerHTML = af_buff[2].toFixed(0);
-    document.getElementById("table_final_elm").innerHTML = result_status[2].toFixed(0);
+    document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
+    document.getElementById("appro_result_elm").innerHTML =result_status[2].toFixed(0);
+    document.getElementById("my_elm_score").innerHTML = my_af_score_distribution[2].toFixed(1);
+    document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(1);
+    document.getElementById("dlt_elm_score").innerHTML = my_af_score_distribution[2].toFixed(1) - old_score_distribution[2].toFixed(1);
+    document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
   }
   else
   {
-    document.getElementById("table_buff_elm").innerHTML = "-";
-    document.getElementById("table_af_elm").innerHTML = "-";
-    document.getElementById("table_final_elm").innerHTML = "-";
+    document.getElementById("my_result_elm").innerHTML = "-";
+    document.getElementById("appro_result_elm").innerHTML = "-";
+    document.getElementById("my_elm_score").innerHTML = "-";
+    document.getElementById("appro_elm_score").innerHTML = "-";
+    document.getElementById("dlt_elm_score").innerHTML = "-";
+    document.getElementById("count_elm_score").innerHTML = "-";
   }
 
   if (depend_status[3] == 1)
   {
-    fixed_status[3] += await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
-    result_status[3] = fixed_status[3] + await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
-    buff_status[3] = result_status[3] - af_buff[3] - base_status[3];
-    document.getElementById("table_buff_elm_charge").innerHTML = (buff_status[3]*100).toFixed(1) + "％";
-    document.getElementById("table_af_elm_charge").innerHTML = (af_buff[3]*100).toFixed(1) + "％";
-    document.getElementById("table_final_elm_charge").innerHTML = (result_status[3]*100).toFixed(1) + "％";
+    document.getElementById("my_result_elm_charge").innerHTML = (my_result_status[3]*100).toFixed(1) + "％";
+    document.getElementById("appro_result_elm_charge").innerHTML =(result_status[3]*100).toFixed(1) + "％";
+    document.getElementById("my_elm_charge_score").innerHTML = my_af_score_distribution[3].toFixed(1);
+    document.getElementById("appro_elm_charge_score").innerHTML = old_score_distribution[3].toFixed(1);
+    document.getElementById("dlt_elm_charge_score").innerHTML = my_af_score_distribution[3].toFixed(1) - old_score_distribution[3].toFixed(1);
+    document.getElementById("count_elm_charge_score").innerHTML = (old_score_distribution[3]/7.8).toFixed(1);
   }
   else
   {
-    document.getElementById("table_buff_elm_charge").innerHTML = "-";
-    document.getElementById("table_af_elm_charge").innerHTML = "-";
-    document.getElementById("table_final_elm_charge").innerHTML = "-";
+    document.getElementById("my_result_elm_charge").innerHTML = "-";
+    document.getElementById("appro_result_elm_charge").innerHTML = "-";
+    document.getElementById("my_elm_charge_score").innerHTML = "-";
+    document.getElementById("appro_elm_charge_score").innerHTML = "-";
+    document.getElementById("dlt_elm_charge_score").innerHTML = "-";
+    document.getElementById("count_elm_charge_score").innerHTML = "-";
   }
 
   if (depend_status[4] == 1)
   {
-    fixed_status[4] += await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
-    result_status[4] = fixed_status[4] + await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
-    buff_status[4] = result_status[4] - af_buff[4] - base_status[4];
-    document.getElementById("table_buff_attck").innerHTML = buff_status[4].toFixed(0);
-    document.getElementById("table_af_attck").innerHTML = af_buff[4].toFixed(0);
-    document.getElementById("table_final_attck").innerHTML = result_status[4].toFixed(0);
+    document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
+    document.getElementById("appro_result_attck").innerHTML =result_status[4].toFixed(0);
+    document.getElementById("my_attck_score").innerHTML = my_af_score_distribution[4].toFixed(1);
+    document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(1);
+    document.getElementById("dlt_attck_score").innerHTML = my_af_score_distribution[4].toFixed(1) - old_score_distribution[4].toFixed(1);
+    document.getElementById("count_attck_score").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
   }
   else
   {
-    document.getElementById("table_buff_attck").innerHTML = "-";
-    document.getElementById("table_af_attck").innerHTML = "-";
-    document.getElementById("table_final_attck").innerHTML = "-";
+    document.getElementById("my_result_attck").innerHTML = "-";
+    document.getElementById("appro_result_attck").innerHTML = "-";
+    document.getElementById("my_attck_score").innerHTML = "-";
+    document.getElementById("appro_attck_score").innerHTML = "-";
+    document.getElementById("dlt_attck_score").innerHTML = "-";
+    document.getElementById("count_attck_score").innerHTML = "-";
   }
 
   if (depend_status[5] == 1)
   {
-    document.getElementById("table_buff_cr").innerHTML = (buff_status[5]*100).toFixed(1) + "％";
-    document.getElementById("table_af_cr").innerHTML = (af_buff[5]*100).toFixed(1) + "％";
-    document.getElementById("table_final_cr").innerHTML = (result_status[5]*100).toFixed(1) + "％";
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
+    document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(0) + "%";
+    document.getElementById("appro_result_cr").innerHTML = (result_status[5]*100).toFixed(0) + "%";
+    document.getElementById("my_cr_score").innerHTML = my_af_score_distribution[5].toFixed(1);
+    document.getElementById("appro_cr_score").innerHTML = old_score_distribution[5].toFixed(1);
+    document.getElementById("dlt_cr_score").innerHTML = my_af_score_distribution[5].toFixed(1) - old_score_distribution[5].toFixed(1);
+    document.getElementById("count_cr_score").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
   }
   else
   {
-    document.getElementById("table_buff_cr").innerHTML = "-";
-    document.getElementById("table_af_cr").innerHTML = "-";
-    document.getElementById("table_final_cr").innerHTML = "-";
+    document.getElementById("my_result_cr").innerHTML = "-";
+    document.getElementById("appro_result_cr").innerHTML = "-";
+    document.getElementById("my_cr_score").innerHTML = "-";
+    document.getElementById("appro_cr_score").innerHTML = "-";
+    document.getElementById("dlt_cr_score").innerHTML = "-";
+    document.getElementById("count_cr_score").innerHTML = "-";
   }
 
  if (depend_status[6] == 1)
   {
-    document.getElementById("table_buff_cd").innerHTML = (buff_status[6]*100).toFixed(1) + "％";
-    document.getElementById("table_af_cd").innerHTML = (af_buff[6]*100).toFixed(1) + "％";
-    document.getElementById("table_final_cd").innerHTML = (result_status[6]*100).toFixed(1) + "％";
+    document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(0) + "%";
+    document.getElementById("appro_result_cd").innerHTML = (result_status[6]*100).toFixed(0) + "%";
+    document.getElementById("my_cd_score").innerHTML = my_af_score_distribution[6].toFixed(1);
+    document.getElementById("appro_cd_score").innerHTML = old_score_distribution[6].toFixed(1);
+    document.getElementById("dlt_cd_score").innerHTML = my_af_score_distribution[6].toFixed(1) - old_score_distribution[6].toFixed(1);
+    document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
   }
   else
   {
-    document.getElementById("table_buff_cd").innerHTML = "-";
-    document.getElementById("table_af_cd").innerHTML = "-";
-    document.getElementById("table_final_cd").innerHTML = "-";
+    document.getElementById("my_result_cd").innerHTML = "-";
+    document.getElementById("appro_result_cd").innerHTML = "-";
+    document.getElementById("my_cd_score").innerHTML = "-";
+    document.getElementById("appro_cd_score").innerHTML = "-";
+    document.getElementById("dlt_cd_score").innerHTML = "-";
+    document.getElementById("count_cd_score").innerHTML = "-";
   }
 
-  document.getElementById("table_buff_dmg_buff").innerHTML = (buff_status[7]*100).toFixed(1) + "％";
-  document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
-  document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
+  document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
+  document.getElementById("appro_result_dmg_buf").innerHTML = (result_status[7]*100).toFixed(1) + "％";
 
   return result; 
 }
