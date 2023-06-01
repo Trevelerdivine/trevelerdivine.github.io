@@ -104,36 +104,41 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value);//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value);//聖遺物会心ダメージ上昇量
-  let af_score = 0
+  let af_score_distribution = [0,0,0,0,0,0,0,0]
   for (let i = 0; i < 7; i++){
     if (depend_status[i]==0){
+      af_score_distribution[i] = 0
       continue;
     }
     switch (i)
     {
       case 0:
-       af_score = af_score+((af_hp - 4780)/base_status[0] - af_main_status_buff[0])*400/3;
+       af_score_distribution[0] = af_score+((af_hp - 4780)/base_status[0] - af_main_status_buff[0])*400/3;
        break;
       case 1:
-        af_score = af_score + (af_deff/base_status[1] - af_main_status_buff[1])*1600/15;
+        af_score_distribution[1] = (af_deff/base_status[1] - af_main_status_buff[1])*1600/15;
         break;
       case 2:
-        af_score = af_score + (af_elm -  af_main_status_buff[2])/3;
+        af_score_distribution[2] = (af_elm -  af_main_status_buff[2])/3;
         break;
       case 3:
-        af_score = af_score + (af_elm_charge - af_main_status_buff[3])*1.2;
+        af_score_distribution[3] = (af_elm_charge - af_main_status_buff[3])*1.2;
         break;
       case 4:
-        af_score = af_score+((af_attck - 311)/base_status[4] - af_main_status_buff[4])*400/3;
+        af_score_distribution[4] =((af_attck - 311)/base_status[4] - af_main_status_buff[4])*400/3;
         break;
       case 5:
-        af_score = af_score + (af_cr - af_main_status_buff[5])*2;
+        af_score_distribution[5] = (af_cr - af_main_status_buff[5])*2;
         break
       case 6:
-        af_score = af_score + (af_cd - af_main_status_buff[6]);
+        af_score_distribution[6] = (af_cd - af_main_status_buff[6]);
     }
   }
-  return af_score
+  for (let n = 0; n < 7; n++)
+  {
+     af_score_distribution[7]=af_score_distribution[7] + af_score_distribution[n];
+  }
+  return af_score_distribution
 }
 
 ///////////////////
@@ -554,8 +559,9 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
     exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
       *(1 + result_status[7])*0.45;
+    result_status.push(exp_dmg);
     console.log(result_status);
-    return exp_dmg;
+    return result_status;
   }
 
 //////////////////////
@@ -599,11 +605,12 @@ async function monte_carlo_calculate()
   const depend_status = await calculate_depend_status();
   console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
-  let my_exp_dmg = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
-  let af_score = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+  let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
+  let my_exp_dmg = my_result_status[8];
+  let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+  let af_score = my_af_score_distribution[7];
   let critical_dmg;
   let temp_critical_dmg;
-  let my_af_score = await calculate_af_score(af_main_status_buff,depend_status,base_status);
   console.log(my_exp_dmg);
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
@@ -885,7 +892,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   console.log(my_exp_dmg);
   console.log(old_score_distribution)
 
-  result ="ループ回数" + n_count + "<br>" + "my聖遺物スコア" + my_af_score + "<br>" + "  会心ダメージ: " + temp_critical_dmg + "<br>" +"  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + output_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[4] + "<br>" +"  防御力: " + 
+  result ="ループ回数" + n_count + "<br>" + "my聖遺物スコア" + af_score + "<br>" + "  会心ダメージ: " + temp_critical_dmg + "<br>" +"  聖遺物スコア: " + af_score + "<br>" + "  ダメージ期待値: " + output_exp_dmg + "<br>" +  "  HP: " + temp_status[0] + "<br>" + "  攻撃力: " + temp_status[4] + "<br>" +"  防御力: " + 
   temp_status[1] + "<br>"+"  元素熟知: " + temp_status[2] + "<br>" + "  元素チャージ効率: " + temp_status[3] + "%" + "<br>" + "  会心率: " + temp_status[5] + "%" + "<br>" +
    "  会心ダメージ：" + temp_status[6] + "%" + "<br>" + "  ダメージバフ: " + temp_status[7] + "%";
   document.getElementById("result").innerHTML = result;
