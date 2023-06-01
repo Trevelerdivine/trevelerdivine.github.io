@@ -8,6 +8,15 @@
     <script src="./data/weapon/weapon_class/weapon_class.js"></script>
     <script src="./show_char_statsform.js"></script>
     <script src="./show_weapon_statsform.js"></script>
+    <style>
+      .table-container {
+        display: none;
+      }
+      .active {
+        display: block;
+      }
+    </style>
+  
   </head>
   <body>
 
@@ -262,20 +271,122 @@
 </style>
 <br>
 <br>
-<table class="calc_result" style="width: 600px; table-layout: fixed">
+<button onclick="showTable('table1')">各ステータス</button>
+  <button onclick="showTable('table2')">スコア分布</button>
+  <button onclick="showTable('table3')">サブステータス分布</button>
+
+<br>
+<br>
+<style>
+  table.calc_result,
+  table.result.v-style {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  table.calc_result th,
+  table.calc_result td,
+  table.result.v-style th,
+  table.result.v-style td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: right;
+  }
+  table.calc_result th,
+  table.result.v-style th {
+    background-color: #f2f2f2;
+  }
+</style>
+  <div id="table1" class="table-container">
+    <!-- 表1の内容 -->
+<table class="calc_result" style="width: 500px; table-layout: fixed">
   <colgroup>
-    <col style="width: 25%;">
-    <col style="width: 22%;">
-    <col style="width: 14%;">
-    <col style="width: 17%;">
+    <col style="width: 30%;">
+    <col style="width: 35%;">
   </colgroup>
   <thead>
     <tr>
       <th></th>
-      <th>自己ステータス</th>
-      <th>最適化ステータス</th>
-      <th>聖遺物スコア差</th>
-      <th>最終ステータス</th>
+      <th  style="text-align: left;">自己ステータス</th>
+      <th  style="text-align: left;">最適化ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>HP</span>
+      </th>
+      <td id = table_base_hp>-</td>
+      <td id = table_buff_hp>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>攻撃力</span>
+      </th>
+      <td id = table_base_attck>-</td>
+      <td id = table_buff_attck>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>防御力</span>
+      </th>
+      <td id = table_base_deff>-</td>
+      <td id = table_buff_deff>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>元素熟知</span>
+      </th>
+      <td id = table_base_elm>-</td>
+      <td id = table_buff_elm>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>元素チャージ効率</span>
+      </th>
+      <td id = table_base_elm_charge>-</td>
+      <td id = table_buff_elm_charge>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>会心率</span>
+      </th>
+      <td id = table_base_cr>-</td>
+      <td id = table_buff_cr>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>会心ダメージ</span>
+      </th>
+      <td id = table_base_cd>-</td>
+      <td id = table_buff_cd>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>ダメージバフ</span>
+      </th>
+      <td id = table_base_dmg_buff>-</td>
+      <td id = table_buff_dmg_buff>-</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  <div id="table2" class="table-container">
+    <!-- 表2の内容 -->
+<table class="calc_result" style="width: 690px; table-layout: fixed">
+  <colgroup>
+    <col style="width: 21%;">
+    <col style="width: 19%;">
+    <col style="width: 19%;">
+    <col style="width: 19%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align: left;">自己スコア分布</th>
+      <th style="text-align: left;">最適スコア分布</th>
+      <th style="text-align: left;">聖遺物スコア差</th>
+      <th style="text-align: left;">サブステ伸び回数</th>
     </tr>
   </thead>
   <tbody>
@@ -353,22 +464,102 @@
     </tr>
   </tbody>
 </table>
-<style>
-  table.calc_result {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  table.calc_result th,
-  table.calc_result td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: right;
-  }
-  table.calc_result th {
-    background-color: #f2f2f2;
-  }
-</style>
+  </div>
 
+  <div id="table3" class="table-container">
+    <!-- 表3の内容 -->
+   <table class="result v-style" style="width: 840px; table-layout: fixed">
+  <colgroup>
+    <col style="width: 18%;">
+    <col style="width: 23%;">
+    <col style="width: 23%;">
+    <col style="width: 18%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      <th>自己サブステータス分布</th>
+      <th>最適サブステータス分布</th>
+      <th>サブステータス差</th>
+      <th>サブステ伸び回数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>HP</span>
+      </th>
+      <td id = table_base_hp>-</td>
+      <td id = table_buff_hp>-</td>
+      <td id = table_af_hp>-</td>
+      <td id = table_final_hp>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>攻撃力</span>
+      </th>
+      <td id = table_base_attck>-</td>
+      <td id = table_buff_attck>-</td>
+      <td id = table_af_attck>-</td>
+      <td id = table_final_attck>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>防御力</span>
+      </th>
+      <td id = table_base_deff>-</td>
+      <td id = table_buff_deff>-</td>
+      <td id = table_af_deff>-</td>
+      <td id = table_final_deff>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>元素熟知</span>
+      </th>
+      <td id = table_base_elm>-</td>
+      <td id = table_buff_elm>-</td>
+      <td id = table_af_elm>-</td>
+      <td id = table_final_elm>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>元素チャージ効率</span>
+      </th>
+      <td id = table_base_elm_charge>-</td>
+      <td id = table_buff_elm_charge>-</td>
+      <td id = table_af_elm_charge>-</td>
+      <td id = table_final_elm_charge>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>会心率</span>
+      </th>
+      <td id = table_base_cr>-</td>
+      <td id = table_buff_cr>-</td>
+      <td id = table_af_cr>-</td>
+      <td id = table_final_cr>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>会心ダメージ</span>
+      </th>
+      <td id = table_base_cd>-</td>
+      <td id = table_buff_cd>-</td>
+      <td id = table_af_cd>-</td>
+      <td id = table_final_cd>-</td>
+    </tr>
+    <tr>
+      <th rowspan="1" style="text-align: left;">
+        <span>ダメージバフ</span>
+      </th>
+      <td id = table_base_dmg_buff>-</td>
+      <td id = table_buff_dmg_buff>-</td>
+      <td id = table_af_dmg_buff>-</td>
+      <td id = table_final_dmg_buff>-</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
     <script>
       window.addEventListener("DOMContentLoaded", function() {
         show_char_statsform();
@@ -379,6 +570,18 @@
       document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
       document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
       document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
+      function showTable(tableId) {
+      // すべての表コンテナを非表示にする
+      var tableContainers = document.getElementsByClassName("table-container");
+      for (var i = 0; i < tableContainers.length; i++) {
+        tableContainers[i].classList.remove("active");
+      }
+      // 選択された表コンテナを表示する
+      document.getElementById(tableId).classList.add("active");
+    }
+    window.onload = function() {
+      showTable('table1');
+    };
     </script>
 
   </body>
