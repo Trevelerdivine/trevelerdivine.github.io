@@ -610,6 +610,7 @@ async function monte_carlo_calculate()
   let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let af_score = my_af_score_distribution[7];
   const my_af_score = my_af_score_distribution[7];
+  const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
   console.log(my_exp_dmg);
