@@ -880,7 +880,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
  }
 }
 
- let result = "最適化換算聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + temp_exp_dmg.toFixed(1);
+ let result = "最適化換算聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
  document.getElementById("result").innerHTML = result;
 
   if (depend_status[0] == 1)
