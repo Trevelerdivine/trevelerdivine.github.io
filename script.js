@@ -879,8 +879,9 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   af_score = (af_score_upper_limit + af_score_lower_limit)/2;
  }
 }
-  temp_status[0] = temp_status[0].toFixed(0);
 
+ let result = "最適化換算聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + temp_exp_dmg.toFixed(1);
+ document.getElementById("result").innerHTML = result;
 
   if (depend_status[0] == 1)
   {
@@ -979,8 +980,8 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 
   if (depend_status[5] == 1)
   {
-    document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(0) + "%";
-    document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(0) + "%";
+    document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(1) + "%";
+    document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(1) + "%";
     document.getElementById("my_cr_score").innerHTML = my_af_score_distribution[5].toFixed(1);
     document.getElementById("appro_cr_score").innerHTML = old_score_distribution[5].toFixed(1);
     document.getElementById("dlt_cr_score").innerHTML = (my_af_score_distribution[5] - old_score_distribution[5]).toFixed(1);
@@ -998,8 +999,8 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 
  if (depend_status[6] == 1)
   {
-    document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(0) + "%";
-    document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(0) + "%";
+    document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(1) + "%";
+    document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(1) + "%";
     document.getElementById("my_cd_score").innerHTML = my_af_score_distribution[6].toFixed(1);
     document.getElementById("appro_cd_score").innerHTML = old_score_distribution[6].toFixed(1);
     document.getElementById("dlt_cd_score").innerHTML = (my_af_score_distribution[6] - old_score_distribution[6]).toFixed(1);

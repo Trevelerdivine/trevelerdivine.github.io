@@ -213,7 +213,7 @@ class nahida {
       return this.result_status_array[4] * dmg_rate[4]/100;
     }
 
-    update_status(fixed_status_array, result_status_array) {
+    update_status(fixed_status_array, result_status_array){
       this.fixed_status_array = fixed_status_array;
       this.result_status_array = result_status_array;
     }
