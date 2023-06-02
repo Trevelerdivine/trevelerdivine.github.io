@@ -609,7 +609,7 @@ async function monte_carlo_calculate()
   let my_exp_dmg = my_result_status[8];
   let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let af_score = my_af_score_distribution[7];
-  const my_af_score = my_af_score_distribution[7].toFixed[1];
+  const my_af_score = my_af_score_distribution[7];
   const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
@@ -880,20 +880,12 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
  }
 }
   temp_status[0] = temp_status[0].toFixed(0);
-  temp_status[1] = temp_status[1].toFixed(0);
-  temp_status[2] = temp_status[2].toFixed(0);
-  temp_status[3] = (temp_status[3]*100).toFixed(1);
-  temp_status[4] = temp_status[4].toFixed(0);
-  temp_status[5] = (temp_status[5]*100).toFixed(1);
-  temp_status[6] = (temp_status[6]*100).toFixed(1);
-  temp_status[7] = (temp_status[7]*100).toFixed(1);
-  temp_critical_dmg = temp_critical_dmg.toFixed(0)
-  af_score = af_score.toFixed(1);
+
 
   if (depend_status[0] == 1)
   {
     document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(0);
-    document.getElementById("appro_result_hp").innerHTML =result_status[0].toFixed(0);
+    document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(0);
     document.getElementById("my_hp_score").innerHTML = my_af_score_distribution[0].toFixed(1);
     document.getElementById("appro_hp_score").innerHTML = old_score_distribution[0].toFixed(1);
     document.getElementById("dlt_hp_score").innerHTML = (my_af_score_distribution[0] - old_score_distribution[0]).toFixed(1);
@@ -912,7 +904,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   if (depend_status[1] == 1)
   {
     document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(0);
-    document.getElementById("appro_result_deff").innerHTML =result_status[1].toFixed(0);
+    document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(0);
     document.getElementById("my_deff_score").innerHTML = my_af_score_distribution[1].toFixed(1);
     document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(1);
     document.getElementById("dlt_deff_score").innerHTML = (my_af_score_distribution[1] - old_score_distribution[1]).toFixed(1);
@@ -931,7 +923,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   if (depend_status[2] == 1)
   {
     document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
-    document.getElementById("appro_result_elm").innerHTML =result_status[2].toFixed(0);
+    document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(0);
     document.getElementById("my_elm_score").innerHTML = my_af_score_distribution[2].toFixed(1);
     document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(1);
     document.getElementById("dlt_elm_score").innerHTML = (my_af_score_distribution[2] - old_score_distribution[2]).toFixed(1);
@@ -950,7 +942,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   if (depend_status[3] == 1)
   {
     document.getElementById("my_result_elm_charge").innerHTML = (my_result_status[3]*100).toFixed(1) + "％";
-    document.getElementById("appro_result_elm_charge").innerHTML =(result_status[3]*100).toFixed(1) + "％";
+    document.getElementById("appro_result_elm_charge").innerHTML =(temp_status[3]*100).toFixed(1) + "％";
     document.getElementById("my_elm_charge_score").innerHTML = my_af_score_distribution[3].toFixed(1);
     document.getElementById("appro_elm_charge_score").innerHTML = old_score_distribution[3].toFixed(1);
     document.getElementById("dlt_elm_charge_score").innerHTML = (my_af_score_distribution[3] - old_score_distribution[3]).toFixed(1);
@@ -969,7 +961,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   if (depend_status[4] == 1)
   {
     document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
-    document.getElementById("appro_result_attck").innerHTML =result_status[4].toFixed(0);
+    document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(0);
     document.getElementById("my_attck_score").innerHTML = my_af_score_distribution[4].toFixed(1);
     document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(1);
     document.getElementById("dlt_attck_score").innerHTML = (my_af_score_distribution[4] - old_score_distribution[4]).toFixed(1);
@@ -988,7 +980,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   if (depend_status[5] == 1)
   {
     document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(0) + "%";
-    document.getElementById("appro_result_cr").innerHTML = (result_status[5]*100).toFixed(0) + "%";
+    document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(0) + "%";
     document.getElementById("my_cr_score").innerHTML = my_af_score_distribution[5].toFixed(1);
     document.getElementById("appro_cr_score").innerHTML = old_score_distribution[5].toFixed(1);
     document.getElementById("dlt_cr_score").innerHTML = (my_af_score_distribution[5] - old_score_distribution[5]).toFixed(1);
@@ -1007,7 +999,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
  if (depend_status[6] == 1)
   {
     document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(0) + "%";
-    document.getElementById("appro_result_cd").innerHTML = (result_status[6]*100).toFixed(0) + "%";
+    document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(0) + "%";
     document.getElementById("my_cd_score").innerHTML = my_af_score_distribution[6].toFixed(1);
     document.getElementById("appro_cd_score").innerHTML = old_score_distribution[6].toFixed(1);
     document.getElementById("dlt_cd_score").innerHTML = (my_af_score_distribution[6] - old_score_distribution[6]).toFixed(1);
@@ -1024,7 +1016,8 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   }
 
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
-  document.getElementById("appro_result_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
-
-  return result; 
+  document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";
+  document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
+  document.getElementById("appro_af_score").innerHTML = af_score.toFixed(1);
+  document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(1);
 }
