@@ -1,42 +1,47 @@
 .table-container {
-    display: none;
-  }
-  .active {
-    display: block;
-  }
+  display: none;
+}
 
+.active {
+  display: block;
+}
 
-  table.result.v-style {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  table.result.v-style th,
-  table.result.v-style td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: right;
-  }
-  table.result.v-style th {
-    background-color: #f2f2f2;
-  }
+table.result.v-style {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-  table.calc_result,
-  table.result.v-style {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  table.calc_result th,
-  table.calc_result td,
-  table.result.v-style th,
-  table.result.v-style td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: right;
-  }
-  table.calc_result th,
-  table.result.v-style th {
-    background-color: #f2f2f2;
-  }
+table.result.v-style th,
+table.result.v-style td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: right;
+}
+
+table.result.v-style th {
+  background-color: #f2f2f2;
+}
+
+table.calc_result,
+table.result.v-style {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.calc_result th,
+table.calc_result td,
+table.result.v-style th,
+table.result.v-style td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: right;
+}
+
+table.calc_result th,
+table.result.v-style th {
+  background-color: #f2f2f2;
+}
+
 
 
 
