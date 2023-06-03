@@ -47,6 +47,19 @@
     <option value="3">C5</option>
     <option value="4">C6</option>
  </select>
+
+ <label class="open" for="pop-up"><img src="./聖遺物/迷宮の遊客_5.png" alt="画像の説明"></label>
+ <input type="checkbox" id="pop-up">
+ <div class="overlay">
+   <div class="window">
+     <label class="close" for="pop-up">×</label>
+     <img src="./聖遺物/迷宮の遊客_5.png" alt="画像の説明">
+     <img src="./聖遺物/威厳の鰐_5.png" alt="画像の説明">
+   </div>
+ </div>
+</div>
+<div id="index-display"></div>
+
 <br>
   <label for="weapon_name">武器</label>
 <br>
@@ -540,7 +553,34 @@
     window.onload = function() {
       showTable('table1');
     };
-    </script>
+
+    window.addEventListener('DOMContentLoaded', function() {
+      var images = document.querySelectorAll('.overlay img');
+
+      for (var i = 0; i < images.length; i++) {
+        images[i].addEventListener('click', function() {
+          var popupImage = document.querySelector('.open img');
+          var selectedImageSrc = this.getAttribute('src');
+          popupImage.setAttribute('src', selectedImageSrc);
+          document.getElementById('pop-up').checked = false; // ポップアップを非表示にする
+
+          var indexDisplay = document.getElementById('index-display');
+          if (selectedImageSrc === "C:\\Users\\832re\\Downloads\\聖遺物\\迷宮の遊客_5.png") {
+            indexDisplay.textContent = "0";
+          } else if (selectedImageSrc === "C:\\Users\\832re\\Downloads\\聖遺物\\威厳の鰐_5.png") {
+            indexDisplay.textContent = "1";
+          }
+        });
+      }
+
+      var closeButton = document.querySelector('.close');
+      closeButton.addEventListener('click', function() {
+        var atoPopupImage = document.querySelector('.window img:nth-child(2)');
+        var selectedImageSrc = popupImage.getAttribute('src');
+        atoPopupImage.setAttribute('src', selectedImageSrc);
+      });
+    });
+  </script>
 
   </body>
 
