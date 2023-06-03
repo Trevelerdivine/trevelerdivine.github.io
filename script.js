@@ -598,7 +598,6 @@ async function monte_carlo_calculate()
     while (checkboxStates.length < 4) {
       checkboxStates.push(false);
     }
-  console.log(checkboxStates); // チェックボックスの入力結果の配列を表示
 
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
@@ -613,12 +612,11 @@ async function monte_carlo_calculate()
   const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
-  console.log(my_exp_dmg);
+  let result;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
     result = "  ダメージ期待値: " + my_exp_dmg + "<br>" + "ダメージ期待値が異常値を示しています。再入力してください。"
     document.getElementById("result").innerHTML = result;
-    console.log(my_exp_dmg);
     return result;
   }
   
@@ -630,7 +628,6 @@ async function monte_carlo_calculate()
     return result;
   }
   my_exp_dmg = my_exp_dmg.toFixed(0);
-  console.log(my_exp_dmg);
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
@@ -651,7 +648,6 @@ async function monte_carlo_calculate()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
-  console.log(dmg_rate);
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
   let exp_dmg = 0;
@@ -1021,4 +1017,5 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(1);
+  console.log(n_count);
 }
