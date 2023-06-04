@@ -597,33 +597,6 @@
 
     window.addEventListener('DOMContentLoaded', function() {
       var images = document.querySelectorAll('.overlay img');
-
-      for (var i = 0; i < images.length; i++) {
-        images[i].addEventListener('click', function() {
-          var popupImage = document.querySelector('.open img');
-          var selectedImageSrc = this.getAttribute('src');
-          popupImage.setAttribute('src', selectedImageSrc);
-          document.getElementById('pop-up').checked = false; // ポップアップを非表示にする
-
-          var indexDisplay = document.getElementById('index-display');
-          if (selectedImageSrc ==="./聖遺物/迷宮の遊客_5.png") {
-            indexDisplay.textContent = "0";
-          } else if (selectedImageSrc === "./聖遺物/威厳の鰐_5.png" ) {
-            indexDisplay.textContent = "1";
-          }
-        });
-      }
-
-      var closeButton = document.querySelector('.close');
-      closeButton.addEventListener('click', function() {
-        var atoPopupImage = document.querySelector('.window img:nth-child(2)');
-        var selectedImageSrc = popupImage.getAttribute('src');
-        atoPopupImage.setAttribute('src', selectedImageSrc);
-      });
-    });
-
-    window.addEventListener('DOMContentLoaded', function() {
-      var images = document.querySelectorAll('.overlay img');
       var selectedImages = []; // 選択された画像の配列
 
       for (var i = 0; i < images.length; i++) {
