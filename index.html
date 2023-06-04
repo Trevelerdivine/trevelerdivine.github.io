@@ -56,7 +56,7 @@
     <div class="overlay">
       <div class="window">
         <label class="close" for="pop-up">×</label>
-        <div class="table-container">
+        <div class="tablecontainer">
           <table>
             <tbody>
               <tr>
@@ -308,7 +308,7 @@
   <button onclick="showTable('table3')">サブステータス分布</button>
 <br>
 <br>
-  <div id="table1" class="table-container">
+  <div id="table1" class="tablecontainer">
     <!-- 表1の内容 -->
 <table class="calc_result" style="width: 500px; table-layout: fixed">
   <colgroup>
@@ -383,7 +383,7 @@
 </table>
   </div>
 
-  <div id="table2" class="table-container">
+  <div id="table2" class="tablecontainer">
     <!-- 表2の内容 -->
 <table class="calc_result" style="width: 690px; table-layout: fixed">
   <colgroup>
@@ -478,7 +478,7 @@
 </table>
   </div>
 
-  <div id="table3" class="table-container">
+  <div id="table3" class="tablecontainer">
     <!-- 表3の内容 -->
    <table class="result v-style" style="width: 840px; table-layout: fixed">
   <colgroup>
@@ -584,7 +584,7 @@
       document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
       function showTable(tableId) {
       // すべての表コンテナを非表示にする
-      var tableContainers = document.getElementsByClassName("table-container");
+      var tableContainers = document.getElementsByClassName("tablecontainer");
       for (var i = 0; i < tableContainers.length; i++) {
         tableContainers[i].classList.remove("active");
       }

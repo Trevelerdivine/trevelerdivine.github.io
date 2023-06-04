@@ -1,4 +1,4 @@
-.table-container {
+.tablecontainer {
   display: none;
 }
 
@@ -109,7 +109,7 @@ td {
   transform: scale(1.1);
 }
 
-.active {
+.activate {
   display: block;
 }
 .open {
