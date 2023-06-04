@@ -109,9 +109,6 @@ td {
   transform: scale(1.1);
 }
 
-.active {
-  display: block;
-}
 .open {
   cursor:pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
 }
