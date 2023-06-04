@@ -48,17 +48,58 @@
     <option value="4">C6</option>
  </select>
  <div>
- <label class="open" for="pop-up"><img src="./聖遺物/迷宮の遊客_5.png" alt="画像の説明"></label>
- <input type="checkbox" id="pop-up">
- <div class="overlay">
-   <div class="window">
-     <label class="close" for="pop-up">×</label>
-     <img src="./聖遺物/迷宮の遊客_5.png" alt="画像の説明">
-     <img src="./聖遺物/威厳の鰐_5.png" alt="画像の説明">
-   </div>
- </div>
-</div>
-<div id="index-display"></div>
+  <label class="open" for="pop-up">
+      <img class="popup-image" src="" alt="画像の説明" style="width: 100px; height: 100px;">
+      <img class="popup-image" src="" alt="画像の説明" style="width: 100px; height: 100px;">
+    </label>
+    <input type="checkbox" id="pop-up">
+    <div class="overlay">
+      <div class="window">
+        <label class="close" for="pop-up">×</label>
+        <div class="table-container">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tier1"><img class="tier-image" src="./artifact/偉勲の花_5.png" alt="Image 1"></td>
+                <td class="tier1"><img class="tier-image" src="./artifact/威厳の鰐_5.png" alt="Image 5"></td>
+                <td class="tier1"><img class="tier-image" src="./artifact/栄花の期_5.png" alt="Image 1"></td>
+                <td class="tier1"><img class="tier-image" src="./artifact/夏祭りの花_5.jpg" alt="Image 5"></td>
+                <td class="tier1"><img class="tier-image" src="./artifact/火渡りの堅実_5.png" alt="Image 1"></td>
+                <td class="tier1"><img class="tier-image" src="./artifact/海染の花_5.png" alt="Image 5"></td>
+                <td class="tier1"><img class="tier-image" src="./artifact/楽団の朝の光.png" alt="Image 1"></td>
+                <td class="tier1"><img class="tier-image" src="./artifact/旧貴族の花.png" alt="Image 5"></td>
+              </tr>
+              <tr>
+                <td class="tier2"><img class="tier-image" src="./artifact/金メッキのコサージュ_5.png" alt="Image 2"></td>
+                <td class="tier2"><img class="tier-image" src="./artifact/血染めの鉄の心_星5.png" alt="Image 1"></td>
+                <td class="tier2"><img class="tier-image" src="./artifact/月娘の華彩.jpg" alt="Image 2"></td>
+                <td class="tier2"><img class="tier-image" src="./artifact/剣闘士の未練.png" alt="Image 1"></td>
+                <td class="tier2"><img class="tier-image" src="./artifact/魂香の花_5.png" alt="Image 2"></td>
+                <td class="tier2"><img class="tier-image" src="./artifact/諸王の都の始まり.jpg" alt="Image 1"></td>
+                <td class="tier2"><img class="tier-image" src="./artifact/吹雪の中の思い_5.png" alt="Image 2"></td>
+                <td class="tier2"><img class="tier-image" src="./artifact/覇絆の花_5.png" alt="Image 1"></td>
+              </tr>
+              <tr>
+                <td class="tier3"><img class="tier-image" src="./artifact/彼方にある少女の心_5.png" alt="Image 3"></td>
+                <td class="tier3"><img class="tier-image" src="./artifact/魔女の炎の花_5.png" alt="Image 2"></td>
+                <td class="tier3"><img class="tier-image" src="./artifact/夢境の鉄花_5.png" alt="Image 3"></td>
+                <td class="tier3"><img class="tier-image" src="./artifact/無垢の花_5.png" alt="Image 2"></td>                <td class="tier3"><img class="tier-image" src="C:\Users\832re\Downloads\artifact\月娘の華彩.jpg" alt="Image 3"></td>
+                <td class="tier3"><img class="tier-image" src="./artifact/迷宮の遊客_5.png" alt="Image 2"></td>                <td class="tier3"><img class="tier-image" src="C:\Users\832re\Downloads\artifact\月娘の華彩.jpg" alt="Image 3"></td>
+                <td class="tier3"><img class="tier-image" src="./artifact/野花の記憶の草原_5.png" alt="Image 2"></td>                <td class="tier3"><img class="tier-image" src="C:\Users\832re\Downloads\artifact\月娘の華彩.jpg" alt="Image 3"></td>
+                <td class="tier3"><img class="tier-image" src="./artifact/悠久の盤岩_5.jpg" alt="Image 2"></td>                <td class="tier3"><img class="tier-image" src="C:\Users\832re\Downloads\artifact\月娘の華彩.jpg" alt="Image 3"></td>
+                <td class="tier3"><img class="tier-image" src="./artifact/雷鳥の憐み.png" alt="Image 2"></td>
+              </tr>
+              <tr>
+                <td class="tier4"><img class="tier-image" src="./artifact/雷討ちの心.png" alt="Image 4"></td>
+                <td class="tier4"><img class="tier-image" src="./artifact/旅中の花.png" alt="Image 3"></td>
+                <td class="tier4"><img class="tier-image" src="./artifact/霊光起源の蕊.png" alt="Image 3"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <br>
   <label for="weapon_name">武器</label>
@@ -578,6 +619,64 @@
         var atoPopupImage = document.querySelector('.window img:nth-child(2)');
         var selectedImageSrc = popupImage.getAttribute('src');
         atoPopupImage.setAttribute('src', selectedImageSrc);
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      var images = document.querySelectorAll('.overlay img');
+      var selectedImages = []; // 選択された画像の配列
+
+      for (var i = 0; i < images.length; i++) {
+        images[i].addEventListener('click', function() {
+          var selectedImageSrc = this.getAttribute('src');
+
+          if (selectedImages.includes(selectedImageSrc)) {
+            // 選択された画像が既に配列に含まれている場合は削除する
+            selectedImages = selectedImages.filter(function(image) {
+              return image !== selectedImageSrc;
+            });
+          } else {
+            // 選択された画像が配列に含まれていない場合は追加する
+            selectedImages.push(selectedImageSrc);
+
+            // 選択された画像が2つ以上の場合は、最初の要素を削除する
+            if (selectedImages.length > 2) {
+              selectedImages.shift();
+            }
+          }
+
+          var popupImages = document.querySelectorAll('.open img');
+          for (var j = 0; j < popupImages.length; j++) {
+            if (selectedImages[j]) {
+              popupImages[j].setAttribute('src', selectedImages[j]);
+              popupImages[j].parentNode.classList.add('selected'); // 選択された画像の親要素に .selected クラスを追加
+            } else {
+              popupImages[j].setAttribute('src', '');
+              popupImages[j].parentNode.classList.remove('selected'); // 選択されていない画像の親要素から .selected クラスを削除
+            }
+          }
+
+          var indexDisplay = document.getElementById('index-display');
+          indexDisplay.textContent = selectedImages.length.toString(); // 選択された画像の数を表示
+        });
+      }
+
+      var closeButton = document.querySelector('.close');
+      closeButton.addEventListener('click', function() {
+        var popupImages = document.querySelectorAll('.open img');
+        var selectedImageSrc = popupImages[0].getAttribute('src');
+        var atoPopupImages = document.querySelectorAll('.window img:nth-child(2)');
+
+        if (selectedImages.length > 1) {
+          selectedImages.pop(); // 配列の末尾の要素を削除
+        }
+
+        selectedImages.push(selectedImageSrc); // 選択された画像を配列の末尾に追加
+
+        for (var k = 0; k < atoPopupImages.length; k++) {
+          atoPopupImages[k].setAttribute('src', selectedImages[k]);
+          atoPopupImages[k].parentNode.classList.add('selected'); // 選択された画像の親要素に .selected クラスを追加
+        }
       });
     });
   </script>
