@@ -109,7 +109,7 @@ td {
   transform: scale(1.1);
 }
 
-.activate {
+.active {
   display: block;
 }
 .open {
@@ -156,8 +156,6 @@ cursor: pointer;
 .close:hover {
 background-color: #555;
 }
-
-
 
 
 
