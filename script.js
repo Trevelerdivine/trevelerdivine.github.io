@@ -632,7 +632,7 @@ async function monte_carlo_calculate()
   let af_score_lower_limit = 0;
   af_score = af_score/2;
 
-  let base_parameter;
+  let base_parameter = [];
   let fixed_status;
   let result_status;
   let random_1;
