@@ -658,7 +658,7 @@ async function monte_carlo_calculate()
   fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
-
+  console.log(fixed_buff)
   const dmg_rate = await char_instance.dmg_rate_data();
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
