@@ -649,15 +649,15 @@ async function monte_carlo_calculate()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   
-  let fix_buff = [];
-  fix_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
-  fix_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
-  fix_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
-  fix_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
-  fix_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
-  fix_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
-  fix_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
-  fix_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
+  let fixed_buff = [];
+  fixed_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
+  fixed_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
+  fixed_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
+  fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
+  fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
+  fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
+  fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
+  fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
 
   const dmg_rate = await char_instance.dmg_rate_data();
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
