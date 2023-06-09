@@ -887,6 +887,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_hp_score").innerHTML = old_score_distribution[0].toFixed(1);
     document.getElementById("dlt_hp_score").innerHTML = (my_af_score_distribution[0] - old_score_distribution[0]).toFixed(1);
     document.getElementById("count_hp_score").innerHTML = (old_score_distribution[0]/7.8).toFixed(1);
+    document.getElementById("my_af_hp").innerHTML = (base_status[0]*my_af_score_distribution[0]*3/400).toFixed(0);
+    document.getElementById("appro_af_hp").innerHTML = (base_status[0]*old_score_distribution[0]*3/400).toFixed(0);
+    document.getElementById("dlt_af_hp").innerHTML = (base_status[0]*(my_af_score_distribution[0] - old_score_distribution[0])*3/400).toFixed(0);
+    document.getElementById("count_hp_score3").innerHTML = (old_score_distribution[0]/7.8).toFixed(1);
     }
   else
     {
@@ -896,7 +900,11 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_hp_score").innerHTML = "-";
     document.getElementById("dlt_hp_score").innerHTML = "-";
     document.getElementById("count_hp_score").innerHTML = "-";
-    }
+    document.getElementById("my_af_hp").innerHTML = "-";
+    document.getElementById("appro_af_hp").innerHTML = "-";
+    document.getElementById("dlt_af_hp").innerHTML = "-";
+    document.getElementById("count_hp_score3").innerHTML = "-";
+  }
 
   if (depend_status[1] == 1)
   {
@@ -906,6 +914,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(1);
     document.getElementById("dlt_deff_score").innerHTML = (my_af_score_distribution[1] - old_score_distribution[1]).toFixed(1);
     document.getElementById("count_deff_score").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
+    document.getElementById("my_af_deff").innerHTML = (base_status[1]*my_af_score_distribution[1]*15/1600).toFixed(0);
+    document.getElementById("appro_af_deff").innerHTML = (base_status[1]*old_score_distribution[1]*15/1600).toFixed(0);
+    document.getElementById("dlt_af_deff").innerHTML = (base_status[1]*(my_af_score_distribution[1] - old_score_distribution[1])*15/1600).toFixed(0);
+    document.getElementById("count_deff_score3").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
   }
   else
   {
@@ -915,6 +927,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_deff_score").innerHTML = "-";
     document.getElementById("dlt_deff_score").innerHTML = "-";
     document.getElementById("count_deff_score").innerHTML = "-";
+    document.getElementById("my_af_deff").innerHTML = "-";
+    document.getElementById("appro_af_deff").innerHTML = "-";
+    document.getElementById("dlt_af_deff").innerHTML = "-";
+    document.getElementById("count_deff_score3").innerHTML = "-";
   }
 
   if (depend_status[2] == 1)
@@ -925,6 +941,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(1);
     document.getElementById("dlt_elm_score").innerHTML = (my_af_score_distribution[2] - old_score_distribution[2]).toFixed(1);
     document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
+    document.getElementById("my_af_elm").innerHTML = (my_af_score_distribution[2]*3).toFixed(0);
+    document.getElementById("appro_af_elm").innerHTML = (old_score_distribution[2]*3).toFixed(0);
+    document.getElementById("dlt_af_elm").innerHTML = ((my_af_score_distribution[2] - old_score_distribution[2])*3).toFixed(0);
+    document.getElementById("count_elm_score3").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
   }
   else
   {
@@ -934,6 +954,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_elm_score").innerHTML = "-";
     document.getElementById("dlt_elm_score").innerHTML = "-";
     document.getElementById("count_elm_score").innerHTML = "-";
+    document.getElementById("my_af_elm").innerHTML = "-";
+    document.getElementById("appro_af_elm").innerHTML = "-";
+    document.getElementById("dlt_af_elm").innerHTML = "-";
+    document.getElementById("count_elm_score3").innerHTML = "-";
   }
 
   if (depend_status[3] == 1)
@@ -944,6 +968,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_elm_charge_score").innerHTML = old_score_distribution[3].toFixed(1);
     document.getElementById("dlt_elm_charge_score").innerHTML = (my_af_score_distribution[3] - old_score_distribution[3]).toFixed(1);
     document.getElementById("count_elm_charge_score").innerHTML = (old_score_distribution[3]/7.8).toFixed(1);
+    document.getElementById("my_af_elm_charge").innerHTML = (my_af_score_distribution[3]*5/6).toFixed(1) + "％";
+    document.getElementById("appro_af_elm_charge").innerHTML = (old_score_distribution[3]*5/6).toFixed(1) + "％";
+    document.getElementById("dlt_af_elm_charge").innerHTML = ((my_af_score_distribution[3] - old_score_distribution[3])*5/6).toFixed(1) + "％";
+    document.getElementById("count_elm_charge_score3").innerHTML = (old_score_distribution[3]/7.8).toFixed(1);
   }
   else
   {
@@ -953,6 +981,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_elm_charge_score").innerHTML = "-";
     document.getElementById("dlt_elm_charge_score").innerHTML = "-";
     document.getElementById("count_elm_charge_score").innerHTML = "-";
+    document.getElementById("my_af_elm_charge").innerHTML = "-";
+    document.getElementById("appro_af_elm_charge").innerHTML = "-";
+    document.getElementById("dlt_af_elm_charge").innerHTML = "-";
+    document.getElementById("count_elm_charge_score3").innerHTML = "-";
   }
 
   if (depend_status[4] == 1)
@@ -963,7 +995,11 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(1);
     document.getElementById("dlt_attck_score").innerHTML = (my_af_score_distribution[4] - old_score_distribution[4]).toFixed(1);
     document.getElementById("count_attck_score").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
-  }
+    document.getElementById("my_af_attck").innerHTML = (base_status[4]*my_af_score_distribution[4]*3/400).toFixed(0);
+    document.getElementById("appro_af_attck").innerHTML = (base_status[4]*old_score_distribution[4]*3/400).toFixed(0);
+    document.getElementById("dlt_af_attck").innerHTML = (base_status[4]*(my_af_score_distribution[4] - old_score_distribution[4])*3/400).toFixed(0);
+    document.getElementById("count_attck_score3").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
+    }
   else
   {
     document.getElementById("my_result_attck").innerHTML = "-";
@@ -972,7 +1008,11 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_attck_score").innerHTML = "-";
     document.getElementById("dlt_attck_score").innerHTML = "-";
     document.getElementById("count_attck_score").innerHTML = "-";
-  }
+    document.getElementById("my_af_attck").innerHTML = "-";
+    document.getElementById("appro_af_attck").innerHTML = "-";
+    document.getElementById("dlt_af_attck").innerHTML = "-";
+    document.getElementById("count_attck_score3").innerHTML = "-";
+    }
 
   if (depend_status[5] == 1)
   {
@@ -982,7 +1022,11 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_cr_score").innerHTML = old_score_distribution[5].toFixed(1);
     document.getElementById("dlt_cr_score").innerHTML = (my_af_score_distribution[5] - old_score_distribution[5]).toFixed(1);
     document.getElementById("count_cr_score").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
-  }
+    document.getElementById("my_af_cr").innerHTML = (my_af_score_distribution[5]/2).toFixed(1) + "%";
+    document.getElementById("appro_af_cr").innerHTML = (old_score_distribution[5]/2).toFixed(1) + "%";
+    document.getElementById("dlt_af_cr").innerHTML = ((my_af_score_distribution[5] - old_score_distribution[5])/2).toFixed(0) + "%";
+    document.getElementById("count_cr_score3").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
+    }
   else
   {
     document.getElementById("my_result_cr").innerHTML = "-";
@@ -991,7 +1035,11 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_cr_score").innerHTML = "-";
     document.getElementById("dlt_cr_score").innerHTML = "-";
     document.getElementById("count_cr_score").innerHTML = "-";
-  }
+    document.getElementById("my_af_cr").innerHTML = "-";
+    document.getElementById("appro_af_cr").innerHTML = "-";
+    document.getElementById("dlt_af_cr").innerHTML = "-";
+    document.getElementById("count_cr_score3").innerHTML = "-";
+    }
 
  if (depend_status[6] == 1)
   {
@@ -1001,7 +1049,11 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_cd_score").innerHTML = old_score_distribution[6].toFixed(1);
     document.getElementById("dlt_cd_score").innerHTML = (my_af_score_distribution[6] - old_score_distribution[6]).toFixed(1);
     document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
-  }
+    document.getElementById("my_af_cd").innerHTML = (my_af_score_distribution[6]).toFixed(1) + "%";
+    document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(1) + "%";
+    document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])/2).toFixed(0) + "%";
+    document.getElementById("count_cd_score3").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
+    }
   else
   {
     document.getElementById("my_result_cd").innerHTML = "-";
@@ -1010,7 +1062,11 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_cd_score").innerHTML = "-";
     document.getElementById("dlt_cd_score").innerHTML = "-";
     document.getElementById("count_cd_score").innerHTML = "-";
-  }
+    document.getElementById("my_af_cd").innerHTML = "-";
+    document.getElementById("appro_af_cd").innerHTML = "-";
+    document.getElementById("dlt_af_cd").innerHTML = "-";
+    document.getElementById("count_cd_score3").innerHTML = "-";
+    }
 
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";
