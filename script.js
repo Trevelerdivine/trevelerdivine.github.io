@@ -586,8 +586,13 @@ return parameter;
 
 async function calculate_fix_buff()
 {
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
-  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+  const base_status = await calculate_base_status();
+  const base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
+  const result_status = base_parameter.slice();
+  const char_parameter = await import_char_parameter();
+
+  const char_instance = await create_char_instance(base_status, base_parameter, result_status, char_parameter);
+  const weapon_instance = await create_weapon_instance(base_status, base_parameter, result_status);
   let fix_buff = [];
   fix_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
   fix_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
@@ -787,7 +792,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     }
 
     base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
-    for (let g = 0; g < depend_status_index.length; g++)
+    for (g = 0; g < depend_status_index.length; g++)
     {
      fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
     }
