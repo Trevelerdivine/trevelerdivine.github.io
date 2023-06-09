@@ -622,8 +622,8 @@ async function monte_carlo_calculate()
   if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
     console.log(af_score);
-    result = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
-    document.getElementById("response").innerHTML = response;
+    response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
+    document.getElementById("response").innerHTML = result;
     return response;
   }
   my_exp_dmg = my_exp_dmg.toFixed(0);
@@ -718,10 +718,6 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     if (depend_status[5] == 1)
     {
       result_status[5] += await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
-    if (fixed_status[5] > 1)
-    {
-      fixed_status[5] = 1;
-    }
     if (result_status[5] > 1)
     {
       result_status[5] = 1;
