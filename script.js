@@ -1051,7 +1051,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
     document.getElementById("my_af_cd").innerHTML = (my_af_score_distribution[6]).toFixed(1) + "%";
     document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(1) + "%";
-    document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])/2).toFixed(1) + "%";
+    document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])).toFixed(1) + "%";
     document.getElementById("count_cd_score3").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
     }
   else
