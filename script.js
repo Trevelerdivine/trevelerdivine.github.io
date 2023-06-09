@@ -1024,7 +1024,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("count_cr_score").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
     document.getElementById("my_af_cr").innerHTML = (my_af_score_distribution[5]/2).toFixed(1) + "%";
     document.getElementById("appro_af_cr").innerHTML = (old_score_distribution[5]/2).toFixed(1) + "%";
-    document.getElementById("dlt_af_cr").innerHTML = ((my_af_score_distribution[5] - old_score_distribution[5])/2).toFixed(0) + "%";
+    document.getElementById("dlt_af_cr").innerHTML = ((my_af_score_distribution[5] - old_score_distribution[5])/2).toFixed(1) + "%";
     document.getElementById("count_cr_score3").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
     }
   else
@@ -1051,7 +1051,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
     document.getElementById("my_af_cd").innerHTML = (my_af_score_distribution[6]).toFixed(1) + "%";
     document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(1) + "%";
-    document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])/2).toFixed(0) + "%";
+    document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])/2).toFixed(1) + "%";
     document.getElementById("count_cd_score3").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
     }
   else
@@ -1073,5 +1073,8 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(1);
+  document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(1);
+  document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
+  document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
 }
