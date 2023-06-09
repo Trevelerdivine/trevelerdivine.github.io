@@ -584,28 +584,6 @@ return parameter;
 
 //////////////////////
 
-async function calculate_fix_buff()
-{
-  const base_status = await calculate_base_status();
-  const base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
-  const result_status = base_parameter.slice();
-  const char_parameter = await import_char_parameter();
-
-  const char_instance = await create_char_instance(base_status, base_parameter, result_status, char_parameter);
-  const weapon_instance = await create_weapon_instance(base_status, base_parameter, result_status);
-  let fix_buff = [];
-  fix_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
-  fix_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
-  fix_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
-  fix_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
-  fix_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
-  fix_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
-  fix_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
-  fix_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
-  return fix_buff;
-
-}
-
 ///////////////////
 
 async function monte_carlo_calculate()
@@ -657,7 +635,6 @@ async function monte_carlo_calculate()
   let base_parameter;
   let fixed_status;
   let result_status;
-  let fixed_buff = await calculate_fix_buff();
   let random_1;
   let random_2;
   let output_exp_dmg = Infinity;
@@ -667,9 +644,21 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let basic_dmg;
   let n_count = 0;
+  
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+  
+  let fix_buff = [];
+  fix_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
+  fix_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
+  fix_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
+  fix_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
+  fix_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
+  fix_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
+  fix_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
+  fix_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
+
   const dmg_rate = await char_instance.dmg_rate_data();
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
