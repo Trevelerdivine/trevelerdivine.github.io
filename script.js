@@ -780,7 +780,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
       new_score_distribution[depend_status_index[random_2]] = 0;
     }
 
-    base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
+    base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,);
     for (g = 0; g < depend_status_index.length; g++)
     {
      fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
@@ -877,7 +877,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   af_score = (af_score_upper_limit + af_score_lower_limit)/2;
  }
 }
-
+console.log(old_score_distribution)
  let result = "最適化換算聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
  document.getElementById("result").innerHTML = result;
 
