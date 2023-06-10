@@ -973,13 +973,6 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_af_elm_charge").innerHTML = (old_score_distribution[3]*5/6).toFixed(1) + "％";
     document.getElementById("dlt_af_elm_charge").innerHTML = ((my_af_score_distribution[3] - old_score_distribution[3])*5/6).toFixed(1) + "％";
     document.getElementById("count_elm_charge_score3").innerHTML = (old_score_distribution[3]/7.8).toFixed(1);
-    if ((my_af_score_distribution[3] - old_score_distribution[3]) > 0) {
-      dltElmChargeScore.style.color = "green";
-      dltAfElmCharge.style.color = "green";
-    } else if ((my_af_score_distribution[3] - old_score_distribution[3]) < 0) {
-      dltElmChargeScore.style.color = "red";
-      dltAfElmCharge.style.color = "red";
-    }
   }
   else
   {
