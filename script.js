@@ -633,7 +633,7 @@ async function monte_carlo_calculate()
   af_score = af_score/2;
 
   let base_parameter;
-  let fixed_status;
+  let fixed_status = [0,0,0,0,0,0,0,0];
   let result_status;
   let random_1;
   let random_2;
@@ -781,12 +781,12 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     }
 
     base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
-    for (let g = 0; g < depend_status_index.length; g++)
+    for (g = 0; g < depend_status_index.length; g++)
     {
       fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
     }
     fixed_status[7] = base_parameter[7] + fixed_buff[7];
-    
+
     result_status = fixed_status.slice();
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
