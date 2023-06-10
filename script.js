@@ -632,8 +632,8 @@ async function monte_carlo_calculate()
   let af_score_lower_limit = 0;
   af_score = af_score/2;
 
-  let base_parameter = [];
-  let fixed_status = [];
+  let base_parameter = [0,0,0,0,0,0,0,0];
+  let fixed_status = [0,0,0,0,0,0,0,0];
   let result_status;
   let random_1;
   let random_2;
@@ -649,7 +649,7 @@ async function monte_carlo_calculate()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   
-  let fixed_buff = [];
+  let fixed_buff = [0,0,0,0,0,0,0,0];
   fixed_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
   fixed_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
   fixed_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
@@ -657,8 +657,8 @@ async function monte_carlo_calculate()
   fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
   fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
-  fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
   console.log(fixed_buff)
+  fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
   const dmg_rate = await char_instance.dmg_rate_data();
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
