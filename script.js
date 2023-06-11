@@ -936,28 +936,32 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 
   if (depend_status[2] == 1)
   {
+    let result_dltelm = (my_af_score_distribution[2] - old_score_distribution[2])
+    let dltElmScore = document.getElementById("dlt_elm_score");
+    let dltAfElm = document.getElementById("dlt_af_elm");
+    let elmcolor;
     document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
     document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(0);
     document.getElementById("my_elm_score").innerHTML = my_af_score_distribution[2].toFixed(1);
     document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(1);
-    document.getElementById("dlt_elm_score").innerHTML = (my_af_score_distribution[2] - old_score_distribution[2]).toFixed(1);
     document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
     document.getElementById("my_af_elm").innerHTML = (my_af_score_distribution[2]*3).toFixed(0);
     document.getElementById("appro_af_elm").innerHTML = (old_score_distribution[2]*3).toFixed(0);
     document.getElementById("count_elm_score3").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
     
-    
-    var dltAfElm = document.getElementById("dlt_af_elm");
-    var resultcolor = (my_af_score_distribution[2] - old_score_distribution[2]) * 3;
-    
-    dltAfElm.innerHTML = resultcolor.toFixed(0);
-    
-    if (resultcolor > 0) {
-      dltAfElm.style.color = "#66bb6a"; // 薄い緑色
-    } else if (resultcolor < 0) {
-      dltAfElm.style.color = "red";
+
+    if (result_dltelm > 0)
+    {
+      elmcolor = "#66bb6a"; // 薄い緑色
+    } 
+    else
+    {
+      elmcolor = "red";
     }
-    
+    dltElmScore.style.color = color;
+    dltElmScore.innerHTML = result_dltelm.toFixed(1);
+    dltAfElm.style.color = color;
+    dltAfElm.innerHTML = (3*result_dltelm).toFixed(0);
   
   }
   else
