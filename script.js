@@ -958,9 +958,9 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     {
       elmcolor = "red";
     }
-    dltElmScore.style.color = color;
+    dltElmScore.style.color = elmcolor;
     dltElmScore.innerHTML = result_dltelm.toFixed(1);
-    dltAfElm.style.color = color;
+    dltAfElm.style.color = elmcolor;
     dltAfElm.innerHTML = (3*result_dltelm).toFixed(0);
   
   }
