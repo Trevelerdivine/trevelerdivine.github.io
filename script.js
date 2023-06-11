@@ -944,19 +944,8 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
     document.getElementById("my_af_elm").innerHTML = (my_af_score_distribution[2]*3).toFixed(0);
     document.getElementById("appro_af_elm").innerHTML = (old_score_distribution[2]*3).toFixed(0);
+    document.getElementById("dlt_af_elm").innerHTML = ((my_af_score_distribution[2] - old_score_distribution[2])*3).toFixed(0);
     document.getElementById("count_elm_score3").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
-
-    var dltAfElm = document.getElementById("dlt_af_elm");
-    var result = (my_af_score_distribution[2] - old_score_distribution[2]) * 3;
-
-    dltAfElm.innerHTML = result.toFixed(0);
-
-    if (result > 0) {
-      dltAfElm.style.color = "#66bb6a"; // 薄い緑色
-    } else if (result < 0) {
-      dltAfElm.style.color = "red";
-    }
-  
   }
   else
   {
