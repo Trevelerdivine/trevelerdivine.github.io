@@ -931,11 +931,9 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(0);
     document.getElementById("my_deff_score").innerHTML = my_af_score_distribution[1].toFixed(1);
     document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(1);
-    document.getElementById("dlt_deff_score").innerHTML = (my_af_score_distribution[1] - old_score_distribution[1]).toFixed(1);
     document.getElementById("count_deff_score").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
     document.getElementById("my_af_deff").innerHTML = (base_status[1]*my_af_score_distribution[1]*15/1600).toFixed(0);
     document.getElementById("appro_af_deff").innerHTML = (base_status[1]*old_score_distribution[1]*15/1600).toFixed(0);
-    document.getElementById("dlt_af_deff").innerHTML = (base_status[1]*(my_af_score_distribution[1] - old_score_distribution[1])*15/1600).toFixed(0);
     document.getElementById("count_deff_score3").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
     if (result_dltdeff > 0)
     {
@@ -1090,17 +1088,31 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 
   if (depend_status[5] == 1)
   {
+    let result_dltcr = (my_af_score_distribution[5] - old_score_distribution[5])
+    let dltcrScore = document.getElementById("dlt_cr_score");
+    let dltAfcr = document.getElementById("dlt_af_cr");
+    let crcolor;
     document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(1) + "%";
     document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(1) + "%";
     document.getElementById("my_cr_score").innerHTML = my_af_score_distribution[5].toFixed(1);
     document.getElementById("appro_cr_score").innerHTML = old_score_distribution[5].toFixed(1);
-    document.getElementById("dlt_cr_score").innerHTML = (my_af_score_distribution[5] - old_score_distribution[5]).toFixed(1);
     document.getElementById("count_cr_score").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
     document.getElementById("my_af_cr").innerHTML = (my_af_score_distribution[5]/2).toFixed(1) + "%";
     document.getElementById("appro_af_cr").innerHTML = (old_score_distribution[5]/2).toFixed(1) + "%";
-    document.getElementById("dlt_af_cr").innerHTML = ((my_af_score_distribution[5] - old_score_distribution[5])/2).toFixed(1) + "%";
     document.getElementById("count_cr_score3").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
+    if (result_dltcr > 0)
+    {
+      crcolor = "#66bb6a"; // 薄い緑色
+    } 
+    else
+    {
+      crcolor = "red";
     }
+    dltcrScore.style.color = crcolor;
+    dltcrScore.innerHTML = result_dltcr.toFixed(1);
+    dltAfcr.style.color = crcolor;
+    dltAfcr.innerHTML = (result_dltcr/2).toFixed(1) + "％";  
+  }
   else
   {
     document.getElementById("my_result_cr").innerHTML = "-";
@@ -1117,6 +1129,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 
  if (depend_status[6] == 1)
   {
+    let result_dltcd = (my_af_score_distribution[6] - old_score_distribution[6])
+    let dltcdScore = document.getElementById("dlt_cd_score");
+    let dltAfcd = document.getElementById("dlt_af_cd");
+    let cdcolor;
     document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(1) + "%";
     document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(1) + "%";
     document.getElementById("my_cd_score").innerHTML = my_af_score_distribution[6].toFixed(1);
@@ -1127,7 +1143,19 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(1) + "%";
     document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])).toFixed(1) + "%";
     document.getElementById("count_cd_score3").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
+    if (result_dltcd > 0)
+    {
+      cdcolor = "#66bb6a"; // 薄い緑色
+    } 
+    else
+    {
+      cdcolor = "red";
     }
+    dltcdScore.style.color = cdcolor;
+    dltcdScore.innerHTML = result_dltcd.toFixed(1);
+    dltAfcd.style.color = cdcolor;
+    dltAfcd.innerHTML = (result_dltcd).toFixed(1) + "％";  
+  }
   else
   {
     document.getElementById("my_result_cd").innerHTML = "-";
