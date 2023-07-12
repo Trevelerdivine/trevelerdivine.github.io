@@ -45,7 +45,7 @@ table.result.v-style th {
 .table-container {
   max-width: 800px;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #f5f2df;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -74,28 +74,8 @@ td {
 }
 
 .tier1 {
-  background-color: #ffcc00;
-  color: #ffffff;
-}
-
-.tier2 {
-  background-color: #66ccff;
-  color: #ffffff;
-}
-
-.tier3 {
-  background-color: #ff9999;
-  color: #ffffff;
-}
-
-.tier4 {
-  background-color: #cc99ff;
-  color: #ffffff;
-}
-
-.tier5 {
-  background-color: #99cc99;
-  color: #ffffff;
+  background-color: #f5f2df;
+  color: #f5f2df;
 }
 
 .tier-image {
