@@ -591,16 +591,23 @@
       // 選択された表コンテナを表示する
       document.getElementById(tableId).classList.add("active");
     }
-    let clickedImages = [];
+let clickedImages = [];
 
-  function changeImageClass(image, index) {
-    if (clickedImages.length >= 2) {
-    let previousImage = clickedImages.shift();
-    previousImage.className = "tier-image";
+function changeImageClass(image, index) {
+  if (clickedImages.length >= 2) 
+  {
+    let previousImage = clickedImages[0];
+    if (previousImage !== image) 
+    {
+      previousImage.classList.remove("tier-image2");
+      clickedImages.shift();
+    }
   }
 
-  image.className = "tier-image2";
-  clickedImages.push(image);
+  if (!image.classList.contains("tier-image2")) {
+    image.classList.add("tier-image2");
+    clickedImages.push(image);
+  }
 }
   window.addEventListener('DOMContentLoaded', function() {
     let images = document.querySelectorAll('.overlay img');
