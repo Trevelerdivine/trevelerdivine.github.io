@@ -591,15 +591,11 @@
       // 選択された表コンテナを表示する
       document.getElementById(tableId).classList.add("active");
     }
-    window.onload = function() {
-      showTable('table1');
-    };
+    let clickedImages = [];
 
-    var clickedImages = [];
-
-function changeImageClass(image, index) {
-  if (clickedImages.length >= 2) {
-    var previousImage = clickedImages.shift();
+  function changeImageClass(image, index) {
+    if (clickedImages.length >= 2) {
+    let previousImage = clickedImages.shift();
     previousImage.className = "tier-image";
   }
 
@@ -607,21 +603,21 @@ function changeImageClass(image, index) {
   clickedImages.push(image);
 }
   window.addEventListener('DOMContentLoaded', function() {
-    var images = document.querySelectorAll('.overlay img');
-    var selectedImages = []; // 選択された画像の配列
+    let images = document.querySelectorAll('.overlay img');
+    let selectedImages = []; // 選択された画像の配列
 
-    for (var i = 0; i < images.length; i++) {
+    for (let i = 0; i < images.length; i++) {
       images[i].addEventListener('click', function() {
-        var selectedImageSrc = this.getAttribute('src');
+        let selectedImageSrc = this.getAttribute('src');
           selectedImages.push(selectedImageSrc);
 
           // 選択された画像が2つ以上の場合は、最初の要素を削除する
           if (selectedImages.length > 2) {
-            selectedImages.shift();
+             selectedImages.shift();
           }
 
-        var popupImages = document.querySelectorAll('.open img');
-        for (var j = 0; j < popupImages.length; j++) {
+        let popupImages = document.querySelectorAll('.open img');
+        for (let j = 0; j < popupImages.length; j++) {
           if (selectedImages[j]) {
             popupImages[j].setAttribute('src', selectedImages[j]);
             popupImages[j].parentNode.classList.add('selected'); // 選択された画像の親要素に .selected クラスを追加
