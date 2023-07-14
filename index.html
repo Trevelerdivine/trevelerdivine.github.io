@@ -577,7 +577,11 @@
       window.addEventListener("DOMContentLoaded", function() {
         show_char_statsform();
         show_weapon_statsform();
-
+        let images = document.querySelectorAll('.overlay img');
+        let image = images[2];
+          // 最初の2つの画像を選択済みにする処理
+        changeImageClass(image);
+        changeImageClass(image);
       });
 
       document.getElementById('status_setting').addEventListener('input', calculate_table_status);
