@@ -593,31 +593,21 @@
     }
 
     let clickedImages = [];
-let changingImage = false;
 
 function changeImageClass(image) {
-  if (changingImage) {
-    return;
+  if (clickedImages.length >= 2) {
+    const previousImage = clickedImages.shift();
+    if (previousImage !== image) {
+      previousImage.classList.remove("tier-image2");
+    }
   }
 
-  changingImage = true;
-
-  setTimeout(() => {
-    if (clickedImages.length >= 2) {
-      const previousImage = clickedImages.shift();
-      if (previousImage !== image) {
-        previousImage.classList.remove("tier-image2");
-      }
-    }
-
-    if (!image.classList.contains("tier-image2")) {
-      image.classList.add("tier-image2");
-      clickedImages.push(image);
-    }
-
-    changingImage = false;
-  }, 0);
+  if (!image.classList.contains("tier-image2")) {
+    image.classList.add("tier-image2");
+    clickedImages.push(image);
+  }
 }
+
 
    window.addEventListener('DOMContentLoaded', function() {
   let images = document.querySelectorAll('.overlay img');
@@ -652,7 +642,6 @@ function changeImageClass(image) {
     });
   }
 });
-
   </script>
 
   </body>
