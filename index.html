@@ -594,54 +594,63 @@
 
     let clickedImages = [];
 
-function changeImageClass(image) {
-  if (clickedImages.length >= 2) {
-    const previousImage = clickedImages.shift();
-    if (previousImage !== image) {
-      previousImage.classList.remove("tier-image2");
-    }
-  }
-
-  if (!image.classList.contains("tier-image2")) {
-    image.classList.add("tier-image2");
-    clickedImages.push(image);
-  }
-}
-
-
-   window.addEventListener('DOMContentLoaded', function() {
-  let images = document.querySelectorAll('.overlay img');
-  let selectedImageIds = []; // 選択された画像のIDの配列
-  let imageIdToSrc = {}; // 画像のIDとパスの対応関係を保持するオブジェクト
-  let popupImages = document.querySelectorAll('.open img');
-  let indexDisplay = document.getElementById('index-display');
-
-  for (let i = 0; i < images.length; i++) {
-    let image = images[i];
-    let imageId = image.getAttribute('id');
-    let imageSrc = image.getAttribute('src');
-    imageIdToSrc[imageId] = imageSrc;
-
-    image.addEventListener('click', function() {
-      let selectedImageId = this.getAttribute('id'); // 選択された画像のIDを取得
-      selectedImageIds.push(selectedImageId); // 選択された画像のIDを配列に追加
-
-      // 選択された画像が2つ以上の場合は、最初の要素を削除する
-      if (selectedImageIds.length > 2) {
-        selectedImageIds.shift();
+    function changeImageClass(image) 
+    {
+      if (clickedImages.length >= 2) 
+      {
+        const previousImage = clickedImages.shift();
+        if (previousImage !== image) 
+        {
+          previousImage.classList.remove("tier-image2");
+        }
       }
 
-      selectedImageIds.forEach(function(selectedImageId, index) {
-        let selectedImageSrc = imageIdToSrc[selectedImageId] || '';
-        popupImages[index].setAttribute('src', selectedImageSrc);
-        popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
-      });
+      if (!image.classList.contains("tier-image2")) 
+      {
+        image.classList.add("tier-image2");
+        clickedImages.push(image);
+      }
+    }
 
-      // 選択された画像のIDを表示
-      indexDisplay.textContent = '選択された画像のID: ' + selectedImageIds.join(', ');
+
+    window.addEventListener('DOMContentLoaded', function() 
+    {
+      let images = document.querySelectorAll('.overlay img');
+      let selectedImageIds = []; // 選択された画像のIDの配列
+      let imageIdToSrc = {}; // 画像のIDとパスの対応関係を保持するオブジェクト
+      let popupImages = document.querySelectorAll('.open img');
+      let indexDisplay = document.getElementById('index-display');
+
+      for (let i = 0; i < images.length; i++) 
+      {
+        let image = images[i];
+        let imageId = image.getAttribute('id');
+        let imageSrc = image.getAttribute('src');
+        imageIdToSrc[imageId] = imageSrc;
+
+        image.addEventListener('click', function() 
+        {
+          let selectedImageId = this.getAttribute('id'); // 選択された画像のIDを取得
+          selectedImageIds.push(selectedImageId); // 選択された画像のIDを配列に追加
+
+          // 選択された画像が2つ以上の場合は、最初の要素を削除する
+          if (selectedImageIds.length > 2) 
+          {
+            selectedImageIds.shift();
+          }
+
+          selectedImageIds.forEach(function(selectedImageId, index) 
+          {
+            let selectedImageSrc = imageIdToSrc[selectedImageId] || '';
+            popupImages[index].setAttribute('src', selectedImageSrc);
+            popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+          });
+
+          // 選択された画像のIDを表示
+          indexDisplay.textContent = '選択された画像のID: ' + selectedImageIds.join(', ');
+        });
+      }
     });
-  }
-});
   </script>
 
   </body>
