@@ -619,10 +619,12 @@
     window.addEventListener('DOMContentLoaded', function() 
     {
       let images = document.querySelectorAll('.overlay img');
-      let selectedImageIds = []; // 選択された画像のIDの配列
+      let selectedImageIds = [20, 20]; // 選択された画像のIDの配列
       let imageIdToSrc = {}; // 画像のIDとパスの対応関係を保持するオブジェクト
       let popupImages = document.querySelectorAll('.open img');
       let indexDisplay = document.getElementById('index-display');
+
+      indexDisplay.textContent = '選択された画像のID: ' + selectedImageIds.join(', ');
 
       for (let i = 0; i < images.length; i++) 
       {
