@@ -648,6 +648,18 @@
     }
   });
 
+    window.addEventListener('DOMContentLoaded', function() {
+    // ポップアップウィンドウ外の要素をクリックした際にポップアップウィンドウを非表示にする処理
+    const overlay = document.querySelector('.overlay');
+    overlay.addEventListener('click', function(event) {
+      // クリックされた要素が.overlayの子孫でない場合にポップアップウィンドウを非表示にする
+      if (!event.target.closest('.window')) {
+        const checkbox = document.getElementById('pop-up');
+        checkbox.checked = false;
+      }
+    });
+  });
+
   </script>
 
   </body>
