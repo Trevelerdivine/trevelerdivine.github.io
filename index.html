@@ -572,93 +572,62 @@
   </tbody>
 </table>
   </div>
-    <script>
-      window.addEventListener("DOMContentLoaded", function() {
-        show_char_statsform();
-        show_weapon_statsform();
-        let images = document.querySelectorAll('.overlay img');
-        let image = images[20];
-          // 最初の2つの画像を選択済みにする処理
-        changeImageClass(image);
-        changeImageClass(image);
+  <script>
+    // ポップアップウィンドウ外の要素をクリックした際にポップアップウィンドウを非表示にする処理
+    window.addEventListener('DOMContentLoaded', function() {
+      const overlay = document.querySelector('.overlay');
+      overlay.addEventListener('click', function(event) {
+        // クリックされた要素が.overlayの子孫でない場合にポップアップウィンドウを非表示にする
+        if (!event.target.closest('.window')) {
+          const checkbox = document.getElementById('pop-up');
+          checkbox.checked = false;
+        }
       });
 
+      show_char_statsform();
+      show_weapon_statsform();
+
+      let images = document.querySelectorAll('.overlay img');
+      let image = images[20];
+      // 最初の2つの画像を選択済みにする処理
+      changeImageClass(image);
+      changeImageClass(image);
+
+      // テーブル計算リスナーの登録
       document.getElementById('status_setting').addEventListener('input', calculate_table_status);
       document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
       document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
       document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
-      function showTable(tableId) {
-      // すべての表コンテナを非表示にする
-      var tableContainers = document.getElementsByClassName("tablecontainer");
-      for (var i = 0; i < tableContainers.length; i++) {
-        tableContainers[i].classList.remove("active");
-      }
-      // 選択された表コンテナを表示する
-      document.getElementById(tableId).classList.add("active");
-    }
 
-    let clickedImages = [];
+      const popupImages = document.querySelectorAll('.open img');
+      const indexDisplay = document.getElementById('index-display');
+      const imageIdToSrc = {};
+      const selectedImageIds = [20, 20]; // 選択された画像のIDの配列
 
-    function changeImageClass(image) 
-    {
-      if (clickedImages.length >= 2) 
-      {
-        const previousImage = clickedImages.shift();
-        previousImage.classList.remove("tier-image2");
-      }
+      indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
 
-      if (!image.classList.contains("tier-image2")) 
-      {
-        image.classList.add("tier-image2");
-        clickedImages.push(image);
-      }
-    }
+      for (let i = 0; i < images.length; i++) {
+        const image = images[i];
+        const imageId = image.getAttribute('id');
+        const imageSrc = image.getAttribute('src');
+        imageIdToSrc[imageId] = imageSrc;
 
-
-  window.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.overlay img');
-    const selectedImageIds = [20, 20]; // 選択された画像のIDの配列
-    const imageIdToSrc = {}; // 画像のIDとパスの対応関係を保持するオブジェクト
-    const popupImages = document.querySelectorAll('.open img');
-    const indexDisplay = document.getElementById('index-display');
-
-    indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
-
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-      const imageId = image.getAttribute('id');
-      const imageSrc = image.getAttribute('src');
-      imageIdToSrc[imageId] = imageSrc;
-
-      image.addEventListener('click', function() {
-        const selectedImageId = this.getAttribute('id'); // 選択された画像のIDを取得
-        selectedImageIds.push(selectedImageId); // 選択された画像のIDを配列に追加
+        image.addEventListener('click', function() {
+          const selectedImageId = this.getAttribute('id'); // 選択された画像のIDを取得
+          selectedImageIds.push(selectedImageId); // 選択された画像のIDを配列に追加
           selectedImageIds.shift();
 
-        selectedImageIds.forEach(function(selectedImageId, index) {
-          const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
-          popupImages[index].setAttribute('src', selectedImageSrc);
-          popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+          selectedImageIds.forEach(function(selectedImageId, index) {
+            const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
+            popupImages[index].setAttribute('src', selectedImageSrc);
+            popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+          });
+
+          // 選択された画像のIDを表示
+          indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
         });
-
-        // 選択された画像のIDを表示
-        indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
-      });
-    }
-  });
-
-    window.addEventListener('DOMContentLoaded', function() {
-    // ポップアップウィンドウ外の要素をクリックした際にポップアップウィンドウを非表示にする処理
-    const overlay = document.querySelector('.overlay');
-    overlay.addEventListener('click', function(event) {
-      // クリックされた要素が.overlayの子孫でない場合にポップアップウィンドウを非表示にする
-      if (!event.target.closest('.window')) {
-        const checkbox = document.getElementById('pop-up');
-        checkbox.checked = false;
       }
     });
-  });
-
   </script>
 
   </body>
