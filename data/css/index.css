@@ -123,22 +123,6 @@ td {
   font-size: 18px;
   margin: 0;
 }
-.close {
-position: absolute;
-top: 10px;
-right: 100px;
-font-size: 20px;
-color: #fff;
-background-color: #333;
-width: 30px;
-height: 30px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-}
-
 .close:hover {
 background-color: #555;
 }
