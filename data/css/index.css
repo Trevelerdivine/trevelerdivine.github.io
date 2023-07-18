@@ -84,7 +84,7 @@ td {
   height: auto;
   border-radius: 50%;
   transition: transform 0.3s ease-in-out;
-  border: 2.5px solid black; /* 青色の縁取りを追加 */
+  border: 3.5px solid black; /* 青色の縁取りを追加 */
 }
 .tier-image2 {
   width: 100%;
