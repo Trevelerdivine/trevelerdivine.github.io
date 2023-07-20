@@ -21,16 +21,13 @@ async function show_char_statsform()
     cd_form.style.display = "none";  // 会心ダメージフォームを非表示
     calculateButton.style.display = "block";
     
-  
-    const characterSelect = document.getElementById("char_index");
-    const selectedCharacter = characterSelect.value;
     const characterInfo = document.getElementById("characterInfo");
     const checkboxStates = []; // チェックボックスの状態を格納する配列
     characterInfo.style.display = "block";
 
     characterInfo.innerHTML = "";
     
-    if (selectedCharacter === "0") {
+    if (selectedCharId  === "34") {
       const traits = [
         {
           id: "traitCheckbox",
@@ -68,7 +65,7 @@ async function show_char_statsform()
           characterInfo.appendChild(lineBreak);
         }
       }
-    } else if (selectedCharacter === "3") {
+    } else if (selectedCharId  === "56") {
         const traits = [
           {
             id: "traitCheckbox",
