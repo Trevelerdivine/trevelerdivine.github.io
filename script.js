@@ -26,9 +26,8 @@ const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFrag
 
 async function calculate_char_base_status() 
 {
-  const char_index = document.getElementById("char_index").value;
   const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/char_data/" + char_name[char_index] + ".json");
+  const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const data = await response.json();
   const char_base_hp = data.ステータス.基礎HP[char_level];
   const char_base_attck = data.ステータス.基礎攻撃力[char_level];
@@ -151,8 +150,7 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
 
 async function calculate_depend_status()
   {
-    const char_index = document.getElementById("char_index").value;
-    const char_response = await fetch("./data/character/char_data/" + char_name[char_index] + ".json");
+    const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
     const char_data = await char_response.json();
     const char_depend_status = char_data.ステータス.依存ステータス;
     const weapon_index = document.getElementById("weapon_index").value;
@@ -236,13 +234,12 @@ async function calculate_fixed_status(sd,bs,amsb)
 ////////////////////////
 
 async function create_char_instance(base_status, fixed_status, result_status,parameter) {
-  const char_index = document.getElementById("char_index").value;
-  if (char_index === "0") {
+  if (selectedCharId === "56") {
     // ナヒーダのインスタンスを生成
     const char_instance = new nahida(base_status, fixed_status, result_status,parameter);
     return char_instance;
   }
-  if (char_index === "3") {
+  if (selectedCharId === "34") {
     // 雷電将軍のインスタンスを生成
     const char_instance = new raiden(base_status, fixed_status, result_status, parameter);
     return char_instance;
