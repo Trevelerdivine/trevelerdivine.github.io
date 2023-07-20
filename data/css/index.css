@@ -49,19 +49,29 @@ table.result.v-style th {
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.table-container1 {
+  max-width: 920px;
+  margin: 0 auto;
+  background-color: #f5f2df;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+/* テーブルのスタイル */
 table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed; /* テーブルのレイアウトを固定する */
 }
 
+/* テーブルのヘッダセルとデータセルのスタイル */
 th, td {
   padding: 12px 16px;
   text-align: center;
   border-bottom: 1px solid #dddddd;
 }
 
+/* テーブルのヘッダセルのスタイル */
 th {
   background-color: #f2f2f2;
   font-weight: bold;
@@ -69,44 +79,94 @@ th {
   font-size: 14px;
 }
 
+/* テーブルのデータセルのスタイル */
 td {
   font-size: 14px;
 }
 
+/* .tier1 クラスの要素のスタイル */
 .tier1 {
   background-color: #f5f2df;
-  color: #f5f2df;
 }
-
+.tierPyro {
+  background-color: #FF6F6340;
+}
+.tierHydro {
+  background-color: #4C92EA40;
+}
+.tierAnemo {
+  background-color: #4CD9C840;
+}
+.tierErectro {
+  background-color: #C773FF40 ;
+}
+.tierDendro {
+  background-color: #7AD84C40;
+}
+.tierCyro {
+  background-color: #73CCFF40;
+}
+.tierGeo {
+  background-color: #E6B32240;
+}
 /* ティア画像のスタイル */
 .tier-image {
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
-  border: 2.5px solid black; /* 青色の縁取りを追加 */
+width: 100%;
+height: auto;
+border-radius: 50%;
+transition: transform 0.3s ease-in-out;
+border: 2.5px solid black; /* 青色の縁取りを追加 */
 }
 .tier-image2 {
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
-    border: 2.5px solid #2196F3; /* 青色の縁取りを追加 */
+width: 100%;
+height: auto;
+border-radius: 50%;
+transition: transform 0.3s ease-in-out;
+border: 2.5px solid #2196F3; /* 青色の縁取りを追加 */
+}
+.tier-image3 {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+transition: transform 0.3s ease-in-out;
+border: 1.7px solid black; /* 青色の縁取りを追加 */
 }
 
+/* ティア画像のホバースタイル */
 .tier-image:hover {
   transform: scale(1.1);
 }
-
-.open {
-  cursor:pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+.tier-image3:hover {
+  transform: scale(1.1);
 }
+/* .open クラスの要素のスタイル */
+.open {
+  cursor: pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+}
+
+.open_char {
+  cursor: pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+}
+
+/* #pop-up 要素のスタイル */
 #pop-up {
   display: none; /* label でコントロールするので input は非表示に */
 }
+
+#pop-up_char {
+display: none; /* label でコントロールするので input は非表示に */
+}
+
+/* .overlay クラスの要素のスタイル */
 .overlay {
   display: none; /* input にチェックが入るまでは非表示に */
 }
+
+.overlay_char {
+  display: none; /* input にチェックが入るまでは非表示に */
+}
+
+/* #pop-up:checked に連動する .overlay クラスの要素のスタイル */
 #pop-up:checked + .overlay {
   display: flex;
   align-items: center;
@@ -119,13 +179,26 @@ td {
   top: 0;
   left: 0;
 }
+
+#pop-up_char:checked + .overlay_char {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background-color: #00000070;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+/* .text クラスの要素のスタイル */
 .text {
   font-size: 18px;
   margin: 0;
 }
-.close:hover {
-background-color: #555;
-}
+
 
 
 

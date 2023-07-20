@@ -14,6 +14,117 @@
 
  <div>
  <h1>換算最適化スコア計算機</h1>
+ <div>
+  <label class="open_char" for="pop-up_char">
+      <img class="popup-image" src="./character/nahida.webp" alt="画像の説明" style="width: 100px; height: 100px;">
+    </label>
+    <input type="checkbox" id="pop-up_char">
+    <div class="overlay_char">
+      <div class="window">
+        <div class="table-container1">
+            <div class="table-buttons">
+              <button onclick="toggleTableRow(0)">炎元素</button>
+              <button onclick="toggleTableRow(1)">水元素</button>
+              <button onclick="toggleTableRow(2)">氷元素</button>
+              <button onclick="toggleTableRow(3)">雷元素</button>
+              <button onclick="toggleTableRow(4)">風元素</button>
+              <button onclick="toggleTableRow(5)">草元素</button>
+              <button onclick="toggleTableRow(6)">岩元素</button>
+  </div>
+          <table>
+         <tbody>
+              <tr>
+                <td class="tierPyro"><img id="0" class="tier-image3" src="./character/dehya.webp"></td>
+                <td class="tierPyro"><img id="1" class="tier-image3" src="./character/yoimiya.webp"></td>
+                <td class="tierPyro"><img id="2" class="tier-image3" src="./character/hutao.jpg"></td>
+                <td class="tierPyro"><img id="3" class="tier-image3" src="./character/klee.webp"></td>
+                <td class="tierPyro"><img id="4" class="tier-image3" src="./character/diluc.jpg"></td>
+                <td class="tierPyro"><img id="5" class="tier-image3" src="./character/thoma.webp"></td>
+                <td class="tierPyro"><img id="6" class="tier-image3" src="./character/yanfei.webp"></td>
+                <td class="tierPyro"><img id="7" class="tier-image3" src="./character/xinyan.webp"></td>
+                <td class="tierPyro"><img id="8" class="tier-image3" src="./character/bennett.webp"></td>
+                <td class="tierPyro"><img id="9" class="tier-image3" src="./character/xiangling.webp"></td>
+                <td class="tierPyro"><img id="10" class="tier-image3" src="./character/amber.jpg"></td>
+              </tr>
+              <tr>
+                <td class="tierHydro"><img id="11" class="tier-image3" src="./character/nirou.webp"></td>
+                <td class="tierHydro"><img id="12" class="tier-image3" src="./character/yelan.webp"></td>
+                <td class="tierHydro"><img id="13" class="tier-image3" src="./character/kamisatoayato.jpg"></td>
+                <td class="tierHydro"><img id="14" class="tier-image3" src="./character/sangonomiyakokomi.jpg"></td>
+                <td class="tierHydro"><img id="15" class="tier-image3" src="./character/tartaglia.webp"></td>
+                <td class="tierHydro"><img id="16" class="tier-image3" src="./character/mona.webp"></td>
+                <td class="tierHydro"><img id="17" class="tier-image3" src="./character/candace.jpg"></td>
+                <td class="tierHydro"><img id="18" class="tier-image3" src="./character/barbara.jpg"></td>
+                <td class="tierHydro"><img id="19"class="tier-image3" src="./character/xingqiu.webp"></td>                
+              </tr>
+              <tr>
+                <td class="tierCyro"><img id="20" class="tier-image3" src="./character/shenhe.webp"></td>
+                <td class="tierCyro"><img id="21" class="tier-image3" src="./character/kamisatoayaka.webp"></td>
+                <td class="tierCyro"><img id="22" class="tier-image3" src="./character/eula.webp"></td>
+                <td class="tierCyro"><img id="23" class="tier-image3" src="./character/ganyu.webp"></td>
+                <td class="tierCyro"><img id="24" class="tier-image3" src="./character/qiqi.webp"></td>
+                <td class="tierCyro"><img id="25" class="tier-image3" src="./character/aloy.webp"></td>
+                <td class="tierCyro"><img id="26" class="tier-image3" src="./character/mika.webp"></td>
+                <td class="tierCyro"><img id="27" class="tier-image3" src="./character/layla.webp"></td>
+                <td class="tierCyro"><img id="28"class="tier-image3" src="./character/rosaria.webp"></td>   
+                <td class="tierCyro"><img id="29" class="tier-image3" src="./character/diona.webp"></td>
+                <td class="tierCyro"><img id="30"class="tier-image3" src="./character/chongyun.webp"></td>  
+                <td class="tierCyro"><img id="31"class="tier-image3" src="./character/kaeya.jpg"></td>    
+              </tr>
+              <tr>
+                <td class="tierErectro"><img id="32" class="tier-image3" src="./character/cyno.jpg"></td>
+                <td class="tierErectro"><img id="33" class="tier-image3" src="./character/yaemiko.webp"></td>
+                <td class="tierErectro"><img id="34" class="tier-image3" src="./character/raidenshougun.jpg"></td>
+                <td class="tierErectro"><img id="35" class="tier-image3" src="./character/keqing.jpg"></td>
+                <td class="tierErectro"><img id="36" class="tier-image3" src="./character/dori.jpg"></td>
+                <td class="tierErectro"><img id="37" class="tier-image3" src="./character/kukishinobu.jpg"></td>
+                <td class="tierErectro"><img id="38" class="tier-image3" src="./character/kujousara.jpg"></td>
+                <td class="tierErectro"><img id="39" class="tier-image3" src="./character/fischl.webp"></td>
+                <td class="tierErectro"><img id="40"class="tier-image3" src="./character/beidou.webp"></td>   
+                <td class="tierErectro"><img id="41" class="tier-image3" src="./character/razor.jpg"></td>
+                <td class="tierErectro"><img id="42"class="tier-image3" src="./character/lisa.jpg"></td>
+                <td class="tierErectro"><img id="43" class="tier-image3" src="./character/travelarelectro.png"></td>
+              </tr>
+              <tr>
+                <td class="tierAnemo"><img id="44" class="tier-image3" src="./character/wanderer.webp"></td>
+                <td class="tierAnemo"><img id="45" class="tier-image3" src="./character/kazuhakaedehara.webp"></td>
+                <td class="tierAnemo"><img id="46" class="tier-image3" src="./character/xiao.webp"></td>
+                <td class="tierAnemo"><img id="47" class="tier-image3" src="./character/venti.jpg"></td>
+                <td class="tierAnemo"><img id="48" class="tier-image3" src="./character/jean.jpg"></td>
+                <td class="tierAnemo"><img id="49" class="tier-image3" src="./character/faruzan.webp"></td>
+                <td class="tierAnemo"><img id="50" class="tier-image3" src="./character/shikanoinheizou.webp"></td>
+                <td class="tierAnemo"><img id="51" class="tier-image3" src="./character/sayu.webp"></td>
+                <td class="tierAnemo"><img id="52"class="tier-image3" src="./character/sucrose.webp"></td>   
+                <td class="tierAnemo"><img id="53" class="tier-image3" src="./character/traveraranemo.png"></td>
+              </tr>
+              <tr>
+                <td class="tierDendro"><img id="54" class="tier-image3" src="./character/baizhu.webp"></td>
+                <td class="tierDendro"><img id="55" class="tier-image3" src="./character/alhaitham.webp"></td>
+                <td class="tierDendro"><img id="56" class="tier-image3" src="./character/nahida.webp"></td>
+                <td class="tierDendro"><img id="57" class="tier-image3" src="./character/tighnari.webp"></td>
+                <td class="tierDendro"><img id="58" class="tier-image3" src="./character/kirara.webp"></td>
+                <td class="tierDendro"><img id="59" class="tier-image3" src="./character/kaveh.webp"></td>
+                <td class="tierDendro"><img id="60" class="tier-image3" src="./character/yaoyao.webp"></td>
+                <td class="tierDendro"><img id="61" class="tier-image3" src="./character/collei.webp"></td>
+                <td class="tierDendro"><img id="62"class="tier-image3" src="./character/travelardendro.png"></td>   
+              </tr>
+              <tr>
+                <td class="tierGeo"><img id="62" class="tier-image3" src="./character/aratakiitto.webp"></td>
+                <td class="tierGeo"><img id="63" class="tier-image3" src="./character/albedo.jpg"></td>
+                <td class="tierGeo"><img id="64" class="tier-image3" src="./character/zhongli.webp"></td>
+                <td class="tierGeo"><img id="65" class="tier-image3" src="./character/yunjin.webp"></td>
+                <td class="tierGeo"><img id="66" class="tier-image3" src="./character/gorou.webp"></td>
+                <td class="tierGeo"><img id="67" class="tier-image3" src="./character/noelle.jpg"></td>
+                <td class="tierGeo"><img id="68" class="tier-image3" src="./character/ningguang.webp"></td>
+                <td class="tierGeo"><img id="69" class="tier-image3" src="./character/travelergeo.png"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div id="Charindex-display"></div>
  <div id = choose_char_weapon>
   <label for="char_name">キャラクター</label>
   <br>
@@ -577,11 +688,6 @@
         show_char_statsform();
         show_weapon_statsform();
         showTable('table1')
-        let images = document.querySelectorAll('.overlay img');
-        let image = images[20];
-          // 最初の2つの画像を選択済みにする処理
-        changeImageClass(image);
-        changeImageClass(image);
       });
 
       document.getElementById('status_setting').addEventListener('input', calculate_table_status);
@@ -590,7 +696,7 @@
       document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
       function showTable(tableId) {
       // すべての表コンテナを非表示にする
-      var tableContainers = document.getElementsByClassName("tablecontainer");
+      let tableContainers = document.getElementsByClassName("tablecontainer");
       for (var i = 0; i < tableContainers.length; i++) {
         tableContainers[i].classList.remove("active");
       }
@@ -598,67 +704,146 @@
       document.getElementById(tableId).classList.add("active");
     }
 
-    let clickedImages = [];
+let clickedImages = [];
+let selectedImageIds = [20, 20];
+let selectedCharId = 10;
+let buttonscondition = [0,0,0,0,0,0,0];
 
-    function changeImageClass(image) 
-    {
-      if (clickedImages.length >= 2) 
-      {
-        const previousImage = clickedImages.shift();
-        previousImage.classList.remove("tier-image2");
-      }
+function changeImageClass(image) {
+  if (clickedImages.length >= 2) {
+    const previousImage = clickedImages.shift();
+    previousImage.classList.remove("tier-image2");
+  }
 
-      if (!image.classList.contains("tier-image2")) 
-      {
-        image.classList.add("tier-image2");
-        clickedImages.push(image);
-      }
+  if (!image.classList.contains("tier-image2")) {
+    image.classList.add("tier-image2");
+    clickedImages.push(image);
+  }
+}
+
+function handleImageSelection(images, popupImages, indexDisplay) {
+  const imageIdToSrc = {};
+
+  indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
+
+  function handleImageClick() {
+    const selectedImageId = this.getAttribute('id');
+    selectedImageIds.push(selectedImageId);
+
+    if (selectedImageIds.length > 2) {
+      selectedImageIds.shift();
     }
 
-
-  window.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.overlay img');
-    const selectedImageIds = [20, 20]; // 選択された画像のIDの配列
-    const imageIdToSrc = {}; // 画像のIDとパスの対応関係を保持するオブジェクト
-    const popupImages = document.querySelectorAll('.open img');
-    const indexDisplay = document.getElementById('index-display');
+    selectedImageIds.forEach(function(selectedImageId, index) {
+      const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
+      popupImages[index].setAttribute('src', selectedImageSrc);
+      popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+    });
 
     indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
+  }
 
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-      const imageId = image.getAttribute('id');
-      const imageSrc = image.getAttribute('src');
-      imageIdToSrc[imageId] = imageSrc;
+  for (let i = 0; i < images.length; i++) {
+    const image = images[i];
+    const imageId = image.getAttribute('id');
+    const imageSrc = image.getAttribute('src');
+    imageIdToSrc[imageId] = imageSrc;
+    image.addEventListener('click', handleImageClick);
+  }
+}
 
-      image.addEventListener('click', function() {
-        const selectedImageId = this.getAttribute('id'); // 選択された画像のIDを取得
-        selectedImageIds.push(selectedImageId); // 選択された画像のIDを配列に追加
-          selectedImageIds.shift();
+function handleCharSelection(images, popupImage, indexDisplay) {
+  const imageIdToSrc = {};
 
-        selectedImageIds.forEach(function(selectedImageId, index) {
-          const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
-          popupImages[index].setAttribute('src', selectedImageSrc);
-          popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
-        });
+  indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
 
-        // 選択された画像のIDを表示
-        indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
-      });
+  function handleCharClick() {
+    const newSelectedCharId = this.getAttribute('id');
+
+    if (selectedCharId) {
+      const previousImage = document.getElementById(selectedCharId);
+      previousImage.classList.remove('selected');
+    }
+
+    selectedCharId = newSelectedCharId;
+
+    const selectedImageSrc = imageIdToSrc[selectedCharId] || '';
+    popupImage.setAttribute('src', selectedImageSrc);
+    popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
+
+    indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
+    const checkbox = document.getElementById('pop-up_char');
+    checkbox.checked = false;
+  }
+
+  for (let i = 0; i < images.length; i++) {
+    const image = images[i];
+    const imageId = image.getAttribute('id');
+    const imageSrc = image.getAttribute('src');
+    imageIdToSrc[imageId] = imageSrc;
+    image.addEventListener('click', handleCharClick);
+  }
+}
+
+
+function toggleTableRow(index) 
+{
+  const rows = document.querySelectorAll('.table-container1 table tbody tr');
+  const buttons = document.querySelectorAll('.table-buttons button');
+  if (buttonscondition[index] === 1) 
+  {
+    for (let k = 0; k < 7; k++)
+    {
+      rows[k].style.display = 'table-row';
+      buttonscondition[k] = 0;
+    }
+    buttons[index].classList.add('active');
+  } 
+  else
+  {
+    for (let k = 0; k < 7; k++)
+    {
+      rows[k].style.display = 'none';
+      buttonscondition[k] = 0
+    }
+    buttonscondition[index] = 1
+    rows[index].style.display = 'table-row';
+    buttons[index].classList.remove('active');
+  }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('.overlay img');
+  const popupImages = document.querySelectorAll('.open img');
+  const indexDisplay = document.getElementById('index-display');
+  handleImageSelection(images, popupImages, indexDisplay);
+
+  // 最初の2つの画像を選択済みにする処理
+  let image = images[20];
+  changeImageClass(image);
+  changeImageClass(image);
+
+  const overlay = document.querySelector('.overlay');
+  overlay.addEventListener('click', function(event) {
+    if (!event.target.closest('.window')) {
+      const checkbox = document.getElementById('pop-up');
+      checkbox.checked = false;
     }
   });
 
-    window.addEventListener('DOMContentLoaded', function() {
-    // ポップアップウィンドウ外の要素をクリックした際にポップアップウィンドウを非表示にする処理
-    const overlay = document.querySelector('.overlay');
-    overlay.addEventListener('click', function(event) {
-      // クリックされた要素が.overlayの子孫でない場合にポップアップウィンドウを非表示にする
-      if (!event.target.closest('.window')) {
-        const checkbox = document.getElementById('pop-up');
-        checkbox.checked = false;
-      }
-    });
+  const charImages = document.querySelectorAll('.overlay_char img');
+  const charPopupImage = document.querySelector('.open_char img');
+  const charIndexDisplay = document.getElementById('Charindex-display');
+  handleCharSelection(charImages, charPopupImage, charIndexDisplay);
+
+  const charOverlay = document.querySelector('.overlay_char');
+  charOverlay.addEventListener('click', function(event) {
+    if (!event.target.closest('.window')) {
+      const checkbox = document.getElementById('pop-up_char');
+      checkbox.checked = false;
+    }
   });
+});
 
   </script>
 
