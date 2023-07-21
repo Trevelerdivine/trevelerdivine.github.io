@@ -74,7 +74,7 @@
               <tr>
                 <td class="tierErectro"><img id="32" class="tier-image3" src="./character/cyno.jpg"></td>
                 <td class="tierErectro"><img id="33" class="tier-image3" src="./character/yaemiko.webp"></td>
-                <td class="tierErectro"><img id="34" class="tier-image3" src="./character/raidenshougun.jpg"></td>
+                <td class="tierErectro"><img id="34" class="tier-image3" src="./character/raidenshougun.jpg" onclick="show_char_statsform()"></td>
                 <td class="tierErectro"><img id="35" class="tier-image3" src="./character/keqing.jpg"></td>
                 <td class="tierErectro"><img id="36" class="tier-image3" src="./character/dori.jpg"></td>
                 <td class="tierErectro"><img id="37" class="tier-image3" src="./character/kukishinobu.jpg"></td>
@@ -100,7 +100,7 @@
               <tr>
                 <td class="tierDendro"><img id="54" class="tier-image3" src="./character/baizhu.webp"></td>
                 <td class="tierDendro"><img id="55" class="tier-image3" src="./character/alhaitham.webp"></td>
-                <td class="tierDendro"><img id="56" class="tier-image3" src="./character/nahida.webp"></td>
+                <td class="tierDendro"><img id="56" class="tier-image3" src="./character/nahida.webp"  onclick="show_char_statsform()"></td>
                 <td class="tierDendro"><img id="57" class="tier-image3" src="./character/tighnari.webp"></td>
                 <td class="tierDendro"><img id="58" class="tier-image3" src="./character/kirara.webp"></td>
                 <td class="tierDendro"><img id="59" class="tier-image3" src="./character/kaveh.webp"></td>
@@ -670,6 +670,7 @@
   </div>
     <script>
       window.addEventListener("DOMContentLoaded", function() {
+        show_char_statsform();
         show_weapon_statsform();
         showTable('table1')
       });
@@ -767,7 +768,6 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     imageIdToSrc[imageId] = imageSrc;
     image.addEventListener('click', handleCharClick);
   }
-  show_char_statsform();
 }
 
 
@@ -820,6 +820,7 @@ window.addEventListener('DOMContentLoaded', function() {
   const charPopupImage = document.querySelector('.open_char img');
   const charIndexDisplay = document.getElementById('Charindex-display');
   handleCharSelection(charImages, charPopupImage, charIndexDisplay);
+
   const charOverlay = document.querySelector('.overlay_char');
   charOverlay.addEventListener('click', function(event) {
     if (!event.target.closest('.window')) {
