@@ -499,16 +499,15 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
-  console.log(af_buff);
   let basic_dmg;
   let exp_dmg;
   let team_buff = calculate_team_buff(base_status)
-
+  console.log(team_buff);
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = fixed_status[i] + af_buff[i] + team_buff[i];
+    fixed_status[i] = base_status[i] + af_buff[i] + team_buff[i];
   }
   fixed_status[7] = af_main_status_buff[7];
   result_status = fixed_status.slice();
