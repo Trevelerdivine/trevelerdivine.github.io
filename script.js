@@ -614,11 +614,11 @@ async function monte_carlo_calculate()
   const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
-  let response = "";
+  let response = "<br>";
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
-    response = "  ダメージ期待値: " + my_exp_dmg + "<br>" + "ダメージ期待値が異常値を示しています。再入力してください。"
+    response ="ダメージ期待値が異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
   }
