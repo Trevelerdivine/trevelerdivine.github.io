@@ -669,6 +669,10 @@
 </table>
   </div>
     <script>
+      let clickedImages = [];
+      let selectedImageIds = [20, 20];
+      let selectedCharId = 56;
+      let buttonscondition = [0,0,0,0,0,0,0];
       window.addEventListener("DOMContentLoaded", function() {
         show_char_statsform();
         show_weapon_statsform();
@@ -688,11 +692,6 @@
       // 選択された表コンテナを表示する
       document.getElementById(tableId).classList.add("active");
     }
-
-let clickedImages = [];
-let selectedImageIds = [20, 20];
-let selectedCharId = 56;
-let buttonscondition = [0,0,0,0,0,0,0];
 
 function changeImageClass(image) {
   if (clickedImages.length >= 2) {

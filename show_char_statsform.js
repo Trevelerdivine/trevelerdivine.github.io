@@ -27,7 +27,7 @@ async function show_char_statsform()
 
     characterInfo.innerHTML = "";
     
-    if (selectedCharId  === "34") {
+    if (selectedCharId  === "56") {
       const traits = [
         {
           id: "traitCheckbox",
@@ -65,7 +65,7 @@ async function show_char_statsform()
           characterInfo.appendChild(lineBreak);
         }
       }
-    } else if (selectedCharId  === "56") {
+    } else if (selectedCharId  === "34") {
         const traits = [
           {
             id: "traitCheckbox",
