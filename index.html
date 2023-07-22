@@ -681,7 +681,6 @@
         show_weapon_statsform();
         showTable('table1')
       });
-      document.getElementById('pop-up_char').addEventListener('change', calculate_table_status);
       document.getElementById('status_setting').addEventListener('input', calculate_table_status);
       document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
       document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
@@ -762,6 +761,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     const checkbox = document.getElementById('pop-up_char');
     checkbox.checked = false;
     show_char_statsform();
+    calculate_table_status();
   }
 
   for (let i = 0; i < images.length; i++) {
