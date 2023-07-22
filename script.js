@@ -220,13 +220,14 @@ async function calculate_fixed_status(sd,bs,amsb)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
-  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780;
-  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1]);
-  fixed_status[2] = bs[2] + sd[2]*3 + amsb[2];
-  fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100;
-  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311;
-  fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
-  fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
+  let team_buff = calculate_team_buff(bs);
+  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780 + team_buff[0];
+  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1])+ team_buff[1];
+  fixed_status[2] = bs[2] + sd[2]*3 + amsb[2] + team_buff[2];
+  fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100 + team_buff[3];
+  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311 + team_buff[4];
+  fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100 + team_buff[5];
+  fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100 + team_buff[6];
   fixed_status[7] = bs[7] + amsb[7];
   return fixed_status;
 }
@@ -501,12 +502,13 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(af_buff);
   let basic_dmg;
   let exp_dmg;
+  let team_buff = calculate_team_buff(base_status)
 
-  let fixed_status = base_status.slice();
+  let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = fixed_status[i] + af_buff[i];
+    fixed_status[i] = fixed_status[i] + af_buff[i] + team_buff[i];
   }
   fixed_status[7] = af_main_status_buff[7];
   result_status = fixed_status.slice();
