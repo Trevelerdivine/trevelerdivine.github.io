@@ -305,7 +305,6 @@ async function calculate_table_status()
   let fixed_status = base_status.slice();
   let result_status;
 
-
   for (let i = 0; i < 7; i++)
   {
     fixed_status[i] = fixed_status[i] + af_buff[i] + team_buff[i];
