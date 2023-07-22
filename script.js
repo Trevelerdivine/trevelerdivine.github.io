@@ -285,6 +285,8 @@ async function calculate_table_status()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
 
+  console.log(selectedCharId)
+
   char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
 
