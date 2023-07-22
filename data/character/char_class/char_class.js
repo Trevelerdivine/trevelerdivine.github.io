@@ -138,7 +138,7 @@ class nahida {
     }
 
     async dmg_rate_data() {
-      const response = await fetch("./data/character/char_data/raiden.json");
+      const response = await fetch("./data/character/char_data/raidenshougun.json");
       const data = await response.json();
       const dmg_attck_rate = data.元素爆発.数値[10];
       const dmg_rate = [0,0,0,0,dmg_attck_rate,0,0]; 
