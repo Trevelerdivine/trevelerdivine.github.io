@@ -127,13 +127,13 @@ async function show_char_statsform()
         }
       }
       const formElements = [
-        { form: [hp_form,fix_hp_form,fix_hprate_form], index: 0 },
-        { form: [attck_form,fix_attack_form,fix_attackrate_form], index: 4 },
-        { form: [deff_form,fix_deff_form,fix_deffrate_form], index: 1 },
-        { form: [elm_form,fix_elm_form], index: 2 },
-        { form: [elm_charge_form,fix_elm_charge_form], index: 3 },
-        { form: [cr_form,fix_cr_form], index: 5 },
-        { form: [cd_form,fix_cd_form], index: 6 }
+        { forms: [hp_form, fix_hp_form, fix_hprate_form], index: 0 },
+        { forms: [attck_form, fix_attack_form, fix_attackrate_form], index: 4 },
+        { forms: [deff_form, fix_deff_form, fix_deffrate_form], index: 1 },
+        { forms: [elm_form, fix_elm_form], index: 2 },
+        { forms: [elm_charge_form, fix_elm_charge_form], index: 3 },
+        { forms: [cr_form, fix_cr_form], index: 5 },
+        { forms: [cd_form, fix_cd_form], index: 6 }
       ];
       
       for (const element of formElements) {
