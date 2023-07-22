@@ -9,6 +9,16 @@ async function show_char_statsform()
     let elm_charge_form = document.getElementById("elm_charge_form");
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
+    let fix_hp_form = document.getElementById("fix_hp_form");
+    let fix_hprate_form = document.getElementById("fix_hp%_form");
+    let fix_attack_form = document.getElementById("fix_attack_form");
+    let fix_attackrate_form = document.getElementById("fix_attack_form");
+    let fix_deff_form = document.getElementById("fix_deff_form");
+    let fix_deffrate_form = document.getElementById("fix_deff%_form");
+    let fix_elm_form = document.getElementById("fix_elm_form");
+    let fix_elm_charge_form = document.getElementById("fix_elm_charge_form");
+    let fix_cr_form = document.getElementById("fix_cr_form");
+    let fix_cd_form = document.getElementById("fix_cd_form");
     let calculateButton = document.getElementById("calculateButton");
     const char_constellations = document.getElementById("char_constellations").value;
 
@@ -19,6 +29,16 @@ async function show_char_statsform()
     elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
     cr_form.style.display = "none";  // 会心率フォームを非表示
     cd_form.style.display = "none";  // 会心ダメージフォームを非表示
+    fix_hp_form.style.display = "none";
+    fix_hprate_form.style.display = "none";
+    fix_attack_form.style.display = "none";
+    fix_attackrate_form.style.display = "none";
+    fix_deff_form.style.display = "none";
+    fix_deffrate_form.style.display = "none";
+    fix_elm_form.style.display = "none";
+    fix_elm_charge_form.style.display = "none";
+    fix_cr_form.style.display = "none";
+    fix_cd_form.style.display = "none";
     calculateButton.style.display = "block";
     
     const characterInfo = document.getElementById("characterInfo");
@@ -65,7 +85,8 @@ async function show_char_statsform()
           characterInfo.appendChild(lineBreak);
         }
       }
-    } else if (selectedCharId  === "34") {
+    } else if (selectedCharId  === "34")
+      {
         const traits = [
           {
             id: "traitCheckbox",
@@ -86,7 +107,8 @@ async function show_char_statsform()
         ];
         if (char_constellations > 0)
         {
-          for (let i = 0; i < char_constellations; i++) {
+          for (let i = 0; i < char_constellations; i++) 
+          {
             const traitCheckbox = document.createElement("input");
             traitCheckbox.type = "checkbox";
             traitCheckbox.id = traits[i].id;
@@ -105,18 +127,20 @@ async function show_char_statsform()
         }
       }
       const formElements = [
-        { form: hp_form, index: 0 },
-        { form: attck_form, index: 4 },
-        { form: deff_form, index: 1 },
-        { form: elm_form, index: 2 },
-        { form: elm_charge_form, index: 3 },
-        { form: cr_form, index: 5 },
-        { form: cd_form, index: 6 }
+        { form: [hp_form,fix_hp_form,fix_hprate_form], index: 0 },
+        { form: [attck_form,fix_attack_form,fix_attackrate_form], index: 4 },
+        { form: [deff_form,fix_deff_form,fix_deffrate_form], index: 1 },
+        { form: [elm_form,fix_elm_form], index: 2 },
+        { form: [elm_charge_form,fix_elm_charge_form], index: 3 },
+        { form: [cr_form,fix_cr_form], index: 5 },
+        { form: [cd_form,fix_cd_form], index: 6 }
       ];
       
       for (const element of formElements) {
         if (depend_status[element.index] === 1) {
-          element.form.style.display = "block";
+          for (const form of element.forms) {
+            form.style.display = "block";
+          }
         }
       }
     }

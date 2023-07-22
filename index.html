@@ -263,7 +263,7 @@
 
  <br>
  <fieldset id="sub_statusInfo" style="width: 400px;">
- <legend>サブステータス値</legend>
+ <legend>聖遺物ステータス上昇値</legend>
  <div id="status_setting">
  <div id="hp_form" style="display: none;">
   <label for="af_hp">HP：</label>
@@ -305,6 +305,64 @@
 </div>
 </fieldset>
 
+<fieldset id="fix_buff_info" style="width: 400px;">
+  <legend>固定バフ</legend>
+  <div id="fix_buff_setting">
+
+  <div id="fix_hp_form" style="display: none;">
+   <label for="fix_hp_buff">HP実数値：</label>
+   <input type="number" id="fix_hp_buff" required min = "0" name="fix_hp_buff">
+ </div>
+
+ <div id="fix_hp%_form" style="display: none;">
+  <label for="fix_hp%_buff">HP％：</label>
+  <input type="number" id="fix_hp%_buff" required min = "0" name="fix_hp%_buff">
+</div>
+ 
+ <div id="fix_attack_form" style="display: none;">
+   <label for="fix_attck_buff">攻撃力実数値：</label>
+   <input type="number" id="fix_attck_buff"  required min = "0" name="fix_attck_buff">
+ </div>
+
+ <div id="fix_attack%_form" style="display: none;">
+  <label for="fix_attck%_buff">攻撃力％：</label>
+  <input type="number" id="fix_attck%_buff"  required min = "0" name="fix_attck%_buff">
+</div>
+ 
+ <div id="fix_deff_form" style="display: none;">
+   <label for="fix_deff_buff">防御力実数値：</label>
+   <input type="number" id="fix_deff_buff" required min = "0" name="fix_deff_buff">
+ </div>
+
+ <div id="fix_deff_form" style="display: none;">
+  <label for="fix_deff%_buff">防御力％：</label>
+  <input type="number" id="fix_deff%_buff" required min = "0" name="fix_deff%_buff">
+</div>
+ 
+ <div id="fix_elm_form" style="display: none;">
+   <label for="fix_elm_buff">元素熟知：</label>
+   <input type="number" id="fix_elm_buff" required min = "0" name="fix_elm_buff" >
+ </div>
+ 
+ <div id="fix_elm_charge_form" style="display: none;">
+   <label for="fix_elm_charge_buff">元素チャージ効率：</label>
+   <input type="number" id="fix_elm_charge_buff" required min = "0" name="fix_elm_charge_buff">
+   <span>(%)</span>
+ </div>
+ 
+ <div id="fix_cr_form" style="display: none;">
+   <label for="fix_cr_buff">会心率：</label>
+   <input type="number" id="fix_cr_buff" required min = "0" name="fix_cr_buff">
+   <span>(%)</span>
+ </div>
+ 
+ <div id="fix_cd_form" style="display: none;">
+  <label for="fix_cd_buff">会心率：</label>
+  <input type="number" id="fix_cr_buff" required min = "0" name="fix_cd_buff">
+  <span>(%)</span>
+</div>
+ </div>
+ </fieldset>
 
 <br>
 <button id="calculateButton" style="display: none;" onclick="monte_carlo_calculate()">最適化計算</button>
