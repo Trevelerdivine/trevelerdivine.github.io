@@ -292,6 +292,7 @@ async function calculate_table_status()
   const char_parameter = await import_char_parameter();
   let buff_status = [0,0,0,0,0,0,0,0];
   let team_buff = await calculate_team_buff(base_status);
+  console.log(team_buff);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
