@@ -12,7 +12,7 @@ async function show_char_statsform()
     let fix_hp_form = document.getElementById("fix_hp_form");
     let fix_hprate_form = document.getElementById("fix_hp%_form");
     let fix_attack_form = document.getElementById("fix_attack_form");
-    let fix_attackrate_form = document.getElementById("fix_attack_form");
+    let fix_attackrate_form = document.getElementById("fix_attack%_form");
     let fix_deff_form = document.getElementById("fix_deff_form");
     let fix_deffrate_form = document.getElementById("fix_deff%_form");
     let fix_elm_form = document.getElementById("fix_elm_form");
