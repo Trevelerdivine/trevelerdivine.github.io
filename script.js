@@ -534,7 +534,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const char_parameter = await import_char_parameter();
   let basic_dmg;
   let exp_dmg;
-  let team_buff = await calculate_team_fix_buff(base_status)
+  let team_fix_buff = await calculate_team_fix_buff(base_status)
   console.log(team_buff);
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status = [0,0,0,0,0,0,0,0];
