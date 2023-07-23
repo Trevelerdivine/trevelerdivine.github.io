@@ -248,7 +248,7 @@ async function create_char_instance(base_status, fixed_status, result_status,par
 
 ///////////////////////
 
-async function calculate_team_buff(base_status)
+async function calculate_team_fix_buff(base_status)
 {
   const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value) || 0; // 聖遺物HP上昇量
   const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
@@ -276,6 +276,34 @@ async function calculate_team_buff(base_status)
 
 ///////////////////////
 
+async function calculate_team_dynamic_buff(base_status)
+{
+  const dynamic_hp_buff = parseInt(document.getElementById("dynamic_hp_buff").value) || 0; // 聖遺物HP上昇量
+  const dynamic_hprate_buff = parseFloat(document.getElementById("dynamic_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
+  const dynamic_attack_buff = parseInt(document.getElementById("dynamic_attack_buff").value) || 0; // 聖遺物攻撃力上昇量
+  const dynamic_attackrate_buff = parseFloat(document.getElementById("dynamic_attack%_buff").value) / 100 || 0; // 聖遺物攻撃力上昇量
+  const dynamic_deff_buff = parseInt(document.getElementById("dynamic_deff_buff").value) || 0; // 聖遺物防御力上昇量
+  const dynamic_deffrate_buff = parseFloat(document.getElementById("dynamic_deff%_buff").value) / 100 || 0; // 聖遺物防御力上昇量
+  const dynamic_elm_buff = parseInt(document.getElementById("dynamic_elm_buff").value) || 0; // 聖遺物元素熟知上昇量
+  const dynamic_elm_charge_buff = parseFloat(document.getElementById("dynamic_elm_charge_buff").value) / 100 || 0; // 聖遺物元素チャージ効率上昇量
+  const dynamic_cr_buff = parseFloat(document.getElementById("dynamic_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
+  const dynamic_cd_buff = parseFloat(document.getElementById("dynamic_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
+  
+  let team_buff = [0,0,0,0,0,0,0,0];
+
+  team_buff[0] = dynamic_hp_buff + dynamic_hprate_buff * base_status[0];
+  team_buff[1] = dynamic_deff_buff + dynamic_deffrate_buff * base_status[1];
+  team_buff[2] = dynamic_elm_buff;
+  team_buff[3] = dynamic_elm_charge_buff;
+  team_buff[4] = dynamic_attack_buff + fix_attackrate_buff * base_status[4];
+  team_buff[5] = dynamic_cr_buff;
+  team_buff[6] = dynamic_cd_buff;
+
+  return team_buff
+}
+
+///////////////////////
+
 async function calculate_table_status()
 {
   const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
@@ -292,7 +320,7 @@ async function calculate_table_status()
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
   let buff_status = [0,0,0,0,0,0,0,0];
-  let team_buff = await calculate_team_buff(base_status);
+  let team_buff = await calculate_team_fix_buff(base_status);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -500,7 +528,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const char_parameter = await import_char_parameter();
   let basic_dmg;
   let exp_dmg;
-  let team_buff = await calculate_team_buff(base_status)
+  let team_buff = await calculate_team_fix_buff(base_status)
   console.log(team_buff);
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
@@ -635,7 +663,7 @@ async function monte_carlo_calculate()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();
-  const team_buff = await calculate_team_buff(base_status);
+  const team_buff = await calculate_team_fix_buff(base_status);
   console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
