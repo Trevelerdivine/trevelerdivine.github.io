@@ -298,7 +298,7 @@ async function calculate_team_dynamic_buff(base_status)
   team_buff[1] = dynamic_deff_buff + dynamic_deffrate_buff * base_status[1];
   team_buff[2] = dynamic_elm_buff;
   team_buff[3] = dynamic_elm_charge_buff;
-  team_buff[4] = dynamic_attack_buff + fix_attackrate_buff * base_status[4];
+  team_buff[4] = dynamic_attack_buff + dynamic_attackrate_buff * base_status[4];
   team_buff[5] = dynamic_cr_buff;
   team_buff[6] = dynamic_cd_buff;
   team_buff[7] = dynamic_dmgbuff;
