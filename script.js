@@ -635,6 +635,7 @@ async function monte_carlo_calculate()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();
+  const team_buff = await calculate_team_buff(base_status);
   console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
@@ -685,13 +686,13 @@ async function monte_carlo_calculate()
   const dmg_rate = await char_instance.dmg_rate_data();
 
   let fixed_buff =[0,0,0,0,0,0,0,0];
-    fixed_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
-    fixed_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
-    fixed_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
-    fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
-    fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
-    fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
-    fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
+    fixed_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp() + team_buff[0]);
+    fixed_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff()+ team_buff[1]);
+    fixed_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm() + team_buff[2]);
+    fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge() + team_buff[3]);
+    fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck() + team_buff[4]);
+    fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr() + team_buff[5]);
+    fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_buff[6]);
     fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
 console.log(fixed_buff)
 
