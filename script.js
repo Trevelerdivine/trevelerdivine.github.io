@@ -537,7 +537,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   let team_buff = await calculate_team_fix_buff(base_status)
   console.log(team_buff);
   let fixed_status = [0,0,0,0,0,0,0];
-  let result_status;
+  let result_status = [0,0,0,0,0,0,0,0];
   for (let i = 0; i < 7; i++)
   {
     fixed_status[i] = fixed_status[i] + af_buff[i] + team_fix_buff[i];
@@ -705,7 +705,7 @@ async function monte_carlo_calculate()
 
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
-  let result_status;
+  let result_status = [0,0,0,0,0,0,0,0];
   let random_1;
   let random_2;
   let output_exp_dmg = Infinity;
