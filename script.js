@@ -320,7 +320,8 @@ async function calculate_table_status()
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
   let buff_status = [0,0,0,0,0,0,0,0];
-  let team_buff = await calculate_team_fix_buff(base_status);
+  let team_fix_buff = await calculate_team_fix_buff(base_status);
+  let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -336,10 +337,11 @@ async function calculate_table_status()
 
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = fixed_status[i] + af_buff[i] + team_buff[i];
+    fixed_status[i] = fixed_status[i] + af_buff[i] + team_fix_buff[i];
   }
   fixed_status[7] = af_main_status_buff[7];
   result_status = fixed_status.slice();
+  
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
@@ -350,7 +352,7 @@ async function calculate_table_status()
     if (depend_status[0] == 1)
     {
       fixed_status[0] += await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
-      result_status[0] = fixed_status[0] + await (char_instance.calculate_char_result_hp() + weapon_instance.calculate_weapon_result_hp());
+      result_status[0] = team_dynamic_buff[0] + fixed_status[0] + await (char_instance.calculate_char_result_hp() + weapon_instance.calculate_weapon_result_hp());
       buff_status[0] = result_status[0] - af_buff[0] - base_status[0];
       document.getElementById("table_buff_hp").innerHTML = buff_status[0].toFixed(0);
       document.getElementById("table_af_hp").innerHTML = af_buff[0].toFixed(0);
@@ -368,7 +370,7 @@ async function calculate_table_status()
     if (depend_status[1] == 1)
     {
       fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
-      result_status[1] = fixed_status[1] + await (char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff());
+      result_status[1] = team_dynamic_buff[1] + fixed_status[1] + await (char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff());
       buff_status[1] = result_status[1] - af_buff[1] - base_status[1];
       document.getElementById("table_buff_deff").innerHTML = buff_status[1].toFixed(0);
       document.getElementById("table_af_deff").innerHTML = af_buff[1].toFixed(0);
@@ -386,7 +388,7 @@ async function calculate_table_status()
     if (depend_status[2] == 1)
     {
       fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
-      result_status[2] = fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
+      result_status[2] = team_dynamic_buff[2] + fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
       buff_status[2] = result_status[2] - af_buff[2] - base_status[2];
       document.getElementById("table_buff_elm").innerHTML = buff_status[2].toFixed(0);
       document.getElementById("table_af_elm").innerHTML = af_buff[2].toFixed(0);
@@ -404,7 +406,7 @@ async function calculate_table_status()
     if (depend_status[3] == 1)
     {
       fixed_status[3] += await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
-      result_status[3] = fixed_status[3] + await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
+      result_status[3] = team_dynamic_buff[3] + fixed_status[3] + await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
       buff_status[3] = result_status[3] - af_buff[3] - base_status[3];
       document.getElementById("table_buff_elm_charge").innerHTML = (buff_status[3]*100).toFixed(1) + "％";
       document.getElementById("table_af_elm_charge").innerHTML = (af_buff[3]*100).toFixed(1) + "％";
@@ -422,7 +424,7 @@ async function calculate_table_status()
     if (depend_status[4] == 1)
     {
       fixed_status[4] += await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
-      result_status[4] = fixed_status[4] + await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
+      result_status[4] = team_dynamic_buff[4] + fixed_status[4] + await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
       buff_status[4] = result_status[4] - af_buff[4] - base_status[4];
       document.getElementById("table_buff_attck").innerHTML = buff_status[4].toFixed(0);
       document.getElementById("table_af_attck").innerHTML = af_buff[4].toFixed(0);
@@ -440,7 +442,7 @@ async function calculate_table_status()
     if (depend_status[5] == 1)
     {
       fixed_status[5] += await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
-      result_status[5] = fixed_status[5] + await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
+      result_status[5] = team_dynamic_buff[5] + fixed_status[5] + await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
       buff_status[5] = result_status[5] - af_buff[5] - base_status[5];
       if (fixed_status[5] > 1)
       {
@@ -466,7 +468,7 @@ async function calculate_table_status()
    if (depend_status[6] == 1)
     {
       fixed_status[6] += await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
-      result_status[6] = fixed_status[6] + await (char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd());
+      result_status[6] = team_dynamic_buff[6] + fixed_status[6] + await (char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd());
       buff_status[6] = result_status[6] - af_buff[6] - base_status[6];
       document.getElementById("table_buff_cd").innerHTML = (buff_status[6]*100).toFixed(1) + "％";
       document.getElementById("table_af_cd").innerHTML = (af_buff[6]*100).toFixed(1) + "％";
@@ -482,7 +484,7 @@ async function calculate_table_status()
     }
 
     fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
-    result_status[7] = fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     buff_status[7] = result_status[7] - af_main_status_buff[7] - base_status[7];
@@ -528,15 +530,16 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const char_parameter = await import_char_parameter();
   let basic_dmg;
   let exp_dmg;
-  let team_buff = await calculate_team_fix_buff(base_status)
-  console.log(team_buff);
+  let team_fix_buff = await calculate_team_fix_buff(base_status)
+  let team_dynamic_buff = await calculate_team_dynamic_buff(base_status)
+  console.log(team_fix_buff);
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = base_status[i] + af_buff[i] + team_buff[i];
+    fixed_status[i] = base_status[i] + af_buff[i] + team_fix_buff[i];
   }
-  fixed_status[7] = af_main_status_buff[7];
+  fixed_status[7] = af_main_status_buff[7] + team_fix_buff[7];
   result_status = fixed_status.slice();
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
@@ -549,7 +552,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     if (depend_status[0] == 1)
     {
       fixed_status[0] += await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
-      result_status[0] = fixed_status[0] + await (char_instance.calculate_char_result_hp() + weapon_instance.calculate_weapon_result_hp());
+      result_status[0] = team_dynamic_buff[0] + fixed_status[0] + await (char_instance.calculate_char_result_hp() + weapon_instance.calculate_weapon_result_hp());
       char_instance.update_status(fixed_status, result_status);
       weapon_instance.update_status(fixed_status, result_status);
     }
@@ -557,7 +560,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     if (depend_status[1] == 1)
     {
       fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
-      result_status[1] = fixed_status[1] + await (char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff());
+      result_status[1] = team_dynamic_buff[1] + fixed_status[1] + await (char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff());
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
@@ -565,7 +568,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     if (depend_status[2] == 1)
     {
       fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
-      result_status[2] = fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
+      result_status[2] = team_dynamic_buff[2] + fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
@@ -573,7 +576,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     if (depend_status[3] == 1)
     {
       fixed_status[3] += await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
-      result_status[3] = fixed_status[3] + await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
+      result_status[3] = team_dynamic_buff[3] + fixed_status[3] + await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
@@ -581,7 +584,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     if (depend_status[4] == 1)
     {
       fixed_status[4] += await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
-      result_status[4] = fixed_status[4] + await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
+      result_status[4] = team_dynamic_buff[4] + fixed_status[4] + await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
@@ -589,7 +592,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     if (depend_status[5] == 1)
     {
       fixed_status[5] += await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
-      result_status[5] = fixed_status[5] + await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
+      result_status[5] = team_dynamic_buff[5] + fixed_status[5] + await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
     if (fixed_status[5] > 1)
     {
       fixed_status[5] = 1;
@@ -605,13 +608,13 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
    if (depend_status[6] == 1)
     {
       fixed_status[6] += await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
-      result_status[6] = fixed_status[6] + await (char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd());
+      result_status[6] = team_dynamic_buff[6] + fixed_status[6] + await (char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd());
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
     }
 
     fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
-    result_status[7] = fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
 
@@ -663,7 +666,8 @@ async function monte_carlo_calculate()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();
-  const team_buff = await calculate_team_fix_buff(base_status);
+  const team_fix_buff = await calculate_team_fix_buff(base_status);
+  const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
@@ -714,13 +718,13 @@ async function monte_carlo_calculate()
   const dmg_rate = await char_instance.dmg_rate_data();
 
   let fixed_buff =[0,0,0,0,0,0,0,0];
-    fixed_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp() + team_buff[0]);
-    fixed_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff()+ team_buff[1]);
-    fixed_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm() + team_buff[2]);
-    fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge() + team_buff[3]);
-    fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck() + team_buff[4]);
-    fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr() + team_buff[5]);
-    fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_buff[6]);
+    fixed_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp() + team_fix_buff[0]);
+    fixed_buff[1] = await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff()+ team_fix_buff[1]);
+    fixed_buff[2] = await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm() + team_fix_buff[2]);
+    fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge() + team_fix_buff[3]);
+    fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck() + team_fix_buff[4]);
+    fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr() + team_fix_buff[5]);
+    fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_fix_buff[6]);
     fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
 console.log(fixed_buff)
 
