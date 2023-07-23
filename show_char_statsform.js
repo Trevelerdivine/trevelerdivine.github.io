@@ -19,16 +19,16 @@ async function show_char_statsform()
     let fix_elm_charge_form = document.getElementById("fix_elm_charge_form");
     let fix_cr_form = document.getElementById("fix_cr_form");
     let fix_cd_form = document.getElementById("fix_cd_form");
-    let fix_hp_form = document.getElementById("dynamic_hp_form");
-    let fix_hprate_form = document.getElementById("dynamic_hp%_form");
-    let fix_attack_form = document.getElementById("dynamic_attack_form");
-    let fix_attackrate_form = document.getElementById("dynamic_attack%_form");
-    let fix_deff_form = document.getElementById("dynamic_deff_form");
-    let fix_deffrate_form = document.getElementById("dynamic_deff%_form");
-    let fix_elm_form = document.getElementById("dynamic_elm_form");
-    let fix_elm_charge_form = document.getElementById("dynamic_elm_charge_form");
-    let fix_cr_form = document.getElementById("dynamic_cr_form");
-    let fix_cd_form = document.getElementById("dynamic_cd_form");
+    let dynamic_hp_form = document.getElementById("dynamic_hp_form");
+    let dynamic_hprate_form = document.getElementById("dynamic_hp%_form");
+    let dynamic_attack_form = document.getElementById("dynamic_attack_form");
+    let dynamic_attackrate_form = document.getElementById("dynamic_attack%_form");
+    let dynamic_deff_form = document.getElementById("dynamic_deff_form");
+    let dynamic_deffrate_form = document.getElementById("dynamic_deff%_form");
+    let dynamic_elm_form = document.getElementById("dynamic_elm_form");
+    let dynamic_elm_charge_form = document.getElementById("dynamic_elm_charge_form");
+    let dynamic_cr_form = document.getElementById("dynamic_cr_form");
+    let dynamic_cd_form = document.getElementById("dynamic_cd_form");
     let calculateButton = document.getElementById("calculateButton");
     const char_constellations = document.getElementById("char_constellations").value;
 
