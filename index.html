@@ -367,6 +367,68 @@
  </div>
  </fieldset>
 
+ <fieldset id="dynamic_buff_info" style="width: 400px;">
+  <legend>固定バフ</legend>
+  <div id="dynamic_buff_setting">
+
+  <div id="dynamic_hp_form" style="display: none;">
+   <label for="dynamic_hp_buff">HP実数値：</label>
+   <input type="number" id="dynamic_hp_buff" required min = "0" name="dynamic_hp_buff" value="0">
+ </div>
+
+ <div id="dynamic_hp%_form" style="display: none;">
+  <label for="dynamic_hp%_buff">HP％：</label>
+  <input type="number" id="dynamic_hp%_buff" required min = "0" name="dynamic_hp%_buff" value="0">
+  <span>(%)</span>
+</div>
+ 
+ <div id="dynamic_attack_form" style="display: none;">
+   <label for="dynamic_attack_buff">攻撃力実数値：</label>
+   <input type="number" id="dynamic_attack_buff"  required min = "0" name="dynamic_attack_buff" value="0">
+ </div>
+
+ <div id="dynamic_attack%_form" style="display: none;">
+  <label for="dynamic_attack%_buff">攻撃力％：</label>
+  <input type="number" id="fix_attack%_buff"  required min = "0" name="dynamic_attack%_buff" value="0">
+  <span>(%)</span>
+</div>
+ 
+ <div id="dynamic_deff_form" style="display: none;">
+   <label for="dynamic_deff_buff">防御力実数値：</label>
+   <input type="number" id="dynamic_deff_buff" required min = "0" name="dynamic_deff_buff" value="0">
+ </div>
+
+ <div id="dynamic_deff%_form" style="display: none;">
+  <label for="dynamic_deff%_buff">防御力％：</label>
+  <input type="number" id="dynamic_deff%_buff" required min = "0" name="dynamic_deff%_buff" value="0">
+  <span>(%)</span>
+</div>
+ 
+ <div id="dynamic_elm_form" style="display: none;">
+   <label for="dynamic_elm_buff">元素熟知：</label>
+   <input type="number" id="dynamic_elm_buff" required min = "0" name="dynamic_elm_buff" value="0">
+ </div>
+ 
+ <div id="dynamic_elm_charge_form" style="display: none;">
+   <label for="dynamic_elm_charge_buff">元素チャージ効率：</label>
+   <input type="number" id="dynamic_elm_charge_buff" required min = "0" name="dynamic_elm_charge_buff"  value="0">
+   <span>(%)</span>
+ </div>
+ 
+ <div id="dynamic_cr_form" style="display: none;">
+   <label for="dynamic_cr_buff">会心率：</label>
+   <input type="number" id="dynamic_cr_buff" required min = "0" name="dynamic_cr_buff" value="0">
+   <span>(%)</span>
+ </div>
+ 
+ <div id="dynamic_cd_form" style="display: none;">
+  <label for="dynamic_cd_buff">会心ダメージ：</label>
+  <input type="number" id="dynamic_cd_buff" required min = "0" name="dynamic_cd_buff" value="0">
+  <span>(%)</span>
+</div>
+ </div>
+ </fieldset>
+
 <br>
 <button id="calculateButton" style="display: none;" onclick="monte_carlo_calculate()">最適化計算</button>
 
