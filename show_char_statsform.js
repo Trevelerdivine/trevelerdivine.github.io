@@ -148,7 +148,7 @@ async function show_char_statsform()
       }
       const formElements = [
         { forms: [hp_form, fix_hp_form, fix_hprate_form, dynamic_hp_form, dynamic_hprate_form], index: 0 },
-        { forms: [attack_form, fix_attack_form, fix_attackrate_form, dynamic_attack_form, dynamic_attackrate_form], index: 4 },
+        { forms: [attck_form, fix_attack_form, fix_attackrate_form, dynamic_attack_form, dynamic_attackrate_form], index: 4 },
         { forms: [deff_form, fix_deff_form, fix_deffrate_form, dynamic_deff_form, dynamic_deffrate_form], index: 1 },
         { forms: [elm_form, fix_elm_form, dynamic_elm_form], index: 2 },
         { forms: [elm_charge_form, fix_elm_charge_form], dynamic_elm_charge_form, index: 3 },
