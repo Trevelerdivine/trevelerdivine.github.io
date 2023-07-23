@@ -284,24 +284,15 @@ async function calculate_table_status()
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
- 
-  const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value);//聖遺物HP上昇量
-  const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value)/100;//聖遺物HP上昇量
-  const fix_attack_buff = parseInt(document.getElementById("fix_attck_buff").value);//聖遺物攻撃力上昇量
-  const fix_attackrate_buff = parseFloat(document.getElementById("fix_attack%_buff").value)/100;//聖遺物攻撃力上昇量
-  const fix_deff_buff = parseInt(document.getElementById("fix_deff_buff").value);//聖遺物防御力上昇量
-  const fix_deffrate_buff = parseFloat(document.getElementById("fix_deff%_buff").value)/100;//聖遺物防御力上昇量
-  const fix_elm_buff = parseInt(document.getElementById("fix_elm_buff").value);//聖遺物元素熟知上昇量
-  const fix_elm_charge_buff= parseFloat(document.getElementById("fix_elm_charge_buff").value)/100;//聖遺物元素チャージ効率上昇量
-  const fix_cr_buff= parseFloat(document.getElementById("fix_cr_buff").value)/100;//聖遺物会心率上昇量
-  const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value)/100;//聖遺物会心ダメージ上昇量
+
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const base_status = await calculate_base_status();
   const depend_status = await calculate_depend_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
   let buff_status = [0,0,0,0,0,0,0,0];
-  let team_buff = [0,0,0,0,0,0,0,0];
+  let team_buff = await calculate_team_buff(base_status);
+  console.log(team_buff);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -314,15 +305,6 @@ async function calculate_table_status()
 
   let fixed_status = base_status.slice();
   let result_status;
-
-  team_buff[0] = fix_hp_buff + fix_hprate_buff * base_status[0];
-  team_buff[1] = fix_deff_buff + fix_deffrate_buff * base_status[1];
-  team_buff[2] = fix_elm_buff;
-  team_buff[3] = fix_elm_charge_buff;
-  team_buff[4] = fix_attack_buff + fix_attackrate_buff * base_status[4];
-  team_buff[5] = fix_cr_buff;
-  team_buff[6] = fix_cd_buff;
-
 
   for (let i = 0; i < 7; i++)
   {
@@ -347,7 +329,7 @@ async function calculate_table_status()
       document.getElementById("table_final_hp").innerHTML = result_status[0].toFixed(0);
       char_instance.update_status(fixed_status, result_status);
       weapon_instance.update_status(fixed_status, result_status);
-      }
+    }
     else
       {
       document.getElementById("table_buff_hp").innerHTML = "-";
