@@ -320,7 +320,8 @@ async function calculate_table_status()
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
   let buff_status = [0,0,0,0,0,0,0,0];
-  let team_buff = await calculate_team_fix_buff(base_status);
+  let team_fix_buff = await calculate_team_fix_buff(base_status);
+  let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -336,10 +337,11 @@ async function calculate_table_status()
 
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = fixed_status[i] + af_buff[i] + team_buff[i];
+    fixed_status[i] = fixed_status[i] + af_buff[i] + team_fix_buff[i];
+    result_status[i] = fixed_status[i] + team_dynamic_buff[i];
   }
   fixed_status[7] = af_main_status_buff[7];
-  result_status = fixed_status.slice();
+  result_status[7] = fixed_status.slice[7]
 
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
