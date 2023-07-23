@@ -250,16 +250,17 @@ async function create_char_instance(base_status, fixed_status, result_status,par
 
 async function calculate_team_buff(base_status)
 {
-  const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value);//聖遺物HP上昇量
-  const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value)/100;//聖遺物HP上昇量
-  const fix_attack_buff = parseInt(document.getElementById("fix_attck_buff").value);//聖遺物攻撃力上昇量
-  const fix_attackrate_buff = parseFloat(document.getElementById("fix_attack%_buff").value)/100;//聖遺物攻撃力上昇量
-  const fix_deff_buff = parseInt(document.getElementById("fix_deff_buff").value);//聖遺物防御力上昇量
-  const fix_deffrate_buff = parseFloat(document.getElementById("fix_deff%_buff").value)/100;//聖遺物防御力上昇量
-  const fix_elm_buff = parseInt(document.getElementById("fix_elm_buff").value);//聖遺物元素熟知上昇量
-  const fix_elm_charge_buff= parseFloat(document.getElementById("fix_elm_charge_buff").value)/100;//聖遺物元素チャージ効率上昇量
-  const fix_cr_buff= parseFloat(document.getElementById("fix_cr_buff").value)/100;//聖遺物会心率上昇量
-  const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value)/100;//聖遺物会心ダメージ上昇量
+  const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value) || 0; // 聖遺物HP上昇量
+  const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
+  const fix_attack_buff = parseInt(document.getElementById("fix_attck_buff").value) || 0; // 聖遺物攻撃力上昇量
+  const fix_attackrate_buff = parseFloat(document.getElementById("fix_attack%_buff").value) / 100 || 0; // 聖遺物攻撃力上昇量
+  const fix_deff_buff = parseInt(document.getElementById("fix_deff_buff").value) || 0; // 聖遺物防御力上昇量
+  const fix_deffrate_buff = parseFloat(document.getElementById("fix_deff%_buff").value) / 100 || 0; // 聖遺物防御力上昇量
+  const fix_elm_buff = parseInt(document.getElementById("fix_elm_buff").value) || 0; // 聖遺物元素熟知上昇量
+  const fix_elm_charge_buff = parseFloat(document.getElementById("fix_elm_charge_buff").value) / 100 || 0; // 聖遺物元素チャージ効率上昇量
+  const fix_cr_buff = parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
+  const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
+  
   let team_buff = [0,0,0,0,0,0,0,0];
 
   team_buff[0] = fix_hp_buff + fix_hprate_buff * base_status[0];
