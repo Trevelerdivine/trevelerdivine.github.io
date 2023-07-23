@@ -19,6 +19,16 @@ async function show_char_statsform()
     let fix_elm_charge_form = document.getElementById("fix_elm_charge_form");
     let fix_cr_form = document.getElementById("fix_cr_form");
     let fix_cd_form = document.getElementById("fix_cd_form");
+    let fix_hp_form = document.getElementById("dynamic_hp_form");
+    let fix_hprate_form = document.getElementById("dynamic_hp%_form");
+    let fix_attack_form = document.getElementById("dynamic_attack_form");
+    let fix_attackrate_form = document.getElementById("dynamic_attack%_form");
+    let fix_deff_form = document.getElementById("dynamic_deff_form");
+    let fix_deffrate_form = document.getElementById("dynamic_deff%_form");
+    let fix_elm_form = document.getElementById("dynamic_elm_form");
+    let fix_elm_charge_form = document.getElementById("dynamic_elm_charge_form");
+    let fix_cr_form = document.getElementById("dynamic_cr_form");
+    let fix_cd_form = document.getElementById("dynamic_cd_form");
     let calculateButton = document.getElementById("calculateButton");
     const char_constellations = document.getElementById("char_constellations").value;
 
@@ -39,6 +49,16 @@ async function show_char_statsform()
     fix_elm_charge_form.style.display = "none";
     fix_cr_form.style.display = "none";
     fix_cd_form.style.display = "none";
+    dinamic_hp_form.style.display = "none";
+    dinamic_hprate_form.style.display = "none";
+    dinamic_attack_form.style.display = "none";
+    dinamic_attackrate_form.style.display = "none";
+    dinamic_deff_form.style.display = "none";
+    dinamic_deffrate_form.style.display = "none";
+    dinamic_elm_form.style.display = "none";
+    dinamic_elm_charge_form.style.display = "none";
+    dinamic_cr_form.style.display = "none";
+    dinamic_cd_form.style.display = "none";
     calculateButton.style.display = "block";
     
     const characterInfo = document.getElementById("characterInfo");
@@ -127,13 +147,13 @@ async function show_char_statsform()
         }
       }
       const formElements = [
-        { forms: [hp_form, fix_hp_form, fix_hprate_form], index: 0 },
-        { forms: [attack_form, fix_attack_form, fix_attackrate_form], index: 4 },
-        { forms: [deff_form, fix_deff_form, fix_deffrate_form], index: 1 },
-        { forms: [elm_form, fix_elm_form], index: 2 },
-        { forms: [elm_charge_form, fix_elm_charge_form], index: 3 },
-        { forms: [cr_form, fix_cr_form], index: 5 },
-        { forms: [cd_form, fix_cd_form], index: 6 }
+        { forms: [hp_form, fix_hp_form, fix_hprate_form, dynamic_hp_form, dynamic_hprate_form], index: 0 },
+        { forms: [attack_form, fix_attack_form, fix_attackrate_form, dynamic_attack_form, dynamic_attackrate_form], index: 4 },
+        { forms: [deff_form, fix_deff_form, fix_deffrate_form, dynamic_deff_form, dynamic_deffrate_form], index: 1 },
+        { forms: [elm_form, fix_elm_form, dynamic_elm_form], index: 2 },
+        { forms: [elm_charge_form, fix_elm_charge_form], dynamic_elm_charge_form, index: 3 },
+        { forms: [cr_form, fix_cr_form, dynamic_cr_form], index: 5 },
+        { forms: [cd_form, fix_cd_for, dynamic_cd_form], index: 6 }
       ];
       
       for (const element of formElements) {
