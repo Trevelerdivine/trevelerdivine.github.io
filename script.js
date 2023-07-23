@@ -220,14 +220,13 @@ async function calculate_fixed_status(sd,bs,amsb)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
-  let team_buff = calculate_team_buff(bs);
-  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780 + team_buff[0];
-  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1])+ team_buff[1];
-  fixed_status[2] = bs[2] + sd[2]*3 + amsb[2] + team_buff[2];
-  fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100 + team_buff[3];
-  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311 + team_buff[4];
-  fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100 + team_buff[5];
-  fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100 + team_buff[6];
+  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780;
+  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1]);
+  fixed_status[2] = bs[2] + sd[2]*3 + amsb[2];
+  fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100;
+  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311;
+  fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
+  fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
   fixed_status[7] = bs[7] + amsb[7];
   return fixed_status;
 }
@@ -249,8 +248,16 @@ async function create_char_instance(base_status, fixed_status, result_status,par
 
 ///////////////////////
 
-async function calculate_team_buff(base_status)
+async function calculate_table_status()
 {
+  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
+  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
+  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
+  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
+  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
+  const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
+  const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
+ 
   const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value);//聖遺物HP上昇量
   const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value)/100;//聖遺物HP上昇量
   const fix_attack_buff = parseInt(document.getElementById("fix_attck_buff").value);//聖遺物攻撃力上昇量
@@ -261,39 +268,13 @@ async function calculate_team_buff(base_status)
   const fix_elm_charge_buff= parseFloat(document.getElementById("fix_elm_charge_buff").value)/100;//聖遺物元素チャージ効率上昇量
   const fix_cr_buff= parseFloat(document.getElementById("fix_cr_buff").value)/100;//聖遺物会心率上昇量
   const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value)/100;//聖遺物会心ダメージ上昇量
-  let team_buff = [0,0,0,0,0,0,0,0];
-
-  team_buff[0] = fix_hp_buff + fix_hprate_buff * base_status[0];
-  team_buff[1] = fix_deff_buff + fix_deffrate_buff * base_status[1];
-  team_buff[2] = fix_elm_buff;
-  team_buff[3] = fix_elm_charge_buff;
-  team_buff[4] = fix_attack_buff + fix_attackrate_buff * base_status[4];
-  team_buff[5] = fix_cr_buff;
-  team_buff[6] = fix_cd_buff;
-
-  return team_buff
-}
-
-
-///////////////////////
-async function calculate_table_status()
-{
-  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
-  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
-  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
-  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
-  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
-  const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
-  const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
-
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const base_status = await calculate_base_status();
   const depend_status = await calculate_depend_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
   let buff_status = [0,0,0,0,0,0,0,0];
-  let team_buff = await calculate_team_buff(base_status);
-  console.log(team_buff);
+  let team_buff = [0,0,0,0,0,0,0,0];
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -306,6 +287,15 @@ async function calculate_table_status()
 
   let fixed_status = base_status.slice();
   let result_status;
+
+  team_buff[0] = fix_hp_buff + fix_hprate_buff * base_status[0];
+  team_buff[1] = fix_deff_buff + fix_deffrate_buff * base_status[1];
+  team_buff[2] = fix_elm_buff;
+  team_buff[3] = fix_elm_charge_buff;
+  team_buff[4] = fix_attack_buff + fix_attackrate_buff * base_status[4];
+  team_buff[5] = fix_cr_buff;
+  team_buff[6] = fix_cd_buff;
+
 
   for (let i = 0; i < 7; i++)
   {
@@ -330,7 +320,7 @@ async function calculate_table_status()
       document.getElementById("table_final_hp").innerHTML = result_status[0].toFixed(0);
       char_instance.update_status(fixed_status, result_status);
       weapon_instance.update_status(fixed_status, result_status);
-    }
+      }
     else
       {
       document.getElementById("table_buff_hp").innerHTML = "-";
@@ -499,15 +489,21 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
+  console.log(af_buff);
   let basic_dmg;
   let exp_dmg;
+<<<<<<< HEAD
+
+  let fixed_status = base_status.slice();
+=======
   let team_buff = await calculate_team_buff(base_status)
   console.log(team_buff);
   let fixed_status = [0,0,0,0,0,0,0];
+>>>>>>> 2787896f46717d755ef5171e60af1c93aebd751e
   let result_status;
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = base_status[i] + af_buff[i] + team_buff[i];
+    fixed_status[i] = fixed_status[i] + af_buff[i];
   }
   fixed_status[7] = af_main_status_buff[7];
   result_status = fixed_status.slice();
