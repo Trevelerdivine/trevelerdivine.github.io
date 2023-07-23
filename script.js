@@ -728,8 +728,8 @@ async function monte_carlo_calculate()
     fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge() + team_fix_buff[3]);
     fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck() + team_fix_buff[4]);
     fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr() + team_fix_buff[5]);
-    fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_fixbuff[6]);
-    fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fixbuff[7]);
+    fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_fix_buff[6]);
+    fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
 
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
