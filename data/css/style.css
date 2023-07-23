@@ -193,6 +193,11 @@ display: none; /* label でコントロールするので input は非表示に 
   left: 0;
 }
 
+.table-buttons button {
+  display: inline-block; /* ボタンを横に並べる */
+  margin-right: 7.5%; /* ボタンの間に余白を設定 */
+}
+
 /* .text クラスの要素のスタイル */
 .text {
   font-size: 18px;

@@ -49,16 +49,16 @@ async function show_char_statsform()
     fix_elm_charge_form.style.display = "none";
     fix_cr_form.style.display = "none";
     fix_cd_form.style.display = "none";
-    dinamic_hp_form.style.display = "none";
-    dinamic_hprate_form.style.display = "none";
-    dinamic_attack_form.style.display = "none";
-    dinamic_attackrate_form.style.display = "none";
-    dinamic_deff_form.style.display = "none";
-    dinamic_deffrate_form.style.display = "none";
-    dinamic_elm_form.style.display = "none";
-    dinamic_elm_charge_form.style.display = "none";
-    dinamic_cr_form.style.display = "none";
-    dinamic_cd_form.style.display = "none";
+    dynamic_hp_form.style.display = "none";
+    dynamic_hprate_form.style.display = "none";
+    dynamic_attack_form.style.display = "none";
+    dynamic_attackrate_form.style.display = "none";
+    dynamic_deff_form.style.display = "none";
+    dynamic_deffrate_form.style.display = "none";
+    dynamic_elm_form.style.display = "none";
+    dynamic_elm_charge_form.style.display = "none";
+    dynamic_cr_form.style.display = "none";
+    dynamic_cd_form.style.display = "none";
     calculateButton.style.display = "block";
     
     const characterInfo = document.getElementById("characterInfo");
