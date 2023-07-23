@@ -153,7 +153,7 @@ async function show_char_statsform()
         { forms: [elm_form, fix_elm_form, dynamic_elm_form], index: 2 },
         { forms: [elm_charge_form, fix_elm_charge_form], dynamic_elm_charge_form, index: 3 },
         { forms: [cr_form, fix_cr_form, dynamic_cr_form], index: 5 },
-        { forms: [cd_form, fix_cd_for, dynamic_cd_form], index: 6 }
+        { forms: [cd_form, fix_cd_form, dynamic_cd_form], index: 6 }
       ];
       
       for (const element of formElements) {
