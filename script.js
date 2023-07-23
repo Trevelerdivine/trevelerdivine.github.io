@@ -337,7 +337,7 @@ async function calculate_table_status()
   document.getElementById("table_base_dmg_buff").innerHTML = (base_status[7]*100).toFixed(1) + "％";
 
   let fixed_status = base_status.slice();
-  let result_status;
+  let result_status = [0,0,0,0,0,0,0,0];
 
   for (let i = 0; i < 7; i++)
   {
