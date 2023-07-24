@@ -729,7 +729,8 @@ async function monte_carlo_calculate()
     fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr() + team_fix_buff[5]);
     fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_fix_buff[6]);
     fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
-console.log(fixed_buff)
+console.log(fixed_buff);
+console.log(team_dynamic_buff);
 
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
 {
@@ -769,37 +770,35 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     if (depend_status[2] == 1)
     {
       result_status[2] += await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
+      char_instance.update_status(fixed_status, result_status);
+      weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[3] == 1)
     {
-     
       result_status[3] += await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
+      char_instance.update_status(fixed_status, result_status);
+      weapon_instance.update_status(fixed_status, result_status);
     }
 
     if (depend_status[4] == 1)
     {
       result_status[4] += await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
+      char_instance.update_status(fixed_status, result_status);
+      weapon_instance.update_status(fixed_status, result_status);
     }
-
     if (depend_status[5] == 1)
     {
       result_status[5] += await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
-    if (result_status[5] > 1)
-    {
-      result_status[5] = 1;
+      if (result_status[5] > 1)
+      {
+        result_status[5] = 1;
+      }
+      char_instance.update_status(fixed_status, result_status);
+      weapon_instance.update_status(fixed_status, result_status);
     }
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-  }
 
-   if (depend_status[6] == 1)
+    if (depend_status[6] == 1)
     {
     result_status[6] += await (char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd());
     char_instance.update_status(fixed_status, result_status);
