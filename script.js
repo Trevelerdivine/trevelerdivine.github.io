@@ -702,7 +702,7 @@ async function monte_carlo_calculate()
 
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
-  let result_status;
+  let result_status = [0,0,0,0,0,0,0,0];
   let random_1;
   let random_2;
   let output_exp_dmg = Infinity;
@@ -742,10 +742,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     for (let g = 0; g < depend_status_index.length; g++)
     {
       fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
+      result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]]
     }
     fixed_status[7] = base_parameter[7] + fixed_buff[7];
-
-    result_status = fixed_status.slice();
+    result_status[7] = fixed_status[7] + team_dynamic_buff[7]
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
 
@@ -849,10 +849,10 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
     for (g = 0; g < depend_status_index.length; g++)
     {
       fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
+      result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]]
     }
     fixed_status[7] = base_parameter[7] + fixed_buff[7];
-
-    result_status = fixed_status.slice();
+    result_status[7] = fixed_status[7] + team_dynamic_buff[7]
     char_instance.update_status(fixed_status, result_status);
     weapon_instance.update_status(fixed_status, result_status);
 
