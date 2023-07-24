@@ -738,7 +738,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   let temp_exp_dmg = 0;
   n_count = n_count + 1;
 
-  for (let i = 0; i < 10000; i++)
+  for (let i = 0; i < 20000; i++)
   {
     score_distribute = await calculate_score_distribute(af_score,depend_status);
     base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
