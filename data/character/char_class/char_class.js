@@ -69,7 +69,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(Math.max(0, this.fixed_status_array[2] - 200), 800) * 0.0003;
+    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.0003;
   }
 
   calculate_char_fixed_cd() {
@@ -85,7 +85,7 @@ class nahida {
   }
 
   calculate_char_result_dmg_buff() {
-    return Math.min(Math.max(0, this.fixed_status_array[2] - 200), 800) * 0.001;
+    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.001;
   }
 
   calculate_basic_dmg(dmg_rate) {
