@@ -826,7 +826,7 @@ while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   old_score_distribution = temp_score_distribute.slice();
   new_score_distribution = temp_score_distribute.slice();
 
-  for (let k = 0; k < 5000; k++)
+  for (let k = 0; k < 10000; k++)
   {
   
     random_1 = Math.floor(depend_status_index.length * Math.random());
