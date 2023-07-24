@@ -672,7 +672,6 @@ async function monte_carlo_calculate()
   const depend_status = await calculate_depend_status();
   const team_fix_buff = await calculate_team_fix_buff(base_status);
   const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-  console.log(depend_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   let my_exp_dmg = my_result_status[8];
@@ -729,7 +728,7 @@ async function monte_carlo_calculate()
     fixed_buff[4] = await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck() + team_fix_buff[4]);
     fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr() + team_fix_buff[5]);
     fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_fix_buff[6]);
-    fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
+    fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
 console.log(fixed_buff)
 
 while (my_exp_dmg !== output_exp_dmg && n_count < 30)
