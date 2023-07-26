@@ -202,7 +202,7 @@ display: none; /* label でコントロールするので input は非表示に 
 
 .status_table {
   border-collapse: collapse;
-  margin: 0 auto;
+  margin: 0 left;
   padding: 0;
   width: 600px;
 }
