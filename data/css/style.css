@@ -38,21 +38,22 @@ table.calc_result th {
 }
 
 /* テーブルのスタイル */
-table {
+.char_select {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed; /* テーブルのレイアウトを固定する */
 }
 
 /* テーブルのヘッダセルとデータセルのスタイル */
-th, td {
+.char_select th, 
+.char_select td {
   padding: 12px 16px;
   text-align: center;
   border-bottom: 1px solid #dddddd;
 }
 
 /* テーブルのヘッダセルのスタイル */
-th {
+.char_select th {
   background-color: #f2f2f2;
   font-weight: bold;
   text-transform: uppercase;
@@ -60,7 +61,7 @@ th {
 }
 
 /* テーブルのデータセルのスタイル */
-td {
+.char_select td {
   font-size: 14px;
 }
 
