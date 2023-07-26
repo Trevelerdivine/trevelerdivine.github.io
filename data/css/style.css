@@ -1,3 +1,4 @@
+/* 共通のスタイル */
 .tablecontainer {
   display: none;
 }
@@ -22,6 +23,7 @@ table.calc_result th {
   background-color: #f2f2f2;
 }
 
+/* テーブルコンテナのスタイル */
 .table-container {
   max-width: 800px;
   margin: 0 auto;
@@ -29,6 +31,7 @@ table.calc_result th {
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .table-container1 {
   max-width: 920px;
   margin: 0 auto;
@@ -37,14 +40,14 @@ table.calc_result th {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* テーブルのスタイル */
+/* キャラクター選択テーブルのスタイル */
 .char_select {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* テーブルのレイアウトを固定する */
+  table-layout: fixed;
 }
 
-/* テーブルのヘッダセルとデータセルのスタイル */
+/* キャラクター選択テーブルのヘッダセルとデータセルのスタイル */
 .char_select th, 
 .char_select td {
   padding: 12px 16px;
@@ -52,7 +55,7 @@ table.calc_result th {
   border-bottom: 1px solid #dddddd;
 }
 
-/* テーブルのヘッダセルのスタイル */
+/* キャラクター選択テーブルのヘッダセルのスタイル */
 .char_select th {
   background-color: #f2f2f2;
   font-weight: bold;
@@ -60,36 +63,44 @@ table.calc_result th {
   font-size: 14px;
 }
 
-/* テーブルのデータセルのスタイル */
+/* キャラクター選択テーブルのデータセルのスタイル */
 .char_select td {
   font-size: 14px;
 }
 
-/* .tier1 クラスの要素のスタイル */
+/* キャラクターティアのスタイル */
 .tier1 {
   background-color: #f5f2df;
 }
+
 .tierPyro {
   background-color: #FF6F6340;
 }
+
 .tierHydro {
   background-color: #4C92EA40;
 }
+
 .tierAnemo {
   background-color: #4CD9C840;
 }
+
 .tierErectro {
-  background-color: #C773FF40 ;
+  background-color: #C773FF40;
 }
+
 .tierDendro {
   background-color: #7AD84C40;
 }
+
 .tierCyro {
   background-color: #73CCFF40;
 }
+
 .tierGeo {
   background-color: #E6B32240;
 }
+
 /* ティア画像のスタイル */
 .tier-image {
 width: 100%;
