@@ -206,7 +206,8 @@ display: none; /* label でコントロールするので input は非表示に 
   border-bottom: 2px solid #fff;
 }
 
-.status_table td {
+.status_table td,
+.status_table th{
 text-align: center;
 }
 
