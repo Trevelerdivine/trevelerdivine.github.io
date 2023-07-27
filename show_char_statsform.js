@@ -28,7 +28,7 @@ async function show_char_statsform()
     elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
     cr_form.style.display = "none";  // 会心率フォームを非表示
     cd_form.style.display = "none";  // 会心ダメージフォームを非表示
-    team_hp_form_hp_form.style.display = "none";
+    team_hp_form.style.display = "none";
     team_hprate_form.style.display = "none";
     team_attack_form.style.display = "none";
     team_attackrate_form.style.display = "none";
