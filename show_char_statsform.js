@@ -9,27 +9,16 @@ async function show_char_statsform()
     let elm_charge_form = document.getElementById("elm_charge_form");
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
-    let fix_hp_form = document.getElementById("fix_hp_form");
-    let fix_hprate_form = document.getElementById("fix_hp%_form");
-    let fix_attack_form = document.getElementById("fix_attack_form");
-    let fix_attackrate_form = document.getElementById("fix_attack%_form");
-    let fix_deff_form = document.getElementById("fix_deff_form");
-    let fix_deffrate_form = document.getElementById("fix_deff%_form");
-    let fix_elm_form = document.getElementById("fix_elm_form");
-    let fix_elm_charge_form = document.getElementById("fix_elm_charge_form");
-    let fix_cr_form = document.getElementById("fix_cr_form");
-    let fix_cd_form = document.getElementById("fix_cd_form");
-    let dynamic_hp_form = document.getElementById("dynamic_hp_form");
-    let dynamic_hprate_form = document.getElementById("dynamic_hp%_form");
-    let dynamic_attack_form = document.getElementById("dynamic_attack_form");
-    let dynamic_attackrate_form = document.getElementById("dynamic_attack%_form");
-    let dynamic_deff_form = document.getElementById("dynamic_deff_form");
-    let dynamic_deffrate_form = document.getElementById("dynamic_deff%_form");
-    let dynamic_elm_form = document.getElementById("dynamic_elm_form");
-    let dynamic_elm_charge_form = document.getElementById("dynamic_elm_charge_form");
-    let dynamic_cr_form = document.getElementById("dynamic_cr_form");
-    let dynamic_cd_form = document.getElementById("dynamic_cd_form");
-    let calculateButton = document.getElementById("calculateButton");
+    let team_hp_form = document.getElementById("team_hp_form_hp_form");
+    let team_hprate_form = document.getElementById("team_hp_form_hp%_form");
+    let team_attack_form = document.getElementById("team_hp_form_attack_form");
+    let team_attackrate_form = document.getElementById("team_hp_form_attack%_form");
+    let team_deff_form = document.getElementById("team_hp_form_deff_form");
+    let team_deffrate_form = document.getElementById("team_hp_form_deff%_form");
+    let team_elm_form = document.getElementById("team_hp_form_elm_form");
+    let team_elm_charge_form = document.getElementById("team_hp_form_elm_charge_form");
+    let team_cr_form = document.getElementById("team_hp_form_cr_form");
+    let team_cd_form = document.getElementById("team_hp_form_cd_form");
     const char_constellations = document.getElementById("char_constellations").value;
 
     hp_form.style.display = "none";  // HPフォームを非表示
@@ -39,27 +28,16 @@ async function show_char_statsform()
     elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
     cr_form.style.display = "none";  // 会心率フォームを非表示
     cd_form.style.display = "none";  // 会心ダメージフォームを非表示
-    fix_hp_form.style.display = "none";
-    fix_hprate_form.style.display = "none";
-    fix_attack_form.style.display = "none";
-    fix_attackrate_form.style.display = "none";
-    fix_deff_form.style.display = "none";
-    fix_deffrate_form.style.display = "none";
-    fix_elm_form.style.display = "none";
-    fix_elm_charge_form.style.display = "none";
-    fix_cr_form.style.display = "none";
-    fix_cd_form.style.display = "none";
-    dynamic_hp_form.style.display = "none";
-    dynamic_hprate_form.style.display = "none";
-    dynamic_attack_form.style.display = "none";
-    dynamic_attackrate_form.style.display = "none";
-    dynamic_deff_form.style.display = "none";
-    dynamic_deffrate_form.style.display = "none";
-    dynamic_elm_form.style.display = "none";
-    dynamic_elm_charge_form.style.display = "none";
-    dynamic_cr_form.style.display = "none";
-    dynamic_cd_form.style.display = "none";
-    calculateButton.style.display = "block";
+    team_hp_form_hp_form.style.display = "none";
+    team_hprate_form.style.display = "none";
+    team_attack_form.style.display = "none";
+    team_attackrate_form.style.display = "none";
+    team_deff_form.style.display = "none";
+    team_deffrate_form.style.display = "none";
+    team_elm_form.style.display = "none";
+    team_elm_charge_form.style.display = "none";
+    team_cr_form.style.display = "none";
+    team_cd_form.style.display = "none";
     
     const characterInfo = document.getElementById("characterInfo");
     const checkboxStates = []; // チェックボックスの状態を格納する配列
@@ -147,13 +125,13 @@ async function show_char_statsform()
         }
       }
       const formElements = [
-        { forms: [hp_form, fix_hp_form, fix_hprate_form, dynamic_hp_form, dynamic_hprate_form], index: 0 },
-        { forms: [attck_form, fix_attack_form, fix_attackrate_form, dynamic_attack_form, dynamic_attackrate_form], index: 4 },
-        { forms: [deff_form, fix_deff_form, fix_deffrate_form, dynamic_deff_form, dynamic_deffrate_form], index: 1 },
-        { forms: [elm_form, fix_elm_form, dynamic_elm_form], index: 2 },
-        { forms: [elm_charge_form, fix_elm_charge_form], dynamic_elm_charge_form, index: 3 },
-        { forms: [cr_form, fix_cr_form, dynamic_cr_form], index: 5 },
-        { forms: [cd_form, fix_cd_form, dynamic_cd_form], index: 6 }
+        { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
+        { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
+        { forms: [deff_form, team_deff_form, team_deffrate_form], index: 1 },
+        { forms: [elm_form, team_elm_form], index: 2 },
+        { forms: [elm_charge_form, team_elm_charge_form], index: 3 },
+        { forms: [cr_form, team_cr_form], index: 5 },
+        { forms: [cd_form, team_cd_form], index: 6 }
       ];
       
       for (const element of formElements) {

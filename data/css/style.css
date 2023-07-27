@@ -244,3 +244,76 @@ text-align: center;
       width: 100%; /* テーブルの幅をウィンドウ幅の100%に設定 */
   }
 }
+
+
+
+.team-buff-form {
+  max-width: 500px;
+  margin: auto;
+  background-color: #DDFFDD;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.team-buff-form th,
+.team-buff-form td {
+  padding: 15px;
+  text-align: center;
+}
+
+.team-buff-form th {
+  background-color: #DDFFDD;
+  color: #444;
+  font-weight: bold;
+  text-align: left;
+}
+
+.team-buff-form input,
+.team-buff-form select {
+  width: 100%;
+  padding: 1px;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  transition: border-color 0.3s;
+}
+
+.team-buff-form input:focus,
+.team-buff-form select:focus {
+  outline: none;
+  border-bottom-color: #007bff;
+  box-shadow: 0 1px 0 0 #007bff;
+}
+
+.team-buff-form label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  width: 100px;
+}
+
+.team-buff-form .btn:hover {
+  background-color: #0056b3;
+}
+
+/* アンダーバーの修正 */
+.team-buff-form input {
+  padding-bottom: 3px;
+}
+
+/* 各列の input 要素のセンタリング */
+.team-buff-form td div {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* 固定バフと変動バフの間隔を調整 */
+.team-buff-form td:nth-child(3) {
+  width: 10%;
+}

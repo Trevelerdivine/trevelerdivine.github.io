@@ -262,186 +262,177 @@
 <fieldset id="weaponInfo" style="width: 400px;"></fieldset>
 
  <br>
- <fieldset id="sub_statusInfo" style="width: 400px;">
- <legend>聖遺物ステータス上昇値</legend>
- <div id="status_setting">
- <div id="hp_form" style="display: none;">
-  <label for="af_hp">HP：</label>
-  <input type="number" id="af_hp" required min = "0" name="af_hp">
+ <div id="team_buff_info">
+  <form class="team-team-buff-form">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th></th>
+          <th>固定バフ</th>
+          <th></th>
+          <th>変動バフ</th>
+        </tr>
+      </thead>
+      <tbody>
+       <tr id="team_hp_form" style="display: none;">
+          <td><label for="fix_hp_buff">HP実数値</label></td>
+          <td>
+            <div>
+              <input  type="number" id="fix_hp_buff" required min = "0" name="fix_hp_buff" placeholder="HP実数値">
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input type="number" id="dynamic_hp_buff" required min = "0" name="dynamic_hp_buff" placeholder="HP実数値">
+            </div>
+          </td>
+        </tr>
+        <tr id="team_hp%_form" style="display: none;">
+          <td><label for="fix_hp%_buff">HP%</label></td>
+          <td>
+            <div>
+              <input type="number" id="fix_hp%_buff" required min = "0" name="fix_hp%_buff" placeholder="HP%">(%)
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input  type="number" id="dynamic_hp%_buff" required min = "0" name="dynamic_hp%_buff" placeholder="HP%">(%)
+            </div>
+          </td>
+        </tr>
+        <tr id="team_attack_form" style="display: none;">
+          <td><label for="fix_attack_buff">攻撃力実数値</label></td>
+          <td>
+            <div>
+              <input type="number" id="fix_hp%_buff" required min = "0" name="fix_hp%_buff" placeholder="攻撃力実数値">
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input type="number" id="dynamic_attack_buff"  required min = "0" name="dynamic_attack_buff" placeholder="攻撃力実数値">
+            </div>
+          </td>
+        </tr>
+        <tr id="team_attack%_form" style="display: none;">
+          <td><for="fix_attack%_buff">攻撃力％</label></td>
+          <td>
+            <div>
+              <input type="number" id="fix_attack%_buff"  required min = "0" name="fix_attack%_buff" value="0" placeholder="攻撃力％">(%)</td>
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input type="number" id="dynamic_attack%_buff"  required min = "0" name="dynamic_attack%_buff" placeholder="攻撃力％">(%)</td>
+            </div>
+          </td>
+        </tr>
+        <tr id="team_deff%_form" style="display: none;">
+          <td><label for="fix_deff%_buff">防御力％">防御力実数値</label></td>
+          <td>
+            <div>
+              <input type="number" id="fix_deff%_buff" required min = "0" name="fix_deff%_buff" placeholder="防御力実数値">
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input type="number" id="dynamic_deff_buff" required min = "0" name="dynamic_deff_buff" value="0"> placeholder="防御力実数値">
+            </div>
+          </td>
+        </tr>
+        <tr  id="team_deff%_form" style="display: none;">
+          <td><label for = "fix_deff%_buff">防御力％</label></td>
+          <td>
+            <div>
+              <input  type="number" id="fix_deff%_buff" required min = "0" name="fix_deff%_buff" placeholder="防御力％">(%)
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input type="number" id="dynamic_deff%_buff" required min = "0" name="dynamic_deff%_buff" placeholder="防御力％">(%)
+            </div>
+          </td>
+        </tr>
+        <tr id="team_elm_form" style="display: none;">
+          <td><label for="fix_elm_buff">元素熟知</label></td>
+          <td>
+            <div>
+              <input type="number" id="fix_elm_buff" required min = "0" name="fix_elm_buff" placeholder="元素熟知"></td>
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input type="number" id="dynamic_elm_buff" required min = "0" name="dynamic_elm_buff" placeholder="元素熟知"></td>
+            </div>
+          </td>
+        </tr>
+     <tr id="team_elm_charge_form" style="display: none;">
+          <td><label for="fix_elm_charge_buff>元素チャージ効率</label></td>
+          <td>
+            <div>
+              <input type="number" id="fix_elm_charge_buff" required min = "0" name="fix_elm_charge_buff" placeholder="元素チャージ効率"></td>
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input  type="number" id="dynamic_elm_charge_buff" required min = "0" name="dynamic_elm_charge_buff" placeholder="元素チャージ効率"></td>
+            </div>
+          </td>
+        </tr>
+        <tr id="team_cr_form" style="display: none;">
+          <td><label for="fix_cr_buff">会心率</label></td>
+          <td>
+            <div>
+              <input type="number" id="fix_cr_buff" required min = "0" name="fix_cr_buff" placeholder="会心率">(%)</td>
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <input type="number" id="dynamic_cr_buff" required min = "0" name="dynamic_cr_buff" placeholder="会心率">(%)</td>
+            </div>
+          </td>
+        </tr>
+
+    <tr id="team_cd_form" style="display: none;">
+      <td><label  for="fix_cd_buff">会心ダメージ</label></td>
+     <td>
+        <div>
+        <input type="number" id="fix_cd_buff" required min = "0" name="fix_cd_buff" placeholder="会心ダメージ">(%)
+     </div>
+      </td>
+        <td></td>
+       <td>
+        <div>
+      <input type="number" id="dynamic_cd_buff" required min = "0" name="dynamic_cd_buff" placeholder="会心ダメージ">(%)
+         </div>
+       </td>
+   </tr>
+    <tr id="team_dmg_buff_form">
+      <td><label for="fix_dmg_buff">ダメージバフ</label></td>
+     <td>
+        <div>
+        <input type="number" id="fix_dmg_buff" required min = "0" name="fix_dmg_buff"  placeholder="ダメージバフ">(%)
+      </div>
+      </td>
+       <td></td>
+      <td>
+      <div>
+        <input type="number" id="dynamic_dmg_buff" required min = "0" name="dynamic_dmg_buff" placeholder="ダメージバフ">(%)
+      </div>
+    </td>
+    </tr>
+      </tbody>
+    </table>
+  </form>
 </div>
-
-<div id="attck_form" style="display: none;">
-  <label for="af_attck">攻撃力：</label>
-  <input type="number" id="af_attck"  required min = "0" name="af_attck">
-</div>
-
-<div id="deff_form" style="display: none;">
-  <label for="af_deff">防御力：</label>
-  <input type="number" id="af_deff" required min = "0" name="af_deff">
-</div>
-
-<div id="elm_form" style="display: none;">
-  <label for="af_elm">元素熟知：</label>
-  <input type="number" id="af_elm" required min = "0" name="af_elm" >
-</div>
-
-<div id="elm_charge_form" style="display: none;">
-  <label for="af_elm_charge">元素チャージ効率：</label>
-  <input type="number" id="af_elm_charge" required min = "0" name="af_elm_charge">
-  <span>(%)</span>
-</div>
-
-<div id="cr_form" style="display: none;">
-  <label for="af_cr">会心率：</label>
-  <input type="number" id="af_cr" required min = "0" name="af_cr">
-  <span>(%)</span>
-</div>
-
-<div id="cd_form" style="display: none;">
-  <label for="af_cd">会心ダメージ：</label>
-  <input type="number" id="af_cd" required min = "0" name="af_cd">
-  <span>(%)</span>
-</div>
-
-</div>
-</fieldset>
-
-<fieldset id="fix_buff_info" style="width: 400px;">
-  <legend>固定バフ</legend>
-  <div id="fix_buff_setting">
-
-  <div id="fix_hp_form" style="display: none;">
-   <label for="fix_hp_buff">HP実数値：</label>
-   <input type="number" id="fix_hp_buff" required min = "0" name="fix_hp_buff" value="0">
- </div>
-
- <div id="fix_hp%_form" style="display: none;">
-  <label for="fix_hp%_buff">HP％：</label>
-  <input type="number" id="fix_hp%_buff" required min = "0" name="fix_hp%_buff" value="0">
-  <span>(%)</span>
-</div>
- 
- <div id="fix_attack_form" style="display: none;">
-   <label for="fix_attack_buff">攻撃力実数値：</label>
-   <input type="number" id="fix_attack_buff"  required min = "0" name="fix_attack_buff" value="0">
- </div>
-
- <div id="fix_attack%_form" style="display: none;">
-  <label for="fix_attack%_buff">攻撃力％：</label>
-  <input type="number" id="fix_attack%_buff"  required min = "0" name="fix_attack%_buff" value="0">
-  <span>(%)</span>
-</div>
- 
- <div id="fix_deff_form" style="display: none;">
-   <label for="fix_deff_buff">防御力実数値：</label>
-   <input type="number" id="fix_deff_buff" required min = "0" name="fix_deff_buff" value="0">
- </div>
-
- <div id="fix_deff%_form" style="display: none;">
-  <label for="fix_deff%_buff">防御力％：</label>
-  <input type="number" id="fix_deff%_buff" required min = "0" name="fix_deff%_buff" value="0">
-  <span>(%)</span>
-</div>
- 
- <div id="fix_elm_form" style="display: none;">
-   <label for="fix_elm_buff">元素熟知：</label>
-   <input type="number" id="fix_elm_buff" required min = "0" name="fix_elm_buff" value="0">
- </div>
- 
- <div id="fix_elm_charge_form" style="display: none;">
-   <label for="fix_elm_charge_buff">元素チャージ効率：</label>
-   <input type="number" id="fix_elm_charge_buff" required min = "0" name="fix_elm_charge_buff"  value="0">
-   <span>(%)</span>
- </div>
- 
- <div id="fix_cr_form" style="display: none;">
-   <label for="fix_cr_buff">会心率：</label>
-   <input type="number" id="fix_cr_buff" required min = "0" name="fix_cr_buff" value="0">
-   <span>(%)</span>
- </div>
- 
- <div id="fix_cd_form" style="display: none;">
-  <label for="fix_cd_buff">会心ダメージ：</label>
-  <input type="number" id="fix_cd_buff" required min = "0" name="fix_cd_buff" value="0">
-  <span>(%)</span>
-</div>
-
-<div id="fix_dmg_buff_form">
-  <label for="fix_dmg_buff">ダメージバフ：</label>
-  <input type="number" id="fix_dmg_buff" required min = "0" name="fix_dmg_buff" value="0">
-  <span>(%)</span>
-</div>
- </div>
- </fieldset>
-
- <fieldset id="dynamic_buff_info" style="width: 400px;">
-  <legend>変動バフ</legend>
-  <div id="dynamic_buff_setting">
-
-  <div id="dynamic_hp_form" style="display: none;">
-   <label for="dynamic_hp_buff">HP実数値：</label>
-   <input type="number" id="dynamic_hp_buff" required min = "0" name="dynamic_hp_buff" value="0">
- </div>
-
- <div id="dynamic_hp%_form" style="display: none;">
-  <label for="dynamic_hp%_buff">HP％：</label>
-  <input type="number" id="dynamic_hp%_buff" required min = "0" name="dynamic_hp%_buff" value="0">
-  <span>(%)</span>
-</div>
- 
- <div id="dynamic_attack_form" style="display: none;">
-   <label for="dynamic_attack_buff">攻撃力実数値：</label>
-   <input type="number" id="dynamic_attack_buff"  required min = "0" name="dynamic_attack_buff" value="0">
- </div>
-
- <div id="dynamic_attack%_form" style="display: none;">
-  <label for="dynamic_attack%_buff">攻撃力％：</label>
-  <input type="number" id="dynamic_attack%_buff"  required min = "0" name="dynamic_attack%_buff" value="0">
-  <span>(%)</span>
-</div>
- 
- <div id="dynamic_deff_form" style="display: none;">
-   <label for="dynamic_deff_buff">防御力実数値：</label>
-   <input type="number" id="dynamic_deff_buff" required min = "0" name="dynamic_deff_buff" value="0">
- </div>
-
- <div id="dynamic_deff%_form" style="display: none;">
-  <label for="dynamic_deff%_buff">防御力％：</label>
-  <input type="number" id="dynamic_deff%_buff" required min = "0" name="dynamic_deff%_buff" value="0">
-  <span>(%)</span>
-</div>
- 
- <div id="dynamic_elm_form" style="display: none;">
-   <label for="dynamic_elm_buff">元素熟知：</label>
-   <input type="number" id="dynamic_elm_buff" required min = "0" name="dynamic_elm_buff" value="0">
- </div>
- 
- <div id="dynamic_elm_charge_form" style="display: none;">
-   <label for="dynamic_elm_charge_buff">元素チャージ効率：</label>
-   <input type="number" id="dynamic_elm_charge_buff" required min = "0" name="dynamic_elm_charge_buff"  value="0">
-   <span>(%)</span>
- </div>
- 
- <div id="dynamic_cr_form" style="display: none;">
-   <label for="dynamic_cr_buff">会心率：</label>
-   <input type="number" id="dynamic_cr_buff" required min = "0" name="dynamic_cr_buff" value="0">
-   <span>(%)</span>
- </div>
- 
- <div id="dynamic_cd_form" style="display: none;">
-  <label for="dynamic_cd_buff">会心ダメージ：</label>
-  <input type="number" id="dynamic_cd_buff" required min = "0" name="dynamic_cd_buff" value="0">
-  <span>(%)</span>
-</div>
-
-<div id="dynamic_dmg_buff_form">
-  <label for="dynamic_dmg_buff">ダメージバフ：</label>
-  <input type="number" id="dynamic_dmg_buff" required min = "0" name="dynamic_dmg_buff" value="0">
-  <span>(%)</span>
-</div>
-
- </div>
- </fieldset>
 
 <br>
 <button id="calculateButton" style="display: none;" onclick="monte_carlo_calculate()">最適化計算</button>
@@ -824,8 +815,7 @@
       document.getElementById('status_setting').addEventListener('input', calculate_table_status);
       document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
       document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
-      document.getElementById('fix_buff_info').addEventListener('input', calculate_table_status);
-      document.getElementById('dynamic_buff_info').addEventListener('input', calculate_table_status);
+      document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
       document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
       fix_buff_info
       function showTable(tableId) {
