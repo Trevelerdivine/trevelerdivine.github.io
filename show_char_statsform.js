@@ -9,16 +9,16 @@ async function show_char_statsform()
     let elm_charge_form = document.getElementById("elm_charge_form");
     let cr_form = document.getElementById("cr_form");
     let cd_form = document.getElementById("cd_form");
-    let team_hp_form = document.getElementById("team_hp_form_hp_form");
-    let team_hprate_form = document.getElementById("team_hp_form_hp%_form");
-    let team_attack_form = document.getElementById("team_hp_form_attack_form");
-    let team_attackrate_form = document.getElementById("team_hp_form_attack%_form");
-    let team_deff_form = document.getElementById("team_hp_form_deff_form");
-    let team_deffrate_form = document.getElementById("team_hp_form_deff%_form");
-    let team_elm_form = document.getElementById("team_hp_form_elm_form");
-    let team_elm_charge_form = document.getElementById("team_hp_form_elm_charge_form");
-    let team_cr_form = document.getElementById("team_hp_form_cr_form");
-    let team_cd_form = document.getElementById("team_hp_form_cd_form");
+    let team_hp_form = document.getElementById("team_hp_form");
+    let team_hprate_form = document.getElementById("team_hp%_form");
+    let team_attack_form = document.getElementById("team_attack_form");
+    let team_attackrate_form = document.getElementById("team_attack%_form");
+    let team_deff_form = document.getElementById("team_deff_form");
+    let team_deffrate_form = document.getElementById("team_deff%_form");
+    let team_elm_form = document.getElementById("team_elm_form");
+    let team_elm_charge_form = document.getElementById("team_elm_charge_form");
+    let team_cr_form = document.getElementById("team_cr_form");
+    let team_cd_form = document.getElementById("team_cd_form");
     const char_constellations = document.getElementById("char_constellations").value;
 
     hp_form.style.display = "none";  // HPフォームを非表示
