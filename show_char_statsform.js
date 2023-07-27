@@ -137,7 +137,7 @@ async function show_char_statsform()
       for (const element of formElements) {
         if (depend_status[element.index] === 1) {
           for (let i = 0; i < element.forms.length; i++) {
-            element.forms[i].style.display = "block";
+            element.forms[i].style.display = "table-row";
           }
         }
       }
