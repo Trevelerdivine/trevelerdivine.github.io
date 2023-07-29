@@ -316,7 +316,7 @@ text-align: center;
 .af-buff-form {
   max-width: 500px;
   margin: 0;
-  background-color: #E6E6FA;
+  background-color: #FEDCBD;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
@@ -329,7 +329,7 @@ text-align: center;
 }
 
 .af-buff-form th {
-  background-color: #E6E6FA;
+  background-color: #FEDCBD;
   color: #444;
   font-weight: bold;
   text-align: left;
@@ -380,6 +380,6 @@ text-align: center;
 
 
 /* 固定バフと変動バフの間隔を調整 */
-.af-buff-form td:nth-child(3) {
+.af-buff-form td:nth-child(2) {
   width: 10%;
 }
