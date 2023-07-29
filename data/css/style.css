@@ -367,3 +367,7 @@ text-align: center;
   display: flex;
   justify-content: center;
 }
+
+.af-buff-form td:nth-child(3) {
+  width: 10%;
+}
