@@ -380,6 +380,6 @@ text-align: center;
 
 
 /* 固定バフと変動バフの間隔を調整 */
-.af-buff-form td:nth-child(2) {
+.af-buff-form td:nth-child(3) {
   width: 10%;
 }
