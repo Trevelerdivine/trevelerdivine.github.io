@@ -134,7 +134,7 @@ async function show_weapon_statsform() {
 
   for (const element of formElements) {
     if (depend_status[element.index] === 1) {
-      element.form.style.display = "block";
+      element.form.style.display = "table-row";
     }
   }
 }
