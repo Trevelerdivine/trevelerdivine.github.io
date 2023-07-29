@@ -315,7 +315,7 @@ text-align: center;
 
 .af-buff-form {
   max-width: 350px;
-  margin: auto;
+  margin: 0;
   background-color: #FEDCBD;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
