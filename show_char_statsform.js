@@ -1,21 +1,43 @@
-async function show_char_statsform() {
-  await calculate_depend_status();
+async function show_char_statsform()
+   {
 
-  // フォーム要素の取得
-  const forms = [
-    "hp_form", "attck_form", "deff_form", "elm_form", "elm_charge_form",
-    "cr_form", "cd_form", "team_hp_form", "team_hprate_form",
-    "team_attack_form", "team_attackrate_form", "team_deff_form",
-    "team_deffrate_form", "team_elm_form", "team_elm_charge_form",
-    "team_cr_form", "team_cd_form"
-  ];
+    await calculate_depend_status();
+    let hp_form = document.getElementById("hp_form");
+    let attck_form = document.getElementById("attck_form");
+    let deff_form = document.getElementById("deff_form");
+    let elm_form = document.getElementById("elm_form");
+    let elm_charge_form = document.getElementById("elm_charge_form");
+    let cr_form = document.getElementById("cr_form");
+    let cd_form = document.getElementById("cd_form");
+    let team_hp_form = document.getElementById("team_hp_form");
+    let team_hprate_form = document.getElementById("team_hp%_form");
+    let team_attack_form = document.getElementById("team_attack_form");
+    let team_attackrate_form = document.getElementById("team_attack%_form");
+    let team_deff_form = document.getElementById("team_deff_form");
+    let team_deffrate_form = document.getElementById("team_deff%_form");
+    let team_elm_form = document.getElementById("team_elm_form");
+    let team_elm_charge_form = document.getElementById("team_elm_charge_form");
+    let team_cr_form = document.getElementById("team_cr_form");
+    let team_cd_form = document.getElementById("team_cd_form");
+    const char_constellations = document.getElementById("char_constellations").value;
 
-  for (const formId of forms) {
-    const formElement = document.getElementById(formId);
-    if (formElement) {
-      formElement.style.display = "none";
-    }
-  }
+    hp_form.style.display = "none";  // HPフォームを非表示
+    attck_form.style.display = "none";  // 攻撃力フォームを非表示
+    deff_form.style.display = "none";  // 防御力フォームを非表示
+    elm_form.style.display = "none";  // 元素熟知を非表示
+    elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
+    cr_form.style.display = "none";  // 会心率フォームを非表示
+    cd_form.style.display = "none";  // 会心ダメージフォームを非表示
+    team_hp_form.style.display = "none";
+    team_hprate_form.style.display = "none";
+    team_attack_form.style.display = "none";
+    team_attackrate_form.style.display = "none";
+    team_deff_form.style.display = "none";
+    team_deffrate_form.style.display = "none";
+    team_elm_form.style.display = "none";
+    team_elm_charge_form.style.display = "none";
+    team_cr_form.style.display = "none";
+    team_cd_form.style.display = "none";
     
     const characterInfo = document.getElementById("characterInfo");
     const checkboxStates = []; // チェックボックスの状態を格納する配列
@@ -103,22 +125,19 @@ async function show_char_statsform() {
         }
       }
       const formElements = [
-        { forms: ["hp_form", "team_hp_form", "team_hprate_form"], index: 0 },
-        { forms: ["attck_form", "team_attack_form", "team_attackrate_form"], index: 4 },
-        { forms: ["deff_form", "team_deff_form", "team_deffrate_form"], index: 1 },
-        { forms: ["elm_form", "team_elm_form"], index: 2 },
-        { forms: ["elm_charge_form", "team_elm_charge_form"], index: 3 },
-        { forms: ["cr_form", "team_cr_form"], index: 5 },
-        { forms: ["cd_form", "team_cd_form"], index: 6 }
+        { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
+        { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
+        { forms: [deff_form, team_deff_form, team_deffrate_form], index: 1 },
+        { forms: [elm_form, team_elm_form], index: 2 },
+        { forms: [elm_charge_form, team_elm_charge_form], index: 3 },
+        { forms: [cr_form, team_cr_form], index: 5 },
+        { forms: [cd_form, team_cd_form], index: 6 }
       ];
-    
+      
       for (const element of formElements) {
         if (depend_status[element.index] === 1) {
-          for (const formId of element.forms) {
-            const formElement = document.getElementById(formId);
-            if (formElement) {
-              formElement.style.display = "table-row";
-            }
+          for (let i = 0; i < element.forms.length; i++) {
+            element.forms[i].style.display = "table-row";
           }
         }
       }
