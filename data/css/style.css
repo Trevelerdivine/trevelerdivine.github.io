@@ -314,9 +314,9 @@ text-align: center;
 }
 
 .af-buff-form {
-  max-width: 350px;
+  max-width: 500px;
   margin: 0;
-  background-color: #FEDCBD;
+  background-color: #E6E6FA;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
@@ -329,7 +329,7 @@ text-align: center;
 }
 
 .af-buff-form th {
-  background-color: #FEDCBD;
+  background-color: #E6E6FA;
   color: #444;
   font-weight: bold;
   text-align: left;
@@ -347,6 +347,12 @@ text-align: center;
   transition: border-color 0.3s;
 }
 
+.af-buff-form input:focus,
+.af-buff-form select:focus {
+  outline: none;
+  border-bottom-color: #007bff;
+  box-shadow: 0 1px 0 0 #007bff;
+}
 
 .af-buff-form label {
   display: block;
@@ -355,6 +361,10 @@ text-align: center;
   color: #333;
   font-size: 16px;
   width: 100px;
+}
+
+.af-buff-form .btn:hover {
+  background-color: #0056b3;
 }
 
 /* アンダーバーの修正 */
@@ -368,6 +378,8 @@ text-align: center;
   justify-content: center;
 }
 
+
+/* 固定バフと変動バフの間隔を調整 */
 .af-buff-form td:nth-child(3) {
   width: 10%;
 }
