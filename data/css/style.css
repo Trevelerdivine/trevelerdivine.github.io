@@ -312,3 +312,58 @@ text-align: center;
 .team-buff-form td:nth-child(3) {
   width: 10%;
 }
+
+.af-buff-form {
+  max-width: 350px;
+  margin: auto;
+  background-color: #FEDCBD;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.af-buff-form th,
+.af-buff-form td {
+  padding: 15px;
+  text-align: center;
+}
+
+.af-buff-form th {
+  background-color: #FEDCBD;
+  color: #444;
+  font-weight: bold;
+  text-align: left;
+}
+
+.af-buff-form input,
+.af-buff-form select {
+  width: 100%;
+  padding: 1px;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  transition: border-color 0.3s;
+}
+
+
+.af-buff-form label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  width: 100px;
+}
+
+/* アンダーバーの修正 */
+.af-buff-form input {
+  padding-bottom: 3px;
+}
+
+/* 各列の input 要素のセンタリング */
+.af-buff-form td div {
+  display: flex;
+  justify-content: center;
+}
