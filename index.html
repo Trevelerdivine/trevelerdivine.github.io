@@ -143,6 +143,39 @@
     <option value="3">C5</option>
     <option value="4">C6</option>
  </select>
+</div>
+<div>
+  <label for="weapon_name">武器</label>
+<br>
+    <select id="weapon_index" required onchange="show_weapon_statsform()" size="4">
+      <option hidden>武器選択</option>
+      <optgroup label="法器">
+        <option value="0" selected>千夜に浮かぶ夢</option>
+        <option value="1">神楽の真意</option>
+        <option value="2">祭礼の断片</option>
+      </optgroup>
+      <optgroup label="長柄">
+        <option value="3">護摩の杖</option>
+        <option value="4">草薙の稲光</option>
+        <option value="5">漁獲</option>
+      </optgroup>
+    </select>
+    <select id="weapon_level">
+        <option value="60+">60+</option>
+        <option value="70">70</option>
+        <option value="70+">70+</option>
+        <option value="80">80</option>
+        <option value="80+">80+</option>
+        <option value="90" selected>90</option>
+     </select>
+     <select id="weapon_rank">
+        <option value="1" selected>R1</option>
+        <option value="2">R2</option>
+        <option value="3">R3</option>
+        <option value="4">R4</option>
+        <option value="5">R5</option>
+     </select>
+</div> 
  <div>
   <label class="open" for="pop-up">
       <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px;">
@@ -195,40 +228,9 @@
       </div>
     </div>
   </div>
+</div>
   <div id="index-display"></div>
-
 <br>
-  <label for="weapon_name">武器</label>
-<br>
-    <select id="weapon_index" required onchange="show_weapon_statsform()" size="4">
-      <option hidden>武器選択</option>
-      <optgroup label="法器">
-        <option value="0" selected>千夜に浮かぶ夢</option>
-        <option value="1">神楽の真意</option>
-        <option value="2">祭礼の断片</option>
-      </optgroup>
-      <optgroup label="長柄">
-        <option value="3">護摩の杖</option>
-        <option value="4">草薙の稲光</option>
-        <option value="5">漁獲</option>
-      </optgroup>
-    </select>
-    <select id="weapon_level">
-        <option value="60+">60+</option>
-        <option value="70">70</option>
-        <option value="70+">70+</option>
-        <option value="80">80</option>
-        <option value="80+">80+</option>
-        <option value="90" selected>90</option>
-     </select>
-     <select id="weapon_rank">
-        <option value="1" selected>R1</option>
-        <option value="2">R2</option>
-        <option value="3">R3</option>
-        <option value="4">R4</option>
-        <option value="5">R5</option>
-     </select>
-</div> 
 
  <br>
   <select id="clock_mainstatus">
