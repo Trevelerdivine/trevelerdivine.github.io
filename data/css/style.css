@@ -394,3 +394,15 @@ text-align: center;
   padding: 10px; /* オプション：要素の内側の余白を追加 */
   border: 1px solid #000; /* オプション：要素に境界線を追加 */
 }
+
+/* スマートフォンの場合のスタイル */
+@media (max-width: 767px) {
+  .rayout {
+    flex-direction: column; /* 縦方向に並べるように変更 */
+  }
+
+  .item {
+    flex: none; /* フレックスアイテムの伸縮を解除 */
+    width: 100%; /* 要素を100%の幅に設定 */
+  }
+}
