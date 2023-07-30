@@ -392,11 +392,10 @@ text-align: center;
   flex: 1; /* 2つの要素を均等に横並びにするため、フレックスアイテムの伸縮比率を1に設定 */
   box-sizing: border-box; /* paddingとborderを要素の幅に含める */
   padding: 10px; /* オプション：要素の内側の余白を追加 */
-  border: 1px solid #000; /* オプション：要素に境界線を追加 */
 }
 
 /* スマートフォンの場合のスタイル */
-@media (max-width: 767px) {
+@media only screen and (max-width : 767px){
   .rayout {
     flex-direction: column; /* 縦方向に並べるように変更 */
   }
