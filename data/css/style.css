@@ -383,3 +383,14 @@ text-align: center;
 .af-buff-form td:nth-child(3) {
   width: 10%;
 }
+
+.rayout {
+  display: flex; /* 要素をフレックスコンテナとして表示 */
+}
+
+.item {
+  flex: 1; /* 2つの要素を均等に横並びにするため、フレックスアイテムの伸縮比率を1に設定 */
+  box-sizing: border-box; /* paddingとborderを要素の幅に含める */
+  padding: 10px; /* オプション：要素の内側の余白を追加 */
+  border: 1px solid #000; /* オプション：要素に境界線を追加 */
+}
