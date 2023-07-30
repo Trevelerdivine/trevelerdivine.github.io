@@ -404,4 +404,22 @@ text-align: center;
     flex: none; /* フレックスアイテムの伸縮を解除 */
     width: 100%; /* 要素を100%の幅に設定 */
   }
+
+  .team-buff-form {
+    max-width: 100%;
+    margin: 0;
+    background-color: #E6E6FA;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .af-buff-form {
+    max-width: 100%;
+    margin: 0;
+    background-color: #FEDCBD;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
 }
