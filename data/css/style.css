@@ -394,6 +394,19 @@ text-align: center;
   padding: 10px; /* オプション：要素の内側の余白を追加 */
 }
 
+.flex-container {
+  display: flex; /* div要素をフレックスコンテナとして表示 */
+  height: 100vh; /* ビューポートの高さいっぱいに表示 */
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 10px; /* ボックス間に余白を設定 */
+}
+
+
+
 /* スマートフォンの場合のスタイル */
 @media only screen and (max-width : 767px){
   .rayout {

@@ -14,11 +14,34 @@
 
  <div>
  <h1>換算最適化スコア計算機</h1>
+ <div class = flex-container>
+ <div id = choose_char_weapon class="box">
+  <select id="char_level">
+     <option value="60+">60+</option>
+     <option value="70">70</option>
+     <option value="70+">70+</option>
+     <option value="80">80</option>
+     <option value="80+">80+</option>
+     <option value="90" selected>90</option>
+  </select>
+  <br>
+  <select id="char_constellations" onchange="show_char_statsform()">
+     <option value="0" selected>C0</option>
+     <option value="1">C1</option>
+     <option value="2">C2</option>
+     <option value="2">C3</option>
+     <option value="3">C4</option>
+     <option value="3">C5</option>
+     <option value="4">C6</option>
+  </select>
+ </div>
  <div  class="rayout">
   <div class="item">
-  <label class="open_char" for="pop-up_char">
-      <img class="popup-image" src="./character/nahida.webp" alt="画像の説明" style="width: 100px; height: 100px;">
+  <div class="box">
+    <label class="open_char" for="pop-up_char">
+        <img class="popup-image" src="./character/nahida.webp" alt="画像の説明" style="width: 100px; height: 100px;">
     </label>
+  </div>
     <input type="checkbox" id="pop-up_char">
     <div class="overlay_char">
       <div class="window">
@@ -123,27 +146,11 @@
           </table>
         </div>
       </div>
+     </div>
     </div>
+   </div>
+  </div>
     <div id="Charindex-display"></div>
- <div id = choose_char_weapon>
- <select id="char_level">
-    <option value="60+">60+</option>
-    <option value="70">70</option>
-    <option value="70+">70+</option>
-    <option value="80">80</option>
-    <option value="80+">80+</option>
-    <option value="90" selected>90</option>
- </select>
- <select id="char_constellations" onchange="show_char_statsform()">
-    <option value="0" selected>C0</option>
-    <option value="1">C1</option>
-    <option value="2">C2</option>
-    <option value="2">C3</option>
-    <option value="3">C4</option>
-    <option value="3">C5</option>
-    <option value="4">C6</option>
- </select>
-</div>
 </div>
 <div class="item">
     <label for="weapon_name">武器</label>
