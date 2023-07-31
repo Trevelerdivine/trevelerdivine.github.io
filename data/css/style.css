@@ -441,4 +441,14 @@ text-align: center;
     padding: 5px;
     width: 100%;
     }
+
+      .tier-image3 {
+      width: auto;
+      height: auto;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+      border: 1.7px solid black; /* 青色の縁取りを追加 */
+      }
+      
+
 }
