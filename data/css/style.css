@@ -411,7 +411,8 @@ text-align: center;
     background-color: #E6E6FA;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 5px;
+    width: 100%;
   }
 
   .af-buff-form {
@@ -420,6 +421,7 @@ text-align: center;
     background-color: #FEDCBD;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 5px;
+    width: 100%;
   }
 }
