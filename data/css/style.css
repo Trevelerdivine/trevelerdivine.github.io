@@ -414,7 +414,7 @@ text-align: center;
     padding: 2px;
     width: 100%;
     .af-buff-form td:nth-child(3) {
-      width: 1%;
+      width: 15%;
   }
 
   .af-buff-form {
