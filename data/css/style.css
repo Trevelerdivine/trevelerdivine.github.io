@@ -396,7 +396,7 @@ text-align: center;
 
 .flex-container {
   display: flex; /* div要素をフレックスコンテナとして表示 */
-  height: 100vh; /* ビューポートの高さいっぱいに表示 */
+  height: auto; /* ビューポートの高さいっぱいに表示 */
 }
 
 .box {
