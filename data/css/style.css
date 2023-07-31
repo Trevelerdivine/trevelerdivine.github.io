@@ -416,6 +416,7 @@ text-align: center;
     .af-buff-form td:nth-child(3) {
       width: 30%;
   }
+}
 
   .af-buff-form {
     max-width: 100%;
@@ -426,5 +427,13 @@ text-align: center;
     padding: 5px;
     width: 100%;
     }
-  }
+
+    .table-container1 {
+      margin: 0 auto;
+      background-color: #f5f2df;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+  
 }
