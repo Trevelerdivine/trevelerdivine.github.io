@@ -430,6 +430,7 @@ text-align: center;
     .af-buff-form td:nth-child(3) {
       width: 30%;
   }
+}
 
   .af-buff-form {
     max-width: 100%;
@@ -440,5 +441,27 @@ text-align: center;
     padding: 5px;
     width: 100%;
     }
-  }
+
+    .tier-image {
+      width: 100%;
+      height: auto;
+      border-radius: auto;
+      transition: transform 0.3s ease-in-out;
+      border: 2.5px solid black; /* 青色の縁取りを追加 */
+      }
+      .tier-image2 {
+      width: 100%;
+      height: auto;
+      border-radius: auto;
+      transition: transform 0.3s ease-in-out;
+      border: 2.5px solid #2196F3; /* 青色の縁取りを追加 */
+      }
+      .tier-image3 {
+      width: auto;
+      height: auto;
+      border-radius: auto;
+      transition: transform 0.3s ease-in-out;
+      border: 1.7px solid black; /* 青色の縁取りを追加 */
+      }
+  
 }
