@@ -395,7 +395,7 @@ text-align: center;
 }
 
 /* スマートフォンの場合のスタイル */
-@media only screen and (max-width : 767px){
+@media (max-width : 767px){
   .rayout {
     flex-direction: column; /* 縦方向に並べるように変更 */
   }
