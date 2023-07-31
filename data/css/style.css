@@ -391,7 +391,7 @@ text-align: center;
 .item {
   flex: 1; /* 2つの要素を均等に横並びにするため、フレックスアイテムの伸縮比率を1に設定 */
   box-sizing: border-box; /* paddingとborderを要素の幅に含める */
-  padding: 10px; /* オプション：要素の内側の余白を追加 */
+  padding: 0px; /* オプション：要素の内側の余白を追加 */
 }
 
 .flex-container {
