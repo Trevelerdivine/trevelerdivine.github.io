@@ -412,7 +412,9 @@ text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    transform: scale(0.9);
+    height: 200px;
+    width: 100%;
+    display: block;
   }
 
   .af-buff-form {
@@ -422,6 +424,8 @@ text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    transform: scale(0.9);
+    height: 200px;
+    width: 100%;
+    display: block;
   }
 }
