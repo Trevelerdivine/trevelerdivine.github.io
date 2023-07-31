@@ -411,10 +411,10 @@ text-align: center;
     background-color: #E6E6FA;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 5px;
+    padding: 2px;
     width: 100%;
     .af-buff-form td:nth-child(3) {
-      width: 5%;
+      width: 1%;
   }
 
   .af-buff-form {
