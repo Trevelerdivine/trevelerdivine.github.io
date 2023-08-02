@@ -42,6 +42,7 @@ table.calc_result th {
 
 /* キャラクター選択テーブルのスタイル */
 .char_select {
+  width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
