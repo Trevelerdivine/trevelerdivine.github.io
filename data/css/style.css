@@ -447,7 +447,6 @@ text-align: center;
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
     border: 1px solid black; /* 青色の縁取りを追加 */
-    transform: scale(0.8);
     }
 
     .char_select {
@@ -462,7 +461,7 @@ text-align: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
       /* ウィンドウのサイズを0.5倍にする */
-      transform: scale(0.8);
+      transform: scale(1);
     }
       
 
