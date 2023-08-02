@@ -442,8 +442,8 @@ text-align: center;
     width: 100%;
     }
     .tier-image3 {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
     border: 1px solid black; /* 青色の縁取りを追加 */
