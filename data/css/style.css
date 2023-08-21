@@ -54,7 +54,6 @@ table.calc_result th {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
 /* キャラクター選択テーブルのスタイル */
 .char_select {
   width: 100%;
@@ -206,10 +205,6 @@ display: none; /* label でコントロールするので input は非表示に 
   margin-right: 7.5%; /* ボタンの間に余白を設定 */
 }
 
-
-
-
-
 .status_table {
   border-collapse: collapse;
   margin: 0 left;
@@ -267,6 +262,7 @@ text-align: center;
       width: 100%; /* テーブルの幅をウィンドウ幅の100%に設定 */
   }
 }
+
 .team-buff-form {
   max-width: 500px;
   margin: 0;
