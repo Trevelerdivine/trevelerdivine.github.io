@@ -257,6 +257,11 @@ text-align: center;
   padding-right: 25px;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media screen and (max-width: 600px) {
   .status_table {
       width: 100%; /* テーブルの幅をウィンドウ幅の100%に設定 */

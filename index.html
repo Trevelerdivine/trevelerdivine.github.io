@@ -12,123 +12,125 @@
   </head>
   <body>
  <h1>換算最適化スコア計算機</h1>
-    <div id = choose_char_weapon>
-      <select id="char_level" style="width: 100px; height: 25px;">
-        <option value="60+">Lv.60+</option>
-        <option value="70">Lv.70</option>
-        <option value="70+">Lv.70+</option>
-        <option value="80">Lv.80</option>
-        <option value="80+">Lv.80+</option>
-        <option value="90" selected>Lv.90</option>
-      </select>
-      <br>
-      <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
-      <option value="0" selected>C0</option>
-      <option value="1">C1</option>
-      <option value="2">C2</option>
-      <option value="2">C3</option>
-      <option value="3">C4</option>
-      <option value="3">C5</option>
-      <option value="4">C6</option>
-      </select>
-    </div>
-          <div>
-            <label class="open_char" for="pop-up_char">
-              <img class="popup-image" src="./character/nahida.webp" alt="画像の説明" style="width: 100px; height: 100px;">
-            </label>
-            <input type="checkbox" id="pop-up_char">
-            <div class="overlay_char">
-              <div class="window">
-                <div class="table-container1">
-                  <img src="./data/elements/element_pyro.png" onclick="toggleElement(0)" class="element-image" alt="炎元素">
-                  <img src="./data/elements/element_hydro.png" onclick="toggleElement(1)" class="element-image" alt="水元素">
-                  <img src="./data/elements/element_cryo.png" onclick="toggleElement(2)" class="element-image" alt="氷元素">
-                  <img src="./data/elements/element_electro.png" onclick="toggleElement(3)" class="element-image" alt="雷元素">
-                  <img src="./data/elements/element_anemo.png" onclick="toggleElement(4)" class="element-image" alt="風元素">        
-                  <img src="./data/elements/element_dendro.png" onclick="toggleElement(5)" class="element-image" alt="草元素">
-                  <img src="./data/elements/element_geo.png" onclick="toggleElement(6)" class="element-image" alt="岩元素">
-                  <div class="char_images">
-                    <div class="flex-container1">
-                      <div class="tierPyro"><img id="0" class="tier-image3" src="./character/dehya.webp"></div>
-                      <div class="tierPyro"><img id="1" class="tier-image3" src="./character/yoimiya.webp"></div>
-                      <div class="tierPyro"><img id="2" class="tier-image3" src="./character/hutao.jpg"></div>
-                      <div class="tierPyro"><img id="3" class="tier-image3" src="./character/klee.webp"></div>
-                      <div class="tierPyro"><img id="4" class="tier-image3" src="./character/diluc.jpg"></div>
-                      <div class="tierPyro"><img id="5" class="tier-image3" src="./character/thoma.webp"></div>
-                      <div class="tierPyro"><img id="6" class="tier-image3" src="./character/yanfei.webp"></div>
-                      <div class="tierPyro"><img id="7" class="tier-image3" src="./character/xinyan.webp"></div>
-                      <div class="tierPyro"><img id="8" class="tier-image3" src="./character/bennett.webp"></div>
-                      <div class="tierPyro"><img id="9" class="tier-image3" src="./character/xiangling.webp"></div>
-                      <div class="tierPyro"><img id="10" class="tier-image3" src="./character/amber.jpg"></div>
-                      <div class="tierHydro"><img id="11" class="tier-image3" src="./character/nirou.webp"></div>
-                      <div class="tierHydro"><img id="12" class="tier-image3" src="./character/yelan.webp"></div>
-                      <div class="tierHydro"><img id="13" class="tier-image3" src="./character/kamisatoayato.jpg"></div>
-                      <div class="tierHydro"><img id="14" class="tier-image3" src="./character/sangonomiyakokomi.jpg"></div>
-                      <div class="tierHydro"><img id="15" class="tier-image3" src="./character/tartaglia.webp"></div>
-                      <div class="tierHydro"><img id="16" class="tier-image3" src="./character/mona.webp"></div>
-                      <div class="tierHydro"><img id="17" class="tier-image3" src="./character/candace.jpg"></div>
-                      <div class="tierHydro"><img id="18" class="tier-image3" src="./character/barbara.jpg"></div>
-                      <div class="tierHydro"><img id="19" class="tier-image3" src="./character/xingqiu.webp"></div>
-                      <div class="tierCyro"><img id="20" class="tier-image3" src="./character/shenhe.webp"></div>
-                      <div class="tierCyro"><img id="21" class="tier-image3" src="./character/kamisatoayaka.webp"></div>
-                      <div class="tierCyro"><img id="22" class="tier-image3" src="./character/eula.webp"></div>
-                      <div class="tierCyro"><img id="23" class="tier-image3" src="./character/ganyu.webp"></div>
-                      <div class="tierCyro"><img id="24" class="tier-image3" src="./character/qiqi.webp"></div>
-                      <div class="tierCyro"><img id="25" class="tier-image3" src="./character/aloy.webp"></div>
-                      <div class="tierCyro"><img id="26" class="tier-image3" src="./character/mika.webp"></div>
-                      <div class="tierCyro"><img id="27" class="tier-image3" src="./character/layla.webp"></div>
-                      <div class="tierCyro"><img id="28" class="tier-image3" src="./character/rosaria.webp"></div>
-                      <div class="tierCyro"><img id="29" class="tier-image3" src="./character/diona.webp"></div>
-                      <div class="tierCyro"><img id="30" class="tier-image3" src="./character/chongyun.webp"></div>
-                      <div class="tierCyro"><img id="31" class="tier-image3" src="./character/kaeya.jpg"></div>
-                      <div class="tierElectro"><img id="32" class="tier-image3" src="./character/cyno.jpg"></div>
-                      <div class="tierElectro"><img id="33" class="tier-image3" src="./character/yaemiko.webp"></div>
-                      <div class="tierElectro"><img id="34" class="tier-image3" src="./character/raidenshougun.jpg"></div>
-                      <div class="tierElectro"><img id="35" class="tier-image3" src="./character/keqing.jpg"></div>
-                      <div class="tierElectro"><img id="36" class="tier-image3" src="./character/dori.jpg"></div>
-                      <div class="tierElectro"><img id="37" class="tier-image3" src="./character/kukishinobu.jpg"></div>
-                      <div class="tierElectro"><img id="38" class="tier-image3" src="./character/kujousara.jpg"></div>
-                      <div class="tierElectro"><img id="39" class="tier-image3" src="./character/fischl.webp"></div>
-                      <div class="tierElectro"><img id="40" class="tier-image3" src="./character/beidou.webp"></div>
-                      <div class="tierElectro"><img id="41" class="tier-image3" src="./character/razor.jpg"></div>
-                      <div class="tierElectro"><img id="42" class="tier-image3" src="./character/lisa.jpg"></div>
-                      <div class="tierElectro"><img id="43" class="tier-image3" src="./character/travelarelectro.png"></div>
-                      <div class="tierAnemo"><img id="44" class="tier-image3" src="./character/wanderer.webp"></div>
-                      <div class="tierAnemo"><img id="45" class="tier-image3" src="./character/kazuhakaedehara.webp"></div>
-                      <div class="tierAnemo"><img id="46" class="tier-image3" src="./character/xiao.webp"></div>
-                      <div class="tierAnemo"><img id="47" class="tier-image3" src="./character/venti.jpg"></div>
-                      <div class="tierAnemo"><img id="48" class="tier-image3" src="./character/jean.jpg"></div>
-                      <div class="tierAnemo"><img id="49" class="tier-image3" src="./character/faruzan.webp"></div>
-                      <div class="tierAnemo"><img id="50" class="tier-image3" src="./character/shikanoinheizou.webp"></div>
-                      <div class="tierAnemo"><img id="51" class="tier-image3" src="./character/sayu.webp"></div>
-                      <div class="tierAnemo"><img id="52" class="tier-image3" src="./character/sucrose.webp"></div>
-                      <div class="tierAnemo"><img id="53" class="tier-image3" src="./character/traveraranemo.png"></div>
-                      <div class="tierDendro"><img id="54" class="tier-image3" src="./character/baizhu.webp"></div>
-                      <div class="tierDendro"><img id="55" class="tier-image3" src="./character/alhaitham.webp"></div>
-                      <div class="tierDendro"><img id="56" class="tier-image3" src="./character/nahida.webp"></div>
-                      <div class="tierDendro"><img id="57" class="tier-image3" src="./character/tighnari.webp"></div>
-                      <div class="tierDendro"><img id="58" class="tier-image3" src="./character/kirara.webp"></div>
-                      <div class="tierDendro"><img id="59" class="tier-image3" src="./character/kaveh.webp"></div>
-                      <div class="tierDendro"><img id="60" class="tier-image3" src="./character/yaoyao.webp"></div>
-                      <div class="tierDendro"><img id="61" class="tier-image3" src="./character/collei.webp"></div>
-                      <div class="tierDendro"><img id="62" class="tier-image3" src="./character/travelardendro.png"></div>
-                      <div class="tierGeo"><img id="63" class="tier-image3" src="./character/aratakiitto.webp"></div>
-                      <div class="tierGeo"><img id="64" class="tier-image3" src="./character/albedo.jpg"></div>
-                      <div class="tierGeo"><img id="65" class="tier-image3" src="./character/zhongli.webp"></div>
-                      <div class="tierGeo"><img id="66" class="tier-image3" src="./character/yunjin.webp"></div>
-                      <div class="tierGeo"><img id="67" class="tier-image3" src="./character/gorou.webp"></div>
-                      <div class="tierGeo"><img id="68" class="tier-image3" src="./character/noelle.jpg"></div>
-                      <div class="tierGeo"><img id="69" class="tier-image3" src="./character/ningguang.webp"></div>
-                      <div class="tierGeo"><img id="70" class="tier-image3" src="./character/travelergeo.png"></div>
-                    </div>
-                  </div>
+  <div class wrapper>
+    <div>
+      <div id = choose_char_weapon>
+        <select id="char_level" style="width: 100px; height: 25px;">
+          <option value="60+">Lv.60+</option>
+          <option value="70">Lv.70</option>
+          <option value="70+">Lv.70+</option>
+          <option value="80">Lv.80</option>
+          <option value="80+">Lv.80+</option>
+          <option value="90" selected>Lv.90</option>
+        </select>
+        <br>
+        <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+        <option value="0" selected>C0</option>
+        <option value="1">C1</option>
+        <option value="2">C2</option>
+        <option value="2">C3</option>
+        <option value="3">C4</option>
+        <option value="3">C5</option>
+        <option value="4">C6</option>
+        </select>
+      </div>
+      <div>
+        <label class="open_char" for="pop-up_char">
+          <img class="popup-image" src="./character/nahida.webp" alt="画像の説明" style="width: 100px; height: 100px;">
+        </label>
+        <input type="checkbox" id="pop-up_char">
+        <div class="overlay_char">
+          <div class="window">
+            <div class="table-container1">
+              <img src="./data/elements/element_pyro.png" onclick="toggleElement(0)" class="element-image" alt="炎元素">
+              <img src="./data/elements/element_hydro.png" onclick="toggleElement(1)" class="element-image" alt="水元素">
+              <img src="./data/elements/element_cryo.png" onclick="toggleElement(2)" class="element-image" alt="氷元素">
+              <img src="./data/elements/element_electro.png" onclick="toggleElement(3)" class="element-image" alt="雷元素">
+              <img src="./data/elements/element_anemo.png" onclick="toggleElement(4)" class="element-image" alt="風元素">        
+              <img src="./data/elements/element_dendro.png" onclick="toggleElement(5)" class="element-image" alt="草元素">
+              <img src="./data/elements/element_geo.png" onclick="toggleElement(6)" class="element-image" alt="岩元素">
+              <div class="char_images">
+                <div class="flex-container1">
+                  <div class="tierPyro"><img id="0" class="tier-image3" src="./character/dehya.webp"></div>
+                  <div class="tierPyro"><img id="1" class="tier-image3" src="./character/yoimiya.webp"></div>
+                  <div class="tierPyro"><img id="2" class="tier-image3" src="./character/hutao.jpg"></div>
+                  <div class="tierPyro"><img id="3" class="tier-image3" src="./character/klee.webp"></div>
+                  <div class="tierPyro"><img id="4" class="tier-image3" src="./character/diluc.jpg"></div>
+                  <div class="tierPyro"><img id="5" class="tier-image3" src="./character/thoma.webp"></div>
+                  <div class="tierPyro"><img id="6" class="tier-image3" src="./character/yanfei.webp"></div>
+                  <div class="tierPyro"><img id="7" class="tier-image3" src="./character/xinyan.webp"></div>
+                  <div class="tierPyro"><img id="8" class="tier-image3" src="./character/bennett.webp"></div>
+                  <div class="tierPyro"><img id="9" class="tier-image3" src="./character/xiangling.webp"></div>
+                  <div class="tierPyro"><img id="10" class="tier-image3" src="./character/amber.jpg"></div>
+                  <div class="tierHydro"><img id="11" class="tier-image3" src="./character/nirou.webp"></div>
+                  <div class="tierHydro"><img id="12" class="tier-image3" src="./character/yelan.webp"></div>
+                  <div class="tierHydro"><img id="13" class="tier-image3" src="./character/kamisatoayato.jpg"></div>
+                  <div class="tierHydro"><img id="14" class="tier-image3" src="./character/sangonomiyakokomi.jpg"></div>
+                  <div class="tierHydro"><img id="15" class="tier-image3" src="./character/tartaglia.webp"></div>
+                  <div class="tierHydro"><img id="16" class="tier-image3" src="./character/mona.webp"></div>
+                  <div class="tierHydro"><img id="17" class="tier-image3" src="./character/candace.jpg"></div>
+                  <div class="tierHydro"><img id="18" class="tier-image3" src="./character/barbara.jpg"></div>
+                  <div class="tierHydro"><img id="19" class="tier-image3" src="./character/xingqiu.webp"></div>
+                  <div class="tierCyro"><img id="20" class="tier-image3" src="./character/shenhe.webp"></div>
+                  <div class="tierCyro"><img id="21" class="tier-image3" src="./character/kamisatoayaka.webp"></div>
+                  <div class="tierCyro"><img id="22" class="tier-image3" src="./character/eula.webp"></div>
+                  <div class="tierCyro"><img id="23" class="tier-image3" src="./character/ganyu.webp"></div>
+                  <div class="tierCyro"><img id="24" class="tier-image3" src="./character/qiqi.webp"></div>
+                  <div class="tierCyro"><img id="25" class="tier-image3" src="./character/aloy.webp"></div>
+                  <div class="tierCyro"><img id="26" class="tier-image3" src="./character/mika.webp"></div>
+                  <div class="tierCyro"><img id="27" class="tier-image3" src="./character/layla.webp"></div>
+                  <div class="tierCyro"><img id="28" class="tier-image3" src="./character/rosaria.webp"></div>
+                  <div class="tierCyro"><img id="29" class="tier-image3" src="./character/diona.webp"></div>
+                  <div class="tierCyro"><img id="30" class="tier-image3" src="./character/chongyun.webp"></div>
+                  <div class="tierCyro"><img id="31" class="tier-image3" src="./character/kaeya.jpg"></div>
+                  <div class="tierElectro"><img id="32" class="tier-image3" src="./character/cyno.jpg"></div>
+                  <div class="tierElectro"><img id="33" class="tier-image3" src="./character/yaemiko.webp"></div>
+                  <div class="tierElectro"><img id="34" class="tier-image3" src="./character/raidenshougun.jpg"></div>
+                  <div class="tierElectro"><img id="35" class="tier-image3" src="./character/keqing.jpg"></div>
+                  <div class="tierElectro"><img id="36" class="tier-image3" src="./character/dori.jpg"></div>
+                  <div class="tierElectro"><img id="37" class="tier-image3" src="./character/kukishinobu.jpg"></div>
+                  <div class="tierElectro"><img id="38" class="tier-image3" src="./character/kujousara.jpg"></div>
+                  <div class="tierElectro"><img id="39" class="tier-image3" src="./character/fischl.webp"></div>
+                  <div class="tierElectro"><img id="40" class="tier-image3" src="./character/beidou.webp"></div>
+                  <div class="tierElectro"><img id="41" class="tier-image3" src="./character/razor.jpg"></div>
+                  <div class="tierElectro"><img id="42" class="tier-image3" src="./character/lisa.jpg"></div>
+                  <div class="tierElectro"><img id="43" class="tier-image3" src="./character/travelarelectro.png"></div>
+                  <div class="tierAnemo"><img id="44" class="tier-image3" src="./character/wanderer.webp"></div>
+                  <div class="tierAnemo"><img id="45" class="tier-image3" src="./character/kazuhakaedehara.webp"></div>
+                  <div class="tierAnemo"><img id="46" class="tier-image3" src="./character/xiao.webp"></div>
+                  <div class="tierAnemo"><img id="47" class="tier-image3" src="./character/venti.jpg"></div>
+                  <div class="tierAnemo"><img id="48" class="tier-image3" src="./character/jean.jpg"></div>
+                  <div class="tierAnemo"><img id="49" class="tier-image3" src="./character/faruzan.webp"></div>
+                  <div class="tierAnemo"><img id="50" class="tier-image3" src="./character/shikanoinheizou.webp"></div>
+                  <div class="tierAnemo"><img id="51" class="tier-image3" src="./character/sayu.webp"></div>
+                  <div class="tierAnemo"><img id="52" class="tier-image3" src="./character/sucrose.webp"></div>
+                  <div class="tierAnemo"><img id="53" class="tier-image3" src="./character/traveraranemo.png"></div>
+                  <div class="tierDendro"><img id="54" class="tier-image3" src="./character/baizhu.webp"></div>
+                  <div class="tierDendro"><img id="55" class="tier-image3" src="./character/alhaitham.webp"></div>
+                  <div class="tierDendro"><img id="56" class="tier-image3" src="./character/nahida.webp"></div>
+                  <div class="tierDendro"><img id="57" class="tier-image3" src="./character/tighnari.webp"></div>
+                  <div class="tierDendro"><img id="58" class="tier-image3" src="./character/kirara.webp"></div>
+                  <div class="tierDendro"><img id="59" class="tier-image3" src="./character/kaveh.webp"></div>
+                  <div class="tierDendro"><img id="60" class="tier-image3" src="./character/yaoyao.webp"></div>
+                  <div class="tierDendro"><img id="61" class="tier-image3" src="./character/collei.webp"></div>
+                  <div class="tierDendro"><img id="62" class="tier-image3" src="./character/travelardendro.png"></div>
+                  <div class="tierGeo"><img id="63" class="tier-image3" src="./character/aratakiitto.webp"></div>
+                  <div class="tierGeo"><img id="64" class="tier-image3" src="./character/albedo.jpg"></div>
+                  <div class="tierGeo"><img id="65" class="tier-image3" src="./character/zhongli.webp"></div>
+                  <div class="tierGeo"><img id="66" class="tier-image3" src="./character/yunjin.webp"></div>
+                  <div class="tierGeo"><img id="67" class="tier-image3" src="./character/gorou.webp"></div>
+                  <div class="tierGeo"><img id="68" class="tier-image3" src="./character/noelle.jpg"></div>
+                  <div class="tierGeo"><img id="69" class="tier-image3" src="./character/ningguang.webp"></div>
+                  <div class="tierGeo"><img id="70" class="tier-image3" src="./character/travelergeo.png"></div>
                 </div>
               </div>
             </div>
-            <div id="Charindex-display"></div>
           </div>
+        </div>
+        <div id="Charindex-display"></div>
+      </div>
       <br>
-      <div class="item">
+      <div>
         <label for="weapon_name">武器</label>
         <br>
         <select id="weapon_index" required onchange="show_weapon_statsform()" size="4">
@@ -159,53 +161,55 @@
             <option value="4">R4</option>
             <option value="5">R5</option>
           </select>
-      <div>
-        <label class="open" for="pop-up">
-            <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px;">
-            <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px;">
-        </label>
-        <input type="checkbox" id="pop-up">
-        <div class="overlay">
-          <div class="window">
-            <div class="table-container">
-              <div class="flex-container1">
-                <div class="tier-cell"><img id="0" class="tier-image" src="./artifact/偉勲の花_5.png" onclick="changeImageClass(this, 0)"></div>
-                <div class="tier-cell"><img id="1" class="tier-image" src="./artifact/威厳の鰐_5.png" onclick="changeImageClass(this, 1)"></div>
-                <div class="tier-cell"><img id="2" class="tier-image" src="./artifact/栄花の期_5.png" onclick="changeImageClass(this, 2)"></div>
-                <div class="tier-cell"><img id="3" class="tier-image" src="./artifact/夏祭りの花_5.jpg" onclick="changeImageClass(this, 3)"></div>
-                <div class="tier-cell"><img id="4" class="tier-image" src="./artifact/火渡りの堅実_5.png" onclick="changeImageClass(this, 4)"></div>
-                <div class="tier-cell"><img id="5" class="tier-image" src="./artifact/海染の花_5.png" onclick="changeImageClass(this, 5)"></div>
-                <div class="tier-cell"><img id="6" class="tier-image" src="./artifact/楽団の朝の光.png" onclick="changeImageClass(this, 6)"></div>
-                <div class="tier-cell"><img id="7" class="tier-image" src="./artifact/旧貴族の花.png" onclick="changeImageClass(this, 7)"></div>
-                <div class="tier-cell"><img id="8" class="tier-image" src="./artifact/金メッキのコサージュ_5.png" onclick="changeImageClass(this, 8)"></div>
-                <div class="tier-cell"><img id="9" class="tier-image" src="./artifact/血染めの鉄の心_星5.png" onclick="changeImageClass(this, 9)"></div>
-                <div class="tier-cell"><img id="10" class="tier-image" src="./artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 10)"></div>
-                <div class="tier-cell"><img id="11" class="tier-image" src="./artifact/剣闘士の未練.png" onclick="changeImageClass(this, 11)"></div>
-                <div class="tier-cell"><img id="12" class="tier-image" src="./artifact/魂香の花_5.png" onclick="changeImageClass(this, 12)"></div>
-                <div class="tier-cell"><img id="13" class="tier-image" src="./artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 13)"></div>
-                <div class="tier-cell"><img id="14" class="tier-image" src="./artifact/吹雪の中の思い_5.png" onclick="changeImageClass(this, 14)"></div>
-                <div class="tier-cell"><img id="15" class="tier-image" src="./artifact/覇絆の花_5.png" onclick="changeImageClass(this, 15)"></div>
-                <div class="tier-cell"><img id="16" class="tier-image" src="./artifact/彼方にある少女の心_5.png" onclick="changeImageClass(this, 16)"></div>
-                <div class="tier-cell"><img id="17" class="tier-image" src="./artifact/魔女の炎の花_5.png" onclick="changeImageClass(this, 17)"></div>
-                <div class="tier-cell"><img id="18" class="tier-image" src="./artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 18)"></div>
-                <div class="tier-cell"><img id="19" class="tier-image" src="./artifact/無垢の花_5.png" onclick="changeImageClass(this, 19)"></div>
-                <div class="tier-cell"><img id="20" class="tier-image" src="./artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 20)"></div>
-                <div class="tier-cell"><img id="21" class="tier-image" src="./artifact/野花の記憶の草原_5.png" onclick="changeImageClass(this, 21)"></div>
-                <div class="tier-cell"><img id="22" class="tier-image" src="./artifact/悠久の盤岩_5.jpg" onclick="changeImageClass(this, 22)"></div>
-                <div class="tier-cell"><img id="23" class="tier-image" src="./artifact/雷鳥の憐み.png" onclick="changeImageClass(this, 23)"></div>
-                <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/雷討ちの心.png" onclick="changeImageClass(this, 24)"></div>
-                <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 25)"></div>
-                <div class="tier-cell"><img id="26" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 26)"></div>
-              </div>
+      </div>
+    </div>
+    <div>
+      <label class="open" for="pop-up">
+        <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px;">
+        <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px;">
+      </label>
+      <input type="checkbox" id="pop-up">
+      <div class="overlay">
+        <div class="window">
+          <div class="table-container">
+            <div class="flex-container1">
+              <div class="tier-cell"><img id="0" class="tier-image" src="./artifact/偉勲の花_5.png" onclick="changeImageClass(this, 0)"></div>
+              <div class="tier-cell"><img id="1" class="tier-image" src="./artifact/威厳の鰐_5.png" onclick="changeImageClass(this, 1)"></div>
+              <div class="tier-cell"><img id="2" class="tier-image" src="./artifact/栄花の期_5.png" onclick="changeImageClass(this, 2)"></div>
+              <div class="tier-cell"><img id="3" class="tier-image" src="./artifact/夏祭りの花_5.jpg" onclick="changeImageClass(this, 3)"></div>
+              <div class="tier-cell"><img id="4" class="tier-image" src="./artifact/火渡りの堅実_5.png" onclick="changeImageClass(this, 4)"></div>
+              <div class="tier-cell"><img id="5" class="tier-image" src="./artifact/海染の花_5.png" onclick="changeImageClass(this, 5)"></div>
+              <div class="tier-cell"><img id="6" class="tier-image" src="./artifact/楽団の朝の光.png" onclick="changeImageClass(this, 6)"></div>
+              <div class="tier-cell"><img id="7" class="tier-image" src="./artifact/旧貴族の花.png" onclick="changeImageClass(this, 7)"></div>
+              <div class="tier-cell"><img id="8" class="tier-image" src="./artifact/金メッキのコサージュ_5.png" onclick="changeImageClass(this, 8)"></div>
+              <div class="tier-cell"><img id="9" class="tier-image" src="./artifact/血染めの鉄の心_星5.png" onclick="changeImageClass(this, 9)"></div>
+              <div class="tier-cell"><img id="10" class="tier-image" src="./artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 10)"></div>
+              <div class="tier-cell"><img id="11" class="tier-image" src="./artifact/剣闘士の未練.png" onclick="changeImageClass(this, 11)"></div>
+              <div class="tier-cell"><img id="12" class="tier-image" src="./artifact/魂香の花_5.png" onclick="changeImageClass(this, 12)"></div>
+              <div class="tier-cell"><img id="13" class="tier-image" src="./artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 13)"></div>
+              <div class="tier-cell"><img id="14" class="tier-image" src="./artifact/吹雪の中の思い_5.png" onclick="changeImageClass(this, 14)"></div>
+              <div class="tier-cell"><img id="15" class="tier-image" src="./artifact/覇絆の花_5.png" onclick="changeImageClass(this, 15)"></div>
+              <div class="tier-cell"><img id="16" class="tier-image" src="./artifact/彼方にある少女の心_5.png" onclick="changeImageClass(this, 16)"></div>
+              <div class="tier-cell"><img id="17" class="tier-image" src="./artifact/魔女の炎の花_5.png" onclick="changeImageClass(this, 17)"></div>
+              <div class="tier-cell"><img id="18" class="tier-image" src="./artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 18)"></div>
+              <div class="tier-cell"><img id="19" class="tier-image" src="./artifact/無垢の花_5.png" onclick="changeImageClass(this, 19)"></div>
+              <div class="tier-cell"><img id="20" class="tier-image" src="./artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 20)"></div>
+              <div class="tier-cell"><img id="21" class="tier-image" src="./artifact/野花の記憶の草原_5.png" onclick="changeImageClass(this, 21)"></div>
+              <div class="tier-cell"><img id="22" class="tier-image" src="./artifact/悠久の盤岩_5.jpg" onclick="changeImageClass(this, 22)"></div>
+              <div class="tier-cell"><img id="23" class="tier-image" src="./artifact/雷鳥の憐み.png" onclick="changeImageClass(this, 23)"></div>
+              <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/雷討ちの心.png" onclick="changeImageClass(this, 24)"></div>
+              <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 25)"></div>
+              <div class="tier-cell"><img id="26" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 26)"></div>
             </div>
           </div>
         </div>
-        <div id="index-display"></div>
       </div>
+      <div id="index-display"></div>
     </div>
-<br>
+  </div>
+  <br>
 
- <br>
+  <br>
   <select id="clock_mainstatus">
     <option hidden>時計</option>
     <option value="0">HP％</option>
