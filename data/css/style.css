@@ -263,7 +263,6 @@ text-align: center;
 }
 
 .grid-item {
-  display: flex;
   justify-content: center; /* 横方向の中央揃え */
   align-items: center; /* 縦方向の中央揃え */
   border: 1px solid #000;
