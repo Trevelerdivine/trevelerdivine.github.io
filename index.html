@@ -878,172 +878,189 @@
     </tr>
   </tbody>
 </table>
-  </div>
-    <script>
-      let clickedImages = [];
-      let selectedImageIds = [20, 20];
-      let selectedCharId = "56";
-      let buttonscondition = [false, false, false, false, false, false, false];
-      let elements_name = ["tierPyro", "tierHydro", "tierCyro", "tierElectro", "tierAnemo", "tierDendro", "tierGeo"];
-      window.addEventListener("DOMContentLoaded", function() {
-        show_char_statsform();
-        show_weapon_statsform();
-        showTable('table1')
-      });
-      document.getElementById('status_setting').addEventListener('input', calculate_table_status);
-      document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
-      document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
-      document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
-      document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
-      function showTable(tableId) {
-      // すべての表コンテナを非表示にする
-      let tableContainers = document.getElementsByClassName("tablecontainer");
-      for (var i = 0; i < tableContainers.length; i++) {
-        tableContainers[i].classList.remove("active");
-      }
-      // 選択された表コンテナを表示する
-      document.getElementById(tableId).classList.add("active");
-    }
-
-function changeImageClass(image) {
-  if (clickedImages.length >= 2) {
-    const previousImage = clickedImages.shift();
-    previousImage.classList.remove("tier-image2");
-  }
-
-  if (!image.classList.contains("tier-image2")) {
-    image.classList.add("tier-image2");
-    clickedImages.push(image);
-  }
-}
-
-function handleImageSelection(images, popupImages, indexDisplay) {
-  const imageIdToSrc = {};
-
-  indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
-
-  function handleImageClick() {
-    const selectedImageId = this.getAttribute('id');
-    selectedImageIds.push(selectedImageId);
-
-    if (selectedImageIds.length > 2) {
-      selectedImageIds.shift();
-    }
-
-    selectedImageIds.forEach(function(selectedImageId, index) {
-      const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
-      popupImages[index].setAttribute('src', selectedImageSrc);
-      popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
-    });
-
-    indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
-  }
-
-  for (let i = 0; i < images.length; i++) {
-    const image = images[i];
-    const imageId = image.getAttribute('id');
-    const imageSrc = image.getAttribute('src');
-    imageIdToSrc[imageId] = imageSrc;
-    image.addEventListener('click', handleImageClick);
-  }
-}
-
-function handleCharSelection(images, popupImage, indexDisplay) {
-  const imageIdToSrc = {};
-
-  indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
-
-  function handleCharClick() {
-    const newSelectedCharId = this.getAttribute('id');
-
-    if (selectedCharId) {
-      const previousImage = document.getElementById(selectedCharId);
-      previousImage.classList.remove('selected');
-    }
-
-    selectedCharId = newSelectedCharId;
-
-    const selectedImageSrc = imageIdToSrc[selectedCharId] || '';
-    popupImage.setAttribute('src', selectedImageSrc);
-    popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
-
-    indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
-    const checkbox = document.getElementById('pop-up_char');
-    checkbox.checked = false;
+</div>
+<script>
+  let clickedImages = [];
+  let selectedImageIds = [20, 20];
+  let selectedCharId = "56";
+  let buttonscondition = [false, false, false, false, false, false, false];
+  let elements_name = ["tierPyro", "tierHydro", "tierCyro", "tierElectro", "tierAnemo", "tierDendro", "tierGeo"];
+  window.addEventListener("DOMContentLoaded", function() {
     show_char_statsform();
     show_weapon_statsform();
-    calculate_table_status();
-  }
-
-  for (let i = 0; i < images.length; i++) {
-    const image = images[i];
-    const imageId = image.getAttribute('id');
-    const imageSrc = image.getAttribute('src');
-    imageIdToSrc[imageId] = imageSrc;
-    image.addEventListener('click', handleCharClick);
-  }
-}
-
-
-function toggleElement(index) {
-  let all_elements = document.querySelectorAll(".tierPyro, .tierHydro, .tierCyro, .tierElectro, .tierAnemo, .tierDendro, .tierGeo");
-
-  if (buttonscondition[index]) 
-  {
-    for (let i = 0; i < all_elements.length; i++) 
-    {
-      all_elements[i].classList.remove('hidden');
-    }
-    buttonscondition.fill(false);
-  } 
-  else 
-  {
-    for (let i = 0; i < all_elements.length; i++) 
-    {
-      all_elements[i].classList.add('hidden');
-    }
-    let elements = document.getElementsByClassName(elements_name[index]);
-    for (let i = 0; i < elements.length; i++) 
-    {
-      elements[i].classList.remove('hidden');
-    }
-    buttonscondition.fill(false);
-    buttonscondition[index] = true;
-  }
-}
-
-window.addEventListener('DOMContentLoaded', function() {
-  const images = document.querySelectorAll('.overlay img');
-  const popupImages = document.querySelectorAll('.open img');
-  const indexDisplay = document.getElementById('index-display');
-  handleImageSelection(images, popupImages, indexDisplay);
-
-  // 最初の2つの画像を選択済みにする処理
-  let image = images[20];
-  changeImageClass(image);
-  changeImageClass(image);
-
-  const overlay = document.querySelector('.overlay');
-  overlay.addEventListener('click', function(event) {
-    if (!event.target.closest('.window')) {
-      const checkbox = document.getElementById('pop-up');
-      checkbox.checked = false;
-    }
+    showTable('table1')
   });
+  document.getElementById('status_setting').addEventListener('input', calculate_table_status);
+  document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
+  document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
+  document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
+  document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
+  function showTable(tableId)
+  {
+    // すべての表コンテナを非表示にする
+    let tableContainers = document.getElementsByClassName("tablecontainer");
+    for (var i = 0; i < tableContainers.length; i++) 
+    {
+      tableContainers[i].classList.remove("active");
+    }
+    // 選択された表コンテナを表示する
+    document.getElementById(tableId).classList.add("active");
+  }
 
-  const charImages = document.querySelectorAll('.char_images img');
-  const charPopupImage = document.querySelector('.open_char img');
-  const charIndexDisplay = document.getElementById('Charindex-display');
-  handleCharSelection(charImages, charPopupImage, charIndexDisplay);
+  function changeImageClass(image) 
+  {
+    if (clickedImages.length >= 2)
+    {
+      const previousImage = clickedImages.shift();
+      previousImage.classList.remove("tier-image2");
+    }
 
-  const charOverlay = document.querySelector('.overlay_char');
-  charOverlay.addEventListener('click', function(event) {
-    if (!event.target.closest('.window')) {
+    if (!image.classList.contains("tier-image2"))
+    {
+      image.classList.add("tier-image2");
+      clickedImages.push(image);
+    }
+  }
+
+  function handleImageSelection(images, popupImages, indexDisplay)
+  {
+    const imageIdToSrc = {};
+
+    indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
+
+    function handleImageClick()
+    {
+      const selectedImageId = this.getAttribute('id');
+      selectedImageIds.push(selectedImageId);
+
+      if (selectedImageIds.length > 2)
+      {
+        selectedImageIds.shift();
+      }
+
+      selectedImageIds.forEach(function(selectedImageId, index) {
+        const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
+        popupImages[index].setAttribute('src', selectedImageSrc);
+        popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+      });
+      indexDisplay.textContent = `選択された画像のID: ${selectedImageIds.join(', ')}`;
+    }
+
+    for (let i = 0; i < images.length; i++) 
+    {
+      const image = images[i];
+      const imageId = image.getAttribute('id');
+      const imageSrc = image.getAttribute('src');
+      imageIdToSrc[imageId] = imageSrc;
+      image.addEventListener('click', handleImageClick);
+    }
+  }
+
+  function handleCharSelection(images, popupImage, indexDisplay)
+  {
+    const imageIdToSrc = {};
+
+    indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
+
+    function handleCharClick() 
+    {
+      const newSelectedCharId = this.getAttribute('id');
+
+      if (selectedCharId)
+      {
+        const previousImage = document.getElementById(selectedCharId);
+        previousImage.classList.remove('selected');
+      }
+
+      selectedCharId = newSelectedCharId;
+
+      const selectedImageSrc = imageIdToSrc[selectedCharId] || '';
+      popupImage.setAttribute('src', selectedImageSrc);
+      popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
+
+      indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
       const checkbox = document.getElementById('pop-up_char');
       checkbox.checked = false;
+      show_char_statsform();
+      show_weapon_statsform();
+      calculate_table_status();
     }
+
+    for (let i = 0; i < images.length; i++)
+    {
+      const image = images[i];
+      const imageId = image.getAttribute('id');
+      const imageSrc = image.getAttribute('src');
+      imageIdToSrc[imageId] = imageSrc;
+      image.addEventListener('click', handleCharClick);
+    }
+  }
+
+
+  function toggleElement(index)
+  {
+    let all_elements = document.querySelectorAll(".tierPyro, .tierHydro, .tierCyro, .tierElectro, .tierAnemo, .tierDendro, .tierGeo");
+
+    if (buttonscondition[index]) 
+    {
+      for (let i = 0; i < all_elements.length; i++) 
+      {
+        all_elements[i].classList.remove('hidden');
+      }
+      buttonscondition.fill(false);
+    } 
+    else 
+    {
+      for (let i = 0; i < all_elements.length; i++) 
+      {
+        all_elements[i].classList.add('hidden');
+      }
+      let elements = document.getElementsByClassName(elements_name[index]);
+      for (let i = 0; i < elements.length; i++) 
+      {
+        elements[i].classList.remove('hidden');
+      }
+      buttonscondition.fill(false);
+      buttonscondition[index] = true;
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', function()
+  {
+    const images = document.querySelectorAll('.overlay img');
+    const popupImages = document.querySelectorAll('.open img');
+    const indexDisplay = document.getElementById('index-display');
+    handleImageSelection(images, popupImages, indexDisplay);
+
+    // 最初の2つの画像を選択済みにする処理
+    let image = images[20];
+    changeImageClass(image);
+    changeImageClass(image);
+
+    const overlay = document.querySelector('.overlay');
+    overlay.addEventListener('click', function(event)
+    {
+      if (!event.target.closest('.window')) 
+      {
+        const checkbox = document.getElementById('pop-up');
+        checkbox.checked = false;
+      }
+    });
+
+    const charImages = document.querySelectorAll('.char_images img');
+    const charPopupImage = document.querySelector('.open_char img');
+    const charIndexDisplay = document.getElementById('Charindex-display');
+    handleCharSelection(charImages, charPopupImage, charIndexDisplay);
+
+    const charOverlay = document.querySelector('.overlay_char');
+    charOverlay.addEventListener('click', function(event) {
+      if (!event.target.closest('.window'))
+      {
+        const checkbox = document.getElementById('pop-up_char');
+        checkbox.checked = false;
+      }
+    });
   });
-});
 
   </script>
 
