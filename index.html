@@ -604,281 +604,281 @@
     </div>
   </div>
   <br>
-<button id="calculateButton"  onclick="monte_carlo_calculate()">最適化計算</button>
+  <button id="calculateButton"  onclick="monte_carlo_calculate()">最適化計算</button>
 
-<div id="response" ><br></div>
+  <div id="response" ><br></div>
 
-<br>
-<div id="result"></div>
-<br>
-<button onclick="showTable('table1')">各ステータス</button>
-  <button onclick="showTable('table2')">スコア分布</button>
-  <button onclick="showTable('table3')">サブステータス分布</button>
-<br>
-<br>
-  <div id="table1" class="tablecontainer">
-    <!-- 表1の内容 -->
-  <table  class="status_table" style="table-layout: fixed">
-  <colgroup>
-    <col style="width: 30%;">
-    <col style="width: 35%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th></th>
-      <th>自己ステータス</th>
-      <th>最適化ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>HP</span>
-      </th>
-      <td id = my_result_hp>-</td>
-      <td id = appro_result_hp>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>攻撃力</span>
-      </th>
-      <td id = my_result_attck>-</td>
-      <td id = appro_result_attck>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>防御力</span>
-      </th>
-      <td id = my_result_deff>-</td>
-      <td id = appro_result_deff>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>元素熟知</span>
-      </th>
-      <td id = my_result_elm>-</td>
-      <td id = appro_result_elm>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>元素チャージ効率</span>
-      </th>
-      <td id = my_result_elm_charge>-</td>
-      <td id = appro_result_elm_charge>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>会心率</span>
-      </th>
-      <td id = my_result_cr>-</td>
-      <td id = appro_result_cr>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>会心ダメージ</span>
-      </th>
-      <td id = my_result_cd>-</td>
-      <td id = appro_result_cd>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>ダメージバフ</span>
-      </th>
-      <td id = my_result_dmg_buff>-</td>
-      <td id = appro_result_dmg_buff>-</td>
-    </tr>
-  </tbody>
-</table>
-  </div>
+  <br>
+  <div id="result"></div>
+  <br>
+  <button onclick="showTable('table1')">各ステータス</button>
+    <button onclick="showTable('table2')">スコア分布</button>
+    <button onclick="showTable('table3')">サブステータス分布</button>
+  <br>
+  <br>
+    <div id="table1" class="tablecontainer">
+      <!-- 表1の内容 -->
+    <table  class="status_table" style="table-layout: fixed">
+    <colgroup>
+      <col style="width: 30%;">
+      <col style="width: 35%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th></th>
+        <th>自己ステータス</th>
+        <th>最適化ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>HP</span>
+        </th>
+        <td id = my_result_hp>-</td>
+        <td id = appro_result_hp>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>攻撃力</span>
+        </th>
+        <td id = my_result_attck>-</td>
+        <td id = appro_result_attck>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>防御力</span>
+        </th>
+        <td id = my_result_deff>-</td>
+        <td id = appro_result_deff>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>元素熟知</span>
+        </th>
+        <td id = my_result_elm>-</td>
+        <td id = appro_result_elm>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>元素チャージ効率</span>
+        </th>
+        <td id = my_result_elm_charge>-</td>
+        <td id = appro_result_elm_charge>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>会心率</span>
+        </th>
+        <td id = my_result_cr>-</td>
+        <td id = appro_result_cr>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>会心ダメージ</span>
+        </th>
+        <td id = my_result_cd>-</td>
+        <td id = appro_result_cd>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>ダメージバフ</span>
+        </th>
+        <td id = my_result_dmg_buff>-</td>
+        <td id = appro_result_dmg_buff>-</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
 
-  <div id="table2" class="tablecontainer">
-    <!-- 表2の内容 -->
-  <table  class="status_table" style="table-layout: fixed">
-  <colgroup>
-    <col style="width: 21%;">
-    <col style="width: 19%;">
-    <col style="width: 19%;">
-    <col style="width: 19%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th></th>
-      <th>自己スコア分布</th>
-      <th>最適スコア分布</th>
-      <th>聖遺物スコア差</th>
-      <th>サブステ伸び回数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>聖遺物スコア</span>
-      </th>
-      <td id = my_af_score>-</td>
-      <td id = appro_af_score>-</td>
-      <td id = dlt_af_score>-</td>
-      <td id = count_af_score>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>HP</span>
-      </th>
-      <td id = my_hp_score>-</td>
-      <td id = appro_hp_score>-</td>
-      <td id = dlt_hp_score>-</td>
-      <td id = count_hp_score>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>攻撃力</span>
-      </th>
-      <td id = my_attck_score>-</td>
-      <td id = appro_attck_score>-</td>
-      <td id = dlt_attck_score>-</td>
-      <td id = count_attck_score>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>防御力</span>
-      </th>
-      <td id = my_deff_score>-</td>
-      <td id = appro_deff_score>-</td>
-      <td id = dlt_deff_score>-</td>
-      <td id = count_deff_score>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>元素熟知</span>
-      </th>
-      <td id = my_elm_score>-</td>
-      <td id = appro_elm_score>-</td>
-      <td id = dlt_elm_score>-</td>
-      <td id = count_elm_score>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>元素チャージ効率</span>
-      </th>
-      <td id = my_elm_charge_score>-</td>
-      <td id = appro_elm_charge_score>-</td>
-      <td id = dlt_elm_charge_score>-</td>
-      <td id = count_elm_charge_score>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>会心率</span>
-      </th>
-      <td id = my_cr_score>-</td>
-      <td id = appro_cr_score>-</td>
-      <td id = dlt_cr_score>-</td>
-      <td id = count_cr_score>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>会心ダメージ</span>
-      </th>
-      <td id = my_cd_score>-</td>
-      <td id = appro_cd_score>-</td>
-      <td id = dlt_cd_score>-</td>
-      <td id = count_cd_score>-</td>
-    </tr>
-  </tbody>
-</table>
-  </div>
+    <div id="table2" class="tablecontainer">
+      <!-- 表2の内容 -->
+    <table  class="status_table" style="table-layout: fixed">
+    <colgroup>
+      <col style="width: 21%;">
+      <col style="width: 19%;">
+      <col style="width: 19%;">
+      <col style="width: 19%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th></th>
+        <th>自己スコア分布</th>
+        <th>最適スコア分布</th>
+        <th>聖遺物スコア差</th>
+        <th>サブステ伸び回数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>聖遺物スコア</span>
+        </th>
+        <td id = my_af_score>-</td>
+        <td id = appro_af_score>-</td>
+        <td id = dlt_af_score>-</td>
+        <td id = count_af_score>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>HP</span>
+        </th>
+        <td id = my_hp_score>-</td>
+        <td id = appro_hp_score>-</td>
+        <td id = dlt_hp_score>-</td>
+        <td id = count_hp_score>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>攻撃力</span>
+        </th>
+        <td id = my_attck_score>-</td>
+        <td id = appro_attck_score>-</td>
+        <td id = dlt_attck_score>-</td>
+        <td id = count_attck_score>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>防御力</span>
+        </th>
+        <td id = my_deff_score>-</td>
+        <td id = appro_deff_score>-</td>
+        <td id = dlt_deff_score>-</td>
+        <td id = count_deff_score>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>元素熟知</span>
+        </th>
+        <td id = my_elm_score>-</td>
+        <td id = appro_elm_score>-</td>
+        <td id = dlt_elm_score>-</td>
+        <td id = count_elm_score>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>元素チャージ効率</span>
+        </th>
+        <td id = my_elm_charge_score>-</td>
+        <td id = appro_elm_charge_score>-</td>
+        <td id = dlt_elm_charge_score>-</td>
+        <td id = count_elm_charge_score>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>会心率</span>
+        </th>
+        <td id = my_cr_score>-</td>
+        <td id = appro_cr_score>-</td>
+        <td id = dlt_cr_score>-</td>
+        <td id = count_cr_score>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>会心ダメージ</span>
+        </th>
+        <td id = my_cd_score>-</td>
+        <td id = appro_cd_score>-</td>
+        <td id = dlt_cd_score>-</td>
+        <td id = count_cd_score>-</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
 
-  <div id="table3" class="tablecontainer">
-    <!-- 表3の内容 -->
-  <table  class="status_table" style="table-layout: fixed">
-  <colgroup>
-    <col style="width: 18%;">
-    <col style="width: 23%;">
-    <col style="width: 23%;">
-    <col style="width: 18%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th></th>
-      <th>自己サブステータス分布</th>
-      <th>最適サブステータス分布</th>
-      <th>サブステータス差</th>
-      <th>サブステ伸び回数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>聖遺物スコア</span>
-      </th>
-      <td id = my_af_score3>-</td>
-      <td id = appro_af_score3>-</td>
-      <td id = dlt_af_score3>-</td>
-      <td id = count_af_score3>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>HP</span>
-      </th>
-      <td id = my_af_hp>-</td>
-      <td id = appro_af_hp>-</td>
-      <td id = dlt_af_hp>-</td>
-      <td id = count_hp_score3>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>攻撃力</span>
-      </th>
-      <td id = my_af_attck>-</td>
-      <td id = appro_af_attck>-</td>
-      <td id = dlt_af_attck>-</td>
-      <td id = count_attck_score3>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>防御力</span>
-      </th>
-      <td id = my_af_deff>-</td>
-      <td id = appro_af_deff>-</td>
-      <td id = dlt_af_deff>-</td>
-      <td id = count_deff_score3>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>元素熟知</span>
-      </th>
-      <td id = my_af_elm>-</td>
-      <td id = appro_af_elm>-</td>
-      <td id = dlt_af_elm>-</td>
-      <td id = count_elm_score3>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>元素チャージ効率</span>
-      </th>
-      <td id = my_af_elm_charge>-</td>
-      <td id = appro_af_elm_charge>-</td>
-      <td id = dlt_af_elm_charge>-</td>
-      <td id = count_elm_charge_score3>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>会心率</span>
-      </th>
-      <td id = my_af_cr>-</td>
-      <td id = appro_af_cr>-</td>
-      <td id = dlt_af_cr>-</td>
-      <td id = count_cr_score3>-</td>
-    </tr>
-    <tr>
-      <th rowspan="1" style="text-align: left;">
-        <span>会心ダメージ</span>
-      </th>
-      <td id = my_af_cd>-</td>
-      <td id = appro_af_cd>-</td>
-      <td id = dlt_af_cd>-</td>
-      <td id = count_cd_score3>-</td>
-    </tr>
-  </tbody>
-</table>
+    <div id="table3" class="tablecontainer">
+      <!-- 表3の内容 -->
+    <table  class="status_table" style="table-layout: fixed">
+    <colgroup>
+      <col style="width: 18%;">
+      <col style="width: 23%;">
+      <col style="width: 23%;">
+      <col style="width: 18%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th></th>
+        <th>自己サブステータス分布</th>
+        <th>最適サブステータス分布</th>
+        <th>サブステータス差</th>
+        <th>サブステ伸び回数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>聖遺物スコア</span>
+        </th>
+        <td id = my_af_score3>-</td>
+        <td id = appro_af_score3>-</td>
+        <td id = dlt_af_score3>-</td>
+        <td id = count_af_score3>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>HP</span>
+        </th>
+        <td id = my_af_hp>-</td>
+        <td id = appro_af_hp>-</td>
+        <td id = dlt_af_hp>-</td>
+        <td id = count_hp_score3>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>攻撃力</span>
+        </th>
+        <td id = my_af_attck>-</td>
+        <td id = appro_af_attck>-</td>
+        <td id = dlt_af_attck>-</td>
+        <td id = count_attck_score3>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>防御力</span>
+        </th>
+        <td id = my_af_deff>-</td>
+        <td id = appro_af_deff>-</td>
+        <td id = dlt_af_deff>-</td>
+        <td id = count_deff_score3>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>元素熟知</span>
+        </th>
+        <td id = my_af_elm>-</td>
+        <td id = appro_af_elm>-</td>
+        <td id = dlt_af_elm>-</td>
+        <td id = count_elm_score3>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>元素チャージ効率</span>
+        </th>
+        <td id = my_af_elm_charge>-</td>
+        <td id = appro_af_elm_charge>-</td>
+        <td id = dlt_af_elm_charge>-</td>
+        <td id = count_elm_charge_score3>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>会心率</span>
+        </th>
+        <td id = my_af_cr>-</td>
+        <td id = appro_af_cr>-</td>
+        <td id = dlt_af_cr>-</td>
+        <td id = count_cr_score3>-</td>
+      </tr>
+      <tr>
+        <th rowspan="1" style="text-align: left;">
+          <span>会心ダメージ</span>
+        </th>
+        <td id = my_af_cd>-</td>
+        <td id = appro_af_cd>-</td>
+        <td id = dlt_af_cd>-</td>
+        <td id = count_cd_score3>-</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <script>
   let clickedImages = [];

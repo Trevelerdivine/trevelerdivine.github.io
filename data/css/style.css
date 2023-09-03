@@ -260,7 +260,6 @@ text-align: center;
 .wrapper {
   display: grid;
   place-content: center;
-  place-items: center start; /* 水平方向は中央揃え、垂直方向は上揃えに設定 */
   grid-template-columns: 1fr 1fr;
 }
 
