@@ -259,8 +259,8 @@ text-align: center;
 
 .wrapper {
   display: grid;
-  place-content: center;
-  place-items: center;
+  justify-content: center; /* 横方向の中央揃え */
+  align-items: center; /* 縦方向の中央揃え */
   grid-template-columns: 1fr 1fr;
 }
 
