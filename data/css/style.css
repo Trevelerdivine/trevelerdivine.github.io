@@ -286,7 +286,7 @@ text-align: center;
 
 .team-buff-form th,
 .team-buff-form td {
-  padding: 5px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -343,7 +343,7 @@ text-align: center;
 
 /* 固定バフと変動バフの間隔を調整 */
 .team-buff-form td:nth-child(3) {
-  width: 10%;
+  width: 1%;
 }
 
 .af-buff-form {
