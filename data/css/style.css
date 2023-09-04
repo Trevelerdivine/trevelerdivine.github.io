@@ -266,6 +266,9 @@ text-align: center;
   justify-items: center; /* 水平方向に中央に配置 */
 }
 
+
+
+
 .team-buff-form {
   max-width: 500px;
   margin: 0;
@@ -424,7 +427,7 @@ text-align: center;
 }
 
 /* スマートフォンの場合のスタイル */
-@media only screen and (max-width : 500px){
+@media only screen and (max-width : 600px){
   .rayout {
     flex-direction: column; /* 縦方向に並べるように変更 */
   }
