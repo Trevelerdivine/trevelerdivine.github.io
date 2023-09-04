@@ -1,4 +1,4 @@
-/* 共通のスタイル */
+
 .tablestyle {
   display: none;
   width: 100%; /* デバイスの横幅に合わせる */
@@ -270,7 +270,7 @@ text-align: center;
 
 @media screen and (max-width: 600px) {
   .status_table {
-      width:300px; /* テーブルの幅をウィンドウ幅の100%に設定 */
+      width:600px; /* テーブルの幅をウィンドウ幅の100%に設定 */
       overflow-x: auto; /* 横スクロールを有効にする */
   }
 }
