@@ -991,6 +991,11 @@
         document.getElementById("set_eff1").textContent = `2セット効果: ${set_eff1}`;
         document.getElementById("set_eff2").textContent = `2セット効果: ${set_eff2}`;
       }
+      selectedImageIds.forEach(function(selectedImageId, index) {
+        const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
+        popupImages[index].setAttribute('src', selectedImageSrc);
+        popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+      });
     }
 
     for (let i = 0; i < images.length; i++) 
