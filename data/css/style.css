@@ -38,6 +38,23 @@ table.calc_result th {
   width: 10%; /* PCでは10枚、スマートフォンでは14.28% */
 }
 
+.table-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f5f2df;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: scroll;
+}
+
+.table-container1 {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f5f2df;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* キャラクター選択テーブルのスタイル */
 .char_select {
   width: 100%;
@@ -452,6 +469,32 @@ text-align: center;
     }
     .flex-container1 > div {
       width: 20%; /* スマートフォンでは7列 */
+    }
+  
+    .table-container1 {
+      width: 300px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      overflow-y: scroll; /* 縦方向のスクロールバーを表示 */
+      max-height: 80vh; /* ウィンドウの80%の高さまでスクロール可能 */
+      overflow: auto; /* コンテンツがスクロール可能なときのみスクロールバーを表示 */
+    }
+  
+    .table-container1::-webkit-scrollbar {
+      width: 0px; /* スクロールバーの幅 */
+    }
+  
+    .table-container {
+      width: 300px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      overflow-y: scroll; /* 縦方向のスクロールバーを表示 */
+      max-height: 80vh; /* ウィンドウの80%の高さまでスクロール可能 */
+      overflow: auto; /* コンテンツがスクロール可能なときのみスクロールバーを表示 */
+    }
+  
+    .table-container::-webkit-scrollbar {
+      width: 0px; /* スクロールバーの幅 */
     }
   
     .element-image {
