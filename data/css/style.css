@@ -4,6 +4,10 @@
   width: 100%; /* デバイスの横幅に合わせる */
   overflow-x: auto; /* 横スクロールを有効にする */
 }
+.table_size{
+  width: 100%; /* デバイスの横幅に合わせる */
+  overflow-x: auto; /* 横スクロールを有効にする */
+}
 
 .active {
   display: block;
