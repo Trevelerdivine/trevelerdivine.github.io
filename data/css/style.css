@@ -427,83 +427,68 @@ text-align: center;
 }
 
 /* スマートフォンの場合のスタイル */
-@media only screen and (max-width : 600px){
+/* スクリーン幅が600px以下の場合のスタイル */
+@media only screen and (max-width: 600px) {
+  /* レイアウトのスタイル */
   .rayout {
-    flex-direction: column; /* 縦方向に並べるように変更 */
+    flex-direction: column;
   }
 
+  /* アイテムのスタイル */
   .item {
-    flex: none; /* フレックスアイテムの伸縮を解除 */
-    width: 100%; /* 要素を100%の幅に設定 */
-  }
-
-  .team-buff-form {
-    max-width: 100%;
-    margin: 0;
-    background-color: #E6E6FA;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 2px;
+    flex: none;
     width: 100%;
-    .af-buff-form td:nth-child(3) {
-      width: 30%;
   }
-}
 
+  /* フォームのスタイル */
+  .team-buff-form,
   .af-buff-form {
     max-width: 100%;
     margin: 0;
-    background-color: #FEDCBD;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 5px;
+    padding: 2px 5px;
     width: 100%;
-    }
+  }
 
-    .char_select {
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-    .flex-container1 > div {
-      width: 20%; /* スマートフォンでは7列 */
-    }
-  
-    .table-container1 {
-      width: 300px;
-      margin: 0 auto;
-      border: 1px solid #ccc;
-      overflow-y: scroll; /* 縦方向のスクロールバーを表示 */
-      max-height: 80vh; /* ウィンドウの80%の高さまでスクロール可能 */
-      overflow: auto; /* コンテンツがスクロール可能なときのみスクロールバーを表示 */
-    }
-  
-    .table-container1::-webkit-scrollbar {
-      width: 0px; /* スクロールバーの幅 */
-    }
-  
-    .table-container {
-      width: 300px;
-      margin: 0 auto;
-      border: 1px solid #ccc;
-      overflow-y: scroll; /* 縦方向のスクロールバーを表示 */
-      max-height: 80vh; /* ウィンドウの80%の高さまでスクロール可能 */
-      overflow: auto; /* コンテンツがスクロール可能なときのみスクロールバーを表示 */
-    }
-  
-    .table-container::-webkit-scrollbar {
-      width: 0px; /* スクロールバーの幅 */
-    }
-  
-    .element-image {
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      padding-left: 5px;
-      padding-right: 3px;
-    }
+  /* キャラクター選択のスタイル */
+  .char_select {
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .flex-container1 > div {
+    width: 20%;
+  }
 
-    .wrapper {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
+  /* テーブルコンテナのスタイル */
+  .table-container1,
+  .table-container {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    max-height: 80vh;
+    overflow-y: scroll;
+    overflow: auto;
+  }
+
+  /* スクロールバーのスタイル */
+  .table-container1::-webkit-scrollbar,
+  .table-container::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  /* 要素画像のスタイル */
+  .element-image {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 3px;
+  }
+
+  /* グリッドレイアウトのスタイル */
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
