@@ -963,8 +963,8 @@
     let set_eff1;
     let set_eff2;
 
-    set_eff1 = data.af_list[selectedImageIds[0]]["2セット効果"];
-    set_eff2 = data.af_list[selectedImageIds[0]]["4セット効果"];
+    set_eff1 = data[af_list[selectedImageIds[0]]]["2セット効果"];
+    set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
     document.getElementById("set_eff1").textContent = `2セット効果: ${set_eff1}`;
     document.getElementById("set_eff2").textContent = `4セット効果: ${set_eff2}`;
     function handleImageClick()
@@ -979,15 +979,15 @@
 
       if (selectedImageId[0] == selectedImageId[1])
       {
-        set_eff1 = data.af_list[selectedImageIds[0]]["2セット効果"];
-        set_eff2 = data.af_list[selectedImageIds[0]]["4セット効果"];
+        set_eff1 = data[af_list[selectedImageIds[0]]]["2セット効果"];
+        set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
         document.getElementById("set_eff1").textContent = `2セット効果: ${set_eff1}`;
         document.getElementById("set_eff2").textContent = `4セット効果: ${set_eff2}`;
       }
       else
       {
-        set_eff1 = data.af_list[selectedImageIds[0]]["2セット効果"];
-        set_eff2 = data.af_list[selectedImageIds[1]]["2セット効果"];
+        set_eff1 = data[af_list[selectedImageIds[0]]]["2セット効果"];
+        set_eff2 = data[af_list[selectedImageIds[1]]]["2セット効果"];
         document.getElementById("set_eff1").textContent = `2セット効果: ${set_eff1}`;
         document.getElementById("set_eff2").textContent = `2セット効果: ${set_eff2}`;
       }
