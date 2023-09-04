@@ -262,7 +262,6 @@ text-align: center;
 
 .wrapper {
   display: grid;
-  place-content: center;
   grid-template-columns: 1fr 1fr;
   justify-items: center; /* 水平方向に中央に配置 */
 }
