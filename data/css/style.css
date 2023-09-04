@@ -342,6 +342,7 @@ text-align: center;
 
 .af-buff-form {
   max-width: 500px;
+  width: 100%;
   margin: 0;
   background-color: #FEDCBD;
   border-radius: 10px;
@@ -405,11 +406,11 @@ text-align: center;
   justify-content: center;
 }
 
-
 /* 固定バフと変動バフの間隔を調整 */
 .af-buff-form td:nth-child(3) {
   width: 10%;
 }
+
 
 .rayout {
   display: flex; /* 要素をフレックスコンテナとして表示 */
