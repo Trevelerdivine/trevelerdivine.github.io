@@ -1,6 +1,8 @@
 /* 共通のスタイル */
-.tablecontainer {
+.tablestyle {
   display: none;
+  width: 100%; /* デバイスの横幅に合わせる */
+  overflow-x: auto; /* 横スクロールを有効にする */
 }
 
 .active {
@@ -283,7 +285,7 @@ text-align: center;
 
 .team-buff-form th,
 .team-buff-form td {
-  padding: 15px;
+  padding: 5px;
   text-align: center;
 }
 
