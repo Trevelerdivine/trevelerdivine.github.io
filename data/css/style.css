@@ -5,12 +5,6 @@
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
-.status_tablestyle
-{
-  width: 100%; /* デバイスの横幅に合わせる */
-  overflow-x: auto; /* 横スクロールを有効にする */
-}
-
 .active {
   display: block;
 }
@@ -218,7 +212,8 @@ display: none; /* label でコントロールするので input は非表示に 
   border-collapse: collapse;
   margin: 0 left;
   padding: 0;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
 }
 
 .status_table tr {
@@ -280,6 +275,7 @@ text-align: center;
   background-color: #E6E6FA;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
 }
 
 .team-buff-form th,
@@ -451,6 +447,7 @@ text-align: center;
     margin: 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2px 5px;
   }
 
   /* キャラクター選択のスタイル */
