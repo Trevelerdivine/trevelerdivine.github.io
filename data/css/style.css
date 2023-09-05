@@ -5,6 +5,12 @@
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
+.status_tablestyle
+{
+  width: 100%; /* デバイスの横幅に合わせる */
+  overflow-x: auto; /* 横スクロールを有効にする */
+}
+
 .active {
   display: block;
 }
@@ -212,8 +218,7 @@ display: none; /* label でコントロールするので input は非表示に 
   border-collapse: collapse;
   margin: 0 left;
   padding: 0;
-  max-width: 600px;
-  width: 100%;
+  width: 600px;
 }
 
 .status_table tr {
