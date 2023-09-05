@@ -489,6 +489,6 @@ text-align: center;
   .wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: left; /* 水平方向に中央に配置 */
+    justify-items: center; /* 水平方向に中央に配置 */
   }
 }
