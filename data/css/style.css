@@ -263,7 +263,6 @@ text-align: center;
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-items: center; /* 水平方向に中央に配置 */
 }
 
 
@@ -429,7 +428,7 @@ text-align: center;
 
 /* スマートフォンの場合のスタイル */
 /* スクリーン幅が600px以下の場合のスタイル */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   /* レイアウトのスタイル */
   .rayout {
     flex-direction: column;
@@ -444,12 +443,11 @@ text-align: center;
   /* フォームのスタイル */
   .team-buff-form,
   .af-buff-form {
-    max-width: 100%;
+    width: 100%;
     margin: 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 2px 5px;
-    width: 100%;
   }
 
   /* キャラクター選択のスタイル */
@@ -491,5 +489,6 @@ text-align: center;
   .wrapper {
     display: grid;
     grid-template-columns: 1fr;
+    justify-items: left; /* 水平方向に中央に配置 */
   }
 }
