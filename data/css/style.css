@@ -280,7 +280,6 @@ text-align: center;
   background-color: #E6E6FA;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
 }
 
 .team-buff-form th,
@@ -452,7 +451,6 @@ text-align: center;
     margin: 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 2px 5px;
   }
 
   /* キャラクター選択のスタイル */
