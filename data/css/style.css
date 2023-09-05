@@ -263,6 +263,7 @@ text-align: center;
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-items: center; /* 水平方向に中央に配置 */
 }
 
 
@@ -443,11 +444,12 @@ text-align: center;
   /* フォームのスタイル */
   .team-buff-form,
   .af-buff-form {
-    width: 100%;
+    max-width: 100%;
     margin: 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 2px 5px;
+    width: 100%;
   }
 
   /* キャラクター選択のスタイル */
@@ -489,6 +491,5 @@ text-align: center;
   .wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: left; /* 水平方向に中央に配置 */
   }
 }
