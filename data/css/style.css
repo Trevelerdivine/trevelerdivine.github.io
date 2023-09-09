@@ -217,8 +217,7 @@ display: none; /* label でコントロールするので input は非表示に 
   border-collapse: collapse;
   margin: 0 left;
   padding: 0;
-  max-width: 600px;
-  width: 100%;
+  width: 600px;
 }
 
 .status_table tr {
