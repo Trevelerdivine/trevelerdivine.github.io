@@ -5,6 +5,11 @@
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
+.tablestyle1 {
+  width: 100%; /* デバイスの横幅に合わせる */
+  overflow-x: auto; /* 横スクロールを有効にする */
+}
+
 .active {
   display: block;
 }
