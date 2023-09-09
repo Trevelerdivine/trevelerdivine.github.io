@@ -232,12 +232,11 @@ text-align: center;
 
 .status_table th,
 .status_table td {
-  padding: .35em 1em;
+  padding: 6px 4px;
 }
 
 .status_table thead th {
   font-size: .85em;
-  padding: 1em;
 }
 
 .status_table thead tr{
