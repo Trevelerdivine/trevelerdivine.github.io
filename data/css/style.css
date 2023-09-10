@@ -6,7 +6,7 @@
 }
 
 .tablestyle1 {
-  width: 100%; /* デバイスの横幅に合わせる */
+  width: 70%; /* デバイスの横幅に合わせる */
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
@@ -475,7 +475,7 @@ text-align: center;
   /* スクロールバーのスタイル */
   .table-container1::-webkit-scrollbar,
   .table-container::-webkit-scrollbar {
-    width: 4px;
+    width: 10px;
   }
 
   /* 要素画像のスタイル */
