@@ -192,8 +192,8 @@
     </div>
     <div>
       <label class="open" for="pop-up" style="display: inline-block;">
-        <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
-        <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+        <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+        <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
       </label>
       <select id="clock_mainstatus">
         <option hidden>時計</option>
@@ -933,6 +933,7 @@
   document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
   document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
   document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
+  document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
 
 
   function showTable(tableId)
