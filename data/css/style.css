@@ -269,6 +269,11 @@ text-align: center;
   grid-template-columns: 1fr 1fr;
 }
 
+.af_img {
+  justify-content: center; /* 水平方向に中央に配置 */
+  align-items: center; /* 垂直方向に中央に配置 */
+}
+
 
 
 
