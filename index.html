@@ -195,6 +195,33 @@
         <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
         <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
       </label>
+      <select id="clock_mainstatus">
+        <option hidden>時計</option>
+        <option value="0">HP％</option>
+        <option value="4">攻撃力％</option>
+        <option value="1">防御力％</option>
+        <option value="2" selected>元素熟知</option>
+        <option value="3">元素チャージ効率</option>
+      </select>
+      <select id="goblet_mainstatus">
+        <option hidden>杯</option>
+        <option value="0">HP％</option>
+        <option value="4">攻撃力％</option>
+        <option value="1">防御力％</option>
+        <option value="2" selected>元素熟知</option>
+        <option value="7">元素ダメージバフ</option> 
+        <option value="9">物理ダメージバフ</option> 
+
+      </select>
+      <select id="circlet_mainstatus">
+        <option hidden>冠</option>
+        <option value="0">HP％</option>
+        <option value="4">攻撃力％</option>
+        <option value="1">防御力％</option>
+        <option value="2">元素熟知</option>
+        <option value="5">会心率</option>  
+        <option value="6" selected>会心ダメージ</option>  
+      </select>
       <input type="checkbox" id="pop-up">
       <div class="overlay">
         <div class="window">
@@ -236,33 +263,6 @@
         <p id="set_eff1">セット効果1: </p>
         <p id="set_eff2">セット効果2: </p>
     </fieldset>
-      <select id="clock_mainstatus">
-        <option hidden>時計</option>
-        <option value="0">HP％</option>
-        <option value="4">攻撃力％</option>
-        <option value="1">防御力％</option>
-        <option value="2" selected>元素熟知</option>
-        <option value="3">元素チャージ効率</option>
-      </select>
-      <select id="goblet_mainstatus">
-        <option hidden>杯</option>
-        <option value="0">HP％</option>
-        <option value="4">攻撃力％</option>
-        <option value="1">防御力％</option>
-        <option value="2" selected>元素熟知</option>
-        <option value="7">元素ダメージバフ</option> 
-        <option value="9">物理ダメージバフ</option> 
-
-      </select>
-      <select id="circlet_mainstatus">
-        <option hidden>冠</option>
-        <option value="0">HP％</option>
-        <option value="4">攻撃力％</option>
-        <option value="1">防御力％</option>
-        <option value="2">元素熟知</option>
-        <option value="5">会心率</option>  
-        <option value="6" selected>会心ダメージ</option>  
-      </select>
     </div>
   </div>
   <br>
@@ -933,9 +933,6 @@
   document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
   document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
   document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
-  document.getElementById('clock_mainstatus').addEventListener('change', calculate_table_status);
-  document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
-  document.getElementById('circlet_mainstatus').addEventListener('change', calculate_table_status);
 
 
   function showTable(tableId)
