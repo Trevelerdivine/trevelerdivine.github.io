@@ -6,7 +6,7 @@
 }
 
 .tablestyle1 {
-  width: 70%; /* デバイスの横幅に合わせる */
+  width: 100%; /* デバイスの横幅に合わせる */
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
@@ -489,7 +489,7 @@ text-align: center;
 
   /* グリッドレイアウトのスタイル */
   .wrapper {
-    display: grid;
+    display: block;
     grid-template-columns: 100%;
     justify-items: left; /* 水平方向に中央に配置 */
   }
