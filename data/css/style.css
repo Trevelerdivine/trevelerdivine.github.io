@@ -6,7 +6,7 @@
 }
 
 .tablestyle1 {
-  width: 100%; /* デバイスの横幅に合わせる */
+  max-width: 100%; /* デバイスの横幅に合わせる */
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
@@ -491,6 +491,6 @@ text-align: center;
   .wrapper {
     display: grid;
     grid-template-columns: 100%;
-    justify-items: left; /* 水平方向に中央に配置 */
+    justify-items: center; /* 水平方向に中央に配置 */
   }
 }
