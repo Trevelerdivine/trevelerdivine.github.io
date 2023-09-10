@@ -490,7 +490,7 @@ text-align: center;
   /* グリッドレイアウトのスタイル */
   .wrapper {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     justify-items: left; /* 水平方向に中央に配置 */
   }
 }
