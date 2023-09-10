@@ -6,7 +6,7 @@
 }
 
 .tablestyle1 {
-  max-width: 100%; /* デバイスの横幅に合わせる */
+  width: 100%; /* デバイスの横幅に合わせる */
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
@@ -475,7 +475,7 @@ text-align: center;
   /* スクロールバーのスタイル */
   .table-container1::-webkit-scrollbar,
   .table-container::-webkit-scrollbar {
-    width: 0px;
+    width: 4px;
   }
 
   /* 要素画像のスタイル */
@@ -491,6 +491,6 @@ text-align: center;
   .wrapper {
     display: grid;
     grid-template-columns: 100%;
-    justify-items: center; /* 水平方向に中央に配置 */
+    justify-items: left; /* 水平方向に中央に配置 */
   }
 }
