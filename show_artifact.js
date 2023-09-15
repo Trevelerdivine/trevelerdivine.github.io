@@ -10,11 +10,11 @@ async function show_artifact()
         {
             traits = [
                 {
-                id: "traitCheckbox1",
+                id: "af0_2",
                 label: "剣闘士のフィナーレ2"
                 },
                 {
-                id: "traitCheckbox2",
+                id: "af0_4",
                 label: "剣闘士のフィナーレ4"
                 }
             ];
@@ -46,11 +46,11 @@ async function show_artifact()
         {
             traits = [
                 {
-                id: "traitCheckbox1",
+                id: "af1_2",
                 label: "大地を流浪する楽団2"
                 },
                 {
-                id: "traitCheckbox2",
+                id: "af1_4",
                 label: "大地を流浪する楽団4"
                 }
             ];
@@ -82,11 +82,11 @@ async function show_artifact()
         {
             traits = [
                 {
-                id: "traitCheckbox1",
+                id: "af2_2",
                 label: "旧貴族のしつけ2"
                 },
                 {
-                id: "traitCheckbox2",
+                id: "af2_4",
                 label: "旧貴族のしつけ4"
                 }
             ];
