@@ -2,7 +2,7 @@ async function show_artifact() {
     let traits;
     let traitCheckbox;
     let traitLabel;
-    artifactInfo.innerHTML = "";
+    artifact_checkbox.innerHTML = "";
     for (let i = 0; i < 2; i++)
     {
         if (selectedImageIds[i] === "0") 
@@ -37,8 +37,8 @@ async function show_artifact() {
                 traitLabel.textContent = traits[1].label;
             }
 
-            artifactInfo.appendChild(traitCheckbox);
-            artifactInfo.appendChild(traitLabel);
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
         }
         
         if (selectedImageIds[i] === "1") 
@@ -73,8 +73,8 @@ async function show_artifact() {
                 traitLabel.textContent = traits[1].label;
             }
 
-            artifactInfo.appendChild(traitCheckbox);
-            artifactInfo.appendChild(traitLabel);
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
         }
 
         if (selectedImageIds[i] === "1") 
@@ -109,8 +109,8 @@ async function show_artifact() {
                 traitLabel.textContent = traits[1].label;
             }
 
-            artifactInfo.appendChild(traitCheckbox);
-            artifactInfo.appendChild(traitLabel);
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
         }
     }
   }
