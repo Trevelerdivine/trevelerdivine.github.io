@@ -39,7 +39,6 @@ async function show_char_statsform()
     team_cd_form.style.display = "none";
     
     const characterInfo = document.getElementById("characterInfo");
-    const checkboxStates = []; // チェックボックスの状態を格納する配列
     characterInfo.style.display = "block";
 
     characterInfo.innerHTML = "";

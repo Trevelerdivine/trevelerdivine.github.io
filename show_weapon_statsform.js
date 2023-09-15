@@ -22,7 +22,6 @@ async function show_weapon_statsform() {
 
   const weaponSelect = document.getElementById("weapon_index");
   const selectedweapon = weaponSelect.value;
-  const checkboxStates = []; // チェックボックスの状態を格納する配列
   weaponInfo.style.display = "block";
 
   weaponInfo.innerHTML = "";
