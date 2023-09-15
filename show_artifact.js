@@ -1,4 +1,5 @@
-async function show_artifact() {
+async function show_artifact() 
+{
     let traits;
     let traitCheckbox;
     let traitLabel;
@@ -77,7 +78,7 @@ async function show_artifact() {
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] === "1") 
+        if (selectedImageIds[i] === "2") 
         {
             traits = [
                 {
@@ -111,6 +112,10 @@ async function show_artifact() {
 
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
+        }
+        if (i === 0)
+        {
+            weaponInfo.appendChild(document.createElement("br"));
         }
     }
   }
