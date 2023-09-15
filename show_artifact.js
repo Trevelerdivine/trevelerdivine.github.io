@@ -115,7 +115,7 @@ async function show_artifact()
         }
         if (i === 0)
         {
-            weaponInfo.appendChild(document.createElement("br"));
+            artifact_checkbox.appendChild(document.createElement("br"));
         }
     }
   }
