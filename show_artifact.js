@@ -1,135 +1,117 @@
-async function show_weapon_statsform() {
-    await calculate_depend_status();
-    let weaponInfo = document.getElementById("weaponInfo");
-    let hp_form = document.getElementById("hp_form");
-    let attck_form = document.getElementById("attck_form");
-    let deff_form = document.getElementById("deff_form");
-    let elm_form = document.getElementById("elm_form");
-    let elm_charge_form = document.getElementById("elm_charge_form");
-    let cr_form = document.getElementById("cr_form");
-    let cd_form = document.getElementById("cd_form");
-    const weapon_rank = document.getElementById("weapon_rank").value;
-  
-    hp_form.style.display = "none"; // HPフォームを非表示
-    attck_form.style.display = "none"; // 攻撃力フォームを非表示
-    deff_form.style.display = "none"; // 防御力フォームを非表示
-    elm_form.style.display = "none"; // 元素熟知を非表示
-    elm_charge_form.style.display = "none"; // 元素チャージ効率フォームを非表示
-    cr_form.style.display = "none"; // 会心率フォームを非表示
-    cd_form.style.display = "none"; // 会心ダメージフォームを非表示
-  
-    weaponInfo.style.display = "block";
-  
-    weaponInfo.innerHTML = "";
-  
-    if (selectedweapon === "0") {
-      const traits = [
+async function show_artifact() {
+    let traits;
+    let traitCheckbox;
+    let traitLabel;
+    artifactInfo.style.display = "block";
+    artifactInfo.innerHTML = "";
+    for (let i = 0; i < 2; i++)
+    {
+        if (selectedImageIds[i] === "0") 
         {
-          id: "traitCheckbox",
-          label: "千夜の暁歌：チームキャラの元素に応じてバフ"
+            traits = [
+                {
+                id: "traitCheckbox1",
+                label: "剣闘士のフィナーレ2"
+                },
+                {
+                id: "traitCheckbox2",
+                label: "剣闘士のフィナーレ4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifactInfo.appendChild(traitCheckbox);
+            artifactInfo.appendChild(traitLabel);
         }
-      ];
-    
-      const traitCheckbox = document.createElement("input");
-      traitCheckbox.type = "checkbox";
-      traitCheckbox.id = traits[0].id;
-      traitCheckbox.value = traits[0].id;
-      traitCheckbox.checked = true;
-    
-      const traitLabel = document.createElement("label");
-      traitLabel.htmlFor = traits[0].id;
-      traitLabel.textContent = traits[0].label;
-    
-      const textNode1 = document.createTextNode("　同じ元素のキャラ数　　");
-      const textNode2 = document.createTextNode("　異なる元素のキャラ数　");
-      const traitContainer = document.createElement("div"); // テキストとチェックボックスを包むコンテナ要素
-    
-      traitContainer.classList.add("checkbox-container");
-      traitContainer.appendChild(traitCheckbox);
-      traitContainer.appendChild(traitLabel);
-    
-      const selectList1 = createSelectList("traitSelect1", 3); // 1つ目のプルダウンリストを生成
-      const selectList2 = createSelectList("traitSelect2", 3); // 2つ目のプルダウンリストを生成
-    
-      weaponInfo.appendChild(traitContainer);
-      weaponInfo.appendChild(textNode1);
-      weaponInfo.appendChild(selectList1);
-      weaponInfo.appendChild(document.createElement("br"));
-      weaponInfo.appendChild(textNode2);
-      weaponInfo.appendChild(selectList2);
-    
-  
-    
-      // 初期状態でチェックされている場合、プルダウンリストを表示
-      if (traitCheckbox.checked) {
-        selectList1.classList.remove("hidden");
-        selectList2.classList.remove("hidden");
-      } else {
-        selectList1.classList.add("hidden");
-        selectList2.classList.add("hidden");
-      }
-    
-      traitCheckbox.addEventListener("change", function() {
-        if (traitCheckbox.checked) {
-          selectList1.classList.remove("hidden");
-          selectList2.classList.remove("hidden");
-        } else {
-          selectList1.classList.add("hidden");
-          selectList2.classList.add("hidden");
-        }
-      });
-    
-      // プルダウンリストを生成する関数
-      function createSelectList(id, optionCount) {
-        const selectList = document.createElement("select");
-        selectList.id = id;
-        selectList.classList.add("hidden"); // 初期状態では非表示
-    
-        for (let i = 0; i <= optionCount; i++) {
-          const option = document.createElement("option");
-          option.value = i;
-          option.text = `${i}人`;
-          selectList.appendChild(option);
-        }
-    
-        return selectList;
-      }
-    }
-    
-        else if (selectedweapon === "4") {
-      const traits = [
+        
+        if (selectedImageIds[i] === "1") 
         {
-          id: "traitCheckbox",
-          label: "非時の夢·常世竈食: 元素チャージ効率が100%を超えた部分の28%分、攻撃力がアップ。最大80%まで。元素チャージ効率+30%"
+            traits = [
+                {
+                id: "traitCheckbox1",
+                label: "大地を流浪する楽団2"
+                },
+                {
+                id: "traitCheckbox2",
+                label: "大地を流浪する楽団4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifactInfo.appendChild(traitCheckbox);
+            artifactInfo.appendChild(traitLabel);
         }
-      ];
-          const traitCheckbox = document.createElement("input");
-          traitCheckbox.type = "checkbox";
-          traitCheckbox.id = traits[0].id;
-          traitCheckbox.value = traits[0].id;
-          traitCheckbox.checked = true;
-  
-          const traitLabel = document.createElement("label");
-          traitLabel.htmlFor = traits[0].id;
-          traitLabel.textContent = traits[0].label;
-  
-          weaponInfo.appendChild(traitCheckbox);
-          weaponInfo.appendChild(traitLabel);
+
+        if (selectedImageIds[i] === "1") 
+        {
+            traits = [
+                {
+                id: "traitCheckbox1",
+                label: "旧貴族のしつけ2"
+                },
+                {
+                id: "traitCheckbox2",
+                label: "旧貴族のしつけ4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifactInfo.appendChild(traitCheckbox);
+            artifactInfo.appendChild(traitLabel);
         }
-  
-    const formElements = [
-      { form: hp_form, index: 0 },
-      { form: attck_form, index: 4 },
-      { form: deff_form, index: 1 },
-      { form: elm_form, index: 2 },
-      { form: elm_charge_form, index: 3 },
-      { form: cr_form, index: 5 },
-      { form: cd_form, index: 6 }
-    ];
-  
-    for (const element of formElements) {
-      if (depend_status[element.index] === 1) {
-        element.form.style.display = "table-row";
-      }
     }
   }
