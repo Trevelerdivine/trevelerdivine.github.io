@@ -8,7 +8,6 @@ async function show_weapon_statsform() {
   let elm_charge_form = document.getElementById("elm_charge_form");
   let cr_form = document.getElementById("cr_form");
   let cd_form = document.getElementById("cd_form");
-  let calculateButton = document.getElementById("calculateButton");
   const weapon_rank = document.getElementById("weapon_rank").value;
 
   hp_form.style.display = "none"; // HPフォームを非表示
@@ -18,7 +17,6 @@ async function show_weapon_statsform() {
   elm_charge_form.style.display = "none"; // 元素チャージ効率フォームを非表示
   cr_form.style.display = "none"; // 会心率フォームを非表示
   cd_form.style.display = "none"; // 会心ダメージフォームを非表示
-  calculateButton.style.display = "block";
 
   const weaponSelect = document.getElementById("weapon_index");
   const selectedweapon = weaponSelect.value;
