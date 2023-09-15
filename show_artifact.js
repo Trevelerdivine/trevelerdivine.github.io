@@ -2,7 +2,6 @@ async function show_artifact() {
     let traits;
     let traitCheckbox;
     let traitLabel;
-    artifactInfo.style.display = "block";
     artifactInfo.innerHTML = "";
     for (let i = 0; i < 2; i++)
     {
