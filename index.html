@@ -980,6 +980,8 @@
     set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
     document.getElementById("set_eff1").textContent = `2セット効果: ${set_eff1}`;
     document.getElementById("set_eff2").textContent = `4セット効果: ${set_eff2}`;
+    show_artifact()
+    
     function handleImageClick()
     {
       const selectedImageId = this.getAttribute('id');
