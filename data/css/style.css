@@ -269,6 +269,15 @@ text-align: center;
   grid-template-columns: 1fr 1fr;
 }
 
+#calculateButton {
+  width: 100px;
+  height: 20px;
+  display: block; /* ボタンをブロック要素に変更 */
+  margin: 0 auto; /* 左右のマージンを自動調整して中央に配置 */
+}
+
+
+
 
 
 .team-buff-form {
