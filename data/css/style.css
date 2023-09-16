@@ -269,11 +269,25 @@ text-align: center;
   grid-template-columns: 1fr 1fr;
 }
 
-#calculateButton {
-  width: 100px;
-  height: 20px;
-  display: block; /* ボタンをブロック要素に変更 */
-  margin: 0 auto; /* 左右のマージンを自動調整して中央に配置 */
+/* solid004 */
+.button_solid004 a {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  color: #FFF;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: #6bb6ff;
+  border-radius: 8px;
+  border-bottom: solid 5px #1d7fde;
+}
+.button_solid004 a:hover {
+  border-bottom: solid 2px #1d7fde;
+  transform: translateY(3px);
 }
 
 
