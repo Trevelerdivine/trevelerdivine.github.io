@@ -546,6 +546,402 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
+        if (selectedImageIds[i] === "15") 
+        {
+            traits = [
+                {
+                id: "af15_2",
+                label: "蒼白の炎2"
+                },
+                {
+                id: "af15_4",
+                label: "蒼白の炎4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "16") 
+        {
+            traits = [
+                {
+                id: "af16_2",
+                label: "追憶のしめ縄2"
+                },
+                {
+                id: "af16_4",
+                label: "追憶のしめ縄4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "17") 
+        {
+            traits = [
+                {
+                id: "af17_2",
+                label: "絶縁の旗印2"
+                },
+                {
+                id: "af17_4",
+                label: "絶縁の旗印4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "18") 
+        {
+            traits = [
+                {
+                id: "af18_2",
+                label: "華館夢醒形骸記2"
+                },
+                {
+                id: "af18_4",
+                label: "華館夢醒形骸記4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "19") 
+        {
+            traits = [
+                {
+                id: "af19_2",
+                label: "来歆の余響2"
+                },
+                {
+                id: "af19_4",
+                label: "来歆の余響4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "20") 
+        {
+            traits = [
+                {
+                id: "af20_2",
+                label: "金メッキの夢2"
+                },
+                {
+                id: "af20_4",
+                label: "金メッキの夢4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "21") 
+        {
+            traits = [
+                {
+                id: "af21_2",
+                label: "深林の記憶2"
+                },
+                {
+                id: "af21_4",
+                label: "深林の記憶4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "22") 
+        {
+            traits = [
+                {
+                id: "af22_2",
+                label: "砂上の楼閣の史話2"
+                },
+                {
+                id: "af22_4",
+                label: "砂上の楼閣の史話4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "23") 
+        {
+            traits = [
+                {
+                id: "af23_2",
+                label: "楽園の絶花2"
+                },
+                {
+                id: "af23_4",
+                label: "楽園の絶花4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "24") 
+        {
+            traits = [
+                {
+                id: "af24_2",
+                label: "水仙の夢2"
+                },
+                {
+                id: "af24_4",
+                label: "水仙の夢4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        if (selectedImageIds[i] === "25") 
+        {
+            traits = [
+                {
+                id: "af25_2",
+                label: "花海甘露の光2"
+                },
+                {
+                id: "af25_4",
+                label: "花海甘露の光4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i === 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
         if (i === 0)
         {
             artifact_checkbox.appendChild(document.createElement("br"));
