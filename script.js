@@ -537,7 +537,7 @@ async function create_afset_instance()
 {
   let set1;
   let set2;
-  let buff;
+  let buff = [0, 0, 0, 0, 0, 0, 0];
   if (selectedImageIds[0] == selectedImageIds[1])
   {
     set1 = set_effect2[selectedImageIds[0]];
