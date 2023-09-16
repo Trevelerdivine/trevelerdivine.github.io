@@ -995,15 +995,15 @@
       {
         set_eff1 = data[af_list[selectedImageIds[0]]]["2セット効果"];
         set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
-        document.getElementById("set_eff1").textContent = `2セット効果: ${set_eff1}`;
-        document.getElementById("set_eff2").textContent = `4セット効果: ${set_eff2}`;
+        document.getElementById("set_eff1").textContent = `${af_list[selectedImageIds[0]]} 2セット効果: ${set_eff1}`;
+document.getElementById("set_eff2").textContent = `${af_list[selectedImageIds[0]]} 4セット効果: ${set_eff2}`;
       }
       else
       {
         set_eff1 = data[af_list[selectedImageIds[0]]]["2セット効果"];
         set_eff2 = data[af_list[selectedImageIds[1]]]["2セット効果"];
-        document.getElementById("set_eff1").textContent = `2セット効果: ${set_eff1}`;
-        document.getElementById("set_eff2").textContent = `2セット効果: ${set_eff2}`;
+        document.getElementById("set_eff1").textContent = `${af_list[selectedImageIds[0]]} 2セット効果: ${set_eff1}`;
+        document.getElementById("set_eff2").textContent = `${af_list[selectedImageIds[1]]} 2セット効果: ${set_eff2}`;
       }
       selectedImageIds.forEach(function(selectedImageId, index) {
         const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
