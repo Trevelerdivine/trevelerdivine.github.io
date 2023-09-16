@@ -983,6 +983,7 @@
     set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
     document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
     document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
+    show_artifact() 
     
     function handleImageClick()
     {
@@ -1102,7 +1103,6 @@
     const popupImages = document.querySelectorAll('.open img');
     const indexDisplay = document.getElementById('index-display');
     handleImageSelection(images, popupImages, indexDisplay);
-    show_artifact() 
     // 最初の2つの画像を選択済みにする処理
     let image = images[20];
     changeImageClass(image);
