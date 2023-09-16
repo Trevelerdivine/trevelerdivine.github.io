@@ -1,4 +1,4 @@
-class f0_2
+class af0_2
 {
    set_buff()
    {
