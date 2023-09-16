@@ -270,7 +270,7 @@ text-align: center;
 }
 
 /* solid004 */
-.button_solid004 {
+.button_solid004 a {
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -285,7 +285,7 @@ text-align: center;
   border-radius: 8px;
   border-bottom: solid 5px #1d7fde;
 }
-.button_solid004:hover {
+.button_solid004 a:hover {
   border-bottom: solid 2px #1d7fde;
   transform: translateY(3px);
 }
