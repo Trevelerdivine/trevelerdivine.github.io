@@ -519,6 +519,10 @@
         <div id="weaponInfo">
         </div>
         <div id="artifact_checkbox">
+          <input type="checkbox" id="af21_2">
+          <label for="af21_2">深林の記憶2</label>
+          <input type="checkbox" id="af21_4">
+          <label for="af21_4">深林の記憶4</label>
         </div>
       </fieldset>
       <br>
@@ -1121,7 +1125,6 @@
     const charPopupImage = document.querySelector('.open_char img');
     const charIndexDisplay = document.getElementById('Charindex-display');
     handleCharSelection(charImages, charPopupImage, charIndexDisplay);
-    show_artifact() 
     const charOverlay = document.querySelector('.overlay_char');
     charOverlay.addEventListener('click', function(event) {
       if (!event.target.closest('.window'))
