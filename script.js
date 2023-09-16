@@ -280,16 +280,18 @@ async function calculate_team_fix_buff(base_status)
   const fix_cr_buff = parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
   const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
   const fix_dmg_buff = parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
+  const af_setbuff = await create_afset_instance();
+  console.log(af_setbuff)
   let team_buff = [0,0,0,0,0,0,0,0];
 
-  team_buff[0] = fix_hp_buff + fix_hprate_buff * base_status[0];
-  team_buff[1] = fix_deff_buff + fix_deffrate_buff * base_status[1];
-  team_buff[2] = fix_elm_buff;
-  team_buff[3] = fix_elm_charge_buff;
-  team_buff[4] = fix_attack_buff + fix_attackrate_buff * base_status[4];
-  team_buff[5] = fix_cr_buff;
-  team_buff[6] = fix_cd_buff;
-  team_buff[7] = fix_dmg_buff;
+  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0]) * base_status[0];
+  team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1]) * base_status[1];
+  team_buff[2] = fix_elm_buff + af_setbuff[2];
+  team_buff[3] = fix_elm_charge_buff + af_setbuff[3];
+  team_buff[4] = fix_attack_buff + (fix_attackrate_buff + af_setbuff[4]) * base_status[4];
+  team_buff[5] = fix_cr_buff + af_setbuff[5];
+  team_buff[6] = fix_cd_buff + af_setbuff[6];
+  team_buff[7] = fix_dmg_buff + af_setbuff[7];
 
   return team_buff
 }
@@ -542,19 +544,29 @@ async function create_weapon_instance(base_status, fixed_status, result_status)
 
 async function create_afset_instance() 
 {
+  let set1
+  let set2
+
   if (selectedImageIds[0] == selectedImageIds[1])
   {
-    const set1 = set_effect2[selectedImageIds[0]]
-    const set2 = set_effect4[selectedImageIds[0]]
+    set1 = set_effect2[selectedImageIds[0]]
+    set2 = set_effect4[selectedImageIds[0]]
   }
   else
   {
-    const set1 = set_effect2[selectedImageIds[0]]
-    const set2 = set_effect2[selectedImageIds[1]]
+    set1 = set_effect2[selectedImageIds[0]]
+    set2 = set_effect2[selectedImageIds[1]]
   }
-  const instance = new selectedClass();
 
- 
+  const set1_instance = new set1();
+  const set2_instance = new set2();
+
+  let set1_buff = set1_instance.set_buff();
+  let set2_buff = set2_instance.set_buff();
+
+  const buff = set1_buff + set2_buff;
+
+  return buff
 }
 
 
