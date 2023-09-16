@@ -21,6 +21,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo"];
 const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
+
                   
 
 /////////////////////
@@ -534,18 +535,18 @@ async function create_weapon_instance(base_status, fixed_status, result_status)
 
 async function create_afset_instance() 
 {
-  let set1
-  let set2
-
+  let set1;
+  let set2;
+  let buff;
   if (selectedImageIds[0] == selectedImageIds[1])
   {
-    set1 = set_effect2[selectedImageIds[0]]
-    set2 = set_effect4[selectedImageIds[0]]
+    set1 = set_effect2[selectedImageIds[0]];
+    set2 = set_effect4[selectedImageIds[0]];
   }
   else
   {
-    set1 = set_effect2[selectedImageIds[0]]
-    set2 = set_effect2[selectedImageIds[1]]
+    set1 = set_effect2[selectedImageIds[0]];
+    set2 = set_effect2[selectedImageIds[1]];
   }
 
   const set1_instance = new set1();
@@ -554,7 +555,10 @@ async function create_afset_instance()
   let set1_buff = set1_instance.set_buff();
   let set2_buff = set2_instance.set_buff();
 
-  const buff = set1_buff + set2_buff;
+ for (let i = 0; i < 7; i++)
+  {
+    buff[i] = set1_buff[i] + set2_buff[i];
+  }
 
   return buff
 }
