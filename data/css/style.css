@@ -157,8 +157,6 @@ table.calc_result th {
 /* .open クラスの要素のスタイル */
 .open {
   cursor: pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
-  display: flex;
-  justify-content: center;
 }
 
 .open_char {
