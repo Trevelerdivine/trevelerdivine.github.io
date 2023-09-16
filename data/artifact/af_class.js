@@ -53,3 +53,8 @@ class af1_4
         return status_buff
    }
 }
+const set_effect2 = ["af0_2", "af1_2"
+                    ];
+
+const set_effect4 = [ "af0_4", "af1_4"
+                    ];
