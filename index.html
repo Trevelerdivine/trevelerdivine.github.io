@@ -519,10 +519,6 @@
         <div id="weaponInfo">
         </div>
         <div id="artifact_checkbox">
-          <input type="checkbox" id="af21_2">
-          <label for="af21_2">深林の記憶2</label>
-          <input type="checkbox" id="af21_4">
-          <label for="af21_4">深林の記憶4</label>
         </div>
       </fieldset>
       <br>
@@ -987,7 +983,9 @@
     set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
     document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
     document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
-    
+    console.log(selectedImageIds)
+    show_artifact()
+
     function handleImageClick()
     {
       const selectedImageId = this.getAttribute('id');
