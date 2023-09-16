@@ -983,7 +983,7 @@
     set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
     document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
     document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
-    await show_artifact() 
+    show_artifact(selectedImageIds) 
     
     function handleImageClick()
     {
@@ -1015,7 +1015,7 @@
         popupImages[index].setAttribute('src', selectedImageSrc);
         popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
       });
-      show_artifact()
+      show_artifact(selectedImageIds)
     }
 
     for (let i = 0; i < images.length; i++) 
