@@ -983,7 +983,6 @@
     set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
     document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
     document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
-    show_artifact(selectedImageIds) 
     
     function handleImageClick()
     {
@@ -1015,7 +1014,7 @@
         popupImages[index].setAttribute('src', selectedImageSrc);
         popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
       });
-      show_artifact(selectedImageIds)
+      show_artifact()
     }
 
     for (let i = 0; i < images.length; i++) 
@@ -1122,7 +1121,7 @@
     const charPopupImage = document.querySelector('.open_char img');
     const charIndexDisplay = document.getElementById('Charindex-display');
     handleCharSelection(charImages, charPopupImage, charIndexDisplay);
-
+    show_artifact() 
     const charOverlay = document.querySelector('.overlay_char');
     charOverlay.addEventListener('click', function(event) {
       if (!event.target.closest('.window'))

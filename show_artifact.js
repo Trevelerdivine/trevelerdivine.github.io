@@ -1,4 +1,4 @@
-async function show_artifact(selectedImageIds) 
+async function show_artifact() 
 {
     let traits;
     let traitCheckbox;
