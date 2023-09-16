@@ -1,4 +1,4 @@
-class af0_2
+class f0_2
 {
    set_buff()
    {
@@ -54,8 +54,8 @@ class af1_4
    }
 }
 
-const set_effect2 = ["af0_2", "af1_2"
+const set_effect2 = [af0_2, af1_2
                     ];
 
-const set_effect4 = [ "af0_4", "af1_4"
+const set_effect4 = [ af0_4, af1_4
                     ];
