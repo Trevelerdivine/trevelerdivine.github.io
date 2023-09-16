@@ -270,24 +270,19 @@ text-align: center;
 }
 
 /* solid004 */
-.button_solid004 a {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 240px;
+.button_solid004 {
+  display: inline-block;
   padding: 10px 25px;
   color: #FFF;
-  transition: 0.3s ease-in-out;
+  transition: 0.1s ease-in-out;
   font-weight: 600;
   background: #6bb6ff;
   border-radius: 8px;
   border-bottom: solid 5px #1d7fde;
+  cursor: pointer; /* カーソルをポインターに変更 */
 }
-.button_solid004 a:hover {
+.button_solid004:active { /* クリック時にもホバー効果を持続させる */
   border-bottom: solid 2px #1d7fde;
-  transform: translateY(3px);
 }
 
 
