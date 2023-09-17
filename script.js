@@ -535,31 +535,25 @@ async function create_weapon_instance(base_status, fixed_status, result_status)
 
 async function create_afset_instance() 
 {
-  let set1;
-  let set2;
+  let set1_buff;
+  let set2_buff;
   let buff = [0, 0, 0, 0, 0, 0, 0, 0];
   if (selectedImageIds[0] == selectedImageIds[1])
   {
-    set1 = set_effect2[selectedImageIds[0]];
-    set2 = set_effect4[selectedImageIds[0]];
+    set1_buff = set_effect2[selectedImageIds[0]]();
+    set2_buff = set_effect4[selectedImageIds[0]]();
   }
   else
   {
-    set1 = set_effect2[selectedImageIds[0]];
-    set2 = set_effect2[selectedImageIds[1]];
+    set1_buff = await set_effect2[selectedImageIds[0]]();
+    set2_buff = await set_effect2[selectedImageIds[1]]();
   }
-
-  const set1_instance = new set1();
-  const set2_instance = new set2();
-
-  let set1_buff = set1_instance.set_buff();
-  let set2_buff = set2_instance.set_buff();
 
  for (let i = 0; i < 8; i++)
   {
     buff[i] = set1_buff[i] + set2_buff[i];
   }
-
+  
   return buff
 }
 
