@@ -4,14 +4,6 @@ let weapon_base_status = [0,0,0,0,0,0,0,0];
 let depend_status = [0,0,0,0,0,0,0];
 let char_depend_status = [0,0,0,0,0,0,0];
 let weapon_depend_status = [0,0,0,0,0,0,0];
-let base_hp = 0;
-let base_attck = 0;
-let base_deff = 0;
-let base_elm = 0;
-let base_elm_charge = 0;
-let base_cr = 0;
-let base_cd = 0;
-let base_dmg_buff = 0;
 let af_score = 0;
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
@@ -71,15 +63,15 @@ async function calculate_base_status()
 {
   char_base_status = await calculate_char_base_status();
   weapon_base_status = await calculate_weapon_base_status();
-  base_hp = char_base_status[0] + weapon_base_status[0];
-  base_attck = char_base_status[4] + weapon_base_status[4];
-  base_deff = char_base_status[1] + weapon_base_status[1];
-  base_elm = char_base_status[2] + weapon_base_status[2];
-  base_elm_charge = char_base_status[3] + weapon_base_status[3];
-  base_dmg_buff = char_base_status[7] + weapon_base_status[7];
-  base_cr = char_base_status[5] + weapon_base_status[5];
-  base_cd = char_base_status[6] + weapon_base_status[6];
-  base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
+  let base_hp = char_base_status[0] + weapon_base_status[0];
+  let base_attck = char_base_status[4] + weapon_base_status[4];
+  let base_deff = char_base_status[1] + weapon_base_status[1];
+  let base_elm = char_base_status[2] + weapon_base_status[2];
+  let base_elm_charge = char_base_status[3] + weapon_base_status[3];
+  let base_dmg_buff = char_base_status[7] + weapon_base_status[7];
+  let base_cr = char_base_status[5] + weapon_base_status[5];
+  let base_cd = char_base_status[6] + weapon_base_status[6];
+  let base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
   return base_status;
 }
 
