@@ -549,11 +549,7 @@ async function create_afset_instance()
     set2_buff = set_effect2[selectedImageIds[1]];
   }
 
- for (let i = 0; i < 8; i++)
-  {
-    buff[i] = set1_buff[i] + set2_buff[i];
-  }
-  
+
   return buff
 }
 
