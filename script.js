@@ -4,6 +4,7 @@ let weapon_base_status = [0,0,0,0,0,0,0,0];
 let depend_status = [0,0,0,0,0,0,0];
 let char_depend_status = [0,0,0,0,0,0,0];
 let weapon_depend_status = [0,0,0,0,0,0,0];
+let char_propaty = [0,0];
 let af_score = 0;
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
@@ -31,6 +32,7 @@ async function calculate_char_base_status()
   const char_base_cr = data.ステータス.基礎会心率[char_level];
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
+  char_propaty = data.ステータス.属性;
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];
   return char_base_status;
@@ -328,6 +330,7 @@ async function calculate_table_status()
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   let fixed_status = base_status.slice();
   let result_status;
+  console.log(char_propaty);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
