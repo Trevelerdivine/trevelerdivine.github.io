@@ -1,575 +1,592 @@
-
-async function af0_2()
+class af0_2
 {
-    let checkbox = document.getElementById("af0_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
-    {
-        status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0]; 
-    }
-    return status_buff
+   set_buff()
+   {
+        let checkbox = document.getElementById("af0_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0]; 
+        }
+        return status_buff
+   }
 }
 
-async function af0_4()
+class af0_4
 {
-    let checkbox = document.getElementById("af0_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
-    {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+   set_buff()
+   {
+        let checkbox = document.getElementById("af0_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        }
+        return status_buff
     }
-    return status_buff
 }
 
-async function af1_2()
+class af1_2
 {
-    let checkbox = document.getElementById("af1_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
-    {
-        status_buff = [0, 0, 80, 0, 0, 0, 0, 0]; 
+   set_buff()
+   {
+        let checkbox = document.getElementById("af1_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 80, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
 }
 
-async function af1_4()
+class af1_4
 {
-    let checkbox = document.getElementById("af1_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
-    {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+   set_buff()
+   {
+        let checkbox = document.getElementById("af1_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        }
+        return status_buff
     }
-    return status_buff
 }
 
-async function af2_2()
+class af2_2
 {
-    let checkbox = document.getElementById("af2_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
-    {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+   set_buff()
+   {
+        let checkbox = document.getElementById("af2_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+        }
+        return status_buff
     }
-    return status_buff
 }
 
-async function af2_4()
+class af0_2
 {
-    let checkbox = document.getElementById("af2_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
-    {
-        status_buff = [0, 0, 0, 0, 0.2, 0, 0, 0]; 
+   set_buff()
+   {
+        let checkbox = document.getElementById("af2_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0.2, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
 }
 
-async function af3_2()
-{
-    let checkbox = document.getElementById("af3_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af3_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+        let checkbox = document.getElementById("af3_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af3_4()
-{
-    let checkbox = document.getElementById("af3_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af3_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
+        let checkbox = document.getElementById("af3_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af4_2()
-{
-    let checkbox = document.getElementById("af4_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af4_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af4_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af4_4()
-{
-    let checkbox = document.getElementById("af4_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af4_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af4_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af5_2()
-{
-    let checkbox = document.getElementById("af5_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af5_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af5_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af5_4()
-{
-    let checkbox = document.getElementById("af5_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af5_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
+        let checkbox = document.getElementById("af5_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af6_2()
-{
-    let checkbox = document.getElementById("af6_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af6_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af6_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af6_4()
-{
-    let checkbox = document.getElementById("af6_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af6_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        let checkbox = document.getElementById("af6_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af7_2()
-{
-    let checkbox = document.getElementById("af7_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af7_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af7_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af7_4()
-{
-    let checkbox = document.getElementById("af7_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af7_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
+        let checkbox = document.getElementById("af7_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af8_2()
-{
-    let checkbox = document.getElementById("af8_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af8_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af8_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af8_4()
-{
-    let checkbox = document.getElementById("af8_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af8_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        let checkbox = document.getElementById("af8_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af9_2()
-{
-    let checkbox = document.getElementById("af9_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af9_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af9_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af9_4()
-{
-    let checkbox = document.getElementById("af9_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af9_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+        let checkbox = document.getElementById("af9_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af10_2()
-{
-    let checkbox = document.getElementById("af10_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af10_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af10_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af10_4()
-{
-    let checkbox = document.getElementById("af10_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af10_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        let checkbox = document.getElementById("af10_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af11_2()
-{
-    let checkbox = document.getElementById("af11_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af11_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af11_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af11_4()
-{
-    let checkbox = document.getElementById("af11_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af11_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.225]; 
+        let checkbox = document.getElementById("af11_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.225]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af12_2()
-{
-    let checkbox = document.getElementById("af12_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af12_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af12_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af12_4()
-{
-    let checkbox = document.getElementById("af12_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af12_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0.4, 0, 0]; 
+        let checkbox = document.getElementById("af12_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0.4, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af13_2()
-{
-    let checkbox = document.getElementById("af13_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af13_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af13_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af13_4()
-{
-    let checkbox = document.getElementById("af13_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af13_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.3]; 
+        let checkbox = document.getElementById("af13_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.3]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af14_2()
-{
-    let checkbox = document.getElementById("af14_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af14_2()
     {
-        status_buff = [0.2, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af14_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0.2, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af14_4()
-{
-    let checkbox = document.getElementById("af14_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af14_4()
     {
-        status_buff = [0, 0, 0, 0, 0.2, 0, 0, 0]; 
+        let checkbox = document.getElementById("af14_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0.2, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af15_2()
-{
-    let checkbox = document.getElementById("af15_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af15_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.25]; 
+        let checkbox = document.getElementById("af15_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.25]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af15_4()
-{
-    let checkbox = document.getElementById("af15_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af15_4()
     {
-        status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0.25]; 
+        let checkbox = document.getElementById("af15_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0.25]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af16_2()
-{
-    let checkbox = document.getElementById("af16_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af16_2()
     {
-        status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0]; 
+        let checkbox = document.getElementById("af16_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af16_4()
-{
-    let checkbox = document.getElementById("af16_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af16_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
+        let checkbox = document.getElementById("af16_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af17_2()
-{
-    let checkbox = document.getElementById("af17_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af17_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af17_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af17_4()
-{
-    let checkbox = document.getElementById("af17_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af17_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af17_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af18_2()
-{
-    let checkbox = document.getElementById("af18_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af18_2()
     {
-        status_buff = [0, 0.3, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af18_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0.3, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af18_4()
-{
-    let checkbox = document.getElementById("af18_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af18_4()
     {
-        status_buff = [0, 0.24, 0, 0, 0, 0, 0, 0.24]; 
+        let checkbox = document.getElementById("af18_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0.24, 0, 0, 0, 0, 0, 0.24]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af19_2()
-{
-    let checkbox = document.getElementById("af19_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af19_2()
     {
-        status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0]; 
+        let checkbox = document.getElementById("af19_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af19_4()
-{
-    let checkbox = document.getElementById("af19_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af19_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af19_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af20_2()
-{
-    let checkbox = document.getElementById("af20_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af20_2()
     {
-        status_buff = [0, 0, 80, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af20_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 80, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af20_4()
-{
-    let checkbox = document.getElementById("a20_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af20_4()
     {
-        status_buff = [0, 0, 150, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("a20_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 150, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af21_2()
-{
-    let checkbox = document.getElementById("af21_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af21_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af21_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af21_4()
-{
-    let checkbox = document.getElementById("af21_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af21_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af21_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af22_2()
-{
-    let checkbox = document.getElementById("af22_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af22_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af22_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af22_4()
-{
-    let checkbox = document.getElementById("af22_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af22_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
+        let checkbox = document.getElementById("af22_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af23_2()
-{
-    let checkbox = document.getElementById("af23_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af23_2()
     {
-        status_buff = [0, 0, 80, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af23_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 80, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af23_4()
-{
-    let checkbox = document.getElementById("af23_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af23_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af23_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af24_2()
-{
-    let checkbox = document.getElementById("af24_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af24_2()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af24_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af24_4()
-{
-    let checkbox = document.getElementById("af24_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af24_4()
     {
-        status_buff = [0, 0, 0, 0, 0.25, 0, 0, 0.15]; 
+        let checkbox = document.getElementById("af24_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0.25, 0, 0, 0.15]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af25_2()
-{
-    let checkbox = document.getElementById("af25_2");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af25_2()
     {
-        status_buff = [0.2, 0, 0, 0, 0, 0, 0, 0]; 
+        let checkbox = document.getElementById("af25_2");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0.2, 0, 0, 0, 0, 0, 0, 0]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
-async function af25_4()
-{
-    let checkbox = document.getElementById("af25_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    async function af25_4()
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
+        let checkbox = document.getElementById("af25_4");
+        let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+        if (checkbox.checked)
+        {
+            status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
+        }
+        return status_buff
     }
-    return status_buff
-}
 
 
 const set_effect2 = [af0_2, af1_2, af2_2, af3_2, af4_2, af5_2, af6_2, af7_2, af8_2, af9_2, af10_2,
