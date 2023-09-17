@@ -272,7 +272,6 @@ async function calculate_team_fix_buff(base_status)
   const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
   const fix_dmg_buff = parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
   const af_setbuff = await create_afset_instance();
-  console.log(af_setbuff)
   let team_buff = [0,0,0,0,0,0,0,0];
 
   team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0]) * base_status[0];
