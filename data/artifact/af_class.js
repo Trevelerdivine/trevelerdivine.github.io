@@ -1,5 +1,5 @@
 
-function af0_2()
+async function af0_2()
 {
     let checkbox = document.getElementById("af0_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -10,7 +10,7 @@ function af0_2()
     return status_buff
 }
 
-function af0_4()
+async function af0_4()
 {
     let checkbox = document.getElementById("af0_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -21,7 +21,7 @@ function af0_4()
     return status_buff
 }
 
-function af1_2()
+async function af1_2()
 {
     let checkbox = document.getElementById("af1_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -32,7 +32,7 @@ function af1_2()
     return status_buff
 }
 
-function af1_4()
+async function af1_4()
 {
     let checkbox = document.getElementById("af1_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -43,7 +43,7 @@ function af1_4()
     return status_buff
 }
 
-function af2_2()
+async function af2_2()
 {
     let checkbox = document.getElementById("af2_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -54,7 +54,7 @@ function af2_2()
     return status_buff
 }
 
-function af2_4()
+async function af2_4()
 {
     let checkbox = document.getElementById("af2_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -65,7 +65,7 @@ function af2_4()
     return status_buff
 }
 
-function af3_2()
+async function af3_2()
 {
     let checkbox = document.getElementById("af3_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -76,7 +76,7 @@ function af3_2()
     return status_buff
 }
 
-function af3_4()
+async function af3_4()
 {
     let checkbox = document.getElementById("af3_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -87,7 +87,7 @@ function af3_4()
     return status_buff
 }
 
-function af4_2()
+async function af4_2()
 {
     let checkbox = document.getElementById("af4_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -98,7 +98,7 @@ function af4_2()
     return status_buff
 }
 
-function af4_4()
+async function af4_4()
 {
     let checkbox = document.getElementById("af4_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -109,7 +109,7 @@ function af4_4()
     return status_buff
 }
 
-function af5_2()
+async function af5_2()
 {
     let checkbox = document.getElementById("af5_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -120,7 +120,7 @@ function af5_2()
     return status_buff
 }
 
-function af5_4()
+async function af5_4()
 {
     let checkbox = document.getElementById("af5_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -131,7 +131,7 @@ function af5_4()
     return status_buff
 }
 
-function af6_2()
+async function af6_2()
 {
     let checkbox = document.getElementById("af6_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -142,7 +142,7 @@ function af6_2()
     return status_buff
 }
 
-function af6_4()
+async function af6_4()
 {
     let checkbox = document.getElementById("af6_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -153,7 +153,7 @@ function af6_4()
     return status_buff
 }
 
-function af7_2()
+async function af7_2()
 {
     let checkbox = document.getElementById("af7_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -164,7 +164,7 @@ function af7_2()
     return status_buff
 }
 
-function af7_4()
+async function af7_4()
 {
     let checkbox = document.getElementById("af7_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -175,7 +175,7 @@ function af7_4()
     return status_buff
 }
 
-function af8_2()
+async function af8_2()
 {
     let checkbox = document.getElementById("af8_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -186,7 +186,7 @@ function af8_2()
     return status_buff
 }
 
-function af8_4()
+async function af8_4()
 {
     let checkbox = document.getElementById("af8_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -197,7 +197,7 @@ function af8_4()
     return status_buff
 }
 
-function af9_2()
+async function af9_2()
 {
     let checkbox = document.getElementById("af9_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -208,7 +208,7 @@ function af9_2()
     return status_buff
 }
 
-function af9_4()
+async function af9_4()
 {
     let checkbox = document.getElementById("af9_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -219,7 +219,7 @@ function af9_4()
     return status_buff
 }
 
-function af10_2()
+async function af10_2()
 {
     let checkbox = document.getElementById("af10_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -230,7 +230,7 @@ function af10_2()
     return status_buff
 }
 
-function af10_4()
+async function af10_4()
 {
     let checkbox = document.getElementById("af10_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -241,7 +241,7 @@ function af10_4()
     return status_buff
 }
 
-function af11_2()
+async function af11_2()
 {
     let checkbox = document.getElementById("af11_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -252,7 +252,7 @@ function af11_2()
     return status_buff
 }
 
-function af11_4()
+async function af11_4()
 {
     let checkbox = document.getElementById("af11_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -263,7 +263,7 @@ function af11_4()
     return status_buff
 }
 
-function af12_2()
+async function af12_2()
 {
     let checkbox = document.getElementById("af12_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -274,7 +274,7 @@ function af12_2()
     return status_buff
 }
 
-function af12_4()
+async function af12_4()
 {
     let checkbox = document.getElementById("af12_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -285,7 +285,7 @@ function af12_4()
     return status_buff
 }
 
-function af13_2()
+async function af13_2()
 {
     let checkbox = document.getElementById("af13_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -296,7 +296,7 @@ function af13_2()
     return status_buff
 }
 
-function af13_4()
+async function af13_4()
 {
     let checkbox = document.getElementById("af13_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -307,7 +307,7 @@ function af13_4()
     return status_buff
 }
 
-function af14_2()
+async function af14_2()
 {
     let checkbox = document.getElementById("af14_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -318,7 +318,7 @@ function af14_2()
     return status_buff
 }
 
-function af14_4()
+async function af14_4()
 {
     let checkbox = document.getElementById("af14_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -329,7 +329,7 @@ function af14_4()
     return status_buff
 }
 
-function af15_2()
+async function af15_2()
 {
     let checkbox = document.getElementById("af15_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -340,7 +340,7 @@ function af15_2()
     return status_buff
 }
 
-function af15_4()
+async function af15_4()
 {
     let checkbox = document.getElementById("af15_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -351,7 +351,7 @@ function af15_4()
     return status_buff
 }
 
-function af16_2()
+async function af16_2()
 {
     let checkbox = document.getElementById("af16_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -362,7 +362,7 @@ function af16_2()
     return status_buff
 }
 
-function af16_4()
+async function af16_4()
 {
     let checkbox = document.getElementById("af16_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -373,7 +373,7 @@ function af16_4()
     return status_buff
 }
 
-function af17_2()
+async function af17_2()
 {
     let checkbox = document.getElementById("af17_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -384,7 +384,7 @@ function af17_2()
     return status_buff
 }
 
-function af17_4()
+async function af17_4()
 {
     let checkbox = document.getElementById("af17_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -395,7 +395,7 @@ function af17_4()
     return status_buff
 }
 
-function af18_2()
+async function af18_2()
 {
     let checkbox = document.getElementById("af18_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -406,7 +406,7 @@ function af18_2()
     return status_buff
 }
 
-function af18_4()
+async function af18_4()
 {
     let checkbox = document.getElementById("af18_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -417,7 +417,7 @@ function af18_4()
     return status_buff
 }
 
-function af19_2()
+async function af19_2()
 {
     let checkbox = document.getElementById("af19_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -428,7 +428,7 @@ function af19_2()
     return status_buff
 }
 
-function af19_4()
+async function af19_4()
 {
     let checkbox = document.getElementById("af19_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -439,7 +439,7 @@ function af19_4()
     return status_buff
 }
 
-function af20_2()
+async function af20_2()
 {
     let checkbox = document.getElementById("af20_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -450,7 +450,7 @@ function af20_2()
     return status_buff
 }
 
-function af20_4()
+async function af20_4()
 {
     let checkbox = document.getElementById("a20_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -461,7 +461,7 @@ function af20_4()
     return status_buff
 }
 
-function af21_2()
+async function af21_2()
 {
     let checkbox = document.getElementById("af21_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -472,7 +472,7 @@ function af21_2()
     return status_buff
 }
 
-function af21_4()
+async function af21_4()
 {
     let checkbox = document.getElementById("af21_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -483,7 +483,7 @@ function af21_4()
     return status_buff
 }
 
-function af22_2()
+async function af22_2()
 {
     let checkbox = document.getElementById("af22_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -494,7 +494,7 @@ function af22_2()
     return status_buff
 }
 
-function af22_4()
+async function af22_4()
 {
     let checkbox = document.getElementById("af22_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -505,7 +505,7 @@ function af22_4()
     return status_buff
 }
 
-function af23_2()
+async function af23_2()
 {
     let checkbox = document.getElementById("af23_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -516,7 +516,7 @@ function af23_2()
     return status_buff
 }
 
-function af23_4()
+async function af23_4()
 {
     let checkbox = document.getElementById("af23_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -527,7 +527,7 @@ function af23_4()
     return status_buff
 }
 
-function af24_2()
+async function af24_2()
 {
     let checkbox = document.getElementById("af24_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -538,7 +538,7 @@ function af24_2()
     return status_buff
 }
 
-function af24_4()
+async function af24_4()
 {
     let checkbox = document.getElementById("af24_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -549,7 +549,7 @@ function af24_4()
     return status_buff
 }
 
-function af25_2()
+async function af25_2()
 {
     let checkbox = document.getElementById("af25_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
@@ -560,7 +560,7 @@ function af25_2()
     return status_buff
 }
 
-function af25_4()
+async function af25_4()
 {
     let checkbox = document.getElementById("af25_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
