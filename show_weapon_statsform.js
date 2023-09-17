@@ -60,32 +60,10 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(textNode2);
     weaponInfo.appendChild(selectList2);
   
-
-  
-    // 初期状態でチェックされている場合、プルダウンリストを表示
-    if (traitCheckbox.checked) {
-      selectList1.classList.remove("hidden");
-      selectList2.classList.remove("hidden");
-    } else {
-      selectList1.classList.add("hidden");
-      selectList2.classList.add("hidden");
-    }
-  
-    traitCheckbox.addEventListener("change", function() {
-      if (traitCheckbox.checked) {
-        selectList1.classList.remove("hidden");
-        selectList2.classList.remove("hidden");
-      } else {
-        selectList1.classList.add("hidden");
-        selectList2.classList.add("hidden");
-      }
-    });
-  
     // プルダウンリストを生成する関数
     function createSelectList(id, optionCount) {
       const selectList = document.createElement("select");
       selectList.id = id;
-      selectList.classList.add("hidden"); // 初期状態では非表示
   
       for (let i = 0; i <= optionCount; i++) {
         const option = document.createElement("option");
