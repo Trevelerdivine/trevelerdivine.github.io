@@ -6,6 +6,7 @@ let char_depend_status = [0,0,0,0,0,0,0];
 let weapon_depend_status = [0,0,0,0,0,0,0];
 let char_propaty = [0,0];
 let af_score = 0;
+let attack_method = 0;
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
                    "shenhe","kamisatoayaka","eula","ganyu","qiqi","aloy","mika","layla","rosaria","diona",
@@ -330,7 +331,6 @@ async function calculate_table_status()
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   let fixed_status = base_status.slice();
   let result_status;
-  console.log(char_propaty);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -547,7 +547,8 @@ async function create_afset_instance()
   {
     buff[i] = set1_buff[i] + set2_buff[i];
   }
-  
+  const attackSelect = document.getElementById("attack_method");
+  attack_method = attackSelect.value;
   return buff
 }
 

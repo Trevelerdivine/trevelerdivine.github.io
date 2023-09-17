@@ -14,7 +14,7 @@ function af0_4()
 {
     let checkbox = document.getElementById("af0_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (char_propaty [1] == 0 ||char_propaty[1] == 1 || char_propaty[1]==2))
+    if (checkbox.checked && (char_propaty [1] == 0 ||char_propaty[1] == 1 || char_propaty[1]==2) && attack_method ==0)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
     }
