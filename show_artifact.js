@@ -264,7 +264,7 @@ async function show_artifact()
                 for (let j = 0; j <= 4; j++) {
                   option = document.createElement("option");
                   option.value = j;
-                  option.text = `element[j]`;
+                  option.text = element[j];
                   selectList.appendChild(option);
                 }
 
