@@ -170,7 +170,7 @@ function af7_4()
 {
     let checkbox = document.getElementById("af7_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && (attack_method == 0 || attack_method== 1))
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
     }
