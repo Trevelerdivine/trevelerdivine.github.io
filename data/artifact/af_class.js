@@ -14,7 +14,7 @@ function af0_4()
 {
     let checkbox = document.getElementById("af0_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (char_propaty [1] == 0 ||char_propaty[1] == 1 || char_propaty[1]==2) && attack_method ==0)
+    if (checkbox.checked && (char_propaty [1] == 0 ||char_propaty[1] == 1 || char_propaty[1] == 2) && attack_method == 0)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
     }
@@ -36,7 +36,7 @@ function af1_4()
 {
     let checkbox = document.getElementById("af1_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && (char_propaty [1] == 3 || char_propaty[1] == 4) && attack_method == 1)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
     }
@@ -47,7 +47,7 @@ function af2_2()
 {
     let checkbox = document.getElementById("af2_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && attack_method == 4)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
     }
@@ -69,7 +69,7 @@ function af3_2()
 {
     let checkbox = document.getElementById("af3_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty [1] == 7)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
     }
@@ -80,7 +80,7 @@ function af3_4()
 {
     let checkbox = document.getElementById("af3_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && attack_method == 1)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
     }
@@ -113,7 +113,7 @@ function af5_2()
 {
     let checkbox = document.getElementById("af5_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == 4)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
     }
@@ -126,7 +126,7 @@ function af5_4()
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     if (checkbox.checked)
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
+        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     }
     return status_buff
 }
