@@ -135,7 +135,7 @@ function af6_2()
 {
     let checkbox = document.getElementById("af6_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == 6)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
     }
@@ -145,8 +145,9 @@ function af6_2()
 function af6_4()
 {
     let checkbox = document.getElementById("af6_4");
+    const selectElement = document.getElementById("af6_4select");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == selectElement)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
     }

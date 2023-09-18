@@ -256,12 +256,12 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af6_4text = document.createTextNode("該当元素");
+                const af6_4text = document.createTextNode("　該当元素：");
                 const selectList = document.createElement("select");
                 let option;
                 selectList.id = "af6_4select";
             
-                for (let j = 0; j <= 4; j++) {
+                for (let j = 0; j < 4; j++) {
                   option = document.createElement("option");
                   option.value = j;
                   option.text = element[j];
@@ -270,7 +270,6 @@ async function show_artifact()
 
                 artifact_checkbox.appendChild(traitCheckbox);
                 artifact_checkbox.appendChild(traitLabel);
-                artifact_checkbox.appendChild(document.createElement("br"));
                 artifact_checkbox.appendChild(af6_4text);
                 artifact_checkbox.appendChild(selectList);
             }
