@@ -453,7 +453,7 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af11_4text = document.createTextNode("　該当元素：");
+                const af11_4text = document.createTextNode("燃え盛る炎の魔女：");
                 const selectList = document.createElement("select");
                 let option;
                 selectList.id = "af11_4select";
@@ -467,7 +467,7 @@ async function show_artifact()
 
                 artifact_checkbox.appendChild(traitCheckbox);
                 artifact_checkbox.appendChild(traitLabel);
-                artifact_checkbox.appendChild(af6_4text);
+                artifact_checkbox.appendChild(af11_4text);
                 artifact_checkbox.appendChild(selectList);
             }
 

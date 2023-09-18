@@ -257,10 +257,14 @@ function af11_2()
 function af11_4()
 {
     let checkbox = document.getElementById("af11_4");
+    const af11_4select = document.getElementById("af11_4select");
+    const buff_count = af11_4select.value;
+    let pyro_buff;
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == 0)
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.225]; 
+        pyro_buff = buff_count * 0.075
+        status_buff = [0, 0, 0, 0, 0, 0, 0, pyro_buff]; 
     }
     return status_buff
 }
