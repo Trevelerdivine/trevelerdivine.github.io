@@ -453,16 +453,18 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af11_4text = document.createTextNode("バフ効果：");
+                const af11_4text = document.createTextNode("　バフ効果：");
                 const selectList = document.createElement("select");
                 let option;
+                let pyro_buff;
                 selectList.id = "af11_4select";
             
                 for (let j = 0; j < 4; j++) {
-                  option = document.createElement("option");
-                  option.value = j;
-                  option.text = `${j}重`;
-                  selectList.appendChild(option);
+                    option = document.createElement("option");
+                    option.value = j;
+                    pyro_buff = 7.5 * j;
+                    option.text = `+${pyro_buff}%`;
+                    selectList.appendChild(option);
                 }
 
                 artifact_checkbox.appendChild(traitCheckbox);
@@ -507,7 +509,7 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af12_4text = document.createTextNode("バフ効果：");
+                const af12_4text = document.createTextNode("　バフ効果：");
                 const selectList = document.createElement("select");
                 let option;
                 let cr_buff;
