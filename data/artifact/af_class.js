@@ -145,7 +145,8 @@ function af6_2()
 function af6_4()
 {
     let checkbox = document.getElementById("af6_4");
-    const selectElement = document.getElementById("af6_4select");
+    const af6_4select = document.getElementById("af6_4select");
+    const selectElement = af6_4select.value;
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     if (checkbox.checked && char_propaty[0] == selectElement)
     {
