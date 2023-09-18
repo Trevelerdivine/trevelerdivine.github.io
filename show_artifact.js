@@ -266,6 +266,7 @@ async function show_artifact()
                   option.value = j;
                   option.text = `element[j]`;
                   selectList.appendChild(option);
+                }
 
                 artifact_checkbox.appendChild(traitCheckbox);
                 artifact_checkbox.appendChild(traitLabel);
