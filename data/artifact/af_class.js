@@ -354,9 +354,18 @@ function af15_4()
 {
     let checkbox = document.getElementById("af15_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+    const af12_4select = document.getElementById("af12_4select");
+    const buff_count = af12_4select.value;
+    let af15_4_attackbuff = 0;
+    let af15_4dmgbuff = 0;
     if (checkbox.checked)
     {
-        status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0.25]; 
+        af15_4_attackbuff = 0.09 * buff_count;
+        if (buff_count == 2 && char_propaty[0] == 7)
+        {
+            af15_4dmgbuff = 0.25
+        }
+        status_buff = [0, 0, 0, 0, af15_4_attackbuff, 0, 0, af15_4dmgbuff]; 
     }
     return status_buff
 }
