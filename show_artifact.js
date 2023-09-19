@@ -1074,6 +1074,9 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+
             if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
             {
                 traitCheckbox.id = traits[1].id;
@@ -1082,10 +1085,26 @@ async function show_artifact()
 
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
-            }
 
-            artifact_checkbox.appendChild(traitCheckbox);
-            artifact_checkbox.appendChild(traitLabel);
+                const af25_4text = document.createTextNode("　ダメージバフ：");
+                const selectList = document.createElement("select");
+                let option;
+                let dmg_buff;
+                selectList.id = "af25_4select";
+            
+                for (let j = 0; j < 6; j++) {
+                  option = document.createElement("option");
+                  option.value = j;
+                  dmg_buff = 10 + 8 * j;
+                  option.text = `+${dmg_buff}%`;
+                  selectList.appendChild(option);
+                }
+
+                artifact_checkbox.appendChild(traitCheckbox);
+                artifact_checkbox.appendChild(traitLabel);
+                artifact_checkbox.appendChild(af25_4text);
+                artifact_checkbox.appendChild(selectList);
+            }
         }
 
         if (i === 0)

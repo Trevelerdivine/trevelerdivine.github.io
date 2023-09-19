@@ -589,10 +589,11 @@ function af24_4()
             af24_4atkbuff = 7 + 9 * (buff_count - 1);
             if(char_propaty[0] == 1)
             { 
-                af24_4dmgbuff = buff_count * (buff_count + 7) / 2;
+                af24_4dmgbuff = buff_count * (buff_count + 7) / 2;          
             }
         }
         status_buff = [0, 0, 0, 0, af24_4atkbuff, 0, 0, af24_4dmgbuff]; 
+        console.log(status_buff);
     }
     return status_buff
 }
@@ -612,9 +613,13 @@ function af25_4()
 {
     let checkbox = document.getElementById("af25_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    const af25_4select = document.getElementById("af25_4select");
+    const buff_count = af25_4select.value;
+    let af25_4dmgbuff = 0;
+    if (checkbox.checked && (attack_method == 3 || attack_method == 4))
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
+        af25_4dmgbuff = 0.1 + 0.08 * buff_count;
+        status_buff = [0, 0, 0, 0, 0, 0, 0, af25_4dmgbuff]; 
     }
     return status_buff
 }
