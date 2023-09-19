@@ -10,6 +10,11 @@
   overflow-x: auto; /* 横スクロールを有効にする */
 }
 
+.fieldstyle{
+  display: none;
+  overflow-x: auto; /* 横スクロールを有効にする */
+}
+
 .active {
   display: block;
 }
