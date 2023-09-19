@@ -81,7 +81,7 @@ class nahida {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return 0.15;
+    return 0;
   }
 
   calculate_char_result_dmg_buff() {

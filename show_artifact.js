@@ -843,6 +843,9 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+
             if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
             {
                 traitCheckbox.id = traits[1].id;
@@ -851,10 +854,44 @@ async function show_artifact()
 
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
-            }
 
-            artifact_checkbox.appendChild(traitCheckbox);
-            artifact_checkbox.appendChild(traitLabel);
+
+                const af18_4_1text = document.createTextNode("　同じ元素のキャラ数　　");
+                const af18_4_2text = document.createTextNode("　異なる元素のキャラ数　");
+                
+            
+                traitContainer.appendChild(traitCheckbox);
+                traitContainer.appendChild(traitLabel);
+                
+            
+                const selectList1 = createSelectList("traitSelect1", 3); // 1つ目のプルダウンリストを生成
+                const selectList2 = createSelectList("traitSelect2", 3); // 2つ目のプルダウンリストを生成
+                selectList1.id = "af18_4_1select";
+                selectList2.id = "af18_4_2select",
+                artifact_checkbox.appendChild(document.createElement("br"));
+                artifact_checkbox.appendChild(af18_4_1text);
+                artifact_checkbox.appendChild(selectList1);
+                artifact_checkbox.appendChild(document.createElement("br"));
+                artifact_checkbox.appendChild(af18_4_2text);
+                artifact_checkbox.appendChild(selectList2);
+            
+                // プルダウンリストを生成する関数
+                function createSelectList(id, optionCount) 
+                {
+                    const selectList = document.createElement("select");
+                    selectList.id = id;
+                
+                    for (let i = 0; i <= optionCount; i++) 
+                    {
+                        const option = document.createElement("option");
+                        option.value = i;
+                        option.text = `${i}人`;
+                        selectList.appendChild(option);
+                    }
+                
+                    return selectList;
+                }
+            }
         }
 
         if (selectedImageIds[i] == "21") 
