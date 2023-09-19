@@ -586,7 +586,7 @@ function af24_4()
     {
         if (buff_count > 0)
         {
-            af24_4atkbuff = 7 + 9 * (buff_count - 1);
+            af24_4atkbuff = 0.07 + 0.09 * (buff_count - 1);
             if(char_propaty[0] == 1)
             { 
                 af24_4dmgbuff = buff_count * (buff_count + 7) / 2;          
