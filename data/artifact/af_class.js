@@ -480,11 +480,19 @@ function af20_2()
 
 function af20_4()
 {
-    let checkbox = document.getElementById("a20_4");
+    let checkbox = document.getElementById("af20_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+    const af20_4_1select = document.getElementById("af20_4_1select");
+    const atkbuff_count = af20_4_1select.value;
+    const af20_4_2select = document.getElementById("af20_4_2select");
+    const elmbuff_count = af20_4_2select.value;
+    let af20_4atkbuff;
+    let af20_4elmbuff;
     if (checkbox.checked)
     {
-        status_buff = [0, 0, 150, 0, 0, 0, 0, 0]; 
+        af20_4atkbuff = 0.14 * atkbuff_count;
+        af20_4elmbuff = 50 * elmbuff_count;
+        status_buff = [0, 0, af20_4elmbuff, 0, af20_4atkbuff, 0, 0, 0]; 
     }
     return status_buff
 }
