@@ -247,7 +247,7 @@ function af11_2()
 {
     let checkbox = document.getElementById("af11_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == 0)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
     }
@@ -259,12 +259,12 @@ function af11_4()
     let checkbox = document.getElementById("af11_4");
     const af11_4select = document.getElementById("af11_4select");
     const buff_count = af11_4select.value;
-    let pyro_buff;
+    let af11_4buff;
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     if (checkbox.checked && char_propaty[0] == 0)
     {
-        pyro_buff = buff_count * 0.075
-        status_buff = [0, 0, 0, 0, 0, 0, 0, pyro_buff]; 
+        af11_4buff = buff_count * 0.075;
+        status_buff = [0, 0, 0, 0, 0, 0, 0, af11_4buff]; 
     }
     return status_buff
 }
@@ -283,10 +283,14 @@ function af12_2()
 function af12_4()
 {
     let checkbox = document.getElementById("af12_4");
-    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0];
+    const af12_4select = document.getElementById("af12_4select");
+    const buff_count = af12_4select.value;
+    let af12_4buff;
     if (checkbox.checked)
     {
-        status_buff = [0, 0, 0, 0, 0, 0.4, 0, 0]; 
+        af12_4buff = buff_count * 0.2;
+        status_buff = [0, 0, 0, 0, 0, af12_4buff, 0, 0]; 
     }
     return status_buff
 }
@@ -295,7 +299,7 @@ function af13_2()
 {
     let checkbox = document.getElementById("af13_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == 1)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
     }
@@ -306,7 +310,7 @@ function af13_4()
 {
     let checkbox = document.getElementById("af13_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && (attack_method == 0 || attack_method == 1))
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.3]; 
     }
@@ -339,7 +343,7 @@ function af15_2()
 {
     let checkbox = document.getElementById("af15_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == 7)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.25]; 
     }

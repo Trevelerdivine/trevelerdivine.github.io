@@ -453,7 +453,7 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af11_4text = document.createTextNode("　バフ効果：");
+                const af11_4text = document.createTextNode("　セット効果：");
                 const selectList = document.createElement("select");
                 let option;
                 let pyro_buff;
@@ -509,7 +509,7 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af12_4text = document.createTextNode("　バフ効果：");
+                const af12_4text = document.createTextNode("　セット効果：");
                 const selectList = document.createElement("select");
                 let option;
                 let cr_buff;
