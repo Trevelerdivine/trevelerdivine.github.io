@@ -855,19 +855,15 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-
                 const af18_4_1text = document.createTextNode("　同じ元素のキャラ数　　");
                 const af18_4_2text = document.createTextNode("　異なる元素のキャラ数　");
-                
-            
-                traitContainer.appendChild(traitCheckbox);
-                traitContainer.appendChild(traitLabel);
-                
             
                 const selectList1 = createSelectList("traitSelect1", 3); // 1つ目のプルダウンリストを生成
                 const selectList2 = createSelectList("traitSelect2", 3); // 2つ目のプルダウンリストを生成
                 selectList1.id = "af18_4_1select";
                 selectList2.id = "af18_4_2select",
+                artifact_checkbox.appendChild(traitCheckbox);
+                artifact_checkbox.appendChild(traitLabel);
                 artifact_checkbox.appendChild(document.createElement("br"));
                 artifact_checkbox.appendChild(af18_4_1text);
                 artifact_checkbox.appendChild(selectList1);
