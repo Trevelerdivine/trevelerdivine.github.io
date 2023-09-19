@@ -593,7 +593,6 @@ function af24_4()
             }
         }
         status_buff = [0, 0, 0, 0, af24_4atkbuff, 0, 0, af24_4dmgbuff]; 
-        console.log(status_buff);
     }
     return status_buff
 }
