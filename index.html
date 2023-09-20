@@ -525,8 +525,8 @@
       </div>
     </div>
     <div>
-      <button onclick="showOption('option1')">キャラ＆装備</button>
-      <button onclick="showOption('option2')">元素共鳴</button>
+      <button id = "parameterbutton1" class="button-049" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
+      <button id = "parameterbutton2" class="button-049" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
       <div class = "option-field" id = "option1">
         <fieldset style="width: auto;">
           <legend>キャラクターバフ</legend>
@@ -976,7 +976,7 @@
     show_char_statsform();
     show_weapon_statsform();
     showTable('table1')
-    showOption("option1")
+    showOption("option1", "parameterbutton1")
   });
   document.getElementById('status_setting').addEventListener('input', calculate_table_status);
   document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
@@ -998,16 +998,19 @@
     document.getElementById(tableId).classList.add("active");
   }
 
-  function showOption(tableId)
+  function showOption(tableId, buttonId)
   {
     // すべての表コンテナを非表示にする
     let optionContainers = document.getElementsByClassName("option-field");
+    let buttonstyle = document.getElementsByClassName("button-049");
     for (let i = 0; i < optionContainers.length; i++) 
     {
       optionContainers[i].classList.remove("active");
+      buttonstyle[i].classList.remove("button-active");
     }
     // 選択された表コンテナを表示する
     document.getElementById(tableId).classList.add("active");
+    document.getElementById(buttonId).classList.add("button-active");
   }
 
   (function() {

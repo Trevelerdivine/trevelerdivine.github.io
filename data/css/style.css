@@ -290,6 +290,28 @@ text-align: center;
   border-bottom: solid 2px #1d7fde;
 }
 
+.button-049 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  margin: 0 auto;
+  padding: .9em 2em;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  box-shadow: 0 0 0 3px #3ea2ea;
+  background-color: #3ea2ea;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.button-active {
+  background-color: orange;
+  box-shadow: 0 0 0 3px orange;
+}
+
 
 
 
