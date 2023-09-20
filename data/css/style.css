@@ -578,6 +578,11 @@ text-align: center;
     justify-items: center; /* 水平方向に中央に配置 */
   }
 
+  .button-1 {
+    margin: 0.3em;
+    font-size: 0.8em;
+  }
+
   .button-2 {
     margin: 0.3em;
     font-size: 0.8em;
