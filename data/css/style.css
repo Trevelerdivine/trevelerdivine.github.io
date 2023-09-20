@@ -291,11 +291,11 @@ text-align: center;
 }
 
 .button-049 {
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  margin: 0 auto;
+  width: 110px;
+  margin: 10px;
   padding: 0.2em 0.2em;
   border: 2px solid #fff;
   border-radius: 25px;
@@ -304,7 +304,7 @@ text-align: center;
   color: #fff;
   font-weight: 600;
   font-size: 1em;
-  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+  transition: background-color 0.1s, box-shadow 0.1s, border-color 0.1s;
 }
 
 .button-active {
