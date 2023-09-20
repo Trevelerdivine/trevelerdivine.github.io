@@ -272,6 +272,7 @@ text-align: center;
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-items: center; /* 水平方向に中央に配置 */
 }
 
 /* solid004 */
@@ -290,7 +291,24 @@ text-align: center;
   border-bottom: solid 2px #1d7fde;
 }
 
-.button-049 {
+.button-1 {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin: 10px;
+  padding: 0.2em 0.5em;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  box-shadow: 0 0 0 3px #3ea2ea;
+  background-color: #3ea2ea;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background-color 0.1s, box-shadow 0.1s, border-color 0.1s;
+}
+
+.button-2 {
   display: inline-block;
   justify-content: center;
   align-items: center;

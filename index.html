@@ -525,8 +525,8 @@
       </div>
     </div>
     <div>
-      <button id = "parameterbutton1" class="button-049" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
-      <button id = "parameterbutton2" class="button-049" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
+      <button id = "parameterbutton1" class="button-1" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
+      <button id = "parameterbutton2" class="button-1" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
       <div class = "option-field" id = "option1">
         <fieldset style="width: auto;">
           <legend>キャラクターバフ</legend>
@@ -668,9 +668,9 @@
   <br>
   <div id="result"></div>
   <br>
-  <button onclick="showTable('table1')">各ステータス</button>
-  <button onclick="showTable('table2')">スコア分布</button>
-  <button onclick="showTable('table3')">サブステータス分布</button>
+  <button id = "tablebutton1" class="button-2" onclick="showTable('tableion1', 'tablebutton1')">各ステータス</button>
+  <button id = "tablebutton2" class="button-2" onclick="showTable('tableion1', 'tablebutton2')">スコア分布</button>
+  <button id = "tablebutton3" class="button-2" onclick="showTable('tableion1', 'tablebutton3')">サブステータス分布</button>
   <br>
   <br>
   <div id="table1" class="tablestyle">
@@ -986,23 +986,26 @@
   document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
   document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
 
-  function showTable(tableId)
+  function showTable(tableId, buttonId)
   {
     // すべての表コンテナを非表示にする
     let tableContainers = document.getElementsByClassName("tablestyle");
+    let buttonstyle = document.getElementsByClassName("button-2");
     for (var i = 0; i < tableContainers.length; i++) 
     {
       tableContainers[i].classList.remove("active");
+      buttonstyle[i].classList.remove("button-active");
     }
     // 選択された表コンテナを表示する
     document.getElementById(tableId).classList.add("active");
+    document.getElementById(buttonId).classList.add("button-active");
   }
 
   function showOption(tableId, buttonId)
   {
     // すべての表コンテナを非表示にする
     let optionContainers = document.getElementsByClassName("option-field");
-    let buttonstyle = document.getElementsByClassName("button-049");
+    let buttonstyle = document.getElementsByClassName("button-1");
     for (let i = 0; i < optionContainers.length; i++) 
     {
       optionContainers[i].classList.remove("active");
