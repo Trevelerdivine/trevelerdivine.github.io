@@ -23,7 +23,7 @@
   text-align: center;
 }
 
-.centered-container > div {
+.centered-div {
 display: inline-block;
 }
 
