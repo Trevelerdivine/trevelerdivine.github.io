@@ -573,4 +573,9 @@ text-align: center;
     display: block;
     justify-items: center; /* 水平方向に中央に配置 */
   }
+
+  .button-2 {
+    margin: 3px;
+    font-size: 0.7em;
+  }
 }
