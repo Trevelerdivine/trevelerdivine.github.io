@@ -19,6 +19,12 @@
   display: block;
 }
 
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 table.calc_result {
   border-collapse: collapse;
   width: 100%;
@@ -272,7 +278,6 @@ text-align: center;
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-items: center; /* 水平方向に中央に配置 */
 }
 
 /* solid004 */
@@ -575,7 +580,7 @@ text-align: center;
   }
 
   .button-2 {
-    margin: 3px;
+    margin: 7px;
     font-size: 0.7em;
   }
 }
