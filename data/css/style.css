@@ -20,11 +20,11 @@
 }
 
 .centered-container {
-  display: block;
+  text-align: center;
 }
 
 .centered-container > div {
-  text-align: center;
+display: inline-block;
 }
 
 table.calc_result {
