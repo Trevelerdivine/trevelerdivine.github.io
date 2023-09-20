@@ -25,6 +25,10 @@
   align-items: center;
 }
 
+.centered-container > div {
+  text-align: center;
+}
+
 table.calc_result {
   border-collapse: collapse;
   width: 100%;
@@ -298,8 +302,6 @@ text-align: center;
 
 .button-1 {
   display: inline-block;
-  justify-content: center;
-  align-items: center;
   width: auto;
   margin: 10px;
   padding: 0.2em 0.5em;
@@ -315,8 +317,6 @@ text-align: center;
 
 .button-2 {
   display: inline-block;
-  justify-content: center;
-  align-items: center;
   width: auto;
   margin: 10px;
   padding: 0.2em 0.5em;
