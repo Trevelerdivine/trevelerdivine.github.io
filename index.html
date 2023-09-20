@@ -525,13 +525,22 @@
       </div>
     </div>
     <div>
-      <fieldset id="characterInfo" style="width: auto;"></fieldset>
-      <fieldset style="width: auto;">
-        <div id="weaponInfo">
-        </div>
-        <div id="artifact_checkbox">
-        </div>
-      </fieldset>
+      <div class = "option-field" id = "option1">
+        <fieldset id="characterInfo" style="width: auto;"></fieldset>
+        <fieldset style="width: auto;">
+          <div id="weaponInfo">
+          </div>
+          <div id="artifact_checkbox">
+          </div>
+        </fieldset>
+      <div>
+      <div class = "option-field" id = "option2">
+        <label><input type="checkbox" class="custom-checkbox"> 炎共鳴</label><br>
+        <label><input type="checkbox" class="custom-checkbox"> 水共鳴</label><br>
+        <label><input type="checkbox" class="custom-checkbox"> 氷共鳴</label><br>
+        <label><input type="checkbox" class="custom-checkbox"> 草共鳴</label><br>
+        <label><input type="checkbox" class="custom-checkbox"> 岩共鳴</label><br>      
+      </div>
       <br>
       <div class = "tablestyle1">
         <table  class="status_table" style="table-layout: fixed">
@@ -642,6 +651,8 @@
   <button onclick="showTable('table1')">各ステータス</button>
   <button onclick="showTable('table2')">スコア分布</button>
   <button onclick="showTable('table3')">サブステータス分布</button>
+  <button onclick="showOption('option1')">お試しボタン１</button>
+  <button onclick="showOption('option2')">お試しボタン２</button>
   <br>
   <br>
   <div id="table1" class="tablestyle">
@@ -947,6 +958,7 @@
     show_char_statsform();
     show_weapon_statsform();
     showTable('table1')
+    showOption("option1")
   });
   document.getElementById('status_setting').addEventListener('input', calculate_table_status);
   document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
@@ -967,6 +979,41 @@
     // 選択された表コンテナを表示する
     document.getElementById(tableId).classList.add("active");
   }
+
+  function showOption(tableId)
+  {
+    // すべての表コンテナを非表示にする
+    let optionContainers = document.getElementsByClassName("option-field");
+    for (let i = 0; i < optionContainers.length; i++) 
+    {
+      optionContainers[i].classList.remove("active");
+    }
+    // 選択された表コンテナを表示する
+    document.getElementById(tableId).classList.add("active");
+  }
+
+  (function() {
+      const checkboxes = document.querySelectorAll('.custom-checkbox');
+      const maxSelected = 2;
+      const selectedCheckboxes = [];
+
+      checkboxes.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+            selectedCheckboxes.push(checkbox);
+            if (selectedCheckboxes.length > maxSelected) {
+              const oldestSelected = selectedCheckboxes.shift();
+              oldestSelected.checked = false;
+            }
+          } else {
+            const indexToRemove = selectedCheckboxes.indexOf(checkbox);
+            if (indexToRemove !== -1) {
+              selectedCheckboxes.splice(indexToRemove, 1);
+            }
+          }
+        });
+      });
+    })();
 
   function changeImageClass(image) 
   {
