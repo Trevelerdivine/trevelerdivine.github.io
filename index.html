@@ -209,7 +209,7 @@
       </label>
       <br>
       <select id="clock_mainstatus">
-        <option disabled selected >時計メインステータス</option>
+        <option disabled selected >時計メインステ</option>
         <option value="0">HP％</option>
         <option value="4">攻撃力％</option>
         <option value="1">防御力％</option>
@@ -217,7 +217,7 @@
         <option value="3">元素チャージ効率</option>
       </select>
       <select id="goblet_mainstatus">
-        <option disabled selected>杯メインステータス</option>
+        <option disabled selected>杯メインステ</option>
         <option value="0">HP％</option>
         <option value="4">攻撃力％</option>
         <option value="1">防御力％</option>
@@ -227,7 +227,7 @@
 
       </select>
       <select id="circlet_mainstatus">
-        <option disabled selected>冠メインステータス</option>
+        <option disabled selected>冠メインステ</option>
         <option value="0">HP％</option>
         <option value="4">攻撃力％</option>
         <option value="1">防御力％</option>
@@ -527,10 +527,11 @@
     <div>
       <button onclick="showOption('option1')">キャラ＆装備</button>
       <button onclick="showOption('option2')">元素共鳴</button>
-      <br>
       <div class = "option-field" id = "option1">
-        <fieldset id="characterInfo" style="width: auto;">
+        <fieldset style="width: auto;">
           <legend>キャラクターバフ</legend>
+          <div id = id="characterInfo">
+          </div>
         </fieldset>
         <fieldset style="width: auto;">
           <legend>装備バフ</legend>
