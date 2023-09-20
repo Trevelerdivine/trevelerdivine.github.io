@@ -21,6 +21,7 @@
 
 .centered-container {
   text-align: center;
+  max-width: 600px;
 }
 
 .centered-div {
