@@ -419,8 +419,7 @@ text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.af-buff-form th,
-.af-buff-form td {
+.af-buff-form th, .af-buff-form td {
   padding: 15px;
   text-align: center;
 }
@@ -432,8 +431,7 @@ text-align: center;
   text-align: left;
 }
 
-.af-buff-form input,
-.af-buff-form select {
+.af-buff-form input, .af-buff-form select {
   width: 100%;
   padding: 1px;
   font-size: 14px;
@@ -444,8 +442,7 @@ text-align: center;
   transition: border-color 0.3s;
 }
 
-.af-buff-form input:focus,
-.af-buff-form select:focus {
+.af-buff-form input:focus, .af-buff-form select:focus {
   outline: none;
   border-bottom-color: #007bff;
   box-shadow: 0 1px 0 0 #007bff;
@@ -475,6 +472,7 @@ text-align: center;
   justify-content: center;
 }
 
+
 .enemy-form {
   max-width: 500px;
   width: 100%;
@@ -491,7 +489,7 @@ text-align: center;
 }
 
 .enemy-form th {
-  background-color: #FEDCBD;
+  background-color: #DDFFDD;
   color: #444;
   font-weight: bold;
   text-align: left;
