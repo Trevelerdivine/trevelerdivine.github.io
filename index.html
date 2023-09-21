@@ -530,7 +530,7 @@
       <div style = "text-align: center;">
         <button id = "parameterbutton1" class="button-1" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
         <button id = "parameterbutton2" class="button-1" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
-        <button id = "parameterbutton3" class="button-1">敵ステータス</button>
+        <button id = "parameterbutton3" class="button-1" onclick="showOption('option3', 'parameterbutton2')">敵ステータス</button>
       </div>
         <div class = "option-field" id = "option1">
         <fieldset style="width: auto;">
@@ -565,6 +565,54 @@
             <option value="20">20%</option>
           </select>
         </fieldset>
+      </div>
+      <div class = "option-field" id = "option3">
+        <div id= "enemy-status">
+          <form class="af-buff-form">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>敵ステータス</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="enemy_level-form">
+                  <td><label for="enemy-level-form">敵レベル</label></td>
+                  <td>
+                    <div>
+                      <input type="number" id="enemy-level" required min="0" name="enemy-level" placeholder="Lv">
+                    </div>
+                  </td>
+                </tr>
+                <tr id="enemy-resist-form">
+                  <td><label for="enemy-resist-form">元素＆物理耐性(%)</label></td>
+                  <td>
+                    <div>
+                      <input type="number" id="enemy-resist" required min="0" name="enemy-resist" placeholder="耐性（％）">
+                    </div>
+                  </td>
+                </tr>
+                <tr id="resist-debuff-form">
+                  <td><label for="resist_debuff-form">耐性デバフ</label></td>
+                  <td>
+                    <div>
+                      <input type="number" id="resist_debuff" required min="0" name="resist_debuff" placeholder="耐性デバフ">
+                    </div>
+                  </td>
+                </tr>
+                <tr id="deff-debuff-form">
+                  <td><label for="deff-debuff-form">防御デバフ</label></td>
+                  <td>
+                    <div>
+                      <input type="number" id="deff-debuff" required min="0" name="deff-debuff" placeholder="防御デバフ">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
       </div>
       <br>
       <div class = "tablestyle1">
