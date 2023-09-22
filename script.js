@@ -281,7 +281,7 @@ async function calculate_team_fix_buff(base_status)
 
   team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates["hydro_reso"]) * base_status[0];
   team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1]) * base_status[1];
-  if (checkboxStates["dendro_reso"] =1)
+  if (checkboxStates["dendro_reso"] == 1)
   {
     const dendro_reso_select = document.getElementById("dendro_reso_select");
     const dendro_elm = dendro_reso_select.value;
