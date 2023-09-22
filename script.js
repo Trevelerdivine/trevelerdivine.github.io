@@ -16,7 +16,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo"];
 const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
-
+let checkboxStates = {};
                   
 
 /////////////////////
@@ -270,14 +270,32 @@ async function calculate_team_fix_buff(base_status)
   const af_setbuff = await create_afset_instance();
   let team_buff = [0,0,0,0,0,0,0,0];
 
-  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0]) * base_status[0];
+  // 全ての.custom-checkboxクラスを持つ要素に対して処理を行う
+  document.querySelectorAll('.custom-checkbox').forEach(function(checkbox) {
+    checkboxStates[checkbox.id] = 0; // 初期状態では0
+
+    checkbox.addEventListener('change', function() {
+      checkboxStates[this.id] = this.checked ? 1 : 0;
+    });
+  });
+
+  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates["hydro_reso"]) * base_status[0];
   team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1]) * base_status[1];
-  team_buff[2] = fix_elm_buff + af_setbuff[2];
+  if (checkboxStates["dendro_reso"] =1)
+  {
+    const dendro_reso_select = document.getElementById("dendro_reso_select");
+    const dendro_elm = dendro_reso_select.value;
+    team_buff[2] = fix_elm_buff + af_setbuff[2] + dendro_elm;
+  }
+  else
+  {
+    team_buff[2] = fix_elm_buff + af_setbuff[2];
+  }
   team_buff[3] = fix_elm_charge_buff + af_setbuff[3];
-  team_buff[4] = fix_attack_buff + (fix_attackrate_buff + af_setbuff[4]) * base_status[4];
-  team_buff[5] = fix_cr_buff + af_setbuff[5];
+  team_buff[4] = fix_attack_buff + (fix_attackrate_buff + af_setbuff[4] + 0.25 * checkboxStates["pyro_reso"]) * base_status[4];
+  team_buff[5] = fix_cr_buff + af_setbuff[5] + 0.15 * checkboxStates["cyro_reso"];
   team_buff[6] = fix_cd_buff + af_setbuff[6];
-  team_buff[7] = fix_dmg_buff + af_setbuff[7];
+  team_buff[7] = fix_dmg_buff + af_setbuff[7] + 0.15 * checkboxStates["geo_reso"];
 
   return team_buff
 }
