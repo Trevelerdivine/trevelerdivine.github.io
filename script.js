@@ -16,7 +16,6 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo"];
 const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
-let checkboxStates = {};
                   
 
 /////////////////////
@@ -270,15 +269,20 @@ async function calculate_team_fix_buff(base_status)
   const af_setbuff = await create_afset_instance();
   let team_buff = [0,0,0,0,0,0,0,0];
 
-  // 全ての.custom-checkboxクラスを持つ要素に対して処理を行う
-  document.querySelectorAll('.custom-checkbox').forEach(function(checkbox) {
-    checkboxStates[checkbox.id] = 0; // 初期状態では0
-
-    checkbox.addEventListener('change', function() {
-      checkboxStates[this.id] = this.checked ? 1 : 0;
-    });
-  });
-  console.log(checkboxStates);
+  const pyroCheckbox = document.getElementById("pyro_reso");
+  const hydroCheckbox = document.getElementById("hydro_reso");
+  const cyroCheckbox = document.getElementById("cyro_reso");
+  const dendroCheckbox = document.getElementById("dendro_reso");
+  const geoCheckbox = document.getElementById("geo_reso");
+  
+  // チェックボックスの情報をまとめた配列を作成
+  const checkboxStates = [
+    { id: "pyro_reso", checked: pyroCheckbox.checked },
+    { id: "hydro_reso", checked: hydroCheckbox.checked },
+    { id: "cyro_reso", checked: cyroCheckbox.checked },
+    { id: "dendro_reso", checked: dendroCheckbox.checked },
+    { id: "geo_reso", checked: geoCheckbox.checked }
+  ];
 
   team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates["hydro_reso"]) * base_status[0];
   team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1]) * base_status[1];
