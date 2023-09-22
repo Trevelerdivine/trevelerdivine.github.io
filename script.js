@@ -276,13 +276,13 @@ async function calculate_team_fix_buff(base_status)
   const geoCheckbox = document.getElementById("geo_reso");
   
   // チェックボックスの情報をまとめた配列を作成
-  const checkboxStates = [
-    { id: "pyro_reso", checked: pyroCheckbox.checked ? 1 : 0 },
-    { id: "hydro_reso", checked: hydroCheckbox.checked ? 1 : 0 },
-    { id: "cyro_reso", checked: cyroCheckbox.checked ? 1 : 0 },
-    { id: "dendro_reso", checked: dendroCheckbox.checked ? 1 : 0 },
-    { id: "geo_reso", checked: geoCheckbox.checked ? 1 : 0 }
-  ];
+  const checkboxStates = {
+    pyro_reso: pyroCheckbox.checked ? 1 : 0,
+    hydro_reso: hydroCheckbox.checked ? 1 : 0,
+    cyro_reso: cyroCheckbox.checked ? 1 : 0,
+    dendro_reso: dendroCheckbox.checked ? 1 : 0,
+    geo_reso: geoCheckbox.checked ? 1 : 0
+  };
 
   team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates.hydro_reso) * base_status[0];
   team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1]) * base_status[1];
