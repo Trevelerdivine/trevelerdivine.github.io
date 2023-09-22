@@ -289,7 +289,7 @@ async function calculate_team_fix_buff(base_status)
   if (checkboxStates.dendro_reso == 1)
   {
     const dendro_reso_select = document.getElementById("dendro_reso_select");
-    const dendro_elm = dendro_reso_select.value;
+    const dendro_elm = parseInt(dendro_reso_select.value);
     team_buff[2] = fix_elm_buff + af_setbuff[2] + dendro_elm;
   }
   else
