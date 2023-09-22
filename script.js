@@ -284,9 +284,9 @@ async function calculate_team_fix_buff(base_status)
     { id: "geo_reso", checked: geoCheckbox.checked ? 1 : 0 }
   ];
 
-  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates["hydro_reso"]) * base_status[0];
+  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates.hydro_reso) * base_status[0];
   team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1]) * base_status[1];
-  if (checkboxStates["dendro_reso"] == 1)
+  if (checkboxStates.dendro_reso == 1)
   {
     const dendro_reso_select = document.getElementById("dendro_reso_select");
     const dendro_elm = dendro_reso_select.value;
@@ -297,10 +297,10 @@ async function calculate_team_fix_buff(base_status)
     team_buff[2] = fix_elm_buff + af_setbuff[2];
   }
   team_buff[3] = fix_elm_charge_buff + af_setbuff[3];
-  team_buff[4] = fix_attack_buff + (fix_attackrate_buff + af_setbuff[4] + 0.25 * checkboxStates["pyro_reso"]) * base_status[4];
-  team_buff[5] = fix_cr_buff + af_setbuff[5] + 0.15 * checkboxStates["cyro_reso"];
+  team_buff[4] = fix_attack_buff + (fix_attackrate_buff + af_setbuff[4] + 0.25 * checkboxStates.pyro_reso) * base_status[4];
+  team_buff[5] = fix_cr_buff + af_setbuff[5] + 0.15 * checkboxStates.cyro_reso;
   team_buff[6] = fix_cd_buff + af_setbuff[6];
-  team_buff[7] = fix_dmg_buff + af_setbuff[7] + 0.15 * checkboxStates["geo_reso"];
+  team_buff[7] = fix_dmg_buff + af_setbuff[7] + 0.15 * checkboxStates.geo_reso;
 
   return team_buff
 }
