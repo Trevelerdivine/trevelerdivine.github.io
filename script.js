@@ -277,11 +277,11 @@ async function calculate_team_fix_buff(base_status)
   
   // チェックボックスの情報をまとめた配列を作成
   const checkboxStates = [
-    { id: "pyro_reso", checked: pyroCheckbox.checked },
-    { id: "hydro_reso", checked: hydroCheckbox.checked },
-    { id: "cyro_reso", checked: cyroCheckbox.checked },
-    { id: "dendro_reso", checked: dendroCheckbox.checked },
-    { id: "geo_reso", checked: geoCheckbox.checked }
+    { id: "pyro_reso", checked: pyroCheckbox.checked ? 1 : 0 },
+    { id: "hydro_reso", checked: hydroCheckbox.checked ? 1 : 0 },
+    { id: "cyro_reso", checked: cyroCheckbox.checked ? 1 : 0 },
+    { id: "dendro_reso", checked: dendroCheckbox.checked ? 1 : 0 },
+    { id: "geo_reso", checked: geoCheckbox.checked ? 1 : 0 }
   ];
 
   team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates["hydro_reso"]) * base_status[0];
