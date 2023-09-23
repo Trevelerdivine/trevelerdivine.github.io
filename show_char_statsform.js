@@ -95,7 +95,7 @@ async function show_char_statsform()
       });
     
       // 生成したセレクトボックスを指定された要素に追加
-      const containerElement = document.getElementById("container"); // ここにセレクトボックスを追加する要素を指定
+      const containerElement = document.getElementById("element_action"); // ここにセレクトボックスを追加する要素を指定
       containerElement.appendChild(selectElement);
 
       if (char_constellations > 0)
