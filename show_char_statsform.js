@@ -72,9 +72,7 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "0" },
         { text: "重撃", value: "1" },
-        { text: "落下攻撃", value: "2" },
-        { text: "スキル", value: "3" },
-        { text: "元素爆発", value: "4" },
+        { text: "スキル（滅浄三業）", value: "2" },
       ];
 
       createchar_attackmethod(options)
@@ -118,6 +116,16 @@ async function show_char_statsform()
             label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
           }
         ];
+
+        const options = [
+          { text: "攻撃方法", value: "", disabled: true, selected: true },
+          { text: "通常1ループ（爆発中）", value: "0" },
+          { text: "重撃(爆発中)", value: "1" },
+          { text: "元素爆発（初撃）", value: "2" },
+        ];
+  
+        createchar_attackmethod(options)
+
         if (char_constellations > 0)
         {
           for (let i = 0; i < char_constellations; i++) 
@@ -285,6 +293,6 @@ function createchar_attackmethod(options)
   });
 
   // 生成したセレクトボックスを指定された要素に追加
-  const containerElement = document.getElementById("element_action"); // ここにセレクトボックスを追加する要素を指定
+  const containerElement = document.getElementById("attack_method"); // ここにセレクトボックスを追加する要素を指定
   containerElement.appendChild(selectElement);
 }
