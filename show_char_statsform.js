@@ -43,11 +43,13 @@ async function show_char_statsform()
     
     const characterInfo = document.getElementById("characterInfo");
     const elemental_reaction = document.getElementById("element_action");
+    const attack_method = document.getElementById("attack_method");
     characterInfo.style.display = "block";
 
     characterInfo.innerHTML = "";
     elemental_reaction.innerHTML = "";
-    
+    attack_method.innerHTML = "";
+
     if (selectedCharId  === "56") {
       const traits = [
         {
