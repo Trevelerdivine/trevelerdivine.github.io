@@ -16,15 +16,41 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo"];
 const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
-                  
+const elm_reaction_obj = [
+  {
+  id: "Vaporize_pyro",
+  label: "蒸発-炎"
+  },
+  {
+  id: "Vaporize-hydro",
+  label: "蒸発-水"
+  },
+  {
+  id: "Melt-pyro",
+  label: "溶解-炎"
+  },
+  {
+  id: "Melt-cyro",
+  label: "溶解-氷"
+  },
+  {
+  id: "Spread",
+  label: "草激化"
+  },
+  {
+  id: "Aggravate",
+  label: "超激化"
+  }
+
+];             
+
+
 
 /////////////////////
 
 async function calculate_char_base_status() 
 {
   const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
-  const data = await response.json();
   const char_base_hp = data.ステータス.基礎HP[char_level];
   const char_base_attck = data.ステータス.基礎攻撃力[char_level];
   const char_base_deff = data.ステータス.基礎防御力[char_level];
@@ -33,7 +59,6 @@ async function calculate_char_base_status()
   const char_base_cr = data.ステータス.基礎会心率[char_level];
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
-  char_propaty = data.ステータス.属性;
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];
   return char_base_status;

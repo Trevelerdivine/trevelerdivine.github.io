@@ -19,6 +19,9 @@ async function show_char_statsform()
     let team_cr_form = document.getElementById("team_cr_form");
     let team_cd_form = document.getElementById("team_cd_form");
     const char_constellations = document.getElementById("char_constellations").value;
+    const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+    const data = await response.json();
+    char_propaty = data.ステータス.属性;
 
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
@@ -39,9 +42,11 @@ async function show_char_statsform()
     team_cd_form.style.display = "none";
     
     const characterInfo = document.getElementById("characterInfo");
+    const elemental_reaction = document.getElementById("element_action");
     characterInfo.style.display = "block";
 
     characterInfo.innerHTML = "";
+    elemental_reaction.innerHTML = "";
     
     if (selectedCharId  === "56") {
       const traits = [
@@ -122,6 +127,99 @@ async function show_char_statsform()
           }
         }
       }
+      if (char_propaty[0] == 0)
+      {
+        const traitCheckbox1 = document.createElement("input");
+        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.id = elm_reaction_obj[0].id;
+        traitCheckbox1.value = elm_reaction_obj[0].id;
+        traitCheckbox1.checked = true;
+
+        const traitLabel1 = document.createElement("label");
+        traitLabel1.htmlFor = elm_reaction_obj[0].id;
+        traitLabel1.textContent = elm_reaction_obj[0].label;
+
+        const traitCheckbox2 = document.createElement("input");
+        traitCheckbox2.type = "checkbox";
+        traitCheckbox2.id = elm_reaction_obj[2].id;
+        traitCheckbox2.value = elm_reaction_obj[2].id;
+        traitCheckbox2.checked = true;
+
+        traitLabel2 = document.createElement("label");
+        traitLabel2.htmlFor = elm_reaction_obj[2].id;
+        traitLabel2.textContent = elm_reaction_obj[2].label;
+
+        elemental_reaction.appendChild(traitCheckbox1);
+        elemental_reaction.appendChild(traitLabel1);
+        elemental_reaction.appendChild(document.createElement("br"));
+        elemental_reaction.appendChild(traitCheckbox2);
+        elemental_reaction.appendChild(traitLabel2);
+      }
+
+      if (char_propaty[0] == 1)
+      {
+        const traitCheckbox1 = document.createElement("input");
+        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.id = elm_reaction_obj[1].id;
+        traitCheckbox1.value = elm_reaction_obj[1].id;
+        traitCheckbox1.checked = true;
+
+        const traitLabel1 = document.createElement("label");
+        traitLabel1.htmlFor = elm_reaction_obj[1].id;
+        traitLabel1.textContent = elm_reaction_obj[1].label;
+
+        elemental_reaction.appendChild(traitCheckbox1);
+        elemental_reaction.appendChild(traitLabel1);
+      }
+
+      if (char_propaty[0] == 2)
+      {
+        const traitCheckbox1 = document.createElement("input");
+        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.id = elm_reaction_obj[3].id;
+        traitCheckbox1.value = elm_reaction_obj[3].id;
+        traitCheckbox1.checked = true;
+
+        const traitLabel1 = document.createElement("label");
+        traitLabel1.htmlFor = elm_reaction_obj[3].id;
+        traitLabel1.textContent = elm_reaction_obj[3].label;
+
+        elemental_reaction.appendChild(traitCheckbox1);
+        elemental_reaction.appendChild(traitLabel1);
+      }
+
+      if (char_propaty[0] == 3)
+      {
+        const traitCheckbox1 = document.createElement("input");
+        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.id = elm_reaction_obj[5].id;
+        traitCheckbox1.value = elm_reaction_obj[5].id;
+        traitCheckbox1.checked = true;
+
+        const traitLabel1 = document.createElement("label");
+        traitLabel1.htmlFor = elm_reaction_obj[5].id;
+        traitLabel1.textContent = elm_reaction_obj[5].label;
+
+        elemental_reaction.appendChild(traitCheckbox1);
+        elemental_reaction.appendChild(traitLabel1);
+      }
+
+      if (char_propaty[0] == 5)
+      {
+        const traitCheckbox1 = document.createElement("input");
+        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.id = elm_reaction_obj[4].id;
+        traitCheckbox1.value = elm_reaction_obj[4].id;
+        traitCheckbox1.checked = true;
+
+        const traitLabel1 = document.createElement("label");
+        traitLabel1.htmlFor = elm_reaction_obj[4].id;
+        traitLabel1.textContent = elm_reaction_obj[4].label;
+
+        elemental_reaction.appendChild(traitCheckbox1);
+        elemental_reaction.appendChild(traitLabel1);
+      }
+
       const formElements = [
         { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
         { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
