@@ -128,18 +128,18 @@ async function show_char_statsform()
         }
       }
 
-      const radiobuttn = document.createElement("input");
-      traitCheckbox1.type = "radio";
-      traitCheckbox1.id = "no-reaction";
-      traitCheckbox1.name = "elemental-reaction";
-      traitCheckbox1.value = "no-reaction";
+      const radiobutton = document.createElement("input");
+      radiobutton .type = "radio";
+      radiobutton .id = "no-reaction";
+      radiobutton .name = "elemental-reaction";
+      radiobutton .value = "no-reaction";
 
-      const traitLabel1 = document.createElement("label");
-      traitLabel1.htmlFor = "no-reaction";
-      traitLabel1.textContent = "反応なし";
+      const radio_lavel = document.createElement("label");
+      radio_lavel.htmlFor = "no-reaction";
+      radio_lavel.textContent = "反応なし";
 
-      elemental_reaction.appendChild(traitCheckbox1);
-      elemental_reaction.appendChild(traitLabel1);
+      elemental_reaction.appendChild(radiobutton);
+      elemental_reaction.appendChild(radio_lavel);
       elemental_reaction.appendChild(document.createElement("br"));
 
       if (char_propaty[0] == 0)
