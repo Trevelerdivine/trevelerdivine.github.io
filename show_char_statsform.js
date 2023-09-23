@@ -132,6 +132,7 @@ async function show_char_statsform()
       radiobutton .type = "radio";
       radiobutton .id = "no-reaction";
       radiobutton .name = "elemental-reaction";
+      radiobutton.checked = true;
       radiobutton .value = "no-reaction";
 
       const radio_lavel = document.createElement("label");
@@ -140,7 +141,6 @@ async function show_char_statsform()
 
       elemental_reaction.appendChild(radiobutton);
       elemental_reaction.appendChild(radio_lavel);
-      elemental_reaction.appendChild(document.createElement("br"));
 
       if (char_propaty[0] == 0)
       {
@@ -166,7 +166,6 @@ async function show_char_statsform()
 
         elemental_reaction.appendChild(traitCheckbox1);
         elemental_reaction.appendChild(traitLabel1);
-        elemental_reaction.appendChild(document.createElement("br"));
         elemental_reaction.appendChild(traitCheckbox2);
         elemental_reaction.appendChild(traitLabel2);
       }
