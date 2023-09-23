@@ -127,23 +127,38 @@ async function show_char_statsform()
           }
         }
       }
+
+      const radiobuttn = document.createElement("input");
+      traitCheckbox1.type = "radio";
+      traitCheckbox1.id = "no-reaction";
+      traitCheckbox1.name = "elemental-reaction";
+      traitCheckbox1.value = "no-reaction";
+
+      const traitLabel1 = document.createElement("label");
+      traitLabel1.htmlFor = "no-reaction";
+      traitLabel1.textContent = "反応なし";
+
+      elemental_reaction.appendChild(traitCheckbox1);
+      elemental_reaction.appendChild(traitLabel1);
+      elemental_reaction.appendChild(document.createElement("br"));
+
       if (char_propaty[0] == 0)
       {
         const traitCheckbox1 = document.createElement("input");
-        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.type = "radio";
         traitCheckbox1.id = elm_reaction_obj[0].id;
+        traitCheckbox1.name = "elemental-reaction";
         traitCheckbox1.value = elm_reaction_obj[0].id;
-        traitCheckbox1.checked = true;
 
         const traitLabel1 = document.createElement("label");
         traitLabel1.htmlFor = elm_reaction_obj[0].id;
         traitLabel1.textContent = elm_reaction_obj[0].label;
 
         const traitCheckbox2 = document.createElement("input");
-        traitCheckbox2.type = "checkbox";
+        traitCheckbox2.type = "radio";
         traitCheckbox2.id = elm_reaction_obj[2].id;
+        traitCheckbox2.name = "elemental-reaction";
         traitCheckbox2.value = elm_reaction_obj[2].id;
-        traitCheckbox2.checked = true;
 
         traitLabel2 = document.createElement("label");
         traitLabel2.htmlFor = elm_reaction_obj[2].id;
@@ -159,10 +174,10 @@ async function show_char_statsform()
       if (char_propaty[0] == 1)
       {
         const traitCheckbox1 = document.createElement("input");
-        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.type = "radio";
+        traitCheckbox1.name = "elemental-reaction";
         traitCheckbox1.id = elm_reaction_obj[1].id;
         traitCheckbox1.value = elm_reaction_obj[1].id;
-        traitCheckbox1.checked = true;
 
         const traitLabel1 = document.createElement("label");
         traitLabel1.htmlFor = elm_reaction_obj[1].id;
@@ -175,10 +190,10 @@ async function show_char_statsform()
       if (char_propaty[0] == 2)
       {
         const traitCheckbox1 = document.createElement("input");
-        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.type = "radio";
         traitCheckbox1.id = elm_reaction_obj[3].id;
+        traitCheckbox1.name = "elemental-reaction";
         traitCheckbox1.value = elm_reaction_obj[3].id;
-        traitCheckbox1.checked = true;
 
         const traitLabel1 = document.createElement("label");
         traitLabel1.htmlFor = elm_reaction_obj[3].id;
@@ -191,10 +206,10 @@ async function show_char_statsform()
       if (char_propaty[0] == 3)
       {
         const traitCheckbox1 = document.createElement("input");
-        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.type = "radio";
+        traitCheckbox1.name = "elemental-reaction";
         traitCheckbox1.id = elm_reaction_obj[5].id;
         traitCheckbox1.value = elm_reaction_obj[5].id;
-        traitCheckbox1.checked = true;
 
         const traitLabel1 = document.createElement("label");
         traitLabel1.htmlFor = elm_reaction_obj[5].id;
@@ -207,10 +222,10 @@ async function show_char_statsform()
       if (char_propaty[0] == 5)
       {
         const traitCheckbox1 = document.createElement("input");
-        traitCheckbox1.type = "checkbox";
+        traitCheckbox1.type = "radio";
         traitCheckbox1.id = elm_reaction_obj[4].id;
+        traitCheckbox1.name = "elemental-reaction";
         traitCheckbox1.value = elm_reaction_obj[4].id;
-        traitCheckbox1.checked = true;
 
         const traitLabel1 = document.createElement("label");
         traitLabel1.htmlFor = elm_reaction_obj[4].id;
