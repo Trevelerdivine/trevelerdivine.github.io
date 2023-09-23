@@ -16,6 +16,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo"];
 const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
+                  
 const elm_reaction_obj = [
   {
   id: "Vaporize_pyro",
@@ -42,15 +43,14 @@ const elm_reaction_obj = [
   label: "超激化"
   }
 
-];             
-
-
-
+];          
 /////////////////////
 
 async function calculate_char_base_status() 
 {
   const char_level = document.getElementById("char_level").value;
+  const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const data = await response.json();
   const char_base_hp = data.ステータス.基礎HP[char_level];
   const char_base_attck = data.ステータス.基礎攻撃力[char_level];
   const char_base_deff = data.ステータス.基礎防御力[char_level];
