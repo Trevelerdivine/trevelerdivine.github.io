@@ -77,26 +77,7 @@ async function show_char_statsform()
         { text: "元素爆発", value: "4" },
       ];
 
-      const selectElement = document.createElement("select");
-      selectElement.id = "attack_method_id";
-    
-      // オプションを追加
-      options.forEach((option) => {
-        const optionElement = document.createElement("option");
-        optionElement.text = option.text;
-        optionElement.value = option.value;
-        if (option.disabled) {
-          optionElement.disabled = true;
-        }
-        if (option.selected) {
-          optionElement.selected = true;
-        }
-        selectElement.appendChild(optionElement);
-      });
-    
-      // 生成したセレクトボックスを指定された要素に追加
-      const containerElement = document.getElementById("element_action"); // ここにセレクトボックスを追加する要素を指定
-      containerElement.appendChild(selectElement);
+      createchar_attackmethod(options)
 
       if (char_constellations > 0)
       {
@@ -283,3 +264,27 @@ async function show_char_statsform()
         }
       }
     }
+
+function createchar_attackmethod(options)
+{
+  const selectElement = document.createElement("select");
+  selectElement.id = "attack_method_id";
+
+  // オプションを追加
+  options.forEach((option) => {
+    const optionElement = document.createElement("option");
+    optionElement.text = option.text;
+    optionElement.value = option.value;
+    if (option.disabled) {
+      optionElement.disabled = true;
+    }
+    if (option.selected) {
+      optionElement.selected = true;
+    }
+    selectElement.appendChild(optionElement);
+  });
+
+  // 生成したセレクトボックスを指定された要素に追加
+  const containerElement = document.getElementById("element_action"); // ここにセレクトボックスを追加する要素を指定
+  containerElement.appendChild(selectElement);
+}
