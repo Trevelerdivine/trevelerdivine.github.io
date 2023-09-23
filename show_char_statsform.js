@@ -67,6 +67,37 @@ async function show_char_statsform()
           label: "第6重：大辯円成の実 追撃"
         }
       ];
+
+      const options = [
+        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "通常攻撃（1ループ）", value: "0" },
+        { text: "重撃", value: "1" },
+        { text: "落下攻撃", value: "2" },
+        { text: "スキル", value: "3" },
+        { text: "元素爆発", value: "4" },
+      ];
+
+      const selectElement = document.createElement("select");
+      selectElement.id = "attack_method_id";
+    
+      // オプションを追加
+      options.forEach((option) => {
+        const optionElement = document.createElement("option");
+        optionElement.text = option.text;
+        optionElement.value = option.value;
+        if (option.disabled) {
+          optionElement.disabled = true;
+        }
+        if (option.selected) {
+          optionElement.selected = true;
+        }
+        selectElement.appendChild(optionElement);
+      });
+    
+      // 生成したセレクトボックスを指定された要素に追加
+      const containerElement = document.getElementById("container"); // ここにセレクトボックスを追加する要素を指定
+      containerElement.appendChild(selectElement);
+
       if (char_constellations > 0)
       {
         for (let i = 0; i < char_constellations; i++) {
