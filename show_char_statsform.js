@@ -137,7 +137,7 @@ async function show_char_statsform()
 
       const radio_lavel = document.createElement("label");
       radio_lavel.htmlFor = "no-reaction";
-      radio_lavel.textContent = "反応なし";
+      radio_lavel.textContent = "反応なし　";
 
       elemental_reaction.appendChild(radiobutton);
       elemental_reaction.appendChild(radio_lavel);

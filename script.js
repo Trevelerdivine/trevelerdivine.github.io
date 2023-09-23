@@ -20,27 +20,27 @@ const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFrag
 const elm_reaction_obj = [
   {
   id: "Vaporize_pyro",
-  label: "蒸発-炎"
+  label: "蒸発-炎　"
   },
   {
   id: "Vaporize-hydro",
-  label: "蒸発-水"
+  label: "蒸発-水　"
   },
   {
   id: "Melt-pyro",
-  label: "溶解-炎"
+  label: "溶解-炎　"
   },
   {
   id: "Melt-cyro",
-  label: "溶解-氷"
+  label: "溶解-氷　"
   },
   {
   id: "Spread",
-  label: "草激化"
+  label: "草激化　"
   },
   {
   id: "Aggravate",
-  label: "超激化"
+  label: "超激化　"
   }
 
 ];          
