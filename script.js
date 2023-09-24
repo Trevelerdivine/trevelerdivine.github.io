@@ -726,6 +726,8 @@ async function import_char_parameter()
 {
   const levelSelect = document.getElementById("char_level");
   const level_index = levelSelect.value;
+  const talent_level = document.getElementById("talent-level");
+  const talent_level_index = talent_level.value;
   const response = await fetch("./data/element.json");
   const levelData = await response.json();
   const levelObject = levelData["レベル"];
@@ -734,7 +736,7 @@ async function import_char_parameter()
   const agg_fixed_value = aggobject[selectedLevel];
   const char_constellations = document.getElementById("char_constellations");
   const constellations = char_constellations.value;
-  const parameter = [selectedLevel,agg_fixed_value,constellations];
+  const parameter = [selectedLevel, agg_fixed_value, constellations, talent_level_index];
   console.log(parameter)
   return parameter;
 }

@@ -14,11 +14,21 @@ class nahida {
     if (this.dmg_rateCache) {
       return this.dmg_rateCache;
     }
-
+    const checkboxContainer = document.getElementById("select_reaction_method"); // チェックボックスを含む要素を取得
+    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]'); // チェックボックス要素を取得
+    const reaction_checkboxStates = [];
+    const nonreaction_checkboxStates = [];
+    
+    checkboxes.forEach((checkbox) => {
+      // チェックボックスの状態に応じて1または0を追加
+      reaction_checkboxStatescheckboxStates.push(checkbox.checked ? 1 : 0);
+      nonreaction_checkboxStatescheckboxStates.push(checkbox.checked ? 0 : 1);
+    });
+    console.log(reaction_checkboxStates)
     const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
-    const dmg_attck_rate = data.元素スキル.数値.攻撃力[10];
-    const dmg_elm_rate = data.元素スキル.数値.元素熟知[10];
+    const dmg_attck_rate = data.元素スキル.数値.攻撃力[this.parameter[3]];
+    const dmg_elm_rate = data.元素スキル.数値.元素熟知[this.parameter[3]];
     const dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
