@@ -11,18 +11,18 @@ async function show_attack_method()
             
             let options = [];
             
-            if (attack_index[0]) {
+            if (attack_index == 0) {
               options = [
                 { text: "１段目", value: "0", checked: true },
                 { text: "２段目", value: "1" },
                 { text: "３段目", value: "2" },
                 { text: "４段目", value: "3", checked: true },
               ];
-            } else if (attack_index[1]) {
+            } else if (attack_index == 1) {
               options = [
                 { text: "重撃", value: "0", checked: true },
               ];
-            } else if (attack_index[2]) {
+            } else if (attack_index==2) {
               options = [
                 { text: "滅浄三業", value: "0", checked: true },
               ];
