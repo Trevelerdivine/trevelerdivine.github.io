@@ -15,9 +15,8 @@ class nahida {
     if (this.dmg_rateCache) {
       return this.dmg_rateCache;
     }
-  
-    // チェックボックスの数を取得
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxContainer = document.getElementById("select_reaction_method"); // チェックボックスを含む要素を取得
+    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]'); // チェックボックス要素を取得
     const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
   
     // チェックボックス Spread の状態を取得
