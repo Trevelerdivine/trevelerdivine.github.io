@@ -2,12 +2,12 @@ async function show_attack_method()
 {
     const select_reaction_method = document.getElementById("select_reaction_method");
     select_reaction_method.innerHTML = "";
-
+    console.log(selectedCharId);
     switch (selectedCharId)
     {
         case 56:
-            const select_reaction_method = document.getElementById("select_reaction_method");
-            const attack_index = select_reaction_method.value;
+            const attack_method = document.getElementById("attack_method");
+            const attack_index = attack_method.value;
             
             let options = [];
             
@@ -43,7 +43,6 @@ function createRadioButtons(options) {
   
       const radioButton = document.createElement("input");
       radioButton.type = "radio";
-      radioButton.name = "attack_method"; // 同じ名前を持つラジオボタンは1つの選択肢内で1つのみ選択可能
       radioButton.value = option.value;
       if (option.checked) {
         radioButton.checked = true;
