@@ -164,7 +164,7 @@ async function show_char_statsform()
       elemental_reaction.appendChild(radiobutton);
       elemental_reaction.appendChild(radio_label);
       
-      radiobutton.addEventListener("click", function() {
+      radiobutton.addEventListener("click", async function() {
         if (radiobutton.checked)
         {
           depend_status[2] = 1;
