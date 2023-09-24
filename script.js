@@ -43,7 +43,18 @@ const elm_reaction_obj = [
   label: "超激化　"
   }
 
-];          
+];
+
+const formElements = [
+  { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
+  { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
+  { forms: [deff_form, team_deff_form, team_deffrate_form], index: 1 },
+  { forms: [elm_form, team_elm_form], index: 2 },
+  { forms: [elm_charge_form, team_elm_charge_form], index: 3 },
+  { forms: [cr_form, team_cr_form], index: 5 },
+  { forms: [cd_form, team_cd_form], index: 6 }
+];
+
 /////////////////////
 
 async function calculate_char_base_status() 

@@ -151,18 +151,30 @@ async function show_char_statsform()
       }
 
       const radiobutton = document.createElement("input");
-      radiobutton .type = "radio";
-      radiobutton .id = "no-reaction";
-      radiobutton .name = "elemental-reaction";
+      radiobutton.type = "radio";
+      radiobutton.id = "no-reaction";
+      radiobutton.name = "elemental-reaction";
       radiobutton.checked = true;
-      radiobutton .value = "no-reaction";
-
-      const radio_lavel = document.createElement("label");
-      radio_lavel.htmlFor = "no-reaction";
-      radio_lavel.textContent = "反応なし　";
-
+      radiobutton.value = "no-reaction";
+      
+      const radio_label = document.createElement("label");
+      radio_label.htmlFor = "no-reaction";
+      radio_label.textContent = "反応なし";
+      
       elemental_reaction.appendChild(radiobutton);
-      elemental_reaction.appendChild(radio_lavel);
+      elemental_reaction.appendChild(radio_label);
+      
+      radiobutton.addEventListener("click", function() {
+        if (radiobutton.checked)
+        {
+          depend_status[2] = 1;
+        } 
+        else
+        {
+          await calculate_depend_status();
+        }
+        showFormElements();
+      });
 
       if (char_propaty[0] == 0)
       {
@@ -256,23 +268,7 @@ async function show_char_statsform()
         elemental_reaction.appendChild(traitLabel1);
       }
 
-      const formElements = [
-        { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
-        { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
-        { forms: [deff_form, team_deff_form, team_deffrate_form], index: 1 },
-        { forms: [elm_form, team_elm_form], index: 2 },
-        { forms: [elm_charge_form, team_elm_charge_form], index: 3 },
-        { forms: [cr_form, team_cr_form], index: 5 },
-        { forms: [cd_form, team_cd_form], index: 6 }
-      ];
-      
-      for (const element of formElements) {
-        if (depend_status[element.index] === 1) {
-          for (let i = 0; i < element.forms.length; i++) {
-            element.forms[i].style.display = "table-row";
-          }
-        }
-      }
+      showFormElements();
     }
 
 function createchar_attackmethod(options)
@@ -297,4 +293,14 @@ function createchar_attackmethod(options)
   // 生成したセレクトボックスを指定された要素に追加
   const containerElement = document.getElementById("attack_method"); // ここにセレクトボックスを追加する要素を指定
   containerElement.appendChild(selectElement);
+}
+
+function showFormElements() {
+  for (const element of formElements) {
+    if (depend_status[element.index] === 1) {
+      for (let i = 0; i < element.forms.length; i++) {
+        element.forms[i].style.display = "table-row";
+      }
+    }
+  }
 }
