@@ -14,6 +14,7 @@ class nahida {
     if (this.dmg_rateCache) {
       return this.dmg_rateCache;
     }
+    
     const checkboxContainer = document.getElementById("select_reaction_method"); // チェックボックスを含む要素を取得
     const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]'); // チェックボックス要素を取得
     const reaction_checkboxStates = [];
