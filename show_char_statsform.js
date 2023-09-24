@@ -163,18 +163,6 @@ async function show_char_statsform()
       
       elemental_reaction.appendChild(radiobutton);
       elemental_reaction.appendChild(radio_label);
-      
-      radiobutton.addEventListener("click", async function() {
-        if (radiobutton.checked)
-        {
-          depend_status[2] = 1;
-        } 
-        else
-        {
-          await calculate_depend_status();
-        }
-        showFormElements();
-      });
 
       if (char_propaty[0] == 0)
       {
@@ -330,4 +318,19 @@ function showFormElements() {
       }
     }
   }
+}
+
+
+function elemental_reaction_add()
+{
+  const button = document.getElementById("no-reaction");
+  if (button.checked)
+  {
+    depend_status[2] = 1;
+  } 
+  else
+  {
+    calculate_depend_status();
+  }
+  showFormElements();
 }
