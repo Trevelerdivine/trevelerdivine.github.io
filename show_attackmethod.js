@@ -47,17 +47,11 @@ function createCheckboxList(options) {
       checkboxInput.type = "checkbox";
       checkboxInput.value = option.value;
       if (option.checked) {
-        checkbox.checked = true;
+        checkboxInput.checked = true;
       }
       checkboxInput.id = "checkbox_" + option.value; // チェックボックスに一意のIDを設定
-  
-      checkboxLabel.setAttribute("for", "checkbox_" + option.value); // ラベルとチェックボックスを関連付け
-  
-      // ラベルをクリックしたときのイベントリスナーを追加
-      checkboxLabel.addEventListener("click", () => {
-        checkboxInput.checked = !checkboxInput.checked; // チェックボックスの状態を切り替え
-      });
-  
+      checkboxLabel.htmlFor = checkboxInput.id 
+      
       checkboxLabel.appendChild(checkboxInput);
       select_reaction_method.appendChild(checkboxLabel);
     });
