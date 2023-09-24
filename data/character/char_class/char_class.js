@@ -51,6 +51,7 @@ class nahida {
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
     }
+    console.log(dmg_rate)
   
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
