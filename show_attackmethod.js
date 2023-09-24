@@ -35,13 +35,11 @@ async function show_attack_method()
 
 
 
-function createCheckboxList(options) {
+function createCheckboxList(options)
+{
     const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
 
     options.forEach((option) => {
-        const checkboxLabel = document.createElement("label");
-        checkboxLabel.textContent = option.text;
-
         const checkboxInput = document.createElement("input");
         checkboxInput.type = "checkbox";
         checkboxInput.value = option.value;
@@ -49,12 +47,12 @@ function createCheckboxList(options) {
             checkboxInput.checked = true;
         }
         checkboxInput.id = "checkbox_" + option.value; // チェックボックスに一意のIDを設定
+
+        const checkboxLabel = document.createElement("label");
+        checkboxLabel.textContent = option.text;
         checkboxLabel.htmlFor = checkboxInput.id;
 
-        checkboxLabel.appendChild(checkboxInput); // チェックボックスをラベル内に追加
+        select_reaction_method.appendChild(checkboxInput); // チェックボックスを select_reaction_method に追加
         select_reaction_method.appendChild(checkboxLabel); // ラベルを select_reaction_method に追加
     });
 }
-
-// 関数を呼び出してチェックボックスを生成
-createCheckboxList(options); // optionsは適切なオプションの配列と仮定
