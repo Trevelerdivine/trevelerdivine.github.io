@@ -7,6 +7,7 @@ class nahida {
     this.parameter = parameter;
     this.constValue = null;
     this.aggcount = 0;
+    this.skill_buff = 0;
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
@@ -40,7 +41,7 @@ class nahida {
   
     if (attack_method == 0) {
       for (let i = 0; i < 4; i++) {
-        dmg_attck_rate += data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]];
+        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 1) {
