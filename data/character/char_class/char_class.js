@@ -50,7 +50,7 @@ class nahida {
     } else if (attack_method == 2) {
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
-      this.skill_buff = 0;
+      this.skill_buff = 1;
       dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
     }
     console.log(dmg_rate)
