@@ -301,7 +301,7 @@ function showFormElements() {
   let team_cr_form = document.getElementById("team_cr_form");
   let team_cd_form = document.getElementById("team_cd_form");
 
-  await calculate_depend_status();
+  calculate_depend_status();
   const formElements = [
     { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
     { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
