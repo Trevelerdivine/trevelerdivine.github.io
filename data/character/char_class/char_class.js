@@ -26,6 +26,7 @@ class nahida {
   }
 });
   this.aggcount = trueCount;
+  console.log(aggcount)
 
     const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
