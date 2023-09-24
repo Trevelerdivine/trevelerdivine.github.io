@@ -256,7 +256,7 @@ async function show_char_statsform()
         elemental_reaction.appendChild(traitLabel1);
       }
 
-      showFormElements(depend_status);
+      showFormElements();
     }
 
 function createchar_attackmethod(options)
@@ -283,7 +283,7 @@ function createchar_attackmethod(options)
   containerElement.appendChild(selectElement);
 }
 
-function showFormElements(depend_status) {
+function showFormElements() {
   let hp_form = document.getElementById("hp_form");
   let attck_form = document.getElementById("attck_form");
   let deff_form = document.getElementById("deff_form");
@@ -326,11 +326,15 @@ async function elemental_reaction_add()
   const button = document.getElementById("no-reaction");
   if (button.checked)
   {
+    let elm_form = document.getElementById("elm_form");
+    let team_elm_form = document.getElementById("team_elm_form");
+    elm_form.style.display = "none";  // 元素熟知を非表示
+    team_elm_form.style.display = "none";
     await calculate_depend_status();
   } 
   else
   {
     depend_status[2] = 1;
   }
-  showFormElements(depend_status);
+  showFormElements();
 }
