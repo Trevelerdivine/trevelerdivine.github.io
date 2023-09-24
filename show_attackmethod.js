@@ -2,10 +2,9 @@ async function show_attack_method()
 {
     const select_reaction_method = document.getElementById("select_reaction_method");
     select_reaction_method.innerHTML = "";
-    console.log(selectedCharId);
     switch (selectedCharId)
     {
-        case 56:
+        case "56":
             console.log(selectedCharId);
             const attack_method = document.getElementById("attack_method_id");
             const attack_index = attack_method.value;
