@@ -1,6 +1,5 @@
 async function show_char_statsform()
    {
-    await calculate_depend_status();
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
     let deff_form = document.getElementById("deff_form");
@@ -302,6 +301,7 @@ function showFormElements() {
   let team_cr_form = document.getElementById("team_cr_form");
   let team_cd_form = document.getElementById("team_cd_form");
 
+  await calculate_depend_status();
   const formElements = [
     { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
     { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
@@ -323,18 +323,6 @@ function showFormElements() {
 
 async function elemental_reaction_add()
 {
-  const button = document.getElementById("no-reaction");
-  if (button.checked)
-  {
-    let elm_form = document.getElementById("elm_form");
-    let team_elm_form = document.getElementById("team_elm_form");
-    elm_form.style.display = "none";  // 元素熟知を非表示
-    team_elm_form.style.display = "none";
-    await calculate_depend_status();
-  } 
-  else
-  {
-    depend_status[2] = 1;
-  }
+  await calculate_depend_status();
   showFormElements();
 }
