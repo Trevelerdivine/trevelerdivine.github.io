@@ -50,6 +50,7 @@ class nahida {
     } else if (attack_method == 2) {
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
+      this.skill_buff = 0;
       dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
     }
     console.log(dmg_rate)
@@ -104,7 +105,7 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.0003;
+    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.0003 * this.skill_buff;
   }
 
   calculate_char_fixed_cd() {
@@ -120,7 +121,7 @@ class nahida {
   }
 
   calculate_char_result_dmg_buff() {
-    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.001;
+    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.001 * this.skill_buff;
   }
 
   calculate_basic_dmg(dmg_rate) {
