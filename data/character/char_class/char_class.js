@@ -15,48 +15,48 @@ class nahida {
     if (this.dmg_rateCache) {
       return this.dmg_rateCache;
     }
-
-  const checkboxContainer = document.getElementById("select_reaction_method"); // チェックボックスを含む要素を取得
-  const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]'); // チェックボックス要素を取得
-  let trueCount = 0; // trueの数を格納する変数
-  checkboxes.forEach((checkbox) => {
-  // チェックボックスの状態がtrueであればtrueCountをインクリメント
-    if (checkbox.checked) {
-      trueCount++;
-  }
-});
-  this.aggcount = trueCount;
-  console.log(aggcount)
-
+  
+    // チェックボックスの数を取得
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
+  
+    // チェックボックス Spread の状態を取得
+    const agg = document.getElementById("Spread");
+    const agg_reaction = agg.checked ? 1 : 0;
+  
+    // このメソッドの結果を計算
+    this.aggcount = trueCount * agg_reaction;
+    console.log(this.aggcount);
+  
+    // JSON データを取得
     const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
-    const attack_method = document.getElementById("attack_method_id");
-    const attack_index = attack_method.value;
-    console.log(attack_index);
+  
+    // 攻撃方法に応じてダメージ率を計算
+    const attack_method = document.getElementById("attack_method_id").value;
+    console.log(attack_method);
+  
     let dmg_rate;
-    if (attack_index == 0)
-    {
-      let dmg_attck_rate = 0;
+    let dmg_attck_rate = 0;
+  
+    if (attack_method == 0) {
       for (let i = 0; i < 4; i++) {
         dmg_attck_rate += data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]];
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    } 
-    else if (attack_index == 1)
-    {
-      let dmg_attck_rate = 0;
+    } else if (attack_method == 1) {
       dmg_attck_rate += data["重撃"]["数値"]["攻撃力"][this.parameter[3]];
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    } 
-    else if (attack_index == 2) 
-    {
+    } else if (attack_method == 2) {
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
     }
+  
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
   }
+  
 
   calculate_char_fixed_hp() {
     return 0;
