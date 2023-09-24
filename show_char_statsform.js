@@ -296,6 +296,33 @@ function createchar_attackmethod(options)
 }
 
 function showFormElements() {
+  let hp_form = document.getElementById("hp_form");
+  let attck_form = document.getElementById("attck_form");
+  let deff_form = document.getElementById("deff_form");
+  let elm_form = document.getElementById("elm_form");
+  let elm_charge_form = document.getElementById("elm_charge_form");
+  let cr_form = document.getElementById("cr_form");
+  let cd_form = document.getElementById("cd_form");
+  let team_hp_form = document.getElementById("team_hp_form");
+  let team_hprate_form = document.getElementById("team_hprate_form");
+  let team_attack_form = document.getElementById("team_attack_form");
+  let team_attackrate_form = document.getElementById("team_attackrate_form");
+  let team_deff_form = document.getElementById("team_deff_form");
+  let team_deffrate_form = document.getElementById("team_deffrate_form");
+  let team_elm_form = document.getElementById("team_elm_form");
+  let team_elm_charge_form = document.getElementById("team_elm_charge_form");
+  let team_cr_form = document.getElementById("team_cr_form");
+  let team_cd_form = document.getElementById("team_cd_form");
+
+  const formElements = [
+    { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
+    { forms: [attck_form, team_attack_form, team_attackrate_form], index: 4 },
+    { forms: [deff_form, team_deff_form, team_deffrate_form], index: 1 },
+    { forms: [elm_form, team_elm_form], index: 2 },
+    { forms: [elm_charge_form, team_elm_charge_form], index: 3 },
+    { forms: [cr_form, team_cr_form], index: 5 },
+    { forms: [cd_form, team_cd_form], index: 6 }
+  ];
   for (const element of formElements) {
     if (depend_status[element.index] === 1) {
       for (let i = 0; i < element.forms.length; i++) {
