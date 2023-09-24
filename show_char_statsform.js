@@ -256,7 +256,7 @@ async function show_char_statsform()
         elemental_reaction.appendChild(traitLabel1);
       }
 
-      showFormElements();
+      showFormElements(depend_status);
     }
 
 function createchar_attackmethod(options)
@@ -283,7 +283,7 @@ function createchar_attackmethod(options)
   containerElement.appendChild(selectElement);
 }
 
-function showFormElements() {
+function showFormElements(depend_status) {
   let hp_form = document.getElementById("hp_form");
   let attck_form = document.getElementById("attck_form");
   let deff_form = document.getElementById("deff_form");
@@ -332,5 +332,5 @@ async function elemental_reaction_add()
   {
     depend_status[2] = 1;
   }
-  showFormElements();
+  showFormElements(depend_status);
 }
