@@ -323,6 +323,10 @@ function showFormElements() {
 
 async function elemental_reaction_add()
 {
+  let elm_form = document.getElementById("elm_form");
+  let team_elm_form = document.getElementById("team_elm_form");
+  elm_form.style.display = "none";
+  team_elm_form.style.display = "none";
   await calculate_depend_status();
   showFormElements();
 }
