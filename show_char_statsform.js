@@ -326,11 +326,11 @@ function elemental_reaction_add()
   const button = document.getElementById("no-reaction");
   if (button.checked)
   {
-    depend_status[2] = 1;
+    calculate_depend_status();
   } 
   else
   {
-    calculate_depend_status();
+    depend_status[2] = 1;
   }
   showFormElements();
 }
