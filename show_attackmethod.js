@@ -6,7 +6,8 @@ async function show_attack_method()
     switch (selectedCharId)
     {
         case 56:
-            const attack_method = document.getElementById("attack_method");
+            console.log(selectedCharId);
+            const attack_method = document.getElementById("attack_method_id");
             const attack_index = attack_method.value;
             
             let options = [];
