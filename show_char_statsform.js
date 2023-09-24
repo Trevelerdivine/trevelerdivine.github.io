@@ -321,12 +321,12 @@ function showFormElements() {
 }
 
 
-function elemental_reaction_add()
+async function elemental_reaction_add()
 {
   const button = document.getElementById("no-reaction");
   if (button.checked)
   {
-    calculate_depend_status();
+    await calculate_depend_status();
   } 
   else
   {
