@@ -27,7 +27,7 @@ async function show_attack_method()
                 { text: "滅浄三業", value: "0", checked: true },
               ];
             }
-            createRadioButtons(options)
+            createCheckboxList(options)
         break
     }
 
@@ -35,23 +35,30 @@ async function show_attack_method()
 
 
 
-function createRadioButtons(options) {
-    // ラジオボタンを生成
-    options.forEach((option) => {
-      const radioLabel = document.createElement("label");
-      radioLabel.textContent = option.text;
+function createCheckboxList(options) {
   
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.value = option.value;
+    const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+  
+    options.forEach((option) => {
+      const checkboxLabel = document.createElement("label");
+      checkboxLabel.textContent = option.text;
+  
+      const checkboxInput = document.createElement("input");
+      checkboxInput.type = "checkbox";
+      checkboxInput.value = option.value;
       if (option.checked) {
         checkbox.checked = true;
       }
+      checkboxInput.id = "checkbox_" + option.value; // チェックボックスに一意のIDを設定
   
-      // ラジオボタンとラベルをコンテナに追加
-      const containerElement = document.getElementById("select_reaction_method"); // ここにラジオボタンを追加する要素を指定
-      containerElement.appendChild(radioButton);
-      containerElement.appendChild(radioLabel);
-      containerElement.appendChild(document.createElement("br")); // 改行を追加
+      checkboxLabel.setAttribute("for", "checkbox_" + option.value); // ラベルとチェックボックスを関連付け
+  
+      // ラベルをクリックしたときのイベントリスナーを追加
+      checkboxLabel.addEventListener("click", () => {
+        checkboxInput.checked = !checkboxInput.checked; // チェックボックスの状態を切り替え
+      });
+  
+      checkboxLabel.appendChild(checkboxInput);
+      select_reaction_method.appendChild(checkboxLabel);
     });
   }
