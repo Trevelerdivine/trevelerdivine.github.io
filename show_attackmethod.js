@@ -41,11 +41,11 @@ function createRadioButtons(options) {
       const radioLabel = document.createElement("label");
       radioLabel.textContent = option.text;
   
-      const radioButton = document.createElement("input");
-      radioButton.type = "radio";
-      radioButton.value = option.value;
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.value = option.value;
       if (option.checked) {
-        radioButton.checked = true;
+        checkbox.checked = true;
       }
   
       // ラジオボタンとラベルをコンテナに追加
