@@ -11,6 +11,7 @@
     <script src="./show_char_statsform.js"></script>
     <script src="./show_weapon_statsform.js"></script>
     <script src="./show_artifact.js"></script>
+    <script src="./show_attackmethod.js"></script>
   </head>
   <body>
  <h1>期待値準拠聖遺物スコア計算機</h1>
@@ -224,6 +225,9 @@
         <br>
         <p>元素反応</p>
         <div id = "element_action">
+        </div>
+        <p>反応箇所</p>
+        <div id = "select_reaction_method">
         </div>
       </fieldset>
     </div>
@@ -1066,6 +1070,7 @@
   document.getElementById('option2').addEventListener('change', calculate_table_status);
   document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
   document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
+  document.getElementById('attack_method').addEventListener('change', show_attack_method);
 
   function showTable(tableId, buttonId)
   {
