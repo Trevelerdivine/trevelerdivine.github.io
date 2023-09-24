@@ -6,6 +6,7 @@ class nahida {
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.constValue = null;
+    this.aggcount = 0;
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
@@ -24,32 +25,29 @@ class nahida {
       trueCount++;
   }
 });
+  this.aggcount = trueCount;
+
     const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
     const attack_method = document.getElementById("attack_method_id");
     const attack_index = attack_method.value;
     
-    if(attack_index == 0)
-    {
+    if (attack_index == 0) {
       let dmg_attck_rate = 0;
-      for (let i = 0; i < 4; i++)
-      {
+      for (let i = 0; i < 4; i++) {
         dmg_attck_rate += data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]];
       }
       const dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    }
-    elif(attack_index == 1)
-    {
+    } else if (attack_index == 1) {
       let dmg_attck_rate = 0;
       dmg_attck_rate += data["重撃"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    }
-    elif(attack_index == 2)
-    {
-      const dmg_attck_rate = data.元素スキル.数値.攻撃力[this.parameter[3]];
-      const dmg_elm_rate = data.元素スキル.数値.元素熟知[this.parameter[3]];
+    } else if (attack_index == 2) {
+      const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
+      const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       const dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
     }
+    
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
   }
@@ -122,7 +120,7 @@ class nahida {
     const resultStatusArray = this.result_status_array;
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-    let basicDmg = (attckRate + elmRate + 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
+    let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
     if (this.parameter[2] > 1 && this.checkboxStates[1]===true) {
       basicDmg = basicDmg * this.constValue;
     }
