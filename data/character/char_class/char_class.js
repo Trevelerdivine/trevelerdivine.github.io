@@ -18,19 +18,38 @@ class nahida {
   const checkboxContainer = document.getElementById("select_reaction_method"); // チェックボックスを含む要素を取得
   const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]'); // チェックボックス要素を取得
   let trueCount = 0; // trueの数を格納する変数
-
   checkboxes.forEach((checkbox) => {
   // チェックボックスの状態がtrueであればtrueCountをインクリメント
     if (checkbox.checked) {
       trueCount++;
   }
 });
-  console.log(trueCount);
     const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
-    const dmg_attck_rate = data.元素スキル.数値.攻撃力[this.parameter[3]];
-    const dmg_elm_rate = data.元素スキル.数値.元素熟知[this.parameter[3]];
-    const dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
+    const attack_method = document.getElementById("attack_method_id");
+    const attack_index = attack_method.value;
+    
+    if(attack_index == 0)
+    {
+      let dmg_attck_rate = 0;
+      for (let i = 0; i < 4; i++)
+      {
+        dmg_attck_rate += data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]];
+      }
+      const dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    }
+    elif(attack_index == 1)
+    {
+      let dmg_attck_rate = 0;
+      dmg_attck_rate += data["重撃"]["数値"]["攻撃力"][this.parameter[3]];
+      const dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    }
+    elif(attack_index == 2)
+    {
+      const dmg_attck_rate = data.元素スキル.数値.攻撃力[this.parameter[3]];
+      const dmg_elm_rate = data.元素スキル.数値.元素熟知[this.parameter[3]];
+      const dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
+    }
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
   }
