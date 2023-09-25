@@ -39,15 +39,15 @@ class nahida {
     let dmg_rate;
     let dmg_attck_rate = 0;
   
-    if (attack_method == 0) {
+    if (attack_method == 1) {
       for (let i = 0; i < 4; i++) {
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    } else if (attack_method == 1) {
+    } else if (attack_method == 6) {
       dmg_attck_rate += data["重撃"]["数値"]["攻撃力"][this.parameter[3]];
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    } else if (attack_method == 2) {
+    } else if (attack_method == 16) {
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       this.skill_buff = 1;
