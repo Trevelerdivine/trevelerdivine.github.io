@@ -49,56 +49,60 @@ async function show_char_statsform()
     elemental_reaction.innerHTML = "";
     attack_method.innerHTML = "";
 
-    if (selectedCharId  === "56") {
-      const traits = [
+    switch (selectedCharId)
+    {
+      case "56":
+        const traits = [
+          {
+            id: "traitCheckbox",
+            label: "第1重：心識蘊蔵の種",
+          },
+          {
+            id: "traitCheckbox2",
+            label: "第2重：正覚善見の根 激化で防御力-30%",
+          },
+          {
+            id: "traitCheckbox3",
+            label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ",
+          },
+          {
+            id: "traitCheckbox4",
+            label: "第6重：大辯円成の実 追撃",
+          },
+        ];
+    
+        const options = [
+          { text: "攻撃方法", value: "", disabled: true, selected: true },
+          { text: "通常攻撃（1ループ）", value: "0" },
+          { text: "重撃", value: "1" },
+          { text: "スキル（滅浄三業）", value: "2" },
+        ];
+    
+        createchar_attackmethod(options);
+    
+        if (char_constellations > 0) 
         {
-          id: "traitCheckbox",
-          label: "第1重：心識蘊蔵の種"
-        },
-        {
-          id: "traitCheckbox2",
-          label: "第2重：正覚善見の根 激化で防御力-30%"
-        },
-        {
-          id: "traitCheckbox3",
-          label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ"
-        },
-        {
-          id: "traitCheckbox4",
-          label: "第6重：大辯円成の実 追撃"
+          const characterInfo = document.getElementById("characterInfo"); // キャラクター情報を表示する要素
+    
+          for (let i = 0; i < char_constellations; i++) {
+            const traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[i].id;
+            traitCheckbox.value = traits[i].id;
+            traitCheckbox.checked = true;
+    
+            const traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[i].id;
+            traitLabel.textContent = traits[i].label;
+    
+            characterInfo.appendChild(traitCheckbox);
+            characterInfo.appendChild(traitLabel);
+            const lineBreak = document.createElement("br");
+            characterInfo.appendChild(lineBreak);
+          }
         }
-      ];
-
-      const options = [
-        { text: "攻撃方法", value: "", disabled: true, selected: true },
-        { text: "通常攻撃（1ループ）", value: "0" },
-        { text: "重撃", value: "1" },
-        { text: "スキル（滅浄三業）", value: "2" },
-      ];
-
-      createchar_attackmethod(options)
-
-      if (char_constellations > 0)
-      {
-        for (let i = 0; i < char_constellations; i++) {
-          const traitCheckbox = document.createElement("input");
-          traitCheckbox.type = "checkbox";
-          traitCheckbox.id = traits[i].id;
-          traitCheckbox.value = traits[i].id;
-          traitCheckbox.checked = true;
-        
-          const traitLabel = document.createElement("label");
-          traitLabel.htmlFor = traits[i].id;
-          traitLabel.textContent = traits[i].label;
-        
-          characterInfo.appendChild(traitCheckbox);
-          characterInfo.appendChild(traitLabel);
-          const lineBreak = document.createElement("br");
-          characterInfo.appendChild(lineBreak);
-        }
-      }
-    } else if (selectedCharId  === "34")
-      {
+        break;
+      case "34":
         const traits = [
           {
             id: "traitCheckbox",
@@ -116,7 +120,7 @@ async function show_char_statsform()
             id: "traitCheckbox4",
             label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
           }
-        ];
+          ];
 
         const options = [
           { text: "攻撃方法", value: "", disabled: true, selected: true },
@@ -147,7 +151,8 @@ async function show_char_statsform()
             characterInfo.appendChild(lineBreak);
           }
         }
-      }
+        break
+    }
 
       const radiobutton = document.createElement("input");
       radiobutton.type = "radio";
