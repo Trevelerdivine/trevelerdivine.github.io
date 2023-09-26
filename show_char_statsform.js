@@ -90,6 +90,11 @@ async function show_char_statsform()
       const nahida_Qtext = createTextNode("　炎元素キャラ数：");
       const selectList = createSelectList("nahida_Q", 3);
     
+      const maxMasteryLabel = createLabel("maxMasteryLabel", "チーム内最大熟知キャラ：");
+    
+      const nahidaRadio = createRadio("maxMastery", "nahida", true, "ナヒーダ");
+      const otherRadio = createRadio("maxMastery", "other", false, "その他");
+    
       char_talent.appendChild(nahidaqCheckbox);
       char_talent.appendChild(nahidaqLabel);
       char_talent.appendChild(talent1Checkbox);
@@ -98,6 +103,10 @@ async function show_char_statsform()
       char_talent.appendChild(nahida_Qtext);
       char_talent.appendChild(selectList);
       char_talent.appendChild(document.createElement("br"));
+    
+      char_talent.appendChild(maxMasteryLabel);
+      char_talent.appendChild(nahidaRadio);
+      char_talent.appendChild(otherRadio);
     
       if (char_constellations > 0) {
         for (let i = 0; i < char_constellations; i++) {
@@ -378,4 +387,18 @@ function createSelectList(id, optionsCount) {
   }
 
   return selectList;
+}
+
+function createRadio(name, value, checked, labelText) {
+  const radio = document.createElement("input");
+  radio.type = "radio";
+  radio.name = name;
+  radio.value = value;
+  radio.checked = checked;
+
+  const label = document.createElement("label");
+  label.htmlFor = radio.id;
+  label.textContent = labelText;
+
+  return { radio, label };
 }
