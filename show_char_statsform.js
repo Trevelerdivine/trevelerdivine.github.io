@@ -132,9 +132,8 @@ async function show_char_statsform()
         }
         four_conste_option.value = 4;
         four_conste_option.text = `$4体以上`;
-        selectList.appendChild(four_conste_selectList);
+        characterInfo.appendChild(four_conste_selectList);
       }
-      characterInfo.appendChild(four_conste_selectList);
 
 
     }
