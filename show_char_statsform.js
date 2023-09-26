@@ -113,9 +113,9 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         const four_conste_selectList = createSelectList("four_conste", 4, "体");
         const four_conste_option = document.createElement("option");
-        option.value = 4;
-        option.text = "4体以上";
-        four_conste_selectList.appendChild(optfour_conste_optionion);
+        four_conste_option.value = 4;
+        four_conste_option.text = "4体以上";
+        four_conste_selectList.appendChild(four_conste_option);
         characterInfo.appendChild(four_conste_selectList);
       }
     }
