@@ -27,7 +27,7 @@ class nahida {
     const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
     const nahida_Q = document.getElementById("nahida_Q");
     const talent1 = document.getElementById("talent1");
-    if (nahida.checked && talent1.checked)
+    if (nahida_Q.checked && talent1.checked)
     {
       this.mytalent1 = 1;
       const other_label = document.getElementById("other-label");
