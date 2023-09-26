@@ -395,9 +395,11 @@ function createRadio(name, value, checked, labelText) {
   radio.name = name;
   radio.value = value;
   radio.checked = checked;
+  const radioId = `${name}-${value}`;
+  radio.id = radioId;
 
   const label = document.createElement("label");
-  label.htmlFor = radio.id;
+  label.htmlFor = radioId;
   label.textContent = labelText;
 
   return { radio, label };
