@@ -43,13 +43,17 @@ async function show_char_statsform()
     const characterInfo = document.getElementById("characterInfo");
     const elemental_reaction = document.getElementById("element_action");
     const attack_method = document.getElementById("attack_method");
+    const char_talent = document.getElementById("char_talent");
+
     characterInfo.style.display = "block";
 
     characterInfo.innerHTML = "";
     elemental_reaction.innerHTML = "";
     attack_method.innerHTML = "";
+    char_talent.innerHTML = "";
 
-    if (selectedCharId  === "56") {
+    if (selectedCharId  === "56") 
+    {
       const traits = [
         {
           id: "traitCheckbox",
@@ -76,11 +80,36 @@ async function show_char_statsform()
         { text: "スキル（滅浄三業）", value: "16" },
       ];
 
-      createchar_attackmethod(options)
+      createchar_attackmethod(options);
+
+      let nahidaqCheckbox = document.createElement("input");
+      nahidaqCheckbox.id = "nahida_Q"
+      let nahidaqLabel;
+      nahidaqLabel.checked = true;
+      nahidaqLabel.htmlFor = nahida_Q;
+      nahidaqLabel.textContent = "摩耶の宮殿";
+
+      const nahida_Qtext = document.createTextNode("　炎元素キャラ数：");
+      const selectList = document.createElement("select");
+      let option;
+      selectList.id = "nahida_Q";
+  
+      for (let j = 0; j < 3; j++) {
+        option = document.createElement("option");
+        option.value = j;
+        option.text = `${j}人`;
+        selectList.appendChild(option);
+      }
+
+      artifact_checkbox.appendChild(nahidaqCheckbox);
+      artifact_checkbox.appendChild(nahidaqLabel);
+      artifact_checkbox.appendChild(nahida_Qtext);
+      artifact_checkbox.appendChild(selectList);
 
       if (char_constellations > 0)
       {
-        for (let i = 0; i < char_constellations; i++) {
+        for (let i = 0; i < char_constellations; i++)
+        {
           const traitCheckbox = document.createElement("input");
           traitCheckbox.type = "checkbox";
           traitCheckbox.id = traits[i].id;
@@ -97,57 +126,58 @@ async function show_char_statsform()
           characterInfo.appendChild(lineBreak);
         }
       }
-    } else if (selectedCharId  === "34")
-      {
-        const traits = [
-          {
-            id: "traitCheckbox",
-            label: "第1重：悪曜の呪詛 眼力溜まりやすさup"
-          },
-          {
-            id: "traitCheckbox2",
-            label: "第2重：斬鉄断金 防御力60%無視"
-          },
-          {
-            id: "traitCheckbox3",
-            label: "第4重：常道への誓い 雷電将軍以外の攻撃力+30%"
-          },
-          {
-            id: "traitCheckbox4",
-            label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
-          }
-        ];
-
-        const options = [
-          { text: "攻撃方法", value: "", disabled: true, selected: true },
-          { text: "通常1ループ（爆発中）", value: "21" },
-          { text: "重撃(爆発中)", value: "22" },
-          { text: "元素爆発（初撃）", value: "23" },
-        ];
-  
-        createchar_attackmethod(options)
-
-        if (char_constellations > 0)
+    } 
+    else if (selectedCharId  === "34")
+    {
+      const traits = [
         {
-          for (let i = 0; i < char_constellations; i++) 
-          {
-            const traitCheckbox = document.createElement("input");
-            traitCheckbox.type = "checkbox";
-            traitCheckbox.id = traits[i].id;
-            traitCheckbox.value = traits[i].id;
-            traitCheckbox.checked = true;
-          
-            const traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[i].id;
-            traitLabel.textContent = traits[i].label;
-          
-            characterInfo.appendChild(traitCheckbox);
-            characterInfo.appendChild(traitLabel);
-            const lineBreak = document.createElement("br");
-            characterInfo.appendChild(lineBreak);
-          }
+          id: "traitCheckbox",
+          label: "第1重：悪曜の呪詛 眼力溜まりやすさup"
+        },
+        {
+          id: "traitCheckbox2",
+          label: "第2重：斬鉄断金 防御力60%無視"
+        },
+        {
+          id: "traitCheckbox3",
+          label: "第4重：常道への誓い 雷電将軍以外の攻撃力+30%"
+        },
+        {
+          id: "traitCheckbox4",
+          label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
+        }
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "通常1ループ（爆発中）", value: "21" },
+        { text: "重撃(爆発中)", value: "22" },
+        { text: "元素爆発（初撃）", value: "23" },
+      ];
+
+      createchar_attackmethod(options)
+
+      if (char_constellations > 0)
+      {
+        for (let i = 0; i < char_constellations; i++) 
+        {
+          const traitCheckbox = document.createElement("input");
+          traitCheckbox.type = "checkbox";
+          traitCheckbox.id = traits[i].id;
+          traitCheckbox.value = traits[i].id;
+          traitCheckbox.checked = true;
+        
+          const traitLabel = document.createElement("label");
+          traitLabel.htmlFor = traits[i].id;
+          traitLabel.textContent = traits[i].label;
+        
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          const lineBreak = document.createElement("br");
+          characterInfo.appendChild(lineBreak);
         }
       }
+    }
 
       const radiobutton = document.createElement("input");
       radiobutton.type = "radio";
@@ -282,7 +312,8 @@ function createchar_attackmethod(options)
   containerElement.appendChild(selectElement);
 }
 
-function showFormElements() {
+function showFormElements()
+{
   let hp_form = document.getElementById("hp_form");
   let attck_form = document.getElementById("attck_form");
   let deff_form = document.getElementById("deff_form");
