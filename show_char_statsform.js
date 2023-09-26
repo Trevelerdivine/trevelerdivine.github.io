@@ -58,7 +58,7 @@ async function show_char_statsform()
         { id: "traitCheckbox3", label: "第4重：蘊種印状態にある敵数：" },
         { id: "traitCheckbox4", label: "第6重：大辯円成の実 追撃" },
       ];
-      
+
       const options = [
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
@@ -67,7 +67,7 @@ async function show_char_statsform()
       ];
       
       if (char_constellations !== 4) {
-        options.push({ text: "滅浄三業·破業障(6凸)", disabled: true, value: "17" });
+        options.push({ text: "滅浄三業·破業障(6凸)", value: "17" });
       }
     
       createchar_attackmethod(options);

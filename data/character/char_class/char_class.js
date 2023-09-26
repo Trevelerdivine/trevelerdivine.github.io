@@ -8,27 +8,47 @@ class nahida {
     this.constValue = null;
     this.aggcount = 0;
     this.skill_buff = 0;
+    this.talent1effect = null;
+    this.dmg_rateCache = null;
+    this.mytalent1 = 0;
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
 
   async dmg_rate_data() {
+    // キャッシュがあればそれを返す
     if (this.dmg_rateCache) {
       return this.dmg_rateCache;
     }
-    const checkboxContainer = document.getElementById("select_reaction_method"); // チェックボックスを含む要素を取得
-    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]'); // チェックボックス要素を取得
-    const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
   
-    // チェックボックス Spread の状態を取得
+    // チェックボックスとチェックされた数を取得
+    const checkboxContainer = document.getElementById("select_reaction_method");
+    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+    const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
+    const nahida_Q = document.getElementById("nahida_Q");
+    const talent1 = document.getElementById("talent1");
+    if (nahida.checked && talent1.checked)
+    {
+      this.mytalent1 = 1;
+      const other_label = document.getElementById("other-label");
+      if (other_label.checked)
+      {
+        const elm = document.getElementById("element-mastery");
+        const elm_buff =  Math.min(elm.value/4,250);
+        this.talent1effect = elm_buff;
+
+      }
+    }
+  
+    // Spreadチェックボックスの状態を取得
     const agg = document.getElementById("Spread");
     const agg_reaction = agg.checked ? 1 : 0;
   
-    // このメソッドの結果を計算
+    // チェックボックスの数とSpreadの状態からaggcountを計算
     this.aggcount = trueCount * agg_reaction;
     console.log(this.aggcount);
   
-    // JSON データを取得
+    // JSONデータを取得
     const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
   
@@ -52,12 +72,17 @@ class nahida {
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       this.skill_buff = 1;
       dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 17) {
+      this.skill_buff = 1;
+      dmg_rate = [0, 0, 400, 0, 200, 0, 0];
     }
-    console.log(dmg_rate)
+    console.log(dmg_rate);
   
+    // 計算結果をキャッシュして返す
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
   }
+  
   
 
   calculate_char_fixed_hp() {
@@ -89,7 +114,15 @@ class nahida {
   }
 
   calculate_char_result_elm() {
-    return 0;
+    if (this.talent1effect) {
+      return this.talent1effect;
+    }
+    if(this.mytalent1 == 0)
+    {
+      return 0;
+    }
+    let talent1elm_buff = Math.min(this.fixed_status_array[2]/4, 250)
+    return talent1elm_buff;
   }
 
   calculate_char_fixed_elm_charge() {
