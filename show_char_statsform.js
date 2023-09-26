@@ -92,8 +92,10 @@ async function show_char_statsform()
     
       const maxMasteryLabel = createLabel("maxMasteryLabel", "チーム内最大熟知キャラ：");
     
-      const { nahidaRadio, nahidaRadioLabel } = createRadio("maxMastery", "nahida", true, "ナヒーダ");
-      const { otherRadio, otherRadioLabel } = createRadio("maxMastery", "other", false, "その他");
+      const nahidaRadio = createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ");
+      const otherRadio = createRadio("char_type", "other", false, "other-label", "その他");
+    
+      // ここで char_talent が正しく定義されていることを確認してください
     
       char_talent.appendChild(nahidaqCheckbox);
       char_talent.appendChild(nahidaqLabel);
@@ -106,9 +108,9 @@ async function show_char_statsform()
     
       char_talent.appendChild(maxMasteryLabel);
       char_talent.appendChild(nahidaRadio);
-      char_talent.appendChild(nahidaRadioLabel);
+      char_talent.appendChild(createLabel("nahida-label", "ナヒーダ"));
       char_talent.appendChild(otherRadio);
-      char_talent.appendChild(otherRadioLabel);
+      char_talent.appendChild(createLabel("other-label", "その他"));
     
       if (char_constellations > 0) {
         for (let i = 0; i < char_constellations; i++) {
@@ -391,18 +393,12 @@ function createSelectList(id, optionsCount) {
   return selectList;
 }
 
-function createRadio(name, value, checked, labelText) {
+function createRadio(name, value, checked, id, labelText) {
   const radio = document.createElement("input");
   radio.type = "radio";
   radio.name = name;
   radio.value = value;
   radio.checked = checked;
-  const radioId = `${name}-${value}`;
-  radio.id = radioId;
-
-  const label = document.createElement("label");
-  label.htmlFor = radioId;
-  label.textContent = labelText;
-
-  return { radio, label };
+  radio.id = id;
+  return radio;
 }
