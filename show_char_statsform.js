@@ -84,10 +84,17 @@ async function show_char_statsform()
 
       let nahidaqCheckbox = document.createElement("input");
       nahidaqCheckbox.id = "nahida_Q"
+      nahidaqCheckbox.checked = true;
       let nahidaqLabel;
-      nahidaqLabel.checked = true;
       nahidaqLabel.htmlFor = nahida_Q;
       nahidaqLabel.textContent = "摩耶の宮殿";
+
+      let talent1Checkbox = document.createElement("input");
+      talent1Checkbox.id = "talent1"
+      talent1Checkbox.checked = true;
+      let talent1Label;
+      talent1Label.htmlFor = nahida_Q;
+      talent1Label.textContent = "出場中";
 
       const nahida_Qtext = document.createTextNode("　炎元素キャラ数：");
       const selectList = document.createElement("select");
@@ -101,10 +108,12 @@ async function show_char_statsform()
         selectList.appendChild(option);
       }
 
-      artifact_checkbox.appendChild(nahidaqCheckbox);
-      artifact_checkbox.appendChild(nahidaqLabel);
-      artifact_checkbox.appendChild(nahida_Qtext);
-      artifact_checkbox.appendChild(selectList);
+      char_talent.appendChild(nahidaqCheckbox);
+      char_talent.appendChild(nahidaqLabel);
+      char_talent.appendChild(talent1Checkbox);
+      char_talent.appendChild(talent1Label);
+      char_talent.appendChild(nahida_Qtext);
+      char_talent.appendChild(selectList);
 
       if (char_constellations > 0)
       {
