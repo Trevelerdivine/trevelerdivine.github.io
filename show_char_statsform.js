@@ -111,19 +111,15 @@ async function show_char_statsform()
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
-        const four_conste_selectList = document.createElement("select");
-        four_conste_selectList.id = "four_consteid";
-    
-        for (let j = 0; j < 5; j++) {
-          const four_conste_option = document.createElement("option");
-          four_conste_option.value = j;
-          four_conste_option.text = `${j}体`;
-          four_conste_selectList.appendChild(four_conste_option);
-        }
-        
+        const four_conste_selectList = createSelectList("four_conste", 4, "体");
+        const four_conste_option = document.createElement("option");
+        option.value = 4;
+        option.text = "4体以上";
+        four_conste_selectList.appendChild(optfour_conste_optionion);
         characterInfo.appendChild(four_conste_selectList);
       }
     }
+    
 
     else if (selectedCharId  === "34")
     {
