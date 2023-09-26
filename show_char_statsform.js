@@ -66,7 +66,7 @@ async function show_char_statsform()
         { text: "スキル（滅浄三業）", value: "16" }
       ];
       
-      if (char_constellations !== 4) {
+      if (char_constellations == 4) {
         options.push({ text: "滅浄三業·破業障(6凸)", value: "17" });
       }
     

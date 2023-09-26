@@ -36,7 +36,7 @@ class nahida {
         const elm = document.getElementById("element-mastery");
         const elm_buff =  Math.min(elm.value/4,250);
         this.talent1effect = elm_buff;
-
+        console.log(elm_buff)
       }
     }
   
