@@ -51,7 +51,6 @@ async function show_char_statsform()
     elemental_reaction.innerHTML = "";
     attack_method.innerHTML = "";
     char_talent.innerHTML = "";
-
     if (selectedCharId === "56") {
       // トレイト情報
       const traits = [
@@ -73,19 +72,20 @@ async function show_char_statsform()
       createchar_attackmethod(options);
     
       // チェックボックスとラベルを作成
-      const nahidaqCheckbox = createCheckbox("nahida_Q", true);
-      const nahidaqLabel = createLabel("nahida_Q", "摩耶の宮殿");
-      const talent1Checkbox = createCheckbox("talent1", true);
-      const talent1Label = createLabel("talent1", "出場中");
+      const checkboxesAndLabels = [
+        createCheckboxAndLabel("nahida_Q", true, "nahidaqLabel", "摩耶の宮殿"),
+        createCheckboxAndLabel("talent1", true, "talent1Label", "出場中"),
+      ];
     
       // 炎元素キャラ数のセレクトボックスを作成
       const nahida_Qtext = createTextNode("　炎元素キャラ数：");
-      const selectList = createSelectList("nahida_Q", 3);
+      const selectList = createSelectList("nahida_Q", 3, "人");
     
       // チーム内最大熟知キャララジオボタンとその他ラジオボタンを作成
-      const maxMasteryLabel = createLabel("maxMasteryLabel", "チーム内最大熟知キャラ");
-      const nahidaRadio = createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ");
-      const otherRadio = createRadio("char_type", "other", false, "other-label", "その他");
+      const radioButtons = [
+        createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ"),
+        createRadio("char_type", "other", false, "other-label", "その他"),
+      ];
     
       // 元素熟知ラベルと入力フォームを作成
       const elementMasteryLabel = createLabel("element-mastery-label", "　元素熟知：");
@@ -93,13 +93,10 @@ async function show_char_statsform()
     
       // 要素をDOMに追加
       const elementsToAddToCharTalent = [
-        nahidaqCheckbox, nahidaqLabel, talent1Checkbox, talent1Label,
+        ...flattenCheckboxAndLabelArray(checkboxesAndLabels),
         document.createElement("br"), nahida_Qtext, selectList,
-        document.createElement("br"), maxMasteryLabel,
-        document.createElement("br"), nahidaRadio,
-        createLabel("nahida-label", "ナヒーダ"),
-        document.createElement("br"), otherRadio,
-        createLabel("other-label", "その他"),
+        document.createElement("br"), createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
+        document.createElement("br"), ...radioButtons,
         document.createElement("br"), elementMasteryLabel,
         elementMasteryInput, document.createElement("br")
       ];
@@ -109,33 +106,20 @@ async function show_char_statsform()
       });
     
       // トレイト情報を追加
-      for (let i = 1; i <= char_constellations; i++) {
-        if (i <= traits.length) {
-          const traitCheckbox = createCheckbox(traits[i - 1].id, true);
-          const traitLabel = createLabel(traits[i - 1].id, traits[i - 1].label);
+      for (let i = 1; i <= char_constellations && i <= traits.length; i++) {
+        const traitCheckbox = createCheckbox(traits[i - 1].id, true);
+        const traitLabel = createLabel(traits[i - 1].id, traits[i - 1].label);
     
-          characterInfo.appendChild(traitCheckbox);
-          characterInfo.appendChild(traitLabel);
-          characterInfo.appendChild(document.createElement("br"));
-        }
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 2)
-      {
-        let four_conste_selectList = document.createElement("select");
-        four_conste_selectList.id = four_consteid;
     
-        for (let j = 0; j < 4; i++) {
-          const four_conste_option = document.createElement("option");
-          four_conste_option.value = j;
-          four_conste_option.text = `${j}体`;
-          four_conste_selectList.appendChild(four_conste_option);
-        }
-        four_conste_option.value = 4;
-        four_conste_option.text = `$4体以上`;
-        characterInfo.appendChild(four_conste_selectList);
+      if (char_constellations > 2) {
+        const fourConstellationsSelectList = createSelectList("four_consteid", 4, "体");
+    
+        characterInfo.appendChild(fourConstellationsSelectList);
       }
-
-
     }
     else if (selectedCharId  === "34")
     {
@@ -393,14 +377,14 @@ function createTextNode(text) {
 }
 
 // セレクトリストを生成するユーティリティ関数
-function createSelectList(id, optionsCount) {
+function createSelectList(id, optionsCount, unit) {
   const selectList = document.createElement("select");
   selectList.id = id;
 
   for (let j = 0; j < optionsCount; j++) {
     const option = document.createElement("option");
     option.value = j;
-    option.text = `${j}人`;
+    option.text = `${j}${unit}`;
     selectList.appendChild(option);
   }
 
