@@ -8,7 +8,7 @@ class nahida {
     this.constValue = null;
     this.aggcount = 0;
     this.skill_buff = 0;
-    this.talent1effect = null;
+    this.talent1effect = 0;
     this.dmg_rateCache = null;
     this.mytalent1 = 0;
     this.calculateConstValue();
@@ -114,7 +114,7 @@ class nahida {
   }
 
   calculate_char_result_elm() {
-    if (this.talent1effect) {
+    if (this.talent1effect > 0) {
       return this.talent1effect;
     }
     if(this.mytalent1 == 0)
