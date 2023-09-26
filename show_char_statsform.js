@@ -53,25 +53,15 @@ async function show_char_statsform()
     char_talent.innerHTML = "";
 
     if (selectedCharId === "56") {
+      // トレイト情報
       const traits = [
-        {
-          id: "traitCheckbox",
-          label: "第1重：心識蘊蔵の種",
-        },
-        {
-          id: "traitCheckbox2",
-          label: "第2重：正覚善見の根 激化で防御力-30%",
-        },
-        {
-          id: "traitCheckbox3",
-          label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ",
-        },
-        {
-          id: "traitCheckbox4",
-          label: "第6重：大辯円成の実 追撃",
-        },
+        { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
+        { id: "traitCheckbox2", label: "第2重：防御力-30%" },
+        { id: "traitCheckbox3", label: "第4重：蘊種印状態にある敵数" },
+        { id: "traitCheckbox4", label: "第6重：大辯円成の実 追撃" },
       ];
     
+      // 攻撃方法のオプション
       const options = [
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
@@ -79,63 +69,74 @@ async function show_char_statsform()
         { text: "スキル（滅浄三業）", value: "16" },
       ];
     
+      // 攻撃方法を作成
       createchar_attackmethod(options);
     
+      // チェックボックスとラベルを作成
       const nahidaqCheckbox = createCheckbox("nahida_Q", true);
       const nahidaqLabel = createLabel("nahida_Q", "摩耶の宮殿");
-      
       const talent1Checkbox = createCheckbox("talent1", true);
       const talent1Label = createLabel("talent1", "出場中");
-      
+    
+      // 炎元素キャラ数のセレクトボックスを作成
       const nahida_Qtext = createTextNode("　炎元素キャラ数：");
       const selectList = createSelectList("nahida_Q", 3);
     
+      // チーム内最大熟知キャララジオボタンとその他ラジオボタンを作成
       const maxMasteryLabel = createLabel("maxMasteryLabel", "チーム内最大熟知キャラ");
-    
       const nahidaRadio = createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ");
       const otherRadio = createRadio("char_type", "other", false, "other-label", "その他");
     
-      // ここで char_talent が正しく定義されていることを確認してください
+      // 元素熟知ラベルと入力フォームを作成
+      const elementMasteryLabel = createLabel("element-mastery-label", "　元素熟知：");
+      const elementMasteryInput = createInput("text", "element-mastery", "800"); // デフォルト値は "800"
     
-      char_talent.appendChild(nahidaqCheckbox);
-      char_talent.appendChild(nahidaqLabel);
-      char_talent.appendChild(talent1Checkbox);
-      char_talent.appendChild(talent1Label);
-      char_talent.appendChild(document.createElement("br"));
-      char_talent.appendChild(nahida_Qtext);
-      char_talent.appendChild(selectList);
-      char_talent.appendChild(document.createElement("br"));
+      // 要素をDOMに追加
+      const elementsToAddToCharTalent = [
+        nahidaqCheckbox, nahidaqLabel, talent1Checkbox, talent1Label,
+        document.createElement("br"), nahida_Qtext, selectList,
+        document.createElement("br"), maxMasteryLabel,
+        document.createElement("br"), nahidaRadio,
+        createLabel("nahida-label", "ナヒーダ"),
+        document.createElement("br"), otherRadio,
+        createLabel("other-label", "その他"),
+        document.createElement("br"), elementMasteryLabel,
+        elementMasteryInput, document.createElement("br")
+      ];
     
-      char_talent.appendChild(maxMasteryLabel);
-      char_talent.appendChild(document.createElement("br"));
-      char_talent.appendChild(nahidaRadio);
-      char_talent.appendChild(createLabel("nahida-label", "ナヒーダ"));
-      char_talent.appendChild(document.createElement("br"));
-      char_talent.appendChild(otherRadio);
-      char_talent.appendChild(createLabel("other-label", "その他"));
-      char_talent.appendChild(document.createElement("br"));
-      char_talent.appendChild(createLabel("element-mastery-label", "　元素熟知"));
-
-      // 元素熟知の入力フォームを追加
-      const elementMasteryInput = createInput("text", "element-mastery", "800"); // デフォルト値は "100" ですが、必要に応じて変更してください
-      char_talent.appendChild(elementMasteryInput);
-      char_talent.appendChild(document.createElement("br"));
-
-        // 「その他」ラジオボタンのイベントリスナーを追加
-  otherRadio.addEventListener("change", function () {
-    elementMasteryInput.disabled = !otherRadio.checked; // チェックされていない場合はフォームを無効にする
-  });
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
     
-      if (char_constellations > 0) {
-        for (let i = 0; i < char_constellations; i++) {
-          const traitCheckbox = createCheckbox(traits[i].id, true);
-          const traitLabel = createLabel(traits[i].id, traits[i].label);
+      // トレイト情報を追加
+      for (let i = 1; i <= char_constellations; i++) {
+        if (i <= traits.length) {
+          const traitCheckbox = createCheckbox(traits[i - 1].id, true);
+          const traitLabel = createLabel(traits[i - 1].id, traits[i - 1].label);
     
           characterInfo.appendChild(traitCheckbox);
           characterInfo.appendChild(traitLabel);
           characterInfo.appendChild(document.createElement("br"));
         }
       }
+      if (char_constellations > 2)
+      {
+        let four_conste_selectList = document.createElement("select");
+        four_conste_selectList.id = four_consteid;
+    
+        for (let j = 0; j < 4; i++) {
+          const four_conste_option = document.createElement("option");
+          four_conste_option.value = j;
+          four_conste_option.text = `${j}体`;
+          selectList.appendChild(four_conste_selectList);
+        }
+        four_conste_option.value = 4;
+        four_conste_option.text = `$4体以上`;
+        selectList.appendChild(four_conste_selectList);
+      }
+      characterInfo.appendChild(four_conste_selectList);
+
+
     }
     else if (selectedCharId  === "34")
     {
@@ -146,7 +147,7 @@ async function show_char_statsform()
         },
         {
           id: "traitCheckbox2",
-          label: "第2重：斬鉄断金 防御力60%無視"
+          label: "第2重：防御力60%無視"
         },
         {
           id: "traitCheckbox3",
