@@ -93,7 +93,7 @@ async function show_char_statsform()
       talent1Checkbox.id = "talent1"
       talent1Checkbox.checked = true;
       let talent1Label;
-      talent1Label.htmlFor = nahida_Q;
+      talent1Label.htmlFor = "talent1";
       talent1Label.textContent = "出場中";
 
       const nahida_Qtext = document.createTextNode("　炎元素キャラ数：");
