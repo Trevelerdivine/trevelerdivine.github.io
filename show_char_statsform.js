@@ -86,7 +86,7 @@ async function show_char_statsform()
       nahidaqCheckbox.id = "nahida_Q"
       nahidaqCheckbox.checked = true;
       let nahidaqLabel;
-      nahidaqLabel.htmlFor = nahida_Q;
+      nahidaqLabel.htmlFor = "nahida_Q";
       nahidaqLabel.textContent = "摩耶の宮殿";
 
       let talent1Checkbox = document.createElement("input");
