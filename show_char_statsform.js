@@ -52,94 +52,64 @@ async function show_char_statsform()
     attack_method.innerHTML = "";
     char_talent.innerHTML = "";
 
-    if (selectedCharId  === "56") 
-    {
+    if (selectedCharId === "56") {
       const traits = [
         {
           id: "traitCheckbox",
-          label: "第1重：心識蘊蔵の種"
+          label: "第1重：心識蘊蔵の種",
         },
         {
           id: "traitCheckbox2",
-          label: "第2重：正覚善見の根 激化で防御力-30%"
+          label: "第2重：正覚善見の根 激化で防御力-30%",
         },
         {
           id: "traitCheckbox3",
-          label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ"
+          label: "第4重：比量現行の茎 敵の人数に応じて熟知バフ",
         },
         {
           id: "traitCheckbox4",
-          label: "第6重：大辯円成の実 追撃"
-        }
+          label: "第6重：大辯円成の実 追撃",
+        },
       ];
-
+    
       const options = [
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（滅浄三業）", value: "16" },
       ];
-
+    
       createchar_attackmethod(options);
-
-      let nahidaqCheckbox = document.createElement("input");
-      nahidaqCheckbox.type = "checkbox"; // チェックボックスを指定
-      nahidaqCheckbox.id = "nahida_Q";
-      nahidaqCheckbox.checked = true;
+    
+      const nahidaqCheckbox = createCheckbox("nahida_Q", true);
+      const nahidaqLabel = createLabel("nahida_Q", "摩耶の宮殿");
       
-      let nahidaqLabel = document.createElement("label");
-      nahidaqLabel.htmlFor = "nahida_Q"; // ラベルとチェックボックスを関連付けるために "for" 属性を設定
-      nahidaqLabel.textContent = "摩耶の宮殿"; // ラベルのテキストを設定
+      const talent1Checkbox = createCheckbox("talent1", true);
+      const talent1Label = createLabel("talent1", "出場中");
       
-      let talent1Checkbox = document.createElement("input");
-      talent1Checkbox.type = "checkbox"; // チェックボックスを指定
-      talent1Checkbox.id = "talent1";
-      talent1Checkbox.checked = true;
-      
-      let talent1Label = document.createElement("label");
-      talent1Label.htmlFor = "talent1"; // ラベルとチェックボックスを関連付けるために "for" 属性を設定
-      talent1Label.textContent = "出場中"; // ラベルのテキストを設定
-
-      const nahida_Qtext = document.createTextNode("　炎元素キャラ数：");
-      const selectList = document.createElement("select");
-      let option;
-      selectList.id = "nahida_Q";
-  
-      for (let j = 0; j < 3; j++) {
-        option = document.createElement("option");
-        option.value = j;
-        option.text = `${j}人`;
-        selectList.appendChild(option);
-      }
-
+      const nahida_Qtext = createTextNode("　炎元素キャラ数：");
+      const selectList = createSelectList("nahida_Q", 3);
+    
       char_talent.appendChild(nahidaqCheckbox);
       char_talent.appendChild(nahidaqLabel);
       char_talent.appendChild(talent1Checkbox);
       char_talent.appendChild(talent1Label);
+      char_talent.appendChild(document.createElement("br"));
       char_talent.appendChild(nahida_Qtext);
       char_talent.appendChild(selectList);
-
-      if (char_constellations > 0)
-      {
-        for (let i = 0; i < char_constellations; i++)
-        {
-          const traitCheckbox = document.createElement("input");
-          traitCheckbox.type = "checkbox";
-          traitCheckbox.id = traits[i].id;
-          traitCheckbox.value = traits[i].id;
-          traitCheckbox.checked = true;
-        
-          const traitLabel = document.createElement("label");
-          traitLabel.htmlFor = traits[i].id;
-          traitLabel.textContent = traits[i].label;
-        
+      char_talent.appendChild(document.createElement("br"));
+    
+      if (char_constellations > 0) {
+        for (let i = 0; i < char_constellations; i++) {
+          const traitCheckbox = createCheckbox(traits[i].id, true);
+          const traitLabel = createLabel(traits[i].id, traits[i].label);
+    
           characterInfo.appendChild(traitCheckbox);
           characterInfo.appendChild(traitLabel);
-          const lineBreak = document.createElement("br");
-          characterInfo.appendChild(lineBreak);
+          characterInfo.appendChild(document.createElement("br"));
         }
       }
-    } 
+    }
     else if (selectedCharId  === "34")
     {
       const traits = [
@@ -371,4 +341,41 @@ async function elemental_reaction_add()
   team_elm_form.style.display = "none";
   await calculate_depend_status();
   showFormElements();
+}
+
+// チェックボックスを生成するユーティリティ関数
+function createCheckbox(id, checked) {
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = id;
+  checkbox.checked = checked;
+  return checkbox;
+}
+
+// ラベルを生成するユーティリティ関数
+function createLabel(forId, labelText) {
+  const label = document.createElement("label");
+  label.htmlFor = forId;
+  label.textContent = labelText;
+  return label;
+}
+
+// テキストノードを生成するユーティリティ関数
+function createTextNode(text) {
+  return document.createTextNode(text);
+}
+
+// セレクトリストを生成するユーティリティ関数
+function createSelectList(id, optionsCount) {
+  const selectList = document.createElement("select");
+  selectList.id = id;
+
+  for (let j = 0; j < optionsCount; j++) {
+    const option = document.createElement("option");
+    option.value = j;
+    option.text = `${j}人`;
+    selectList.appendChild(option);
+  }
+
+  return selectList;
 }
