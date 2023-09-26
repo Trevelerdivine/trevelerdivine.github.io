@@ -33,7 +33,7 @@ class nahida {
       const other_label = document.getElementById("other-label");
       if (other_label.checked)
       {
-        const elm = document.getElementById("element-mastery");
+        const elm = parseInt(document.getElementById("element-mastery").value) || 0;
         const elm_buff =  Math.min(elm.value/4,250);
         this.talent1effect = elm_buff;
         console.log(elm_buff)
