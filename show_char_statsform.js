@@ -52,7 +52,6 @@ async function show_char_statsform()
     attack_method.innerHTML = "";
     char_talent.innerHTML = "";
     if (selectedCharId === "56") {
-      // トレイト情報
       const traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
         { id: "traitCheckbox2", label: "第2重：防御力-30%" },
@@ -60,7 +59,6 @@ async function show_char_statsform()
         { id: "traitCheckbox4", label: "第6重：大辯円成の実 追撃" },
       ];
     
-      // 攻撃方法のオプション
       const options = [
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
@@ -68,44 +66,34 @@ async function show_char_statsform()
         { text: "スキル（滅浄三業）", value: "16" },
       ];
     
-      // 攻撃方法を作成
       createchar_attackmethod(options);
     
-      // チェックボックスとラベルを作成
-      const checkboxesAndLabels = [
-        createCheckboxAndLabel("nahida_Q", true, "nahidaqLabel", "摩耶の宮殿"),
-        createCheckboxAndLabel("talent1", true, "talent1Label", "出場中"),
-      ];
-    
-      // 炎元素キャラ数のセレクトボックスを作成
-      const nahida_Qtext = createTextNode("　炎元素キャラ数：");
-      const selectList = createSelectList("nahida_Q", 3, "人");
-    
-      // チーム内最大熟知キャララジオボタンとその他ラジオボタンを作成
-      const radioButtons = [
-        createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ"),
-        createRadio("char_type", "other", false, "other-label", "その他"),
-      ];
-    
-      // 元素熟知ラベルと入力フォームを作成
-      const elementMasteryLabel = createLabel("element-mastery-label", "　元素熟知：");
-      const elementMasteryInput = createInput("text", "element-mastery", "800"); // デフォルト値は "800"
-    
-      // 要素をDOMに追加
       const elementsToAddToCharTalent = [
-        ...flattenCheckboxAndLabelArray(checkboxesAndLabels),
-        document.createElement("br"), nahida_Qtext, selectList,
-        document.createElement("br"), createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
-        document.createElement("br"), ...radioButtons,
-        document.createElement("br"), elementMasteryLabel,
-        elementMasteryInput, document.createElement("br")
+        createCheckbox("nahida_Q", true),
+        createLabel("nahida_Q", "摩耶の宮殿"),
+        createCheckbox("talent1", true),
+        createLabel("talent1", "出場中"),
+        document.createElement("br"),
+        createTextNode("　炎元素キャラ数："),
+        createSelectList("nahida_Q", 3, "人"),
+        document.createElement("br"),
+        createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
+        document.createElement("br"),
+        createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ"),
+        createLabel("nahida-label", "ナヒーダ"),
+        document.createElement("br"),
+        createRadio("char_type", "other", false, "other-label", "その他"),
+        createLabel("other-label", "その他"),
+        document.createElement("br"),
+        createLabel("element-mastery-label", "　元素熟知："),
+        createInput("text", "element-mastery", "800"),
+        document.createElement("br")
       ];
     
       elementsToAddToCharTalent.forEach(element => {
         char_talent.appendChild(element);
       });
     
-      // トレイト情報を追加
       for (let i = 1; i <= char_constellations && i <= traits.length; i++) {
         const traitCheckbox = createCheckbox(traits[i - 1].id, true);
         const traitLabel = createLabel(traits[i - 1].id, traits[i - 1].label);
@@ -116,9 +104,17 @@ async function show_char_statsform()
       }
     
       if (char_constellations > 2) {
-        const fourConstellationsSelectList = createSelectList("four_consteid", 4, "体");
+        const four_conste_selectList = document.createElement("select");
+        four_conste_selectList.id = "four_consteid";
     
-        characterInfo.appendChild(fourConstellationsSelectList);
+        for (let j = 0; j < 5; j++) {
+          const four_conste_option = document.createElement("option");
+          four_conste_option.value = j;
+          four_conste_option.text = `${j}体`;
+          four_conste_selectList.appendChild(four_conste_option);
+        }
+        
+        characterInfo.appendChild(four_conste_selectList);
       }
     }
     else if (selectedCharId  === "34")
