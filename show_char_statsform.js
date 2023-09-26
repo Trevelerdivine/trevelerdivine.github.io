@@ -83,18 +83,22 @@ async function show_char_statsform()
       createchar_attackmethod(options);
 
       let nahidaqCheckbox = document.createElement("input");
-      nahidaqCheckbox.id = "nahida_Q"
+      nahidaqCheckbox.type = "checkbox"; // チェックボックスを指定
+      nahidaqCheckbox.id = "nahida_Q";
       nahidaqCheckbox.checked = true;
-      let nahidaqLabel;
-      nahidaqLabel.htmlFor = "nahida_Q";
-      nahidaqLabel.textContent = "摩耶の宮殿";
-
+      
+      let nahidaqLabel = document.createElement("label");
+      nahidaqLabel.htmlFor = "nahida_Q"; // ラベルとチェックボックスを関連付けるために "for" 属性を設定
+      nahidaqLabel.textContent = "摩耶の宮殿"; // ラベルのテキストを設定
+      
       let talent1Checkbox = document.createElement("input");
-      talent1Checkbox.id = "talent1"
+      talent1Checkbox.type = "checkbox"; // チェックボックスを指定
+      talent1Checkbox.id = "talent1";
       talent1Checkbox.checked = true;
-      let talent1Label;
-      talent1Label.htmlFor = "talent1";
-      talent1Label.textContent = "出場中";
+      
+      let talent1Label = document.createElement("label");
+      talent1Label.htmlFor = "talent1"; // ラベルとチェックボックスを関連付けるために "for" 属性を設定
+      talent1Label.textContent = "出場中"; // ラベルのテキストを設定
 
       const nahida_Qtext = document.createTextNode("　炎元素キャラ数：");
       const selectList = document.createElement("select");
