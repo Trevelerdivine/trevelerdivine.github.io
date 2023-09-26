@@ -94,16 +94,23 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
     
-      for (let i = 1; i <= char_constellations && i <= traits.length; i++) {
-        const traitCheckbox = createCheckbox(traits[i - 1].id, true);
-        const traitLabel = createLabel(traits[i - 1].id, traits[i - 1].label);
+      if (char_constellations > 1)
+      {
+        let traitCheckbox = createCheckbox(traits[1].id, true);
+        let traitLabel = createLabel(traits[1].id, traits[1].label);
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
     
-      if (char_constellations > 2) {
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[2].id, true);
+        traitLabel = createLabel(traits[2].id, traits[2].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
         const four_conste_selectList = document.createElement("select");
         four_conste_selectList.id = "four_consteid";
     
@@ -117,6 +124,7 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
+
     else if (selectedCharId  === "34")
     {
       const traits = [
