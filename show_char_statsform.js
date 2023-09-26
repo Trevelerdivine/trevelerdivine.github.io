@@ -113,6 +113,13 @@ async function show_char_statsform()
       char_talent.appendChild(document.createElement("br"));
       char_talent.appendChild(otherRadio);
       char_talent.appendChild(createLabel("other-label", "その他"));
+      char_talent.appendChild(document.createElement("br"));
+      char_talent.appendChild(createLabel("element-mastery-label", "元素熟知"));
+
+      // 元素熟知の入力フォームを追加
+      const elementMasteryInput = createInput("text", "element-mastery", "100"); // デフォルト値は "100" ですが、必要に応じて変更してください
+      char_talent.appendChild(elementMasteryInput);
+      char_talent.appendChild(document.createElement("br"));
     
       if (char_constellations > 0) {
         for (let i = 0; i < char_constellations; i++) {
@@ -403,4 +410,12 @@ function createRadio(name, value, checked, id, labelText) {
   radio.checked = checked;
   radio.id = id;
   return radio;
+}
+
+function createInput(type, id, value) {
+  const input = document.createElement("input");
+  input.type = type;
+  input.id = id;
+  input.value = value;
+  return input;
 }
