@@ -55,16 +55,30 @@ async function show_char_statsform()
       const traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
         { id: "traitCheckbox2", label: "第2重：防御力-30%" },
-        { id: "traitCheckbox3", label: "第4重：蘊種印状態にある敵数" },
+        { id: "traitCheckbox3", label: "第4重：蘊種印状態にある敵数：" },
         { id: "traitCheckbox4", label: "第6重：大辯円成の実 追撃" },
       ];
-    
+
+      if (char_constellations !== 4) 
+      {
       const options = [
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（滅浄三業）", value: "16" },
+        { text: "滅浄三業·破業障(6凸)", disabled: true, value: "17" },
       ];
+    }
+    else
+    {
+      const options = [
+        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "通常攻撃（1ループ）", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "スキル（滅浄三業）", value: "16" },
+        { text: "滅浄三業·破業障(6凸)", value: "17" },
+      ];
+    }
     
       createchar_attackmethod(options);
     
