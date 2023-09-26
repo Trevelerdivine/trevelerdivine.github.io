@@ -128,7 +128,7 @@ async function show_char_statsform()
           const four_conste_option = document.createElement("option");
           four_conste_option.value = j;
           four_conste_option.text = `${j}体`;
-          selectList.appendChild(four_conste_selectList);
+          four_conste_selectList.appendChild(four_conste_option);
         }
         four_conste_option.value = 4;
         four_conste_option.text = `$4体以上`;
