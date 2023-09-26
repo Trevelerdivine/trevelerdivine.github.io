@@ -90,7 +90,7 @@ async function show_char_statsform()
       const nahida_Qtext = createTextNode("　炎元素キャラ数：");
       const selectList = createSelectList("nahida_Q", 3);
     
-      const maxMasteryLabel = createLabel("maxMasteryLabel", "チーム内最大熟知キャラ：");
+      const maxMasteryLabel = createLabel("maxMasteryLabel", "チーム内最大熟知キャラ");
     
       const nahidaRadio = createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ");
       const otherRadio = createRadio("char_type", "other", false, "other-label", "その他");
@@ -107,8 +107,10 @@ async function show_char_statsform()
       char_talent.appendChild(document.createElement("br"));
     
       char_talent.appendChild(maxMasteryLabel);
+      char_talent.appendChild(document.createElement("br"));
       char_talent.appendChild(nahidaRadio);
       char_talent.appendChild(createLabel("nahida-label", "ナヒーダ"));
+      char_talent.appendChild(document.createElement("br"));
       char_talent.appendChild(otherRadio);
       char_talent.appendChild(createLabel("other-label", "その他"));
     
