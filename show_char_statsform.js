@@ -92,8 +92,8 @@ async function show_char_statsform()
     
       const maxMasteryLabel = createLabel("maxMasteryLabel", "チーム内最大熟知キャラ：");
     
-      const nahidaRadio = createRadio("maxMastery", "nahida", true, "ナヒーダ");
-      const otherRadio = createRadio("maxMastery", "other", false, "その他");
+      const { nahidaRadio, nahidaRadioLabel } = createRadio("maxMastery", "nahida", true, "ナヒーダ");
+      const { otherRadio, otherRadioLabel } = createRadio("maxMastery", "other", false, "その他");
     
       char_talent.appendChild(nahidaqCheckbox);
       char_talent.appendChild(nahidaqLabel);
@@ -106,7 +106,9 @@ async function show_char_statsform()
     
       char_talent.appendChild(maxMasteryLabel);
       char_talent.appendChild(nahidaRadio);
+      char_talent.appendChild(nahidaRadioLabel);
       char_talent.appendChild(otherRadio);
+      char_talent.appendChild(otherRadioLabel);
     
       if (char_constellations > 0) {
         for (let i = 0; i < char_constellations; i++) {
