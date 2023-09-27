@@ -447,6 +447,7 @@ async function calculate_table_status()
   if (depend_status[2] == 1)
   {
     fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
+    char_instance.update_status(fixed_status, result_status);
     result_status[2] = team_dynamic_buff[2] + fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
     buff_status[2] = result_status[2] - af_buff[2] - base_status[2];
     document.getElementById("table_buff_elm").innerHTML = buff_status[2].toFixed(0);

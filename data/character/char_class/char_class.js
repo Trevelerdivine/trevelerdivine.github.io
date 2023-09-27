@@ -114,9 +114,11 @@ class nahida {
   }
 
   calculate_char_result_elm() {
+    console.log(this.talent1effect);
     if (this.talent1effect > 0) {
       return this.talent1effect;
     }
+    console.log(this.mytalent1);
     if(this.mytalent1 == 0)
     {
       return 0;
