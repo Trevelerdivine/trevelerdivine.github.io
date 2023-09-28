@@ -43,7 +43,6 @@ class nahida {
   
     // チェックボックスの数と Spread の状態から aggcount を計算
     this.aggcount = trueCount * agg_reaction;
-    console.log(this.aggcount);
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/nahida.json");

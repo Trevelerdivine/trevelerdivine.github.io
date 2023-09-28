@@ -282,7 +282,7 @@ async function show_char_statsform()
         elemental_reaction.appendChild(traitLabel1);
       }
 
-      const method_index = document.getElementById("attack_method").value;
+      const method_index = parseInt(document.getElementById("attack_method").value);
       if (method_index > 0)
       {
         let element_type;

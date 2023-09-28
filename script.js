@@ -696,7 +696,6 @@ async function import_char_parameter()
   const char_constellations = document.getElementById("char_constellations");
   const constellations = char_constellations.value;
   const parameter = [selectedLevel, agg_fixed_value, constellations, talent_level_index];
-  console.log(parameter)
   return parameter;
 }
 
