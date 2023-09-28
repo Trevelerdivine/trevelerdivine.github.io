@@ -16,32 +16,11 @@ async function show_char_statsform()
     let team_elm_form = document.getElementById("team_elm_form");
     let team_elm_charge_form = document.getElementById("team_elm_charge_form");
     let team_cr_form = document.getElementById("team_cr_form");
-    let team_cd_form = document.getElementById("team_cd_form");
-    const method_index = document.getElementById("attack_method").value;
-    let element_type;
-    if (method_index >= 1 && method_index <= 5) {
-        element_type = 0;
-    } else if (method_index >= 6 && method_index <= 10) {
-        element_type = 1;
-    } else if (method_index >= 11 && method_index <= 15) {
-        element_type = 2;
-    } else if (method_index >= 16 && method_index <= 20) {
-        element_type = 3;
-    } else if (method_index >= 21 && method_index <= 25) {
-        element_type = 4;
-    } else {
-        // それ以外の場合、デフォルト値を設定するかエラーハンドリングを追加してください
-        // ここではデフォルト値として -1 を設定していますが、必要に応じて変更してください
-        element_type = -1;
-    }
+    let team_cd_form = document.getElementById("team_cd_form")
+
+
 
     const char_constellations = document.getElementById("char_constellations").value;
-    const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
-    const data = await response.json();
-    char_propaty[0] = data[attack_method[element_type]]["元素"];
-    console.log(char_propaty);
-
-
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
     deff_form.style.display = "none";  // 防御力フォームを非表示
@@ -302,6 +281,31 @@ async function show_char_statsform()
         elemental_reaction.appendChild(traitCheckbox1);
         elemental_reaction.appendChild(traitLabel1);
       }
+
+      const method_index = document.getElementById("attack_method").value;
+        if (method_index > 0)
+        {
+          let element_type;
+          if (method_index >= 1 && method_index <= 5) {
+              element_type = 0;
+          } else if (method_index >= 6 && method_index <= 10) {
+              element_type = 1;
+          } else if (method_index >= 11 && method_index <= 15) {
+              element_type = 2;
+          } else if (method_index >= 16 && method_index <= 20) {
+              element_type = 3;
+          } else if (method_index >= 21 && method_index <= 25) {
+              element_type = 4;
+          } else {
+              // それ以外の場合、デフォルト値を設定するかエラーハンドリングを追加してください
+              // ここではデフォルト値として -1 を設定していますが、必要に応じて変更してください
+              element_type = -1;
+          }
+          const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+          const data = await response.json();
+          char_propaty[0] = data[attack_method[element_type]]["元素"];
+          console.log(char_propaty);
+        }
 
       showFormElements();
     }
