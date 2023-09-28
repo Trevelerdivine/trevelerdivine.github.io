@@ -372,12 +372,12 @@ async function calculate_table_status()
 // 聖遺物のステータスを取得
 const af_hp = parseInt(document.getElementById("af_hp").value);
 const af_attack = parseInt(document.getElementById("af_attack").value);
-const af_defense = parseInt(document.getElementById("af_defense").value);
-const af_elemental_mastery = parseInt(document.getElementById("af_elemental_mastery").value);
-const af_elemental_charge_efficiency = parseFloat(document.getElementById("af_elemental_charge_efficiency").value) / 100;
-const af_critical_rate = parseFloat(document.getElementById("af_critical_rate").value) / 100;
-const af_critical_damage = parseFloat(document.getElementById("af_critical_damage").value) / 100;
-const af_buff = [af_hp, af_defense, af_elemental_mastery, af_elemental_charge_efficiency, af_attack, af_critical_rate, af_critical_damage];
+const af_defense = parseInt(document.getElementById("af_deff").value);
+const af_elemental_mastery = parseInt(document.getElementById("af_elm").value);
+const af_elemental_charge_efficiency = parseFloat(document.getElementById("af_elm_charge").value) / 100;
+const af_critical_rate = parseFloat(document.getElementById("af_cr").value) / 100;
+const af_critical_damage = parseFloat(document.getElementById("af_cd").value) / 100;
+const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attack, af_cr, af_cd];
 
 // ベースステータスを計算
 const base_status = await calculate_base_status();
