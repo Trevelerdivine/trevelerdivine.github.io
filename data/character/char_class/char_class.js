@@ -11,16 +11,12 @@ class nahida {
     this.talent1effect = -1;
     this.dmg_rateCache = null;
     this.mytalent1 = 0;
+    this.q_pyrobuff = 0;
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
 
   async dmg_rate_data() {
-    // キャッシュがあればそれを返す
-    if (this.dmg_rateCache) {
-      return this.dmg_rateCache;
-    }
-  
     // チェックボックスとチェックされた数を取得
     const checkboxContainer = document.getElementById("select_reaction_method");
     const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -29,16 +25,15 @@ class nahida {
     const talent1 = document.getElementById("talent1");
     console.log(nahida_Q);
     console.log(talent1);
-    if (nahida_Q.checked && talent1.checked)
-    {
+  
+    if (nahida_Q.checked && talent1.checked) {
       this.mytalent1 = 1;
       const other_label = document.getElementById("other-label");
-      if (other_label.checked)
-      {
+      if (other_label.checked) {
         const elm = parseInt(document.getElementById("element-mastery").value) || 0;
-        const elm_buff =  Math.max(Math.min(elm/4,250),0);
+        const elm_buff = Math.max(Math.min(elm / 4, 250), 0);
         this.talent1effect = elm_buff;
-        console.log(elm_buff)
+        console.log(elm_buff);
       }
     }
   
@@ -57,6 +52,19 @@ class nahida {
     // 攻撃方法に応じてダメージ率を計算
     const attack_method = document.getElementById("attack_method_id").value;
     console.log(attack_method);
+  
+    if (nahida_Q.checked) {
+      let q_pyro = document.getElementById("nahida_Q").value - 1;
+      const char_constellations = document.getElementById("char_constellations").value;
+  
+      if (char_constellations > 0) {
+        q_pyro = Math.min((q_pyro + 1), 1);
+      }
+  
+      if (q_pyro > -1) {
+        this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]);
+      }
+    }
   
     let dmg_rate;
     let dmg_attck_rate = 0;
@@ -85,7 +93,6 @@ class nahida {
   }
   
   
-
   calculate_char_fixed_hp() {
     return 0;
   }
@@ -152,7 +159,7 @@ class nahida {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return 0;
+    return this.q_pyrobuff;
   }
 
   calculate_char_result_dmg_buff() {
