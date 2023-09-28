@@ -129,7 +129,7 @@ async function calculate_af_main_status_buff()
 async function calculate_af_score(af_main_status_buff,depend_status,base_status) 
 {
   const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
-  const af_attack = parseInt(document.getElementById("af_attack").value);//聖遺物攻撃力上昇量
+  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
   const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
   const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value);//聖遺物会心率上昇量
@@ -158,7 +158,7 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
         af_score_distribution[3] = (af_elm_charge - af_main_status_buff[3])*1.2;
         break;
       case 4:
-        af_score_distribution[4] =((af_attack - 311)/base_status[4] - af_main_status_buff[4])*400/3;
+        af_score_distribution[4] =((af_attck - 311)/base_status[4] - af_main_status_buff[4])*400/3;
         break;
       case 5:
         af_score_distribution[5] = (af_cr - af_main_status_buff[5])*2;
@@ -371,7 +371,7 @@ async function calculate_table_status()
 {
 // 聖遺物のステータスを取得
 const af_hp = parseInt(document.getElementById("af_hp").value);
-const af_attack = parseInt(document.getElementById("af_attack").value);
+const af_attack = parseInt(document.getElementById("af_attck").value);
 const af_defense = parseInt(document.getElementById("af_deff").value);
 const af_elemental_mastery = parseInt(document.getElementById("af_elm").value);
 const af_elemental_charge_efficiency = parseFloat(document.getElementById("af_elm_charge").value) / 100;
@@ -408,13 +408,13 @@ let result_status;
 
 // HTMLテーブルにベースステータスを表示
 document.getElementById("table_base_hp").innerHTML = base_status[0];
-document.getElementById("table_base_defense").innerHTML = base_status[1];
-document.getElementById("table_base_elemental_mastery").innerHTML = base_status[2];
-document.getElementById("table_base_elemental_charge_efficiency").innerHTML = (base_status[3] * 100).toFixed(1) + "％";
-document.getElementById("table_base_attack").innerHTML = base_status[4];
-document.getElementById("table_base_critical_rate").innerHTML = (base_status[5] * 100).toFixed(1) + "％";
-document.getElementById("table_base_critical_damage").innerHTML = (base_status[6] * 100).toFixed(1) + "％";
-document.getElementById("table_base_damage_buff").innerHTML = (base_status[7] * 100).toFixed(1) + "％";
+document.getElementById("table_base_deff").innerHTML = base_status[1];
+document.getElementById("table_base_elm").innerHTML = base_status[2];
+document.getElementById("table_base_elm_charge").innerHTML = (base_status[3] * 100).toFixed(1) + "％";
+document.getElementById("table_base_attck").innerHTML = base_status[4];
+document.getElementById("table_base_cr").innerHTML = (base_status[5] * 100).toFixed(1) + "％";
+document.getElementById("table_base_cd").innerHTML = (base_status[6] * 100).toFixed(1) + "％";
+document.getElementById("table_base_dmg_buff").innerHTML = (base_status[7] * 100).toFixed(1) + "％";
 
 // バフを適用して固定ステータスを計算
 for (let i = 0; i < 7; i++) {
@@ -553,13 +553,13 @@ async function create_afset_instance()
 async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_status)
 {
   const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
-  const af_attack = parseInt(document.getElementById("af_attack").value);//聖遺物攻撃力上昇量
+  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
   const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
   const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
   const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
   const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
-  const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attack, af_cr, af_cd];
+  const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
   let basic_dmg;
   let exp_dmg;
@@ -1149,15 +1149,15 @@ async function monte_carlo_calculate()
   {
     let result_dltattck = (my_af_score_distribution[4] - old_score_distribution[4])
     let dltattckScore = document.getElementById("dlt_attck_score");
-    let dltAfattck = document.getElementById("dlt_af_attack");
+    let dltAfattck = document.getElementById("dlt_af_attck");
     let attckcolor;
     document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
     document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(0);
     document.getElementById("my_attck_score").innerHTML = my_af_score_distribution[4].toFixed(1);
     document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(1);
     document.getElementById("count_attck_score").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
-    document.getElementById("my_af_attack").innerHTML = (base_status[4]*my_af_score_distribution[4]*3/400).toFixed(0);
-    document.getElementById("appro_af_attack").innerHTML = (base_status[4]*old_score_distribution[4]*3/400).toFixed(0);
+    document.getElementById("my_af_attck").innerHTML = (base_status[4]*my_af_score_distribution[4]*3/400).toFixed(0);
+    document.getElementById("appro_af_attck").innerHTML = (base_status[4]*old_score_distribution[4]*3/400).toFixed(0);
     document.getElementById("count_attck_score3").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
     if (result_dltattck > 0)
     {
@@ -1180,9 +1180,9 @@ async function monte_carlo_calculate()
     document.getElementById("appro_attck_score").innerHTML = "-";
     document.getElementById("dlt_attck_score").innerHTML = "-";
     document.getElementById("count_attck_score").innerHTML = "-";
-    document.getElementById("my_af_attack").innerHTML = "-";
-    document.getElementById("appro_af_attack").innerHTML = "-";
-    document.getElementById("dlt_af_attack").innerHTML = "-";
+    document.getElementById("my_af_attck").innerHTML = "-";
+    document.getElementById("appro_af_attck").innerHTML = "-";
+    document.getElementById("dlt_af_attck").innerHTML = "-";
     document.getElementById("count_attck_score3").innerHTML = "-";
   }
 
