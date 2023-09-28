@@ -430,13 +430,13 @@ const weapon_instance = await create_weapon_instance(base_status, fixed_status, 
 
 // キャラクターと武器の固定ステータスを計算
 fixed_status[0] += await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
-fixed_status[1] += await (char_instance.calculate_char_fixed_defense() + weapon_instance.calculate_weapon_fixed_defense());
-fixed_status[2] += await (char_instance.calculate_char_fixed_elemental_mastery() + weapon_instance.calculate_weapon_fixed_elemental_mastery());
-fixed_status[3] += await (char_instance.calculate_char_fixed_elemental_charge_efficiency() + weapon_instance.calculate_weapon_fixed_elemental_charge_efficiency());
-fixed_status[4] += await (char_instance.calculate_char_fixed_attack() + weapon_instance.calculate_weapon_fixed_attack());
-fixed_status[5] += await (char_instance.calculate_char_fixed_critical_rate() + weapon_instance.calculate_weapon_fixed_critical_rate());
-fixed_status[6] += await (char_instance.calculate_char_fixed_critical_damage() + weapon_instance.calculate_weapon_fixed_critical_damage());
-fixed_status[7] += await (char_instance.calculate_char_fixed_damage_buff() + weapon_instance.calculate_weapon_fixed_damage_buff());
+fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
+fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
+fixed_status[3] += await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
+fixed_status[4] += await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
+fixed_status[5] += await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
+fixed_status[6] += await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
+fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
 
 // キャラクターと武器のステータスを更新
 char_instance.update_status(fixed_status, result_status);
