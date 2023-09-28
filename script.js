@@ -405,7 +405,8 @@ async function calculate_table_status()
   
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
-
+  const dmg_rate = await char_instance.dmg_rate_data();
+  
   fixed_status[0] += await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
   fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
   fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
@@ -418,7 +419,7 @@ async function calculate_table_status()
   char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
 
-  const dmg_rate = await char_instance.dmg_rate_data();
+
   async function updateStatus(index, resultStatus, buffStatus, afBuff, baseStatus, dynamicBuff, calculateResultFunction, tablePrefix) {
     if (depend_status[index] === 1) 
     {

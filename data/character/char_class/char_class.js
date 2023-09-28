@@ -49,20 +49,6 @@ class nahida {
     // 攻撃方法に応じてダメージ率を計算
     const attack_method = document.getElementById("attack_method_id").value;
     console.log(attack_method);
-  
-    if (nahida_Q.checked) {
-      let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
-      const char_constellations = document.getElementById("char_constellations").value;
-  
-      if (char_constellations > 0) {
-        q_pyro = Math.min((q_pyro + 1), 1);
-      }
-  
-      if (q_pyro > -1) {
-        this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]);
-      }
-    }
-    console.log(this.q_pyrobuff);
     let dmg_rate;
     let dmg_attck_rate = 0;
   
@@ -75,6 +61,19 @@ class nahida {
       dmg_attck_rate += data["重撃"]["数値"]["攻撃力"][this.parameter[3]];
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
+      if (nahida_Q.checked) {
+        let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
+        const char_constellations = document.getElementById("char_constellations").value;
+    
+        if (char_constellations > 0) {
+          q_pyro = Math.min((q_pyro + 1), 1);
+        }
+    
+        if (q_pyro > -1) {
+          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]);
+        }
+      }
+      console.log(this.q_pyrobuff);
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       this.skill_buff = 1;
