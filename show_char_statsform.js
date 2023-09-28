@@ -79,7 +79,7 @@ async function show_char_statsform()
         createLabel("talent1", "出場中"),
         document.createElement("br"),
         createTextNode("　炎元素キャラ数："),
-        createSelectList("nahida_Q", 3, "人"),
+        createSelectList("nahida_Qpyro", 3, "人"),
         document.createElement("br"),
         createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
         document.createElement("br"),

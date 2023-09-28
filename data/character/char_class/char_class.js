@@ -23,8 +23,6 @@ class nahida {
     const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
     const nahida_Q = document.getElementById("nahida_Q");
     const talent1 = document.getElementById("talent1");
-    console.log(nahida_Q);
-    console.log(talent1);
   
     if (nahida_Q.checked && talent1.checked) {
       this.mytalent1 = 1;
@@ -33,7 +31,6 @@ class nahida {
         const elm = parseInt(document.getElementById("element-mastery").value) || 0;
         const elm_buff = Math.max(Math.min(elm / 4, 250), 0);
         this.talent1effect = elm_buff;
-        console.log(elm_buff);
       }
     }
   
@@ -54,7 +51,7 @@ class nahida {
     console.log(attack_method);
   
     if (nahida_Q.checked) {
-      let q_pyro = document.getElementById("nahida_Q").value - 1;
+      let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
       const char_constellations = document.getElementById("char_constellations").value;
   
       if (char_constellations > 0) {
@@ -65,7 +62,7 @@ class nahida {
         this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]);
       }
     }
-  
+    console.log(this.q_pyrobuff);
     let dmg_rate;
     let dmg_attck_rate = 0;
   
