@@ -369,6 +369,54 @@ async function calculate_team_dynamic_buff(base_status)
 
 async function calculate_table_status()
 {
+  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
+  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
+  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
+  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
+  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
+  const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
+  const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
+  const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
+  const base_status = await calculate_base_status();
+  const depend_status = await calculate_depend_status();
+  const af_main_status_buff = await calculate_af_main_status_buff();
+  const char_parameter = await import_char_parameter();
+  let buff_status = [0,0,0,0,0,0,0,0];
+  let team_fix_buff = await calculate_team_fix_buff(base_status);
+  let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
+  let fixed_status = base_status.slice();
+  let result_status;
+
+  document.getElementById("table_base_hp").innerHTML = base_status[0];
+  document.getElementById("table_base_deff").innerHTML = base_status[1];
+  document.getElementById("table_base_elm").innerHTML = base_status[2];
+  document.getElementById("table_base_elm_charge").innerHTML = (base_status[3]*100).toFixed(1) + "％";
+  document.getElementById("table_base_attck").innerHTML = base_status[4];
+  document.getElementById("table_base_cr").innerHTML = (base_status[5]*100).toFixed(1) + "％";
+  document.getElementById("table_base_cd").innerHTML = (base_status[6]*100).toFixed(1) + "％";
+  document.getElementById("table_base_dmg_buff").innerHTML = (base_status[7]*100).toFixed(1) + "％";
+
+  for (let i = 0; i < 7; i++)
+  {
+    fixed_status[i] = fixed_status[i] + af_buff[i] + team_fix_buff[i];
+  }
+  fixed_status[7] = af_main_status_buff[7] + team_fix_buff[7];
+  result_status = fixed_status.slice();
+  
+  const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
+  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+
+  fixed_status[0] += await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
+  fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
+  fixed_status[2] += await (char_instance.calculate_char_fixed_elm() + weapon_instance.calculate_weapon_fixed_elm());
+  fixed_status[3] += await (char_instance.calculate_char_fixed_elm_charge() + weapon_instance.calculate_weapon_fixed_elm_charge());
+  fixed_status[4] += await (char_instance.calculate_char_fixed_attck() + weapon_instance.calculate_weapon_fixed_attck());
+  fixed_status[5] += await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr());
+  fixed_status[6] += await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd());
+  fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
+
+  char_instance.update_status(fixed_status, result_status);
+  weapon_instance.update_status(fixed_status, result_status);
 
   const dmg_rate = await char_instance.dmg_rate_data();
   if (depend_status[0] == 1)
