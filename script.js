@@ -419,134 +419,31 @@ async function calculate_table_status()
   weapon_instance.update_status(fixed_status, result_status);
 
   const dmg_rate = await char_instance.dmg_rate_data();
-  if (depend_status[0] == 1)
-  {
-    result_status[0] = team_dynamic_buff[0] + fixed_status[0] + await (char_instance.calculate_char_result_hp() + weapon_instance.calculate_weapon_result_hp());
-    buff_status[0] = result_status[0] - af_buff[0] - base_status[0];
-    document.getElementById("table_buff_hp").innerHTML = buff_status[0].toFixed(0);
-    document.getElementById("table_af_hp").innerHTML = af_buff[0].toFixed(0);
-    document.getElementById("table_final_hp").innerHTML = result_status[0].toFixed(0);
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-  }
-  else
-  {
-    document.getElementById("table_buff_hp").innerHTML = "-";
-    document.getElementById("table_af_hp").innerHTML = "-";
-    document.getElementById("table_final_hp").innerHTML = "-";
-  }
-
-  if (depend_status[1] == 1)
-  {
-    result_status[1] = team_dynamic_buff[1] + fixed_status[1] + await (char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff());
-    buff_status[1] = result_status[1] - af_buff[1] - base_status[1];
-    document.getElementById("table_buff_deff").innerHTML = buff_status[1].toFixed(0);
-    document.getElementById("table_af_deff").innerHTML = af_buff[1].toFixed(0);
-    document.getElementById("table_final_deff").innerHTML = result_status[1].toFixed(0);
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-  }
-  else
-  {
-    document.getElementById("table_buff_deff").innerHTML = "-";
-    document.getElementById("table_af_deff").innerHTML = "-";
-    document.getElementById("table_final_deff").innerHTML = "-";
-  }
-
-  if (depend_status[2] == 1)
-  {
-    char_instance.update_status(fixed_status, result_status);
-    result_status[2] = team_dynamic_buff[2] + fixed_status[2] + await (char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm());
-    buff_status[2] = result_status[2] - af_buff[2] - base_status[2];
-    document.getElementById("table_buff_elm").innerHTML = buff_status[2].toFixed(0);
-    document.getElementById("table_af_elm").innerHTML = af_buff[2].toFixed(0);
-    document.getElementById("table_final_elm").innerHTML = result_status[2].toFixed(0);
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-  }
-  else
-  {
-    document.getElementById("table_buff_elm").innerHTML = "-";
-    document.getElementById("table_af_elm").innerHTML = "-";
-    document.getElementById("table_final_elm").innerHTML = "-";
-  }
-
-  if (depend_status[3] == 1)
-  {
-    result_status[3] = team_dynamic_buff[3] + fixed_status[3] + await (char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge());
-    buff_status[3] = result_status[3] - af_buff[3] - base_status[3];
-    document.getElementById("table_buff_elm_charge").innerHTML = (buff_status[3]*100).toFixed(1) + "％";
-    document.getElementById("table_af_elm_charge").innerHTML = (af_buff[3]*100).toFixed(1) + "％";
-    document.getElementById("table_final_elm_charge").innerHTML = (result_status[3]*100).toFixed(1) + "％";
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-  }
-  else
-  {
-    document.getElementById("table_buff_elm_charge").innerHTML = "-";
-    document.getElementById("table_af_elm_charge").innerHTML = "-";
-    document.getElementById("table_final_elm_charge").innerHTML = "-";
-  }
-
-  if (depend_status[4] == 1)
-  {
-    result_status[4] = team_dynamic_buff[4] + fixed_status[4] + await (char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck());
-    buff_status[4] = result_status[4] - af_buff[4] - base_status[4];
-    document.getElementById("table_buff_attck").innerHTML = buff_status[4].toFixed(0);
-    document.getElementById("table_af_attck").innerHTML = af_buff[4].toFixed(0);
-    document.getElementById("table_final_attck").innerHTML = result_status[4].toFixed(0);
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-  }
-  else
-  {
-    document.getElementById("table_buff_attck").innerHTML = "-";
-    document.getElementById("table_af_attck").innerHTML = "-";
-    document.getElementById("table_final_attck").innerHTML = "-";
-  }
-
-  if (depend_status[5] == 1)
-  {
-    result_status[5] = team_dynamic_buff[5] + fixed_status[5] + await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
-    buff_status[5] = result_status[5] - af_buff[5] - base_status[5];
-    if (fixed_status[5] > 1)
-    {
-      fixed_status[5] = 1;
+  async function updateStatus(index, resultStatus, buffStatus, afBuff, baseStatus, dynamicBuff, calculateResultFunction, tablePrefix) {
+    if (depend_status[index] === 1) {
+      resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction();
+      buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
+      document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
+      document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
+      document.getElementById(`table_final_${tablePrefix}`).innerHTML = (resultStatus[index]*100).toFixed(1) + "％";
+      char_instance.update_status(fixed_status, resultStatus);
+      weapon_instance.update_status(fixed_status, resultStatus);
+    } else {
+      document.getElementById(`table_buff_${tablePrefix}`).innerHTML = "-";
+      document.getElementById(`table_af_${tablePrefix}`).innerHTML = "-";
+      document.getElementById(`table_final_${tablePrefix}`).innerHTML = "-";
     }
-    if (result_status[5] > 1)
-    {
-      result_status[5] = 1;
-    }
-    document.getElementById("table_buff_cr").innerHTML = (buff_status[5]*100).toFixed(1) + "％";
-    document.getElementById("table_af_cr").innerHTML = (af_buff[5]*100).toFixed(1) + "％";
-    document.getElementById("table_final_cr").innerHTML = (result_status[5]*100).toFixed(1) + "％";
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
   }
-  else
-  {
-    document.getElementById("table_buff_cr").innerHTML = "-";
-    document.getElementById("table_af_cr").innerHTML = "-";
-    document.getElementById("table_final_cr").innerHTML = "-";
-  }
-
-  if (depend_status[6] == 1)
-  {
-    result_status[6] = team_dynamic_buff[6] + fixed_status[6] + await (char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd());
-    buff_status[6] = result_status[6] - af_buff[6] - base_status[6];
-    document.getElementById("table_buff_cd").innerHTML = (buff_status[6]*100).toFixed(1) + "％";
-    document.getElementById("table_af_cd").innerHTML = (af_buff[6]*100).toFixed(1) + "％";
-    document.getElementById("table_final_cd").innerHTML = (result_status[6]*100).toFixed(1) + "％";
-    char_instance.update_status(fixed_status, result_status);
-    weapon_instance.update_status(fixed_status, result_status);
-  }
-  else
-  {
-    document.getElementById("table_buff_cd").innerHTML = "-";
-    document.getElementById("table_af_cd").innerHTML = "-";
-    document.getElementById("table_final_cd").innerHTML = "-";
-  }
-
+  
+  // ステータスの更新
+  updateStatus(0, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_hp() + weapon_instance.calculate_weapon_result_hp(), "hp");
+  updateStatus(1, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_deff() + weapon_instance.calculate_weapon_result_deff(), "deff");
+  updateStatus(2, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_elm() + weapon_instance.calculate_weapon_result_elm(), "elm");
+  updateStatus(3, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_elm_charge() + weapon_instance.calculate_weapon_result_elm_charge(), "elm_charge");
+  updateStatus(4, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_attck() + weapon_instance.calculate_weapon_result_attck(), "attck");
+  updateStatus(5, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr(), "cr");
+  updateStatus(6, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd(), "cd");
+  
   result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
   char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
@@ -555,7 +452,6 @@ async function calculate_table_status()
   document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
   document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
 }
-
 ///////////////////////
 
 async function create_weapon_instance(base_status, fixed_status, result_status) 
