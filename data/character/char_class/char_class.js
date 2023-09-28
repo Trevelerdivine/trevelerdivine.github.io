@@ -8,7 +8,7 @@ class nahida {
     this.constValue = null;
     this.aggcount = 0;
     this.skill_buff = 0;
-    this.talent1effect = 0;
+    this.talent1effect = -1;
     this.dmg_rateCache = null;
     this.mytalent1 = 0;
     this.calculateConstValue();
@@ -36,7 +36,7 @@ class nahida {
       if (other_label.checked)
       {
         const elm = parseInt(document.getElementById("element-mastery").value) || 0;
-        const elm_buff =  Math.min(elm/4,250);
+        const elm_buff =  Math.max(Math.min(elm/4,250),0);
         this.talent1effect = elm_buff;
         console.log(elm_buff)
       }
@@ -78,7 +78,6 @@ class nahida {
       this.skill_buff = 1;
       dmg_rate = [0, 0, 400, 0, 200, 0, 0];
     }
-    console.log(dmg_rate);
   
     // 計算結果をキャッシュして返す
     this.dmg_rateCache = dmg_rate;
@@ -116,11 +115,10 @@ class nahida {
   }
 
   calculate_char_result_elm() {
-    console.log(this.talent1effect);
-    if (this.talent1effect > 0) {
+
+    if (this.talent1effect > -1) {
       return this.talent1effect;
     }
-    console.log(this.mytalent1);
     if(this.mytalent1 == 0)
     {
       return 0;
