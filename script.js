@@ -6,7 +6,8 @@ let char_depend_status = [0,0,0,0,0,0,0];
 let weapon_depend_status = [0,0,0,0,0,0,0];
 let char_propaty = [0,0];
 let af_score = 0;
-const attack_method = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
+let attack_method = 0;
+const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
