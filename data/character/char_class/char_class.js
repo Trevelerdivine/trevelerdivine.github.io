@@ -70,7 +70,7 @@ class nahida {
         }
     
         if (q_pyro > -1) {
-          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]);
+          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10])/100;
         }
       }
       console.log(this.q_pyrobuff);
