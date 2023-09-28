@@ -637,6 +637,10 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   return result_status;
 }
 
+async function calculate_Correctionfactor (base_status,af_main_status_buff,depend_status)
+{
+  
+}
 //////////////////////
 async function import_char_parameter()
 {

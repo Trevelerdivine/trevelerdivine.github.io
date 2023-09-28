@@ -21,28 +21,31 @@ class nahida {
     const checkboxContainer = document.getElementById("select_reaction_method");
     const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
     const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
+    
+    // Nahida Q および Talent1 チェック
     const nahida_Q = document.getElementById("nahida_Q");
     const talent1 = document.getElementById("talent1");
-  
     if (nahida_Q.checked && talent1.checked) {
       this.mytalent1 = 1;
-      const other_label = document.getElementById("other-label");
-      if (other_label.checked) {
+      
+      // "other_label" チェック
+      const otherLabel = document.getElementById("other-label");
+      if (otherLabel.checked) {
         const elm = parseInt(document.getElementById("element-mastery").value) || 0;
         const elm_buff = Math.max(Math.min(elm / 4, 250), 0);
         this.talent1effect = elm_buff;
       }
     }
   
-    // Spreadチェックボックスの状態を取得
+    // Spread チェックボックスの状態を取得
     const agg = document.getElementById("Spread");
     const agg_reaction = agg.checked ? 1 : 0;
   
-    // チェックボックスの数とSpreadの状態からaggcountを計算
+    // チェックボックスの数と Spread の状態から aggcount を計算
     this.aggcount = trueCount * agg_reaction;
     console.log(this.aggcount);
   
-    // JSONデータを取得
+    // JSON データを取得
     const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
   
@@ -64,16 +67,15 @@ class nahida {
       if (nahida_Q.checked) {
         let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
         const char_constellations = document.getElementById("char_constellations").value;
-    
+  
         if (char_constellations > 0) {
           q_pyro = Math.min((q_pyro + 1), 1);
         }
-    
+  
         if (q_pyro > -1) {
-          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10])/100;
+          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]) / 100;
         }
       }
-      console.log(this.q_pyrobuff);
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       this.skill_buff = 1;
@@ -87,6 +89,7 @@ class nahida {
     this.dmg_rateCache = dmg_rate;
     return dmg_rate;
   }
+  
   
   
   calculate_char_fixed_hp() {
