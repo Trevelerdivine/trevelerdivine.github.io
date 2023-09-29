@@ -14,8 +14,6 @@ class nahida {
     this.q_pyrobuff = 0;
     this.four_conste_buff = 0;
     this.char_constellations = 0;
-    this.calculateConstValue();
-    this.calculateCheckboxStates();
   }
 
   async dmg_rate_data() {
@@ -107,8 +105,6 @@ class nahida {
     return dmg_rate;
   }
   
-  
-  
   calculate_char_fixed_hp() {
     return 0;
   }
@@ -186,39 +182,20 @@ class nahida {
     const resultStatusArray = this.result_status_array;
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-    let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200))) * 1.1 / 0.9;
-    if (this.parameter[2] > 1 && this.checkboxStates[1]===true) {
-      basicDmg = basicDmg * this.constValue;
-    }
-    return basicDmg;
+    let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
   }
 
-  calculateConstValue() {
-    if (this.constValue ) {
-      return this.constValue;
+  calculate_char_debuff() {
+    const char_debuff = [0,0,0];
+    if (this.char_constellations >1)
+    {
+      const two_conste_check = document.getElementById("traitCheckbox2");
+      if(two_conste_check.checked)
+      {
+        char_debuff = [0,0.3,0];
+      }
     }
-    this.constValue = (290 + this.parameter[0]) / (190 * 0.7 + 100 + this.parameter[0]);
-  }
-
-  update_status(fixed_status_array, result_status_array) {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
-  }
-
-  calculateCheckboxStates() {
-    const checkboxStates = [];
-    const characterInfo = document.getElementById("characterInfo");
-    const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
-
-    checkboxes.forEach((checkbox) => {
-      checkboxStates.push(checkbox.checked);
-    });
-
-    while (checkboxStates.length < 4) {
-      checkboxStates.push(false);
-    }
-
-    this.checkboxStates = checkboxStates;
+    return char_debuff;
   }
 }
 
@@ -312,3 +289,4 @@ class nahida {
       this.result_status_array = result_status_array;
     }
   }
+  

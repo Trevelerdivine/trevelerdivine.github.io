@@ -86,6 +86,10 @@ class AThousandFloatingDreams {
     this.select2 = selectList2.value;
     this.weapon_rank = weapon_rank.value;
   }
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
 }
 
 

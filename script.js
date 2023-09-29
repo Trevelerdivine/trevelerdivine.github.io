@@ -524,45 +524,51 @@ async function create_afset_instance()
 }
 
 ///////////////////////
+async function calculateEnemyProps(charDebuff, weaponDebuff) {
+  const levelSelect = document.getElementById("char_level");
+  const levelIndex = levelSelect.value;
 
-async function calculateEnemyProps(charDeffDebuff, weaponDeffDebuff, charResistDebuff, weaponResistDebuff, charDeffIgnore) {
-    const levelSelect = document.getElementById("char_level");
-    const levelIndex = levelSelect.value;
-    
-    const response = await fetch("./data/element.json");
-    const levelData = await response.json();
-    const levelObject = levelData["レベル"];
-    
-    const enemyLevel = parseInt(document.getElementById("enemy_level-form").value);
-    const charLevel = levelObject[levelIndex];
-    
-    const enemyResist = parseFloat(document.getElementById("enemy-resist-form").value) / 100;
-    const enemyResistDebuff = parseFloat(document.getElementById("resist_debuff-form").value) / 100;
-    const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff-form").value) / 100;
+  // レベルデータの取得
+  const levelDataResponse = await fetch("./data/element.json");
+  const levelData = await levelDataResponse.json();
+  const levelObject = levelData["レベル"];
+  const charLevel = levelObject[levelIndex];
 
-    const deffCorrection = (charLevel + 100) / ((1 - charDeffIgnore) * (1 - charDeffDebuff - weaponDeffDebuff - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
-    const enemyResultResist = enemyResist - enemyResistDebuff - charResistDebuff - weaponResistDebuff;
-    
-    if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21) {
-      const deepwoodCheck = document.getElementById("af21_4");
-      if (deepwoodCheck.checked && char_propaty[0] == 5) {
-        enemyResultResist -= -0.3;
-      }
-    const correct_coeff = deffCorrection * enemyResultResist;
+  // 敵の情報取得
+  const enemyLevel = parseInt(document.getElementById("enemy_level-form").value);
+  const enemyResist = parseFloat(document.getElementById("enemy-resist-form").value) / 100;
+  const enemyResistDebuff = parseFloat(document.getElementById("resist_debuff-form").value) / 100;
+  const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff-form").value) / 100;
+
+  // 防御補正計算
+  const deffCorrection = (charLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
+
+  // 抵抗補正計算
+  const enemyResultResist = enemyResist - enemyResistDebuff - charDebuff[0] - weaponDebuff[0];
+
+  // 特定の条件下での補正係数
+  if (selectedImageIds[0] === 21 && selectedImageIds[1] === 21) {
+    const deepwoodCheck = document.getElementById("af21_4");
+    if (deepwoodCheck.checked && char_propaty[0] === 5) {
+      enemyResultResist -= -0.3;
+    }
   }
 
+  // 補正係数の計算
   let resistCorrection;
   if (enemyResultResist < 0) {
-    resistCorrection = 1 - enemyResultResist / 2; 
+    resistCorrection = 1 - enemyResultResist / 2;
   } else if (enemyResultResist > 0.75) {
-    resistCorrection = 1 / (4 * enemyResultResist + 1); 
+    resistCorrection = 1 / (4 * enemyResultResist + 1);
   } else {
     resistCorrection = 1 - enemyResultResist;
   }
-  
+
+  // 最終的な補正計算
   const resultCorrection = deffCorrection * resistCorrection;
   return resultCorrection;
 }
+
 
 
 ///////////////////////
@@ -996,6 +1002,11 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
+  const char_debuff = await char_instance.calculate_char_debuff();
+  const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
+  const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
+  output_exp_dmg = output_exp_dmg * correct_coeff;
+
 
   let result = "最適化換算聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
