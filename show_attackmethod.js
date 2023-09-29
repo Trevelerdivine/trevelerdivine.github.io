@@ -162,7 +162,7 @@ async function show_attack_method()
             createCheckboxList(options)
         break
     }
-
+    calculate_table_status();
 }
 
 
