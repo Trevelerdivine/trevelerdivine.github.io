@@ -387,7 +387,7 @@ async function calculate_table_status()
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   let fixed_status = base_status.slice();
   let result_status;
-  const method_index = parseInt(document.getElementById("attack_method").value);
+  const method_index = document.getElementById("attack_method").value;
   if (method_index > 0)
   {
     let element_type;
@@ -409,8 +409,8 @@ async function calculate_table_status()
     const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
     const data = await response.json();
     char_propaty[0] = data[attack_method_name[element_type]]["元素"];
-    console.log(char_propaty);
   }
+  console.log(char_propaty);
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
