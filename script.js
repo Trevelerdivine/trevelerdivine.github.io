@@ -544,7 +544,7 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   const deffCorrection = (charLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
 
   // 抵抗補正計算
-  const enemyResultResist = enemyResist - enemyResistDebuff - charDebuff[0] - weaponDebuff[0];
+  let enemyResultResist = enemyResist - enemyResistDebuff - charDebuff[0] - weaponDebuff[0];
 
   // 特定の条件下での補正係数
   if (selectedImageIds[0] === 21 && selectedImageIds[1] === 21) {
