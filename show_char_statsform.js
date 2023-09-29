@@ -62,7 +62,7 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
-        { text: "スキル（滅浄三業）", disabled: true, value: "16" },
+        { text: "スキル（滅浄三業）", value: "16" },
         { text: "滅浄三業·破業障(6凸)", disabled: char_constellations !== 4, value: "17" }
       ];
     
