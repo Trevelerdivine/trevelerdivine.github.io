@@ -175,14 +175,6 @@ async function show_char_statsform()
         }
       }
     }
-
-      const radiobutton = document.createElement("input");
-      radiobutton.type = "radio";
-      radiobutton.id = "no-reaction";
-      radiobutton.name = "elemental-reaction";
-      radiobutton.checked = true;
-      radiobutton.value = "no-reaction";
-      
       showFormElements();
     }
 
@@ -340,8 +332,16 @@ async function reffer_char_element() {
   }
 
   console.log(char_propaty);
+
   const elemental_reaction = document.getElementById("element_action");
   const radio_label = document.createElement("label");
+  const radiobutton = document.createElement("input");
+  radiobutton.type = "radio";
+  radiobutton.id = "no-reaction";
+  radiobutton.name = "elemental-reaction";
+  radiobutton.checked = true;
+  radiobutton.value = "no-reaction";
+  
   elemental_reaction.innerHTML = "";
   radio_label.htmlFor = "no-reaction";
   radio_label.textContent = "反応なし";
