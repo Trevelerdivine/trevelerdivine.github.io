@@ -12,6 +12,7 @@ class nahida {
     this.dmg_rateCache = null;
     this.mytalent1 = 0;
     this.q_pyrobuff = 0;
+    this.four_conste_buff = 0;
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
@@ -75,6 +76,18 @@ class nahida {
           this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]) / 100;
         }
       }
+
+      const 
+      if (char_constellations > 2)
+      {
+        const four_conste_index = document.getElementById("four_conste").value;
+        const four_conste_check = document.getElementById("traitCheckbox3");
+        if (four_conste_check.checked)
+        {
+          this.four_conste_buff = 100 + 20 * four_conste_index
+        }
+      }
+
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       this.skill_buff = 1;
@@ -116,7 +129,7 @@ class nahida {
   }
 
   calculate_char_fixed_elm() {
-    return 0;
+    return this.four_conste_buff;
   }
 
   calculate_char_result_elm() {
