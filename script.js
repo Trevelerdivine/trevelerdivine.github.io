@@ -195,7 +195,7 @@ async function calculate_depend_status()
     }
   }
   const button = document.getElementById("no-reaction");
-  
+
   if (button !== null && !button.checked) {
     depend_status[2] = 1;
   }
@@ -526,28 +526,29 @@ async function create_afset_instance()
 ///////////////////////
 
 async function calculateEnemyProps(charDeffDebuff, weaponDeffDebuff, charResistDebuff, weaponResistDebuff, charDeffIgnore) {
-  const levelSelect = document.getElementById("char_level");
-  const levelIndex = levelSelect.value;
-  
-  const response = await fetch("./data/element.json");
-  const levelData = await response.json();
-  const levelObject = levelData["レベル"];
-  
-  const enemyLevel = parseInt(document.getElementById("enemy_level-form").value);
-  const charLevel = levelObject[levelIndex];
-  
-  const enemyResist = parseFloat(document.getElementById("enemy-resist-form").value) / 100;
-  const enemyResistDebuff = parseFloat(document.getElementById("resist_debuff-form").value) / 100;
-  const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff-form").value) / 100;
+    const levelSelect = document.getElementById("char_level");
+    const levelIndex = levelSelect.value;
+    
+    const response = await fetch("./data/element.json");
+    const levelData = await response.json();
+    const levelObject = levelData["レベル"];
+    
+    const enemyLevel = parseInt(document.getElementById("enemy_level-form").value);
+    const charLevel = levelObject[levelIndex];
+    
+    const enemyResist = parseFloat(document.getElementById("enemy-resist-form").value) / 100;
+    const enemyResistDebuff = parseFloat(document.getElementById("resist_debuff-form").value) / 100;
+    const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff-form").value) / 100;
 
-  const deffCorrection = (charLevel + 100) / ((1 - charDeffIgnore) * (1 - charDeffDebuff - weaponDeffDebuff - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
-  const enemyResultResist = enemyResist - enemyResistDebuff - charResistDebuff - weaponResistDebuff;
-  
-  if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21) {
-    const deepwoodCheck = document.getElementById("af21_4");
-    if (deepwoodCheck.checked && char_propaty[0] == 5) {
-      enemyResultResist -= -0.3;
-    }
+    const deffCorrection = (charLevel + 100) / ((1 - charDeffIgnore) * (1 - charDeffDebuff - weaponDeffDebuff - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
+    const enemyResultResist = enemyResist - enemyResistDebuff - charResistDebuff - weaponResistDebuff;
+    
+    if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21) {
+      const deepwoodCheck = document.getElementById("af21_4");
+      if (deepwoodCheck.checked && char_propaty[0] == 5) {
+        enemyResultResist -= -0.3;
+      }
+    const correct_coeff = deffCorrection * enemyResultResist;
   }
 
   let resistCorrection;

@@ -79,7 +79,7 @@ class nahida {
 
       if (char_constellations > 2)
       {
-        const four_conste_index = document.getElementById("four_conste").value;
+        const four_conste_index = document.getElementById("four_conste_selectList").value;
         const four_conste_check = document.getElementById("traitCheckbox3");
         if (four_conste_check.checked && four_conste_index > 0)
         {
