@@ -185,6 +185,11 @@ class nahida {
     let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
   }
 
+  update_status(fixed_status_array, result_status_array) {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
   calculate_char_debuff() {
     const char_debuff = [0,0,0];
     if (this.char_constellations >1)

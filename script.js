@@ -677,7 +677,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
   exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7])*0.45;
+    *(1 + result_status[7]);
   result_status.push(exp_dmg);
   console.log(result_status);
   return result_status;
@@ -1005,6 +1005,7 @@ async function monte_carlo_calculate()
   const char_debuff = await char_instance.calculate_char_debuff();
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
+  console.log(correct_coeff);
   output_exp_dmg = output_exp_dmg * correct_coeff;
 
 
