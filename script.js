@@ -195,10 +195,10 @@ async function calculate_depend_status()
     }
   }
   const button = document.getElementById("no-reaction");
-  if (!button.checked)
-  {
+  
+  if (button !== null && !button.checked) {
     depend_status[2] = 1;
-  } 
+  }
   return depend_status
 }
 
