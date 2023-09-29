@@ -62,12 +62,8 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
-        { text: "スキル（滅浄三業）", value: "16" }
+        { text: "スキル（滅浄三業）", disabled: char_constellations !== 4, value: "16" }
       ];
-      
-      if (char_constellations == 4) {
-        options.push({ text: "滅浄三業·破業障(6凸)", value: "17" });
-      }
     
       createchar_attackmethod(options);
     

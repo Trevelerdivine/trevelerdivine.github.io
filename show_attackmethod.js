@@ -158,6 +158,10 @@ async function show_attack_method()
               options = [
                 { text: "滅浄三業", value: "0", checked: true },
               ];
+            } else if (attack_index==17) {
+              options = [
+                { text: "滅浄三業·破業障(6凸)", value: "0", checked: true },
+              ];
             }
             createCheckboxList(options)
         break

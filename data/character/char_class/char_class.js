@@ -77,7 +77,6 @@ class nahida {
         }
       }
 
-      const 
       if (char_constellations > 2)
       {
         const four_conste_index = document.getElementById("four_conste").value;
