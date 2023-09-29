@@ -1006,7 +1006,7 @@ async function monte_carlo_calculate()
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
   console.log(correct_coeff);
-  output_exp_dmg = output_exp_dmg * correct_coeff;
+  output_exp_dmg = (output_exp_dmg * correct_coeff).toFixed(0);
 
 
   let result = "最適化換算聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
