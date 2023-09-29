@@ -91,6 +91,9 @@ class nahida {
           this.four_conste_buff = 100 + 20 * (four_conste_index - 1);
         }
       }
+      console.log(char_constellations);
+      console.log(four_conste_index);
+      console.log(this.four_conste_buff);
 
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
