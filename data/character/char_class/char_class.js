@@ -81,9 +81,9 @@ class nahida {
       {
         const four_conste_index = document.getElementById("four_conste").value;
         const four_conste_check = document.getElementById("traitCheckbox3");
-        if (four_conste_check.checked)
+        if (four_conste_check.checked && four_conste_index > 0)
         {
-          this.four_conste_buff = 100 + 20 * four_conste_index
+          this.four_conste_buff = 100 + 20 * (four_conste_index - 1);
         }
       }
 
