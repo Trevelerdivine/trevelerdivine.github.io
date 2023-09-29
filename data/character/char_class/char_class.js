@@ -13,6 +13,7 @@ class nahida {
     this.mytalent1 = 0;
     this.q_pyrobuff = 0;
     this.four_conste_buff = 0;
+    this.char_constellations = 0;
     this.calculateConstValue();
     this.calculateCheckboxStates();
   }
@@ -22,7 +23,7 @@ class nahida {
     const checkboxContainer = document.getElementById("select_reaction_method");
     const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
     const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
-    
+    this.char_constellations = document.getElementById("char_constellations").value;
     // Nahida Q および Talent1 チェック
     const nahida_Q = document.getElementById("nahida_Q");
     const talent1 = document.getElementById("talent1");
@@ -71,9 +72,8 @@ class nahida {
     } else if (attack_method == 16) {
       if (nahida_Q.checked) {
         let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
-        const char_constellations = document.getElementById("char_constellations").value;
   
-        if (char_constellations > 0) {
+        if (this.char_constellations > 0) {
           q_pyro = Math.min((q_pyro + 1), 1);
         }
   
@@ -82,7 +82,7 @@ class nahida {
         }
       }
 
-      if (char_constellations > 2)
+      if (this.char_constellations > 2)
       {
         const four_conste_index = document.getElementById("four_conste").value;
         const four_conste_check = document.getElementById("traitCheckbox3");
@@ -91,8 +91,6 @@ class nahida {
           this.four_conste_buff = 100 + 20 * (four_conste_index - 1);
         }
       }
-      console.log(char_constellations);
-      console.log(four_conste_index);
       console.log(this.four_conste_buff);
 
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
