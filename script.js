@@ -550,7 +550,7 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   if (selectedImageIds[0] === 21 && selectedImageIds[1] === 21) {
     const deepwoodCheck = document.getElementById("af21_4");
     if (deepwoodCheck.checked && char_propaty[0] === 5) {
-      enemyResultResist -= -0.3;
+      enemyResultResist -= 0.3;
     }
   }
 
