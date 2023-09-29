@@ -183,9 +183,11 @@ class nahida {
     const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
     const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
     let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+    return basicDmg;
   }
 
-  update_status(fixed_status_array, result_status_array) {
+  update_status(fixed_status_array, result_status_array)
+  {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
   }
