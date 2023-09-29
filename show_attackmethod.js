@@ -2,6 +2,8 @@ async function show_attack_method()
 {
   const select_reaction_method = document.getElementById("select_reaction_method");
   select_reaction_method.innerHTML = "";
+  const elemental_reaction = document.getElementById("element_action");
+  elemental_reaction.innerHTML = "";
   const method_index = document.getElementById("attack_method").value;
   if (method_index > 0)
   {
