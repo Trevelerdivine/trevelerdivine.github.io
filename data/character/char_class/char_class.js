@@ -40,7 +40,12 @@ class nahida {
   
     // Spread チェックボックスの状態を取得
     const agg = document.getElementById("Spread");
-    const agg_reaction = agg.checked ? 1 : 0;
+    let agg_reaction = 0; // デフォルト値
+    
+    if (agg) { // 要素が存在する場合
+      agg_reaction = agg.checked ? 1 : 0;
+    }
+    
   
     // チェックボックスの数と Spread の状態から aggcount を計算
     this.aggcount = trueCount * agg_reaction;
@@ -79,7 +84,7 @@ class nahida {
 
       if (char_constellations > 2)
       {
-        const four_conste_index = document.getElementById("four_conste_selectList").value;
+        const four_conste_index = document.getElementById("four_conste").value;
         const four_conste_check = document.getElementById("traitCheckbox3");
         if (four_conste_check.checked && four_conste_index > 0)
         {
