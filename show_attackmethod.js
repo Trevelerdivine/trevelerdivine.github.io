@@ -1,33 +1,11 @@
 async function show_attack_method()
 {
+
   const select_reaction_method = document.getElementById("select_reaction_method");
   select_reaction_method.innerHTML = "";
   const elemental_reaction = document.getElementById("element_action");
   elemental_reaction.innerHTML = "";
-  const method_index = document.getElementById("attack_method_id").value;
-  if (method_index > 0)
-  {
-    let element_type;
-    if (method_index >= 1 && method_index <= 5) {
-        element_type = 0;
-    } else if (method_index >= 6 && method_index <= 10) {
-        element_type = 1;
-    } else if (method_index >= 11 && method_index <= 15) {
-        element_type = 2;
-    } else if (method_index >= 16 && method_index <= 20) {
-        element_type = 3;
-    } else if (method_index >= 21 && method_index <= 25) {
-        element_type = 4;
-    } else {
-        // それ以外の場合、デフォルト値を設定するかエラーハンドリングを追加してください
-        // ここではデフォルト値として -1 を設定していますが、必要に応じて変更してください
-        element_type = -1;
-    }
-    const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
-    const data = await response.json();
-    char_propaty[0] = data[attack_method_name[element_type]]["元素"];
-    console.log(char_propaty);
-  }
+  await calculate_depend_status();
 
   const radiobutton = document.createElement("input");
   radiobutton.type = "radio";
@@ -167,6 +145,7 @@ async function show_attack_method()
         break
     }
     calculate_table_status();
+    showFormElements();
 }
 
 

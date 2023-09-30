@@ -54,7 +54,6 @@ class nahida {
     const data = await response.json();
   
     // 攻撃方法に応じてダメージ率を計算
-    const attack_method = document.getElementById("attack_method_id").value;
     let dmg_rate;
     let dmg_attck_rate = 0;
   
