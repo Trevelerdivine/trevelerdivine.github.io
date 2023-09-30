@@ -203,7 +203,7 @@ async function calculate_depend_status()
   
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  char_propaty[0] = char_datadata[attack_method_name[element_type]]["元素"];
+  char_propaty[0] = char_data[attack_method_name[element_type]]["元素"];
   console.log(attack_method_index);
   const char_depend_status = char_data[attack_method_name[element_type]].依存ステータス;
   console.log(char_depend_status);
