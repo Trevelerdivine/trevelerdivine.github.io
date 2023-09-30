@@ -18,8 +18,6 @@ async function show_char_statsform()
     let team_cr_form = document.getElementById("team_cr_form");
     let team_cd_form = document.getElementById("team_cd_form")
 
-
-
     const char_constellations = document.getElementById("char_constellations").value;
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
@@ -137,7 +135,7 @@ async function show_char_statsform()
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（殺生櫻１ヒット）", value: "16" },
-        { text: "元素爆発", value: "21" }
+        { text: "大密法・天狐顕現（元素爆発）", value: "21" }
       ];
     
       createchar_attackmethod(options);

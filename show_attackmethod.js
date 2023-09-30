@@ -143,6 +143,36 @@ async function show_attack_method()
             }
             createCheckboxList(options)
         break
+
+        case "33":
+            const attack_method = document.getElementById("attack_method_id");
+            const attack_index = attack_method.value;
+            
+            let options = [];
+            
+            if (attack_index == 1) {
+              options = [
+                { text: "１段目", value: "0", checked: true },
+                { text: "２段目", value: "1" },
+                { text: "３段目", value: "2" },
+              ];
+            } else if (attack_index == 6) {
+              options = [
+                { text: "重撃", value: "0", checked: true },
+              ];
+            } else if (attack_index==16) {
+              options = [
+                { text: "殺生櫻１ヒット目", value: "0", checked: true },
+                { text: "殺生櫻２ヒット目", value: "1" },
+                { text: "殺生櫻３ヒット目", value: "2" },
+              ];
+            } else if (attack_index==21) {
+              options = [
+                { text: "大密法・天狐顕現（元素爆発）", value: "0", checked: true },
+              ];
+            }
+            createCheckboxList(options)
+        break
     }
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
