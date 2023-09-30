@@ -70,13 +70,13 @@ class nahida {
     } else if (attack_method == 16) {
       if (nahida_Q.checked) {
         let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
-  
         if (this.char_constellations > 0) {
           q_pyro = Math.min((q_pyro + 1), 1);
         }
   
         if (q_pyro > -1) {
-          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][10]) / 100;
+          const nahida_Q_level = document.getElementById("nahida_Q_level").value;
+          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
         }
       }
 
