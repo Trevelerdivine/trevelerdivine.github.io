@@ -50,7 +50,7 @@ class nahida {
     this.aggcount = trueCount * agg_reaction;
   
     // JSON データを取得
-    const response = await fetch("./data/character/char_data/yaemiko.json");
+    const response = await fetch("./data/character/char_data/nahida.json");
     const data = await response.json();
   
     // 攻撃方法に応じてダメージ率を計算
@@ -235,7 +235,7 @@ class yaemiko {
     console.log(this.aggcount);
   
     // JSON データを取得
-    const response = await fetch("./data/character/char_data/nahida.json");
+    const response = await fetch("./data/character/char_data/yaemiko.json");
     const data = await response.json();
 
     const four_conste_check = document.getElementById("traitCheckbox3");
