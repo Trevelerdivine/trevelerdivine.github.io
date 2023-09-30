@@ -193,7 +193,7 @@ class nahida {
   }
 
   calculate_char_debuff() {
-    const char_debuff = [0,0,0];
+    let char_debuff = [0,0,0];
     if (this.char_constellations >1)
     {
       const two_conste_check = document.getElementById("traitCheckbox2");
