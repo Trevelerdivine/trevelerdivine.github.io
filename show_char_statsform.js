@@ -48,16 +48,20 @@ async function show_char_statsform()
     elemental_reaction.innerHTML = "";
     method_container.innerHTML = "";
     char_talent.innerHTML = "";
+
+    let traits;
+    let options;
+
     if (selectedCharId == "56") {
       char_propaty[1] = 4;
-      const traits = [
+      traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
         { id: "traitCheckbox2", label: "第2重：防御力-30%" },
         { id: "traitCheckbox3", label: "第4重：蘊種印状態にある敵数：" },
         { id: "traitCheckbox4", label: "第6重：大辯円成の実 追撃" },
       ];
 
-      const options = [
+      options = [
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
@@ -124,13 +128,13 @@ async function show_char_statsform()
 
     else if (selectedCharId == "33") {
       char_propaty[1] = 4;
-      const traits = [
+      traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
         { id: "traitCheckbox3", label: "第4重：雷元素ダメージ+20%" },
         { id: "traitCheckbox4", label: "第6重：敵の防御力の60%無視" },
       ];
 
-      const options = [
+      options = [
         { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },

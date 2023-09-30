@@ -113,13 +113,11 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
   }
     
+  let options = [];
     switch (selectedCharId)
     {
         case "56":
-            attack_method = document.getElementById("attack_method_id").value;
-
-            let options = [];
-            
+            attack_method = document.getElementById("attack_method_id").value;            
             if (attack_method == 1) {
               options = [
                 { text: "１段目", value: "0", checked: true },
@@ -145,8 +143,6 @@ async function show_attack_method()
 
         case "33":
           attack_method = document.getElementById("attack_method_id").value;
-            
-            let options = [];
             
             if (attack_method == 1) {
               options = [
