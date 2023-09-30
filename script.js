@@ -202,6 +202,7 @@ async function calculate_depend_status()
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
+  console.log(char_propaty);
   console.log(attack_method_index);
   const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
   console.log(char_depend_status);
@@ -573,7 +574,7 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   // 特定の条件下での補正係数
   if (selectedImageIds[0] === 21 && selectedImageIds[1] === 21) {
     const deepwoodCheck = document.getElementById("af21_4");
-    if (deepwoodCheck.checked && char_propaty[0] === 5) {
+    if (deepwoodCheck.checked && char_propaty[0] == 5) {
       enemyResultResist -= 0.3;
     }
   }
