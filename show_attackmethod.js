@@ -116,9 +116,8 @@ async function show_attack_method()
     switch (selectedCharId)
     {
         case "56":
-            const attack_method = document.getElementById("attack_method_id");
-            const attack_index = attack_method.value;
-            
+            attack_method = document.getElementById("attack_method_id").value;
+
             let options = [];
             
             if (attack_index == 1) {
@@ -145,8 +144,7 @@ async function show_attack_method()
         break
 
         case "33":
-            const attack_method = document.getElementById("attack_method_id");
-            const attack_index = attack_method.value;
+          attack_method = document.getElementById("attack_method_id").value;
             
             let options = [];
             
@@ -168,7 +166,10 @@ async function show_attack_method()
               ];
             } else if (attack_index==21) {
               options = [
-                { text: "大密法・天狐顕現（元素爆発）", value: "0", checked: true },
+                { text: "元素爆発　初撃", value: "0", checked: true },
+                { text: "天狐雷霆１ヒット目", value: "1", checked: true },
+                { text: "天狐雷霆２ヒット目", value: "2", checked: true },
+                { text: "天狐雷霆３ヒット目", value: "3", checked: true  },
               ];
             }
             createCheckboxList(options)

@@ -135,7 +135,7 @@ async function show_char_statsform()
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（殺生櫻１ヒット）", value: "16" },
-        { text: "大密法・天狐顕現（元素爆発）", value: "21" }
+        { text: "大密法・天狐顕現（元素爆発４ヒット）", value: "21" }
       ];
     
       createchar_attackmethod(options);
