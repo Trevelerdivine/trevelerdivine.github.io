@@ -455,7 +455,7 @@ async function calculate_table_status()
   async function updateStatus(index, resultStatus, buffStatus, afBuff, baseStatus, dynamicBuff, calculateResultFunction, tablePrefix) {
     if (depend_status[index] === 1) 
     {
-      if (index == 3 || index == 5 || index == 6 || index == 7)
+      if (index == 3 || index == 6 || index == 7)
       {
       resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction();
       buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
@@ -464,6 +464,17 @@ async function calculate_table_status()
       document.getElementById(`table_final_${tablePrefix}`).innerHTML = (resultStatus[index]*100).toFixed(1) + "％";
       char_instance.update_status(fixed_status, resultStatus);
       weapon_instance.update_status(fixed_status, resultStatus);
+      }
+      else if (index == 5)
+      {
+        resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction();
+        buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
+        document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
+        document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
+        document.getElementById(`table_final_${tablePrefix}`).innerHTML = Math.min((resultStatus[index]*100).toFixed(1),100) + "％";
+        char_instance.update_status(fixed_status, resultStatus);
+        weapon_instance.update_status(fixed_status, resultStatus);
+
       }
       else
       {
