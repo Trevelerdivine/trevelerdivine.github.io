@@ -183,21 +183,20 @@ async function calculate_depend_status()
   attack_method = document.getElementById("attack_method_id").value;
   if (attack_method > 0)
   {
-    let element_type;
     if (attack_method >= 1 && attack_method <= 5) {
-        element_type = 0;
+        attack_method_index = 0;
     } else if (attack_method >= 6 && attack_method <= 10) {
-        element_type = 1;
+      attack_method_index = 1;
     } else if (attack_method >= 11 && attack_method <= 15) {
-        element_type = 2;
+      attack_method_index = 2;
     } else if (attack_method >= 16 && attack_method <= 20) {
-        element_type = 3;
+      attack_method_index = 3;
     } else if (attack_method >= 21 && attack_method <= 25) {
-        element_type = 4;
+      attack_method_index = 4;
     } else {
         // それ以外の場合、デフォルト値を設定するかエラーハンドリングを追加してください
         // ここではデフォルト値として -1 を設定していますが、必要に応じて変更してください
-        element_type = -1;
+        attack_method_index = -1;
     }
   }
   
