@@ -224,7 +224,7 @@ class yaemiko {
     const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
     this.char_constellations = document.getElementById("char_constellations").value;
     // Spread チェックボックスの状態を取得
-    const agg = document.getElementById("Spread");
+    const agg = document.getElementById("Aggravate");
     let agg_reaction = 0; // デフォルト値
     
     if (agg) { // 要素が存在する場合
@@ -258,7 +258,7 @@ class yaemiko {
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
       this.talent2effect == 1;
-      dmg_attck_rate = data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]];
+      dmg_attck_rate = perseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])*3;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 21) {
       const first_dmg_rate = data["元素爆発"]["詳細"]["0"]["数値"][this.parameter[3]];
