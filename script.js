@@ -301,11 +301,17 @@ async function create_char_instance(base_status, fixed_status, result_status,par
     const char_instance = new nahida(base_status, fixed_status, result_status,parameter);
     return char_instance;
   }
+  else if (selectedCharId === "33") {
+    // 八重神子のインスタンスを生成
+    const char_instance = new yaemiko(base_status, fixed_status, result_status,parameter);
+    return char_instance;
+  }
   if (selectedCharId === "34") {
     // 雷電将軍のインスタンスを生成
     const char_instance = new raiden(base_status, fixed_status, result_status, parameter);
     return char_instance;
   }
+  
 }
 
 ///////////////////////
