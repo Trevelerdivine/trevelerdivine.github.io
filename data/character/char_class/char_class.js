@@ -339,8 +339,8 @@ class yaemiko {
 
   calculate_basic_dmg(dmg_rate) {
     const resultStatusArray = this.result_status_array;
-    let basicDmg
-    const attckRate
+    let basicDmg;
+    let attckRate;
     if (this.attack_method !==21)
     {
       attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
