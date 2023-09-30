@@ -232,6 +232,7 @@ class yaemiko {
     }
     // チェックボックスの数と Spread の状態から aggcount を計算
     this.aggcount = trueCount * agg_reaction;
+    console.log(this.aggcount);
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/nahida.json");
@@ -253,7 +254,7 @@ class yaemiko {
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 6) {
-      dmg_attck_rate += data["重撃"]["数値"][this.parameter[3]];
+      dmg_attck_rate = data["重撃"]["数値"][this.parameter[3]];
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
       this.talent2effect == 1;
@@ -265,9 +266,7 @@ class yaemiko {
       const Q_dmg_rate = [first_dmg_rate, second_dmg_rate];
       dmg_rate = [0, 0, 0, 0, Q_dmg_rate, 0, 0];
     }
-  
-    // 計算結果をキャッシュして返す
-    this.dmg_rateCache = dmg_rate;
+    console.log(dmg_rate);
     return dmg_rate;
   }
   
@@ -351,6 +350,7 @@ class yaemiko {
       attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
       basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
     }
+    console.log(basicDmg);
     return basicDmg;
   }
 
