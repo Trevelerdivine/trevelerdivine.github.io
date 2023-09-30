@@ -199,6 +199,7 @@ async function calculate_depend_status()
         attack_method_index = -1;
     }
   }
+  depend_status = [0,0,0,0,0,0,0];
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
