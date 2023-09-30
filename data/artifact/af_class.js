@@ -14,7 +14,7 @@ function af0_4()
 {
     let checkbox = document.getElementById("af0_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (char_propaty [1] == 0 ||char_propaty[1] == 1 || char_propaty[1] == 2) && attack_method >= 1 && attack_method <= 5)
+    if (checkbox.checked && (char_propaty [1] == 0 ||char_propaty[1] == 1 || char_propaty[1] == 2) && attack_method_index == 0)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
     }
@@ -36,7 +36,7 @@ function af1_4()
 {
     let checkbox = document.getElementById("af1_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (char_propaty [1] == 3 || char_propaty[1] == 4) && attack_method >= 6 && attack_method <= 10)
+    if (checkbox.checked && (char_propaty [1] == 3 || char_propaty[1] == 4) && attack_method_index == 1)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.35]; 
     }
@@ -47,7 +47,7 @@ function af2_2()
 {
     let checkbox = document.getElementById("af2_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && attack_method >= 21 && attack_method <= 25)
+    if (checkbox.checked && attack_method_index == 4)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
     }
@@ -80,7 +80,7 @@ function af3_4()
 {
     let checkbox = document.getElementById("af3_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && attack_method >= 6 && attack_method <= 10)
+    if (checkbox.checked && attack_method_index== 1)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
     }
@@ -170,7 +170,7 @@ function af7_4()
 {
     let checkbox = document.getElementById("af7_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (attack_method >= 1 && attack_method <= 10))
+    if (checkbox.checked && (attack_method_index == 0 || attack_method_index == 1))
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
     }
@@ -310,7 +310,7 @@ function af13_4()
 {
     let checkbox = document.getElementById("af13_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (attack_method >= 1 && attack_method <= 10))
+    if (checkbox.checked && (attack_method_index == 0 || attack_method_index == 1))
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.3]; 
     }
@@ -385,7 +385,7 @@ function af16_4()
 {
     let checkbox = document.getElementById("af16_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (attack_method >= 1 && attack_method <= 15))
+    if (checkbox.checked && (attack_method_index == 0 || attack_method_index == 1 || attack_method_index == 2))
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.5]; 
     }
@@ -534,7 +534,7 @@ function af22_4()
 {
     let checkbox = document.getElementById("af22_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && (attack_method >= 1 && attack_method <= 15))
+    if (checkbox.checked && (attack_method_index == 0 || attack_method_index == 1 || attack_method_index == 2))
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.4]; 
     }
@@ -615,7 +615,7 @@ function af25_4()
     const af25_4select = document.getElementById("af25_4select");
     const buff_count = af25_4select.value;
     let af25_4dmgbuff = 0;
-    if (checkbox.checked && attack_method >= 16 && attack_method <= 25)
+    if (checkbox.checked && (attack_method_index == 3 || attack_method_index == 4))
     {
         af25_4dmgbuff = 0.1 + 0.08 * buff_count;
         status_buff = [0, 0, 0, 0, 0, 0, 0, af25_4dmgbuff]; 
