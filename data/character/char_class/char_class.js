@@ -155,7 +155,14 @@ class nahida {
   }
 
   calculate_char_result_cr() {
-    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.0003 * this.skill_buff;
+    if (attack_method_index == 3)
+    {
+      return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.0003 * this.skill_buff;
+    }
+  else
+  {
+    return 0;
+  }
   }
 
   calculate_char_fixed_cd() {
@@ -171,7 +178,14 @@ class nahida {
   }
 
   calculate_char_result_dmg_buff() {
-    return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.001 * this.skill_buff;
+    if (attack_method_index == 3)
+    {
+      return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.001 * this.skill_buff;
+    }
+    else
+    {
+      return 0;
+    }
   }
 
   calculate_basic_dmg(dmg_rate) {
@@ -331,12 +345,22 @@ class yaemiko {
     {
       return this.four_conste_buff;
     }
-    return 0;
+    else
+    {
+      return 0;
+    }
   }
 
   calculate_char_result_dmg_buff() {
-    let talent2skill_buff = this.result_status_array[2] * 0.15 * this.talent2effect / 100;
-    return talent2skill_buff;
+    if (talent2effect == 1)
+    {
+      let talent2skill_buff = this.result_status_array[2] * 0.15 * this.talent2effect / 100;
+      return talent2skill_buff;
+    }
+    else
+    {
+      return 0;
+    }
   }
 
   calculate_basic_dmg(dmg_rate) {
