@@ -51,6 +51,7 @@ async function show_char_statsform()
     method_container.innerHTML = "";
     char_talent.innerHTML = "";
     if (selectedCharId === "56") {
+      char_propaty[1] = 4;
       const traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
         { id: "traitCheckbox2", label: "第2重：防御力-30%" },
