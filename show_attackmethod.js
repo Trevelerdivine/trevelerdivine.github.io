@@ -120,22 +120,22 @@ async function show_attack_method()
 
             let options = [];
             
-            if (attack_index == 1) {
+            if (attack_method == 1) {
               options = [
                 { text: "１段目", value: "0", checked: true },
                 { text: "２段目", value: "1" },
                 { text: "３段目", value: "2" },
                 { text: "４段目", value: "3", checked: true },
               ];
-            } else if (attack_index == 6) {
+            } else if (attack_method == 6) {
               options = [
                 { text: "重撃", value: "0", checked: true },
               ];
-            } else if (attack_index==16) {
+            } else if (attack_method==16) {
               options = [
                 { text: "滅浄三業", value: "0", checked: true },
               ];
-            } else if (attack_index==17) {
+            } else if (attack_method==17) {
               options = [
                 { text: "滅浄三業·破業障(6凸)", value: "0", checked: true },
               ];
@@ -148,23 +148,23 @@ async function show_attack_method()
             
             let options = [];
             
-            if (attack_index == 1) {
+            if (attack_method == 1) {
               options = [
                 { text: "１段目", value: "0", checked: true },
                 { text: "２段目", value: "1" },
                 { text: "３段目", value: "2" },
               ];
-            } else if (attack_index == 6) {
+            } else if (attack_method == 6) {
               options = [
                 { text: "重撃", value: "0", checked: true },
               ];
-            } else if (attack_index==16) {
+            } else if (attack_method==16) {
               options = [
                 { text: "殺生櫻１ヒット目", value: "0", checked: true },
                 { text: "殺生櫻２ヒット目", value: "1" },
                 { text: "殺生櫻３ヒット目", value: "2" },
               ];
-            } else if (attack_index==21) {
+            } else if (attack_method==21) {
               options = [
                 { text: "元素爆発　初撃", value: "0", checked: true },
                 { text: "天狐雷霆１ヒット目", value: "1", checked: true },
