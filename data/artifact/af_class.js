@@ -501,7 +501,7 @@ function af21_2()
 {
     let checkbox = document.getElementById("af21_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked)
+    if (checkbox.checked && char_propaty[0] == 5)
     {
         status_buff = [0, 0, 0, 0, 0, 0, 0, 0.15]; 
     }
