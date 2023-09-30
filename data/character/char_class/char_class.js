@@ -258,7 +258,7 @@ class yaemiko {
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
       this.talent2effect == 1;
-      dmg_attck_rate = perseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])*3;
+      dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])*3;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 21) {
       const first_dmg_rate = data["元素爆発"]["詳細"]["0"]["数値"][this.parameter[3]];
@@ -333,6 +333,7 @@ class yaemiko {
 
   calculate_char_result_dmg_buff() {
     let talent2skill_buff = this.result_status_array[2] * 0.15 * this.talent2effect / 100;
+    console.log(talent2skill_buff)
     return talent2skill_buff;
   }
 
