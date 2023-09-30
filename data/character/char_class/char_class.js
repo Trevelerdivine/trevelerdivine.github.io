@@ -232,6 +232,7 @@ class yaemiko {
     }
     // チェックボックスの数と Spread の状態から aggcount を計算
     this.aggcount = trueCount * agg_reaction;
+    console.log(this.aggcount)
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/yaemiko.json");
@@ -326,7 +327,11 @@ class yaemiko {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return this.four_conste_buff;
+    if (attack_method == 16)
+    {
+      return this.four_conste_buff;
+    }
+    return 0;
   }
 
   calculate_char_result_dmg_buff() {
