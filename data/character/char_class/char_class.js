@@ -321,8 +321,7 @@ class yaemiko {
   }
 
   calculate_char_result_elm() {
-
-   return 0;
+    return 0;
   }
 
   calculate_char_fixed_elm_charge() {
@@ -363,7 +362,7 @@ class yaemiko {
   calculate_char_result_dmg_buff() {
     if (this.talent2effect == 1)
     {
-      let talent2skill_buff = this.result_status_array[2] * 0.15 * this.talent2effect / 100;
+      let talent2skill_buff = this.result_status_array[2] * 0.15 / 100;
       return talent2skill_buff;
     }
     else
@@ -378,7 +377,7 @@ class yaemiko {
     let attckRate;
     if (depend_status[2] == 1)
     {
-      if (this.attack_method !==21)
+      if (attack_method !==21)
       {
         attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
         basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
