@@ -184,34 +184,34 @@ async function calculate_depend_status()
   if (attack_method > 0)
   {
     let element_type;
-    if (method_index >= 1 && method_index <= 5) {
+    if (attack_method >= 1 && attack_method <= 5) {
         element_type = 0;
-    } else if (method_index >= 6 && method_index <= 10) {
+    } else if (attack_method >= 6 && attack_method <= 10) {
         element_type = 1;
-    } else if (method_index >= 11 && method_index <= 15) {
+    } else if (attack_method >= 11 && attack_method <= 15) {
         element_type = 2;
-    } else if (method_index >= 16 && method_index <= 20) {
+    } else if (attack_method >= 16 && attack_method <= 20) {
         element_type = 3;
-    } else if (method_index >= 21 && method_index <= 25) {
+    } else if (attack_method >= 21 && attack_method <= 25) {
         element_type = 4;
     } else {
         // それ以外の場合、デフォルト値を設定するかエラーハンドリングを追加してください
         // ここではデフォルト値として -1 を設定していますが、必要に応じて変更してください
         element_type = -1;
     }
-    const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
-    const data = await response.json();
-    char_propaty[0] = data[attack_method_name[element_type]]["元素"];
-    attack_method_index = element_type;
-    console.log(attack_method_index);
   }
+  
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
+  char_propaty[0] = char_datadata[attack_method_name[element_type]]["元素"];
+  console.log(attack_method_index);
+  const char_depend_status = char_data[attack_method_name[element_type]].依存ステータス;
+  console.log(char_depend_status);
   const weapon_index = document.getElementById("weapon_index").value;
   const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[weapon_index] + ".json");
   const weapon_data = await weapon_response.json();
   const weapon_depend_status = weapon_data.ステータス.依存ステータス;
+  
   for (let i = 0; i < 7; i++)
   {
     depend_status[i] = char_depend_status[i] + weapon_depend_status[i];
