@@ -238,9 +238,9 @@ class yaemiko {
     const data = await response.json();
 
     const four_conste_check = document.getElementById("traitCheckbox3");
-    if (this.char_constellations > 2 && four_conste_check.checked);
+    if (this.char_constellations > 2 && four_conste_check.checked)
     {
-      this.four_conste_buff = 0.2
+      this.four_conste_buff = 0.2;
     } 
   
     // 攻撃方法に応じてダメージ率を計算
