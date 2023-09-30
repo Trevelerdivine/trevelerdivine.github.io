@@ -6,6 +6,7 @@ let char_depend_status = [0,0,0,0,0,0,0];
 let weapon_depend_status = [0,0,0,0,0,0,0];
 let char_propaty = [5,0];
 let af_score = 0;
+let attack_method = 0;
 let attack_method_index = 3;
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
@@ -179,6 +180,27 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
 
 async function calculate_depend_status()
 {
+  const method_index = document.getElementById("attack_method_id").value;
+  if (method_index > 0)
+  {
+    let element_type;
+    if (method_index >= 1 && method_index <= 5) {
+        element_type = 0;
+    } else if (method_index >= 6 && method_index <= 10) {
+        element_type = 1;
+    } else if (method_index >= 11 && method_index <= 15) {
+        element_type = 2;
+    } else if (method_index >= 16 && method_index <= 20) {
+        element_type = 3;
+    } else if (method_index >= 21 && method_index <= 25) {
+        element_type = 4;
+    } else {
+        // それ以外の場合、デフォルト値を設定するかエラーハンドリングを追加してください
+        // ここではデフォルト値として -1 を設定していますが、必要に応じて変更してください
+        element_type = -1;
+    }
+  }
+  attack_method_index = element_type;
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
   const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
@@ -518,6 +540,8 @@ async function create_afset_instance()
   {
     buff[i] = set1_buff[i] + set2_buff[i];
   }
+  const attackSelect = document.getElementById("attack_method");
+  attack_method = attackSelect.value;
   return buff
 }
 
