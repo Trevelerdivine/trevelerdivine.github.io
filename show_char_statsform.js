@@ -123,7 +123,55 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
+
+    else if (selectedCharId == "33") {
+      char_propaty[1] = 4;
+      const traits = [
+        { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
+        { id: "traitCheckbox3", label: "第4重：雷元素ダメージ+20%" },
+        { id: "traitCheckbox4", label: "第6重：敵の防御力の60%無視" },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "通常攻撃（1ループ）", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "スキル（殺生櫻１ヒット）", value: "16" },
+        { text: "元素爆発", value: "21" }
+      ];
     
+      createchar_attackmethod(options);
+
+      if (char_constellations > 1)
+      {
+        let traitCheckbox = createCheckbox(traits[0].id, true);
+        let traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[2].id, true);
+        traitLabel = createLabel(traits[2].id, traits[2].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
 
     else if (selectedCharId  == "34")
     {
@@ -176,9 +224,8 @@ async function show_char_statsform()
         }
       }
     }
-
-      showFormElements();
-    }
+    showFormElements();
+  }
 
 function createchar_attackmethod(options)
 {
