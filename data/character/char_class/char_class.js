@@ -57,6 +57,16 @@ class nahida {
     let dmg_rate;
     let dmg_attck_rate = 0;
   
+    if (this.char_constellations > 2)
+    {
+      const four_conste_index = document.getElementById("four_conste").value;
+      const four_conste_check = document.getElementById("traitCheckbox3");
+      if (four_conste_check.checked && four_conste_index > 0)
+      {
+        this.four_conste_buff = 100 + 20 * (four_conste_index - 1);
+      }
+    }
+
     if (attack_method == 1) {
       for (let i = 0; i < 4; i++) {
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -77,17 +87,6 @@ class nahida {
           this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
         }
       }
-
-      if (this.char_constellations > 2)
-      {
-        const four_conste_index = document.getElementById("four_conste").value;
-        const four_conste_check = document.getElementById("traitCheckbox3");
-        if (four_conste_check.checked && four_conste_index > 0)
-        {
-          this.four_conste_buff = 100 + 20 * (four_conste_index - 1);
-        }
-      }
-
       const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
       const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
       this.skill_buff = 1;

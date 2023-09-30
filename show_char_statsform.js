@@ -50,7 +50,7 @@ async function show_char_statsform()
     elemental_reaction.innerHTML = "";
     method_container.innerHTML = "";
     char_talent.innerHTML = "";
-    if (selectedCharId === "56") {
+    if (selectedCharId == "56") {
       char_propaty[1] = 4;
       const traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
@@ -125,7 +125,7 @@ async function show_char_statsform()
     }
     
 
-    else if (selectedCharId  === "34")
+    else if (selectedCharId  == "34")
     {
       const traits = [
         {
@@ -233,7 +233,7 @@ function showFormElements()
     { forms: [cd_form, team_cd_form], index: 6 }
   ];
   for (const element of formElements) {
-    if (depend_status[element.index] === 1) {
+    if (depend_status[element.index] == 1) {
       for (let i = 0; i < element.forms.length; i++) {
         element.forms[i].style.display = "table-row";
       }
@@ -285,7 +285,7 @@ function createSelectList(id, initial, optionsCount, head_unit, unit, select_ind
     option.text = `${head_unit}${j}${unit}`;
     
     // j が 8 の場合、選択状態に設定
-    if (j === select_index) {
+    if (j == select_index) {
       option.selected = true;
     }
     
