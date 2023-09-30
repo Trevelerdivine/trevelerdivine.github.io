@@ -258,7 +258,7 @@ class yaemiko {
     } else if (attack_method == 16) {
       this.talent2effect == 1;
       const dmg_rate = data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]];
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      dmg_rate = [0, 0, 0, 0, dmg_rate, 0, 0];
     } else if (attack_method == 21) {
       const first_dmg_rate = data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]];
       const second_dmg_rate = data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]];
@@ -340,15 +340,16 @@ class yaemiko {
   calculate_basic_dmg(dmg_rate) {
     const resultStatusArray = this.result_status_array;
     let basicDmg
+    const attckRate
     if (this.attack_method !==21)
     {
-      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-      basicDmg = (attckRate + elmRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+      basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
     }
     else
     {
-      const attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
-      basicDmg = (attckRate + elmRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
+      basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
     }
     return basicDmg;
   }
