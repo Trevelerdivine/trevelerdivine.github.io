@@ -75,10 +75,10 @@ async function show_char_statsform()
         createLabel("talent1", "出場中"),
         document.createElement("br"),
         createTextNode("　元素爆発天賦レベル："),
-        createSelectList("nahida_Q_level", 14, "Lv.", ""),
+        createSelectList("nahida_Q_level", 1, 14, "Lv.", ""),
         document.createElement("br"),
         createTextNode("　炎元素キャラ数："),
-        createSelectList("nahida_Qpyro", 3,"", "人"),
+        createSelectList("nahida_Qpyro",0, 3,"", "人"),
         document.createElement("br"),
         createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
         document.createElement("br"),
@@ -114,7 +114,7 @@ async function show_char_statsform()
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
-        const four_conste_selectList = createSelectList("four_conste", 4,"", "体");
+        const four_conste_selectList = createSelectList("four_conste", 0, 4,"", "体");
         const four_conste_option = document.createElement("option");
         four_conste_option.value = 4;
         four_conste_option.text = "4体以上";
@@ -274,11 +274,11 @@ function createTextNode(text) {
 }
 
 // セレクトリストを生成するユーティリティ関数
-function createSelectList(id, optionsCount, head_unit, unit) {
+function createSelectList(id, initial, optionsCount, head_unit, unit) {
   const selectList = document.createElement("select");
   selectList.id = id;
 
-  for (let j = 0; j < optionsCount; j++) {
+  for (let j = initial; j < optionsCount; j++) {
     const option = document.createElement("option");
     option.value = j;
     option.text = `${head_unit}${j}${unit}`;
