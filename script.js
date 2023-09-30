@@ -794,7 +794,6 @@ async function monte_carlo_calculate()
     document.getElementById("response").innerHTML = response;
     return response;
   }
-  my_exp_dmg = my_exp_dmg.toFixed(0);
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
@@ -805,7 +804,9 @@ async function monte_carlo_calculate()
   let result_status = [0,0,0,0,0,0,0,0];
   let random_1;
   let random_2;
-  let output_exp_dmg = Infinity;
+  let output_exp_dmg;
+  let dmg_error = Infinity;
+  let abs_dmg_error = Infinity;
   let temp_status = [0,0,0,0,0,0,0,0];
   let temp_score_distribute = [0,0,0,0,0,0,0];
   let old_score_distribution = [0,0,0,0,0,0,0];
@@ -828,7 +829,7 @@ async function monte_carlo_calculate()
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
 
 
-  while (my_exp_dmg !== output_exp_dmg && n_count < 30)
+  while (abs_dmg_error > 1 && n_count < 30)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
@@ -1031,8 +1032,10 @@ async function monte_carlo_calculate()
         new_score_distribution = old_score_distribution.slice();
       }
     }
-    output_exp_dmg = temp_exp_dmg.toFixed(0);
-    if (my_exp_dmg < output_exp_dmg)
+    output_exp_dmg = temp_exp_dmg;
+    dmg_error = my_exp_dmg - output_exp_dmg;
+    abs_dmg_error = Math.abs(dmg_error);
+    if (dmg_error < 0)
     {
       af_score_upper_limit = af_score;
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
