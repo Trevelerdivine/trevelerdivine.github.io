@@ -500,6 +500,8 @@ async function create_weapon_instance(base_status, fixed_status, result_status)
 
 async function create_afset_instance() 
 {
+  const attackSelect = document.getElementById("attack_method");
+  attack_method = attackSelect.value;
   let set1_buff;
   let set2_buff;
   let buff = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -518,8 +520,6 @@ async function create_afset_instance()
   {
     buff[i] = set1_buff[i] + set2_buff[i];
   }
-  const attackSelect = document.getElementById("attack_method");
-  attack_method = attackSelect.value;
   return buff
 }
 
