@@ -6,7 +6,7 @@ let char_depend_status = [0,0,0,0,0,0,0];
 let weapon_depend_status = [0,0,0,0,0,0,0];
 let char_propaty = [5,0];
 let af_score = 0;
-let attack_method = 0;
+let attack_method_index = 3;
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
@@ -181,7 +181,8 @@ async function calculate_depend_status()
 {
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  const char_depend_status = char_data.ステータス.依存ステータス;
+  const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
+  console.log(char_depend_status);
   const weapon_index = document.getElementById("weapon_index").value;
   const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[weapon_index] + ".json");
   const weapon_data = await weapon_response.json();
@@ -518,8 +519,6 @@ async function create_afset_instance()
   {
     buff[i] = set1_buff[i] + set2_buff[i];
   }
-  const attackSelect = document.getElementById("attack_method");
-  attack_method = attackSelect.value;
   return buff
 }
 
@@ -672,8 +671,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
 
-  console.log(result_status);
-  console.log(dmg_rate);
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
   exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
@@ -785,8 +782,6 @@ async function monte_carlo_calculate()
   fixed_buff[5] = await (char_instance.calculate_char_fixed_cr() + weapon_instance.calculate_weapon_fixed_cr() + team_fix_buff[5]);
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_fix_buff[6]);
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
-  console.log(fixed_buff);
-  console.log(team_dynamic_buff);
 
   while (my_exp_dmg !== output_exp_dmg && n_count < 30)
   {
