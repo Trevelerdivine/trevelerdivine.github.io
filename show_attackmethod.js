@@ -27,7 +27,6 @@ async function show_attack_method()
     const data = await response.json();
     char_propaty[0] = data[attack_method_name[element_type]]["元素"];
     attack_method = method_index;
-    attack_method_index = element_type;
     console.log(char_propaty);
   }
 
