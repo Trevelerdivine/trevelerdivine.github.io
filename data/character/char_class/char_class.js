@@ -189,11 +189,21 @@ class nahida {
   }
 
   calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
-    const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-    const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-    let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
-    return basicDmg;
+    if (depend_status[2] == 1)
+    {
+      const resultStatusArray = this.result_status_array;
+      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+      const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
+      let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      return basicDmg;
+    }
+    else
+    {
+      const resultStatusArray = this.result_status_array;
+      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+      let basicDmg = (attckRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      return basicDmg;
+    }
   }
 
   update_status(fixed_status_array, result_status_array)
@@ -352,7 +362,7 @@ class yaemiko {
   }
 
   calculate_char_result_dmg_buff() {
-    if (talent2effect == 1)
+    if (this.talent2effect == 1)
     {
       let talent2skill_buff = this.result_status_array[2] * 0.15 * this.talent2effect / 100;
       return talent2skill_buff;
@@ -367,17 +377,33 @@ class yaemiko {
     const resultStatusArray = this.result_status_array;
     let basicDmg;
     let attckRate;
-    if (this.attack_method !==21)
+    if (depend_status[2] == 1)
     {
-      attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-      basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      if (this.attack_method !==21)
+      {
+        attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      }
+      else
+      {
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
+        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      }
+      return basicDmg;
     }
     else
     {
-      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
-      basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      if (this.attack_method !==21)
+      {
+        attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+       
+      }
+      else
+      {
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
+      }
     }
-    return basicDmg;
+    return attckRate;
   }
 
   update_status(fixed_status_array, result_status_array)
