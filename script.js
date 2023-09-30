@@ -572,7 +572,7 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   let enemyResultResist = enemyResist - enemyResistDebuff - charDebuff[0] - weaponDebuff[0];
 
   // 特定の条件下での補正係数
-  if (selectedImageIds[0] === 21 && selectedImageIds[1] === 21) {
+  if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21) {
     const deepwoodCheck = document.getElementById("af21_4");
     if (deepwoodCheck.checked && char_propaty[0] == 5) {
       enemyResultResist -= 0.3;
