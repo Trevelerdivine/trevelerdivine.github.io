@@ -150,16 +150,19 @@ async function show_attack_method()
                 { text: "２段目", value: "1" },
                 { text: "３段目", value: "2" },
               ];
+              createCheckboxList(options);
             } else if (attack_method == 6) {
               options = [
                 { text: "重撃", value: "0", checked: true },
               ];
+              createCheckboxList(options);
             } else if (attack_method==16) {
               options = [
                 { text: "殺生櫻１ヒット目", value: "0", checked: true },
                 { text: "殺生櫻２ヒット目", value: "1" },
                 { text: "殺生櫻３ヒット目", value: "2" },
               ];
+              createCheckboxList_br(options);
             } else if (attack_method==21) {
               options = [
                 { text: "元素爆発　初撃", value: "0", checked: true },
@@ -167,8 +170,8 @@ async function show_attack_method()
                 { text: "天狐雷霆２ヒット目", value: "2", checked: true },
                 { text: "天狐雷霆３ヒット目", value: "3", checked: true  },
               ];
+              createCheckboxList_br(options)
             }
-            createCheckboxList(options)
         break
     }
     let hp_form = document.getElementById("hp_form");
@@ -234,5 +237,28 @@ function createCheckboxList(options)
 
         select_reaction_method.appendChild(checkboxInput); // チェックボックスを select_reaction_method に追加
         select_reaction_method.appendChild(checkboxLabel); // ラベルを select_reaction_method に追加
+    });
+}
+
+function createCheckboxList_br(options)
+{
+    const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+
+    options.forEach((option) => {
+        const checkboxInput = document.createElement("input");
+        checkboxInput.type = "checkbox";
+        checkboxInput.value = option.value;
+        if (option.checked) {
+            checkboxInput.checked = true;
+        }
+        checkboxInput.id = "checkbox_" + option.value; // チェックボックスに一意のIDを設定
+
+        const checkboxLabel = document.createElement("label");
+        checkboxLabel.textContent = option.text;
+        checkboxLabel.htmlFor = checkboxInput.id;
+
+        select_reaction_method.appendChild(checkboxInput); // チェックボックスを select_reaction_method に追加
+        select_reaction_method.appendChild(checkboxLabel); // ラベルを select_reaction_method に追加
+        select_reaction_method.appendChild(document.createElement("br"));
     });
 }
