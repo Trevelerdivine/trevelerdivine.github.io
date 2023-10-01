@@ -62,7 +62,7 @@ async function show_char_statsform()
       ];
 
       options = [
-        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（滅浄三業）", value: "16" },
@@ -135,7 +135,7 @@ async function show_char_statsform()
       ];
 
       options = [
-        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（殺生櫻３ヒット）", value: "16" },
