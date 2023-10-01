@@ -141,13 +141,6 @@ async function show_char_statsform()
         { text: "スキル（殺生櫻３ヒット）", value: "16" },
         { text: "大密法・天狐顕現（元素爆発４ヒット）", value: "21" }
       ];
-    
-      createchar_attackmethod(options);
-      const yaeskill_text = createTextNode("殺生櫻：")
-      const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
-      const containerElement = document.getElementById("attack_propaty"); // ここにセレクトボックスを追加する要素を指定
-      containerElement.appendChild(yaeskill_text);
-      containerElement.appendChild(yaeskill_selectlist);
 
       if (char_constellations > 2)
       {
