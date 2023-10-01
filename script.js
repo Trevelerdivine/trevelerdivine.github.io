@@ -279,19 +279,12 @@ async function calculate_score_distribute(af_score,depend_status)
 async function calculate_fixed_status(sd,bs,amsb)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
-  const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
-  const data = await response.json();
-  const char_base_hpper = parseFloat(data["ステータス"]["基礎HP％"][char_level])/100;
-  const char_base_attackper = parseFloat(data["ステータス"]["基礎攻撃力％"][char_level])/100;
-  const char_base_deffper = parseFloat(data["ステータス"]["基礎防御力％"][char_level])/100;
-
   let fixed_status = [0,0,0,0,0,0,0,0];
-  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0] + char_base_hpper) + 4780;
-  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1] + char_base_deffper);
+  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780;
+  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1]);
   fixed_status[2] = bs[2] + sd[2]*3 + amsb[2];
   fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100;
-  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4] + char_base_attackper) + 311;
+  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311;
   fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
   fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
   fixed_status[7] = bs[7] + amsb[7];
@@ -401,42 +394,6 @@ async function calculate_team_dynamic_buff(base_status)
 
   return team_buff
 }
-
-///////////////////////
-
-async function identify_condition() {
-  const attack_method_type = document.getElementById("attack_method_id");
-  const clock_type = document.getElementById("clock_mainstatus").value;
-  const goblet_type = document.getElementById("goblet_mainstatus").value;
-  const circlet_type = document.getElementById("circlet_mainstatus").value;
-  let response;
-
-  function displayErrorMessage(errorMessage) {
-    document.getElementById("response").innerHTML = errorMessage;
-  }
-
-  if (attack_method_type.value === "0") {
-    response = "攻撃方法を設定してください";
-    displayErrorMessage(response);
-    return;
-  }
-  if (isNaN(clock_type)) {
-    response = "聖遺物-時計のメインステータスを設定してください。";
-    displayErrorMessage(response);
-    return;
-  }
-  if (isNaN(goblet_type)) {
-    response = "聖遺物-杯のメインステータスを設定してください。";
-    displayErrorMessage(response);
-    return;
-  }
-  if (isNaN(circlet_type)) {
-    response = "聖遺物-冠のメインステータスを設定してください。";
-    displayErrorMessage(response);
-    return;
-  }
-}
-
 
 ///////////////////////
 
