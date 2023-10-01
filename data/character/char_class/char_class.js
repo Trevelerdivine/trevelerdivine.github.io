@@ -472,18 +472,18 @@ class xiangling {
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
-    let dmg_attck_rate = 0;
+    let dmg_attack_rate = 0;
 
-      if (attack_method == 16) {
+    if (attack_method == 16) {
       this.attack_count = document.getElementById("xiangling_E_count").value;
       this.reaction_count = document.getElementById("xiangling_E").value;
-      dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      dmg_attack_rate = parseFloat(data["元素スキル"]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       this.attack_count = document.getElementById("xiangling_Q_count").value;
       this.reaction_count = document.getElementById("xiangling_Q").value;
-      dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"]["数値"][3][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"]["数値"][3][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
     return dmg_rate;
   }
