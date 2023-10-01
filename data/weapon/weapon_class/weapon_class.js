@@ -172,6 +172,11 @@ class AThousandFloatingDreams {
       this.fixed_status_array = fixed_status_array;
       this.result_status_array = result_status_array;
     }
+
+    calculate_weapon_debuff() {
+      const weapon_debuff = [0,0];
+      return weapon_debuff
+    }
   
   }
 
