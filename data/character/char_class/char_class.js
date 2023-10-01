@@ -482,7 +482,7 @@ class xiangling {
     } else if (attack_method == 21) {
       this.attack_count = document.getElementById("xiangling_Q_count").value;
       this.reaction_count = document.getElementById("xiangling_Q").value;
-      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"]["数値"][3][this.parameter[3]]);
+      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][3]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
     return dmg_rate;
