@@ -377,7 +377,7 @@ class yaemiko {
     let attckRate;
     if (depend_status[2] == 1)
     {
-      if (attack_method !==21)
+      if (attack_method !=21)
       {
         attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
         basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
@@ -393,7 +393,7 @@ class yaemiko {
     }
     else
     {
-      if (attack_method !=21)
+      if (attack_method != 21)
       {
         attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
        
