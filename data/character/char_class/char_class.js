@@ -260,10 +260,13 @@ class yaemiko {
     const response = await fetch("./data/character/char_data/yaemiko.json");
     const data = await response.json();
 
-    const four_conste_check = document.getElementById("traitCheckbox3");
-    if (this.char_constellations > 2 && four_conste_check.checked)
+    if (this.char_constellations > 2 )
     {
-      this.four_conste_buff = 0.2;
+      const four_conste_check = document.getElementById("traitCheckbox3");
+      if (four_conste_check.checked)
+      {
+        this.four_conste_buff = 0.2;
+      }
     } 
   
     // 攻撃方法に応じてダメージ率を計算
@@ -348,14 +351,7 @@ class yaemiko {
   }
 
   calculate_char_fixed_dmg_buff() {
-    if (attack_method == 16)
-    {
       return this.four_conste_buff;
-    }
-    else
-    {
-      return 0;
-    }
   }
 
   calculate_char_result_dmg_buff() {
@@ -413,8 +409,8 @@ class yaemiko {
     let char_debuff = [0,0,0];
     if (this.char_constellations >3)
     {
-      const two_conste_check = document.getElementById("traitCheckbox2");
-      if(two_conste_check.checked)
+      const six_conste_check = document.getElementById("traitCheckbox4");
+      if(six_conste_check.checked)
       {
         char_debuff = [0,0,0.6];
       }

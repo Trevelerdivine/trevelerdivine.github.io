@@ -203,9 +203,7 @@ async function calculate_depend_status()
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
-  console.log(char_propaty);
   const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
-  console.log(char_depend_status);
   const weapon_index = document.getElementById("weapon_index").value;
   const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[weapon_index] + ".json");
   const weapon_data = await weapon_response.json();
@@ -789,7 +787,6 @@ async function monte_carlo_calculate()
   
   if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
-    console.log(af_score);
     response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;

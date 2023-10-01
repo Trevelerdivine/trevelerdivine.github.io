@@ -143,16 +143,6 @@ async function show_char_statsform()
       ];
     
       createchar_attackmethod(options);
-
-      if (char_constellations > 1)
-      {
-        let traitCheckbox = createCheckbox(traits[0].id, true);
-        let traitLabel = createLabel(traits[0].id, traits[0].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
     
       if (char_constellations > 2)
       {
