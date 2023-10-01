@@ -49,8 +49,8 @@ async function show_char_statsform()
     method_container.innerHTML = "";
     char_talent.innerHTML = "";
 
-    let traits;
-    let options;
+    let traits = [];
+    let options = [];
 
     switch (selectedCharId)
     {
