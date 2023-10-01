@@ -151,13 +151,15 @@ async function show_attack_method()
               select_reaction_method.appendChild(xianglingskill_text); // チェックボックスを select_reaction_method に追加
               select_reaction_method.appendChild(xianglingskill_selectlist); 
               }else if (attack_method==21) {
-                const xianglingburst_text = createTextNode("　ヒット回数：")
+                const xianglingburst_text = createTextNode("　ヒット回数：");
                 const xianglingburst_selectlist = createSelectList("xiangling_Q_count", 1, 22, "", "回", 11);
+                xianglingburst_selectlist.setAttribute("size", 10); // size属性を設定
                 attack_method_prop.appendChild(document.createElement("br"));
                 attack_method_prop.appendChild(xianglingburst_text);
                 attack_method_prop.appendChild(xianglingburst_selectlist);
                 const xianglinreaction_text = createTextNode("　元素反応回数：")
                 const xianglingreaction_selectlist = createSelectList("xiangling_Q", 1, 22, "", "回", 11);
+                xianglingreaction_selectlist.setAttribute("size", 10); // size属性を設定
                 select_reaction_method.appendChild(xianglinreaction_text); // チェックボックスを select_reaction_method に追加
                 select_reaction_method.appendChild(xianglingreaction_selectlist); 
             }
