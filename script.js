@@ -438,6 +438,7 @@ async function calculate_table_status()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
+  console.log(dmg_rate);
   
   fixed_status[0] += await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp());
   fixed_status[1] += await (char_instance.calculate_char_fixed_deff() + weapon_instance.calculate_weapon_fixed_deff());
@@ -720,7 +721,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]);
   result_status.push(exp_dmg);
-  console.log(result_status);
   return result_status;
 }
 
@@ -1023,7 +1023,6 @@ async function monte_carlo_calculate()
       {
         temp_exp_dmg = exp_dmg;
         temp_status = result_status.slice();
-        console.log(temp_status);
         old_score_distribution = new_score_distribution.slice();
         temp_critical_dmg = critical_dmg;
       }
