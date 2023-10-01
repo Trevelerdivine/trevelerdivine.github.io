@@ -283,7 +283,8 @@ class yaemiko {
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
       this.talent2effect = 1;
-      dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])*3;
+      const yae_skill_rank = document.getElementById("yaemiko_E").value - 1;
+      dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]])*3;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 21) {
       const first_dmg_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
