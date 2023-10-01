@@ -393,7 +393,7 @@ class yaemiko {
     }
     else
     {
-      if (attack_method !==21)
+      if (attack_method !=21)
       {
         attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
        

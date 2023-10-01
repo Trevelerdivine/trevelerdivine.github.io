@@ -204,7 +204,6 @@ async function calculate_depend_status()
   const char_data = await char_response.json();
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
   console.log(char_propaty);
-  console.log(attack_method_index);
   const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
   console.log(char_depend_status);
   const weapon_index = document.getElementById("weapon_index").value;
@@ -644,7 +643,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
-  console.log(dmg_rate);
   char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
 
@@ -719,8 +717,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
-  console.log(basic_dmg);
-  console.log(attack_method);
   exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]);
   result_status.push(exp_dmg);
