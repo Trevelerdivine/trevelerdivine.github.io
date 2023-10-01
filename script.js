@@ -423,6 +423,7 @@ async function calculate_table_status()
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   let fixed_status = base_status.slice();
   let result_status;
+  identify_condition();
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -516,6 +517,41 @@ async function calculate_table_status()
   document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
   document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
 }
+///////////////////////
+
+async function identify_condition() {
+  const attack_method_type = document.getElementById("attack_method_id");
+  const clock_type = document.getElementById("clock_mainstatus").value;
+  const goblet_type = document.getElementById("goblet_mainstatus").value;
+  const circlet_type = document.getElementById("circlet_mainstatus").value;
+  let response;
+
+  function displayErrorMessage(errorMessage) {
+    document.getElementById("response").innerHTML = errorMessage;
+  }
+
+  if (attack_method_type.value === "0") {
+    response = "攻撃方法を設定してください";
+    displayErrorMessage(response);
+    return;
+  }
+  if (isNaN(clock_type)) {
+    response = "聖遺物-時計のメインステータスを設定してください。";
+    displayErrorMessage(response);
+    return;
+  }
+  if (isNaN(goblet_type)) {
+    response = "聖遺物-杯のメインステータスを設定してください。";
+    displayErrorMessage(response);
+    return;
+  }
+  if (isNaN(circlet_type)) {
+    response = "聖遺物-冠のメインステータスを設定してください。";
+    displayErrorMessage(response);
+    return;
+  }
+}
+
 ///////////////////////
 
 async function create_weapon_instance(base_status, fixed_status, result_status) 
