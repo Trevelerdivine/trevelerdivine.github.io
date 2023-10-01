@@ -144,6 +144,25 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "9":
+            if (attack_method == 16) {
+              const xianglingskill_text = createTextNode("　元素反応回数：")
+              const xianglingskill_selectlist = createSelectList("xiangling_E", 0, 4, "", "回", 4);
+              select_reaction_method.appendChild(xianglingskill_text); // チェックボックスを select_reaction_method に追加
+              select_reaction_method.appendChild(xianglingskill_selectlist); 
+              }else if (attack_method==21) {
+                const xianglingburst_text = createTextNode("　ヒット回数：")
+                const xianglingburst_selectlist = createSelectList("yaemiko_E", 1, 22, "", "回", 11);
+                attack_method_prop.appendChild(document.createElement("br"));
+                attack_method_prop.appendChild(xianglingburst_text);
+                attack_method_prop.appendChild(xianglingburst_text);
+                const xianglinreaction_text = createTextNode("　元素反応回数：")
+                const xianglingreaction_selectlist = createSelectList("xiangling_Q", 1, 22, "", "回", 11);
+                select_reaction_method.appendChild(xianglingskill_text); // チェックボックスを select_reaction_method に追加
+                select_reaction_method.appendChild(xianglingskill_selectlist); 
+            }
+        break
+
         case "33":
             if (attack_method == 1) {
               options = [
