@@ -73,7 +73,7 @@ class nahida {
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 6) {
-      dmg_attck_rate += data["重撃"]["数値"]["攻撃力"][this.parameter[3]];
+      dmg_attck_rate = parseFloat(data["重撃"]["数値"]["攻撃力"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
       if (nahida_Q.checked) {
@@ -87,8 +87,8 @@ class nahida {
           this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
         }
       }
-      const dmg_attck_rate = data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]];
-      const dmg_elm_rate = data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]];
+      const dmg_attck_rate = parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]]);
+      const dmg_elm_rate = parseFloat(data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]]);
       this.skill_buff = 1;
       dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 17) {
@@ -255,7 +255,6 @@ class yaemiko {
     }
     // チェックボックスの数と Spread の状態から aggcount を計算
     this.aggcount = trueCount * agg_reaction;
-    console.log(this.aggcount)
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/yaemiko.json");
@@ -277,7 +276,7 @@ class yaemiko {
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 6) {
-      dmg_attck_rate = data["重撃"]["数値"][this.parameter[3]];
+      dmg_attck_rate = parseFloat(data["重撃"]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
       this.talent2effect = 1;
