@@ -288,7 +288,7 @@ async function calculate_fixed_status(sd,bs,amsb)
 
   let fixed_status = [0,0,0,0,0,0,0,0];
   fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0] + char_base_hpper) + 4780;
-  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1] + char_base_defper);
+  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1] + char_base_deffper);
   fixed_status[2] = bs[2] + sd[2]*3 + amsb[2];
   fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100;
   fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4] + char_base_attackper) + 311;
