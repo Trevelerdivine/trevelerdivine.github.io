@@ -126,7 +126,7 @@ async function show_char_statsform()
       }
     }
     else if (selectedCharId == "9") {
-      char_propaty[1] = 4;
+      char_propaty[1] = 2;
       traits = [
         { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
         { id: "traitCheckbox3", label: "第6重：炎元素ダメージ+15%。" },
