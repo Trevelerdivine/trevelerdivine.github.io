@@ -282,9 +282,9 @@ async function calculate_fixed_status(sd,bs,amsb)
   const char_level = document.getElementById("char_level").value;
   const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const data = await response.json();
-  const char_base_hpper = parseFloat(data["ステータス"]["基礎HP%"][char_level])/100;
-  const char_base_attackper = parseFloat(data["ステータス"]["基礎攻撃力%"][char_level])/100;
-  const char_base_deffper = parseFloat(data["ステータス"]["基礎攻撃力%"][char_level])/100;
+  const char_base_hpper = parseFloat(data["ステータス"]["基礎HP％"][char_level])/100;
+  const char_base_attackper = parseFloat(data["ステータス"]["基礎攻撃力％"][char_level])/100;
+  const char_base_deffper = parseFloat(data["ステータス"]["基礎防御力％"][char_level])/100;
 
   let fixed_status = [0,0,0,0,0,0,0,0];
   fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0] + char_base_hpper) + 4780;
