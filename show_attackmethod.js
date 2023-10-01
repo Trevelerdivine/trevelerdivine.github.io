@@ -146,6 +146,11 @@ async function show_attack_method()
 
         case "9":
             if (attack_method == 16) {
+              const xianglingskillcount_text = createTextNode("　ヒット回数：")
+              const xianglingcount_selectlist = createSelectList("xiangling_E_count", 1, 4, "", "回", 4);
+              attack_method_prop.appendChild(document.createElement("br"));
+              attack_method_prop.appendChild(xianglingskillcount_text);
+              attack_method_prop.appendChild(xianglingcount_selectlist);
               const xianglingskill_text = createTextNode("　元素反応回数：")
               const xianglingskill_selectlist = createSelectList("xiangling_E", 0, 4, "", "回", 4);
               select_reaction_method.appendChild(xianglingskill_text); // チェックボックスを select_reaction_method に追加
@@ -157,7 +162,7 @@ async function show_attack_method()
                 attack_method_prop.appendChild(xianglingburst_text);
                 attack_method_prop.appendChild(xianglingburst_selectlist);
                 const xianglinreaction_text = createTextNode("　元素反応回数：")
-                const xianglingreaction_selectlist = createSelectList("xiangling_Q", 1, 22, "", "回", 11);
+                const xianglingreaction_selectlist = createSelectList("xiangling_Q", 0, 22, "", "回", 11);
                 select_reaction_method.appendChild(xianglinreaction_text); // チェックボックスを select_reaction_method に追加
                 select_reaction_method.appendChild(xianglingreaction_selectlist); 
             }
