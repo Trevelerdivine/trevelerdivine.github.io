@@ -550,6 +550,8 @@ async function identify_condition() {
     displayErrorMessage(response);
     return;
   }
+  response = "";
+  return;
 }
 
 ///////////////////////
