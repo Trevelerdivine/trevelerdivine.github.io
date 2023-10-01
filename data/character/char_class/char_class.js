@@ -410,7 +410,7 @@ class yaemiko {
     if (this.char_constellations >3)
     {
       const six_conste_check = document.getElementById("traitCheckbox4");
-      if(six_conste_check.checked)
+      if(six_conste_check.checked && attack_method == 16)
       {
         char_debuff = [0,0,0.6];
       }

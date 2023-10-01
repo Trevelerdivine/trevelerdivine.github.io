@@ -144,6 +144,8 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
     
+      
+
       if (char_constellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
