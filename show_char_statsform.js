@@ -125,6 +125,42 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
+    else if (selectedCharId == "9") {
+      char_propaty[1] = 4;
+      traits = [
+        { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
+        { id: "traitCheckbox3", label: "第6重：炎元素ダメージ+15%。" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "スキル（グゥオパァー4ヒット）", value: "16" },
+        { text: "元素爆発（旋火輪）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+    
+
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
 
     else if (selectedCharId == "33") {
       char_propaty[1] = 4;
