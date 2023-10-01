@@ -141,6 +141,8 @@ async function show_char_statsform()
         { text: "スキル（殺生櫻３ヒット）", value: "16" },
         { text: "大密法・天狐顕現（元素爆発４ヒット）", value: "21" }
       ];
+    
+      createchar_attackmethod(options);
 
       if (char_constellations > 2)
       {

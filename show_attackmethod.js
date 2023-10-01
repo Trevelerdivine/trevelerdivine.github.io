@@ -5,8 +5,6 @@ async function show_attack_method()
   select_reaction_method.innerHTML = "";
   const elemental_reaction = document.getElementById("element_action");
   elemental_reaction.innerHTML = "";
-  const attack_propaty = document.getElementById("attack_propaty"); // ここにセレクトボックスを追加する要素を指定
-  attack_propaty.innerHTML = "";
   await calculate_depend_status();
 
   const radiobutton = document.createElement("input");
@@ -159,7 +157,6 @@ async function show_attack_method()
               ];
               createCheckboxList(options);
             } else if (attack_method==16) {
-              createchar_attackmethod(options);
               const yaeskill_text = createTextNode("殺生櫻：")
               const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
               attack_propaty.appendChild(yaeskill_text);
