@@ -156,12 +156,12 @@ async function show_attack_method()
               ];
               createCheckboxList(options);
             } else if (attack_method==16) {
-              const attack_method_div = document.getElementById("attack_method");
-              attack_method_div.appendChild(document.createElement("br"));
-              const yaeskill_text = createTextNode("殺生櫻：")
-              const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
-              attack_method_div.appendChild(yaeskill_text);
-              attack_method_div.appendChild(yaeskill_selectlist);
+              //const attack_method_div = document.getElementById("attack_method");
+              //attack_method_div.appendChild(document.createElement("br"));
+              //const yaeskill_text = createTextNode("殺生櫻：")
+              //const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
+              //attack_method_div.appendChild(yaeskill_text);
+              //attack_method_div.appendChild(yaeskill_selectlist);
               options = [
                 { text: "殺生櫻１ヒット目", value: "0", checked: true },
                 { text: "殺生櫻２ヒット目", value: "1" },

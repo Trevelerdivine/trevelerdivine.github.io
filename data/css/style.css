@@ -611,7 +611,7 @@ text-align: center;
 /* スクロールバーの幅と色を指定 */
 .table-container1::-webkit-scrollbar,
 .table-container::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
 }
 
 /* スクロールバーの色 */
