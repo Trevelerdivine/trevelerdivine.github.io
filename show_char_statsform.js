@@ -49,86 +49,84 @@ async function show_char_statsform()
     method_container.innerHTML = "";
     char_talent.innerHTML = "";
 
-    let traits = [];
-    let options = [];
+    let traits;
+    let options;
 
-    switch (selectedCharId)
-    {
-      case "56":   
-        char_propaty[1] = 4;
-        traits = [
-          { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
-          { id: "traitCheckbox2", label: "第2重：防御力-30%" },
-          { id: "traitCheckbox3", label: "第4重：蘊種印状態にある敵数：" },
-          { id: "traitCheckbox4", label: "第6重：大辯円成の実 追撃" },
-        ];
+    if (selectedCharId == "56") {
+      char_propaty[1] = 4;
+      traits = [
+        { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
+        { id: "traitCheckbox2", label: "第2重：防御力-30%" },
+        { id: "traitCheckbox3", label: "第4重：蘊種印状態にある敵数：" },
+        { id: "traitCheckbox4", label: "第6重：大辯円成の実 追撃" },
+      ];
 
-        options = [
-          { text: "攻撃方法", value: "0", disabled: true, selected: true },
-          { text: "通常攻撃（1ループ）", value: "1" },
-          { text: "重撃", value: "6" },
-          { text: "スキル（滅浄三業）", value: "16" },
-          { text: "滅浄三業·破業障(6凸)", disabled: char_constellations < 4, value: "17" }
-        ];
-      
-        createchar_attackmethod(options);
-      
-        const elementsToAddToCharTalent = [
-          createCheckbox("nahida_Q", true),
-          createLabel("nahida_Q", "摩耶の宮殿"),
-          createCheckbox("talent1", true),
-          createLabel("talent1", "出場中"),
-          document.createElement("br"),
-          createTextNode("　元素爆発天賦レベル："),
-          createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
-          document.createElement("br"),
-          createTextNode("　炎元素キャラ数："),
-          createSelectList("nahida_Qpyro",0, 2, "", "人", 0),
-          document.createElement("br"),
-          createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
-          document.createElement("br"),
-          createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ"),
-          createLabel("nahida-label", "ナヒーダ"),
-          document.createElement("br"),
-          createRadio("char_type", "other", false, "other-label", "その他"),
-          createLabel("other-label", "その他"),
-          document.createElement("br"),
-          createLabel("element-mastery-label", "　元素熟知："),
-          createInput("text", "element-mastery", "800"),
-          document.createElement("br")
-        ];
-      
-        elementsToAddToCharTalent.forEach(element => {
-          char_talent.appendChild(element);
-        });
-      
-        if (char_constellations > 1)
-        {
-          let traitCheckbox = createCheckbox(traits[1].id, true);
-          let traitLabel = createLabel(traits[1].id, traits[1].label);
-      
-          characterInfo.appendChild(traitCheckbox);
-          characterInfo.appendChild(traitLabel);
-          characterInfo.appendChild(document.createElement("br"));
-        }
-      
-        if (char_constellations > 2)
-        {
-          traitCheckbox = createCheckbox(traits[2].id, true);
-          traitLabel = createLabel(traits[2].id, traits[2].label);
-      
-          characterInfo.appendChild(traitCheckbox);
-          characterInfo.appendChild(traitLabel);
-          const four_conste_selectList = createSelectList("four_conste", 0, 3,"", "体", 0);
-          const four_conste_option = document.createElement("option");
-          four_conste_option.value = 4;
-          four_conste_option.text = "4体以上";
-          four_conste_selectList.appendChild(four_conste_option);
-          characterInfo.appendChild(four_conste_selectList);
-        }
-      break
+      options = [
+        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "通常攻撃（1ループ）", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "スキル（滅浄三業）", value: "16" },
+        { text: "滅浄三業·破業障(6凸)", disabled: char_constellations < 4, value: "17" }
+      ];
+    
+      createchar_attackmethod(options);
+    
+      const elementsToAddToCharTalent = [
+        createCheckbox("nahida_Q", true),
+        createLabel("nahida_Q", "摩耶の宮殿"),
+        createCheckbox("talent1", true),
+        createLabel("talent1", "出場中"),
+        document.createElement("br"),
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
+        createTextNode("　炎元素キャラ数："),
+        createSelectList("nahida_Qpyro",0, 2, "", "人", 0),
+        document.createElement("br"),
+        createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
+        document.createElement("br"),
+        createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ"),
+        createLabel("nahida-label", "ナヒーダ"),
+        document.createElement("br"),
+        createRadio("char_type", "other", false, "other-label", "その他"),
+        createLabel("other-label", "その他"),
+        document.createElement("br"),
+        createLabel("element-mastery-label", "　元素熟知："),
+        createInput("text", "element-mastery", "800"),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+    
+      if (char_constellations > 1)
+      {
+        let traitCheckbox = createCheckbox(traits[1].id, true);
+        let traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[2].id, true);
+        traitLabel = createLabel(traits[2].id, traits[2].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        const four_conste_selectList = createSelectList("four_conste", 0, 3,"", "体", 0);
+        const four_conste_option = document.createElement("option");
+        four_conste_option.value = 4;
+        four_conste_option.text = "4体以上";
+        four_conste_selectList.appendChild(four_conste_option);
+        characterInfo.appendChild(four_conste_selectList);
+      }
+    }
 
-      case "33":
+    else if (selectedCharId == "33") {
       char_propaty[1] = 4;
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
@@ -137,7 +135,7 @@ async function show_char_statsform()
       ];
 
       options = [
-        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "攻撃方法", value: "", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（殺生櫻３ヒット）", value: "16" },
@@ -145,6 +143,7 @@ async function show_char_statsform()
       ];
     
       createchar_attackmethod(options);
+    
 
       if (char_constellations > 2)
       {
@@ -165,10 +164,10 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
+    }
 
-    break
-
-    case "34":
+    else if (selectedCharId  == "34")
+    {
       const traits = [
         {
           id: "traitCheckbox",
@@ -217,7 +216,6 @@ async function show_char_statsform()
           characterInfo.appendChild(lineBreak);
         }
       }
-    break
     }
     showFormElements();
   }
