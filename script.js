@@ -459,7 +459,6 @@ async function calculate_table_status()
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   let fixed_status = base_status.slice();
   let result_status;
-  await  identify_condition();
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
