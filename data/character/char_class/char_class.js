@@ -464,7 +464,7 @@ class xiangling {
     if (this.char_constellations > 3 && attack_method == 16)
     {
       const six_conste_check = document.getElementById("traitCheckbox3");
-      if (four_conste_check.checked)
+      if (six_conste_check.checked)
       {
         this.six_conste_buff = 0.15;
       }
