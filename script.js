@@ -534,7 +534,7 @@ async function calculate_table_status()
   await updateStatus(5, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr(), "cr");
   await updateStatus(6, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd(), "cd");
   
-  if(zetsuen_checkbox == 1)
+  if(zetsuen_check == 1)
   {
     result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
   }
@@ -794,7 +794,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   }
 
   fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
-  if(zetsuen_checkbox == 1)
+  if(zetsuen_check == 1)
   {
     result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
   }
@@ -999,7 +999,7 @@ async function monte_carlo_calculate()
         weapon_instance.update_status(fixed_status, result_status);
       }
       
-      if(zetsuen_checkbox == 1)
+      if(zetsuen_check == 1)
       {
         result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
       }
@@ -1113,7 +1113,7 @@ async function monte_carlo_calculate()
         weapon_instance.update_status(fixed_status, result_status);
       }
 
-      if(zetsuen_checkbox == 1)
+      if(zetsuen_check == 1)
       {
         result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
       }
