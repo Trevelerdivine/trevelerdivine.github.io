@@ -559,7 +559,7 @@ class xiangling {
     if (depend_status[2] == 1)
     {
         attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-        basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * resultStatusArray[4] / (resultStatusArray[4] + 1400))
+        basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
                   + attckRate * (this.attack_count - this.reaction_count);
       return basicDmg;
     }
