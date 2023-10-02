@@ -548,7 +548,7 @@ async function calculate_table_status()
   {
     zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
     console.log(zetsuen_dmgbuff);
-    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
   }
   else
   {
@@ -727,6 +727,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status)
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
+  let zetsuen_dmgbuff = 0;
   for (let i = 0; i < 7; i++)
   {
     fixed_status[i] = base_status[i] + af_buff[i] + team_fix_buff[i];
@@ -807,7 +808,8 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
   if(zetsuen_check == 1)
   {
-    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+    zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
   }
   else
   {
@@ -917,6 +919,7 @@ async function monte_carlo_calculate()
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   let zetsuen_check = 0;
+  let zetsuen_dmgbuff;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
@@ -1012,7 +1015,8 @@ async function monte_carlo_calculate()
       
       if(zetsuen_check == 1)
       {
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+        zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
       }
       else
       {
@@ -1126,7 +1130,8 @@ async function monte_carlo_calculate()
 
       if(zetsuen_check == 1)
       {
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+        zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
       }
       else
       {
