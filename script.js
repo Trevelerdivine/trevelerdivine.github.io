@@ -440,7 +440,7 @@ async function calculate_table_status()
   await calculate_depend_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
-  const zetsuen_check = 0;
+  let zetsuen_check = 0;
   let buff_status = [0,0,0,0,0,0,0,0];
   let team_fix_buff = await calculate_team_fix_buff(base_status);
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
@@ -709,7 +709,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
-  const zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
@@ -718,7 +717,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
       zetsuen_check = 1;
     }
   }
-
+  let zetsuen_check = 0;
   let basic_dmg;
   let exp_dmg;
   let team_fix_buff = await calculate_team_fix_buff(base_status)
@@ -914,7 +913,7 @@ async function monte_carlo_calculate()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
-  const zetsuen_check = 0;
+  let zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
