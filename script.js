@@ -222,6 +222,15 @@ async function calculate_depend_status()
   if (button !== null && !button.checked) {
     depend_status[2] = 1;
   }
+
+  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+  {
+    const zetsuen_checkbox = document.getElementById("af17_4").value
+    if(zetsuen_checkbox.checked)
+    {
+      depend_status[3] = 1;
+    }
+  }
   return depend_status
 }
 
