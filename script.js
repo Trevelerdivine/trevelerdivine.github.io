@@ -237,7 +237,7 @@ async function calculate_depend_status()
 
 ///////////////////
 
-async function calc_zetsuen_buff(elm_charge)
+function calc_zetsuen_buff(elm_charge)
 {
   const zetsuen_dmgbuff = Math.min(elm_charge/4,0.75);
   return zetsuen_dmgbuff;
@@ -546,7 +546,7 @@ async function calculate_table_status()
   
   if(zetsuen_check == 1)
   {
-    zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+    zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
     console.log(zetsuen_dmgbuff);
     result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
   }
@@ -808,7 +808,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
   if(zetsuen_check == 1)
   {
-    zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+    zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
     result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
   }
   else
@@ -1015,7 +1015,7 @@ async function monte_carlo_calculate()
       
       if(zetsuen_check == 1)
       {
-        zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+        zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
         result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
       }
       else
@@ -1130,7 +1130,7 @@ async function monte_carlo_calculate()
 
       if(zetsuen_check == 1)
       {
-        zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+        zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
         result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
       }
       else
