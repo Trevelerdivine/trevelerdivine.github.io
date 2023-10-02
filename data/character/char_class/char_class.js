@@ -438,7 +438,7 @@ class xiangling {
   }
 
   async dmg_rate_data() {
-
+    this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
     if (Vaporize_pyro.checked) {
       this.reaction_coeff = 1.5;
@@ -452,7 +452,7 @@ class xiangling {
     const response = await fetch("./data/character/char_data/xiangling.json");
     const data = await response.json();
 
-    if (this.char_constellations > 0 )
+    if (this.char_constellations > 0)
     {
       const first_conste_check = document.getElementById("traitCheckbox2");
       if (first_conste_check.checked)
@@ -461,7 +461,7 @@ class xiangling {
       }
     } 
 
-    if (this.char_constellations > 3 )
+    if (this.char_constellations > 3 && attack_method == 16)
     {
       const six_conste_check = document.getElementById("traitCheckbox3");
       if (four_conste_check.checked)
