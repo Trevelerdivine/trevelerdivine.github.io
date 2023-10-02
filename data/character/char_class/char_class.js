@@ -444,7 +444,7 @@ class xiangling {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Vaporize_pyro.checked) {
+    if (Melt_pyro.checked) {
       this.reaction_coeff = 2;
     }
   
