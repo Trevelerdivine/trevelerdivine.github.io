@@ -225,7 +225,7 @@ async function calculate_depend_status()
 
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
-    const zetsuen_checkbox = document.getElementById("af17_4").value
+    const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
     {
       depend_status[3] = 1;
@@ -450,10 +450,10 @@ async function calculate_table_status()
 
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
-    const zetsuen_checkbox = document.getElementById("af17_4").value
+    const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
     {
-      zetsuen_check = 1
+      zetsuen_check = 1;
     }
   }
 
@@ -712,10 +712,10 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
-    const zetsuen_checkbox = document.getElementById("af17_4").value
+    const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
     {
-      zetsuen_check = 1
+      zetsuen_check = 1;
     }
   }
 
@@ -917,10 +917,10 @@ async function monte_carlo_calculate()
   const zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
-    const zetsuen_checkbox = document.getElementById("af17_4").value
+    const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
     {
-      zetsuen_check = 1
+      zetsuen_check = 1;
     }
   }
 
