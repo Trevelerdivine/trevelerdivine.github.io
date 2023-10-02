@@ -446,6 +446,7 @@ async function calculate_table_status()
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   let fixed_status = base_status.slice();
   let result_status;
+  let zetsuen_dmgbuff = 0;
   identify_condition();
 
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
@@ -545,6 +546,8 @@ async function calculate_table_status()
   
   if(zetsuen_check == 1)
   {
+    zetsuen_dmgbuff = await calc_zetsuen_buff(fixed_status[3]);
+    console.log(zetsuen_dmgbuff);
     result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
   }
   else
