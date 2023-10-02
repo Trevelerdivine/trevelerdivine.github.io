@@ -228,6 +228,14 @@ async function calculate_depend_status()
 
 ///////////////////
 
+async function calc_zetsuen_buff(elm_charge)
+{
+  const zetsuen_dmgbuff = Math.min(elm_charge/4,0.75);
+  return zetsuen_dmgbuff;
+}
+
+///////////////////
+
 async function calculate_depend_status_index(array)
 {
   depend_status_index = [];
@@ -423,12 +431,23 @@ async function calculate_table_status()
   await calculate_depend_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
+  const zetsuen_dmgbuff;
+  const zetsuen_check = 0;
   let buff_status = [0,0,0,0,0,0,0,0];
   let team_fix_buff = await calculate_team_fix_buff(base_status);
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   let fixed_status = base_status.slice();
   let result_status;
   identify_condition();
+
+  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+  {
+    const zetsuen_checkbox = document.getElementById("af17_4").value
+    if(zetsuen_checkbox.checked)
+    {
+      zetsuen_check = 1
+    }
+  }
 
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
@@ -516,7 +535,14 @@ async function calculate_table_status()
   await updateStatus(5, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr(), "cr");
   await updateStatus(6, result_status, buff_status, af_buff, base_status, team_dynamic_buff, () => char_instance.calculate_char_result_cd() + weapon_instance.calculate_weapon_result_cd(), "cd");
   
-  result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+  if(zetsuen_checkbox == 1)
+  {
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+  }
+  else
+  {
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+  }
   buff_status[7] = result_status[7] - af_main_status_buff[7] - base_status[7];
   document.getElementById("table_buff_dmg_buff").innerHTML = (buff_status[7]*100).toFixed(1) + "％";
   document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
@@ -675,6 +701,17 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
+  const zetsuen_dmgbuff;
+  const zetsuen_check = 0;
+  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+  {
+    const zetsuen_checkbox = document.getElementById("af17_4").value
+    if(zetsuen_checkbox.checked)
+    {
+      zetsuen_check = 1
+    }
+  }
+
   let basic_dmg;
   let exp_dmg;
   let team_fix_buff = await calculate_team_fix_buff(base_status)
@@ -759,10 +796,16 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   }
 
   fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
-  result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+  if(zetsuen_checkbox == 1)
+  {
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+  }
+  else
+  {
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+  }
   char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
-
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
   console.log(basic_dmg);
@@ -864,6 +907,16 @@ async function monte_carlo_calculate()
   const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
   const dmg_rate = await char_instance.dmg_rate_data();
+  const zetsuen_dmgbuff;
+  const zetsuen_check = 0;
+  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+  {
+    const zetsuen_checkbox = document.getElementById("af17_4").value
+    if(zetsuen_checkbox.checked)
+    {
+      zetsuen_check = 1
+    }
+  }
 
   let fixed_buff =[0,0,0,0,0,0,0,0];
   fixed_buff[0] = await (char_instance.calculate_char_fixed_hp() + weapon_instance.calculate_weapon_fixed_hp() + team_fix_buff[0]);
@@ -949,7 +1002,14 @@ async function monte_carlo_calculate()
         weapon_instance.update_status(fixed_status, result_status);
       }
       
-      result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+      if(zetsuen_checkbox == 1)
+      {
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+      }
+      else
+      {
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+      }
       char_instance.update_status(fixed_status, result_status);
       weapon_instance.update_status(fixed_status, result_status);
 
@@ -1056,7 +1116,15 @@ async function monte_carlo_calculate()
         weapon_instance.update_status(fixed_status, result_status);
       }
 
-      result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+      if(zetsuen_checkbox == 1)
+      {
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + calc_zetsuen_buff(fixed_status[3]));
+      }
+      else
+      {
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+      }
+      
       char_instance.update_status(fixed_status, result_status);
       weapon_instance.update_status(fixed_status, result_status);
 
