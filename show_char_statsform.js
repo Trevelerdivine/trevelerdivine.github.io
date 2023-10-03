@@ -282,7 +282,6 @@ function createchar_attackmethod(options)
 
 function showFormElements()
 {
-  await calculate_depend_status();
   let hp_form = document.getElementById("hp_form");
   let attck_form = document.getElementById("attck_form");
   let deff_form = document.getElementById("deff_form");
@@ -325,6 +324,17 @@ async function elemental_reaction_add()
   let team_elm_form = document.getElementById("team_elm_form");
   elm_form.style.display = "none";
   team_elm_form.style.display = "none";
+  await calculate_depend_status();
+  showFormElements();
+}
+
+async function elementalcharge_reaction_add()
+{
+  let elmcharge_form = document.getElementById("elm_charge_form");
+  let team_elmcharge_form = document.getElementById("team_elm_charge_form");
+  elmcharge_form.style.display = "none";
+  team_elmcharge_form.style.display = "none";
+  await calculate_depend_status();
   showFormElements();
 }
 
