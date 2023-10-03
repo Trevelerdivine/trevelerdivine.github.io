@@ -271,7 +271,7 @@
       <input type="checkbox" id="pop-up">
       <div class="overlay">
         <div class="window">
-          <div class="table-container" id = "af_img">
+          <div class="table-container">
             <div class="flex-container1">
               <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 25)"></div>
               <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 24)"></div>
@@ -1078,7 +1078,6 @@
   document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
   document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
-  document.getElementById('af_img').addEventListener('click', elemental_reaction_add);
 
 
   function showTable(tableId, buttonId)
@@ -1147,6 +1146,7 @@
       image.classList.add("tier-image2");
       clickedImages.push(image);
     }
+    elementalcharge_reaction_add();
   }
 
   async function handleImageSelection(images, popupImages, indexDisplay)
