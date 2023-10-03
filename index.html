@@ -236,10 +236,8 @@
     <div>
       <div>
         <label class="open" for="pop-up" style="display: inline-block;">
-          <span id = "af_img">
           <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
           <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
-          </span>
         </label>
     </div>
       <br>
@@ -273,7 +271,7 @@
       <input type="checkbox" id="pop-up">
       <div class="overlay">
         <div class="window">
-          <div class="table-container">
+          <div class="table-container" id = "af_img">
             <div class="flex-container1">
               <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 25)"></div>
               <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 24)"></div>
@@ -1080,7 +1078,7 @@
   document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
   document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
-  document.getElementById('af_img').addEventListener('change', elementalcharge_reaction_add);
+  document.getElementById('af_img').addEventListener('click', elemental_reaction_add);
 
 
   function showTable(tableId, buttonId)
