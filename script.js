@@ -226,7 +226,7 @@ async function calculate_depend_status()
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
-    if(zetsuen_checkbox.checked)
+    if(zetsuen_checkbox.checked && attack_method_index == 4)
     {
       depend_status[3] = 1;
     }
@@ -449,7 +449,7 @@ async function calculate_table_status()
   let zetsuen_dmgbuff = 0;
   identify_condition();
 
-  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
@@ -713,7 +713,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
   let zetsuen_check = 0;
-  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
@@ -920,7 +920,7 @@ async function monte_carlo_calculate()
   const dmg_rate = await char_instance.dmg_rate_data();
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
-  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
