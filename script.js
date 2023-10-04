@@ -566,12 +566,8 @@ async function identify_condition() {
   const clock_type = document.getElementById("clock_mainstatus").value;
   const goblet_type = document.getElementById("goblet_mainstatus").value;
   const circlet_type = document.getElementById("circlet_mainstatus").value;
-  let response;
-
-  function displayErrorMessage(errorMessage) {
-    document.getElementById("response").innerHTML = errorMessage;
-  }
-
+  let response = document.getElementById("response");
+  response.innerHTML = "";
   if (attack_method_type.value === "0") {
     response = "攻撃方法を設定してください";
     displayErrorMessage(response);
@@ -592,7 +588,6 @@ async function identify_condition() {
     displayErrorMessage(response);
     return;
   }
-  response = "";
   return;
 }
 
