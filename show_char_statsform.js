@@ -140,10 +140,10 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      let talent1_box = createCheckbox("xiangling_talent2", true);
-      let talent1_label = createLabel("xiangling_talent2", "激辛唐辛子：攻撃力+10%");
-      char_talent.appendChild(talent1_box);
-      char_talent.appendChild(talent1_label);
+      let talent2_box = createCheckbox("xiangling_talent2", true);
+      let talent2_label = createLabel("xiangling_talent2", "激辛唐辛子：攻撃力+10%");
+      char_talent.appendChild(talent2_box);
+      char_talent.appendChild(talent2_label);
       if (char_constellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);

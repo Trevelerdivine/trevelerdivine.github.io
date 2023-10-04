@@ -435,6 +435,7 @@ class xiangling {
     this.reaction_coeff = 0;
     this.reaction_count = 0;
     this.attack_count = 0;
+    this.talent2 = 0;
   }
 
   async dmg_rate_data() {
@@ -469,6 +470,12 @@ class xiangling {
         this.six_conste_buff = 0.15;
       }
     } 
+
+    let talent2_box = document.getElementById("xiangling_talent2");
+    if (talent2_box.checked) 
+    {
+      this.talent2 = 0.1 * this.base_status_array[4];
+    }
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
@@ -497,7 +504,7 @@ class xiangling {
   }
 
   calculate_char_fixed_attck() {
-    return 0;
+    return this.talent2 ;
   }
 
   calculate_char_result_attck() {
