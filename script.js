@@ -940,7 +940,7 @@ async function monte_carlo_calculate()
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
 
 
-  while (abs_dmg_error > 1 && n_count < 1)
+  while (abs_dmg_error > 1 && n_count < 30)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
