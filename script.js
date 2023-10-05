@@ -562,8 +562,8 @@ async function calculate_table_status()
 ///////////////////////
 
 async function identify_condition() {
-  const attack_method_type = document.getElementById("attack_method_id");
-  const talentlevel = document.getElementById("talent-level");
+  const attack_method_type = document.getElementById("attack_method_id").value;
+  const talentlevel = document.getElementById("talent-level").value;
   const clock_type = document.getElementById("clock_mainstatus").value;
   const goblet_type = document.getElementById("goblet_mainstatus").value;
   const circlet_type = document.getElementById("circlet_mainstatus").value;
