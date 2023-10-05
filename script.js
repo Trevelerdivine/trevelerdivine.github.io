@@ -575,7 +575,7 @@ async function identify_condition() {
     response.innerHTML = error_message;
     return;
   }
-  if (isNaN(talentlevel.value)) {
+  if (isNaN(talentlevel)) {
     error_message = "天賦レベルを設定してください";
     response.innerHTML = error_message;
     return;
