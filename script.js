@@ -570,22 +570,22 @@ async function identify_condition() {
   response.innerHTML = "";
   if (attack_method_type.value === "0") {
     response = "攻撃方法を設定してください";
-    displayErrorMessage(response);
+    response.innerHTML = response;
     return;
   }
   if (isNaN(clock_type)) {
     response = "聖遺物-時計のメインステータスを設定してください。";
-    displayErrorMessage(response);
+    response.innerHTML = response;
     return;
   }
   if (isNaN(goblet_type)) {
     response = "聖遺物-杯のメインステータスを設定してください。";
-    displayErrorMessage(response);
+    response.innerHTML = response;
     return;
   }
   if (isNaN(circlet_type)) {
     response = "聖遺物-冠のメインステータスを設定してください。";
-    displayErrorMessage(response);
+    response.innerHTML = response;
     return;
   }
   return;
