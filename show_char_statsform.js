@@ -62,7 +62,7 @@ async function show_char_statsform()
       ];
 
       options = [
-        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（滅浄三業）", value: "16" },
@@ -133,7 +133,7 @@ async function show_char_statsform()
       ];
 
       options = [
-        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "スキル（グゥオパァー4ヒット）", value: "16" },
         { text: "元素爆発（旋火輪）", value: "21" }
       ];
@@ -174,7 +174,7 @@ async function show_char_statsform()
       ];
 
       options = [
-        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（殺生櫻３ヒット）", value: "16" },
@@ -227,7 +227,7 @@ async function show_char_statsform()
       ];
 
       const options = [
-        { text: "攻撃方法", value: "", disabled: true, selected: true },
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常1ループ（爆発中）", value: "21" },
         { text: "重撃(爆発中)", value: "22" },
         { text: "元素爆発（初撃）", value: "23" },

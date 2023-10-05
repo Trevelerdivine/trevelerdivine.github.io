@@ -570,7 +570,7 @@ async function identify_condition() {
   let response = document.getElementById("response");
   let error_message;
   response.innerHTML = "";
-  if (isNaN(attack_method_type.value)) {
+  if (isNaN(attack_method_type === 0)) {
     error_message = "攻撃方法を設定してください";
     response.innerHTML = error_message;
     return;
