@@ -563,14 +563,20 @@ async function calculate_table_status()
 
 async function identify_condition() {
   const attack_method_type = document.getElementById("attack_method_id");
+  const talentlevel = document.getElementById("talent-level");
   const clock_type = document.getElementById("clock_mainstatus").value;
   const goblet_type = document.getElementById("goblet_mainstatus").value;
   const circlet_type = document.getElementById("circlet_mainstatus").value;
   let response = document.getElementById("response");
   let error_message;
   response.innerHTML = "";
-  if (attack_method_type.value === "0") {
+  if (isNaN(attack_method_type.value)) {
     error_message = "攻撃方法を設定してください";
+    response.innerHTML = error_message;
+    return;
+  }
+  if (isNaN(talentlevel.value)) {
+    error_message = "天賦レベルを設定してください";
     response.innerHTML = error_message;
     return;
   }
