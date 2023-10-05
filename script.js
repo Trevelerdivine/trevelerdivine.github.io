@@ -567,25 +567,26 @@ async function identify_condition() {
   const goblet_type = document.getElementById("goblet_mainstatus").value;
   const circlet_type = document.getElementById("circlet_mainstatus").value;
   let response = document.getElementById("response");
+  let error_message;
   response.innerHTML = "";
   if (attack_method_type.value === "0") {
-    response = "攻撃方法を設定してください";
-    response.innerHTML = response;
+    error_message = "攻撃方法を設定してください";
+    response.innerHTML = error_message;
     return;
   }
   if (isNaN(clock_type)) {
-    response = "聖遺物-時計のメインステータスを設定してください。";
-    response.innerHTML = response;
+    error_message = "聖遺物-時計のメインステータスを設定してください。";
+    response.innerHTML = error_message;
     return;
   }
   if (isNaN(goblet_type)) {
-    response = "聖遺物-杯のメインステータスを設定してください。";
-    response.innerHTML = response;
+    error_message = "聖遺物-杯のメインステータスを設定してください。";
+    response.innerHTML = error_message;
     return;
   }
   if (isNaN(circlet_type)) {
-    response = "聖遺物-冠のメインステータスを設定してください。";
-    response.innerHTML = response;
+    error_message = "聖遺物-冠のメインステータスを設定してください。";
+    response.innerHTML = error_message;
     return;
   }
   return;
