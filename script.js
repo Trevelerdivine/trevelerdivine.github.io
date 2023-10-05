@@ -561,7 +561,7 @@ async function calculate_table_status()
 }
 ///////////////////////
 
-async function identify_condition() {
+function identify_condition() {
   const attack_method_type = document.getElementById("attack_method_id").value;
   const talentlevel = document.getElementById("talent-level").value;
   const clock_type = document.getElementById("clock_mainstatus").value;
@@ -593,7 +593,7 @@ async function identify_condition() {
   if (isNaN(circlet_type)) {
     error_message = "聖遺物-冠のメインステータスを設定してください。";
     response.innerHTML = error_message;
-    return;
+    return 1;
   }
   return 0;
 }
