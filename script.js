@@ -573,29 +573,29 @@ async function identify_condition() {
   if (attack_method_type == 0) {
     error_message = "攻撃方法を設定してください";
     response.innerHTML = error_message;
-    return;
+    return 1;
   }
   if (isNaN(talentlevel)) {
     error_message = "天賦レベルを設定してください";
     response.innerHTML = error_message;
-    return;
+    return 1;
   }
   if (isNaN(clock_type)) {
     error_message = "聖遺物-時計のメインステータスを設定してください。";
     response.innerHTML = error_message;
-    return;
+    return 1;
   }
   if (isNaN(goblet_type)) {
     error_message = "聖遺物-杯のメインステータスを設定してください。";
     response.innerHTML = error_message;
-    return;
+    return 1;
   }
   if (isNaN(circlet_type)) {
     error_message = "聖遺物-冠のメインステータスを設定してください。";
     response.innerHTML = error_message;
     return;
   }
-  return;
+  return 0;
 }
 
 ///////////////////////
@@ -856,6 +856,14 @@ async function import_char_parameter()
 
 async function monte_carlo_calculate()
 {
+
+  //入力チェック
+  const input_check = identify_condition();
+  if (input_check ==1)
+  {
+    return;
+  }
+
   const checkboxStates = [];
   const characterInfo = document.getElementById("characterInfo");
   const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
