@@ -656,7 +656,7 @@ class xiangling {
   }
   
     calculate_char_fixed_hp() {
-      return  0;
+      return 0;
     }
   
     calculate_char_result_hp() {
@@ -688,7 +688,7 @@ class xiangling {
     }
   
     calculate_char_fixed_elm_charge() {
-      return 0.2;
+      return 0;
     }
   
     calculate_char_result_elm_charge() {
@@ -716,7 +716,7 @@ class xiangling {
     }
   
     calculate_char_result_dmg_buff() {
-      return 0.4*(this.result_status_array[3]-1) + 0.27 + Math.min(0.75,(this.result_status_array[3])/4);
+      return 0;
     }
 
     calculate_basic_dmg(dmg_rate) {
