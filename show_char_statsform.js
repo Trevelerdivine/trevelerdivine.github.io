@@ -209,20 +209,8 @@ async function show_char_statsform()
     {
       const traits = [
         {
-          id: "traitCheckbox",
-          label: "第1重：悪曜の呪詛 眼力溜まりやすさup"
-        },
-        {
           id: "traitCheckbox2",
           label: "第2重：防御力60%無視"
-        },
-        {
-          id: "traitCheckbox3",
-          label: "第4重：常道への誓い 雷電将軍以外の攻撃力+30%"
-        },
-        {
-          id: "traitCheckbox4",
-          label: "第6重：願いの代行者 雷電将軍以外の元素爆発クールタイム減少"
         }
       ];
 
@@ -230,31 +218,19 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常1ループ（爆発中）", value: "21" },
         { text: "重撃(爆発中)", value: "22" },
-        { text: "元素爆発（初撃）", value: "23" },
+        { text: "夢想の一太刀", value: "23" },
       ];
 
-      createchar_attackmethod(options)
-
-      if (char_constellations > 0)
+      if (char_constellations > 1)
       {
-        for (let i = 0; i < char_constellations; i++) 
-        {
-          const traitCheckbox = document.createElement("input");
-          traitCheckbox.type = "checkbox";
-          traitCheckbox.id = traits[i].id;
-          traitCheckbox.value = traits[i].id;
-          traitCheckbox.checked = true;
-        
-          const traitLabel = document.createElement("label");
-          traitLabel.htmlFor = traits[i].id;
-          traitLabel.textContent = traits[i].label;
-        
-          characterInfo.appendChild(traitCheckbox);
-          characterInfo.appendChild(traitLabel);
-          const lineBreak = document.createElement("br");
-          characterInfo.appendChild(lineBreak);
-        }
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
       }
+      createchar_attackmethod(options)    
     }
     showFormElements();
   }

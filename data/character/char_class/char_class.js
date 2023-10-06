@@ -597,15 +597,52 @@ class xiangling {
       this.base_status_array = base_status_array;
       this.fixed_status_array = fixed_status_array;
       this.result_status_array = result_status_array;
+      this.parameter = parameter;
+      this.talent1effect = 0;
+      this.first_conste_buff = 0;
+      this.six_conste_buff = 0;
+      this.char_constellations = 0;
+      this.reaction_coeff = 0;
+      this.reaction_count = 0;
+      this.attack_count = 0;
+      this.talent2 = 0;
     }
 
     async dmg_rate_data() {
+      this.char_constellations = document.getElementById("char_constellations").value;
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
+      // Spread チェックボックスの状態を取得
+      const agg = document.getElementById("Aggravate");
+      let agg_reaction = 0; // デフォルト値
+      
+      if (agg) { // 要素が存在する場合
+        agg_reaction = agg.checked ? 1 : 0;
+      }
+      // チェックボックスの数と Spread の状態から aggcount を計算
+      this.aggcount = trueCount * agg_reaction;
+    
+      // JSON データを取得
       const response = await fetch("./data/character/char_data/raidenshougun.json");
       const data = await response.json();
-      const dmg_attck_rate = data.元素爆発.数値[10];
-      const dmg_rate = [0,0,0,0,dmg_attck_rate,0,0]; 
-      return dmg_rate;
-    }
+      // 攻撃方法に応じてダメージ率を計算
+      let dmg_rate;
+      let dmg_attack_rate = 0;
+  
+      if (attack_method == 16) {
+        this.attack_count = document.getElementById("xiangling_E_count").value;
+        this.reaction_count = document.getElementById("xiangling_E").value;
+        dmg_attack_rate = parseFloat(data["元素スキル"]["数値"][this.parameter[3]]);
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      } else if (attack_method == 21) {
+        this.attack_count = document.getElementById("xiangling_Q_count").value;
+        this.reaction_count = document.getElementById("xiangling_Q").value;
+        dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][3]["数値"][this.parameter[3]]);
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      }
+    return dmg_rate;
+  }
   
     calculate_char_fixed_hp() {
       return  0;

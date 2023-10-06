@@ -203,6 +203,34 @@ async function show_attack_method()
               createCheckboxList_br(options)
             }
         break
+
+        case "34":
+          const yaeskill_text = createTextNode("　願力の層数：")
+              const yaeskill_selectlist = createSelectList("raiden_E", 0, 60, "", "層", 60);
+              attack_method_prop.appendChild(document.createElement("br"));
+              attack_method_prop.appendChild(yaeskill_text);
+              attack_method_prop.appendChild(yaeskill_selectlist);
+            if (attack_method == 21) {
+              options = [
+                { text: "１段目", value: "0", checked: true },
+                { text: "２段目", value: "1" },
+                { text: "３段目", value: "2" },
+                { text: "４段目", value: "3", checked: true},
+                { text: "５段目", value: "4" },
+              ];
+              createCheckboxList(options);
+            } else if (attack_method == 22) {
+              options = [
+                { text: "重撃", value: "0", checked: true },
+              ];
+              createCheckboxList(options);
+            } else if (attack_method == 23) {
+              options = [
+                { text: "夢想の一太刀", value: "0", checked: true },
+              ];
+              createCheckboxList_br(options);
+            }
+        break
     }
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
