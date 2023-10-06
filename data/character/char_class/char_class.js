@@ -636,7 +636,7 @@ class xiangling {
       
       if (attack_method == 21) {
         for (let i = 0; i < 5; i++) {
-          dmg_attck_rate = parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          dmg_attack_rate = parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
         burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_attack_rate += burst_bonus * resolve;
