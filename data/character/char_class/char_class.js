@@ -592,7 +592,7 @@ class xiangling {
 ////////////////////
 
   class raiden {
-    constructor(base_status_array, fixed_status_array, result_status_array) 
+    constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
     {
       this.base_status_array = base_status_array;
       this.fixed_status_array = fixed_status_array;
