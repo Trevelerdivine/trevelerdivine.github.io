@@ -601,11 +601,12 @@ class xiangling {
       this.second_conste_buff = 0;
       this.char_constellations = 0;
       this.aggcount = 0;
+      this.skill_buff = 0;
+      this.talent2_buff = 0;
     }
 
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
-
       if(this.char_constellations > 1)
       {
         this.second_conste_buff = 0.6;
@@ -623,13 +624,21 @@ class xiangling {
       }
       // チェックボックスの数と Spread の状態から aggcount を計算
       this.aggcount = trueCount * agg_reaction;
-
-      const resolve = parseInt(document.getElementById("raiden_E").value);
     
       // JSON データを取得
       const response = await fetch("./data/character/char_data/raidenshougun.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
+      const resolve = parseInt(document.getElementById("raiden_resolve").value);
+      const raidenn_E_level = document.getElementById("raiden_E_level").value;
+      const raiden_E_check = document.getElementById("raiden_E");
+      let skill_effect = 0;
+      if (raiden_E_check.checked)
+      {
+        skill_effect = 1;
+        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.raidenn_E_level[3]]) * 90;
+      }
+      this.talent2_buff = (this.result_status_array[3] - 1) * 0.4;
       let dmg_rate;
       let dmg_attack_rate = 0;
       let burst_bonus;
@@ -639,17 +648,17 @@ class xiangling {
           dmg_attack_rate = parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
         burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-        dmg_attack_rate += burst_bonus * resolve;
+        dmg_attack_rate += burst_bonus * resolve * skill_effect;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 22) {
         dmg_attack_rate = parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
         burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-        dmg_attack_rate += burst_bonus * resolve;
+        dmg_attack_rate += burst_bonus * resolve * skill_effect;
       } else if (attack_method == 23) {
         dmg_attack_rate = parseFloat(data["元素爆発"]["数値"][this.parameter[3]]);
         burst_bonus = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-        dmg_attack_rate += burst_bonus * resolve;
+        dmg_attack_rate += burst_bonus * resolve * skill_effect;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       }
     return dmg_rate;
@@ -712,11 +721,11 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return 0;
+      return this.skill_buff;
     }
   
     calculate_char_result_dmg_buff() {
-      return 0;
+      return this.talent2_buff;
     }
 
     calculate_basic_dmg(dmg_rate) {

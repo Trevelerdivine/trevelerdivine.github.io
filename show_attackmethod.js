@@ -205,11 +205,11 @@ async function show_attack_method()
         break
 
         case "34":
-          const yaeskill_text = createTextNode("　願力の層数：")
-              const yaeskill_selectlist = createSelectList("raiden_E", 0, 60, "", "層", 60);
+              const raidenskill_text = createTextNode("　願力の層数：")
+              const raidenskill_selectlist = createSelectList("raiden_resolve", 0, 60, "", "層", 60);
               attack_method_prop.appendChild(document.createElement("br"));
-              attack_method_prop.appendChild(yaeskill_text);
-              attack_method_prop.appendChild(yaeskill_selectlist);
+              attack_method_prop.appendChild(raidenskill_text);
+              attack_method_prop.appendChild(raidenskill_selectlist);
             if (attack_method == 21) {
               options = [
                 { text: "１段目", value: "0", checked: true },
