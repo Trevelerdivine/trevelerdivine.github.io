@@ -630,7 +630,7 @@ class xiangling {
       if (raiden_E_check.checked)
       {
         skill_effect = 1;
-        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.raidenn_E_level]) * 0.09;
+        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][raidenn_E_level]) * 0.09;
         console.log(this.skill_buff);
       }
       let dmg_rate;
