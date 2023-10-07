@@ -207,6 +207,19 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "34")
     {
+      const elementsToAddToCharTalent = [
+        createCheckbox("raiden_E", true),
+        createLabel("raiden_E", "元素スキル：雷罰悪曜の眼"),
+        document.createElement("br"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("raiden_E_level", 1, 13, "Lv.", "", 10),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
       const traits = [
         {
           id: "traitCheckbox2",
