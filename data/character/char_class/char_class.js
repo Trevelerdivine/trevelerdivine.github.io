@@ -631,7 +631,6 @@ class xiangling {
       {
         skill_effect = 1;
         this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][raidenn_E_level]) * 0.09;
-        console.log(this.skill_buff);
       }
       let dmg_rate;
       let dmg_attack_rate = 0;
@@ -715,14 +714,12 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      console.log(this.skill_buff);
       return this.skill_buff;
     }
   
     calculate_char_result_dmg_buff() {
       const resultStatusArray = this.result_status_array;
       const talent2_buff = (resultStatusArray[3] - 1) * 0.4;
-      console.log(this.talent2_buff);
       return talent2_buff;
     }
 
