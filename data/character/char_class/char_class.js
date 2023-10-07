@@ -602,7 +602,6 @@ class xiangling {
       this.char_constellations = 0;
       this.aggcount = 0;
       this.skill_buff = 0;
-      this.talent2_buff = 0;
     }
 
     async dmg_rate_data() {
@@ -638,7 +637,6 @@ class xiangling {
         skill_effect = 1;
         this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.raidenn_E_level]) * 90;
       }
-      this.talent2_buff = (this.result_status_array[3] - 1) * 0.4;
       let dmg_rate;
       let dmg_attack_rate = 0;
       let burst_bonus;
@@ -725,7 +723,9 @@ class xiangling {
     }
   
     calculate_char_result_dmg_buff() {
-      return this.talent2_buff;
+      const resultStatusArray = this.result_status_array;
+      const talent2_buff = (resultStatusArray[3] - 1) * 0.4;
+      return talent2_buff;
     }
 
     calculate_basic_dmg(dmg_rate) {
