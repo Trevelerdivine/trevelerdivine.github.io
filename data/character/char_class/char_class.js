@@ -635,7 +635,7 @@ class xiangling {
       if (raiden_E_check.checked)
       {
         skill_effect = 1;
-        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.raidenn_E_level]) * 90;
+        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.raidenn_E_level]) * 0.09;
       }
       let dmg_rate;
       let dmg_attack_rate = 0;
@@ -650,9 +650,9 @@ class xiangling {
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 22) {
         dmg_attack_rate = parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]]);
-        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
         burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_attack_rate += burst_bonus * resolve * skill_effect;
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 23) {
         dmg_attack_rate = parseFloat(data["元素爆発"]["数値"][this.parameter[3]]);
         burst_bonus = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
