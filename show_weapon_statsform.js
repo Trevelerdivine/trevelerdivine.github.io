@@ -18,13 +18,11 @@ async function show_weapon_statsform() {
   cr_form.style.display = "none"; // 会心率フォームを非表示
   cd_form.style.display = "none"; // 会心ダメージフォームを非表示
 
-  const weaponSelect = document.getElementById("weapon_index");
-  const selectedweapon = weaponSelect.value;
   weaponInfo.style.display = "block";
 
   weaponInfo.innerHTML = "";
 
-  if (selectedweapon === "0") {
+  if (selectedWeaponId = "127") {
     const traits = [
       {
         id: "traitCheckbox",
@@ -76,7 +74,7 @@ async function show_weapon_statsform() {
     }
   }
   
-      else if (selectedweapon === "4") {
+      else if (selectedweapon === "68") {
     const traits = [
       {
         id: "traitCheckbox",

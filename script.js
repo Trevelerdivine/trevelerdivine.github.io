@@ -604,22 +604,22 @@ function identify_condition() {
 async function create_weapon_instance(base_status, fixed_status, result_status) 
 {
   const weapon_index = document.getElementById("weapon_index").value;
-  if (weapon_index === "0") 
+  if (selectedWeaponId  === "127") 
   {
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_index === "2") 
+  if (weapon_index === "149") 
   {
     const weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_index === "4") 
+  if (weapon_index === "68") 
   {
     const weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_index === "5") 
+  if (weapon_index === "78") 
   {
     const weapon_instance = new TheCatch(base_status, fixed_status, result_status);
     return weapon_instance;
