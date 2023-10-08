@@ -617,7 +617,6 @@ function identify_condition() {
 
 async function create_weapon_instance(base_status, fixed_status, result_status) 
 {
-  console.log(selectedWeaponId)
   if (selectedWeaponId  === "127") 
   {
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
