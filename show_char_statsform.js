@@ -246,6 +246,7 @@ async function show_char_statsform()
       createchar_attackmethod(options)    
     }
     showFormElements();
+    toggleweapontype(weapon_type_index);
   }
 
 function createchar_attackmethod(options)

@@ -1398,9 +1398,7 @@
       checkbox.checked = false;
       show_char_statsform();
       show_weapon_statsform();
-      toggleweapontype(weapon_type_index);
       calculate_table_status();
-      
     }
 
     for (let i = 0; i < images.length; i++)
@@ -1447,7 +1445,6 @@
       const imageSrc = image.getAttribute('src');
       imageIdToSrc[imageId] = imageSrc;
       image.addEventListener('click', handleWeaponClick);
-      console.log(selectedWeaponId);
     }
   }
 
