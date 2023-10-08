@@ -17,8 +17,24 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "beidou","razor","lisa","travelarelectro","wanderer","kazuhakaedehara","xiao","venti","jean","faruzan",
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo"];
-const weapon_name = ["AThousandFloatingDreams","Kagura'sVerity","SacrificialFragments","StaffofHoma","EngulfingLightning","TheCatch"];
-                  
+const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhand'sAssistant",
+"WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "Xiphos'Moonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi" "TheAlleyFlash",
+"FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "Lion'sRoar", "RoyalLongsword", "SacrificialSword", "TheFlute.webp", "FavoniusSword",
+"SkyriderSword", "FilletBlade", "Traveler'sHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "Wolf'sGravestone",
+"SkywardPride", "PortablePowerSaw", "TalkingStick", "TidalShadow", "MailedFlower", "MakhairaAquamarine", "ForestRegalia", "Akuoumaru", "LuxuriousSeaLoad", "KatsuragikiriNagamasa",
+"LithicBlade", "SnowTombedStarsilver", "SerpentSpine", "BlackcliffSlasher", "Whiteblind", "PrototypeArchaic", "RoyalGreatsword", "Rainslasher", "SacrificialGreatsword", "TheBell",
+"FavoniusGreatsword", "SkyriderGreatsword", "DebateClub", "WhiteIronGreatsword", "BloodtaintedGreatsword", "FerrousShadow", "StaffoftheScarletSands", "CalamityQueller", "EngulfingLightning", "StaffofHoma",
+"VortexVanguisher", "SkywardSpine", "PrimordialJadeWingedSpear", "BalladoftheFjords", "RightfulReward", "MissiveWindspear", "Moonpiercer", "Wavebreaker'sFin", "TheCatch", "KitainCrossSpear",
+"LithicSpear", "DragonspineSpear", "RoyalSpear", "FavoniusLance", "Deathmatch", "BlackcliffPole", "CrescentPike", "PrototypeStarglitter", "Dragon'sBane", "BlackTassel",
+"WhiteTassel", "TheFirstGreatMagic", "Hunter'sPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
+"SongofStillness", "IbisPiercer", "King'sSquire", "EndoftheLine", "FadingTwilight", "Mouun'sMoon", "Hamayumi", "MitternachtsWaltz", "WindblumeOde", "AlleyHunter",
+"TheViridescentHunt", "BlackcliffWarbow", "CompoundBow", "PrototypeCrescent", "Rust", "RoyalBow", "SacrificialBow", "TheStringless", "FavoniusWarbow", "Messenger",
+"Slingshot", "RecurveBow", "Sharpshooter'sOath", "RavenBow", "TomeoftheEternalFlow", "Jadefall'sSplendor", "Tulaytullah'sRemembrance", "AThousandFloatingDreams", "Kagura'sVerity", "EverlastingMoonglow",
+"MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladoftheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
+"DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
+"TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide"]
+
+
 const elm_reaction_obj = [
   {
   id: "Vaporize_pyro",
@@ -204,9 +220,8 @@ async function calculate_depend_status()
   const char_data = await char_response.json();
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
   const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
-  _status = parseInt(char_data["武器"]);
-  const weapon_index = document.getElementById("weapon_index").value;
-  const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[weapon_index] + ".json");
+  weapon_type_index = parseInt(char_data["武器"]);
+  const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
   const weapon_data = await weapon_response.json();
   const weapon_depend_status = weapon_data.ステータス.依存ステータス;
   
