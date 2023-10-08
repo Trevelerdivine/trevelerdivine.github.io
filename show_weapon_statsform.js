@@ -1,5 +1,4 @@
 async function show_weapon_statsform() {
-  await calculate_depend_status();
   let weaponInfo = document.getElementById("weaponInfo");
   let hp_form = document.getElementById("hp_form");
   let attck_form = document.getElementById("attck_form");

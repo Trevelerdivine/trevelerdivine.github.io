@@ -1234,7 +1234,6 @@
   document.getElementById('char_talent').addEventListener('change', calculate_table_status);
   document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
   document.getElementById('option2').addEventListener('change', calculate_table_status);
-
   document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
   document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
@@ -1372,7 +1371,7 @@
 
     indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
 
-    function handleCharClick() 
+    async function handleCharClick() 
     {
       const select_reaction_method = document.getElementById("select_reaction_method");
       select_reaction_method.innerHTML = "";
@@ -1396,6 +1395,7 @@
       indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
       const checkbox = document.getElementById('pop-up_char');
       checkbox.checked = false;
+      await calculate_depend_status();
       show_char_statsform();
       show_weapon_statsform();
       calculate_table_status();
