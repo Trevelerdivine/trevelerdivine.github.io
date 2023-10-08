@@ -209,17 +209,15 @@ async function calculate_depend_status()
     } else if (attack_method >= 21 && attack_method <= 25) {
       attack_method_index = 4;
     } else {
-        // それ以外の場合、デフォルト値を設定するかエラーハンドリングを追加してください
-        // ここではデフォルト値として -1 を設定していますが、必要に応じて変更してください
         attack_method_index = -1;
     }
   }
   depend_status = [0,0,0,0,0,0,0];
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
-  const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
   weapon_type_index = parseInt(char_data["武器"]);
+  char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
+  const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;;
   const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
   const weapon_data = await weapon_response.json();
   const weapon_depend_status = weapon_data.ステータス.依存ステータス;
