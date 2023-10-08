@@ -73,7 +73,7 @@ async function show_weapon_statsform() {
     }
   }
   
-  else if (selectedweapon === "68") {
+  else if (selectedWeaponId === "68") {
     const traits = [
       {
         id: "traitCheckbox",
