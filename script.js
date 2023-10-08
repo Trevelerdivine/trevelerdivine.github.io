@@ -87,9 +87,8 @@ async function calculate_char_base_status()
 
 async function calculate_weapon_base_status() 
 {
-  const weapon_index = document.getElementById("weapon_index").value;
   const weapon_level = document.getElementById("weapon_level").value;
-  const response = await fetch("./data/weapon/weapon_data/" + weapon_name[weapon_index] + ".json");
+  const response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
   const data = await response.json();
   const weapon_base_hp = data.ステータス.基礎HP[weapon_level];
   const weapon_base_attck = data.ステータス.基礎攻撃力[weapon_level];
@@ -618,23 +617,22 @@ function identify_condition() {
 
 async function create_weapon_instance(base_status, fixed_status, result_status) 
 {
-  const weapon_index = document.getElementById("weapon_index").value;
   if (selectedWeaponId  === "127") 
   {
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_index === "149") 
+  if (selectedWeaponId === "149") 
   {
     const weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_index === "68") 
+  if (selectedWeaponId === "68") 
   {
     const weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (weapon_index === "78") 
+  if (selectedWeaponId === "78") 
   {
     const weapon_instance = new TheCatch(base_status, fixed_status, result_status);
     return weapon_instance;
