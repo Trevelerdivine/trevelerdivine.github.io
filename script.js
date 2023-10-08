@@ -215,7 +215,7 @@ async function calculate_depend_status()
   depend_status = [0,0,0,0,0,0,0];
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  weapon_type_index = parseInt(char_data["武器"]);
+  weapon_type_index = parseInt(char_data["武器タイプ"]);
   if (attack_method != 0)
  {
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
