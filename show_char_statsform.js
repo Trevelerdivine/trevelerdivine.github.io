@@ -244,7 +244,6 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
       createchar_attackmethod(options)  
-      show_char_statsform();  
     }
     showFormElements();
   }
