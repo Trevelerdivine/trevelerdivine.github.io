@@ -1185,7 +1185,8 @@
   let clickedImages = [];
   let selectedImageIds = [21, 21];
   let selectedCharId = "56";
-  let selectedWeaponId = "56";
+  let selectedWeaponId = "127";
+  let weapon_type_index = 4;
   let buttonscondition = [false, false, false, false, false, false, false];
   let elements_name = ["tierPyro", "tierHydro", "tierCyro", "tierElectro", "tierAnemo", "tierDendro", "tierGeo"];
   let weapon_type = ["sword", "claymore", "polearm", "bow", "catalyst"];
@@ -1397,6 +1398,7 @@
       checkbox.checked = false;
       show_char_statsform();
       show_weapon_statsform();
+      toggleweapontype(weapon_type_index);
       calculate_table_status();
       
     }
