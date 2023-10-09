@@ -1437,9 +1437,9 @@
       checkbox.checked = false;
       await show_char_statsform();
       await calculate_depend_status();
+      await char_afweapon_setting();
       show_weapon_statsform();
       calculate_table_status();
-      await char_afweapon_setting();
       toggleweapontype(weapon_type_index);
     }
 
