@@ -1368,8 +1368,11 @@
     }
   }
 
-  async function char_afweapon_setting(images, popupImages, indexDisplay)
+  async function char_afweapon_setting()
   {
+    const images = document.querySelectorAll('.overlay img');
+    const popupImages = document.querySelectorAll('.open img');
+    const indexDisplay = document.getElementById('index-display');
     const response = await fetch("./data/artifact/af_data.json");
     const data = await response.json();
     selectedImageIds = data["聖遺物"];
@@ -1432,7 +1435,7 @@
       await calculate_depend_status();
       show_weapon_statsform();
       calculate_table_status();
-      //char_afweapon_setting();
+      char_afweapon_setting();
       toggleweapontype(weapon_type_index);
     }
 
