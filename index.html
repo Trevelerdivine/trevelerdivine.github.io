@@ -1399,8 +1399,8 @@
       });
 
     const selectedImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
-    popupImage.setAttribute('src', selectedImageSrc);
-    popupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
+    afpopupImage.setAttribute('src', selectedImageSrc);
+    afpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
     
     show_artifact()
   }
@@ -1532,8 +1532,8 @@
   window.addEventListener('DOMContentLoaded', function()
   {
     const images = document.querySelectorAll('.overlay img');
-    afpopupImages = document.querySelectorAll('.open img');
     const indexDisplay = document.getElementById('index-display');
+    afpopupImages = document.querySelectorAll('.open img');
     handleImageSelection(images, indexDisplay);
     // 最初の2つの画像を選択済みにする処理
     let image = images[4];
