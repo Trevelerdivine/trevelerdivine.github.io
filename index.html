@@ -1187,6 +1187,7 @@
   let charimageIdToSrc = {};
   let weaponimageIdToSrc = {};
   let afpopupImages;
+  let weaponpopupImage;
   let selectedImageIds = [21, 21];
   let selectedCharId = "56";
   let selectedWeaponId = "127";
@@ -1399,8 +1400,8 @@
       });
 
     const selectedImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
-    afpopupImage.setAttribute('src', selectedImageSrc);
-    afpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
+    weaponpopupImage.setAttribute('src', selectedImageSrc);
+    weaponpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
     
     show_artifact()
   }
@@ -1448,7 +1449,7 @@
     }
   }
 
-  function handleWeaponSelection(images, popupImage, indexDisplay)
+  function handleWeaponSelection(images, indexDisplay)
   {
     indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
 
@@ -1465,8 +1466,8 @@
       selectedWeaponId = newSelectedWeaponId;
 
       const selectedImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
-      popupImage.setAttribute('src', selectedImageSrc);
-      popupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
+      weaponpopupImage.setAttribute('src', selectedImageSrc);
+      weaponpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
       indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
       const checkbox = document.getElementById('pop-up_weapon');
@@ -1554,10 +1555,10 @@
     const charPopupImage = document.querySelector('.open_char img');
     const charIndexDisplay = document.getElementById('Charindex-display');
     const weaponImages = document.querySelectorAll('.Weapon_images img');
-    const weaponPopupImage = document.querySelector('.open_weapon img');
+    weaponPopupImage = document.querySelector('.open_weapon img');
     const weaponIndexDisplay = document.getElementById('Weaponindex-display');
     handleCharSelection(charImages, charPopupImage, charIndexDisplay);
-    handleWeaponSelection(weaponImages, weaponPopupImage, weaponIndexDisplay);
+    handleWeaponSelection(weaponImages, weaponIndexDisplay);
     const charOverlay = document.querySelector('.overlay_char');
     const weaponOverlay = document.querySelector('.overlay_weapon');
     charOverlay.addEventListener('click', function(event) {
