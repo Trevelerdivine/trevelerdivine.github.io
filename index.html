@@ -1187,7 +1187,7 @@
   let charimageIdToSrc = {};
   let weaponimageIdToSrc = {};
   let afpopupImages;
-  let weaponpopupImage;
+  let weaponPopupImage;
   let selectedImageIds = [21, 21];
   let selectedCharId = "56";
   let selectedWeaponId = "127";
@@ -1371,43 +1371,42 @@
   }
 
   async function char_afweapon_setting() {
-  const afpopupImages = document.querySelectorAll('.open img');
-  const indexDisplay = document.getElementById('index-display');
-  
-  // JSONデータを取得
-  const afresponse = await fetch("./data/artifact/af_data.json");
-  const afdata = await afresponse.json();
-  
-  // 選択されたセット効果の初期化
-  let set_eff1;
-  let set_eff2;
-  
-  if (selectedImageIds[0] === selectedImageIds[1]) {
-    set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
-    set_eff2 = afdata[af_list[selectedImageIds[0]]]["4セット効果"];
-    document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
-    document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
-  } else {
-    set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
-    set_eff2 = afdata[af_list[selectedImageIds[1]]]["2セット効果"];
-    document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
-    document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
-  }
+    const indexDisplay = document.getElementById('index-display');
+    
+    // JSONデータを取得
+    const afresponse = await fetch("./data/artifact/af_data.json");
+    const afdata = await afresponse.json();
+    
+    // 選択されたセット効果の初期化
+    let set_eff1;
+    let set_eff2;
+    
+    if (selectedImageIds[0] === selectedImageIds[1]) {
+      set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
+      set_eff2 = afdata[af_list[selectedImageIds[0]]]["4セット効果"];
+      document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
+      document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
+    } else {
+      set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
+      set_eff2 = afdata[af_list[selectedImageIds[1]]]["2セット効果"];
+      document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
+      document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
+    }
 
-  // 選択された聖遺物の画像設定
-  selectedImageIds.forEach((selectedImageId, index) => {
-    const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
-    afpopupImages[index].setAttribute('src', selectedImageSrc);
-    afpopupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
-  });
+    // 選択された聖遺物の画像設定
+    selectedImageIds.forEach((selectedImageId, index) => {
+      const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
+      afpopupImages[index].setAttribute('src', selectedImageSrc);
+      afpopupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+    });
 
-  // 選択された武器の画像設定
-  const selectedweaponImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
-  weaponpopupImage.setAttribute('src', selectedweaponImageSrc);
-  weaponpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
+    // 選択された武器の画像設定
+    const selectedweaponImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
+    weaponPopupImage.setAttribute('src', selectedweaponImageSrc);
+    weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
-  // show_artifact()関数の呼び出し
-  show_artifact();
+    // show_artifact()関数の呼び出し
+    show_artifact();
 }
 
 
@@ -1462,17 +1461,11 @@
     { 
       const newSelectedWeaponId = this.getAttribute('id');
 
-      if (selectedWeaponId)
-      {
-        const previousImage = document.getElementById(selectedWeaponId);
-        previousImage.classList.remove('selected');
-      }
-
       selectedWeaponId = newSelectedWeaponId;
 
       const selectedImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
-      weaponpopupImage.setAttribute('src', selectedImageSrc);
-      weaponpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
+      weaponPopupImage.setAttribute('src', selectedImageSrc);
+      weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
       indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
       const checkbox = document.getElementById('pop-up_weapon');
