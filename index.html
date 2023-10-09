@@ -1410,48 +1410,46 @@
 }
 
 
-  function handleCharSelection(images, popupImage, indexDisplay)
-  {
+function handleCharSelection(images, popupImage, indexDisplay) {
+  const attack_method_prop = document.getElementById("attack_method_prop");
+  const select_reaction_method = document.getElementById("select_reaction_method");
+  const elemental_reaction = document.getElementById("element_action");
+
+  indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
+
+  async function handleCharClick() {
+    attack_method_prop.innerHTML = "";
+    select_reaction_method.innerHTML = "";
+    elemental_reaction.innerHTML = "";
+
+    const newSelectedCharId = this.getAttribute('id');
+    selectedCharId = newSelectedCharId;
+
+    const selectedImageSrc = charimageIdToSrc[selectedCharId] || '';
+    popupImage.setAttribute('src', selectedImageSrc);
+    popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
 
     indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
 
-    async function handleCharClick() 
-    {
-      const attack_method_prop = document.getElementById("attack_method_prop");
-      attack_method_prop.innerHTML = "";
-      const select_reaction_method = document.getElementById("select_reaction_method");
-      select_reaction_method.innerHTML = "";
-      const elemental_reaction = document.getElementById("element_action");
-      elemental_reaction.innerHTML = "";
-      
-      
-      const newSelectedCharId = this.getAttribute('id');
-      selectedCharId = newSelectedCharId;
+    const checkbox = document.getElementById('pop-up_char');
+    checkbox.checked = false;
 
-      const selectedImageSrc = charimageIdToSrc[selectedCharId] || '';
-      popupImage.setAttribute('src', selectedImageSrc);
-      popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
-
-      indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
-      const checkbox = document.getElementById('pop-up_char');
-      checkbox.checked = false;
-      await show_char_statsform();
-      await calculate_depend_status();
-      await char_afweapon_setting();
-      show_weapon_statsform();
-      calculate_table_status();
-      toggleweapontype(weapon_type_index);
-    }
-
-    for (let i = 0; i < images.length; i++)
-    {
-      const image = images[i];
-      const imageId = image.getAttribute('id');
-      const imageSrc = image.getAttribute('src');
-      charimageIdToSrc[imageId] = imageSrc;
-      image.addEventListener('click', handleCharClick);
-    }
+    await show_char_statsform();
+    await calculate_depend_status();
+    await char_afweapon_setting();
+    show_weapon_statsform();
+    calculate_table_status();
+    toggleweapontype(weapon_type_index);
   }
+
+  for (let i = 0; i < images.length; i++) {
+    const image = images[i];
+    const imageId = image.getAttribute('id');
+    const imageSrc = image.getAttribute('src');
+    charimageIdToSrc[imageId] = imageSrc;
+    image.addEventListener('click', handleCharClick);
+  }
+}
 
   function handleWeaponSelection(images, indexDisplay)
   {
@@ -1528,52 +1526,64 @@
     buttonscondition[index] = true;
   }
 
-  window.addEventListener('DOMContentLoaded', function()
-  {
-    const images = document.querySelectorAll('.overlay img');
-    const indexDisplay = document.getElementById('index-display');
-    afpopupImages = document.querySelectorAll('.open img');
-    handleImageSelection(images, indexDisplay);
-    // 最初の2つの画像を選択済みにする処理
-    let image = images[4];
-    changeImageClass(image);
-    changeImageClass(image);
+  window.addEventListener('DOMContentLoaded', function () {
+  // オーバーレイ画像
+  const overlayImages = document.querySelectorAll('.overlay img');
+  const indexDisplay = document.getElementById('index-display');
+  afpopupImages = document.querySelectorAll('.open img');
+  
+  // イメージの選択処理を実行
+  handleImageSelection(overlayImages, indexDisplay);
+  
+  // 最初の2つの画像を選択済みにする処理
+  const initialImage = overlayImages[4];
+  changeImageClass(initialImage);
+  changeImageClass(initialImage);
+  
+  // オーバーレイのクリック時にポップアップを閉じる処理
+  const overlay = document.querySelector('.overlay');
+  overlay.addEventListener('click', function (event) {
+    if (!event.target.closest('.window')) {
+      const checkbox = document.getElementById('pop-up');
+      checkbox.checked = false;
+    }
+  });
 
-    const overlay = document.querySelector('.overlay');
-    overlay.addEventListener('click', function(event)
-    {
-      if (!event.target.closest('.window')) 
-      {
-        const checkbox = document.getElementById('pop-up');
-        checkbox.checked = false;
-      }
-    });
+  // キャラクター画像
+  const charImages = document.querySelectorAll('.char_images img');
+  const charPopupImage = document.querySelector('.open_char img');
+  const charIndexDisplay = document.getElementById('Charindex-display');
+  
+  // キャラクターの選択処理を実行
+  handleCharSelection(charImages, charPopupImage, charIndexDisplay);
 
-    const charImages = document.querySelectorAll('.char_images img');
-    const charPopupImage = document.querySelector('.open_char img');
-    const charIndexDisplay = document.getElementById('Charindex-display');
-    const weaponImages = document.querySelectorAll('.Weapon_images img');
-    weaponPopupImage = document.querySelector('.open_weapon img');
-    const weaponIndexDisplay = document.getElementById('Weaponindex-display');
-    handleCharSelection(charImages, charPopupImage, charIndexDisplay);
-    handleWeaponSelection(weaponImages, weaponIndexDisplay);
-    const charOverlay = document.querySelector('.overlay_char');
-    const weaponOverlay = document.querySelector('.overlay_weapon');
-    charOverlay.addEventListener('click', function(event) {
-      if (!event.target.closest('.window'))
-      {
-        const checkbox = document.getElementById('pop-up_char');
-        checkbox.checked = false;
-      }
-    });
-    weaponOverlay.addEventListener('click', function(event) {
-    if (!event.target.closest('.window'))
-    {
+  // 武器画像
+  const weaponImages = document.querySelectorAll('.Weapon_images img');
+  weaponPopupImage = document.querySelector('.open_weapon img');
+  const weaponIndexDisplay = document.getElementById('Weaponindex-display');
+
+  // 武器の選択処理を実行
+  handleWeaponSelection(weaponImages, weaponIndexDisplay);
+
+  // キャラクターおよび武器のオーバーレイクリック時にポップアップを閉じる処理
+  const charOverlay = document.querySelector('.overlay_char');
+  const weaponOverlay = document.querySelector('.overlay_weapon');
+
+  charOverlay.addEventListener('click', function (event) {
+    if (!event.target.closest('.window')) {
+      const checkbox = document.getElementById('pop-up_char');
+      checkbox.checked = false;
+    }
+  });
+
+  weaponOverlay.addEventListener('click', function (event) {
+    if (!event.target.closest('.window')) {
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
     }
   });
-  });
+});
+
 
 
 </script>
