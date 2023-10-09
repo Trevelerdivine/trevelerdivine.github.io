@@ -1183,9 +1183,6 @@
 </div>
 <script>
   let clickedImages = [];
-  let afimageIdToSrc = {};
-  let charimageIdToSrc = {};
-  let weaponimageIdToSrc = {};
   let selectedImageIds = [21, 21];
   let selectedCharId = "56";
   let selectedWeaponId = "127";
@@ -1314,6 +1311,7 @@
 
   async function handleImageSelection(images, popupImages, indexDisplay)
   {
+    let imageIdToSrc = {};
     const response = await fetch("./data/artifact/af_data.json");
     const data = await response.json();
     let set_eff1;
@@ -1351,7 +1349,7 @@
         document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
       }
       selectedImageIds.forEach(function(selectedImageId, index) {
-        const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
+        const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
         popupImages[index].setAttribute('src', selectedImageSrc);
         popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
       });
@@ -1363,16 +1361,13 @@
       const image = images[i];
       const imageId = image.getAttribute('id');
       const imageSrc = image.getAttribute('src');
-      afimageIdToSrc[imageId] = imageSrc;
+      imageIdToSrc[imageId] = imageSrc;
       image.addEventListener('click', handleImageClick);
     }
   }
 
-  async function char_afweapon_setting()
+  async function char_afweapon_setting(images, popupImages, indexDisplay)
   {
-    const images = document.querySelectorAll('.overlay img');
-    const popupImages = document.querySelectorAll('.open img');
-    const indexDisplay = document.getElementById('index-display');
     const response = await fetch("./data/artifact/af_data.json");
     const data = await response.json();
     selectedImageIds = data["聖遺物"];
@@ -1394,7 +1389,7 @@
         document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
       }
     selectedImageIds.forEach(function(selectedImageId, index) {
-        const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
+        const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
         popupImages[index].setAttribute('src', selectedImageSrc);
         popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
       });
@@ -1404,6 +1399,8 @@
 
   function handleCharSelection(images, popupImage, indexDisplay)
   {
+    const imageIdToSrc = {};
+
     indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
 
     async function handleCharClick() 
@@ -1423,7 +1420,7 @@
 
       selectedCharId = newSelectedCharId;
 
-      const selectedImageSrc = charimageIdToSrc[selectedCharId] || '';
+      const selectedImageSrc = imageIdToSrc[selectedCharId] || '';
       popupImage.setAttribute('src', selectedImageSrc);
       popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
 
@@ -1443,14 +1440,14 @@
       const image = images[i];
       const imageId = image.getAttribute('id');
       const imageSrc = image.getAttribute('src');
-      charimageIdToSrc[imageId] = imageSrc;
+      imageIdToSrc[imageId] = imageSrc;
       image.addEventListener('click', handleCharClick);
     }
   }
 
   function handleWeaponSelection(images, popupImage, indexDisplay)
   {
-
+    const imageIdToSrc = {};
     indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
 
     function handleWeaponClick() 
@@ -1465,7 +1462,7 @@
 
       selectedWeaponId = newSelectedWeaponId;
 
-      const selectedImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
+      const selectedImageSrc = imageIdToSrc[selectedWeaponId] || '';
       popupImage.setAttribute('src', selectedImageSrc);
       popupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
@@ -1480,7 +1477,7 @@
       const image = images[i];
       const imageId = image.getAttribute('id');
       const imageSrc = image.getAttribute('src');
-      weaponimageIdToSrc[imageId] = imageSrc;
+      imageIdToSrc[imageId] = imageSrc;
       image.addEventListener('click', handleWeaponClick);
     }
   }
