@@ -1183,7 +1183,6 @@
 </div>
 <script>
   let clickedImages = [];
-  let imageIdToSrc = {};
   let selectedImageIds = [21, 21];
   let selectedCharId = "56";
   let selectedWeaponId = "127";
@@ -1312,6 +1311,7 @@
 
   async function handleImageSelection(images, popupImages, indexDisplay)
   {
+    let imageIdToSrc = {};
     const response = await fetch("./data/artifact/af_data.json");
     const data = await response.json();
     let set_eff1;
@@ -1368,9 +1368,12 @@
 
   async function char_afweapon_setting()
   {
+    const images = document.querySelectorAll('.overlay img');
+    const popupImages = document.querySelectorAll('.open img');
+    const indexDisplay = document.getElementById('index-display');
     const response = await fetch("./data/artifact/af_data.json");
     const data = await response.json();
-    selectedImageIds = data[聖遺物];
+    selectedImageIds = data["聖遺物"];
     let set_eff1;
     let set_eff2;
 
@@ -1380,7 +1383,6 @@
         set_eff2 = data[af_list[selectedImageIds[0]]]["4セット効果"];
         document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
         document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
-
       }
     else
       {
@@ -1432,6 +1434,7 @@
       await calculate_depend_status();
       show_weapon_statsform();
       calculate_table_status();
+      char_afweapon_setting();
       toggleweapontype(weapon_type_index);
     }
 
