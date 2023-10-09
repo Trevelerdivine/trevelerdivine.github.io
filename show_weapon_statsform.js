@@ -21,7 +21,7 @@ async function show_weapon_statsform() {
 
   weaponInfo.innerHTML = "";
 
-  if (selectedWeaponId === "127") {
+  if (selectedWeaponId == "127") {
     const traits = [
       {
         id: "traitCheckbox",
@@ -73,7 +73,7 @@ async function show_weapon_statsform() {
     }
   }
   
-  else if (selectedWeaponId === "68") {
+  else if (selectedWeaponId == "68") {
     const traits = [
       {
         id: "traitCheckbox",
