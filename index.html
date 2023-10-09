@@ -1370,41 +1370,46 @@
     }
   }
 
-  async function char_afweapon_setting()
-  {
-    const afpopupImages = document.querySelectorAll('.open img');
-    const indexDisplay = document.getElementById('index-display');
-    const afresponse = await fetch("./data/artifact/af_data.json");
-    const afdata = await afresponse.json();
-    let set_eff1;
-    let set_eff2;
-
-    if (selectedImageIds[0] == selectedImageIds[1])
-      {
-        set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
-        set_eff2 = afdata[af_list[selectedImageIds[0]]]["4セット効果"];
-        document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
-        document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
-      }
-    else
-      {
-        set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
-        set_eff2 = afdata[af_list[selectedImageIds[1]]]["2セット効果"];
-        document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
-        document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
-      }
-    selectedImageIds.forEach(function(selectedImageId, index) {
-        const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
-        afpopupImages[index].setAttribute('src', selectedImageSrc);
-        afpopupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
-      });
-
-    const selectedImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
-    weaponpopupImage.setAttribute('src', selectedImageSrc);
-    weaponpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
-    
-    show_artifact()
+  async function char_afweapon_setting() {
+  const afpopupImages = document.querySelectorAll('.open img');
+  const indexDisplay = document.getElementById('index-display');
+  
+  // JSONデータを取得
+  const afresponse = await fetch("./data/artifact/af_data.json");
+  const afdata = await afresponse.json();
+  
+  // 選択されたセット効果の初期化
+  let set_eff1;
+  let set_eff2;
+  
+  if (selectedImageIds[0] === selectedImageIds[1]) {
+    set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
+    set_eff2 = afdata[af_list[selectedImageIds[0]]]["4セット効果"];
+    document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
+    document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[0]]}：4セット効果<br>${set_eff2}`;
+  } else {
+    set_eff1 = afdata[af_list[selectedImageIds[0]]]["2セット効果"];
+    set_eff2 = afdata[af_list[selectedImageIds[1]]]["2セット効果"];
+    document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
+    document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
   }
+
+  // 選択された聖遺物の画像設定
+  selectedImageIds.forEach((selectedImageId, index) => {
+    const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
+    afpopupImages[index].setAttribute('src', selectedImageSrc);
+    afpopupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
+  });
+
+  // 選択された武器の画像設定
+  const selectedweaponImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
+  weaponpopupImage.setAttribute('src', selectedweaponImageSrc);
+  weaponpopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
+
+  // show_artifact()関数の呼び出し
+  show_artifact();
+}
+
 
   function handleCharSelection(images, popupImage, indexDisplay)
   {
