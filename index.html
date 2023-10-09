@@ -1183,6 +1183,9 @@
 </div>
 <script>
   let clickedImages = [];
+  let afimageIdToSrc = {};
+  let charimageIdToSrc = {};
+  let weaponimageIdToSrc = {};
   let selectedImageIds = [21, 21];
   let selectedCharId = "56";
   let selectedWeaponId = "127";
@@ -1311,7 +1314,6 @@
 
   async function handleImageSelection(images, popupImages, indexDisplay)
   {
-    let imageIdToSrc = {};
     const response = await fetch("./data/artifact/af_data.json");
     const data = await response.json();
     let set_eff1;
@@ -1349,7 +1351,7 @@
         document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
       }
       selectedImageIds.forEach(function(selectedImageId, index) {
-        const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
+        const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
         popupImages[index].setAttribute('src', selectedImageSrc);
         popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
       });
@@ -1361,7 +1363,7 @@
       const image = images[i];
       const imageId = image.getAttribute('id');
       const imageSrc = image.getAttribute('src');
-      imageIdToSrc[imageId] = imageSrc;
+      afimageIdToSrc[imageId] = imageSrc;
       image.addEventListener('click', handleImageClick);
     }
   }
@@ -1389,7 +1391,7 @@
         document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
       }
     selectedImageIds.forEach(function(selectedImageId, index) {
-        const selectedImageSrc = imageIdToSrc[selectedImageId] || '';
+        const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
         popupImages[index].setAttribute('src', selectedImageSrc);
         popupImages[index].parentNode.classList.toggle('selected', !!selectedImageId);
       });
@@ -1399,7 +1401,6 @@
 
   function handleCharSelection(images, popupImage, indexDisplay)
   {
-    const imageIdToSrc = {};
 
     indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
 
@@ -1420,7 +1421,7 @@
 
       selectedCharId = newSelectedCharId;
 
-      const selectedImageSrc = imageIdToSrc[selectedCharId] || '';
+      const selectedImageSrc = charimageIdToSrc[selectedCharId] || '';
       popupImage.setAttribute('src', selectedImageSrc);
       popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
 
@@ -1431,7 +1432,7 @@
       await calculate_depend_status();
       show_weapon_statsform();
       calculate_table_status();
-      char_afweapon_setting();
+      //char_afweapon_setting();
       toggleweapontype(weapon_type_index);
     }
 
@@ -1440,14 +1441,13 @@
       const image = images[i];
       const imageId = image.getAttribute('id');
       const imageSrc = image.getAttribute('src');
-      imageIdToSrc[imageId] = imageSrc;
+      charimageIdToSrc[imageId] = imageSrc;
       image.addEventListener('click', handleCharClick);
     }
   }
 
   function handleWeaponSelection(images, popupImage, indexDisplay)
   {
-    const imageIdToSrc = {};
     indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
 
     function handleWeaponClick() 
@@ -1462,7 +1462,7 @@
 
       selectedWeaponId = newSelectedWeaponId;
 
-      const selectedImageSrc = imageIdToSrc[selectedWeaponId] || '';
+      const selectedImageSrc = weaponimageIdToSrc[selectedWeaponId] || '';
       popupImage.setAttribute('src', selectedImageSrc);
       popupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
@@ -1477,7 +1477,7 @@
       const image = images[i];
       const imageId = image.getAttribute('id');
       const imageSrc = image.getAttribute('src');
-      imageIdToSrc[imageId] = imageSrc;
+      weaponimageIdToSrc[imageId] = imageSrc;
       image.addEventListener('click', handleWeaponClick);
     }
   }
