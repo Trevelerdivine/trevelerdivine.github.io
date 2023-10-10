@@ -1332,11 +1332,6 @@
       const selectedImageId = this.getAttribute('id');
       selectedImageIds.push(selectedImageId);
 
-      if (selectedImageIds.length > 2)
-      {
-        selectedImageIds.shift();
-      }
-
       if (selectedImageIds[0] == selectedImageIds[1])
       {
         set_eff1 = data[af_list[selectedImageIds[0]]]["2セット効果"];
