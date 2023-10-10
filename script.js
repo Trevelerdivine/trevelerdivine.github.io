@@ -624,17 +624,22 @@ async function create_weapon_instance(base_status, fixed_status, result_status)
     const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (selectedWeaponId == "149") 
+  else if (selectedWeaponId == "149") 
   {
     const weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (selectedWeaponId == "68") 
+  else if (selectedWeaponId == "68") 
   {
     const weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
     return weapon_instance;
   }
-  if (selectedWeaponId == "78") 
+  else if (selectedWeaponId == "78") 
+  {
+    const weapon_instance = new TheCatch(base_status, fixed_status, result_status);
+    return weapon_instance;
+  }
+  else if (selectedWeaponId == "69") 
   {
     const weapon_instance = new TheCatch(base_status, fixed_status, result_status);
     return weapon_instance;
