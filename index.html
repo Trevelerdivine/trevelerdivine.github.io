@@ -1460,7 +1460,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
   {
     indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
 
-    function handleWeaponClick() 
+    async function handleWeaponClick() 
     { 
       const newSelectedWeaponId = this.getAttribute('id');
 
@@ -1473,6 +1473,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
       indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
+      await calculate_depend_status()
       show_weapon_statsform();
       calculate_table_status();
     }
