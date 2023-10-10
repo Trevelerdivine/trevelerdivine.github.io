@@ -638,7 +638,7 @@ async function create_weapon_instance(base_status, fixed_status, result_status)
   }
   else if (selectedWeaponId == "69") 
   {
-    const weapon_instance = new TheCatch(base_status, fixed_status, result_status);
+    const weapon_instance = new StaffofHoma(base_status, fixed_status, result_status);
     return weapon_instance;
   }
 }
