@@ -1330,14 +1330,13 @@
     function handleImageClick()
     {
       const selectedImageId = this.getAttribute('id');
-      console.log(selectedImageId);
       selectedImageIds.push(selectedImageId);
-      console.log(selectedImageIds)
+
       if (selectedImageIds.length > 2)
       {
         selectedImageIds.shift();
       }
-      console.log(selectedImageIds)
+
       if (selectedImageIds[0] == selectedImageIds[1])
       {
         set_eff1 = data[af_list[selectedImageIds[0]]]["2セット効果"];
@@ -1378,7 +1377,11 @@
     // JSONデータを取得
     const afresponse = await fetch("./data/artifact/af_data.json");
     const afdata = await afresponse.json();
-    
+    const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+    const char_data = await char_response.json();
+    weapon_type_index = parseInt(char_data["武器タイプ"]);
+    selectedWeaponId = parseInt(char_data["武器"]);
+    selectedImageIds = char_data["聖遺物"];
     // 選択されたセット効果の初期化
     let set_eff1;
     let set_eff2;

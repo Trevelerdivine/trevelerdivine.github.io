@@ -215,9 +215,6 @@ async function calculate_depend_status()
   depend_status = [0,0,0,0,0,0,0];
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  weapon_type_index = parseInt(char_data["武器タイプ"]);
-  selectedWeaponId = parseInt(char_data["武器"]);
-  selectedImageIds = char_data["聖遺物"];
   if (attack_method != 0)
  {
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
@@ -225,7 +222,7 @@ async function calculate_depend_status()
   const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
   const weapon_data = await weapon_response.json();
   const weapon_depend_status = weapon_data.ステータス.依存ステータス;
-  
+  console.log(weapon_depend_status);
   for (let i = 0; i < 7; i++)
   {
     depend_status[i] = char_depend_status[i] + weapon_depend_status[i];
