@@ -376,7 +376,7 @@ class StaffofHoma {
   }
 
   calculate_weapon_result_attck() {
-    return this.result_status_array[1] * 0.034;
+    return this.result_status_array[0] * 0.034;
   }
 
   calculate_weapon_fixed_deff() {
