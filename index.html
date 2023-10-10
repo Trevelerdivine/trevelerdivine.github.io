@@ -1332,7 +1332,7 @@
       const selectedImageId = this.getAttribute('id');
       console.log(selectedImageId);
       selectedImageIds.push(selectedImageId);
-
+      console.log(selectedImageIds)
       if (selectedImageIds.length > 2)
       {
         selectedImageIds.shift();
@@ -1353,7 +1353,6 @@
         document.getElementById("set_eff1").innerHTML = `${af_list[selectedImageIds[0]]}：2セット効果<br>${set_eff1}`;
         document.getElementById("set_eff2").innerHTML = `${af_list[selectedImageIds[1]]}：2セット効果<br>${set_eff2}`;
       }
-      console.log(selectedImageIds)
       selectedImageIds.forEach(function(selectedImageId, index) {
         const selectedImageSrc = afimageIdToSrc[selectedImageId] || '';
         afpopupImages[index].setAttribute('src', selectedImageSrc);
