@@ -364,6 +364,7 @@ class StaffofHoma {
   }
 
   calculate_weapon_fixed_hp() {
+
     return this.base_status_array[0] * (0.2 + (this.weapon_rank - 1) * 0.05);
   }
 
@@ -376,7 +377,13 @@ class StaffofHoma {
   }
 
   calculate_weapon_result_attck() {
-    return this.result_status_array[0] * 0.034;
+    const weapon_effect_box = document.getElementById("traitCheckbox").value;
+    const weapon_buff = 0.008 + 0.002 * (this.weapon_rank - 1);
+    if (weapon_effect_box.checked)
+    {
+      weapon_buff += 0.01 + 0.002 * (this.weapon_rank -1);
+    }
+    return this.result_status_array[0] * weapon_buff;
   }
 
   calculate_weapon_fixed_deff() {
