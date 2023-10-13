@@ -197,16 +197,17 @@ async function show_attack_method()
           createCheckboxList_br(options)
         } else if (attack_method == 21)
         {
-          const agg_text = createTextNode("激化回数：")
+          const agg_text = createTextNode("激化回数")
           const tighnari_text1 = createTextNode("　蔓纏いの矢：")
           const tighnariburst1_selectlist = createSelectList("tighnariburst1", 0, 6, "", "回", 2);
           const tighnari_text2 = createTextNode("　次級・蔓纏いの矢：")
           const tighnariburst2_selectlist = createSelectList("tighnariburst2", 0, 6, "", "回", 2);
-          select_reaction_method.appendChild(agg_text); // ラベルを select_reaction_method に追加
-          select_reaction_method.appendChild(tighnari_text1); // ラベルを select_reaction_method に追加
+          select_reaction_method.appendChild(agg_text);
+          select_reaction_method.appendChild(document.createElement("br"));
+          select_reaction_method.appendChild(tighnari_text1);
           select_reaction_method.appendChild(tighnariburst1_selectlist);
           select_reaction_method.appendChild(document.createElement("br"));
-          select_reaction_method.appendChild(tighnari_text2); // ラベルを select_reaction_method に追加
+          select_reaction_method.appendChild(tighnari_text2);
           select_reaction_method.appendChild(tighnariburst2_selectlist);
         }
     break

@@ -26,7 +26,7 @@ const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFut
 "FavoniusGreatsword", "SkyriderGreatsword", "DebateClub", "WhiteIronGreatsword", "BloodtaintedGreatsword", "FerrousShadow", "StaffoftheScarletSands", "CalamityQueller", "EngulfingLightning", "StaffofHoma",
 "VortexVanguisher", "SkywardSpine", "PrimordialJadeWingedSpear", "BalladoftheFjords", "RightfulReward", "MissiveWindspear", "Moonpiercer", "Wavebreaker'sFin", "TheCatch", "KitainCrossSpear",
 "LithicSpear", "DragonspineSpear", "RoyalSpear", "FavoniusLance", "Deathmatch", "BlackcliffPole", "CrescentPike", "PrototypeStarglitter", "Dragon'sBane", "BlackTassel",
-"WhiteTassel", "TheFirstGreatMagic", "Hunter'sPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
+"WhiteTassel", "TheFirstGreatMagic", "HuntersPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
 "SongofStillness", "IbisPiercer", "King'sSquire", "EndoftheLine", "FadingTwilight", "Mouun'sMoon", "Hamayumi", "MitternachtsWaltz", "WindblumeOde", "AlleyHunter",
 "TheViridescentHunt", "BlackcliffWarbow", "CompoundBow", "PrototypeCrescent", "Rust", "RoyalBow", "SacrificialBow", "TheStringless", "FavoniusWarbow", "Messenger",
 "Slingshot", "RecurveBow", "Sharpshooter'sOath", "RavenBow", "TomeoftheEternalFlow", "Jadefall'sSplendor", "Tulaytullah'sRemembrance", "AThousandFloatingDreams", "Kagura'sVerity", "EverlastingMoonglow",
@@ -327,22 +327,22 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 async function create_char_instance(base_status, fixed_status, result_status,parameter) {
   if (selectedCharId === "56") {
-    // ナヒーダのインスタンスを生成
     const char_instance = new nahida(base_status, fixed_status, result_status,parameter);
     return char_instance;
   }
+  else if (selectedCharId === "57") {
+    const char_instance = new tighnari(base_status, fixed_status, result_status,parameter);
+    return char_instance;
+  }
   else if (selectedCharId === "9") {
-    // ナヒーダのインスタンスを生成
     const char_instance = new xiangling(base_status, fixed_status, result_status,parameter);
     return char_instance;
   }
   else if (selectedCharId === "33") {
-    // 八重神子のインスタンスを生成
     const char_instance = new yaemiko(base_status, fixed_status, result_status,parameter);
     return char_instance;
   }
   if (selectedCharId === "34") {
-    // 雷電将軍のインスタンスを生成
     const char_instance = new raiden(base_status, fixed_status, result_status, parameter);
     return char_instance;
   }
@@ -641,6 +641,12 @@ async function create_weapon_instance(base_status, fixed_status, result_status)
     const weapon_instance = new StaffofHoma(base_status, fixed_status, result_status);
     return weapon_instance;
   }
+  else if (selectedWeaponId == "92") 
+  {
+    const weapon_instance = new HuntersPath(base_status, fixed_status, result_status);
+    return weapon_instance;
+  }
+  
 }
 
 ///////////////////////
