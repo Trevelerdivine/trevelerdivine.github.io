@@ -67,7 +67,7 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
   }
 
-  if (char_propaty[0] == 2)
+  else if (char_propaty[0] == 2)
   {
     const traitCheckbox1 = document.createElement("input");
     traitCheckbox1.type = "radio";
@@ -83,7 +83,7 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
   }
 
-  if (char_propaty[0] == 3)
+  else if (char_propaty[0] == 3)
   {
     const traitCheckbox1 = document.createElement("input");
     traitCheckbox1.type = "radio";
@@ -99,7 +99,7 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
   }
 
-  if (char_propaty[0] == 5)
+  else if (char_propaty[0] == 5)
   {
     const traitCheckbox1 = document.createElement("input");
     traitCheckbox1.type = "radio";
@@ -167,6 +167,46 @@ async function show_attack_method()
                 select_reaction_method.appendChild(xianglingreaction_selectlist); 
             }
         break
+
+        case "57":        
+        if (attack_method == 6)
+        {
+          if (char_constellations < 4)
+          {
+            options = [
+              { text: "花筐の矢", value: "0", checked: true },
+              { text: "蔵蘊の花矢1", value: "1" },
+              { text: "蔵蘊の花矢2", value: "2" },
+              { text: "蔵蘊の花矢3", value: "3", checked: true },
+              { text: "蔵蘊の花矢4", value: "4",},
+            ];
+          }
+          else
+          {
+            options = [
+              { text: "花筐の矢", value: "0", checked: true },
+              { text: "蔵蘊の花矢1", value: "1" },
+              { text: "蔵蘊の花矢2", value: "2" },
+              { text: "蔵蘊の花矢3", value: "3", checked: true },
+              { text: "蔵蘊の花矢4", value: "4",},
+              { text: "蔵蘊の花矢5", value: "5",},
+            ];
+          }
+          createCheckboxList_br(options)
+        } else if (attack_method == 21)
+        {
+          const tighnari_text1 = createTextNode("　蔓纏いの矢：")
+          const tighnariburst1_selectlist = createSelectList("tighnariburst1", 0, 6, "", "本目", 2);
+          const tighnari_text2 = createTextNode("　次級・蔓纏いの矢：")
+          const tighnariburst2_selectlist = createSelectList("tighnariburst2", 0, 6, "", "本目", 2);
+          select_reaction_method.appendChild(document.createElement("br"));
+          select_reaction_method.appendChild(tighnari_text1); // ラベルを select_reaction_method に追加
+          select_reaction_method.appendChild(tighnariburst1_selectlist);
+          select_reaction_method.appendChild(document.createElement("br"));
+          select_reaction_method.appendChild(tighnari_text2); // ラベルを select_reaction_method に追加
+          select_reaction_method.appendChild(tighnariburst2_selectlist);
+        }
+    break
 
         case "33":
             if (attack_method == 1) {
