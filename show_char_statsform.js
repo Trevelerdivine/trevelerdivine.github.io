@@ -245,6 +245,62 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId  == "57")
+    {
+     
+      const traits = [
+        {
+          id: "traitCheckbox2",
+          label: "第2重：草元素ダメージ+20%"
+        },
+        {
+          id: "traitCheckbox4",
+          label: "第4重：元素熟知バフ"
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃（2段チャージ）", value: "6" },
+        { text: "元素爆発(造成・蔓纏いの矢)", value: "21" },
+      ];
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        const selectList = document.createElement("select");
+        const elm_buff = [0, 60, 120]; 
+        selectList.id = "four_conste_buff";
+      
+        for (let j = 0; j <= 2; j++) { // 条件を j <= optionsCount に変更
+          const option = document.createElement("option");
+          option.value = elm_buff[j];
+          option.text = `${"+"}${elm_buff[j]}$`;
+          
+          if (j == 2) {
+            option.selected = true;
+          }
+          
+          selectList.appendChild(option);
+        }
+        characterInfo.appendChild(selectList);
+      }
+
+      createchar_attackmethod(options)  
+    }
     showFormElements();
   }
 
@@ -362,7 +418,6 @@ function createSelectList(id, initial, optionsCount, head_unit, unit, select_ind
     option.value = j;
     option.text = `${head_unit}${j}${unit}`;
     
-    // j が 8 の場合、選択状態に設定
     if (j == select_index) {
       option.selected = true;
     }

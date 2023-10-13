@@ -7,6 +7,16 @@ async function show_weapon_statsform() {
   let elm_charge_form = document.getElementById("elm_charge_form");
   let cr_form = document.getElementById("cr_form");
   let cd_form = document.getElementById("cd_form");
+  let team_hp_form = document.getElementById("team_hp_form");
+  let team_hprate_form = document.getElementById("team_hprate_form");
+  let team_attack_form = document.getElementById("team_attack_form");
+  let team_attackrate_form = document.getElementById("team_attackrate_form");
+  let team_deff_form = document.getElementById("team_deff_form");
+  let team_deffrate_form = document.getElementById("team_deffrate_form");
+  let team_elm_form = document.getElementById("team_elm_form");
+  let team_elm_charge_form = document.getElementById("team_elm_charge_form");
+  let team_cr_form = document.getElementById("team_cr_form");
+  let team_cd_form = document.getElementById("team_cd_form")
   const weapon_rank = document.getElementById("weapon_rank").value;
 
   hp_form.style.display = "none"; // HPフォームを非表示
@@ -16,7 +26,16 @@ async function show_weapon_statsform() {
   elm_charge_form.style.display = "none"; // 元素チャージ効率フォームを非表示
   cr_form.style.display = "none"; // 会心率フォームを非表示
   cd_form.style.display = "none"; // 会心ダメージフォームを非表示
-
+  team_hp_form.style.display = "none";
+  team_hprate_form.style.display = "none";
+  team_attack_form.style.display = "none";
+  team_attackrate_form.style.display = "none";
+  team_deff_form.style.display = "none";
+  team_deffrate_form.style.display = "none";
+  team_elm_form.style.display = "none";
+  team_elm_charge_form.style.display = "none";
+  team_cr_form.style.display = "none";
+  team_cd_form.style.display = "none";
   weaponInfo.style.display = "block";
 
   weaponInfo.innerHTML = "";
