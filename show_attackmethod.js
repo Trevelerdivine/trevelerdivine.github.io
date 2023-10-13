@@ -295,7 +295,6 @@ async function show_attack_method()
 
 
 
-    const char_constellations = document.getElementById("char_constellations").value;
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
     deff_form.style.display = "none";  // 防御力フォームを非表示
