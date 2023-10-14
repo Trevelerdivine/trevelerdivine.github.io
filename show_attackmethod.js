@@ -177,9 +177,9 @@ async function show_attack_method()
           {
             options = [
               { text: "花筐の矢", value: "0", checked: true },
-              { text: "蔵蘊の花矢1", value: "1" },
+              { text: "蔵蘊の花矢1", value: "1", checked: true  },
               { text: "蔵蘊の花矢2", value: "2" },
-              { text: "蔵蘊の花矢3", value: "3", checked: true },
+              { text: "蔵蘊の花矢3", value: "3"},
               { text: "蔵蘊の花矢4", value: "4",},
             ];
           }
@@ -187,11 +187,11 @@ async function show_attack_method()
           {
             options = [
               { text: "花筐の矢", value: "0", checked: true },
-              { text: "蔵蘊の花矢1", value: "1" },
+              { text: "蔵蘊の花矢1", value: "1", checked: true  },
               { text: "蔵蘊の花矢2", value: "2" },
-              { text: "蔵蘊の花矢3", value: "3", checked: true },
+              { text: "蔵蘊の花矢3", value: "3"},
               { text: "蔵蘊の花矢4", value: "4",},
-              { text: "蔵蘊の花矢5", value: "5",},
+              { text: "蔵蘊の花矢5", value: "5", checked: true },
             ];
           }
           createCheckboxList_br(options)

@@ -922,8 +922,8 @@ class xiangling {
       if (attack_method == 6)
       {
         const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 4) / 100;
-        let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2) * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100;
+        let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2)* 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
       }
       else
