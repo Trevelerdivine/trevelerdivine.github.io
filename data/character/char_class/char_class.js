@@ -788,29 +788,32 @@ class xiangling {
         if (agg) { // 要素が存在する場合
           agg_reaction = agg.checked ? 1 : 0;
         }
-      if (attack_method == 6)
+      if (agg_reaction == 1)
       {
-        const checkboxContainer = document.getElementById("select_reaction_method");
-        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-        const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
-        const first_attack = document.getElementById("checkbox_0");
-        // Spread チェックボックスの状態を取得
-        if (first_attack.checked)
+        if (attack_method == 6)
         {
-          this.aggcount1 = 0;
-          this.aggcount2 = trueCount * agg_reaction;
+          const checkboxContainer = document.getElementById("select_reaction_method");
+          const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+          const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
+          const first_attack = document.getElementById("checkbox_0");
+          // Spread チェックボックスの状態を取得
+          if (first_attack.checked)
+          {
+            this.aggcount1 = 0;
+            this.aggcount2 = trueCount * agg_reaction;
+          }
+          else
+          {
+            this.aggcount1 = 1 * agg_reaction;
+            this.aggcount2 = (trueCount - 1) * agg_reaction;
+          }
+      
         }
         else
         {
-          this.aggcount1 = 1 * agg_reaction;
-          this.aggcount2 = (trueCount - 1) * agg_reaction;
+          this.aggcount1 = agg_reaction * document.getElementById("tighnariburst1").value;
+          this.aggcount2 = agg_reaction * document.getElementById("tighnariburst2").value;
         }
-    
-      }
-      else
-      {
-        this.aggcount1 = agg_reaction * document.getElementById("tighnariburst1").value;
-        this.aggcount2 = agg_reaction * document.getElementById("tighnariburst2").value;
       }
 
       if (this.char_constellations > 0 && attack_method == 6)
@@ -832,7 +835,7 @@ class xiangling {
         const fourth_conste_check =  document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
         {
-          this.fourth_conste_buff = document.getElementById("four_conste_buff").value;
+          this.fourth_conste_buff = parseInt(document.getElementById("four_conste_buff").value);
         }
       }
 
