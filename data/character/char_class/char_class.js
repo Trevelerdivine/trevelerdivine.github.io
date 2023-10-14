@@ -948,7 +948,7 @@ class xiangling {
         const two_conste_check = document.getElementById("traitCheckbox2");
         if(two_conste_check.checked)
         {
-          char_debuff = [0,0.3,0];
+          char_debuff = [0,0,0];
         }
       }
       return char_debuff;
