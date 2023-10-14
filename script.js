@@ -325,29 +325,66 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 ////////////////////////
 
-async function create_char_instance(base_status, fixed_status, result_status,parameter) {
-  if (selectedCharId === "56") {
-    const char_instance = new nahida(base_status, fixed_status, result_status,parameter);
-    return char_instance;
+async function create_char_instance(base_status, fixed_status, result_status, parameter) {
+  let char_instance;
+
+  switch (selectedCharId) {
+    case "9":
+      char_instance = new xiangling(base_status, fixed_status, result_status, parameter);
+      break;
+    case "33":
+      char_instance = new yaemiko(base_status, fixed_status, result_status, parameter);
+      break;
+    case "34":
+      char_instance = new raiden(base_status, fixed_status, result_status, parameter);
+      break;
+    case "56":
+      char_instance = new nahida(base_status, fixed_status, result_status, parameter);
+      break;
+    case "57":
+      char_instance = new tighnari(base_status, fixed_status, result_status, parameter);
+      break;
+    default:
+      // 未知のキャラクターIDに対する処理を追加することもできます
+      break;
   }
-  else if (selectedCharId === "57") {
-    const char_instance = new tighnari(base_status, fixed_status, result_status,parameter);
-    return char_instance;
-  }
-  else if (selectedCharId === "9") {
-    const char_instance = new xiangling(base_status, fixed_status, result_status,parameter);
-    return char_instance;
-  }
-  else if (selectedCharId === "33") {
-    const char_instance = new yaemiko(base_status, fixed_status, result_status,parameter);
-    return char_instance;
-  }
-  if (selectedCharId === "34") {
-    const char_instance = new raiden(base_status, fixed_status, result_status, parameter);
-    return char_instance;
-  }
-  
+
+  return char_instance;
 }
+
+
+///////////////////////
+
+async function create_weapon_instance(base_status, fixed_status, result_status) {
+  let weapon_instance;
+
+  switch (selectedWeaponId) {
+    case "68":
+      weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
+      break;
+    case "69":
+      weapon_instance = new StaffofHoma(base_status, fixed_status, result_status);
+      break;
+    case "78":
+      weapon_instance = new TheCatch(base_status, fixed_status, result_status);
+      break;
+    case "92":
+      weapon_instance = new HuntersPath(base_status, fixed_status, result_status);
+      break;
+    case "127":
+      weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
+      break;
+    case "149":
+      weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
+      break;
+    default:
+      // 未知の武器IDに対する処理を追加することもできます
+      break;
+  }
+
+  return weapon_instance;
+}
+
 
 ///////////////////////
 
@@ -612,42 +649,6 @@ function identify_condition() {
   return 0;
 }
 
-///////////////////////
-
-async function create_weapon_instance(base_status, fixed_status, result_status) 
-{
-  if (selectedWeaponId  == "127") 
-  {
-    const weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
-    return weapon_instance;
-  }
-  else if (selectedWeaponId == "149") 
-  {
-    const weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
-    return weapon_instance;
-  }
-  else if (selectedWeaponId == "68") 
-  {
-    const weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
-    return weapon_instance;
-  }
-  else if (selectedWeaponId == "78") 
-  {
-    const weapon_instance = new TheCatch(base_status, fixed_status, result_status);
-    return weapon_instance;
-  }
-  else if (selectedWeaponId == "69") 
-  {
-    const weapon_instance = new StaffofHoma(base_status, fixed_status, result_status);
-    return weapon_instance;
-  }
-  else if (selectedWeaponId == "92") 
-  {
-    const weapon_instance = new HuntersPath(base_status, fixed_status, result_status);
-    return weapon_instance;
-  }
-  
-}
 
 ///////////////////////
 
