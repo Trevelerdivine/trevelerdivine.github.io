@@ -456,7 +456,6 @@ class HuntersPath {
   }
 
   calculate_weapon_fixed_hp() {
-
     return 0;
   }
 
