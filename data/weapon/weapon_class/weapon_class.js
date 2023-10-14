@@ -591,7 +591,7 @@ class SkywardHarp {
   }
 
   calculate_weapon_fixed_cd() {
-    return 0;
+    return 0.2 + (this.weapon_rank - 1) * 0.05;
   }
 
   calculate_weapon_result_cd() {
@@ -599,7 +599,7 @@ class SkywardHarp {
   }
 
   calculate_weapon_fixed_dmg_buff() {
-    return 0.2 + (this.weapon_rank - 1) * 0.05;
+    return 0;
   }
 
   calculate_weapon_result_dmg_buff() {
