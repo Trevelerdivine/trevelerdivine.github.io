@@ -781,8 +781,6 @@ class xiangling {
     
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
-      const second_conste_check =  document.getElementById("traitCheckbox2");
-      const fourth_conste_check =  document.getElementById("traitCheckbox4");
       
       // チェックボックスとチェックされた数を取得
       let agg_reaction = 0; // デフォルト値
@@ -820,14 +818,22 @@ class xiangling {
         this.first_conste_buff = 0.15;
       }
 
-      if (this.char_constellations > 1 && second_conste_check.checked)
+      if (this.char_constellations > 1)
       {
-        this.second_conste_buff = 0.2;
+        const second_conste_check =  document.getElementById("traitCheckbox2");
+        if (second_conste_check.checked)
+        {
+          this.second_conste_buff = 0.2;
+        }
       }
 
-      if (this.char_constellations > 2 && fourth_conste_check.checked)
+      if (this.char_constellations > 2)
       {
-        this.fourth_conste_buff = document.getElementById("four_conste_buff").value;
+        const fourth_conste_check =  document.getElementById("traitCheckbox4");
+        if (fourth_conste_check.checked)
+        {
+          this.fourth_conste_buff = document.getElementById("four_conste_buff").value;
+        }
       }
 
       if (this.char_constellations > 3 && attack_method == 6)
