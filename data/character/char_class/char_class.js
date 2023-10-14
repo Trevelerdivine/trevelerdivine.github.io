@@ -767,7 +767,8 @@ class xiangling {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.constValue = null;
-      this.aggcount = 0;
+      this.aggcount1 = 0;
+      this.aggcount2= 0
       this.skill_buff = 0;
       this.talent1effect = -1;
       this.mytalent1 = 0;
@@ -776,30 +777,38 @@ class xiangling {
       this.four_conste_buff = 0;
       this.char_constellations = 0;
     }
-  
+    
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
       // チェックボックスとチェックされた数を取得
+      let agg_reaction = 0; // デフォルト値
+      const agg = document.getElementById("Spread");
+        if (agg) { // 要素が存在する場合
+          agg_reaction = agg.checked ? 1 : 0;
+        }
       if (attack_method == 6)
       {
         const checkboxContainer = document.getElementById("select_reaction_method");
         const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
         const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
-        this.char_constellations = document.getElementById("char_constellations").value;
+        const first_attack = document.getElementById("checkbox_0");
         // Spread チェックボックスの状態を取得
-        const agg = document.getElementById("Spread");
-        let agg_reaction = 0; // デフォルト値
-        
-        if (agg) { // 要素が存在する場合
-          agg_reaction = agg.checked ? 1 : 0;
+        if (first_attack.checked)
+        {
+          this.aggcount1 = 0;
+          this.aggcount2 = trueCount * agg_reaction;
         }
-        this.aggcount = trueCount * agg_reaction;
+        else
+        {
+          this.aggcount1 = 1 * agg_reaction;
+          this.aggcount2 = (trueCount - 1) * agg_reaction;
+        }
+    
       }
       else
       {
-        const agg_1 = document.getElementById("tighnariburst1").value;
-        const agg_2 = document.getElementById("tighnariburst2").value;
-        this.aggcount = agg_1 + agg_2;
+        this.aggcount1 = agg_reaction * document.getElementById("tighnariburst1").value;
+        this.aggcount2 = agg_reaction * document.getElementById("tighnariburst2").value;
       }
 
       if (this.char_constellations > 0 && attack_method == 6)
@@ -883,7 +892,7 @@ class xiangling {
     }
   
     calculate_char_fixed_cr() {
-      return this.char_constellations;
+      return this.first_conste_buff;
     }
   
     calculate_char_result_cr() {
@@ -899,27 +908,27 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return 0;
+      return this.second_conste_buff;
     }
   
     calculate_char_result_dmg_buff() {
-      return 0;
+      return Math.min(this.result_status_array[2] * 0.006, 0.6);
     }
   
     calculate_basic_dmg(dmg_rate) {
-      if (depend_status[2] == 1)
+      if (attack_method == 6)
       {
         const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-        const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-        let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 4) / 100;
+        let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2) * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
       }
       else
       {
         const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-        return attckRate;
+        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
+        let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2) * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        return basicDmg;
       }
     }
   
