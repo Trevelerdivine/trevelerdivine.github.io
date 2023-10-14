@@ -941,7 +941,7 @@ class xiangling {
         let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2)* 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
       }
-      else
+      else if (attack_method == 21)
       {
         const resultStatusArray = this.result_status_array;
         const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
@@ -958,14 +958,6 @@ class xiangling {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
-      if (this.char_constellations >1)
-      {
-        const two_conste_check = document.getElementById("traitCheckbox2");
-        if(two_conste_check.checked)
-        {
-          char_debuff = [0,0,0];
-        }
-      }
       return char_debuff;
     }
   }
