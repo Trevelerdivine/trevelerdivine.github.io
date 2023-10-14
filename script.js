@@ -523,9 +523,9 @@ async function calculate_table_status()
 
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = fixed_status[i] + af_buff[i] + team_fix_buff[i];
+    fixed_status[i] += af_buff[i] + team_fix_buff[i];
   }
-  fixed_status[7] = af_main_status_buff[7] + team_fix_buff[7];
+  fixed_status[7] += af_main_status_buff[7] + team_fix_buff[7];
   
   const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
   const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
@@ -549,7 +549,7 @@ async function calculate_table_status()
   async function updateStatus(index, resultStatus, buffStatus, afBuff, baseStatus, dynamicBuff, calculateResultFunction, tablePrefix) {
     if (depend_status[index] === 1) 
     {
-      if (index == 3 || index == 6 || index == 7)
+      if (index == 3 || index == 6)
       {
       resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction();
       buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];

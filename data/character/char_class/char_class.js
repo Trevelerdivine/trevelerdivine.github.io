@@ -915,7 +915,7 @@ class xiangling {
     }
   
     calculate_char_result_dmg_buff() {
-      return Math.min(this.result_status_array[2] * 0.006, 0.6);
+      return Math.min(this.result_status_array[2] * 0.0006, 0.6);
     }
   
     calculate_basic_dmg(dmg_rate) {
