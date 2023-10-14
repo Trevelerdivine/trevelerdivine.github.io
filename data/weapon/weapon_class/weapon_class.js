@@ -542,7 +542,6 @@ class SkywardHarp {
   }
 
   calculate_weapon_fixed_hp() {
-
     return 0;
   }
 
