@@ -777,6 +777,7 @@ class xiangling {
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.char_constellations = 0;
+      this.weapon_rank = document.getElementById("weapon_rank").value;
     }
     
     async dmg_rate_data() {
@@ -936,10 +937,20 @@ class xiangling {
     calculate_basic_dmg(dmg_rate) {
       if (attack_method == 6)
       {
+        if (selectedWeaponId ==92)
+        {
+          const resultStatusArray = this.result_status_array;
+          const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff + 12 * (1.6 + (this.weapon_rank -1) * 0.4) * resultStatusArray[2];
+          let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2)* 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+          return basicDmg;
+        }
+        else
+        {
         const resultStatusArray = this.result_status_array;
         const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff;
         let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2)* 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
+        }
       }
       else if (attack_method == 21)
       {
