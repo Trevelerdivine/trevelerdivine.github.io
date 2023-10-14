@@ -775,6 +775,7 @@ class xiangling {
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
+      this.sixth_conste_buff = 0;
       this.char_constellations = 0;
     }
     
@@ -827,6 +828,11 @@ class xiangling {
       if (this.char_constellations > 2 && fourth_conste_check.checked)
       {
         this.fourth_conste_buff = document.getElementById("four_conste_buff").value;
+      }
+
+      if (this.char_constellations > 3 && attack_method == 6)
+      {
+        this.sixth_conste_buff = 1.5;
       }
       
       // JSON データを取得
@@ -922,7 +928,7 @@ class xiangling {
       if (attack_method == 6)
       {
         const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100;
+        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff;
         let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2)* 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
       }
