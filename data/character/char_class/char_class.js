@@ -774,7 +774,7 @@ class xiangling {
       this.mytalent1 = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
-      this.four_conste_buff = 0;
+      this.fourth_conste_buff = 0;
       this.char_constellations = 0;
     }
     
