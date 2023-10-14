@@ -360,7 +360,7 @@ class StaffofHoma {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
-    this.weapon_rank = document.getElementById("weapon_rank").value;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   calculate_weapon_fixed_hp() {
@@ -452,7 +452,7 @@ class HuntersPath {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
-    this.weapon_rank = document.getElementById("weapon_rank").value;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   calculate_weapon_fixed_hp() {
@@ -538,7 +538,7 @@ class SkywardHarp {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
-    this.weapon_rank = document.getElementById("weapon_rank").value;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   calculate_weapon_fixed_hp() {

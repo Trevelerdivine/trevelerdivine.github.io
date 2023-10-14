@@ -777,7 +777,7 @@ class xiangling {
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.char_constellations = 0;
-      this.weapon_rank = document.getElementById("weapon_rank").value;
+      this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     }
     
     async dmg_rate_data() {
