@@ -1411,8 +1411,8 @@
     weaponPopupImage.setAttribute('src', selectedweaponImageSrc);
     weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
-    changeImageClass(af_overlayImages.length - af_overlayImages[selectedImageIds[0]]);
-    changeImageClass(af_overlayImages.length - af_overlayImages[selectedImageIds[1]]);
+    changeImageClass(af_overlayImages[af_overlayImages.length -selectedImageIds[0]]);
+    changeImageClass(af_overlayImages[af_overlayImages.length - selectedImageIds[1]]);
 
     // show_artifact()関数の呼び出し
     show_artifact();
