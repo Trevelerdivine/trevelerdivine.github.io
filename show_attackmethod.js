@@ -221,12 +221,12 @@ async function show_attack_method()
               createCheckboxList_br(options);
             } else if (attack_method == 21) {
               const ganyuburst_text = createTextNode("　ヒット回数：")
-              const ganyuburst_selectlist = createSelectList("ganyu_Q_count", 1, 50, "", "回", 30);
+              const ganyuburst_selectlist = createSelectList("ganyu_Q_count", 1, 50, "", "回", 15);
               attack_method_prop.appendChild(document.createElement("br"));
               attack_method_prop.appendChild(ganyuburst_text);
               attack_method_prop.appendChild(ganyuburst_selectlist);
               const ganyureaction_text = createTextNode("　元素反応回数：")
-              const ganyureaction_selectlist = createSelectList("xiangling_Q", 0, 50, "", "回", 10);
+              const ganyureaction_selectlist = createSelectList("xiangling_Q", 0, 50, "", "回", 5);
               select_reaction_method.appendChild(ganyureaction_text); // チェックボックスを select_reaction_method に追加
               select_reaction_method.appendChild(ganyureaction_selectlist); 
             }

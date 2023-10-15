@@ -317,7 +317,7 @@ async function show_char_statsform()
         createLabel("tighnari_talent1", "固有天賦1：霜華の矢と霜華満開の会心率+20%"),
         document.createElement("br"),
         createCheckbox("ganyu_talent2", true),
-        createLabel("tighnari_talent2", "固有天賦1：氷元素ダメージ+20%"),
+        createLabel("tighnari_talent2", "固有天賦2：氷元素ダメージ+20%"),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
