@@ -1050,8 +1050,6 @@ class xiangling {
         dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       }
-    console.log(this.Melt_react);
-    console.log(this.Melt_nonreact);
 
       // 計算結果をキャッシュして返す
       this.dmg_rateCache = dmg_rate;
@@ -1123,16 +1121,27 @@ class xiangling {
     }
   
     calculate_basic_dmg(dmg_rate) {
+      const attckRate;
+      const resultStatusArray = this.result_status_array;
       if (attack_method == 6)
       {
-        const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) / 100;
-        let basicDmg = (attckRate * resultStatusArray[4]);
-        return basicDmg;
+        if (this.reaction_coeff == 1.5)
+        {
+          let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[0] * dmg_rate[4][1];
+          let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[0] * dmg_rate[4][1];
+          let basicDmg = Melt_attack_rate * resultStatusArray[4] * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                    + NonMelt_attack_rate * resultStatusArray;
+          return basicDmg;
+        }
+        else
+        {
+          attckRate = dmg_rate[4][0] + dmg_rate[4][1];
+          basicDmg = attckRate * resultStatusArray[4];
+          return basicDmg;
+        }
       }
       else if (attack_method == 21)
       {
-        const resultStatusArray = this.result_status_array;
         const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
         let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2) * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
