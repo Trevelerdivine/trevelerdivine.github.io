@@ -1186,6 +1186,7 @@
   let afimageIdToSrc = {};
   let charimageIdToSrc = {};
   let weaponimageIdToSrc = {};
+  let af_overlayImages;
   let afpopupImages;
   let weaponPopupImage;
   let selectedImageIds = [21, 21];
@@ -1410,6 +1411,9 @@
     weaponPopupImage.setAttribute('src', selectedweaponImageSrc);
     weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
+    changeImageClass(af_overlayImages[selectedImageIds[0]]);
+    changeImageClass(initialImage[selectedImageIds[1]]);
+
     // show_artifact()関数の呼び出し
     show_artifact();
 }
@@ -1534,9 +1538,10 @@ function handleCharSelection(images, popupImage, indexDisplay) {
 
   window.addEventListener('DOMContentLoaded', function () {
   // オーバーレイ画像
-  const overlayImages = document.querySelectorAll('.overlay img');
+  af_overlayImages = document.querySelectorAll('.overlay img');
   const indexDisplay = document.getElementById('index-display');
   afpopupImages = document.querySelectorAll('.open img');
+  console.log(af_overlayImages);
   
   // イメージの選択処理を実行
   handleImageSelection(overlayImages, indexDisplay);
