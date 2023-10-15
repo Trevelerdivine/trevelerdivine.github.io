@@ -1121,8 +1121,8 @@ class xiangling {
     }
   
     calculate_basic_dmg(dmg_rate) {
-      const attckRate;
-      const resultStatusArray = this.result_status_array;
+      let attckRate;
+      let resultStatusArray = this.result_status_array;
       if (attack_method == 6)
       {
         if (this.reaction_coeff == 1.5)
