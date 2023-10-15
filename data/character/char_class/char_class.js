@@ -1123,14 +1123,15 @@ class xiangling {
     calculate_basic_dmg(dmg_rate) {
       let attckRate;
       let resultStatusArray = this.result_status_array;
+      let basicDmg;
       if (attack_method == 6)
       {
         if (this.reaction_coeff == 1.5)
         {
-          let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[0] * dmg_rate[4][1];
-          let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[0] * dmg_rate[4][1];
-          let basicDmg = Melt_attack_rate * resultStatusArray[4] * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + NonMelt_attack_rate * resultStatusArray;
+          let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[1] * dmg_rate[4][1];
+          let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[1] * dmg_rate[4][1];
+          basicDmg = Melt_attack_rate * resultStatusArray[4] * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                    + NonMelt_attack_rate * resultStatusArray[4];
           return basicDmg;
         }
         else
