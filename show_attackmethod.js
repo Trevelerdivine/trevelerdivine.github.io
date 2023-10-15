@@ -212,6 +212,26 @@ async function show_attack_method()
         }
     break
 
+    case "23":
+            if (attack_method == 6) {
+              options = [
+                { text: "霜華の矢", value: "0", checked: true },
+                { text: "霜華の矢・霜華満開", value: "1" , checked: true},
+              ];
+              createCheckboxList_br(options);
+            } else if (attack_method == 21) {
+              const ganyuburst_text = createTextNode("　ヒット回数：")
+              const ganyuburst_selectlist = createSelectList("ganyu_Q_count", 1, 50, "", "回", 30);
+              attack_method_prop.appendChild(document.createElement("br"));
+              attack_method_prop.appendChild(ganyuburst_text);
+              attack_method_prop.appendChild(ganyuburst_selectlist);
+              const ganyureaction_text = createTextNode("　元素反応回数：")
+              const ganyureaction_selectlist = createSelectList("xiangling_Q", 0, 50, "", "回", 10);
+              select_reaction_method.appendChild(ganyureaction_text); // チェックボックスを select_reaction_method に追加
+              select_reaction_method.appendChild(ganyureaction_selectlist); 
+            }
+        break
+
         case "33":
             if (attack_method == 1) {
               options = [

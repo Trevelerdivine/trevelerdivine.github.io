@@ -364,7 +364,7 @@ async function show_char_statsform()
         for (let j = 0; j <= 5; j++) { // 条件を j <= optionsCount に変更
           const option = document.createElement("option");
           option.value = elm_buff[j];
-          option.text = `${"+"}${elm_buff[j]}${"%"}$`;
+          option.text = `${"+"}${elm_buff[j]}${"%"}`;
           
           if (j == 5) {
             option.selected = true;
