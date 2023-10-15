@@ -333,7 +333,7 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
       char_instance = new xiangling(base_status, fixed_status, result_status, parameter);
       break;
     case "23":
-      char_instance = new ganyu(base_status, fixed_status, result_status);
+      char_instance = new ganyu(base_status, fixed_status, result_status, parameter);
       break;
     case "33":
       char_instance = new yaemiko(base_status, fixed_status, result_status, parameter);
