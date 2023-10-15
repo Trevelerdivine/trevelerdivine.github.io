@@ -1544,10 +1544,10 @@ function handleCharSelection(images, popupImage, indexDisplay) {
   console.log(af_overlayImages);
   
   // イメージの選択処理を実行
-  handleImageSelection(overlayImages, indexDisplay);
+  handleImageSelection(af_overlayImages, indexDisplay);
   
   // 最初の2つの画像を選択済みにする処理
-  const initialImage = overlayImages[4];
+  const initialImage = af_overlayImages[4];
   changeImageClass(initialImage);
   changeImageClass(initialImage);
   
