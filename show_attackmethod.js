@@ -226,7 +226,7 @@ async function show_attack_method()
               attack_method_prop.appendChild(ganyuburst_text);
               attack_method_prop.appendChild(ganyuburst_selectlist);
               const ganyureaction_text = createTextNode("　元素反応回数：")
-              const ganyureaction_selectlist = createSelectList("xiangling_Q", 0, 50, "", "回", 5);
+              const ganyureaction_selectlist = createSelectList("ganyu_Q", 0, 50, "", "回", 5);
               select_reaction_method.appendChild(ganyureaction_text); // チェックボックスを select_reaction_method に追加
               select_reaction_method.appendChild(ganyureaction_selectlist); 
             }

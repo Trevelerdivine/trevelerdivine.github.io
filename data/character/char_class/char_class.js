@@ -993,6 +993,8 @@ class xiangling {
       this.Melt_react = [];
       this.Melt_nonreact = [];
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.Q_melt_count = 0;
+      this.Q_nonmelt_count = 0;
     }
     
     async dmg_rate_data() {
@@ -1048,6 +1050,8 @@ class xiangling {
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       } else if (attack_method == 21) {
         dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"]["数値"][this.parameter[3]]);
+        this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
+        this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       }
 
@@ -1143,9 +1147,20 @@ class xiangling {
       }
       else if (attack_method == 21)
       {
-        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
-        let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2) * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
-        return basicDmg;
+        if (this.reaction_coeff == 1.5)
+        {
+          let Melt_attack_rate = this.Q_melt_count * dmg_rate[4];
+          let NonMelt_attack_rate = (this.Q_nonmelt_count - this.Q_melt_count) * dmg_rate[4];
+          basicDmg = Melt_attack_rate * resultStatusArray[4] * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                    + NonMelt_attack_rate * resultStatusArray[4];
+          return basicDmg;
+        }
+        else
+        {
+          attckRate = dmg_rate[4] * this.Q_nonmelt_count;
+          basicDmg = attckRate * resultStatusArray[4];
+          return basicDmg;
+        }
       }
     }
   
