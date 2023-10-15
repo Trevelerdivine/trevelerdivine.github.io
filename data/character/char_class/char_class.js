@@ -1049,7 +1049,7 @@ class xiangling {
         dmg_attck_rate = [dmg_rate1, dmg_rate2];
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       } else if (attack_method == 21) {
-        dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"]["数値"][this.parameter[3]]);
+        dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
         this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
         this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
