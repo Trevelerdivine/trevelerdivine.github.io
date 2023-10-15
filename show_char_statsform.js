@@ -312,15 +312,25 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "23")
     {
+      const elementsToAddToCharTalent = [
+        createCheckbox("ganyu_talent1", true),
+        createLabel("tighnari_talent1", "固有天賦1：霜華の矢と霜華満開の会心率+20%"),
+        createCheckbox("ganyu_talent2", true),
+        createLabel("tighnari_talent2", "固有天賦1：氷元素ダメージ+20%"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
      
       const traits = [
         {
-          id: "traitCheckbox2",
-          label: "第2重：草元素ダメージ+20%"
+          id: "traitCheckbox1",
+          label: "第1重：敵の氷元素耐性-15%"
         },
         {
           id: "traitCheckbox4",
-          label: "第4重：元素熟知バフ"
+          label: "第4重：ダメージバフ"
         },
       ];
 
@@ -330,7 +340,7 @@ async function show_char_statsform()
         { text: "元素爆発(降衆天華)", value: "21" },
       ];
 
-      if (char_constellations > 1)
+      if (char_constellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -347,15 +357,15 @@ async function show_char_statsform()
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
         const selectList = document.createElement("select");
-        const elm_buff = [0, 60, 120]; 
+        const elm_buff = [0, 5, 10, 15, 20, 25]; 
         selectList.id = "four_conste_buff";
       
-        for (let j = 0; j <= 2; j++) { // 条件を j <= optionsCount に変更
+        for (let j = 0; j <= 5; j++) { // 条件を j <= optionsCount に変更
           const option = document.createElement("option");
           option.value = elm_buff[j];
-          option.text = `${"+"}${elm_buff[j]}`;
+          option.text = `${"+"}${elm_buff[j]}${"%"}$`;
           
-          if (j == 2) {
+          if (j == 5) {
             option.selected = true;
           }
           
