@@ -990,6 +990,8 @@ class xiangling {
       this.reaction_coeff = 0;
       this.fourth_conste_buff = 0;
       this.char_constellations = 0;
+      this.Melt_react = [];
+      this.Melt_nonreact = [];
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     }
     
@@ -1030,6 +1032,16 @@ class xiangling {
       let dmg_attck_rate = 0;
     
       if (attack_method == 6) {
+        const checkboxContainer = document.getElementById("select_reaction_method");
+        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+
+        // チェックボックスの状態を格納するための配列を初期化
+
+        // 各チェックボックスの状態を調べて配列に追加
+        checkboxes.forEach(checkbox => {
+          this.Melt_react.push(checkbox.checked ? 1 : 0);
+          this.Melt_nonreact.push(checkbox.checked ? 0 : 1);
+        });
         const dmg_rate1 = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
         const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_attck_rate = [dmg_rate1, dmg_rate2];
@@ -1038,7 +1050,9 @@ class xiangling {
         dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       }
-    
+    console.log(this.Melt_react);
+    console.log(this.Melt_nonreact);
+
       // 計算結果をキャッシュして返す
       this.dmg_rateCache = dmg_rate;
       return dmg_rate;
