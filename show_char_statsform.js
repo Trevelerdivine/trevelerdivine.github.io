@@ -315,6 +315,7 @@ async function show_char_statsform()
       const elementsToAddToCharTalent = [
         createCheckbox("ganyu_talent1", true),
         createLabel("tighnari_talent1", "固有天賦1：霜華の矢と霜華満開の会心率+20%"),
+        document.createElement("br"),
         createCheckbox("ganyu_talent2", true),
         createLabel("tighnari_talent2", "固有天賦1：氷元素ダメージ+20%"),
       ];
