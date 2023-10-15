@@ -769,9 +769,7 @@ class xiangling {
       this.constValue = null;
       this.aggcount1 = 0;
       this.aggcount2= 0
-      this.skill_buff = 0;
-      this.talent1effect = -1;
-      this.mytalent1 = 0;
+      this.talent1_buff = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
@@ -817,6 +815,12 @@ class xiangling {
         }
       }
 
+      const talent1_check = document.getElementById("tighnari_talent1");
+      if (talent1_check.checked)
+      {
+        this.talent1_buff = 50;
+      }
+    
       if (this.char_constellations > 0 && attack_method == 6)
       {
         this.first_conste_buff = 0.15;
@@ -895,7 +899,7 @@ class xiangling {
     }
   
     calculate_char_fixed_elm() {
-      return this.fourth_conste_buff;
+      return this.fourth_conste_buff + this.talent1_buff;
     }
   
     calculate_char_result_elm() {
