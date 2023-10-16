@@ -1246,7 +1246,7 @@ class xiangling {
       let dmg_attck_rate = 0;
     
       if (attack_method == 6) {
-        this.attack_count = parseInt(document.getElementById("arataki_count"));
+        this.attack_count = parseInt(document.getElementById("arataki_count").value);
         const dmg_rate1 = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
         const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_attck_rate = [dmg_rate1, dmg_rate2];
@@ -1332,13 +1332,11 @@ class xiangling {
       if (attack_method == 6)
       {
         attckRate = dmg_rate[4][0] * (this.attack_count - 1) + dmg_rate[4][1];
-        basicDmg = attckRate * resultStatusArray[4] + this.talent2_buff * resultStatusArray[1];
-        console.log(basicDmg);
+        basicDmg = attckRate * resultStatusArray[4] + this.talent2_buff * resultStatusArray[1] * this.attack_count;
         if (selectedWeaponId == 36)
         {
           basicDmg += resultStatusArray[1] * (this.weapon_rank + 3) * 0.1;
         }
-        console.log(basicDmg);
         return basicDmg;
       }
       else if (attack_method == 21)
