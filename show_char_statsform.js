@@ -381,6 +381,8 @@ async function show_char_statsform()
     else if (selectedCharId  == "63")
     {
       const elementsToAddToCharTalent = [
+        createCheckbox("burst", true),
+        createLabel("arataki_talent2", "固有天賦2：「荒瀧逆袈裟」のダメージが荒瀧一斗の防御力35%分アップ")
         createCheckbox("arataki_talent2", true),
         createLabel("arataki_talent2", "固有天賦2：「荒瀧逆袈裟」のダメージが荒瀧一斗の防御力35%分アップ"),
         document.createElement("br"),

@@ -117,6 +117,13 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
   }
 
+  else if (char_propaty[0] == 6 || char_propaty[0] == 7)
+  {
+    const traitLabel1 = document.createElement("label");
+    traitLabel1.textContent = "反応なし";
+    elemental_reaction.appendChild(traitLabel1);
+  }
+
   attack_method = document.getElementById("attack_method_id").value;     
   let options = [];
 
@@ -294,6 +301,17 @@ async function show_attack_method()
               ];
               createCheckboxList_br(options);
             }
+        break
+
+        case "63":
+            if (attack_method == 6) {
+              const arataki_text = createTextNode("　重撃ヒット回数：")
+              const aratakicount_selectlist = createSelectList("arataki_count", 0, 30, "", "層", 8);
+              attack_method_prop.appendChild(document.createElement("br"));
+              attack_method_prop.appendChild(aratakiburst_text);
+              attack_method_prop.appendChild(aratakiburst_selectlist);
+            } 
+
         break
     }
     let hp_form = document.getElementById("hp_form");
