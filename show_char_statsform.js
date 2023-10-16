@@ -384,8 +384,8 @@ async function show_char_statsform()
         createCheckbox("arataki_burst_effect", true),
         createLabel("arataki_burst_effect", "元素爆発：防御力を基準に攻撃力がアップ",),
         document.createElement("br"),
-        createLabel("burst_talent_level", "　元素爆発天賦レベル：",),
-        createSelectList("arataki_burst_level", 0, 13, "", "", 8),
+        createLabel("arataki_burst_level", "　元素爆発天賦レベル：",),
+        createSelectList("arataki_burst_level", 1, 13, "Lv.", "", 8),
         document.createElement("br"),
         createCheckbox("arataki_talent2", true),
         createLabel("arataki_talent2", "固有天賦2：「荒瀧逆袈裟」のダメージが荒瀧一斗の防御力35%分アップ"),
@@ -398,7 +398,7 @@ async function show_char_statsform()
      
       const traits = [
         {
-          id: "traitCheckbox1",
+          id: "traitCheckbox4",
           label: "第4重：防御力+20%、攻撃力+20%"
         },
         {

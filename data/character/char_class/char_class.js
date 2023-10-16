@@ -1183,3 +1183,188 @@ class xiangling {
       return char_debuff;
     }
   }
+
+  class aratakiitto {
+    constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+      this.base_status_array = base_status_array;
+      this.fixed_status_array = fixed_status_array;
+      this.result_status_array = result_status_array;
+      this.dmg_rateCache = null;
+      this.parameter = parameter;
+      this.talent2_buff = 0;
+      this.fourth_conste_buff = 0;
+      this.sixth_conste_buff = 0;
+      this.char_constellations = 0;
+      this.attack_count;
+      this.burst_talent_level;
+      this.burst_buff_rate = 0;
+      this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    }
+    
+    async dmg_rate_data() {
+      this.char_constellations = document.getElementById("char_constellations").value;
+      
+
+      const talent2_check = document.getElementById("ganyu_talent2");
+      if (talent2_check.checked)
+      {
+        this.talent2_buff = 0.35;
+      }
+
+      if (this.char_constellations > 2)
+      {
+        const fourth_conste_check =  document.getElementById("traitCheckbox4");
+        if (fourth_conste_check.checked)
+        {
+          this.fourth_conste_buff = 0.2;
+        }
+      }
+
+      if (this.char_constellations > 3)
+      {
+        const sixth_conste_check =  document.getElementById("traitCheckbox6");
+        if (sixth_conste_check.checked)
+        {
+          this.sixth_conste_buff = 0.7;
+        }
+      }
+      
+      // JSON データを取得
+      const response = await fetch("./data/character/char_data/ganyu.json");
+      const data = await response.json();
+    
+      const burst_check = document.getElementById("arataki_burst_effect");
+      if (burst_check.checked)
+      {
+        this.burst_flag = 1;
+        let burst_talent_level  = parseInt(document.getElementById("arataki_burst_level").value);
+        this.burst_buff_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][burst_talent_level]);
+        
+      }
+      // 攻撃方法に応じてダメージ率を計算
+      let dmg_rate;
+      let dmg_attck_rate = 0;
+    
+      if (attack_method == 6) {
+        this.attack_count = parseInt(document.getElementById("arataki_count"));
+        const dmg_rate1 = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+        const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+        dmg_attck_rate = [dmg_rate1, dmg_rate2];
+        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      } else if (attack_method == 21) {
+        dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+        this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
+        this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
+        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      }
+
+      // 計算結果をキャッシュして返す
+      this.dmg_rateCache = dmg_rate;
+      return dmg_rate;
+    }
+    
+    calculate_char_fixed_hp() {
+      return 0;
+    }
+  
+    calculate_char_result_hp() {
+      return 0;
+    }
+  
+    calculate_char_fixed_attck() {
+      return this.base_status_array[4] * this.fourth_conste_buff;
+    }
+  
+    calculate_char_result_attck() {
+      return this.burst_buff_rate * this.fixed_status_array[1];
+    }
+  
+    calculate_char_fixed_deff() {
+      return this.base_status_array[1] * this.fourth_conste_buff;
+    }
+  
+    calculate_char_result_deff() {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm() {
+      return 0;
+    }
+  
+    calculate_char_result_elm() {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm_charge() {
+      return 0;
+    }
+  
+    calculate_char_result_elm_charge() {
+      return 0;
+    }
+  
+    calculate_char_fixed_cr() {
+      return this.talent1_buff;
+    }
+  
+    calculate_char_result_cr() {
+      return 0;
+    }
+  
+    calculate_char_fixed_cd() {
+      return this.sixth_conste_buff;
+    }
+  
+    calculate_char_result_cd() {
+      return 0;
+    }
+  
+    calculate_char_fixed_dmg_buff() {
+      return  this.talent2_buff + this.fourth_conste_buff;
+    }
+  
+    calculate_char_result_dmg_buff() {
+      return 0;
+    }
+  
+    calculate_basic_dmg(dmg_rate) {
+      let attckRate;
+      let resultStatusArray = this.result_status_array;
+      let basicDmg;
+      if (attack_method == 6)
+      {
+        attckRate = dmg_rate[4][0] * (this.attack_count - 1) + dmg_rate[4][1];
+        basicDmg = attckRate * resultStatusArray[4];
+        if (selectedWeaponId == 36)
+        {
+          basicDmg += resultStatusArray[1] * (this.weapon_rank + 3) * 0.1;
+        }
+        return basicDmg;
+      }
+      else if (attack_method == 21)
+      {
+        attckRate = dmg_rate[4] * this.Q_nonmelt_count;
+        basicDmg = attckRate * resultStatusArray[4];
+        return basicDmg;
+      }
+    }
+  
+    update_status(fixed_status_array, result_status_array)
+    {
+      this.fixed_status_array = fixed_status_array;
+      this.result_status_array = result_status_array;
+    }
+  
+    calculate_char_debuff() {
+      let char_debuff = [0,0,0];
+      if (this.char_constellations > 0)
+      {
+        const first_conste_check =  document.getElementById("traitCheckbox1");
+        if (first_conste_check.checked)
+        {
+          char_debuff = [0.15,0,0];
+        }
+      }
+      return char_debuff;
+    }
+  }
