@@ -1257,9 +1257,6 @@ class xiangling {
         this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       }
-
-      // 計算結果をキャッシュして返す
-      this.dmg_rateCache = dmg_rate;
       return dmg_rate;
     }
     
@@ -1334,7 +1331,7 @@ class xiangling {
       if (attack_method == 6)
       {
         attckRate = dmg_rate[4][0] * (this.attack_count - 1) + dmg_rate[4][1];
-        basicDmg = attckRate * resultStatusArray[4] + this.talent2_buff * resultStatusArray[2];
+        basicDmg = attckRate * resultStatusArray[4] + this.talent2_buff * resultStatusArray[1];
         if (selectedWeaponId == 36)
         {
           basicDmg += resultStatusArray[1] * (this.weapon_rank + 3) * 0.1;
