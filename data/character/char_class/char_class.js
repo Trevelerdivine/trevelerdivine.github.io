@@ -1320,7 +1320,7 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return  this.talent2_buff + this.fourth_conste_buff;
+      return 0;
     }
   
     calculate_char_result_dmg_buff() {
@@ -1334,7 +1334,7 @@ class xiangling {
       if (attack_method == 6)
       {
         attckRate = dmg_rate[4][0] * (this.attack_count - 1) + dmg_rate[4][1];
-        basicDmg = attckRate * resultStatusArray[4];
+        basicDmg = attckRate * resultStatusArray[4] + this.talent2_buff * resultStatusArray[2];
         if (selectedWeaponId == 36)
         {
           basicDmg += resultStatusArray[1] * (this.weapon_rank + 3) * 0.1;
