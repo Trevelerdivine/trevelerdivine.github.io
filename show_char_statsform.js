@@ -377,6 +377,56 @@ async function show_char_statsform()
 
       createchar_attackmethod(options)  
     }
+
+    else if (selectedCharId  == "63")
+    {
+      const elementsToAddToCharTalent = [
+        createCheckbox("arataki_talent2", true),
+        createLabel("arataki_talent2", "固有天賦2：「荒瀧逆袈裟」のダメージが荒瀧一斗の防御力35%分アップ"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+     
+      const traits = [
+        {
+          id: "traitCheckbox1",
+          label: "第4重：防御力+20%、攻撃力+20%"
+        },
+        {
+          id: "traitCheckbox6",
+          label: "第6重：会心ダメージ+70%"
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃", value: "6" },
+        { text: "元素スキル(降衆天華)", value: "16" },
+      ];
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+      }
+
+      createchar_attackmethod(options)  
+    }
     showFormElements();
   }
 
