@@ -302,7 +302,7 @@ async function show_attack_method()
               const aratakicount_selectlist = createSelectList("arataki_count", 0, 30, "", "層", 8);
               attack_method_prop.appendChild(document.createElement("br"));
               attack_method_prop.appendChild(arataki_text);
-              attack_method_prop.appendChild(aratakiburst_selectlist);
+              attack_method_prop.appendChild(aratakicount_selectlist);
             } 
 
         break

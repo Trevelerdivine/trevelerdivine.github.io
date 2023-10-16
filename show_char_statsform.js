@@ -384,7 +384,7 @@ async function show_char_statsform()
         createCheckbox("arataki_burst_effect", true),
         createLabel("arataki_burst_effect", "元素爆発：防御力を基準に攻撃力がアップ",),
         document.createElement("br"),
-        createLabel("burst_talent_level", "元素爆発天賦レベル：",),
+        createLabel("burst_talent_level", "　元素爆発天賦レベル：",),
         createSelectList("arataki_burst_level", 0, 13, "", "", 8),
         document.createElement("br"),
         createCheckbox("arataki_talent2", true),
