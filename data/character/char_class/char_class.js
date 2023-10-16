@@ -1251,6 +1251,7 @@ class xiangling {
         const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_attck_rate = [dmg_rate1, dmg_rate2];
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+        console.log(dmg_rate);
       } else if (attack_method == 21) {
         dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
         this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
@@ -1332,10 +1333,12 @@ class xiangling {
       {
         attckRate = dmg_rate[4][0] * (this.attack_count - 1) + dmg_rate[4][1];
         basicDmg = attckRate * resultStatusArray[4] + this.talent2_buff * resultStatusArray[1];
+        console.log(basicDmg);
         if (selectedWeaponId == 36)
         {
           basicDmg += resultStatusArray[1] * (this.weapon_rank + 3) * 0.1;
         }
+        console.log(basicDmg);
         return basicDmg;
       }
       else if (attack_method == 21)
