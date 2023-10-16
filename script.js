@@ -347,6 +347,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "57":
       char_instance = new tighnari(base_status, fixed_status, result_status, parameter);
       break;
+    case "63":
+      char_instance = new aratakiitto(base_status, fixed_status, result_status, parameter);
+      break;
     default:
       // 未知のキャラクターIDに対する処理を追加することもできます
       break;
@@ -360,8 +363,10 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
 
 async function create_weapon_instance(base_status, fixed_status, result_status) {
   let weapon_instance;
-
   switch (selectedWeaponId) {
+    case "36":
+      weapon_instance = new RedhornStonethresher(base_status, fixed_status, result_status);
+      break;
     case "68":
       weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
       break;
