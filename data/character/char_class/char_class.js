@@ -1230,7 +1230,7 @@ class xiangling {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/ganyu.json");
+      const response = await fetch("./data/character/char_data/aratakiitto.json");
       const data = await response.json();
     
       const burst_check = document.getElementById("arataki_burst_effect");
