@@ -117,13 +117,6 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
   }
 
-  else if (char_propaty[0] == 6 || char_propaty[0] == 7)
-  {
-    const traitLabel1 = document.createElement("label");
-    traitLabel1.textContent = "反応なし";
-    elemental_reaction.appendChild(traitLabel1);
-  }
-
   attack_method = document.getElementById("attack_method_id").value;     
   let options = [];
 
