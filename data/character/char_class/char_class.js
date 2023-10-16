@@ -1205,7 +1205,7 @@ class xiangling {
       this.char_constellations = document.getElementById("char_constellations").value;
       
 
-      const talent2_check = document.getElementById("ganyu_talent2");
+      const talent2_check = document.getElementById("arataki_talent2");
       if (talent2_check.checked)
       {
         this.talent2_buff = 0.35;
