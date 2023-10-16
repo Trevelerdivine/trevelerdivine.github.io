@@ -1304,7 +1304,7 @@ class xiangling {
     }
   
     calculate_char_fixed_cr() {
-      return this.talent1_buff;
+      return 0;
     }
   
     calculate_char_result_cr() {

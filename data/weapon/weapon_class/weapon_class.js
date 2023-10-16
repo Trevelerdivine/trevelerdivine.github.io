@@ -640,7 +640,7 @@ class RedhornStonethresher {
   }
 
   calculate_weapon_fixed_deff() {
-    return this.base_status_array[1] * (this.weapon_rank + 3) * 0.7;
+    return this.base_status_array[1] * (this.weapon_rank + 3) * 0.07;
   }
 
   calculate_weapon_result_deff() {
