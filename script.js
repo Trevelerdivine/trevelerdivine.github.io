@@ -367,6 +367,10 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "36":
       weapon_instance = new RedhornStonethresher(base_status, fixed_status, result_status);
       break;
+  switch (selectedWeaponId) {
+    case "54":
+      weapon_instance = new Whiteblind(base_status, fixed_status, result_status);
+      break;
     case "68":
       weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
       break;
@@ -422,11 +426,18 @@ async function calculate_team_fix_buff(base_status)
   const geoCheckbox = document.getElementById("geo_reso");
 
   const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
-  const data = await response.json();
-  const char_base_hpper = parseFloat(data["ステータス"]["基礎HP％"][char_level])/100;
-  const char_base_attackper = parseFloat(data["ステータス"]["基礎攻撃力％"][char_level])/100;
-  const char_base_deffper = parseFloat(data["ステータス"]["基礎防御力％"][char_level])/100;
+  const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const char_data = await char_response.json();
+  const char_base_hpper = parseFloat(char_data["ステータス"]["基礎HP％"][char_level])/100;
+  const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][char_level])/100;
+  const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][char_level])/100;
+
+  const weapon_level = document.getElementById("weapon_level").value;
+  const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
+  const weapon_data = await response.json();
+  const weapon_base_hpper = parseFloat(weapon_data["ステータス"]["基礎HP％"][char_level])/100;
+  const weapon_base_attackper = parseFloat(weapon_data["ステータス"]["基礎攻撃力％"][char_level])/100;
+  const weapon_base_deffper = parseFloat(weapon_data["ステータス"]["基礎防御力％"][char_level])/100;
   
   // チェックボックスの情報をまとめた配列を作成
   const checkboxStates = {
