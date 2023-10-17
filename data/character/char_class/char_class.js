@@ -1337,7 +1337,7 @@ class xiangling {
         }
         return basicDmg;
       }
-      else if (attack_method == 21)
+      else if (attack_method == 16)
       {
         basicDmg = dmg_rate[4] * resultStatusArray[4];
         return basicDmg;
