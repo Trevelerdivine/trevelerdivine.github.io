@@ -350,11 +350,14 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "63":
       char_instance = new aratakiitto(base_status, fixed_status, result_status, parameter);
       break;
+    case "64":
+      char_instance = new albedo(base_status, fixed_status, result_status, parameter);
+      break;
     default:
       // 未知のキャラクターIDに対する処理を追加することもできます
       break;
   }
-
+  
   return char_instance;
 }
 
