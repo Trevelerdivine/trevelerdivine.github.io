@@ -120,7 +120,7 @@ async function show_weapon_statsform() {
             label: "注入の刃: 攻撃力と防御力+6%/7.5%/9%/10.5%/12%"
           }
         ];
-            const Whiteblind_effect = createSelectList("Whiteblind_effect", 0, 4, "", "層", 4),
+            const Whiteblind_effect = createSelectList("Whiteblind_effect", 0, 4, "", "層", 4);
             const traitCheckbox = document.createElement("input");
             traitCheckbox.type = "checkbox";
             traitCheckbox.id = traits[0].id;
