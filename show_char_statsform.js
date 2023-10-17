@@ -409,8 +409,8 @@ async function show_char_statsform()
 
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "重撃", value: "6" },
-        { text: "元素スキル(降衆天華)", value: "16" },
+        { text: "重撃(荒瀧逆袈裟連斬 & とどめ)", value: "6" },
+        { text: "元素スキル(魔殺絶技・岩牛発破!)", value: "16" },
       ];
 
       if (char_constellations > 2)

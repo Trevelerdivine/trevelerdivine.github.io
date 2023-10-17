@@ -1048,10 +1048,8 @@ class xiangling {
         const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_attck_rate = [dmg_rate1, dmg_rate2];
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-      } else if (attack_method == 21) {
-        dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-        this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
-        this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
+      } else if (attack_method == 16) {
+        dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       }
 
@@ -1145,22 +1143,10 @@ class xiangling {
           return basicDmg;
         }
       }
-      else if (attack_method == 21)
+      else if (attack_method == 16)
       {
-        if (this.reaction_coeff == 1.5)
-        {
-          let Melt_attack_rate = this.Q_melt_count * dmg_rate[4];
-          let NonMelt_attack_rate = (this.Q_nonmelt_count - this.Q_melt_count) * dmg_rate[4];
-          basicDmg = Melt_attack_rate * resultStatusArray[4] * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + NonMelt_attack_rate * resultStatusArray[4];
-          return basicDmg;
-        }
-        else
-        {
-          attckRate = dmg_rate[4] * this.Q_nonmelt_count;
-          basicDmg = attckRate * resultStatusArray[4];
-          return basicDmg;
-        }
+        basicDmg = dmg_rate[4] * resultStatusArray[4];
+        return basicDmg;
       }
     }
   
