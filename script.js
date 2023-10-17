@@ -714,7 +714,7 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   const enemyResist = parseFloat(document.getElementById("enemy-resist").value) / 100;
   const enemyResistDebuff = parseFloat(document.getElementById("resist-debuff").value) / 100;
   const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff").value) / 100;
-  const geo_resonance = document.getElementById(geo_reso);
+  const geo_resonance = document.getElementById("geo_reso");
 
   // 防御補正計算
   const deffCorrection = (charLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
