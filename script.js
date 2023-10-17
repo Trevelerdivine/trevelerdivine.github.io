@@ -367,7 +367,6 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "36":
       weapon_instance = new RedhornStonethresher(base_status, fixed_status, result_status);
       break;
-  switch (selectedWeaponId) {
     case "54":
       weapon_instance = new Whiteblind(base_status, fixed_status, result_status);
       break;
