@@ -120,7 +120,7 @@ async function show_weapon_statsform() {
             label: "注入の刃: 攻撃力と防御力+6%/7.5%/9%/10.5%/12%"
           }
         ];
-            const Whiteblind_effect = createSelectList("Whiteblind_effect", 0, 4, "", "層", 4);
+            const Whiteblind_effect = createweaponSelectList("Whiteblind_effect", 0, 4, "", "層", 4);
             const traitCheckbox = document.createElement("input");
             traitCheckbox.type = "checkbox";
             traitCheckbox.id = traits[0].id;
@@ -172,4 +172,23 @@ async function show_weapon_statsform() {
       element.form.style.display = "table-row";
     }
   }
+}
+
+function createweaponSelectList(id, initial, optionsCount, head_unit, unit, select_index) {
+  const selectList = document.createElement("select");
+  selectList.id = id;
+
+  for (let j = initial; j <= optionsCount; j++) { // 条件を j <= optionsCount に変更
+    const option = document.createElement("option");
+    option.value = j;
+    option.text = `${head_unit}${j}${unit}`;
+    
+    if (j == select_index) {
+      option.selected = true;
+    }
+    
+    selectList.appendChild(option);
+  }
+
+  return selectList;
 }
