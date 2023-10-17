@@ -436,7 +436,7 @@ async function calculate_team_fix_buff(base_status)
   const weapon_data = await weapon_response.json();
   const weapon_base_hpper = parseFloat(weapon_data["ステータス"]["基礎HP％"][weapon_level])/100;
   const weapon_base_attackper = parseFloat(weapon_data["ステータス"]["基礎攻撃力％"][weapon_level])/100;
-  const weapon_base_deffper = parseFloat(weapon_data["ステータス"]["基礎防御力％"][weaopon_level])/100;
+  const weapon_base_deffper = parseFloat(weapon_data["ステータス"]["基礎防御力％"][weapon_level])/100;
   
   // チェックボックスの情報をまとめた配列を作成
   const checkboxStates = {
