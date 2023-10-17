@@ -1355,14 +1355,6 @@ class xiangling {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
-      if (this.char_constellations > 0)
-      {
-        const first_conste_check =  document.getElementById("traitCheckbox1");
-        if (first_conste_check.checked)
-        {
-          char_debuff = [0.15,0,0];
-        }
-      }
       return char_debuff;
     }
   }
