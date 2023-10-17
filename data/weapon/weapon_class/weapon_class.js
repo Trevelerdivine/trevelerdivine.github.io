@@ -787,8 +787,6 @@ class CinnabarSpindle {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
-    this.buff_count = parseInt(document.getElementById("Whiteblind_effect").value);
-    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   calculate_weapon_fixed_hp() {
