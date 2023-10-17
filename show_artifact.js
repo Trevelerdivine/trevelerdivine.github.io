@@ -775,6 +775,9 @@ async function show_artifact()
                   option.value = j;
                   option.text = `${j}層`;
                   selectList.appendChild(option);
+                  if (j == 4) {
+                    option.selected = true;
+                  }
                 }
 
                 artifact_checkbox.appendChild(traitCheckbox);
