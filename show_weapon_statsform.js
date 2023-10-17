@@ -162,21 +162,7 @@ async function show_weapon_statsform() {
             weaponInfo.appendChild(traitLabel);
           }
 
-  const formElements = [
-    { form: hp_form, index: 0 },
-    { form: attck_form, index: 4 },
-    { form: deff_form, index: 1 },
-    { form: elm_form, index: 2 },
-    { form: elm_charge_form, index: 3 },
-    { form: cr_form, index: 5 },
-    { form: cd_form, index: 6 }
-  ];
-
-  for (const element of formElements) {
-    if (depend_status[element.index] === 1) {
-      element.form.style.display = "table-row";
-    }
-  }
+          showFormElements();
 }
 
 function createweaponSelectList(id, initial, optionsCount, head_unit, unit, select_index) {
