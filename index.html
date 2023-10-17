@@ -1478,7 +1478,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
       await calculate_depend_status()
-      await show_char_statsform();
+      showFormElements();
       show_weapon_statsform();
       calculate_table_status();
     }
