@@ -303,9 +303,25 @@ async function show_attack_method()
               attack_method_prop.appendChild(document.createElement("br"));
               attack_method_prop.appendChild(arataki_text);
               attack_method_prop.appendChild(aratakicount_selectlist);
-            } 
-
+            }
         break
+
+        case "64":
+          if (attack_method == 16) {
+            const albedo_text = createTextNode("　スキル追撃ヒット回数：")
+            const albedocount_selectlist = createSelectList("albedo_count", 1, 15, "", "回", 5);
+            attack_method_prop.appendChild(document.createElement("br"));
+            attack_method_prop.appendChild(albedo_text);
+            attack_method_prop.appendChild(albedocount_selectlist);
+          }
+          else if (attack_method == 21) {
+            const albedo_text = createTextNode("　生滅の花ヒット回数：")
+            const albedocount_selectlist = createSelectList("albedo_count", 1, 7, "", "回", 3);
+            attack_method_prop.appendChild(document.createElement("br"));
+            attack_method_prop.appendChild(albedo_text);
+            attack_method_prop.appendChild(albedocount_selectlist);
+          }
+      break
     }
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
