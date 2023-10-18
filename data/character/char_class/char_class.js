@@ -1363,6 +1363,7 @@ class xiangling {
       this.result_status_array = result_status_array;
       this.dmg_rateCache = null;
       this.parameter = parameter;
+      this.talent1_buff = 0;
       this.talent2_buff = 0;
       this.sixth_conste_buff = 0;
       this.char_constellations = 0;
@@ -1372,6 +1373,12 @@ class xiangling {
     
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
+
+      const talent2_check = document.getElementById("albedo_talent2");
+      if (talent2_check.checked)
+      {
+        this.talent2_buff = 125;
+      }
 
       if (this.char_constellations > 3)
       {
@@ -1391,6 +1398,11 @@ class xiangling {
       let dmg_attck_rate = 0;
     
       if (attack_method == 16) {
+        const talent1_check = document.getElementById("albedo_talent1");
+        if (talent1_check.checked)
+        {
+          this.talent1_buff = 0.25;
+        }
         this.attack_count = parseInt(document.getElementById("albedo_count").value);
         const dmg_rate1 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_rate = [0, dmg_rate1, 0, 0, 0, 0, 0];
@@ -1426,7 +1438,7 @@ class xiangling {
     }
   
     calculate_char_fixed_elm() {
-      return 0;
+      return this.talent1_buff;
     }
   
     calculate_char_result_elm() {
@@ -1458,7 +1470,7 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return 0;
+      return this.talent2_buff;
     }
   
     calculate_char_result_dmg_buff() {
@@ -1473,6 +1485,8 @@ class xiangling {
       {
         attckRate = dmg_rate[1] * this.attack_count;
         basicDmg = attckRate * resultStatusArray[1];
+        if (selectedWeaponId == 17)
+        basicDmg += (this.weapon_rank + 3) * 0.1 * resultStatusArray[1];
         return basicDmg;
       }
       else if (attack_method == 16)

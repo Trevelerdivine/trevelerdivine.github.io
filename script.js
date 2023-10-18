@@ -433,16 +433,16 @@ async function calculate_team_fix_buff(base_status)
   const char_level = document.getElementById("char_level").value;
   const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  const char_base_hpper = parseFloat(char_data["ステータス"]["基礎HP％"][char_level])/100;
-  const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][char_level])/100;
-  const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][char_level])/100;
+  const char_base_hpper = parseFloat(char_data["ステータス"]["基礎HP％"][char_level]);
+  const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][char_level]);
+  const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][char_level]);
 
   const weapon_level = document.getElementById("weapon_level").value;
   const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
   const weapon_data = await weapon_response.json();
-  const weapon_base_hpper = parseFloat(weapon_data["ステータス"]["基礎HP％"][weapon_level])/100;
-  const weapon_base_attackper = parseFloat(weapon_data["ステータス"]["基礎攻撃力％"][weapon_level])/100;
-  const weapon_base_deffper = parseFloat(weapon_data["ステータス"]["基礎防御力％"][weapon_level])/100;
+  const weapon_base_hpper = parseFloat(weapon_data["ステータス"]["基礎HP％"][weapon_level]);
+  const weapon_base_attackper = parseFloat(weapon_data["ステータス"]["基礎攻撃力％"][weapon_level]);
+  const weapon_base_deffper = parseFloat(weapon_data["ステータス"]["基礎防御力％"][weapon_level]);
   
   // チェックボックスの情報をまとめた配列を作成
   const checkboxStates = {
