@@ -1392,8 +1392,8 @@ class xiangling {
     
       if (attack_method == 16) {
         this.attack_count = parseInt(document.getElementById("albedo_count").value);
-        const dmg_rate = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
-        dmg_rate = [0, dmg_rate, 0, 0, 0, 0, 0];
+        const dmg_rate1 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+        dmg_rate = [0, dmg_rate1, 0, 0, 0, 0, 0];
       } else if (attack_method == 21) {
         dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
