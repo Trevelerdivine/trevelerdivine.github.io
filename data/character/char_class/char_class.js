@@ -1438,7 +1438,7 @@ class xiangling {
     }
   
     calculate_char_fixed_elm() {
-      return this.talent1_buff;
+      return this.talent2_buff;
     }
   
     calculate_char_result_elm() {
@@ -1470,7 +1470,7 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return this.talent2_buff;
+      return this.talent1_buff;
     }
   
     calculate_char_result_dmg_buff() {
