@@ -1383,10 +1383,11 @@ class xiangling {
 
       if (this.char_constellations > 1)
       {
-        const sixth_conste_check =  document.getElementById("traitCheckbox6");
-        if (sixth_conste_check.checked)
+        const second_conste_check =  document.getElementById("traitCheckbox2");
+        if (second_conste_check.checked)
         {
-          this.sixth_conste_buff = 0.17;
+          const effect_count = document.getElementById("albedo_second_const_buff").value
+          this.sixth_conste_buff = 0.3 * effect_count;
         }
       }
 
@@ -1417,6 +1418,7 @@ class xiangling {
         const dmg_rate1 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_rate = [0, dmg_rate1, 0, 0, 0, 0, 0];
       } else if (attack_method == 21) {
+        this.attack_count = parseInt(document.getElementById("albedo_count").value);
         dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
         dmg_deff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_rate = [0, dmg_deff_rate, 0, 0, dmg_attck_rate, 0, 0];
@@ -1500,9 +1502,9 @@ class xiangling {
         basicDmg += (this.weapon_rank + 3) * 0.1 * resultStatusArray[1] * this.attack_count;
         return basicDmg;
       }
-      else if (attack_method == 16)
+      else if (attack_method == 21)
       {
-        basicDmg = dmg_rate[4] * resultStatusArray[4];
+        basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff * (this.attack_count + 1)) * resultStatusArray[1] + dmg_rate[4] * resultStatusArray[4];
         return basicDmg;
       }
     }
