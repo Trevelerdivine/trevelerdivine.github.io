@@ -477,6 +477,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
         characterInfo.appendChild(second_conste_label);
         characterInfo.appendChild(second_conste_list);
+        characterInfo.appendChild(document.createElement("br"));
       }
       if (char_constellations > 3)
       {

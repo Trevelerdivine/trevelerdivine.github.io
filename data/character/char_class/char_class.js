@@ -1386,7 +1386,7 @@ class xiangling {
         const second_conste_check =  document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
         {
-          const effect_count = document.getElementById("albedo_second_const_buff").value
+          const effect_count = parseInt(document.getElementById("albedo_second_const_buff").value);
           this.sixth_conste_buff = 0.3 * effect_count;
         }
       }
