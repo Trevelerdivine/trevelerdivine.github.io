@@ -1470,7 +1470,7 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return this.talent1_buff;
+      return this.talent1_buff + this.sixth_conste_buff;
     }
   
     calculate_char_result_dmg_buff() {
