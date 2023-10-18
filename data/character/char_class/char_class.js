@@ -1471,8 +1471,8 @@ class xiangling {
       let basicDmg;
       if (attack_method == 16)
       {
-        attckRate = dmg_rate[4] * this.attack_count;
-        basicDmg = attckRate * resultStatusArray[4];
+        attckRate = dmg_rate[2] * this.attack_count;
+        basicDmg = attckRate * resultStatusArray[2];
         return basicDmg;
       }
       else if (attack_method == 16)
