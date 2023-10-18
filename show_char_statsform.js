@@ -470,10 +470,13 @@ async function show_char_statsform()
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
-    
+        const second_conste_label = createLabel("albedosecond_const_label", "　生滅カウント："),
+        const second_conste_list = createSelectList("albedo_second_const_buff", 0, 4, "", "重", 4);
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
+        characterInfo.appendChild(second_conste_label);
+        characterInfo.appendChild(second_conste_list);
       }
       if (char_constellations > 3)
       {

@@ -1365,6 +1365,7 @@ class xiangling {
       this.parameter = parameter;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
+      this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.char_constellations = 0;
       this.attack_count;
@@ -1378,6 +1379,15 @@ class xiangling {
       if (talent2_check.checked)
       {
         this.talent2_buff = 125;
+      }
+
+      if (this.char_constellations > 1)
+      {
+        const sixth_conste_check =  document.getElementById("traitCheckbox6");
+        if (sixth_conste_check.checked)
+        {
+          this.sixth_conste_buff = 0.17;
+        }
       }
 
       if (this.char_constellations > 3)
@@ -1396,7 +1406,7 @@ class xiangling {
       // 攻撃方法に応じてダメージ率を計算
       let dmg_rate;
       let dmg_attck_rate = 0;
-    
+      let dmg_deff_rate = 0;
       if (attack_method == 16) {
         const talent1_check = document.getElementById("albedo_talent1");
         if (talent1_check.checked)
@@ -1407,8 +1417,9 @@ class xiangling {
         const dmg_rate1 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_rate = [0, dmg_rate1, 0, 0, 0, 0, 0];
       } else if (attack_method == 21) {
-        dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
-        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+        dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+        dmg_deff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        dmg_rate = [0, dmg_deff_rate, 0, 0, dmg_attck_rate, 0, 0];
       }
       return dmg_rate;
     }
@@ -1486,7 +1497,7 @@ class xiangling {
         attckRate = dmg_rate[1] * this.attack_count;
         basicDmg = attckRate * resultStatusArray[1];
         if (selectedWeaponId == 17)
-        basicDmg += (this.weapon_rank + 3) * 0.1 * resultStatusArray[1];
+        basicDmg += (this.weapon_rank + 3) * 0.1 * resultStatusArray[1] * this.attack_count;
         return basicDmg;
       }
       else if (attack_method == 16)
