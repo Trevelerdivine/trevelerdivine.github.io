@@ -353,6 +353,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "64":
       char_instance = new albedo(base_status, fixed_status, result_status, parameter);
       break;
+    case "68":
+      char_instance = new noelle(base_status, fixed_status, result_status, parameter);
+      break;
     default:
       // 未知のキャラクターIDに対する処理を追加することもできます
       break;
