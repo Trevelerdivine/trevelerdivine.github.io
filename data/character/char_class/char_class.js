@@ -1520,3 +1520,140 @@ class xiangling {
       return char_debuff;
     }
   }
+
+  class noelle {
+    constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+      this.base_status_array = base_status_array;
+      this.fixed_status_array = fixed_status_array;
+      this.result_status_array = result_status_array;
+      this.dmg_rateCache = null;
+      this.parameter = parameter;
+      this.second_conste_buff = 0;
+      this.sixth_conste_buff = 0;
+      this.char_constellations = 0;
+      this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    }
+    
+    async dmg_rate_data() {
+      this.char_constellations = document.getElementById("char_constellations").value;
+
+      if (this.char_constellations > 1)
+      {
+        const second_conste_check =  document.getElementById("traitCheckbox2");
+        if (second_conste_check.checked)
+        {
+          this.second_conste_buff = 0.15;
+        }
+      }
+      
+      // JSON データを取得
+      const response = await fetch("./data/character/char_data/albedo.json");
+      const data = await response.json();
+    
+      // 攻撃方法に応じてダメージ率を計算
+      let dmg_rate;
+      let dmg_attck_rate = 0;
+      let dmg_deff_rate = 0;
+      if (attack_method == 1) {
+        this.sixth_conste_buff = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
+        if (this.char_constellations > 3)
+        {
+          const sixth_conste_check =  document.getElementById("traitCheckbox6");
+          if (sixth_conste_check.checked)
+          {
+            this.sixth_conste_buff += 0.5;
+          }
+        }
+        for (let i = 0; i < 4; i++) {
+          dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      } 
+    }
+    
+    calculate_char_fixed_hp() {
+      return 0;
+    }
+  
+    calculate_char_result_hp() {
+      return 0;
+    }
+  
+    calculate_char_fixed_attck() {
+      return this.sixth_conste_buff * this.base_status_array[1];
+    }
+  
+    calculate_char_result_attck() {
+      return 0;
+    }
+  
+    calculate_char_fixed_deff() {
+      return 0;
+    }
+  
+    calculate_char_result_deff() {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm() {
+      return 0;
+    }
+  
+    calculate_char_result_elm() {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm_charge() {
+      return 0;
+    }
+  
+    calculate_char_result_elm_charge() {
+      return 0;
+    }
+  
+    calculate_char_fixed_cr() {
+      return 0;
+    }
+  
+    calculate_char_result_cr() {
+      return 0;
+    }
+  
+    calculate_char_fixed_cd() {
+      return 0;
+    }
+  
+    calculate_char_result_cd() {
+      return 0;
+    }
+  
+    calculate_char_fixed_dmg_buff() {
+      return this.second_conste_buff;
+    }
+  
+    calculate_char_result_dmg_buff() {
+      return 0;
+    }
+  
+    calculate_basic_dmg(dmg_rate) {
+      let attckRate;
+      let resultStatusArray = this.result_status_array;
+      let basicDmg;
+      if (attack_method == 1)
+      {
+        basicDmg = dmg_rate[4] * resultStatusArray[4];
+        return basicDmg;
+      }
+    }
+  
+    update_status(fixed_status_array, result_status_array)
+    {
+      this.fixed_status_array = fixed_status_array;
+      this.result_status_array = result_status_array;
+    }
+  
+    calculate_char_debuff() {
+      let char_debuff = [0,0,0];
+      return char_debuff;
+    }
+  }

@@ -496,7 +496,7 @@ async function show_char_statsform()
       const traits = [
         {
           id: "traitCheckbox2",
-          label: "第2重：ノエルの重撃スタミナ消費-20%、与えるダメージ+15%"
+          label: "第2重：与えるダメージ+15%"
         },
         {
           id: "traitCheckbox6",
