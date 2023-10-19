@@ -1570,11 +1570,11 @@ class xiangling {
     }
   
     calculate_char_fixed_attck() {
-      return this.sixth_conste_buff * this.result_status_array[1] ;
+      return 0;
     }
   
     calculate_char_result_attck() {
-      return 0;
+      return this.sixth_conste_buff * this.result_status_array[1];
     }
   
     calculate_char_fixed_deff() {
