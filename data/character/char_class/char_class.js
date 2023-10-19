@@ -1547,7 +1547,7 @@ class xiangling {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/albedo.json");
+      const response = await fetch("./data/character/char_data/noelle.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
