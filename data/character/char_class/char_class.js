@@ -1553,7 +1553,6 @@ class xiangling {
       // 攻撃方法に応じてダメージ率を計算
       let dmg_rate;
       let dmg_attck_rate = 0;
-      let dmg_deff_rate = 0;
       if (attack_method == 1) {
         this.sixth_conste_buff = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
         if (this.char_constellations > 3)
@@ -1569,6 +1568,7 @@ class xiangling {
         }
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       } 
+      return dmg_rate;
     }
     
     calculate_char_fixed_hp() {
@@ -1636,7 +1636,6 @@ class xiangling {
     }
   
     calculate_basic_dmg(dmg_rate) {
-      let attckRate;
       let resultStatusArray = this.result_status_array;
       let basicDmg;
       if (attack_method == 1)
