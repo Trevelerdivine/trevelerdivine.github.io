@@ -1528,7 +1528,6 @@ class xiangling {
       this.result_status_array = result_status_array;
       this.dmg_rateCache = null;
       this.parameter = parameter;
-      this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.char_constellations = 0;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
@@ -1536,15 +1535,6 @@ class xiangling {
     
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
-
-      if (this.char_constellations > 1)
-      {
-        const second_conste_check =  document.getElementById("traitCheckbox2");
-        if (second_conste_check.checked)
-        {
-          this.second_conste_buff = 0.15;
-        }
-      }
       
       // JSON データを取得
       const response = await fetch("./data/character/char_data/noelle.json");
@@ -1628,7 +1618,7 @@ class xiangling {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return this.second_conste_buff;
+      return 0;
     }
   
     calculate_char_result_dmg_buff() {

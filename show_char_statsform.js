@@ -495,10 +495,6 @@ async function show_char_statsform()
     {
       const traits = [
         {
-          id: "traitCheckbox2",
-          label: "第2重：与えるダメージ+15%"
-        },
-        {
           id: "traitCheckbox6",
           label: "第6重：防御力50%相当の攻撃力をアップ"
         },
@@ -508,19 +504,10 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃１ループ(爆発中)", value: "1" },
       ];
-
-      if (char_constellations > 1)
+      if (char_constellations > 3)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
-      if (char_constellations > 3)
-      {
-        traitCheckbox = createCheckbox(traits[1].id, true);
-        traitLabel = createLabel(traits[1].id, traits[1].label);
   
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
