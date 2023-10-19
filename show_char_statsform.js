@@ -488,6 +488,26 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    else if (selectedCharId  == "65")
+    {
+      const elementsToAddToCharTalent = [
+        createCheckbox("zhongli_skill", true),
+        createLabel("zhongli_skill", "玉璋シールド：敵の全耐性-20％"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素爆発(天星)", value: "21" },
+      ];
+
+      createchar_attackmethod(options)  
+    }
+
     else if (selectedCharId  == "68")
     {
       const traits = [

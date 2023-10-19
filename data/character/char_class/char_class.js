@@ -1645,12 +1645,12 @@ class xiangling {
   function calculate_weapon_basedmg (attack_count, status_array, weapon_rank)
   {
     let base_dmg = 0;
-    if (selectedWeaponId == 17)
+    if (selectedWeaponId == 17 && attack_method >= 16 && attack_method <= 20)
     {
       base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
       return base_dmg;
     }
-    else if (selectedWeaponId == 36)
+    else if (selectedWeaponId == 36 && attack_method >= 1 && attack_method <= 10)
     {
       base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
       return base_dmg;

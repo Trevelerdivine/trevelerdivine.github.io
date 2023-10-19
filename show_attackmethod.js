@@ -321,8 +321,13 @@ async function show_attack_method()
             attack_method_prop.appendChild(albedo_text);
             attack_method_prop.appendChild(albedocount_selectlist);
           }
-          case "68":
-      break
+        break
+
+        case "64":
+        break
+          
+        case "68":
+        break
     }
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
