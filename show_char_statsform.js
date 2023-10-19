@@ -53,7 +53,6 @@ async function show_char_statsform()
     let options;
 
     if (selectedCharId == "56") {
-      char_propaty[1] = 4;
       traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
         { id: "traitCheckbox2", label: "第2重：防御力-30%" },
@@ -126,7 +125,6 @@ async function show_char_statsform()
       }
     }
     else if (selectedCharId == "9") {
-      char_propaty[1] = 2;
       traits = [
         { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
         { id: "traitCheckbox3", label: "第6重：炎元素ダメージ+15%。" },
@@ -166,7 +164,6 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "33") {
-      char_propaty[1] = 4;
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
         { id: "traitCheckbox3", label: "第4重：雷元素ダメージ+20%" },

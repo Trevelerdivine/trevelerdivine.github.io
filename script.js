@@ -4,7 +4,6 @@ let weapon_base_status = [0,0,0,0,0,0,0,0];
 let depend_status = [0,0,1,0,1,1,1];
 let char_depend_status = [0,0,0,0,0,0,0];
 let weapon_depend_status = [0,0,0,0,0,0,0];
-let char_propaty = [5,0];
 let af_score = 0;
 let attack_method = 0;
 let attack_method_index = 0;
