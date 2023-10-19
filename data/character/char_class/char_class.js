@@ -1493,9 +1493,7 @@ class xiangling {
       if (attack_method == 16)
       {
         attckRate = dmg_rate[1] * this.attack_count;
-        basicDmg = attckRate * resultStatusArray[1];
-        if (selectedWeaponId == 17)
-        basicDmg += (this.weapon_rank + 3) * 0.1 * resultStatusArray[1] * this.attack_count;
+        basicDmg = attckRate * resultStatusArray[1] + calculate_weapon_basedmg(this.attack_count, resultStatusArray, this.weapon_rank);
         return basicDmg;
       }
       else if (attack_method == 21)
