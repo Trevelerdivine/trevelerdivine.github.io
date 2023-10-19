@@ -706,7 +706,7 @@ class Whiteblind {
     this.buff_count = parseInt(document.getElementById("Whiteblind_effect").value);
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     const weaponeffectCheckbox = document.getElementById("traitCheckbox");
-    this.weapon_effect = weaponRankCheckbox.checked ? 1 : 0;
+    this.weapon_effect = weaponeffectCheckbox.checked ? 1 : 0;
   }
 
   calculate_weapon_fixed_hp() {
