@@ -493,19 +493,6 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "68")
     {
-      const elementsToAddToCharTalent = [
-        createCheckbox("albedo_talent1", true),
-        createLabel("albedo_talent1", "固有天賦1：スキルダメージバフ+25％"),
-        document.createElement("br"),
-        createCheckbox("albedo_talent2", true),
-        createLabel("albedo_talent2", "固有天賦2：元素熟知+125"),
-        document.createElement("br"),
-      ];
-    
-      elementsToAddToCharTalent.forEach(element => {
-        char_talent.appendChild(element);
-      });
-     
       const traits = [
         {
           id: "traitCheckbox2",
