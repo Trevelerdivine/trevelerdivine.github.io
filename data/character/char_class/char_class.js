@@ -1630,7 +1630,7 @@ class xiangling {
       let basicDmg;
       if (attack_method == 1)
       {
-        basicDmg = dmg_rate[4] * resultStatusArray[4];
+        basicDmg = dmg_rate[4] * resultStatusArray[4] + calculate_weapon_basedmg(4, resultStatusArray, this.weapon_rank);
         return basicDmg;
       }
     }
@@ -1644,5 +1644,21 @@ class xiangling {
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
       return char_debuff;
+    }
+  }
+
+
+  function calculate_weapon_basedmg (attack_count, status_array, weapon_rank)
+  {
+    let base_dmg = 0;
+    if (selectedWeaponId == 17)
+    {
+      base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
+      return base_dmg;
+    }
+    else if (selectedWeaponId == 36)
+    {
+      base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
+      return base_dmg;
     }
   }
