@@ -491,6 +491,57 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    else if (selectedCharId  == "68")
+    {
+      const elementsToAddToCharTalent = [
+        createCheckbox("albedo_talent1", true),
+        createLabel("albedo_talent1", "固有天賦1：スキルダメージバフ+25％"),
+        document.createElement("br"),
+        createCheckbox("albedo_talent2", true),
+        createLabel("albedo_talent2", "固有天賦2：元素熟知+125"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+     
+      const traits = [
+        {
+          id: "traitCheckbox2",
+          label: "第2重：ノエルの重撃スタミナ消費-20%、与えるダメージ+15%"
+        },
+        {
+          id: "traitCheckbox6",
+          label: "第6重：防御力50%相当の攻撃力をアップ"
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃１ループ(爆発中)", value: "1" },
+      ];
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+  
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+      }
+
+      createchar_attackmethod(options)  
+    }
+
     showFormElements();
   }
 
