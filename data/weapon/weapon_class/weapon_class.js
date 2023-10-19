@@ -705,6 +705,8 @@ class Whiteblind {
     this.result_status_array = result_status_array;
     this.buff_count = parseInt(document.getElementById("Whiteblind_effect").value);
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    const weaponeffectCheckbox = document.getElementById("traitCheckbox");
+    this.weapon_effect = weaponRankCheckbox.checked ? 1 : 0;
   }
 
   calculate_weapon_fixed_hp() {
@@ -716,7 +718,7 @@ class Whiteblind {
   }
 
   calculate_weapon_fixed_attck() {
-    return this.base_status_array[4] * (this.weapon_rank + 3) * 0.015;
+    return this.base_status_array[4] * (this.weapon_rank + 3) * 0.015 * this.weapon_effect;
   }
 
   calculate_weapon_result_attck() {
@@ -724,7 +726,7 @@ class Whiteblind {
   }
 
   calculate_weapon_fixed_deff() {
-    return this.base_status_array[1] * (this.weapon_rank + 3) * 0.015;
+    return this.base_status_array[1] * (this.weapon_rank + 3) * 0.015 * this.weapon_effect;
   }
 
   calculate_weapon_result_deff() {
