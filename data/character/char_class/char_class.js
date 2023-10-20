@@ -1752,6 +1752,11 @@ class xiangling {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
+      let skill_effect = document.getElementById("zhongli_skill");
+      if (skill_effect.checked)
+      {
+        char_debuff = [0.2, 0, 0]
+      }
       return char_debuff;
     }
   }
