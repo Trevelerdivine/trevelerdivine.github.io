@@ -171,6 +171,7 @@ async function show_attack_method()
                   { text: "丹書契約", value: "0", checked: true },
                 ];
             }
+            createCheckboxList(options)
         break
 
         case "9":
