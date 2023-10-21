@@ -124,6 +124,42 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
+    else if (selectedCharId == "6") {
+      traits = [
+        { id: "traitCheckbox2", label: "第2重：HP50%未満の敵に重撃会心率+20%" },
+        { id: "traitCheckbox6", label: "第6重：所持できる丹火の印の最大枚数+1" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃（1ループ）", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "スキル（丹書契約）", value: "16" },
+        { text: "元素爆発（契約成立）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
     else if (selectedCharId == "9") {
       traits = [
         { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
