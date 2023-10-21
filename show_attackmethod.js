@@ -146,6 +146,33 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "6":
+            if (attack_method == 1) {
+              options = [
+                { text: "１段目", value: "0", checked: true },
+                { text: "２段目", value: "1" },
+                { text: "３段目", value: "2" },
+              ];
+              }else if (attack_method == 6) {
+                const yanfei_text = createTextNode("　丹火の印：")
+                const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
+                attack_method_prop.appendChild(document.createElement("br"));
+                attack_method_prop.appendChild(yanfei_text);
+                attack_method_prop.appendChild(yanfei_textskill_selectlist);
+                options = [
+                  { text: "重撃", value: "0", checked: true },
+                ];
+              }else if (attack_method == 16) {
+                options = [
+                  { text: "丹書契約", value: "0", checked: true },
+                ];
+              }else if (attack_method == 21) {
+                options = [
+                  { text: "丹書契約", value: "0", checked: true },
+                ];
+            }
+        break
+
         case "9":
             if (attack_method == 16) {
               const xianglingskillcount_text = createTextNode("　ヒット回数：")
