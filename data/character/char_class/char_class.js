@@ -457,7 +457,7 @@ class hutao {
     const talent2_check = document.getElementById("hutao_talent2");
     if (talent2_check.checked)
     {
-      this.second_conste_buff = 0.33;
+      this.talent2_buff = 0.33;
     }
 
     if (this.char_constellations > 3)
@@ -558,7 +558,7 @@ class hutao {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.second_conste_buff;
+      return this.talent2_buff;
   }
 
   calculate_char_result_dmg_buff() {
