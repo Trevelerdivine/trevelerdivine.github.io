@@ -211,7 +211,7 @@ async function show_weapon_statsform() {
                       }
                     }
                     weaponInfo.appendChild(traitLabel);
-                    weaponInfo.appendChild(selectlist);
+                    weaponInfo.appendChild(selectList);
                   }
 
           showFormElements();
