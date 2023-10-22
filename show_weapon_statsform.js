@@ -209,6 +209,7 @@ async function show_weapon_statsform() {
                       if (j == 1) {
                         option.selected = true;
                       }
+                      selectList.appendChild(option);
                     }
                     weaponInfo.appendChild(traitLabel);
                     weaponInfo.appendChild(selectList);
