@@ -432,6 +432,7 @@ class yanfei {
     this.elm_nonreact = [];
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
+    this.burst_buff = 0;
   }
 
   async dmg_rate_data() {
@@ -478,7 +479,14 @@ class yanfei {
       }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
+      const burst_check = document.getElementById("yanfei_Q");
+      if (burst_check.checked)
+      {
+        const burstlevel = parseInt(document.getElementById("yanfeiQ_level").value);
+        this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burstlevel]);
+      }
       const buff_count = parseInt(document.getElementById("yanfei_mark").value);
+
       this.talent1_buff = 0.05 * buff_count;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -554,7 +562,7 @@ class yanfei {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.talent1_buff;
+      return this.talent1_buff + this.burst_buff;
   }
 
   calculate_char_result_dmg_buff() {
