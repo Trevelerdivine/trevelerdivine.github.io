@@ -195,7 +195,6 @@ async function show_weapon_statsform() {
                 ];
             
                     const traitLabel = document.createElement("label");
-                    traitLabel.htmlFor = traits[0].id;
                     traitLabel.textContent = traits[0].label;
                     
                     const selectList = document.createElement("select");
@@ -205,7 +204,7 @@ async function show_weapon_statsform() {
                     for (let j = 0; j <=2; j++) {
                       const option = document.createElement("option");
                       option.value = j;
-                      option.text = `${elm_buff[j]}`;
+                      option.text = `${buff_kind[j]}`;
                       
                       if (j == 1) {
                         option.selected = true;
