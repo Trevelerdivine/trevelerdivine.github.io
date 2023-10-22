@@ -146,6 +146,32 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "2":
+              const elementsToAddToCharTalent = [
+                createCheckbox("hutao_talent2", true),
+                createLabel("hutao_talent2", "血のかまど：胡桃のHPが50%以下の時、炎元素ダメージ+33%"),
+                document.createElement("br"),
+              ];
+            
+              elementsToAddToCharTalent.forEach(element => {
+                char_talent.appendChild(element);
+              });
+              if (attack_method == 6) {
+                options = [
+                  { text: "重撃", value: "0", checked: true },
+                ];
+              }else if (attack_method == 16) {
+                options = [
+                  { text: "丹書契約", value: "0", checked: true },
+                ];
+              }else if (attack_method == 21) {
+                options = [
+                  { text: "丹書契約", value: "0", checked: true },
+                ];
+            }
+            createCheckboxList(options)
+        break
+
         case "6":
             if (attack_method == 1) {
               options = [
@@ -156,7 +182,7 @@ async function show_attack_method()
               }else if (attack_method == 6) {
                 const elementsToAddToCharTalent = [
                   createCheckbox("yanfei_Q", true),
-                  createLabel("yanfei_Q", "元素元素爆発：契約成立"),
+                  createLabel("yanfei_Q", "元素爆発：契約成立"),
                   document.createElement("br"),
                   createTextNode("　元素爆発天賦レベル："),
                   createSelectList("yanfeiQ_level", 1, 13, "Lv.", "", 10),

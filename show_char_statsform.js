@@ -124,6 +124,31 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
+
+    else if (selectedCharId == "2") {
+      traits = [
+        { id: "traitCheckbox6", label: "６重　冥蝶の抱擁：会心率+100%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃（冥蝶の舞状態）", value: "6" },
+        { text: "元素爆発（安神秘法）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "6") {
       traits = [
         { id: "traitCheckbox2", label: "第2重：HP50%未満の敵に重撃会心率+20%" },
@@ -160,6 +185,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+
     else if (selectedCharId == "9") {
       traits = [
         { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
