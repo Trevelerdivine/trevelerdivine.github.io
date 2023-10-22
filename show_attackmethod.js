@@ -154,6 +154,18 @@ async function show_attack_method()
                 { text: "３段目", value: "2" },
               ];
               }else if (attack_method == 6) {
+                const elementsToAddToCharTalent = [
+                  createCheckbox("yanfei_Q", true),
+                  createLabel("yanfei_Q", "元素元素爆発：契約成立"),
+                  document.createElement("br"),
+                  createTextNode("　元素爆発天賦レベル："),
+                  createSelectList("yanfeiQ_level", 1, 13, "Lv.", "", 10),
+                  document.createElement("br"),
+                ];
+              
+                elementsToAddToCharTalent.forEach(element => {
+                  char_talent.appendChild(element);
+                });
                 const yanfei_text = createTextNode("　丹火の印：")
                 const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
                 attack_method_prop.appendChild(document.createElement("br"));
