@@ -873,7 +873,7 @@ class LostPrayertotheSacredWinds {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.weapon_count = parseInt(document.getElementById("bursLostPrayertotheSacredWindst_buff").value);
+    this.weapon_count = parseInt(document.getElementById("TheWidsith_buff").value);
     const weaponeffectCheckbox = document.getElementById("traitCheckbox");
     this.weapon_effect = weaponeffectCheckbox.checked ? 1 : 0;
   }
