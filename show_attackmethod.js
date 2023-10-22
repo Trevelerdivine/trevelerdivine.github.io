@@ -148,10 +148,19 @@ async function show_attack_method()
 
         case "2":
               const elementsToAddToCharTalent = [
+                createLabel("hutao_E", "蝶導来世"),
+                document.createElement("br"),
+                createTextNode("　元素スキル天賦レベル："),
+                createSelectList("hutaoE_level", 1, 13, "Lv.", "", 10),
+                document.createElement("br"),
                 createCheckbox("hutao_talent2", true),
                 createLabel("hutao_talent2", "血のかまど：胡桃のHPが50%以下の時、炎元素ダメージ+33%"),
                 document.createElement("br"),
               ];
+            
+              elementsToAddToCharTalent.forEach(element => {
+                char_talent.appendChild(element);
+              });
             
               elementsToAddToCharTalent.forEach(element => {
                 char_talent.appendChild(element);

@@ -432,6 +432,7 @@ class hutao {
     this.elm_nonreact = [];
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
+    this.skill_buff = 0;
     this.burst_buff = 0;
   }
 
@@ -449,6 +450,9 @@ class hutao {
     // JSON データを取得
     const response = await fetch("./data/character/char_data/hutao.json");
     const data = await response.json();
+
+    const hutaoE_level = parseInt(document.getElementById("hutaoE_level").value);
+    this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][hutaoE_level]);
 
     const talent2_check = document.getElementById("hutao_talent2");
     if (talent2_check.checked)
@@ -510,7 +514,7 @@ class hutao {
   }
 
   calculate_char_result_attck() {
-    return 0;
+    return Math.min(4 * this.base_status_array[4], this.skill_buff * this.result_status_array[0]);
   }
 
   calculate_char_fixed_deff() {
