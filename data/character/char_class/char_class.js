@@ -452,7 +452,7 @@ class yanfei {
     if (this.char_constellations > 1)
     {
       const second_conste_check = document.getElementById("traitCheckbox2");
-      if (first_conste_check.checked)
+      if (second_conste_check.checked)
       {
         this.second_conste_buff = 0.2;
       }
