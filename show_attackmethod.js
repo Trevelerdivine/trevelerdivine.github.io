@@ -155,7 +155,7 @@ async function show_attack_method()
               ];
               }else if (attack_method == 6) {
                 const yanfei_text = createTextNode("　丹火の印：")
-                const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
+                const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 3, "", "枚", 3);
                 attack_method_prop.appendChild(document.createElement("br"));
                 attack_method_prop.appendChild(yanfei_text);
                 attack_method_prop.appendChild(yanfei_textskill_selectlist);
