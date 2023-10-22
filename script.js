@@ -328,6 +328,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
   let char_instance;
 
   switch (selectedCharId) {
+    case "2":
+      char_instance = new hutao(base_status, fixed_status, result_status, parameter);
+      break;
     case "6":
       char_instance = new yanfei(base_status, fixed_status, result_status, parameter);
       break;
