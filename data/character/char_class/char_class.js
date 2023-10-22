@@ -488,7 +488,7 @@ class yanfei {
       }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
-      const buff_count = document.getElementById("yanfei_mark").value + this.sixth_conste_buff;
+      const buff_count = parseInt(document.getElementById("yanfei_mark").value) + this.sixth_conste_buff;
       console.log(buff_count)
       this.talent1_buff = 0.05 * buff_count;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
