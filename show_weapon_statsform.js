@@ -186,6 +186,35 @@ async function show_weapon_statsform() {
                 weaponInfo.appendChild(selectlist);
               }
 
+              else if (selectedWeaponId == "150") {
+                const traits = [
+                  {
+                    id: "traitCheckbox",
+                    label: "流浪楽章：バフの種類　"
+                  }
+                ];
+            
+                    const traitLabel = document.createElement("label");
+                    traitLabel.htmlFor = traits[0].id;
+                    traitLabel.textContent = traits[0].label;
+                    
+                    const selectList = document.createElement("select");
+                    selectList.id = "TheWidsith_buff";
+                    const buff_kind = ["攻撃力%", "元素ダメージバフ", "元素熟知"]; 
+                  
+                    for (let j = 0; j <=2; j++) {
+                      const option = document.createElement("option");
+                      option.value = j;
+                      option.text = `${elm_buff[j]}`;
+                      
+                      if (j == 1) {
+                        option.selected = true;
+                      }
+                    }
+                    weaponInfo.appendChild(traitLabel);
+                    weaponInfo.appendChild(selectlist);
+                  }
+
           showFormElements();
 }
 

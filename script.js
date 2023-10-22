@@ -408,11 +408,13 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "149":
       weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
       break;
+    case "150":
+      weapon_instance = new TheWidsith(base_status, fixed_status, result_status);
+      break;
     default:
       // 未知の武器IDに対する処理を追加することもできます
       break;
   }
-
   return weapon_instance;
 }
 
