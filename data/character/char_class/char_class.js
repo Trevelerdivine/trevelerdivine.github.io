@@ -558,7 +558,7 @@ class hutao {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.second_conste_buff = 0.33;
+      return this.second_conste_buff;
   }
 
   calculate_char_result_dmg_buff() {
