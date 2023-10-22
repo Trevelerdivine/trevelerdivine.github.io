@@ -569,7 +569,7 @@ class yanfei {
     {
       if (attack_method == 6)
       {
-        attckRate = (1 + resultStatusArray[5] * 0.8) * resultStatusArray[4] * dmg_rate[4];
+        attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
         return basicDmg;
       }
@@ -578,7 +578,7 @@ class yanfei {
     {
       if (attack_method == 6)
       {
-        attckRate = (1 + resultStatusArray[5] * 0.8) * resultStatusArray[4] * dmg_rate[4];
+        attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
         basicDmg = attckRate;
         return basicDmg;
       }
