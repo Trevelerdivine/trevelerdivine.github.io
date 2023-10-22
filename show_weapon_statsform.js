@@ -162,6 +162,30 @@ async function show_weapon_statsform() {
             weaponInfo.appendChild(traitLabel);
           }
 
+          else if (selectedWeaponId == "131") {
+            const traits = [
+              {
+                id: "traitCheckbox",
+                label: "四風原典：元素ダメージバフ"
+              }
+            ];
+                const traitCheckbox = document.createElement("input");
+                traitCheckbox.type = "checkbox";
+                traitCheckbox.id = traits[0].id;
+                traitCheckbox.value = traits[0].id;
+                traitCheckbox.checked = true;
+        
+                const traitLabel = document.createElement("label");
+                traitLabel.htmlFor = traits[0].id;
+                traitLabel.textContent = traits[0].label;
+                
+                const selectlist = createweaponSelectList("bursLostPrayertotheSacredWindst_buff", 0, 4, "", "重", 4);
+        
+                weaponInfo.appendChild(traitCheckbox);
+                weaponInfo.appendChild(traitLabel);
+                weaponInfo.appendChild(selectlist);
+              }
+
           showFormElements();
 }
 
