@@ -166,7 +166,7 @@ async function show_weapon_statsform() {
             const traits = [
               {
                 id: "traitCheckbox",
-                label: "四風原典：元素ダメージバフ"
+                label: "四風原典：元素ダメージバフ　"
               }
             ];
                 const traitCheckbox = document.createElement("input");
