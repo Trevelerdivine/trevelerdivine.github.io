@@ -427,7 +427,6 @@ class yanfei {
     this.parameter = parameter;
     this.talent1effect = 0;
     this.second_conste_buff = 0;
-    this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.elm_react = [];
     this.elm_nonreact = [];
@@ -458,15 +457,6 @@ class yanfei {
         this.second_conste_buff = 0.2;
       }
     }
-
-    if (this.char_constellations > 3)
-    {
-      const sixth_conste_check = document.getElementById("traitCheckbox6");
-      if (sixth_conste_check.checked)
-      {
-        this.sixth_conste_buff = 1;
-      }
-    }
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
@@ -488,8 +478,7 @@ class yanfei {
       }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
-      const buff_count = parseInt(document.getElementById("yanfei_mark").value) + this.sixth_conste_buff;
-      console.log(buff_count)
+      const buff_count = parseInt(document.getElementById("yanfei_mark").value);
       this.talent1_buff = 0.05 * buff_count;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -517,7 +506,7 @@ class yanfei {
   }
 
   calculate_char_fixed_attck() {
-    return this.talent2 ;
+    return 0;
   }
 
   calculate_char_result_attck() {
