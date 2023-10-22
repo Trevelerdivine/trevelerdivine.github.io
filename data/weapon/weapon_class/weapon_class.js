@@ -874,6 +874,8 @@ class LostPrayertotheSacredWinds {
     this.result_status_array = result_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.weapon_count = parseInt(document.getElementById("bursLostPrayertotheSacredWindst_buff").value);
+    const weaponeffectCheckbox = document.getElementById("traitCheckbox");
+    this.weapon_effect = weaponeffectCheckbox.checked ? 1 : 0;
   }
 
   calculate_weapon_fixed_hp() {
@@ -933,7 +935,7 @@ class LostPrayertotheSacredWinds {
   }
 
   calculate_weapon_fixed_dmg_buff() {
-    return (this.weapon_rank + 3) * 0.02 * this.weapon_count;
+    return (this.weapon_rank + 3) * 0.02 * this.weapon_count * this.weapon_effect;
   }
 
   calculate_weapon_result_dmg_buff() {
