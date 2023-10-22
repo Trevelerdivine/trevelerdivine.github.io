@@ -538,7 +538,7 @@ class yanfei {
   }
 
   calculate_char_fixed_cr() {
-    return 0;
+    return this.second_conste_buff;
   }
 
   calculate_char_result_cr() {
@@ -757,7 +757,7 @@ class xiangling {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [this.first_conste_buff,0,0];
+    let char_debuff = [0,0,0];
     return char_debuff;
   }
 }
