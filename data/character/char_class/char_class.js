@@ -486,6 +486,9 @@ class hutao {
           this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
         }
       });
+        console.log(elm_react);
+        console.log(elm_nonreact);
+        console.log(this.trueCount);
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
         for (let i = 0; i < 7; i++) {
