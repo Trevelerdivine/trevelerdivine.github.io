@@ -153,7 +153,7 @@ async function show_attack_method()
                 createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
                 createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
                 document.createElement("br"),
-                createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ"),
+                createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ "),
                 createanySelectList("yoimiya_talent1", 0, 10, "+", "%", 10, 2),
                 document.createElement("br"),
               ];

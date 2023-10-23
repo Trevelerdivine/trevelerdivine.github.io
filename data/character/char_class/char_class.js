@@ -433,7 +433,6 @@ class yoimiya {
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
     this.skill_buff = 0;
-    this.burst_buff = 0;
     this.trueCount = 0;
   }
 
@@ -488,7 +487,6 @@ class yoimiya {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-
         if (checkbox.checked) {
           this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
         }
@@ -503,6 +501,7 @@ class yoimiya {
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      console.log(dmg_rate);
     }
   
     return dmg_rate;
@@ -549,7 +548,7 @@ class yoimiya {
   }
 
   calculate_char_fixed_cr() {
-    return this.sixth_conste_buff;
+    return 0;
   }
 
   calculate_char_result_cr() {
@@ -635,7 +634,6 @@ class hutao {
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
     this.skill_buff = 0;
-    this.burst_buff = 0;
     this.trueCount = 0;
   }
 
