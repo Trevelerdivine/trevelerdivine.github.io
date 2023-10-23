@@ -145,6 +145,36 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "1":
+              const elementsToAddToCharTalent = [
+                createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
+                document.createElement("br"),
+                createTextNode("　元素スキル天賦レベル："),
+                createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
+                document.createElement("br"),
+                createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ"),
+                createanySelectList(yoimiya_talent1, 0, 10, "+", "%", 10, 2),
+                document.createElement("br"),
+              ];
+            
+              elementsToAddToCharTalent.forEach(element => {
+                char_talent.appendChild(element);
+              });
+              if (attack_method == 1)
+              {
+                options = [
+                  { text: "１段目-１", value: "0", checked: true },
+                  { text: "１段目-２", value: "1" },
+                  { text: "２段目", value: "2" },
+                  { text: "３段目", value: "3", checked: true },
+                  { text: "４段目-１", value: "4"},
+                  { text: "４段目-２", value: "5"},
+                  { text: "５段目", value: "6", checked: true },
+                ];
+              } 
+            createCheckboxList(options)
+        break
+
         case "2":
               const elementsToAddToCharTalent = [
                 createLabel("hutao_E", "蝶導来世"),
@@ -167,9 +197,9 @@ async function show_attack_method()
                   { text: "２段目", value: "1" },
                   { text: "３段目", value: "2" },
                   { text: "４段目", value: "3", checked: true },
-                  { text: "5段目-1", value: "4"},
-                  { text: "5段目-2", value: "5"},
-                  { text: "6段目", value: "6", checked: true },
+                  { text: "５段目-１", value: "4"},
+                  { text: "５段目-２", value: "5"},
+                  { text: "６段目", value: "6", checked: true },
                 ];
               } 
               else if (attack_method == 6) {

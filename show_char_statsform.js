@@ -125,6 +125,49 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "1") {
+      traits = [
+        { id: "traitCheckbox1", label: "1重　紅玉の琉金：宵宮の攻撃力+20%" },
+        { id: "traitCheckbox2", label: "2重　万燈の火：炎元素ダメージ+25%" },
+        { id: "traitCheckbox6", label: "６重　長野原龍勢流星群" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常1ループ（熾焔の矢）", value: "1" },
+      ];
+    
+      createchar_attackmethod(options);
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[2].id, true);
+        traitLabel = createLabel(traits[2].id, traits[2].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "2") {
       traits = [
         { id: "traitCheckbox6", label: "６重　冥蝶の抱擁：会心率+100%" },
@@ -712,6 +755,25 @@ function createSelectList(id, initial, optionsCount, head_unit, unit, select_ind
     const option = document.createElement("option");
     option.value = j;
     option.text = `${head_unit}${j}${unit}`;
+    
+    if (j == select_index) {
+      option.selected = true;
+    }
+    
+    selectList.appendChild(option);
+  }
+
+  return selectList;
+}
+
+function createanySelectList(id, initial, optionsCount, head_unit, unit, select_index, rate) {
+  const selectList = document.createElement("select");
+  selectList.id = id;
+
+  for (let j = initial; j <= optionsCount; j++) { // 条件を j <= optionsCount に変更
+    const option = document.createElement("option");
+    option.value = j * rate;
+    option.text = `${head_unit}${j * rate}${unit}`;
     
     if (j == select_index) {
       option.selected = true;
