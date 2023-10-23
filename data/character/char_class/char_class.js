@@ -580,9 +580,9 @@ class yoimiya {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
+        attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1];
+                  + resultStatusArray[4] * dmg_rate[4][1] * this.skill_buff;
         return basicDmg;
       }
       else
@@ -596,7 +596,7 @@ class yoimiya {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff;
         basicDmg = attckRate;
         return basicDmg;
       }
@@ -805,7 +805,7 @@ class hutao {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate;
         return basicDmg;
       }
