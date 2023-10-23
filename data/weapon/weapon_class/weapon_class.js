@@ -1117,7 +1117,7 @@ class DragonsBane {
   }
 
   calculate_weapon_fixed_dmg_buff() {
-    let weapon_dmg_buff;
+    let weapon_dmg_buff = 0;
     let weapon_effect_check = document.getElementById("traitCheckbox");
     if (weapon_effect_check.checked)
     {

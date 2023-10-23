@@ -1,6 +1,5 @@
 async function show_attack_method()
 {
-
   const select_reaction_method = document.getElementById("select_reaction_method");
   select_reaction_method.innerHTML = "";
   const elemental_reaction = document.getElementById("element_action");
@@ -161,10 +160,6 @@ async function show_attack_method()
               elementsToAddToCharTalent.forEach(element => {
                 char_talent.appendChild(element);
               });
-            
-              elementsToAddToCharTalent.forEach(element => {
-                char_talent.appendChild(element);
-              });
               if (attack_method == 1)
               {
                 options = [
@@ -181,13 +176,14 @@ async function show_attack_method()
                 options = [
                   { text: "重撃", value: "0", checked: true },
                 ];
-              }else if (attack_method == 16) {
-                options = [
-                  { text: "丹書契約", value: "0", checked: true },
-                ];
               }else if (attack_method == 21) {
+                let hutao_Q_check = createCheckbox("hutao_Q_effect", true);
+                let hutao_Q_label = createLabel("hutao_Q_effect", "胡桃のHP50%以下");
+                char_talent.appendChild(hutao_Q_check);
+                char_talent.appendChild(hutao_Q_label);
+                
                 options = [
-                  { text: "丹書契約", value: "0", checked: true },
+                  { text: "安神秘法", value: "0", checked: true },
                 ];
             }
             createCheckboxList(options)
