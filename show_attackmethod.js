@@ -165,7 +165,19 @@ async function show_attack_method()
               elementsToAddToCharTalent.forEach(element => {
                 char_talent.appendChild(element);
               });
-              if (attack_method == 6) {
+              if (attack_method == 1)
+              {
+                options = [
+                  { text: "１段目", value: "0", checked: true },
+                  { text: "２段目", value: "1" },
+                  { text: "３段目", value: "2" },
+                  { text: "４段目", value: "3", checked: true },
+                  { text: "5段目-1", value: "4"},
+                  { text: "5段目-2", value: "5"},
+                  { text: "6段目", value: "6", checked: true },
+                ];
+              } 
+              else if (attack_method == 6) {
                 options = [
                   { text: "重撃", value: "0", checked: true },
                 ];
@@ -447,9 +459,9 @@ async function show_attack_method()
 
 
 
-function createCheckboxList(options)
-{
+function createCheckboxList(options) {
     const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+    let counter = 0; // チェックボックスの数をカウントする変数
 
     options.forEach((option) => {
         const checkboxInput = document.createElement("input");
@@ -466,13 +478,19 @@ function createCheckboxList(options)
 
         select_reaction_method.appendChild(checkboxInput); // チェックボックスを select_reaction_method に追加
         select_reaction_method.appendChild(checkboxLabel); // ラベルを select_reaction_method に追加
+
+        counter++;
+
+        if (counter % 4 === 0) {
+            const lineBreak = document.createElement("br");
+            select_reaction_method.appendChild(lineBreak); // 4つ追加するごとに改行
+        }
     });
 }
 
 function createCheckboxList_br(options)
 {
     const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
-
     options.forEach((option) => {
         const checkboxInput = document.createElement("input");
         checkboxInput.type = "checkbox";

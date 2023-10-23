@@ -132,6 +132,7 @@ async function show_char_statsform()
 
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常1ループ（冥蝶の舞状態）", value: "1" },
         { text: "重撃（冥蝶の舞状態）", value: "6" },
         { text: "元素爆発（安神秘法）", value: "21" }
       ];
