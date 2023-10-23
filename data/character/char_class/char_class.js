@@ -672,6 +672,10 @@ class yanfei {
         elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
+
+      console.log(elm_react);
+      console.log(elm_nonreact);
+      console.log(this.trueCount);
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
       const burst_check = document.getElementById("yanfei_Q");
