@@ -500,7 +500,6 @@ class hutao {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
-
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
@@ -585,7 +584,7 @@ class hutao {
                   + resultStatusArray[4] * dmg_rate[4][1];
         return basicDmg;
       }
-      else if (attack_method == 6)
+      else
       {
         attckRate = resultStatusArray[4] * dmg_rate[4];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
@@ -600,7 +599,7 @@ class hutao {
         basicDmg = attckRate;
         return basicDmg;
       }
-      else if (attack_method == 6)
+      else
       {
         attckRate = resultStatusArray[4] * dmg_rate[4];
         basicDmg = attckRate;
