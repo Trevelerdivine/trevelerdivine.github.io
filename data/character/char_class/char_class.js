@@ -515,11 +515,11 @@ class yoimiya {
   }
 
   calculate_char_fixed_attck() {
-    return 0;
+    return this.base_status_array[4] * this.first_conste_buff;
   }
 
   calculate_char_result_attck() {
-    return this.fixed_status_array[4] * this.first_conste_buff;
+    return 0;
   }
 
   calculate_char_fixed_deff() {

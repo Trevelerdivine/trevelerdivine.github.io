@@ -408,6 +408,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "98":
       weapon_instance = new SkywardHarp(base_status, fixed_status, result_status);
       break;
+    case "114":
+      weapon_instance = new rust(base_status, fixed_status, result_status);
+      break;
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
       break;
