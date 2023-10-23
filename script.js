@@ -24,7 +24,7 @@ const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFut
 "LithicBlade", "SnowTombedStarsilver", "SerpentSpine", "BlackcliffSlasher", "Whiteblind", "PrototypeArchaic", "RoyalGreatsword", "Rainslasher", "SacrificialGreatsword", "TheBell",
 "FavoniusGreatsword", "SkyriderGreatsword", "DebateClub", "WhiteIronGreatsword", "BloodtaintedGreatsword", "FerrousShadow", "StaffoftheScarletSands", "CalamityQueller", "EngulfingLightning", "StaffofHoma",
 "VortexVanguisher", "SkywardSpine", "PrimordialJadeWingedSpear", "BalladoftheFjords", "RightfulReward", "MissiveWindspear", "Moonpiercer", "Wavebreaker'sFin", "TheCatch", "KitainCrossSpear",
-"LithicSpear", "DragonspineSpear", "RoyalSpear", "FavoniusLance", "Deathmatch", "BlackcliffPole", "CrescentPike", "PrototypeStarglitter", "Dragon'sBane", "BlackTassel",
+"LithicSpear", "DragonspineSpear", "RoyalSpear", "FavoniusLance", "Deathmatch", "BlackcliffPole", "CrescentPike", "PrototypeStarglitter", "DragonsBane", "BlackTassel",
 "WhiteTassel", "TheFirstGreatMagic", "HuntersPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
 "SongofStillness", "IbisPiercer", "King'sSquire", "EndoftheLine", "FadingTwilight", "Mouun'sMoon", "Hamayumi", "MitternachtsWaltz", "WindblumeOde", "AlleyHunter",
 "TheViridescentHunt", "BlackcliffWarbow", "CompoundBow", "PrototypeCrescent", "Rust", "RoyalBow", "SacrificialBow", "TheStringless", "FavoniusWarbow", "Messenger",
@@ -396,6 +396,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "78":
       weapon_instance = new TheCatch(base_status, fixed_status, result_status);
       break;
+    case "88":
+    weapon_instance = new DragonsBane(base_status, fixed_status, result_status);
+    break;
     case "92":
       weapon_instance = new HuntersPath(base_status, fixed_status, result_status);
       break;
