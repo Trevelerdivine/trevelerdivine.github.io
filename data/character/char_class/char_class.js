@@ -455,7 +455,7 @@ class yoimiya {
     const yoimiyaE_level = parseInt(document.getElementById("yoimiyaE_level").value);
     this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][yoimiyaE_level]);
 
-    this.talent2_buff = parseFloat(document.getElementById("yoimiya_talent1").value) / 100;
+    this.talent1_buff = parseFloat(document.getElementById("yoimiya_talent1").value) / 100;
 
 
     if (this.char_constellations > 0)
@@ -565,7 +565,7 @@ class yoimiya {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.second_conste_buff;
+      return this.second_conste_buff + this.talent1_buff;
   }
 
   calculate_char_result_dmg_buff() {

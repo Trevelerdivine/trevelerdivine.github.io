@@ -150,7 +150,7 @@ async function show_attack_method()
               elementsToAddToCharTalent = [
                 createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
                 document.createElement("br"),
-                createTextNode("　元素スキル天賦レベル："),
+                createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
                 createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
                 document.createElement("br"),
                 createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ"),
