@@ -426,6 +426,8 @@ class yoimiya {
     this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
+    this.first_conste_buff = 0;
+    this.second_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
@@ -450,28 +452,33 @@ class yoimiya {
     const response = await fetch("./data/character/char_data/hutao.json");
     const data = await response.json();
 
-    const hutaoE_level = parseInt(document.getElementById("hutaoE_level").value);
-    this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][hutaoE_level]);
+    const yoimiyaE_level = parseInt(document.getElementById("yoimiyaE_level").value);
+    this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][yoimiyaE_level]);
 
-    const talent2_check = document.getElementById("hutao_talent2");
-    if (talent2_check.checked)
+    this.talent2_buff = parseFloat(document.getElementById("yoimiya_talent1").value) / 100;
+
+
+    if (this.char_constellations > 0)
     {
-      this.talent2_buff = 0.33;
+      const first_conste_check = document.getElementById("traitCheckbox1");
+      if (first_conste_check.checked)
+      {
+        this.first_conste_buff = 0.2;
+      }
     }
 
-    if (this.char_constellations > 3)
+    if (this.char_constellations > 1)
     {
-      const sixth_conste_check = document.getElementById("traitCheckbox6");
-      if (sixth_conste_check.checked)
+      const second_conste_check = document.getElementById("traitCheckbox2");
+      if (second_conste_check.checked)
       {
-        this.sixth_conste_buff = 1;
+        this.second_conste_buff = 0.25;
       }
     }
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
     let dmg_attack_rate = 0;
-
     if (attack_method == 1) {
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -496,18 +503,6 @@ class yoimiya {
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-    } else if (attack_method == 6) {
-      dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 21) {
-      const hutao_hp_check = document.getElementById("hutao_Q_effect");
-      const hutao_hp_flag = 0;
-      if (hutao_hp_check.cheked)
-      {
-        hutao_hp_flag = 1
-      }
-      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][hutao_hp_flag]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
   
     return dmg_rate;
@@ -526,7 +521,7 @@ class yoimiya {
   }
 
   calculate_char_result_attck() {
-    return Math.min(4 * this.base_status_array[4], this.skill_buff * this.result_status_array[0]);
+    return this.fixed_status_array[4] * this.first_conste_buff;
   }
 
   calculate_char_fixed_deff() {
@@ -570,7 +565,7 @@ class yoimiya {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.talent2_buff;
+      return this.second_conste_buff;
   }
 
   calculate_char_result_dmg_buff() {

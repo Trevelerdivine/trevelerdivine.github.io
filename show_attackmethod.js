@@ -254,7 +254,7 @@ async function show_attack_method()
                 ];
               }else if (attack_method == 21) {
                 options = [
-                  { text: "丹書契約", value: "0", checked: true },
+                  { text: "契約成立", value: "0", checked: true },
                 ];
             }
             createCheckboxList(options)
