@@ -617,11 +617,10 @@ class yanfei {
     this.talent1effect = 0;
     this.second_conste_buff = 0;
     this.char_constellations = 0;
-    this.elm_react = [];
-    this.elm_nonreact = [];
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
     this.burst_buff = 0;
+    this.trueCount = 0;
   }
 
   async dmg_rate_data() {
@@ -653,18 +652,25 @@ class yanfei {
     let dmg_attack_rate = 0;
 
     if (attack_method == 1) {
-      const checkboxContainer = document.getElementById("select_reaction_method");
-      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-      // 各チェックボックスの状態を調べて配列に追加
-      checkboxes.forEach(checkbox => {
-        this.elm_react.push(checkbox.checked ? 1 : 0);
-        this.elm_nonreact.push(checkbox.checked ? 0 : 1);
-      });
+      
+    const checkboxContainer = document.getElementById("select_reaction_method");
+    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+    let elm_react = []
+    let elm_nonreact = [];
+    // 各チェックボックスの状態を調べて配列に追加
+    checkboxes.forEach(checkbox => {
+      elm_react.push(checkbox.checked ? 1 : 0);
+      elm_nonreact.push(checkbox.checked ? 0 : 1);
+
+      if (checkbox.checked) {
+        this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+      }
+    });
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
       for (let i = 0; i < 3; i++) {
-        elm_react_dmgrate += this.elm_react * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        elm_nonreact_dmgrate += this.elm_nonreact * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
@@ -760,7 +766,14 @@ class yanfei {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      if (attack_method == 6)
+      if (attack_method == 1)
+      {
+        attckRate = resultStatusArray[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                  + resultStatusArray[4] * dmg_rate[4][1];
+        return basicDmg;
+      }
+      else if (attack_method == 6)
       {
         attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
@@ -775,7 +788,13 @@ class yanfei {
     }
     else
     {
-      if (attack_method == 6)
+      if (attack_method == 1)
+      {
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+        basicDmg = attckRate;
+        return basicDmg;
+      }
+      else if (attack_method == 6)
       {
         attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
         basicDmg = attckRate;
@@ -802,8 +821,6 @@ class yanfei {
     return char_debuff;
   }
 }
-
-////////////////////
 
 class xiangling {
   constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
@@ -946,7 +963,7 @@ class xiangling {
     const resultStatusArray = this.result_status_array;
     let basicDmg;
     let attckRate;
-    if (depend_status[2] == 1)
+    if (this.reaction_coeff > 0)
     {
         attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
         basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
@@ -971,8 +988,6 @@ class xiangling {
     return char_debuff;
   }
 }
-
-////////////////////
 
   class raiden {
     constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
@@ -1141,7 +1156,6 @@ class xiangling {
       return char_debuff;
     }
   }
-  //////////////////////////////
 
   class tighnari {
     constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
@@ -1361,7 +1375,6 @@ class xiangling {
     }
   }
   
-
   class ganyu {
     constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
       this.base_status_array = base_status_array;
