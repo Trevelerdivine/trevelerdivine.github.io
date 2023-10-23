@@ -118,6 +118,7 @@ async function show_attack_method()
 
   attack_method = document.getElementById("attack_method_id").value;     
   let options = [];
+  let elementsToAddToCharTalent;
 
     switch (selectedCharId)
     {
@@ -146,7 +147,7 @@ async function show_attack_method()
         break
 
         case "1":
-              const elementsToAddToCharTalent = [
+              elementsToAddToCharTalent = [
                 createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
                 document.createElement("br"),
                 createTextNode("　元素スキル天賦レベル："),
@@ -176,7 +177,7 @@ async function show_attack_method()
         break
 
         case "2":
-              const elementsToAddToCharTalent = [
+              elementsToAddToCharTalent = [
                 createLabel("hutao_E", "蝶導来世"),
                 document.createElement("br"),
                 createTextNode("　元素スキル天賦レベル："),
@@ -227,7 +228,7 @@ async function show_attack_method()
                 { text: "３段目", value: "2" },
               ];
               }else if (attack_method == 6) {
-                const elementsToAddToCharTalent = [
+                elementsToAddToCharTalent = [
                   createCheckbox("yanfei_Q", true),
                   createLabel("yanfei_Q", "元素爆発：契約成立"),
                   document.createElement("br"),
