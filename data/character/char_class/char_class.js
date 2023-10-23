@@ -448,7 +448,7 @@ class yoimiya {
     }
   
     // JSON データを取得
-    const response = await fetch("./data/character/char_data/hutao.json");
+    const response = await fetch("./data/character/char_data/yoimiya.json");
     const data = await response.json();
 
     const yoimiyaE_level = parseInt(document.getElementById("yoimiyaE_level").value);
@@ -501,7 +501,6 @@ class yoimiya {
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-      console.log(dmg_rate);
     }
   
     return dmg_rate;
