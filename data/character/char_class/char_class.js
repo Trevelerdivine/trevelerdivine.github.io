@@ -500,7 +500,13 @@ class hutao {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
-      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+      const hutao_hp_check = document.getElementById("hutao_Q_effect");
+      const hutao_hp_flag = 0;
+      if (hutao_hp_check.cheked)
+      {
+        hutao_hp_flag = 1
+      }
+      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][hutao_hp_flag]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
   
