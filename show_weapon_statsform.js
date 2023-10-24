@@ -190,11 +190,6 @@ async function show_weapon_statsform() {
                     label: "飛雷の鳴弦：飛雷の巴紋"
                   }
                 ];
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
         
                 const traitLabel = document.createElement("label");
                 traitLabel.htmlFor = traits[0].id;
