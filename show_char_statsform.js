@@ -270,7 +270,7 @@ async function show_char_statsform()
 
     else if (selectedCharId == "12") {
       traits = [
-        { id: "traitCheckbox2", label: "第4重：HP " },
+        { id: "traitCheckbox4", label: "第4重：騙し取る者、移花接木 " },
       ];
 
       options = [
@@ -281,13 +281,19 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
+      let talent2_label = createLabel("yelan_talent1", "先後の決め手：チーム内元素タイプ ");
+      const yelan_talent1_list = createSelectList("yelan_talent1", 1, 4, "", "種類", 4);
+      char_talent.appendChild(talent2_label);
+      char_talent.appendChild(yelan_talent1_list);
+
       if (char_constellations > 2)
       {
-        traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
+        const yelan_selectlist = createSelectList("yelan_forth_buff", 1, 4, "", "体", 4);
     
-        characterInfo.appendChild(traitCheckbox);
+        
         characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(yelan_selectlist);
         characterInfo.appendChild(document.createElement("br"));
       }
     }
