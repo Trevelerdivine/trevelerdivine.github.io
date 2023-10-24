@@ -129,7 +129,6 @@ async function show_char_statsform()
       traits = [
         { id: "traitCheckbox1", label: "1重　紅玉の琉金：宵宮の攻撃力+20%" },
         { id: "traitCheckbox2", label: "2重　万燈の火：炎元素ダメージ+25%" },
-        { id: "traitCheckbox6", label: "６重　長野原龍勢流星群" },
       ];
 
       options = [

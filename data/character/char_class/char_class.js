@@ -622,7 +622,7 @@ class yoimiya {
         }
         else
         {
-          attckRate = resultStatusArray[4] * dmg_rate[4] * this.skill_buff * 1.3;
+          attckRate = resultStatusArray[4] * dmg_rate[4] * this.skill_buff;
           basicDmg = attckRate;
           return basicDmg;
         }
