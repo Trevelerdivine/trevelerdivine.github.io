@@ -183,6 +183,17 @@ async function show_weapon_statsform() {
                 weaponInfo.appendChild(traitLabel);
               }
 
+              else if (selectedWeaponId == "120") {
+                const traits = [
+                  {
+                    id: "traitCheckbox",
+                    label: "弾弓：0.3秒以内に敵に命中"
+                  }
+                ];
+                    const traitLabel = document.createElement("label");
+                    traitLabel.textContent = traits[0].label;
+                  }
+
           else if (selectedWeaponId == "131") {
             const traits = [
               {

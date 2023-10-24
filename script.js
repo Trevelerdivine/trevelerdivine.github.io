@@ -411,6 +411,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "114":
       weapon_instance = new Rust(base_status, fixed_status, result_status);
       break;
+    case "120":
+    weapon_instance = new Slingshot(base_status, fixed_status, result_status);
+    break;
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
       break;
