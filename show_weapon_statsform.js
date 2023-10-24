@@ -197,7 +197,6 @@ async function show_weapon_statsform() {
 
                 const selectlist = createweaponSelectList("ThunderingPulse_count", 0, 3, "", "層", 3);
                 
-                weaponInfo.appendChild(traitCheckbox);
                 weaponInfo.appendChild(traitLabel);
                 weaponInfo.appendChild(selectlist);
               }

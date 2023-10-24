@@ -284,6 +284,34 @@ async function show_attack_method()
             }
         break
 
+        case "12":
+              if (attack_method == 16) {
+              options = [
+                { text: "絡み合う命の糸", value: "0", checked: true },
+              ];
+              createCheckboxList(options)
+            }else if (attack_method == 21) {
+              if (char_constellations < 2)
+              {
+              options = [
+                { text: "玲瓏一擲1", value: "0", checked: true },
+                { text: "玲瓏一擲2", value: "1"},
+                { text: "玲瓏一擲3", value: "2"},
+              ];
+              }
+              else
+              {
+                options = [
+                  { text: "玲瓏一擲1", value: "0", checked: true },
+                  { text: "玲瓏一擲2", value: "1"},
+                  { text: "玲瓏一擲3", value: "2"},
+                  { text: "追加追撃", value: "3", checked: true },
+                ];
+              }
+              createCheckboxList_br(options);
+          }
+      break
+
         case "57":        
         if (attack_method == 6)
         {

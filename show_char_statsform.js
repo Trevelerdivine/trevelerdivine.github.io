@@ -268,6 +268,30 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "12") {
+      traits = [
+        { id: "traitCheckbox2", label: "第4重：HP " },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "スキル（絡み合う命の糸）", value: "16" },
+        { text: "元素爆発（玲瓏一擲）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "33") {
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
