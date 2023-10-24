@@ -1394,7 +1394,7 @@ class ThunderingPulse {
   calculate_weapon_fixed_dmg_buff() {
     let weapon_dmg_buff = 0;
     const buff_mag = [0, 0.03, 0.06, 0.1]
-    if (attack_method_index == 1)
+    if (attack_method_index == 0)
     {
       weapon_dmg_buff = (this.weapon_rank + 3) * buff_mag[this.weapon_effect];
     }
