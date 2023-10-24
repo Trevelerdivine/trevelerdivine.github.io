@@ -183,6 +183,30 @@ async function show_weapon_statsform() {
                 weaponInfo.appendChild(traitLabel);
               }
 
+              else if (selectedWeaponId == "95") {
+                const traits = [
+                  {
+                    id: "traitCheckbox",
+                    label: "飛雷の鳴弦：飛雷の巴紋"
+                  }
+                ];
+                const traitCheckbox = document.createElement("input");
+                traitCheckbox.type = "checkbox";
+                traitCheckbox.id = traits[0].id;
+                traitCheckbox.value = traits[0].id;
+                traitCheckbox.checked = true;
+        
+                const traitLabel = document.createElement("label");
+                traitLabel.htmlFor = traits[0].id;
+                traitLabel.textContent = traits[0].label;
+
+                const selectlist = createweaponSelectList("ThunderingPulse_count", 0, 3, "", "層", 3);
+                
+                weaponInfo.appendChild(traitCheckbox);
+                weaponInfo.appendChild(traitLabel);
+                weaponInfo.appendChild(selectlist);
+              }
+
               else if (selectedWeaponId == "120") {
                 const traits = [
                   {
@@ -190,17 +214,27 @@ async function show_weapon_statsform() {
                     label: "弾弓：0.3秒以内に敵に命中"
                   }
                 ];
-                    const traitLabel = document.createElement("label");
-                    traitLabel.textContent = traits[0].label;
-                  }
-
-          else if (selectedWeaponId == "131") {
-            const traits = [
-              {
-                id: "traitCheckbox",
-                label: "四風原典：元素ダメージバフ　"
+                const traitCheckbox = document.createElement("input");
+                traitCheckbox.type = "checkbox";
+                traitCheckbox.id = traits[0].id;
+                traitCheckbox.value = traits[0].id;
+                traitCheckbox.checked = true;
+        
+                const traitLabel = document.createElement("label");
+                traitLabel.htmlFor = traits[0].id;
+                traitLabel.textContent = traits[0].label;
+                
+                weaponInfo.appendChild(traitCheckbox);
+                weaponInfo.appendChild(traitLabel);
               }
-            ];
+
+              else if (selectedWeaponId == "131") {
+                const traits = [
+                  {
+                    id: "traitCheckbox",
+                    label: "四風原典：元素ダメージバフ　"
+                  }
+                ];
                 const traitCheckbox = document.createElement("input");
                 traitCheckbox.type = "checkbox";
                 traitCheckbox.id = traits[0].id;
@@ -226,26 +260,26 @@ async function show_weapon_statsform() {
                   }
                 ];
             
-                    const traitLabel = document.createElement("label");
-                    traitLabel.textContent = traits[0].label;
-                    
-                    const selectList = document.createElement("select");
-                    selectList.id = "TheWidsith_buff";
-                    const buff_kind = ["攻撃力%", "元素ダメージバフ", "元素熟知"]; 
+                const traitLabel = document.createElement("label");
+                traitLabel.textContent = traits[0].label;
+                
+                const selectList = document.createElement("select");
+                selectList.id = "TheWidsith_buff";
+                const buff_kind = ["攻撃力%", "元素ダメージバフ", "元素熟知"]; 
+              
+                for (let j = 0; j <=2; j++) {
+                  const option = document.createElement("option");
+                  option.value = j;
+                  option.text = `${buff_kind[j]}`;
                   
-                    for (let j = 0; j <=2; j++) {
-                      const option = document.createElement("option");
-                      option.value = j;
-                      option.text = `${buff_kind[j]}`;
-                      
-                      if (j == 1) {
-                        option.selected = true;
-                      }
-                      selectList.appendChild(option);
-                    }
-                    weaponInfo.appendChild(traitLabel);
-                    weaponInfo.appendChild(selectList);
+                  if (j == 1) {
+                    option.selected = true;
                   }
+                  selectList.appendChild(option);
+                }
+                weaponInfo.appendChild(traitLabel);
+                weaponInfo.appendChild(selectList);
+              }
 
           showFormElements();
 }
