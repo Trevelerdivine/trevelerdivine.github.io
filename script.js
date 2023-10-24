@@ -340,6 +340,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "9":
       char_instance = new xiangling(base_status, fixed_status, result_status, parameter);
       break;
+    case "12":
+      char_instance = new yelan(base_status, fixed_status, result_status, parameter);
+      break;
     case "23":
       char_instance = new ganyu(base_status, fixed_status, result_status, parameter);
       break;
