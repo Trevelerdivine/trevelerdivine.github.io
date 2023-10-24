@@ -1206,7 +1206,7 @@ class Rust {
   }
 
   calculate_weapon_fixed_dmg_buff() {
-    const weapon_dmg_buff = 0;
+    let weapon_dmg_buff = 0;
     if (attack_method_index == 0)
     {
       weapon_dmg_buff = (this.weapon_rank + 3) * 0.1;
