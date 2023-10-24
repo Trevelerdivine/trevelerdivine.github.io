@@ -506,18 +506,6 @@ class yoimiya {
       }
       else
       {
-        const checkboxContainer = document.getElementById("select_reaction_method");
-        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-        // 各チェックボックスの状態を調べて配列に追加
-        checkboxes.forEach(checkbox => {
-          elm_react.push(checkbox.checked ? 1 : 0);
-          elm_nonreact.push(checkbox.checked ? 0 : 1);
-          if (checkbox.checked) {
-            this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
-          }
-        });
-          let elm_react_dmgrate = 0;
-          let elm_nonreact_dmgrate = 0;
           for (let i = 0; i < 7; i++) {
             dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           }
