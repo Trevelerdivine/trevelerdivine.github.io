@@ -479,6 +479,8 @@ class yoimiya {
     let dmg_rate;
     let dmg_attack_rate = 0;
     if (attack_method == 1) {
+      if (this.char_constellations < 4)
+      {
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       let elm_react = []
@@ -500,7 +502,28 @@ class yoimiya {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
-      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      }
+      else
+      {
+        const checkboxContainer = document.getElementById("select_reaction_method");
+        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+        // 各チェックボックスの状態を調べて配列に追加
+        checkboxes.forEach(checkbox => {
+          elm_react.push(checkbox.checked ? 1 : 0);
+          elm_nonreact.push(checkbox.checked ? 0 : 1);
+          if (checkbox.checked) {
+            this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+          }
+        });
+          let elm_react_dmgrate = 0;
+          let elm_nonreact_dmgrate = 0;
+          for (let i = 0; i < 7; i++) {
+            dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          }
+          dmg_attack_rate = dmg_attack_rate * 1.3
+          dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      }
     }
   
     return dmg_rate;
@@ -578,10 +601,19 @@ class yoimiya {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1] * this.skill_buff;
-        return basicDmg;
+        if (this.char_constellations < 4)
+        {
+          attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
+          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                    + resultStatusArray[4] * dmg_rate[4][1] * this.skill_buff;
+          return basicDmg;
+        }
+        else
+        {
+          basicDmg = (resultStatusArray[4] * dmg_rate[4] * this.skill_buff / 3) * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                    + resultStatusArray[4] * dmg_rate[4] * this.skill_buff * 2 / 3;
+          return basicDmg;
+        }
       }
       else
       {
@@ -594,9 +626,18 @@ class yoimiya {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff;
-        basicDmg = attckRate;
-        return basicDmg;
+        if( this.char_constellations < 4)
+        {
+          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff;
+          basicDmg = attckRate;
+          return basicDmg;
+        }
+        else
+        {
+          attckRate = resultStatusArray[4] * dmg_rate[4] * this.skill_buff * 1.3;
+          basicDmg = attckRate;
+          return basicDmg;
+        }
       }
       else
       {
