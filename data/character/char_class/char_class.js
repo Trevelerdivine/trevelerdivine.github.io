@@ -1264,15 +1264,6 @@ class yelan {
     // JSON データを取得
     const response = await fetch("./data/character/char_data/yelan.json");
     const data = await response.json();
-
-    if (this.char_constellations > 1)
-    {
-      const second_conste_check = document.getElementById("traitCheckbox2");
-      if (second_conste_check.checked)
-      {
-        this.second_conste_buff = 0.2;
-      }
-    }
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
@@ -1304,7 +1295,7 @@ class yelan {
         elm_nonreact_dmgrate += elm_nonreact[3] * 0.14;
       }
 
-      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 6) {
       const burst_check = document.getElementById("yanfei_Q");
       if (burst_check.checked)
@@ -1400,15 +1391,9 @@ class yelan {
     {
       if (attack_method == 21)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
+        attckRate = resultStatusArray[0] * dmg_rate[0][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1];
-        return basicDmg;
-      }
-      else if (attack_method == 6)
-      {
-        attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+                  + resultStatusArray[0] * dmg_rate[0][1];
         return basicDmg;
       }
       else 
@@ -1422,7 +1407,7 @@ class yelan {
     {
       if (attack_method == 21)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1])
         basicDmg = attckRate;
         return basicDmg;
       }
