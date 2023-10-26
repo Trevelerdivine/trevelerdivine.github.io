@@ -842,7 +842,7 @@ function createRadio(name, value, checked, id, labelText) {
 
 function createInputWithUnit(type, id, value, unit) {
   // フォームをラップする div 要素を作成
-  const inputContainer = document.createElement("div");
+  const inputContainer = document.createElement("span");
 
   // フォーム要素を作成
   const input = document.createElement("input");
