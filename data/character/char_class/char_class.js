@@ -1314,15 +1314,9 @@ class yelan {
       }
 
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
-    } else if (attack_method == 6) {
-      dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_rate = [dmg_attack_rate, 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 16) {
       dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 21) {
-      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      dmg_rate = [dmg_attack_rate, 0, 0, 0, 0, 0, 0];
     }
   
     return dmg_rate;
