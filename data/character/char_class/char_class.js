@@ -1318,7 +1318,7 @@ class yelan {
       dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [dmg_attack_rate, 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 6) {
-      dmg_attack_rate = parseFloat(data["特殊重撃"]["詳細"][0]["数値"][this.parameter[3]]) * 1.56;
+      dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * 1.56;
       dmg_rate = [dmg_attack_rate, 0, 0, 0, 0, 0, 0];
     }
   
