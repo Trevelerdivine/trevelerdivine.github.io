@@ -272,9 +272,9 @@ async function show_char_statsform()
 
       const elementsToAddToCharTalent = [
         createCheckbox("yelan_Q", true),
-        createLabel("yelan_Q", "玲瓏一擲"),
-        createCheckbox("talent1", true),
-        createLabel("talent1", "出場中"),
+        createLabel("yelan_Q", "玲瓏一擲　"),
+        createCheckbox("yelan_entrance", true),
+        createLabel("yelan_entrance", "出場中"),
         document.createElement("br"),
         createLabel("yelan_talent2_buff", "　ダメージバフ："),
         createInputWithUnit("text", "yelan_talent2_buff", "25.5","(%)"),

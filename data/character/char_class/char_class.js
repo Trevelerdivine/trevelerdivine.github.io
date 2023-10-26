@@ -1250,6 +1250,7 @@ class yelan {
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
+    this.talent2_buff = 0;
     this.burst_buff = 0;
     this.trueCount = 0;
   }
@@ -1261,6 +1262,12 @@ class yelan {
       this.reaction_coeff = 2;
     }
 
+    const yelan_entrance = document.getElementById("yelan_Q");
+    const burst_flag = document.getElementById("yelan_entrance");
+    if (yelan_entrance.checked && burst_flag.checked)
+    {
+      this.talent2_buff = parseFloat(document.getElementById("yelan_talent2_buff".value))/100;
+    }
 
     const talent1_count = parseInt(document.getElementById("yelan_talent1").value);
     if (talent1_count != 4)
@@ -1387,7 +1394,7 @@ class yelan {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.talent1_buff;
+      return this.talent2_buff;
   }
 
   calculate_char_result_dmg_buff() {
