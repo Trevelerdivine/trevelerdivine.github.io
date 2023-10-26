@@ -91,7 +91,7 @@ async function show_char_statsform()
         createLabel("other-label", "その他"),
         document.createElement("br"),
         createLabel("element-mastery-label", "　元素熟知："),
-        createInput("text", "element-mastery", "800"),
+        createInputWithUnit("text", "element-mastery", "800",""),
         document.createElement("br")
       ];
     
@@ -269,6 +269,21 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "12") {
+
+      const elementsToAddToCharTalent = [
+        createCheckbox("yelan_Q", true),
+        createLabel("yelan_Q", "玲瓏一擲"),
+        createCheckbox("talent1", true),
+        createLabel("talent1", "出場中"),
+        document.createElement("br"),
+        createLabel("yelan_talent2_buff", "　ダメージバフ："),
+        createInputWithUnit("text", "yelan_talent2_buff", "25.5","(%)"),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
       traits = [
         { id: "traitCheckbox4", label: "第4重：騙し取る者、移花接木 " },
       ];
@@ -276,7 +291,8 @@ async function show_char_statsform()
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "スキル（絡み合う命の糸）", value: "16" },
-        { text: "元素爆発（玲瓏一擲）", value: "21" }
+        { text: "元素爆発（玲瓏一擲）", value: "21" },
+        { text: "打破の矢（6重）", value: "6" }
       ];
     
       createchar_attackmethod(options);
@@ -824,10 +840,24 @@ function createRadio(name, value, checked, id, labelText) {
   return radio;
 }
 
-function createInput(type, id, value) {
+function createInputWithUnit(type, id, value, unit) {
+  // フォームをラップする div 要素を作成
+  const inputContainer = document.createElement("div");
+
+  // フォーム要素を作成
   const input = document.createElement("input");
   input.type = type;
   input.id = id;
   input.value = value;
-  return input;
+
+  // 単位を表示するための span 要素を作成
+  const unitSpan = document.createElement("span");
+  unitSpan.textContent = unit;
+
+  // フォーム要素と単位要素を div 要素に追加
+  inputContainer.appendChild(input);
+  inputContainer.appendChild(unitSpan);
+
+  // div 要素を返す
+  return inputContainer;
 }
