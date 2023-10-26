@@ -1262,13 +1262,6 @@ class yelan {
       this.reaction_coeff = 2;
     }
 
-    const yelan_entrance = document.getElementById("yelan_Q");
-    const burst_flag = document.getElementById("yelan_entrance");
-    if (yelan_entrance.checked && burst_flag.checked)
-    {
-      this.talent2_buff = parseFloat(document.getElementById("yelan_talent2_buff".value))/100;
-    }
-
     const talent1_count = parseInt(document.getElementById("yelan_talent1").value);
     if (talent1_count != 4)
     {
@@ -1277,6 +1270,13 @@ class yelan {
     else
     {
       this.talent1_buff = 0.3;
+    }
+
+    const yelan_entrance = document.getElementById("yelan_Q");
+    const burst_flag = document.getElementById("yelan_entrance");
+    if (yelan_entrance.checked && burst_flag.checked)
+    {
+      this.talent2_buff = parseFloat(document.getElementById("yelan_talent2_buff").value)/100 || 0;
     }
   
     // JSON データを取得
