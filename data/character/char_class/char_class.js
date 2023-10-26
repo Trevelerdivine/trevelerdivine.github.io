@@ -1260,6 +1260,17 @@ class yelan {
     if (Vaporize_hydro.checked) {
       this.reaction_coeff = 2;
     }
+
+
+    const talent1_count = parseInt(document.getElementById("yelan_talent1").value);
+    if (talent1_count != 4)
+    {
+      this.talent1_buff = 0.06 * talent1_count;
+    }
+    else
+    {
+      this.talent1_buff = 0.3;
+    }
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/yelan.json");
@@ -1320,7 +1331,7 @@ class yelan {
   }
   
   calculate_char_fixed_hp() {
-    return 0;
+    return this.base_status_array[0] * this.talent1_buff;
   }
 
   calculate_char_result_hp() {
@@ -1376,7 +1387,7 @@ class yelan {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return 0;
+      return this.talent1_buff;
   }
 
   calculate_char_result_dmg_buff() {
