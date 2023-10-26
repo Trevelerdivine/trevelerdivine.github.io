@@ -187,7 +187,7 @@ async function show_weapon_statsform() {
                 const traits = [
                   {
                     id: "traitCheckbox",
-                    label: "飛雷の鳴弦：飛雷の巴紋"
+                    label: "飛雷の鳴弦：飛雷の巴紋　"
                   }
                 ];
         
