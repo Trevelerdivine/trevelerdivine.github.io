@@ -1309,23 +1309,14 @@ class yelan {
       }
       if (this.char_constellations > 1)
       {
-        elm_react_dmgrate += elm_react[3] * 0.14;
-        elm_nonreact_dmgrate += elm_nonreact[3] * 0.14;
+        elm_react_dmgrate += elm_react[3] * 0.07;
+        elm_nonreact_dmgrate += elm_nonreact[3] * 0.07;
       }
 
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 6) {
-      const burst_check = document.getElementById("yanfei_Q");
-      if (burst_check.checked)
-      {
-        const burstlevel = parseInt(document.getElementById("yanfeiQ_level").value);
-        this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burstlevel]);
-      }
-      const buff_count = parseInt(document.getElementById("yanfei_mark").value);
-
-      this.talent1_buff = 0.05 * buff_count;
-      dmg_attack_rate = parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [dmg_attack_rate, 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 16) {
       dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -1416,7 +1407,7 @@ class yelan {
       }
       else 
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        attckRate = resultStatusArray[0] * dmg_rate[0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
         return basicDmg;
       }
@@ -1429,15 +1420,9 @@ class yelan {
         basicDmg = attckRate;
         return basicDmg;
       }
-      else if (attack_method == 6)
-      {
-        attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
-        basicDmg = attckRate;
-        return basicDmg;
-      }
       else 
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        attckRate = resultStatusArray[0] * dmg_rate[0];
         basicDmg = attckRate;
         return basicDmg;
       }

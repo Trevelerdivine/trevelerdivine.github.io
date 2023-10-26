@@ -271,9 +271,9 @@ async function show_char_statsform()
     else if (selectedCharId == "12") {
 
       const elementsToAddToCharTalent = [
-        createCheckbox("yelan_Q", true),
+        createCheckbox("yelan_Q", false),
         createLabel("yelan_Q", "玲瓏一擲　"),
-        createCheckbox("yelan_entrance", true),
+        createCheckbox("yelan_entrance", false),
         createLabel("yelan_entrance", "出場中"),
         document.createElement("br"),
         createLabel("yelan_talent2_buff", "　ダメージバフ："),
