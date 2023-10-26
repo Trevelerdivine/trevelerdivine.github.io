@@ -1299,7 +1299,7 @@ class Slingshot {
 
   calculate_weapon_fixed_dmg_buff() {
     let weapon_dmg_buff = 0;
-    weapon_effect_check = document.getElementById("traitCheckbox")
+    const weapon_effect_check = document.getElementById("traitCheckbox")
     if (weapon_effect_check.checked && (attack_method_index == 0 || attack_method_index == 1))
     {
       weapon_dmg_buff = (this.weapon_rank + 5) * 0.06;
