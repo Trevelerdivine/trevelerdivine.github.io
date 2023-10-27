@@ -58,8 +58,11 @@ const elm_reaction_obj = [
   {
   id: "Aggravate",
   label: "超激化　"
+  },
+  {
+    id: "Aggravate",
+    label: "超伝導　"
   }
-
 ];
 
 /////////////////////
@@ -342,6 +345,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
       break;
     case "12":
       char_instance = new yelan(base_status, fixed_status, result_status, parameter);
+      break;
+    case "22":
+      char_instance = new eula(base_status, fixed_status, result_status, parameter);
       break;
     case "23":
       char_instance = new ganyu(base_status, fixed_status, result_status, parameter);

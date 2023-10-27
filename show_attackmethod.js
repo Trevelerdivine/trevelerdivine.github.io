@@ -116,6 +116,22 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
   }
 
+  else if (char_propaty[0] == 7)
+  {
+    const traitCheckbox1 = document.createElement("input");
+    traitCheckbox1.type = "radio";
+    traitCheckbox1.id = elm_reaction_obj[5].id;
+    traitCheckbox1.name = "elemental-reaction";
+    traitCheckbox1.value = elm_reaction_obj[5].id;
+
+    const traitLabel1 = document.createElement("label");
+    traitLabel1.htmlFor = elm_reaction_obj[5].id;
+    traitLabel1.textContent = elm_reaction_obj[5].label;
+
+    elemental_reaction.appendChild(traitCheckbox1);
+    elemental_reaction.appendChild(traitLabel1);
+  }
+
   attack_method = document.getElementById("attack_method_id").value;     
   let options = [];
   let elementsToAddToCharTalent;

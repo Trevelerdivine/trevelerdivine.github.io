@@ -317,13 +317,11 @@ async function show_char_statsform()
     else if (selectedCharId == "22") {
 
       const elementsToAddToCharTalent = [
-        createCheckbox("yelan_Q", false),
-        createLabel("yelan_Q", "玲瓏一擲　"),
-        createCheckbox("yelan_entrance", false),
-        createLabel("yelan_entrance", "出場中"),
+        createCheckbox("eula_E", true),
+        createLabel("eula_E", "氷潮の渦 "),
         document.createElement("br"),
-        createLabel("yelan_talent2_buff", "　ダメージバフ："),
-        createInputWithUnit("text", "yelan_talent2_buff", "25.5","(%)"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("eula_E_level", 1, 13, "Lv.", "", 8),
         document.createElement("br")
       ];
     
@@ -337,24 +335,28 @@ async function show_char_statsform()
 
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "元素爆発（氷浪の光剣）", value: "21" },
+        { text: "元素爆発（光臨の剣）", value: "21" },
       ];
     
       createchar_attackmethod(options);
 
-      let talent2_label = createLabel("yelan_talent1", "先後の決め手：チーム内元素タイプ ");
-      const yelan_talent1_list = createSelectList("yelan_talent1", 1, 4, "", "種類", 4);
-      char_talent.appendChild(talent2_label);
-      char_talent.appendChild(yelan_talent1_list);
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
 
       if (char_constellations > 2)
       {
-        traitLabel = createLabel(traits[0].id, traits[0].label);
-        const yelan_selectlist = createSelectList("yelan_forth_buff", 1, 4, "", "体", 4);
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
     
-        
+        characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(yelan_selectlist);
         characterInfo.appendChild(document.createElement("br"));
       }
     }
