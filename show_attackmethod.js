@@ -312,6 +312,10 @@ async function show_attack_method()
           }
       break
 
+      case "22":
+              
+      break
+
         case "57":        
         if (attack_method == 6)
         {

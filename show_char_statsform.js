@@ -314,6 +314,51 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "22") {
+
+      const elementsToAddToCharTalent = [
+        createCheckbox("yelan_Q", false),
+        createLabel("yelan_Q", "玲瓏一擲　"),
+        createCheckbox("yelan_entrance", false),
+        createLabel("yelan_entrance", "出場中"),
+        document.createElement("br"),
+        createLabel("yelan_talent2_buff", "　ダメージバフ："),
+        createInputWithUnit("text", "yelan_talent2_buff", "25.5","(%)"),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      traits = [
+        { id: "traitCheckbox1", label: "第1重：潮の幻像 物理ダメージ+30% " },
+        { id: "traitCheckbox4", label: "第4重：劣等感との戦い 光臨の剣のダメージ+25% " },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素爆発（氷浪の光剣）", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
+
+      let talent2_label = createLabel("yelan_talent1", "先後の決め手：チーム内元素タイプ ");
+      const yelan_talent1_list = createSelectList("yelan_talent1", 1, 4, "", "種類", 4);
+      char_talent.appendChild(talent2_label);
+      char_talent.appendChild(yelan_talent1_list);
+
+      if (char_constellations > 2)
+      {
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        const yelan_selectlist = createSelectList("yelan_forth_buff", 1, 4, "", "体", 4);
+    
+        
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(yelan_selectlist);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "33") {
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },

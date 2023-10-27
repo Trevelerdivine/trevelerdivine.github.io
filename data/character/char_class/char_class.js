@@ -224,8 +224,6 @@ class nahida {
   }
 }
 
-////////////////////
-
 class yaemiko {
   constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
     this.base_status_array = base_status_array;
