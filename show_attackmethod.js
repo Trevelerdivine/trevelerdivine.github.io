@@ -120,13 +120,13 @@ async function show_attack_method()
   {
     const traitCheckbox1 = document.createElement("input");
     traitCheckbox1.type = "radio";
-    traitCheckbox1.id = elm_reaction_obj[5].id;
+    traitCheckbox1.id = elm_reaction_obj[6].id;
     traitCheckbox1.name = "elemental-reaction";
-    traitCheckbox1.value = elm_reaction_obj[5].id;
+    traitCheckbox1.value = elm_reaction_obj[6].id;
 
     const traitLabel1 = document.createElement("label");
-    traitLabel1.htmlFor = elm_reaction_obj[5].id;
-    traitLabel1.textContent = elm_reaction_obj[5].label;
+    traitLabel1.htmlFor = elm_reaction_obj[6].id;
+    traitLabel1.textContent = elm_reaction_obj[6].label;
 
     elemental_reaction.appendChild(traitCheckbox1);
     elemental_reaction.appendChild(traitLabel1);
@@ -329,7 +329,10 @@ async function show_attack_method()
       break
 
       case "22":
-              
+        const eulaburst_text = createTextNode("　エネルギー：")
+        const eulaburst_selectlist = createSelectList("eula_enelgy", 0, 30, "", "重", 15);
+        attack_method_prop.appendChild(raidenskill_text);
+        attack_method_prop.appendChild(raidenskill_selectlist);
       break
 
         case "57":        
@@ -433,7 +436,6 @@ async function show_attack_method()
         case "34":
               const raidenskill_text = createTextNode("　願力の層数：")
               const raidenskill_selectlist = createSelectList("raiden_resolve", 0, 60, "", "層", 60);
-              attack_method_prop.appendChild(document.createElement("br"));
               attack_method_prop.appendChild(raidenskill_text);
               attack_method_prop.appendChild(raidenskill_selectlist);
             if (attack_method == 21) {
