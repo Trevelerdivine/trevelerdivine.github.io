@@ -1456,7 +1456,7 @@ class eula {
     const response = await fetch("./data/character/char_data/eula.json");
     const data = await response.json();
 
-    const eula_E_level = parseInt(document.getElementById(eula_E_level).value);
+    const eula_E_level = parseInt(document.getElementById("eula_E_level").value);
     const eulaE_check = document.getElementById("eula_E");
     if (eulaE_check.checked)
     {
