@@ -1760,59 +1760,59 @@ class eula {
       this.result_status_array = result_status_array;
       this.parameter = parameter;
       this.char_constellations = 0;
+      this.forth_conste_buff = 0;
+      this.sixth_conste_buff = 0;
       this.aggcount = 0;
+      this.talent2_buff = 0;
+      this.reaction_coeff = 0;
       this.skill_buff = 0;
     }
 
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
 
-      const checkboxContainer = document.getElementById("select_reaction_method");
-      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-      const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
-      // Spread チェックボックスの状態を取得
-      const agg = document.getElementById("Aggravate");
-      let agg_reaction = 0; // デフォルト値
-      
-      if (agg) { // 要素が存在する場合
-        agg_reaction = agg.checked ? 1 : 0;
+      const Aggravate = document.getElementById("Aggravate");
+      if (Aggravate.checked) {
+        this.reaction_coeff = 1.15;
+        this.aggcount = parseInt(document.getElementById("keqing_agg_count").value);
       }
-      // チェックボックスの数と Spread の状態から aggcount を計算
-      this.aggcount = trueCount * agg_reaction;
-    
+
+      if (this.char_constellations > 2)
+      {
+        const forth_conste_check = document.getElementById("traitCheckbox4");
+        if (forth_conste_check.checked)
+        {
+          this.forth_conste_buff = 0.25;
+        }
+      } 
+      if (this.char_constellations > 3)
+      {
+        this.sixth_conste_buff = parseInt(document.getElementById("keqing_conste6").value) / 100;
+      } 
+
       // JSON データを取得
       const response = await fetch("./data/character/char_data/raidenshougun.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
-      const resolve = parseInt(document.getElementById("raiden_resolve").value);
-      const raidenn_E_level = document.getElementById("raiden_E_level").value;
-      const raiden_E_check = document.getElementById("raiden_E");
-      let skill_effect = 0;
-      if (raiden_E_check.checked)
-      {
-        skill_effect = 1;
-        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][raidenn_E_level]) * 0.9;
-      }
-      let dmg_rate;
-      let dmg_attack_rate = 0;
-      let burst_bonus;
       
-      if (attack_method == 21) {
+      if (attack_method == 1) {
         for (let i = 0; i < 5; i++) {
-          dmg_attack_rate = parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          dmg_attack_rate = parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
-        burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-        dmg_attack_rate += burst_bonus * resolve * skill_effect;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-      } else if (attack_method == 22) {
-        dmg_attack_rate = parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]]);
-        burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-        dmg_attack_rate += burst_bonus * resolve * skill_effect;
+      } else if (attack_method == 6) {
+        const attack_count = parseInt(document.getElementById("keqing_attack_count").value);
+        dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-      } else if (attack_method == 23) {
-        dmg_attack_rate = parseFloat(data["元素爆発"]["数値"][this.parameter[3]]);
-        burst_bonus = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-        dmg_attack_rate += burst_bonus * resolve * skill_effect;
+      } else if (attack_method == 21) {
+        const keqing_talent1_check = document.getElementById("keqing_talent1");
+        if (keqing_talent1_check.checked)
+        {
+          this.talent2_buff = 0.15;
+        }
+        dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+        dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * 8;
+        dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       }
     return dmg_rate;
@@ -1827,7 +1827,7 @@ class eula {
     }
   
     calculate_char_fixed_attck() {
-      return 0;
+      return this.sixth_conste_buff * this.base_status_array[4];
     }
   
     calculate_char_result_attck() {
@@ -1851,7 +1851,7 @@ class eula {
     }
   
     calculate_char_fixed_elm_charge() {
-      return 0;
+      return this.talent2_buff;
     }
   
     calculate_char_result_elm_charge() {
@@ -1859,7 +1859,7 @@ class eula {
     }
   
     calculate_char_fixed_cr() {
-      return 0;
+      return this.talent2_buff;
     }
   
     calculate_char_result_cr() {
@@ -1875,27 +1875,25 @@ class eula {
     }
   
     calculate_char_fixed_dmg_buff() {
-      return this.skill_buff;
+      return this.sixth_conste_buff;
     }
   
     calculate_char_result_dmg_buff() {
-      const resultStatusArray = this.result_status_array;
-      const talent2_buff = (resultStatusArray[3] - 1) * 0.4;
-      return talent2_buff;
+      return 0;
     }
 
     calculate_basic_dmg(dmg_rate) {
-      if (depend_status[2] == 1)
+      if (this.reaction_coeff > 0)
       {
         const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        const attckRate = resultStatusArray[4] * dmg_rate[4];
         let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
       }
       else
       {
         const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        const attckRate = resultStatusArray[4] * dmg_rate[4];
         return attckRate;
       }
     }

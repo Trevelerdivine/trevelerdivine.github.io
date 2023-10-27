@@ -465,20 +465,17 @@ async function show_char_statsform()
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
-        const keqing_conste6_list = createanySelectList("keqing_conste6", 0, 4, "+", "%", 3, 4);
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(keqing_conste6_list);
         characterInfo.appendChild(document.createElement("br"));
       }
 
       if (char_constellations > 3)
       {
-        traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
-    
-        characterInfo.appendChild(traitCheckbox);
+        const keqing_conste6_list = createanySelectList("keqing_conste6", 0, 4, "+", "%", 3, 4);
         characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(keqing_conste6_list);
         characterInfo.appendChild(document.createElement("br"));
       }
 

@@ -461,20 +461,26 @@ async function show_attack_method()
         break
 
         case "35":
-            let agg_text;
+            let agg_text = createTextNode("激化回数：");
             let keqing_selectlist;
             if (attack_method == 1) {
-              agg_text = createTextNode("激化回数")
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 6, "", "回", 2);
             } else if (attack_method == 6) {
               const keqing_count_text = createTextNode("　重撃回数：")
               const keqing_attack_count = createSelectList("keqing_attack_count", 0, 5, "", "回", 5);
               attack_method_prop.appendChild(keqing_count_text);
               attack_method_prop.appendChild(keqing_attack_count);
-              agg_text = createTextNode("激化回数")
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 5, "", "回", 5);
             } else if (attack_method == 21) {
-              agg_text = createTextNode("激化回数")
+              elementsToAddToCharTalent = [
+                createCheckbox("keqing_talent1", true),
+                createLabel("keqing_talent1", "玉衡の貴：会心率、元素チャージ効率+15%"),
+                document.createElement("br"),
+              ];
+
+              elementsToAddToCharTalent.forEach(element => {
+                char_talent.appendChild(element);
+              });
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 10, "", "回", 3);
             }
             const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
