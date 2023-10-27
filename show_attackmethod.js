@@ -461,8 +461,8 @@ async function show_attack_method()
         break
 
         case "35":
-            const agg_text;
-            const keqing_selectlist;
+            let agg_text;
+            let keqing_selectlist;
             if (attack_method == 1) {
               agg_text = createTextNode("激化回数")
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 6, "", "回", 2);
