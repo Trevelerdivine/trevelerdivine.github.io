@@ -235,7 +235,7 @@ async function calculate_depend_status()
   }
   const button = document.getElementById("no-reaction");
 
-  if (button !== null && !button.checked) {
+  if (button !== null && !button.checked && char_propaty[0] != 7) {
     depend_status[2] = 1;
   }
 
