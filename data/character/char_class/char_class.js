@@ -1794,6 +1794,7 @@ class eula {
       const response = await fetch("./data/character/char_data/keqing.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
+      const dmg_attack_rate;
       
       if (attack_method == 1) {
         for (let i = 0; i < 5; i++) {
