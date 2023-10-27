@@ -1497,3 +1497,93 @@ class FavoniusWarbow {
     return weapon_debuff
   }
 }
+
+class WolfsGravestone {
+  constructor(base_status_array, fixed_status_array, result_status_array) {
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.weapon_effect = 0;
+    const weapon_effect_check = document.getElementById("traitCheckbox");
+    if(weapon_effect_check.checked)
+    {
+      this.weapon_effect = 1;
+    }
+  
+  }
+
+  calculate_weapon_fixed_hp() {
+    return 0;
+  }
+
+  calculate_weapon_result_hp() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck() {
+    return (0.05 + 0.01 * this.weapon_effect) * (this.weapon_rank + 3) * this.base_status_array[4];
+  }
+
+  calculate_weapon_result_attck() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff() {
+    return 0;
+  }
+
+  calculate_weapon_result_deff() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm() {
+    return 0;
+  }
+
+  calculate_weapon_result_elm() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge() {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr() {
+    return 0;
+  }
+
+  calculate_weapon_result_cr() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd() {
+    return 0;
+  }
+
+  calculate_weapon_result_cd() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff() {
+    return 0;
+  }
+
+  calculate_weapon_result_dmg_buff() {
+    return 0;
+  }
+
+  update_status(fixed_status_array, result_status_array) {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}

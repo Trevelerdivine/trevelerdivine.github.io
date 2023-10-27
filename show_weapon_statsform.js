@@ -141,6 +141,27 @@ async function show_weapon_statsform() {
             weaponInfo.appendChild(Whiteblind_effect);
           }
 
+          else if (selectedWeaponId == "39") {
+            const traits = [
+              {
+                id: "traitCheckbox",
+                label: "狼のような狩人: 30%以下の敵"
+              }
+            ];
+                traitCheckbox.type = "checkbox";
+                traitCheckbox.id = traits[0].id;
+                traitCheckbox.value = traits[0].id;
+                traitCheckbox.checked = true;
+        
+                const traitLabel = document.createElement("label");
+                traitLabel.htmlFor = traits[0].id;
+                traitLabel.textContent = traits[0].label;
+        
+                weaponInfo.appendChild(traitCheckbox);
+                weaponInfo.appendChild(traitLabel);
+                weaponInfo.appendChild(document.createElement("br"));
+              }
+
       else if (selectedWeaponId == "69") {
         const traits = [
           {
