@@ -331,8 +331,8 @@ async function show_attack_method()
       case "22":
         const eulaburst_text = createTextNode("　エネルギー：")
         const eulaburst_selectlist = createSelectList("eula_enelgy", 0, 30, "", "重", 15);
-        attack_method_prop.appendChild(raidenskill_text);
-        attack_method_prop.appendChild(raidenskill_selectlist);
+        attack_method_prop.appendChild(eulaburst_text);
+        attack_method_prop.appendChild(eulaburst_selectlist);
       break
 
         case "57":        

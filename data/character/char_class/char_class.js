@@ -1443,33 +1443,56 @@ class eula {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.parameter = parameter;
-    this.talent1effect = 0;
-    this.second_conste_buff = 0;
+    this.first_conste_buff = 0;
+    this.forth_conste_buff = 1;
     this.char_constellations = 0;
-    this.burst_buff = 0;
     this.trueCount = 0;
+    this.debuff = 0;
   }
 
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
-  
     // JSON データを取得
     const response = await fetch("./data/character/char_data/eula.json");
     const data = await response.json();
+
+    const eula_E_level = parseInt(document.getElementById(eula_E_level).value);
+    const eulaE_check = document.getElementById("eula_E");
+    if (eulaE_check.checked)
+    {
+      this.debuff = parseFloat(data["元素スキル"]["詳細"][3]["数値"][eula_E_level]);
+    }
+
+
+    if (this.char_constellations > 0)
+    {
+      const first_conste_check = document.getElementById("traitCheckbox1");
+      if (first_conste_check.checked)
+      {
+        this.first_conste_buff = 0.3;
+      }
+    } 
+    if (this.char_constellations > 2)
+    {
+      const forth_conste_check = document.getElementById("traitCheckbox4");
+      if (forth_conste_check.checked)
+      {
+        this.forth_conste_buff = 1.25;
+      }
+    } 
+
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
     let dmg_attack_rate = 0;
 
     if (attack_method == 21) {   
-    const checkboxContainer = document.getElementById("select_reaction_method");
-    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-
-    dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    const eula_energy = parseInt(document.getElementById("eula_enelgy").value);
+    const burst_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+    const burst_energyrate = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
+    dmg_attack_rate = burst_rate + eula_energy * burst_energyrate;
+    dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } 
-
     return dmg_rate;
   }
   
@@ -1530,7 +1553,7 @@ class eula {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return 0;
+      return this.first_conste_buff;
   }
 
   calculate_char_result_dmg_buff() {
@@ -1543,11 +1566,10 @@ class eula {
     let attckRate;
     if (attack_method == 21)
     {
-      attckRate = resultStatusArray[4] * dmg_rate[4]
+      attckRate = resultStatusArray[4] * dmg_rate[4] * this.forth_conste_buff;
       basicDmg = attckRate;
       return basicDmg;
     }
-    return attckRate;
   }
 
   update_status(fixed_status_array, result_status_array)
@@ -1557,7 +1579,7 @@ class eula {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [this.debuff,0,0];
     return char_debuff;
   }
 }
