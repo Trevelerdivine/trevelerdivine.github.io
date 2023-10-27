@@ -460,10 +460,33 @@ async function show_attack_method()
             }
         break
 
+        case "35":
+            const agg_text;
+            const keqing_selectlist;
+            if (attack_method == 1) {
+              agg_text = createTextNode("激化回数")
+              keqing_selectlist = createSelectList("keqing_agg_count", 0, 6, "", "回", 2);
+            } else if (attack_method == 6) {
+              const keqing_count_text = createTextNode("　重撃回数：")
+              const keqing_attack_count = createSelectList("keqing_attack_count", 0, 5, "", "回", 5);
+              attack_method_prop.appendChild(keqing_count_text);
+              attack_method_prop.appendChild(keqing_attack_count);
+              agg_text = createTextNode("激化回数")
+              keqing_selectlist = createSelectList("keqing_agg_count", 0, 5, "", "回", 5);
+            } else if (attack_method == 21) {
+              agg_text = createTextNode("激化回数")
+              keqing_selectlist = createSelectList("keqing_agg_count", 0, 10, "", "回", 3);
+            }
+            const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+            select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
+            select_reaction_method.appendChild(keqing_selectlist); // ラベルを select_reaction_method に追加
+            select_reaction_method.appendChild(document.createElement("br"));
+            break
+
         case "63":
             if (attack_method == 6) {
               const arataki_text = createTextNode("　重撃ヒット回数：")
-              const aratakicount_selectlist = createSelectList("arataki_count", 1, 30, "", "回", 5);
+              const aratakicount_selectlist = createSelectList("arataki_count", 0, 10, "", "回", 3);
               attack_method_prop.appendChild(document.createElement("br"));
               attack_method_prop.appendChild(arataki_text);
               attack_method_prop.appendChild(aratakicount_selectlist);
