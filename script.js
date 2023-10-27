@@ -358,6 +358,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "34":
       char_instance = new raiden(base_status, fixed_status, result_status, parameter);
       break;
+    case "35":
+      char_instance = new keqing(base_status, fixed_status, result_status, parameter);
+      break;
     case "56":
       char_instance = new nahida(base_status, fixed_status, result_status, parameter);
       break;
