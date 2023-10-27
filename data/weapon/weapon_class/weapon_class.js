@@ -1522,7 +1522,7 @@ class WolfsGravestone {
   }
 
   calculate_weapon_fixed_attck() {
-    return (0.05 + 0.01 * this.weapon_effect) * (this.weapon_rank + 3) * this.base_status_array[4];
+    return (0.05 + 0.1 * this.weapon_effect) * (this.weapon_rank + 3) * this.base_status_array[4];
   }
 
   calculate_weapon_result_attck() {
