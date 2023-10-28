@@ -23,6 +23,7 @@ async function show_attack_method()
   elemental_reaction.appendChild(radio_label);
 
   const char_constellations = document.getElementById("char_constellations").value;
+  const agg_text = createTextNode("激化回数：");
 
   if (char_propaty[0] == 0)
   {
@@ -362,7 +363,6 @@ async function show_attack_method()
           createCheckboxList_br(options)
         } else if (attack_method == 21)
         {
-          const agg_text = createTextNode("激化回数")
           const tighnari_text1 = createTextNode("　蔓纏いの矢：")
           const tighnariburst1_selectlist = createSelectList("tighnariburst1", 0, 6, "", "回", 2);
           const tighnari_text2 = createTextNode("　次級・蔓纏いの矢：")
@@ -461,7 +461,6 @@ async function show_attack_method()
         break
 
         case "35":
-            let agg_text = createTextNode("激化回数：");
             let keqing_selectlist;
             if (attack_method == 1) {
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 6, "", "回", 2);
@@ -490,7 +489,6 @@ async function show_attack_method()
             break
 
             case "38":
-            let agg_text = createTextNode("激化回数：");
             let kujousara_selectlist;
 
             if (attack_method == 21) {
@@ -539,7 +537,6 @@ async function show_attack_method()
                   attack_method_prop.appendChild(fischl_talent2_text);
                   attack_method_prop.appendChild(fischl_talent2_count);
                   attack_method_prop.appendChild(document.createElement("br"));
-                  let agg_text = createTextNode("激化回数：");
                   let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 10);
                   const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
                   select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
@@ -563,7 +560,6 @@ async function show_attack_method()
                     attack_method_prop.appendChild(document.createElement("br"));
                     attack_method_prop.appendChild(fischl_conste6_text);
                     attack_method_prop.appendChild(fischl_conste6_count);
-                    let agg_text = createTextNode("激化回数：");
                     let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 14);
                     const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
                     select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
