@@ -215,6 +215,27 @@ async function show_weapon_statsform() {
                 weaponInfo.appendChild(traitCheckbox);
                 weaponInfo.appendChild(traitLabel);
               }
+              else if (selectedWeaponId == "93") {
+                const traits = [
+                  {
+                    id: "traitCheckbox",
+                    label: "若水：周囲に敵がいる"
+                  }
+                ];
+        
+                const traitCheckbox = document.createElement("input");
+                traitCheckbox.type = "checkbox";
+                traitCheckbox.id = traits[0].id;
+                traitCheckbox.value = traits[0].id;
+                traitCheckbox.checked = true;
+        
+                const traitLabel = document.createElement("label");
+                traitLabel.htmlFor = traits[0].id;
+                traitLabel.textContent = traits[0].label;
+        
+                weaponInfo.appendChild(traitCheckbox);
+                weaponInfo.appendChild(traitLabel);
+              }
 
               else if (selectedWeaponId == "94") {
                 const traits = [

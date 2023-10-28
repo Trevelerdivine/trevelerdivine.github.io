@@ -438,6 +438,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "92":
       weapon_instance = new HuntersPath(base_status, fixed_status, result_status);
       break;
+    case "93":
+      weapon_instance = new AquaSimulacra(base_status, fixed_status, result_status);
+      break;
     case "94":
       weapon_instance = new PolarStar(base_status, fixed_status, result_status);
       break;
