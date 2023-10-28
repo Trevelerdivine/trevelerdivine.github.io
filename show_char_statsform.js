@@ -482,6 +482,45 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    else if (selectedCharId  == "38")
+    {
+      const elementsToAddToCharTalent = [
+        createCheckbox("kujousara", true),
+        createLabel("kujousara", "元素スキル：烏天狗雷霆召呪"),
+        document.createElement("br"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("kujousara_E_level", 1, 13, "Lv.", "", 10),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      const traits = [
+        {
+          id: "traitCheckbox6",
+          label: "第6重：会心ダメージ+60% "
+        }
+      ];
+
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素爆発（煌煌千道鎮式）", value: "21" },
+      ];
+      createchar_attackmethod(options)  
+
+      if (char_constellations == 4)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
+
     else if (selectedCharId  == "39")
     {
 

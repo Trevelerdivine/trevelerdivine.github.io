@@ -489,6 +489,38 @@ async function show_attack_method()
             select_reaction_method.appendChild(document.createElement("br"));
             break
 
+            case "36":
+            let agg_text = createTextNode("激化回数：");
+            let kujousara_selectlist;
+
+            if (attack_method == 21) {
+              
+              let kujousara_count_text;
+              let kujousara_attack_count;
+
+              if (char_constellations <3)
+              {
+                kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：")
+                kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 20, "", "回", 4);
+              }
+              else
+              {
+                kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：")
+                kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 30, "", "回", 6);
+              }
+
+              attack_method_prop.appendChild(kujousara_count_text);
+              attack_method_prop.appendChild(kujousara_attack_count);
+
+              kujousara_selectlist = createSelectList("kujousara_agg_count", 0, 30, "", "回", 2);
+            }
+
+            const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+            select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
+            select_reaction_method.appendChild(kujousara_selectlist); // ラベルを select_reaction_method に追加
+            select_reaction_method.appendChild(document.createElement("br"));
+            break
+
             case "39":
                if (attack_method == 16) {
                 let fischl_count_text;
