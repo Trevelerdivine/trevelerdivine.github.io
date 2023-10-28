@@ -500,8 +500,8 @@ async function show_attack_method()
                 {
                   fischl_count_text = createTextNode("　元素スキルヒット回数：")
                   fischl_attack_count = createSelectList("fischl_attack_count", 1, 10, "", "回", 10);
-                  fischl_talent22_text = createTextNode("　固有天賦2発動回数：")
-                  fischl_talent2count = createSelectList("fischl_talent2_count", 0, 20, "", "回", 8);
+                  fischl_talent2_text = createTextNode("　固有天賦2発動回数：")
+                  fischl_talent2_count = createSelectList("fischl_talent2_count", 0, 20, "", "回", 8);
                   attack_method_prop.appendChild(fischl_count_text);
                   attack_method_prop.appendChild(fischl_attack_count);
                   attack_method_prop.appendChild(document.createElement("br"));
