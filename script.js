@@ -130,16 +130,25 @@ async function calculate_af_main_status_buff()
   const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
   const goblet_mainstatus = parseInt(document.getElementById("goblet_mainstatus").value);
   const circlet_mainstatus = parseInt(document.getElementById("circlet_mainstatus").value);
-  const af_main_status = [0.466,0.583,187,51.8,0.466,31.1,62.2,0.466,0.583];
+  const af_main_status = [0.466, 0.583, 187, 51.8, 0.466, 31.1, 62.2, 0.466, 0.583];
   let set_main_status = [0,0,0,0,0,0,0,0,0];
   let af_main_status_buff = [0,0,0,0,0,0,0,0,0];
   set_main_status[clock_mainstatus] = set_main_status[clock_mainstatus] + 1;
   set_main_status[goblet_mainstatus] = set_main_status[goblet_mainstatus] + 1;
   set_main_status[circlet_mainstatus] = set_main_status[circlet_mainstatus] + 1;
-  for (let i = 0; i < 9; i++)
+  for (let i = 0; i < 7; i++)
   {
     af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
-  }    
+  }
+  if(char_propaty[0] !=7)
+  {
+    af_main_status_buff[7] = af_main_status[7] *  set_main_status[7];
+  }
+  else
+  {
+    af_main_status_buff[7] = af_main_status[8] *  set_main_status[8];
+  }
+
   return af_main_status_buff;
 }
 
@@ -321,14 +330,7 @@ async function calculate_fixed_status(sd,bs,amsb)
   fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311;
   fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
   fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
-  if (char_propaty[0] != 7)
-  {
-    fixed_status[7] = bs[7] + amsb[7];
-  }
-  else
-  {
-    fixed_status[7] = bs[7] + amsb[8];
-  }
+  fixed_status[7] = bs[7] + amsb[7];
   return fixed_status;
 }
 
