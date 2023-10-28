@@ -489,6 +489,22 @@ async function show_attack_method()
             select_reaction_method.appendChild(document.createElement("br"));
             break
 
+            case "39":
+               if (attack_method == 16) {
+                const fischl_count_text = createTextNode("　元素スキルヒット回数：")
+                const fischl_attack_count = createSelectList("fischl_attack_count", 1, 12, "", "回", 10);
+                attack_method_prop.appendChild(keqing_count_text);
+                attack_method_prop.appendChild(keqing_attack_count);
+                attack_method_prop.appendChild(document.createElement("br"));
+                let agg_text = createTextNode("激化回数：");
+                let keqing_selectlist = createSelectList("keqing_agg_count", 0, 5, "", "回", 5);
+                const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+                select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
+                select_reaction_method.appendChild(keqing_selectlist); // ラベルを select_reaction_method に追加
+                select_reaction_method.appendChild(document.createElement("br"));
+              }
+              break
+
         case "63":
             if (attack_method == 6) {
               const arataki_text = createTextNode("　重撃ヒット回数：")

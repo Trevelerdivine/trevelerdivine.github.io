@@ -1804,7 +1804,7 @@ class eula {
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 6) {
         const attack_count = parseInt(document.getElementById("keqing_attack_count").value);
-        dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + attack_count;
+        dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 21) {
         const keqing_talent2_check = document.getElementById("keqing_talent2");

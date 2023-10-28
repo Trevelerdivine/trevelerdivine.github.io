@@ -482,6 +482,17 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    else if (selectedCharId  == "39")
+    {
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常1ループ（物理）", value: "1" },
+        { text: "元素スキル（夜巡りの翼）", value: "16" },
+      ];
+      createchar_attackmethod(options)  
+    }
+
     else if (selectedCharId  == "57")
     {
       const elementsToAddToCharTalent = [
