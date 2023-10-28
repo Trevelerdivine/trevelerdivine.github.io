@@ -1794,12 +1794,12 @@ class eula {
       const response = await fetch("./data/character/char_data/keqing.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
-      let dmg_attack_rate;
+      let dmg_attack_rate = 0;
       let dmg_rate;
       
       if (attack_method == 1) {
         for (let i = 0; i < 5; i++) {
-          dmg_attack_rate = parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 6) {
@@ -1908,17 +1908,164 @@ class eula {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
-      if (this.char_constellations >1)
-      {
-        const two_conste_check = document.getElementById("traitCheckbox2");
-        if(two_conste_check.checked)
-        {
-          char_debuff = [0,0,0.6];
-        }
-      }
       return char_debuff;
     }
-  }  
+  }
+  
+  class fischl {
+    constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+    {
+      this.base_status_array = base_status_array;
+      this.fixed_status_array = fixed_status_array;
+      this.result_status_array = result_status_array;
+      this.parameter = parameter;
+      this.char_constellations = 0;
+      this.forth_conste_buff = 0;
+      this.sixth_conste_buff = 0;
+      this.aggcount = 0;
+      this.talent2_buff = 0;
+      this.reaction_coeff = 0;
+      this.skill_buff = 0;
+    }
+
+    async dmg_rate_data() {
+      this.char_constellations = document.getElementById("char_constellations").value;
+
+      if (this.char_constellations > 2)
+      {
+        const forth_conste_check = document.getElementById("traitCheckbox4");
+        if (forth_conste_check.checked)
+        {
+          this.forth_conste_buff = 0.25;
+        }
+      } 
+      if (this.char_constellations > 3)
+      {
+        this.sixth_conste_buff = parseInt(document.getElementById("keqing_conste6").value) / 100;
+      } 
+
+      // JSON データを取得
+      const response = await fetch("./data/character/char_data/keqing.json");
+      const data = await response.json();
+      // 攻撃方法に応じてダメージ率を計算
+      let dmg_attack_rate = 0;
+      let dmg_rate;
+      
+      if (attack_method == 1) {
+        for (let i = 0; i < 5; i++) {
+          dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      } else if (attack_method == 16) {
+        const Aggravate = document.getElementById("Aggravate");
+        if (Aggravate.checked) {
+          this.reaction_coeff = 1.15;
+          this.aggcount = parseInt(document.getElementById("keqing_agg_count").value);
+        }
+        const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
+        dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
+        dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+        if (this.char_constellations > 1)
+        {
+          dmg_attack_rate += 2;
+        }
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      }
+
+    return dmg_rate;
+  }
+  
+    calculate_char_fixed_hp() {
+      return 0;
+    }
+  
+    calculate_char_result_hp() {
+      return 0;
+    }
+  
+    calculate_char_fixed_attck() {
+      return 0;
+    }
+  
+    calculate_char_result_attck() {
+      return 0;
+    }
+  
+    calculate_char_fixed_deff() {
+      return 0;
+    }
+  
+    calculate_char_result_deff() {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm() {
+      return 0;
+    }
+  
+    calculate_char_result_elm() {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm_charge() {
+      return 0;
+    }
+  
+    calculate_char_result_elm_charge() {
+      return 0;
+    }
+  
+    calculate_char_fixed_cr() {
+      return 0;
+    }
+  
+    calculate_char_result_cr() {
+      return 0;
+    }
+  
+    calculate_char_fixed_cd() {
+      return 0;
+    }
+  
+    calculate_char_result_cd() {
+      return 0;
+    }
+  
+    calculate_char_fixed_dmg_buff() {
+      return 0;
+    }
+  
+    calculate_char_result_dmg_buff() {
+      return 0;
+    }
+
+    calculate_basic_dmg(dmg_rate) {
+      if (this.reaction_coeff > 0)
+      {
+        const resultStatusArray = this.result_status_array;
+        const attckRate = resultStatusArray[4] * dmg_rate[4];
+        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        return basicDmg;
+      }
+      else
+      {
+        const resultStatusArray = this.result_status_array;
+        const attckRate = resultStatusArray[4] * dmg_rate[4];
+        return attckRate;
+      }
+    }
+  
+    update_status(fixed_status_array, result_status_array)
+    {
+      this.fixed_status_array = fixed_status_array;
+      this.result_status_array = result_status_array;
+    }
+  
+    calculate_char_debuff() {
+      let char_debuff = [0,0,0];
+      return char_debuff;
+    }
+  }
 
   class tighnari {
     constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
