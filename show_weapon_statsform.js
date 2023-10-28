@@ -216,6 +216,24 @@ async function show_weapon_statsform() {
                 weaponInfo.appendChild(traitLabel);
               }
 
+              else if (selectedWeaponId == "94") {
+                const traits = [
+                  {
+                    id: "traitCheckbox",
+                    label: "冬極の白星：白夜極星　"
+                  }
+                ];
+        
+                const traitLabel = document.createElement("label");
+                traitLabel.htmlFor = traits[0].id;
+                traitLabel.textContent = traits[0].label;
+
+                const selectlist = createweaponSelectList("PolarStar_count", 0, 4, "", "層", 4);
+                
+                weaponInfo.appendChild(traitLabel);
+                weaponInfo.appendChild(selectlist);
+              }
+
               else if (selectedWeaponId == "95") {
                 const traits = [
                   {

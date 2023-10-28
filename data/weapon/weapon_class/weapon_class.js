@@ -1765,4 +1765,100 @@ class PrimordialJadeCutter {
   }
 }
 
+class PrimordialJadeCutter {
+  constructor(base_status_array, fixed_status_array, result_status_array) {
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
 
+  calculate_weapon_fixed_hp() {
+    return 0;
+  }
+
+  calculate_weapon_result_hp() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck() {
+    let weapon_attack_buff;
+    const weapon_buff_count = parseInt(document.getElementById("PolarStar_count").value);
+    if (weapon_buff_count == 4)
+    {
+      weapon_attack_buff = (this.weapon_rank + 3) * 0.12 * this.base_status_array[4];
+    }
+    else
+    {
+      weapon_attack_buff = (this.weapon_rank + 3) * 0.025 * weapon_buff_count * this.base_status_array[4];
+    }
+    return weapon_attack_buff;
+  }
+
+  calculate_weapon_result_attck() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff() {
+    return 0;
+  }
+
+  calculate_weapon_result_deff() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm() {
+    return 0;
+  }
+
+  calculate_weapon_result_elm() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge() {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr() {
+    return 0;
+  }
+
+  calculate_weapon_result_cr() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd() {
+    return 0;
+  }
+
+  calculate_weapon_result_cd() {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff() {
+    let weapon_dmg_buff = 0;
+    if(attack_method_index == 3 || attack_method_index ==4)
+    {
+      weapon_dmg_buff = (this.weapon_rank + 3) * 0.03
+    }
+    return weapon_dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff() {
+    return 0;
+  }
+
+  update_status(fixed_status_array, result_status_array) {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
