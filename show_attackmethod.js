@@ -23,7 +23,6 @@ async function show_attack_method()
   elemental_reaction.appendChild(radio_label);
 
   const char_constellations = document.getElementById("char_constellations").value;
-  const agg_text = createTextNode("激化回数：");
 
   if (char_propaty[0] == 0)
   {
@@ -363,6 +362,7 @@ async function show_attack_method()
           createCheckboxList_br(options)
         } else if (attack_method == 21)
         {
+          const agg_text = createTextNode("激化回数")
           const tighnari_text1 = createTextNode("　蔓纏いの矢：")
           const tighnariburst1_selectlist = createSelectList("tighnariburst1", 0, 6, "", "回", 2);
           const tighnari_text2 = createTextNode("　次級・蔓纏いの矢：")
@@ -461,6 +461,7 @@ async function show_attack_method()
         break
 
         case "35":
+            let agg_text = createTextNode("激化回数：");
             let keqing_selectlist;
             if (attack_method == 1) {
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 6, "", "回", 2);
@@ -488,36 +489,6 @@ async function show_attack_method()
             select_reaction_method.appendChild(document.createElement("br"));
             break
 
-            case "38":
-            let kujousara_selectlist;
-
-            if (attack_method == 21) {
-              let kujousara_count_text;
-              let kujousara_attack_count;
-
-              if (char_constellations <3)
-              {
-                kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：")
-                kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 20, "", "回", 4);
-              }
-              else
-              {
-                kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：")
-                kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 30, "", "回", 6);
-              }
-
-              attack_method_prop.appendChild(kujousara_count_text);
-              attack_method_prop.appendChild(kujousara_attack_count);
-
-              kujousara_selectlist = createSelectList("kujousara_agg_count", 0, 30, "", "回", 2);
-            }
-
-            const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
-            select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
-            select_reaction_method.appendChild(kujousara_selectlist); // ラベルを select_reaction_method に追加
-            select_reaction_method.appendChild(document.createElement("br"));
-            break
-
             case "39":
                if (attack_method == 16) {
                 let fischl_count_text;
@@ -537,6 +508,7 @@ async function show_attack_method()
                   attack_method_prop.appendChild(fischl_talent2_text);
                   attack_method_prop.appendChild(fischl_talent2_count);
                   attack_method_prop.appendChild(document.createElement("br"));
+                  let agg_text = createTextNode("激化回数：");
                   let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 10);
                   const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
                   select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
@@ -560,6 +532,7 @@ async function show_attack_method()
                     attack_method_prop.appendChild(document.createElement("br"));
                     attack_method_prop.appendChild(fischl_conste6_text);
                     attack_method_prop.appendChild(fischl_conste6_count);
+                    let agg_text = createTextNode("激化回数：");
                     let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 14);
                     const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
                     select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
