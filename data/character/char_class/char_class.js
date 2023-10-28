@@ -1947,7 +1947,7 @@ class eula {
         const Aggravate = document.getElementById("Aggravate");
         if (Aggravate.checked) {
           this.reaction_coeff = 1.15;
-          this.aggcount = parseInt(document.getElementById("keqing_agg_count").value);
+          this.aggcount = parseInt(document.getElementById("fischl_agg_count").value);
         }
         const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
         const fischl_talent1_count = parseInt(document.getElementById("fischl_talent2_count").value);;
