@@ -1950,9 +1950,9 @@ class fischl {
         this.aggcount = parseInt(document.getElementById("fischl_agg_count").value);
       }
       const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
-      const fischl_talent1_count = parseInt(document.getElementById("fischl_talent2_count").value);;
+      const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);;
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent1_count;
+      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent2_count;
       if (this.char_constellations > 1)
       {
         dmg_attack_rate += 2;
