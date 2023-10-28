@@ -489,12 +489,11 @@ async function show_attack_method()
             select_reaction_method.appendChild(document.createElement("br"));
             break
 
-            case "36":
+            case "38":
             let agg_text = createTextNode("激化回数：");
             let kujousara_selectlist;
 
             if (attack_method == 21) {
-              
               let kujousara_count_text;
               let kujousara_attack_count;
 
