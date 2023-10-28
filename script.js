@@ -136,7 +136,7 @@ async function calculate_af_main_status_buff()
   set_main_status[clock_mainstatus] = set_main_status[clock_mainstatus] + 1;
   set_main_status[goblet_mainstatus] = set_main_status[goblet_mainstatus] + 1;
   set_main_status[circlet_mainstatus] = set_main_status[circlet_mainstatus] + 1;
-  for (let i = 0; i < 8; i++)
+  for (let i = 0; i < 9; i++)
   {
     af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
   }    
