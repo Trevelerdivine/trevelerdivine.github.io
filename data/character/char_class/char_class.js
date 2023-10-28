@@ -1829,7 +1829,7 @@ class eula {
     }
   
     calculate_char_fixed_attck() {
-      return this.sixth_conste_buff * this.base_status_array[4];
+      return this.forth_conste_buff * this.base_status_array[4];
     }
   
     calculate_char_result_attck() {

@@ -491,17 +491,55 @@ async function show_attack_method()
 
             case "39":
                if (attack_method == 16) {
-                const fischl_count_text = createTextNode("　元素スキルヒット回数：")
-                const fischl_attack_count = createSelectList("fischl_attack_count", 1, 12, "", "回", 10);
-                attack_method_prop.appendChild(keqing_count_text);
-                attack_method_prop.appendChild(keqing_attack_count);
-                attack_method_prop.appendChild(document.createElement("br"));
-                let agg_text = createTextNode("激化回数：");
-                let keqing_selectlist = createSelectList("keqing_agg_count", 0, 5, "", "回", 5);
-                const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
-                select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
-                select_reaction_method.appendChild(keqing_selectlist); // ラベルを select_reaction_method に追加
-                select_reaction_method.appendChild(document.createElement("br"));
+                let fischl_count_text;
+                let fischl_attack_count;
+                let fischl_talent1_text;
+                let fischl_talent1_count;
+
+                if (char_constellations != 4)
+                {
+                  fischl_count_text = createTextNode("　元素スキルヒット回数：")
+                  fischl_attack_count = createSelectList("fischl_attack_count", 1, 10, "", "回", 10);
+                  fischl_talent1_text = createTextNode("　固有天賦2発動回数：")
+                  fischl_talent1_count = createSelectList("fischl_talent1_count", 0, 20, "", "回", 8);
+                  attack_method_prop.appendChild(fischl_count_text);
+                  attack_method_prop.appendChild(fischl_attack_count);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  attack_method_prop.appendChild(fischl_talent1_text);
+                  attack_method_prop.appendChild(fischl_talent1_count);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  let agg_text = createTextNode("激化回数：");
+                  let keqing_selectlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 10);
+                  const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+                  select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
+                  select_reaction_method.appendChild(keqing_selectlist); // ラベルを select_reaction_method に追加
+                  select_reaction_method.appendChild(document.createElement("br"));
+                }
+                else
+                {
+                  {
+                    fischl_count_text = createTextNode("　元素スキルヒット回数：")
+                    fischl_attack_count = createSelectList("fischl_attack_count", 1, 12, "", "回", 12);
+                    fischl_talent1_text = createTextNode("　固有天賦2発動回数：")
+                    fischl_talent1_count = createSelectList("fischl_talent1_count", 0, 24, "", "回", 8);
+                    fischl_conste6_text = createTextNode("　6重効果：追撃回数：")
+                    fischl_conste6_count = createSelectList("fischl_conste6_count", 0, 24, "", "回", 12);
+                    attack_method_prop.appendChild(fischl_count_text);
+                    attack_method_prop.appendChild(fischl_attack_count);
+                    attack_method_prop.appendChild(document.createElement("br"));
+                    attack_method_prop.appendChild(fischl_talent1_text);
+                    attack_method_prop.appendChild(fischl_talent1_count);
+                    attack_method_prop.appendChild(document.createElement("br"));
+                    attack_method_prop.appendChild(fischl_conste6_text);
+                    attack_method_prop.appendChild(fischl_conste6_count);
+                    let agg_text = createTextNode("激化回数：");
+                    let keqing_selectlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 14);
+                    const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
+                    select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
+                    select_reaction_method.appendChild(keqing_selectlist); // ラベルを select_reaction_method に追加
+                    select_reaction_method.appendChild(document.createElement("br"));
+                  }
+                }
               }
               break
 
