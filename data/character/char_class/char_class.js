@@ -1950,7 +1950,7 @@ class fischl {
         this.aggcount = parseInt(document.getElementById("fischl_agg_count").value);
       }
       const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
-      const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);;
+      const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent2_count;
       if (this.char_constellations > 1)
@@ -2068,10 +2068,8 @@ class kujousara {
     this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
-    this.forth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.aggcount = 0;
-    this.talent2_buff = 0;
     this.reaction_coeff = 0;
     this.skill_buff = 0;
   }
@@ -2083,6 +2081,23 @@ class kujousara {
     const response = await fetch("./data/character/char_data/kujousara.json");
     const data = await response.json();
     // 攻撃方法に応じてダメージ率を計算
+
+    const kujou_skill_check = document.getElementById("kujousara");
+    if (kujou_skill_check.checked)
+    {
+      const kujou_skill_level = parseInt(document.getElementById("kujousara_E_level").value);
+      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][kujou_skill_level]) * this.base_status_array[4];
+    }
+
+    if (this.char_constellations == 4)
+    {
+      const sixth_conste_check = document.getElementById("traitCheckbox6");
+      if (sixth_conste_check.checked)
+      {
+       this.sixth_conste_buff = 0.6;
+      }
+    }
+
     let dmg_attack_rate = 0;
     let dmg_rate;
     
@@ -2090,21 +2105,11 @@ class kujousara {
       const Aggravate = document.getElementById("Aggravate");
       if (Aggravate.checked) {
         this.reaction_coeff = 1.15;
-        this.aggcount = parseInt(document.getElementById("fischl_agg_count").value);
+        this.aggcount = parseInt(document.getElementById("kujousara_agg_count").value);
       }
-      const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
-      const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);;
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent2_count;
-      if (this.char_constellations > 1)
-      {
-        dmg_attack_rate += 2;
-      }
-      if (this.char_constellations == 4)
-      {
-        const fischl_sixth_effect_count = parseInt(document.getElementById("fischl_conste6_count").value);
-        dmg_attack_rate += 0.3 * fischl_sixth_effect_count
-      }
+      const attack_count = parseInt(document.getElementById("kujousara_attack_count").value);
+      dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
     
@@ -2120,7 +2125,7 @@ class kujousara {
   }
 
   calculate_char_fixed_attck() {
-    return 0;
+    return this.skill_buff;
   }
 
   calculate_char_result_attck() {
@@ -2164,7 +2169,7 @@ class kujousara {
   }
 
   calculate_char_result_cd() {
-    return 0;
+    return this.sixth_conste_buff;
   }
 
   calculate_char_fixed_dmg_buff() {
