@@ -1795,6 +1795,7 @@ class eula {
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate;
+      let dmg_rate;
       
       if (attack_method == 1) {
         for (let i = 0; i < 5; i++) {

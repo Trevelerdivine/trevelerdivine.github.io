@@ -393,6 +393,12 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
 async function create_weapon_instance(base_status, fixed_status, result_status) {
   let weapon_instance;
   switch (selectedWeaponId) {
+    case "3":
+      weapon_instance = new MistsplitterReforged(base_status, fixed_status, result_status);
+      break;
+    case "5":
+      weapon_instance = new PrimordialJadeCutter(base_status, fixed_status, result_status);
+      break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status, fixed_status, result_status);
       break;
