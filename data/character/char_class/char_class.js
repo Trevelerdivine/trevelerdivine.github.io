@@ -1931,21 +1931,8 @@ class eula {
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
 
-      if (this.char_constellations > 2)
-      {
-        const forth_conste_check = document.getElementById("traitCheckbox4");
-        if (forth_conste_check.checked)
-        {
-          this.forth_conste_buff = 0.25;
-        }
-      } 
-      if (this.char_constellations > 3)
-      {
-        this.sixth_conste_buff = parseInt(document.getElementById("keqing_conste6").value) / 100;
-      } 
-
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/keqing.json");
+      const response = await fetch("./data/character/char_data/fischl.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
@@ -1963,15 +1950,21 @@ class eula {
           this.aggcount = parseInt(document.getElementById("keqing_agg_count").value);
         }
         const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
+        const fischl_talent1_count = parseInt(document.getElementById("fischl_talent2_count").value);;
         dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
-        dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+        dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent1_count;
         if (this.char_constellations > 1)
         {
           dmg_attack_rate += 2;
         }
+        if (this.char_constellations == 4)
+        {
+          const fischl_sixth_effect_count = parseInt(document.getElementById("fischl_conste6_count").value);
+          dmg_attack_rate += 0.3 * fischl_sixth_effect_count
+        }
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       }
-
+      
     return dmg_rate;
   }
   
