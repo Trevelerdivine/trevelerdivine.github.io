@@ -1804,11 +1804,11 @@ class eula {
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 6) {
         const attack_count = parseInt(document.getElementById("keqing_attack_count").value);
-        dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+        dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + attack_count;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 21) {
-        const keqing_talent1_check = document.getElementById("keqing_talent1");
-        if (keqing_talent1_check.checked)
+        const keqing_talent2_check = document.getElementById("keqing_talent2");
+        if (keqing_talent2_check.checked)
         {
           this.talent2_buff = 0.15;
         }
@@ -1889,7 +1889,7 @@ class eula {
       {
         const resultStatusArray = this.result_status_array;
         const attckRate = resultStatusArray[4] * dmg_rate[4];
-        let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
       }
       else

@@ -473,8 +473,8 @@ async function show_attack_method()
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 5, "", "回", 5);
             } else if (attack_method == 21) {
               elementsToAddToCharTalent = [
-                createCheckbox("keqing_talent1", true),
-                createLabel("keqing_talent1", "玉衡の貴：会心率、元素チャージ効率+15%"),
+                createCheckbox("keqing_talent2", true),
+                createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%"),
                 document.createElement("br"),
               ];
 
