@@ -322,8 +322,6 @@ async function show_char_statsform()
         document.createElement("br"),
         createTextNode("　元素爆発天賦レベル："),
         createSelectList("kamisatoayato_Q_level", 1, 13, "Lv.", "", 10),
-        createTextNode("浪閃："),
-        createSelectList("rousen_count", 1, 13, "Lv.", "", 10),
         document.createElement("br")
       ];
     
