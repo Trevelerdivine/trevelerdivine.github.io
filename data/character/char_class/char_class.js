@@ -1449,6 +1449,7 @@ class kamisatoayato {
     this.second_conste_buff = 0;
     this.trueCount = 0;
     this.reaction_coeff = 0;
+    this.skil_buff
   }
 
   async dmg_rate_data() {
@@ -1482,6 +1483,9 @@ class kamisatoayato {
     let elm_react_dmgrate = 0;
     let elm_nonreact_dmgrate = 0;
 
+    const ayato_burst_level = parseInt(document.getElementById("kamisatoayato_Q_level").value);
+    this.skil_buff = data["通常攻撃"]["詳細"][i]["数値"][ayato_burst_level];
+
     if (attack_method == 1) {
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -1502,6 +1506,7 @@ class kamisatoayato {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
+        
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
       } 
   return dmg_rate;
