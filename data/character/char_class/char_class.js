@@ -1597,16 +1597,16 @@ class kamisatoayato {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0] + resultStatusArray[0] * this.skill_buff * this.buff_effect_count;
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1] + resultStatusArray[0] * this.skill_buff * (3 - this.buff_effect_count);
-        return basicDmg;
+      attckRate = resultStatusArray[4] * dmg_rate[4][0] + resultStatusArray[0] * this.skill_buff * this.buff_effect_count;
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                + resultStatusArray[4] * dmg_rate[4][1] + resultStatusArray[0] * this.skill_buff * (3 - this.buff_effect_count);
+      return basicDmg;
     }
     else
     {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.forth_conste_buff;
-        basicDmg = attckRate;
-        return basicDmg;
+      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + resultStatusArray[0] * this.skill_buff * 3;
+      basicDmg = 
+      return basicDmg;
     }
   }
 
