@@ -338,12 +338,20 @@ async function show_attack_method()
                 ];
               createCheckboxList(options)
             }else if (attack_method == 21) {
-              fischl_count_text = createTextNode("　剣雨ヒット回数：")
-              fischl_attack_count = createSelectList("fischl_attack_count", 1, 50, "", "回", 30);
-              attack_method_prop.appendChild(fischl_count_text);
-              attack_method_prop.appendChild(fischl_attack_count);
+
+              let xingqiu_hitcount = 30;
+              let xingqiu_vapcount = 10;
+              if (char_constellations == 4)
+              {
+                xingqiu_hitcount = 40;
+                xingqiu_vapcount = 13;
+              }
+              xingqiu_count_text = createTextNode("　剣雨ヒット回数：")
+              xingqiu_attack_count = createSelectList("xingqiu_attack_count", 1, 50, "", "回", xingqiu_hitcount);
+              attack_method_prop.appendChild(xingqiu_count_text);
+              attack_method_prop.appendChild(xingqiu_attack_count);
               attack_method_prop.appendChild(document.createElement("br"));
-              let xingqiu_selectlist = createSelectList("xingqiu_vap_count", 0, 50, "", "回", 10);
+              let xingqiu_selectlist = createSelectList("xingqiu_vap_count", 0, 50, "", "回", xingqiu_vapcount);
               select_reaction_method.appendChild(vap_text); // チェックボックスを select_reaction_method に追加
               select_reaction_method.appendChild(xingqiu_selectlist); // ラベルを select_reaction_method に追加
               select_reaction_method.appendChild(document.createElement("br"));
