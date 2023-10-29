@@ -456,6 +456,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "114":
       weapon_instance = new Rust(base_status, fixed_status, result_status);
       break;
+    case "117":
+      weapon_instance = new TheStringless(base_status, fixed_status, result_status);
+      break;
     case "118":
       weapon_instance = new FavoniusWarbow(base_status, fixed_status, result_status);
       break;
