@@ -317,11 +317,13 @@ async function show_char_statsform()
     else if (selectedCharId == "13") {
 
       const elementsToAddToCharTalent = [
-        createCheckbox("kamisatoayato_Q", false),
+        createCheckbox("kamisatoayato_Q", true),
         createLabel("kamisatoayato_Q", "神里流・水囿"),
         document.createElement("br"),
         createTextNode("　元素爆発天賦レベル："),
         createSelectList("kamisatoayato_Q_level", 1, 13, "Lv.", "", 10),
+        createTextNode("浪閃："),
+        createSelectList("rousen_count", 1, 13, "Lv.", "", 10),
         document.createElement("br")
       ];
     
@@ -330,7 +332,6 @@ async function show_char_statsform()
       });
       traits = [
         { id: "traitCheckbox1", label: "第1重：鏡花風姿 瞬水剣によるダメージ+40% " },
-        { id: "traitCheckbox2", label: "第2重：世に源泉ありて　HP上限が50%アップする" },
       ];
 
       options = [
@@ -349,17 +350,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
-      if (char_constellations > 1)
-      {
-        traitCheckbox = createCheckbox(traits[1].id, true);
-        traitLabel = createLabel(traits[1].id, traits[1].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
-
     }
 
     else if (selectedCharId == "19") {

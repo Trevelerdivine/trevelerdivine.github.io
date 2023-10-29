@@ -331,13 +331,45 @@ async function show_attack_method()
       break
 
       case "13":
-              if (attack_method == 1) {
-              options = [
-                { text: "瞬水剣1段", value: "0", checked: true },
-                { text: "瞬水剣2段", value: "1"},
-                { text: "瞬水剣3段", value: "2"},
-              ];
+            if (attack_method == 1) {
+              if (char_constellations < 4)
+              {
+                options = [
+                  { text: "瞬水剣1段", value: "0", checked: true },
+                  { text: "瞬水剣2段", value: "1"},
+                  { text: "瞬水剣3段", value: "2"},
+                ];
+              }
+              else
+              {
+                options = [
+                  { text: "瞬水剣1段", value: "0", checked: true },
+                  { text: "瞬水剣2段", value: "1"},
+                  { text: "瞬水剣3段", value: "2"},
+                  { text: "6重瞬水剣1", value: "3", checked: true },
+                  { text: "6重瞬水剣2", value: "4", checked: true },
+                ];
+              }
               createCheckboxList_br(options);
+
+              let rousen_count;
+              if (char_constellations > 1)
+              {
+                rousen_count = 5;
+              }
+              else
+              {
+                rousen_count = 4;
+              }
+              elementsToAddToCharTalent = [
+                createTextNode("浪閃："),
+                createSelectList("rousen_count", 0, rousen_count, "", "層", rousen_count),
+                document.createElement("br")
+              ];
+            
+              elementsToAddToCharTalent.forEach(element => {
+                char_talent.appendChild(element);
+              });
           }
       break
 
