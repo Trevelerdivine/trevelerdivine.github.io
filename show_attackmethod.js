@@ -330,6 +330,17 @@ async function show_attack_method()
           }
       break
 
+      case "13":
+              if (attack_method == 1) {
+              options = [
+                { text: "瞬水剣1段", value: "0", checked: true },
+                { text: "瞬水剣2段", value: "1"},
+                { text: "瞬水剣3段", value: "2"},
+              ];
+              createCheckboxList_br(options);
+          }
+      break
+
       case "19":
               if (attack_method == 16) {
                 options = [

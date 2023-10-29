@@ -314,6 +314,54 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "13") {
+
+      const elementsToAddToCharTalent = [
+        createCheckbox("kamisatoayato_Q", false),
+        createLabel("kamisatoayato_Q", "神里流・水囿"),
+        document.createElement("br"),
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("kamisatoayato_Q_level", 1, 13, "Lv.", "", 10),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      traits = [
+        { id: "traitCheckbox1", label: "第1重：鏡花風姿 瞬水剣によるダメージ+40% " },
+        { id: "traitCheckbox2", label: "第2重：世に源泉ありて　HP上限が50%アップする" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "瞬水剣3ヒット（通常攻撃）", value: "1" },
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+    }
+
     else if (selectedCharId == "19") {
     
       traits = [
