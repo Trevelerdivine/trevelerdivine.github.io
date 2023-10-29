@@ -1447,14 +1447,11 @@ class xingqiu {
     this.char_constellations = 0;
     this.forth_conste_buff = 1;
     this.trueCount = 0;
-    this.talent2_buff = 0;
     this.reaction_coeff = 0;
     this.skill_buff = 0;
   }
 
   async dmg_rate_data() {
-    this.char_constellations = document.getElementById("char_constellations").value;
-
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
     if (Vaporize_hydro.checked) {
@@ -1497,13 +1494,12 @@ class xingqiu {
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
       } 
       else if (attack_method == 21) {
-      const attack_count = parseInt(document.getElementById("xingqiu_attack_count").value);
-      const Vaporize_count = parseInt(document.getElementById("xingqiu_vap_count").value);
-      elm_react_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
-      elm_nonreact_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * Vaporize_count;
-      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-    }
-    
+        const attack_count = parseInt(document.getElementById("xingqiu_attack_count").value);
+        const Vaporize_count = parseInt(document.getElementById("xingqiu_vap_count").value);
+        elm_react_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * Vaporize_count;
+        elm_nonreact_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count- Vaporize_count);
+        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      }
   return dmg_rate;
 }
 
@@ -1577,14 +1573,14 @@ class xingqiu {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[0] * dmg_rate[0][0];
+        attckRate = resultStatusArray[4] * dmg_rate[4][0];
         basicDmg = (attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[0] * dmg_rate[0][1]) * this.forth_conste_buff;
+                  + resultStatusArray[4] * dmg_rate[4][1]) * this.forth_conste_buff;
         return basicDmg;
     }
     else
     {
-        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1]) * this.forth_conste_buff;
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.forth_conste_buff;
         basicDmg = attckRate;
         return basicDmg;
     }
