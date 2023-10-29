@@ -1451,7 +1451,8 @@ class kamisatoayato {
     this.reaction_coeff = 0;
     this.attack_count = 3;
     this.buff_effect_count = 3;
-    this.skil_buff = 0;
+    this.skill_buff = 0;
+    this.burst_buff = 0;
   }
 
   async dmg_rate_data() {
@@ -1474,9 +1475,15 @@ class kamisatoayato {
     let dmg_rate;
     let elm_react_dmgrate = 0;
     let elm_nonreact_dmgrate = 0;
+    this.rousen_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+    this.skill_buff = this.rousen_buff * rousen_count;
   
-    const ayato_burst_level = parseInt(document.getElementById("kamisatoayato_Q_level").value);
-    this.skil_buff = data["通常攻撃"]["詳細"][i]["数値"][ayato_burst_level];
+    const buff_check = document.getElementById("kamisatoayato_Q");
+    if (buff_check.checked)
+    {
+      const ayato_burst_level = parseInt(document.getElementById("kamisatoayato_Q_level").value);
+      this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][ayato_burst_level]);
+    }
   
     if (attack_method == 1) {
       const checkboxContainer = document.getElementById("select_reaction_method");
@@ -1577,7 +1584,7 @@ class kamisatoayato {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return this.first_conste_buff + this.skil_buff;
+    return this.first_conste_buff + this.burst_buff;
   }
 
   calculate_char_result_dmg_buff() {
@@ -1590,9 +1597,9 @@ class kamisatoayato {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = (attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1]) * this.forth_conste_buff;
+        attckRate = resultStatusArray[4] * dmg_rate[4][0] + resultStatusArray[0] * this.skill_buff * this.buff_effect_count;
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                  + resultStatusArray[4] * dmg_rate[4][1] + resultStatusArray[0] * this.skill_buff * (3 - this.buff_effect_count);
         return basicDmg;
     }
     else
