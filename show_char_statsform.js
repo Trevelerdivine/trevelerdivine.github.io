@@ -315,21 +315,12 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "19") {
-
-      const elementsToAddToCharTalent = [
-        createCheckbox("eula_E", true),
-        createLabel("eula_E", "氷潮の渦 "),
-        document.createElement("br"),
-        createTextNode("　元素スキル天賦レベル："),
-        createSelectList("eula_E_level", 1, 13, "Lv.", "", 8),
-        document.createElement("br")
-      ];
     
       elementsToAddToCharTalent.forEach(element => {
         char_talent.appendChild(element);
       });
       traits = [
-        { id: "traitCheckbox2", label: "第2重：古華剣・画雨籠山 " },
+        { id: "traitCheckbox2", label: "第2重：古華剣・画雨籠山  水元素耐性-15％" },
       ];
 
       options = [
