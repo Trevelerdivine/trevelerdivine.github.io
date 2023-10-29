@@ -355,6 +355,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "12":
       char_instance = new yelan(base_status, fixed_status, result_status, parameter);
       break;
+    case "19":
+      char_instance = new xingqiu(base_status, fixed_status, result_status, parameter);
+      break;
     case "22":
       char_instance = new eula(base_status, fixed_status, result_status, parameter);
       break;
