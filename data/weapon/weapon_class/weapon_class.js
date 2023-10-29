@@ -2018,7 +2018,7 @@ class TheStringless {
 
   calculate_weapon_fixed_dmg_buff() {
     let weapon_dmg_buff = 0;
-    if(char_popaty[0] != 7 && (attack_method_index == 3 || attack_method_index == 4))
+    if(char_propaty[0] != 7 && (attack_method_index == 3 || attack_method_index == 4))
     {
       weapon_dmg_buff = (this.weapon_rank + 3) * 0.06
     }
