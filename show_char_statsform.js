@@ -316,9 +316,6 @@ async function show_char_statsform()
 
     else if (selectedCharId == "19") {
     
-      elementsToAddToCharTalent.forEach(element => {
-        char_talent.appendChild(element);
-      });
       traits = [
         { id: "traitCheckbox2", label: "第2重：古華剣・画雨籠山  水元素耐性-15％" },
       ];
