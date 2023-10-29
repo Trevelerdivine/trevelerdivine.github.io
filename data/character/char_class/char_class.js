@@ -1521,8 +1521,8 @@ class kamisatoayato {
             elm_nonreact_dmgrate += elm_nonreact[i] * 4.5;
           }
         }
-  
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+        console.log(dmg_rate);
       }
     return dmg_rate;
   }
