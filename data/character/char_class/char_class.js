@@ -1560,7 +1560,7 @@ class xingqiu {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return 0;
+    return 0.2;
   }
 
   calculate_char_result_dmg_buff() {
