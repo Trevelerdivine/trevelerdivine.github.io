@@ -24,6 +24,7 @@ async function show_attack_method()
 
   const char_constellations = document.getElementById("char_constellations").value;
   const agg_text = createTextNode("激化回数：");
+  const vap_text = createTextNode("蒸発回数：");
 
   if (char_propaty[0] == 0)
   {
@@ -327,6 +328,26 @@ async function show_attack_method()
               }
               createCheckboxList_br(options);
           }
+      break
+
+      case "19":
+              if (attack_method == 16) {
+                options = [
+                  { text: "1ヒット目　", value: "0", checked: true },
+                  { text: "2ヒット目", value: "1"},
+                ];
+              createCheckboxList(options)
+            }else if (attack_method == 21) {
+              fischl_count_text = createTextNode("　剣雨ヒット回数：")
+              fischl_attack_count = createSelectList("fischl_attack_count", 1, 50, "", "回", 30);
+              attack_method_prop.appendChild(fischl_count_text);
+              attack_method_prop.appendChild(fischl_attack_count);
+              attack_method_prop.appendChild(document.createElement("br"));
+              let xingqiu_selectlist = createSelectList("xingqiu_vap_count", 0, 50, "", "回", 10);
+              select_reaction_method.appendChild(vap_text); // チェックボックスを select_reaction_method に追加
+              select_reaction_method.appendChild(xingqiu_selectlist); // ラベルを select_reaction_method に追加
+              select_reaction_method.appendChild(document.createElement("br"));
+            }
       break
 
       case "22":
