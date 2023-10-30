@@ -1605,7 +1605,7 @@ class kamisatoayato {
     else
     {
       attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + resultStatusArray[0] * this.skill_buff * 3;
-      basicDmg = 
+      basicDmg = this.attckRate;
       return basicDmg;
     }
   }
