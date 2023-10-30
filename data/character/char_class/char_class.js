@@ -1516,7 +1516,7 @@ class kamisatoayato {
           if (syunsui2_check.checked) {
             this.buff_effect_count -= 1;
           }
-          for (i = 4; i < 6; i++) {
+          for (let i = 4; i < 6; i++) {
             elm_react_dmgrate += elm_react[i] * 4.5;
             elm_nonreact_dmgrate += elm_nonreact[i] * 4.5;
           }
