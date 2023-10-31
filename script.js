@@ -423,6 +423,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "17":
       weapon_instance = new CinnabarSpindle(base_status, fixed_status, result_status);
       break;
+    case "27":
+      weapon_instance = new SacrificialSword(base_status, fixed_status, result_status);
+      break;
     case "36":
       weapon_instance = new RedhornStonethresher(base_status, fixed_status, result_status);
       break;
