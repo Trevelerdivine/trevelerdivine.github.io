@@ -294,7 +294,7 @@ async function calculate_score_distribute(af_score,depend_status)
   let score_distribution = [];
   for (let i = 0; i < 7; i++)
   {
-    rundom_count = rundom_count + depend_status[i];
+    rundom_count += depend_status[i];
   }
   let randomNumbers = Array.from({ length: rundom_count - 1 }, () => af_score*Math.random());
   randomNumbers.sort((a, b) => a - b);

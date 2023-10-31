@@ -1630,6 +1630,7 @@ class xingqiu {
     this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
+    this.second_conste_buff = 0;
     this.forth_conste_buff = 1;
     this.trueCount = 0;
     this.reaction_coeff = 0;
@@ -1652,6 +1653,15 @@ class xingqiu {
     let elm_react_dmgrate = 0;
     let elm_nonreact_dmgrate = 0;
 
+    if (this.char_constellations > 1)
+    {
+      const second_conste_check = document.getElementById("traitCheckbox2");
+      if (second_conste_check.checked)
+      {
+        this.second_conste_buff = 0.15;
+      }
+    }
+    
     if (attack_method == 16) {
       if (this.char_constellations > 2)
       {
@@ -1778,7 +1788,7 @@ class xingqiu {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [this.second_conste_buff,0,0];
     return char_debuff;
   }
 }
