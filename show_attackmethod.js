@@ -56,10 +56,10 @@ async function show_attack_method()
 
     elements_const_dmg = [
       document.createElement("br"),
-      createLabel("Overloaded", "過負荷回数：　"),
+      createLabel("Overloaded", "　過負荷回数：　"),
       createSelectList("Overloaded", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Burgeon", "烈開花回数：　"),
+      createLabel("Burgeon", "　烈開花回数：　"),
       createSelectList("Burgeon", 0, 50, "", "回", 0),
       document.createElement("br"),
     ];
@@ -85,7 +85,7 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
     elements_const_dmg = [
     document.createElement("br"),
-    createLabel("Electro_Charged", "感電回数：　"),
+    createLabel("Electro_Charged", "　感電回数：　"),
     createSelectList("Electro_Charged", 0, 50, "", "回", 0),
     document.createElement("br"),
   ];
@@ -129,13 +129,13 @@ async function show_attack_method()
 
     elements_const_dmg = [
       document.createElement("br"),
-      createLabel("Overloaded", "過負荷回数：　"),
+      createLabel("Overloaded", "　過負荷回数：　"),
       createSelectList("Overloaded", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Electro_Charged", "感電回数：　"),
+      createLabel("Electro_Charged", "　感電回数：　"),
       createSelectList("Electro_Charged", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Hyperbloom", "超開花回数：　"),
+      createLabel("Hyperbloom", "　超開花回数：　"),
       createSelectList("Hyperbloom", 0, 50, "", "回", 0),
       document.createElement("br"),
     ];
@@ -150,16 +150,16 @@ async function show_attack_method()
 
     elements_const_dmg = [
       document.createElement("br"),
-      createLabel("Swirl_pyro", "拡散-炎回数：　"),
+      createLabel("Swirl_pyro", "　拡散-炎回数：　"),
       createSelectList("Swirl_pyro", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Swirl_hydro", "拡散-水回数：　"),
+      createLabel("Swirl_hydro", "　拡散-水回数：　"),
       createSelectList("Swirl_hydro", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Swirl_cyro", "拡散-氷回数：　"),
+      createLabel("Swirl_cyro", "　拡散-氷回数：　"),
       createSelectList("Swirl_cyro", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Swirl_electro", "拡散-雷回数：　"),
+      createLabel("Swirl_electro", "　拡散-雷回数：　"),
       createSelectList("Swirl_electro", 0, 50, "", "回", 0),
     ];
   
