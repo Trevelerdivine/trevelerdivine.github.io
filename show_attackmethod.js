@@ -8,6 +8,7 @@ async function show_attack_method()
   attack_method_prop.innerHTML = "";
   await calculate_depend_status();
 
+  let elements_const_dmg;
   const radiobutton = document.createElement("input");
   radiobutton.type = "radio";
   radiobutton.id = "no-reaction";
@@ -52,6 +53,20 @@ async function show_attack_method()
     elemental_reaction.appendChild(traitLabel1);
     elemental_reaction.appendChild(traitCheckbox2);
     elemental_reaction.appendChild(traitLabel2);
+
+    elements_const_dmg = [
+      document.createElement("br"),
+      createLabel("Overloaded", "過負荷回数：　"),
+      createSelectList("Overloaded", 0, 50, "", "回", 0),
+      document.createElement("br"),
+      createLabel("Burgeon", "烈開花回数：　"),
+      createSelectList("Burgeon", 0, 50, "", "回", 0),
+      document.createElement("br"),
+    ];
+  
+    elements_const_dmg.forEach(element => {
+      char_talent.appendChild(element);
+    });
   }
 
   if (char_propaty[0] == 1)
@@ -68,6 +83,16 @@ async function show_attack_method()
 
     elemental_reaction.appendChild(traitCheckbox1);
     elemental_reaction.appendChild(traitLabel1);
+    elements_const_dmg = [
+    document.createElement("br"),
+    createLabel("Electro_Charged", "感電回数：　"),
+    createSelectList("Electro_Charged", 0, 50, "", "回", 0),
+    document.createElement("br"),
+  ];
+
+  elements_const_dmg.forEach(element => {
+    char_talent.appendChild(element);
+  });
   }
 
   else if (char_propaty[0] == 2)
@@ -84,6 +109,7 @@ async function show_attack_method()
 
     elemental_reaction.appendChild(traitCheckbox1);
     elemental_reaction.appendChild(traitLabel1);
+
   }
 
   else if (char_propaty[0] == 3)
@@ -100,6 +126,23 @@ async function show_attack_method()
 
     elemental_reaction.appendChild(traitCheckbox1);
     elemental_reaction.appendChild(traitLabel1);
+
+    elements_const_dmg = [
+      document.createElement("br"),
+      createLabel("Overloaded", "過負荷回数：　"),
+      createSelectList("Overloaded", 0, 50, "", "回", 0),
+      document.createElement("br"),
+      createLabel("Electro_Charged", "感電回数：　"),
+      createSelectList("Electro_Charged", 0, 50, "", "回", 0),
+      document.createElement("br"),
+      createLabel("Hyperbloom", "超開花回数：　"),
+      createSelectList("Hyperbloom", 0, 50, "", "回", 0),
+      document.createElement("br"),
+    ];
+  
+    elements_const_dmg.forEach(element => {
+      char_talent.appendChild(element);
+    });
   }
 
   else if (char_propaty[0] == 5)
