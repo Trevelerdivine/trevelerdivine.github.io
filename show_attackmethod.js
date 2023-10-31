@@ -65,7 +65,7 @@ async function show_attack_method()
     ];
   
     elements_const_dmg.forEach(element => {
-      char_talent.appendChild(element);
+      elemental_reaction.appendChild(element);
     });
   }
 
@@ -91,7 +91,7 @@ async function show_attack_method()
   ];
 
   elements_const_dmg.forEach(element => {
-    char_talent.appendChild(element);
+    elemental_reaction.appendChild(element);
   });
   }
 
@@ -141,7 +141,7 @@ async function show_attack_method()
     ];
   
     elements_const_dmg.forEach(element => {
-      char_talent.appendChild(element);
+      elemental_reaction.appendChild(element);
     });
   }
 
