@@ -145,6 +145,30 @@ async function show_attack_method()
     });
   }
 
+  else if (char_propaty[0] == 4)
+  {
+
+    elements_const_dmg = [
+      document.createElement("br"),
+      createLabel("Swirl_pyro", "拡散-炎回数：　"),
+      createSelectList("Swirl_pyro", 0, 50, "", "回", 0),
+      document.createElement("br"),
+      createLabel("Swirl_hydro", "拡散-水回数：　"),
+      createSelectList("Swirl_hydro", 0, 50, "", "回", 0),
+      document.createElement("br"),
+      createLabel("Swirl_cyro", "拡散-氷回数：　"),
+      createSelectList("Swirl_cyro", 0, 50, "", "回", 0),
+      document.createElement("br"),
+      createLabel("Swirl_electro", "拡散-雷回数：　"),
+      createSelectList("Swirl_electro", 0, 50, "", "回", 0),
+    ];
+  
+    elements_const_dmg.forEach(element => {
+      elemental_reaction.appendChild(element);
+    });
+  }
+
+
   else if (char_propaty[0] == 5)
   {
     const traitCheckbox1 = document.createElement("input");
