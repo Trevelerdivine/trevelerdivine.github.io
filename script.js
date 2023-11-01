@@ -1219,7 +1219,7 @@ async function monte_carlo_calculate()
 
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
       exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));;
+        *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
 
       if (temp_exp_dmg < exp_dmg)
       {
