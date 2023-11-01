@@ -1237,6 +1237,199 @@ class xiangling {
   }
 }
 
+class nirou {
+  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  {
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.first_conste_buff = 0;
+    this.second_conste_buff = 0;
+    this.fourth_conste_buff = 0;
+    this.sixth_conste_buff = 1;
+    this.trueCount = 0;
+    this.reaction_coeff = 0;
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    const Vaporize_hydro = document.getElementById("Vaporize-hydro");
+    this.reaction_coeff = Vaporize_hydro.checked ? 2 : 0;
+  
+    if (this.char_constellations > 1)
+    {
+      const second_conste_check = document.getElementById("traitCheckbox2");
+      if (second_conste_check.checked)
+      {
+        this.second_conste_buff = 0.35;
+      }
+    }
+
+    if (this.char_constellations > 2 && attack_method == 21)
+    {
+      this.fourth_conste_buff = 0.5;
+    }
+
+    if (this.char_constellations > 3)
+    {
+      this.sixth_conste_buff = 1;
+    }
+
+    const response = await fetch("./data/character/char_data/nirou.json");
+    const data = await response.json();
+  
+    let dmg_attack_rate = 0;
+    let dmg_rate;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
+  
+  
+    if (attack_method == 16) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = [];
+      let elm_nonreact = [];
+      this.trueCount = 0;
+  
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) {
+          this.trueCount++;
+        }
+      });
+
+        for (let i = 0; i < 3; i++) {
+          elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+        dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+        console.log(dmg_rate);
+      }
+
+      else if (attack_method == 21)
+      {
+        const checkboxContainer = document.getElementById("select_reaction_method");
+        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+        let elm_react = [];
+        let elm_nonreact = [];
+        this.trueCount = 0;
+    
+        checkboxes.forEach(checkbox => {
+          elm_react.push(checkbox.checked ? 1 : 0);
+          elm_nonreact.push(checkbox.checked ? 0 : 1);
+          if (checkbox.checked) {
+            this.trueCount++;
+          }
+        });
+  
+          for (let i = 0; i < 3; i++) {
+            elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+            elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          }
+          dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+          console.log(dmg_rate);
+      }
+    return dmg_rate;
+  }
+
+  calculate_char_fixed_hp() {
+    return 0;
+  }
+
+  calculate_char_result_hp() {
+    return 0;
+  }
+
+  calculate_char_fixed_attck() {
+    return 0;
+  }
+
+  calculate_char_result_attck() {
+    return 0;
+  }
+
+  calculate_char_fixed_deff() {
+    return 0;
+  }
+
+  calculate_char_result_deff() {
+    return 0;
+  }
+
+  calculate_char_fixed_elm() {
+    return 0;
+  }
+
+  calculate_char_result_elm() {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge() {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge() {
+    return 0;
+  }
+
+  calculate_char_fixed_cr() {
+    return 0;
+  }
+
+  calculate_char_result_cr() {
+    return 0;
+  }
+
+  calculate_char_fixed_cd() {
+    return 0;
+  }
+
+  calculate_char_result_cd() {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff() {
+    return 0;
+  }
+
+  calculate_char_result_dmg_buff() {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate) {
+    const resultStatusArray = this.result_status_array;
+    let basicDmg;
+    let attckRate;
+    if (this.reaction_coeff > 0)
+    {
+      attckRate = resultStatusArray[0] * dmg_rate[0][0];
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                + resultStatusArray[0] * dmg_rate[0][1] + resultStatusArray[0];
+      return basicDmg;
+    }
+    else
+    {
+      attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
+      basicDmg = attckRate;
+      return basicDmg;
+    }
+  }
+
+  update_status(fixed_status_array, result_status_array)
+  {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [this.second_conste_buff,0,0];
+    return char_debuff;
+  }
+}
+
 class yelan {
   constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
     this.base_status_array = base_status_array;
