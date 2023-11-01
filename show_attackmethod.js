@@ -369,6 +369,22 @@ async function show_attack_method()
             }
         break
 
+        case "11":
+            if (attack_method == 16) {
+              options = [
+                { text: "剣舞のステップ-1段", value: "0", checked: true },
+                { text: "剣舞のステップ-2段", value: "1" },
+                { text: "水月", value: "2" },
+              ];
+              }else if (attack_method==21) {
+                options = [
+                  { text: "元素爆発ダメージ", value: "0", checked: true },
+                  { text: "久遠の惑溺", value: "1", checked: true },
+                ];
+            }
+            createCheckboxList_br(options);
+        break
+
         case "12":
               if (attack_method == 16) {
               options = [

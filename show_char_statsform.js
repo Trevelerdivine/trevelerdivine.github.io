@@ -268,6 +268,40 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "11") {
+
+      const elementsToAddToCharTalent = [
+        createCheckbox("nirou_talent1", true),
+        createLabel("nirou_talent1", "固有天賦1：元素熟知+100"),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      traits = [
+        { id: "traitCheckbox2", label: "第2重：水元素耐性-35%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常1ループ（剣舞のステップ＋水月）", value: "16" },
+        { text: "元素爆発（浮蓮のダンス・遠夢聆泉）", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "12") {
 
       const elementsToAddToCharTalent = [
