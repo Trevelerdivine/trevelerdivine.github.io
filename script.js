@@ -792,7 +792,7 @@ async function create_afset_instance()
 }
 
 
-function calculate_elmreaction_constdmg(reaction_coeff) 
+async function calculate_elmreaction_constdmg(reaction_coeff) 
 {
   let reaction_count = 0;
   if (char_propaty[0] == 0)
@@ -894,7 +894,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
-  const const_dmg =  calculate_elmreaction_constdmg(char_parameter[1]);
+  const const_dmg =  await calculate_elmreaction_constdmg(char_parameter[1]);
   let zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
@@ -1049,7 +1049,7 @@ async function monte_carlo_calculate()
   const characterInfo = document.getElementById("characterInfo");
   const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
   const char_parameter = await import_char_parameter();
-  const const_dmg =  calculate_elmreaction_constdmg(char_parameter[1]);
+  const const_dmg =  await calculate_elmreaction_constdmg(char_parameter[1]);
 
   checkboxes.forEach((checkbox) => {
     checkboxStates.push(checkbox.checked);
