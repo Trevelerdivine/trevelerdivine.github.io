@@ -1305,8 +1305,23 @@ class nirou {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
-        dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+
+        const suigetus_check = parseInt(document.getElementById("checkbox_2").value);
+        let suigetsu_elmreact_dmgrate = 0
+        let suigetsu_elmnonreact_dmgrate = 0
+        if(suigetus_check.checked)
+        {
+          elm_react_dmgrate -= parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+          suigetsu_elmreact_dmgrate = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+        }
+        else
+        {
+          elm_nonreact_dmgrate -= parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+          suigetsu_elmnonreact_dmgrate = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+        }
+
         console.log(dmg_rate);
+        dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, suigetsu_elmreact_dmgrate, suigetsu_elmnonreact_dmgrate], 0, 0, 0, 0, 0, 0];
       }
 
       else if (attack_method == 21)
@@ -1405,9 +1420,18 @@ class nirou {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = resultStatusArray[0] * dmg_rate[0][0];
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                + resultStatusArray[0] * dmg_rate[0][1] + resultStatusArray[0];
+      if (attack_method == 16)
+      {
+        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][2]);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                + resultStatusArray[0] * (dmg_rate[0][1] + dmg_rate[0][3]);
+      }
+      else
+      {
+        attckRate = resultStatusArray[0] * dmg_rate[0][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                  + resultStatusArray[0] * dmg_rate[0][1];
+      }
       return basicDmg;
     }
     else
