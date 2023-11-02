@@ -1395,7 +1395,7 @@ class nirou {
   }
 
   calculate_char_result_cr() {
-    return 0;
+    return this.sixth_conste_buff * (this.result_status_array[0] / 1000) * 0.006;
   }
 
   calculate_char_fixed_cd() {
@@ -1403,7 +1403,7 @@ class nirou {
   }
 
   calculate_char_result_cd() {
-    return this.sixth_conste_buff * (this.result_status_array[0]) % 1000 * 0.006;
+    return this.sixth_conste_buff * (this.result_status_array[0] / 1000) * 0.012;
   }
 
   calculate_char_fixed_dmg_buff() {
@@ -1411,7 +1411,7 @@ class nirou {
   }
 
   calculate_char_result_dmg_buff() {
-    return　this.sixth_conste_buff * (this.result_status_array[0]) % 1000 * 0.012;
+    return 0;
   }
 
   calculate_basic_dmg(dmg_rate) {
