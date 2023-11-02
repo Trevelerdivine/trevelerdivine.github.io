@@ -258,7 +258,7 @@ async function show_attack_method()
                   { text: "５段目", value: "6", checked: true },
                 ];
               } 
-            createCheckboxList(options)
+            createCheckboxList(options);
         break
 
         case "2":
