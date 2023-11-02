@@ -1320,8 +1320,8 @@ class nirou {
           suigetsu_elmnonreact_dmgrate = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
         }
 
-        console.log(dmg_rate);
         dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, suigetsu_elmreact_dmgrate, suigetsu_elmnonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+        console.log(dmg_rate);
       }
 
       else if (attack_method == 21)
@@ -1403,7 +1403,7 @@ class nirou {
   }
 
   calculate_char_result_cd() {
-    return 0;
+    return this.sixth_conste_buff * (this.result_status_array[0]) % 1000 * 0.006;
   }
 
   calculate_char_fixed_dmg_buff() {
@@ -1411,7 +1411,7 @@ class nirou {
   }
 
   calculate_char_result_dmg_buff() {
-    return 0;
+    return　this.sixth_conste_buff * (this.result_status_array[0]) % 1000 * 0.012;
   }
 
   calculate_basic_dmg(dmg_rate) {
@@ -1436,6 +1436,11 @@ class nirou {
     }
     else
     {
+      if(attack_method == 16)
+      {
+        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1] + dmg_rate[0][2] + dmg_rate[0][3]);
+        basicDmg = attckRate;
+      }
       attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
       basicDmg = attckRate;
       return basicDmg;
