@@ -2206,21 +2206,14 @@ class cyno {
     let dmg_attack_rate = 0;
     let burst_bonus;
     
-    if (attack_method == 21) {
-      for (let i = 0; i < 5; i++) {
-        dmg_attack_rate = parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+    if (attack_method == 1) {
+      for (let i = 0; i < 7; i++) {
+        dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
-      burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attack_rate += burst_bonus * resolve * skill_effect;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 22) {
+    } else if (attack_method == 16) {
       dmg_attack_rate = parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]]);
       burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attack_rate += burst_bonus * resolve * skill_effect;
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 23) {
-      dmg_attack_rate = parseFloat(data["元素爆発"]["数値"][this.parameter[3]]);
-      burst_bonus = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_attack_rate += burst_bonus * resolve * skill_effect;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
@@ -2284,7 +2277,7 @@ class cyno {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return this.skill_buff;
+    return 0;
   }
 
   calculate_char_result_dmg_buff() {
@@ -2376,7 +2369,7 @@ class cyno {
       
       if (attack_method == 21) {
         for (let i = 0; i < 5; i++) {
-          dmg_attack_rate = parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          dmg_attack_rate += parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
         burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         dmg_attack_rate += burst_bonus * resolve * skill_effect;

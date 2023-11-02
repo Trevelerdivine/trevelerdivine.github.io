@@ -458,18 +458,6 @@ async function show_char_statsform()
 
     else if (selectedCharId == "32") {
 
-      const elementsToAddToCharTalent = [
-        createCheckbox("cyno_Q", true),
-        createLabel("cyno_Q", "聖儀・狼駆憑走"),
-        document.createElement("br"),
-        createTextNode("　元素爆発天賦レベル："),
-        createSelectList("cyno_Q_level", 1, 13, "Lv.", "", 8),
-        document.createElement("br")
-      ];
-    
-      elementsToAddToCharTalent.forEach(element => {
-        char_talent.appendChild(element);
-      });
       traits = [
         { id: "traitCheckbox2", label: "第2重：令儀・拝謁返霊 雷元素ダメージ " },
       ];
@@ -487,7 +475,8 @@ async function show_char_statsform()
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
     
-        const cyno_talent1_list = createSelectList("cyno_conste2", 0, 5, "+", "%", 5);
+        const cyno_talent1_list = createanySelectList("cyno_conste2", 0, 5, "+", "%", 5, 10)
+        
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(cyno_talent1_list);
