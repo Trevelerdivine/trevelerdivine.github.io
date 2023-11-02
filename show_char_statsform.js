@@ -456,6 +456,53 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "32") {
+
+      const elementsToAddToCharTalent = [
+        createCheckbox("cyno_Q", true),
+        createLabel("cyno_Q", "聖儀・狼駆憑走"),
+        document.createElement("br"),
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("cyno_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      traits = [
+        { id: "traitCheckbox2", label: "第2重：令儀・拝謁返霊 雷元素ダメージ " },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ（啓途誓使）", value: "1" },
+        { text: "通常攻撃1ループ（啓途誓使）", value: "1" },
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "33") {
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
