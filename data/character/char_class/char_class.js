@@ -1257,6 +1257,11 @@ class nirou {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
     this.reaction_coeff = Vaporize_hydro.checked ? 2 : 0;
+
+    if (this.char_constellations > 0 && attack_method == 16)
+    {
+      this.first_conste_buff = 0.5;
+    }
   
     if (this.char_constellations > 1)
     {
@@ -1418,13 +1423,12 @@ class nirou {
     const resultStatusArray = this.result_status_array;
     let basicDmg;
     let attckRate;
-    if (this.reaction_coeff > 0)
-    {
+
       if (attack_method == 16)
       {
-        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][2]);
+        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (resultStatusArray[7] + this.first_conste_buff) / resultStatusArray[7]);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                + resultStatusArray[0] * (dmg_rate[0][1] + dmg_rate[0][3]);
+                + resultStatusArray[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (resultStatusArray[7] + this.first_conste_buff) / resultStatusArray[7]);
       }
       else
       {
@@ -1433,18 +1437,6 @@ class nirou {
                   + resultStatusArray[0] * dmg_rate[0][1];
       }
       return basicDmg;
-    }
-    else
-    {
-      if(attack_method == 16)
-      {
-        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1] + dmg_rate[0][2] + dmg_rate[0][3]);
-        basicDmg = attckRate;
-      }
-      attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
-      basicDmg = attckRate;
-      return basicDmg;
-    }
   }
 
   update_status(fixed_status_array, result_status_array)
