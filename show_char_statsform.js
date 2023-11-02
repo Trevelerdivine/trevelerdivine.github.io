@@ -271,7 +271,7 @@ async function show_char_statsform()
     else if (selectedCharId == "11") {
 
       const elementsToAddToCharTalent = [
-        createCheckbox("nirou_talent1", true),
+        createCheckbox("nirou_talent1", false),
         createLabel("nirou_talent1", "固有天賦1：元素熟知+100"),
         document.createElement("br")
       ];
@@ -477,18 +477,20 @@ async function show_char_statsform()
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃1ループ（啓途誓使）", value: "1" },
-        { text: "通常攻撃1ループ（啓途誓使）", value: "1" },
+        { text: "元素スキル（律淵渡魂 冥祭）", value: "1" },
       ];
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 0)
+      if (char_constellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
     
+        const cyno_talent1_list = createSelectList("cyno_conste2", 0, 5, "+", "%", 5);
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(cyno_talent1_list);
         characterInfo.appendChild(document.createElement("br"));
       }
 

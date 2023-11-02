@@ -1245,6 +1245,7 @@ class nirou {
     this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
+    this.talent1_buff = 0;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
     this.fourth_conste_buff = 0;
@@ -1257,6 +1258,12 @@ class nirou {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
     this.reaction_coeff = Vaporize_hydro.checked ? 2 : 0;
+
+    const nirou_talent1_check = document.getElementById("nirou_talent1");
+    if (nirou_talent1_check.checked)
+    {
+      this.talent1_buff = 100;
+    }
 
     if (this.char_constellations > 0 && attack_method == 16)
     {
@@ -1380,7 +1387,7 @@ class nirou {
   }
 
   calculate_char_fixed_elm() {
-    return 0;
+    return this.talent1_buff;
   }
 
   calculate_char_result_elm() {

@@ -552,6 +552,25 @@ async function show_attack_method()
             }
         break
 
+        case "32":
+          if (attack_method == 1) {
+            options = [
+              { text: "１段目", value: "0", checked: true },
+              { text: "２段目", value: "1" },
+              { text: "３段目", value: "2" },
+              { text: "４-１段目", value: "3" },
+              { text: "４-２段目", value: "4" },
+              { text: "５段目", value: "5" },
+            ];
+            createCheckboxList(options);
+          } else if (attack_method == 16) {
+            options = [
+              { text: "秘儀・律淵渡魂", value: "0", checked: true },
+            ];
+            createCheckboxList(options);
+          } 
+      break
+
         case "33":
             if (attack_method == 1) {
               options = [
