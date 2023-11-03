@@ -569,7 +569,7 @@ async function show_attack_method()
             attack_method_prop.appendChild(cyno_talent1_count);
             attack_method_prop.appendChild(document.createElement("br"));
 
-            cyno_selectlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 5);
+            cyno_selectlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 10);
           } 
           select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
           select_reaction_method.appendChild(cyno_selectlist); // ラベルを select_reaction_method に追加
