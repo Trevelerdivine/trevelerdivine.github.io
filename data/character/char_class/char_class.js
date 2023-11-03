@@ -1161,8 +1161,8 @@ class bennett {
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
       for (let i = initial_index; i < final_index; i++) {
-        elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
       }
     dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     return dmg_rate;
