@@ -1103,7 +1103,7 @@ class bennett {
     const bennett_Q_check = document.getElementById("bennett_Q");
     if (bennett_Q_check.checked)
     {
-      const bennett_Q_level = parseInt(document.getElementById("bennett_Q_level"));
+      const bennett_Q_level = parseInt(document.getElementById("bennett_Q_level").value);
       this.bennett_Q_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][bennett_Q_level]);
     }
 
