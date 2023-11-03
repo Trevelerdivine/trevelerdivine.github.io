@@ -2172,6 +2172,7 @@ class cyno {
     this.second_conste_buff = 0;
     this.reaction_coeff = 0;
     this.aggcount = 0;
+    this.base_dmg_buff = 0;
     this.skill_buff = 0;
   }
 
@@ -2183,13 +2184,22 @@ class cyno {
       this.reaction_coeff = 1.15;
       this.aggcount = parseInt(document.getElementById("cyno_agg_count").value);
     }
+
+    if (attack_method == 1)
+    {
+      this.base_dmg_buff = 6 * 1.5
+    }
+    else
+    {
+      this.base_dmg_buff = parseInt(document.getElementById("cyno_talent1_count").value) *2.5;
+    }
   
     if (this.char_constellations > 1)
     {
       const second_conste_check = document.getElementById("traitCheckbox2");
       if (second_conste_check.checked)
       {
-        this.second_conste_buff = parseInt(document.getElementById("cyno_conste2".value)) / 100;
+        this.second_conste_buff = parseInt(document.getElementById("cyno_conste2").value) / 100;
       }
     }
 
@@ -2203,14 +2213,14 @@ class cyno {
     let burst_bonus;
     
     if (attack_method == 1) {
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 6; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 16) {
-      dmg_attack_rate = parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]]);
-      burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attack_rate += burst_bonus * resolve * skill_effect;
+      const cyno_E_count = parseInt(document.getElementById("cyno_E_count").value);
+      const cyno_talent1_count = parseInt(document.getElementById("cyno_talent1_count").value);
+      dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * cyno_E_count + cyno_talent1_count;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
   return dmg_rate;
@@ -2284,14 +2294,14 @@ class cyno {
     if (this.reaction_coeff > 0)
     {
       const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+      const attckRate = resultStatusArray[4] * dmg_rate[4] + this.base_dmg_buff * resultStatusArray[2];
       let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
       return basicDmg;
     }
     else
     {
       const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100 + this.base_dmg_buff * resultStatusArray[2];
       return attckRate;
     }
   }
@@ -2304,14 +2314,6 @@ class cyno {
 
   calculate_char_debuff() {
     let char_debuff = [0,0,0];
-    if (this.char_constellations >1)
-    {
-      const two_conste_check = document.getElementById("traitCheckbox2");
-      if(two_conste_check.checked)
-      {
-        char_debuff = [0,0,0.6];
-      }
-    }
     return char_debuff;
   }
 }

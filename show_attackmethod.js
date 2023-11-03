@@ -557,7 +557,6 @@ async function show_attack_method()
           if (attack_method == 1) {
             cyno_selectlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
           } else if (attack_method == 16) {
-
             let cyno_E_text = createTextNode("　律淵渡魂ヒット回数：")
             let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 5);
             let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
