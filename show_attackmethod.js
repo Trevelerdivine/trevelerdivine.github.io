@@ -472,8 +472,8 @@ async function show_attack_method()
                 xingqiu_hitcount = 40;
                 xingqiu_vapcount = 13;
               }
-              xingqiu_count_text = createTextNode("　剣雨ヒット回数：")
-              xingqiu_attack_count = createSelectList("xingqiu_attack_count", 1, 50, "", "回", xingqiu_hitcount);
+              let xingqiu_count_text = createTextNode("　剣雨ヒット回数：")
+              let xingqiu_attack_count = createSelectList("xingqiu_attack_count", 1, 50, "", "回", xingqiu_hitcount);
               attack_method_prop.appendChild(xingqiu_count_text);
               attack_method_prop.appendChild(xingqiu_attack_count);
               attack_method_prop.appendChild(document.createElement("br"));
@@ -553,22 +553,27 @@ async function show_attack_method()
         break
 
         case "32":
+          const cyno_selectlist;
           if (attack_method == 1) {
-            options = [
-              { text: "１段目", value: "0", checked: true },
-              { text: "２段目", value: "1" },
-              { text: "３段目", value: "2" },
-              { text: "４-１段目", value: "3" },
-              { text: "４-２段目", value: "4" },
-              { text: "５段目", value: "5" },
-            ];
-            createCheckboxList(options);
+            cyno_selectlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
           } else if (attack_method == 16) {
-            options = [
-              { text: "秘儀・律淵渡魂", value: "0", checked: true },
-            ];
-            createCheckboxList(options);
+
+            let cyno_E_text = createTextNode("　律淵渡魂ヒット回数：")
+            let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 5);
+            let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
+            let cyno_talent1_count = createSelectList("cyno_talent1_count", 1, 60, "", "回", 15);
+            attack_method_prop.appendChild(cyno_E_text);
+            attack_method_prop.appendChild(cyno_E_count);
+            attack_method_prop.appendChild(document.createElement("br"));
+            attack_method_prop.appendChild(cyno_talent1_text);
+            attack_method_prop.appendChild(cyno_talent1_count);
+            attack_method_prop.appendChild(document.createElement("br"));
+
+            cyno_selectlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 5);
           } 
+          select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
+          select_reaction_method.appendChild(cyno_selectlist); // ラベルを select_reaction_method に追加
+          select_reaction_method.appendChild(document.createElement("br"));
       break
 
         case "33":
