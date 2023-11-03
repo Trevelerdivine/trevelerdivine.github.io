@@ -382,7 +382,7 @@ async function show_attack_method()
                 ];
               }
               }
-            createCheckboxList(options)
+              createCheckboxList_br(options);
         break
 
         case "11":
