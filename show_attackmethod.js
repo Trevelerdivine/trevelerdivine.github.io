@@ -553,7 +553,7 @@ async function show_attack_method()
         break
 
         case "32":
-          const cyno_selectlist;
+          let cyno_selectlist;
           if (attack_method == 1) {
             cyno_selectlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
           } else if (attack_method == 16) {
