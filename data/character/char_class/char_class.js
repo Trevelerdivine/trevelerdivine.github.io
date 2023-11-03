@@ -1133,16 +1133,16 @@ class bennett {
     }
     else if (attack_method == 17) {
       initial_index = 1;
-      final_index = 3;
+      final_index = 2;
       if (this.char_constellations > 2)
       {
         initial_index = 1;
-        final_index = 4;
+        final_index = 3;
       }
     }
     else if (attack_method == 18) {
       initial_index = 4;
-      final_index = 7;
+      final_index = 3;
     }
     const checkboxContainer = document.getElementById("select_reaction_method");
     const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -1160,8 +1160,8 @@ class bennett {
     
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
-      for (let i = initial_index; i < final_index; i++) {
-        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+      for (let i = 0; i < final_index; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i + initial_index]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
       }
     dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
