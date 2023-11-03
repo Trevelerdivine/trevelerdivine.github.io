@@ -1265,7 +1265,7 @@ class amber {
 
     if (this.char_constellations > 3)
     {
-      const sixth_conste_buff_conste_check = document.getElementById("traitCheckbox2");
+      const sixth_conste_buff_conste_check = document.getElementById("traitCheckbox6");
       if (sixth_conste_buff_conste_check.checked)
       {
         this.sixth_conste_buff = 0.15;
@@ -1401,7 +1401,7 @@ class amber {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [this.first_conste_buff,0,0];
+    let char_debuff = [0,0,0];
     return char_debuff;
   }
 }
