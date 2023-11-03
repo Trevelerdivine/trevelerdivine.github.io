@@ -268,6 +268,38 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "10") {
+
+      traits = [
+        { id: "talent2checkbox2", label: "固有天賦2：令制圧射撃 攻撃力+15% " },
+        { id: "traitCheckbox6", label: "第6重：野火の如く 攻撃力+15%。" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃", value: "6" },
+      ];
+    
+      createchar_attackmethod(options);
+
+      traitCheckbox = createCheckbox(traits[0].id, false);
+      traitLabel = createLabel(traits[0].id, traits[0].label);
+      
+      characterInfo.appendChild(traitCheckbox);
+      characterInfo.appendChild(traitLabel);
+      characterInfo.appendChild(document.createElement("br"));
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "11") {
 
       const elementsToAddToCharTalent = [

@@ -369,6 +369,22 @@ async function show_attack_method()
             }
         break
 
+        case "10":
+            if (attack_method == 6) {
+              options = [
+                { text: "１段目", value: "0", checked: true },
+              ];
+              if (char_constellations > 0)
+              {
+                options = [
+                  { text: " 重撃フルチャージ", value: "0", checked: true },
+                  { text: "1重追撃", value: "1"},
+                ];
+              }
+              }
+            createCheckboxList(options)
+        break
+
         case "11":
             if (attack_method == 16) {
               options = [
