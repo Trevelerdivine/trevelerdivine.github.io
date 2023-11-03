@@ -1226,7 +1226,7 @@ class bennett {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return 0;
+      return this.sixth_conste_buff;
   }
 
   calculate_char_result_dmg_buff() {
