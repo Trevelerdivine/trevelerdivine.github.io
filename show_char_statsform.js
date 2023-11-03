@@ -259,8 +259,8 @@ async function show_char_statsform()
 
       if (char_constellations > 3)
       {
-        traitCheckbox = createCheckbox(traits[1].id, true);
-        traitLabel = createLabel(traits[1].id, traits[1].label);
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
