@@ -1165,6 +1165,7 @@ class bennett {
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
       }
     dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    console.log(dmg_rate);
     return dmg_rate;
   }
   
