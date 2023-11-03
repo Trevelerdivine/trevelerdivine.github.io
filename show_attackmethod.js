@@ -345,6 +345,37 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "8":
+          if (attack_method == 16) {
+            options = [
+              { text: "一回押しダメージ", value: "0", checked: true },
+            ];
+          }
+          else if (attack_method == 17) {
+            options = [
+              { text: "一回押しダメージ", value: "0", checked: true },
+              { text: "1段チャージダメージ", value: "1"},
+            ];
+            if (char_constellations > 2)
+            {
+              options = [
+                { text: "一回押しダメージ", value: "0", checked: true },
+                { text: "1段チャージダメージ", value: "1"},
+                { text: "消えない情熱ダメージ", value: "2", checked: true },
+              ];
+            }
+          }
+          if (attack_method == 18) {
+            options = [
+              { text: "一回押しダメージ", value: "0", checked: true },
+              { text: "1段チャージダメージ", value: "1"},
+              { text: "2段チャージダメージ", value: "2", checked: true},
+            ];
+          }
+            
+            createCheckboxList_br(options);
+      break
+
         case "9":
             if (attack_method == 16) {
               const xianglingskillcount_text = createTextNode("　ヒット回数：")

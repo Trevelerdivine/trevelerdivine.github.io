@@ -229,6 +229,46 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "8") {
+
+      const elementsToAddToCharTalent = [
+        createCheckbox("bennett_Q", true),
+        createLabel("bennett_Q", "素晴らしい旅"),
+        document.createElement("br"),
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      traits = [
+        { id: "traitCheckbox6", label: "第6重：炎元素ダメージ+15%。" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "スキル（0段チャージ）", value: "16" },
+        { text: "スキル（1段チャージ）", value: "17" },
+        { text: "スキル（2段チャージ）", value: "18" },
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
+
     else if (selectedCharId == "9") {
       traits = [
         { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
