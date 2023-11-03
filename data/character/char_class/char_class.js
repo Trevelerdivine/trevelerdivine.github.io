@@ -1081,8 +1081,7 @@ class bennett {
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
-    this.talent2_buff = 0;
-    this.skill_buff = 0;
+    this.bennett_Q_buff = 0
     this.trueCount = 0;
   }
 
@@ -1096,13 +1095,17 @@ class bennett {
     if (Melt_pyro.checked) {
       this.reaction_coeff = 2;
     }
-  
+
     // JSON データを取得
     const response = await fetch("./data/character/char_data/hutao.json");
     const data = await response.json();
 
-    const hutaoE_level = parseInt(document.getElementById("hutaoE_level").value);
-    this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][hutaoE_level]);
+    const bennett_Q_check = document.getElementById("bennett_Q");
+    if (bennett_Q_check.checked)
+    {
+      const bennett_Q_level = parseInt(document.getElementById("bennett_Q_level"));
+      this.bennett_Q_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][bennett_Q_level]);
+    }
 
     if (this.char_constellations > 0)
     {
@@ -1157,7 +1160,7 @@ class bennett {
     
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
-      for (let i = 0; i < 7; i++) {
+      for (let i = initial_index; i < final_index; i++) {
         elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
@@ -1174,7 +1177,7 @@ class bennett {
   }
 
   calculate_char_fixed_attck() {
-    return 0;
+    return (this.first_conste_buff + this.bennett_Q_buff) * this.base_status_array[4];
   }
 
   calculate_char_result_attck() {

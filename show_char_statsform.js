@@ -236,7 +236,7 @@ async function show_char_statsform()
         createLabel("bennett_Q", "素晴らしい旅"),
         document.createElement("br"),
         createTextNode("　元素爆発天賦レベル："),
-        createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
+        createSelectList("bennett_Q_level", 1, 13, "Lv.", "", 8),
         document.createElement("br"),
       ];
     
