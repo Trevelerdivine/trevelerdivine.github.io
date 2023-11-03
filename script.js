@@ -441,6 +441,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "54":
       weapon_instance = new Whiteblind(base_status, fixed_status, result_status);
       break;
+    case "66":
+      weapon_instance = new StaffoftheScarletSands(base_status, fixed_status, result_status);
+      break;
     case "68":
       weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
       break;
