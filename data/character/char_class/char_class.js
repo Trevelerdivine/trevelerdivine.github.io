@@ -2169,7 +2169,8 @@ class cyno {
     this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
-    this.reaction_coeff = 1.15;
+    this.second_conste_buff = 0;
+    this.reaction_coeff = 0;
     this.aggcount = 0;
     this.skill_buff = 0;
   }
@@ -2183,6 +2184,15 @@ class cyno {
       this.aggcount = parseInt(document.getElementById("cyno_agg_count").value);
     }
   
+    if (this.char_constellations > 1)
+    {
+      const second_conste_check = document.getElementById("traitCheckbox2");
+      if (second_conste_check.checked)
+      {
+        this.second_conste_buff = parseInt(document.getElementById("cyno_conste2".value)) / 100;
+      }
+    }
+
     // JSON データを取得
     const response = await fetch("./data/character/char_data/raidenshougun.json");
     const data = await response.json();
@@ -2263,7 +2273,7 @@ class cyno {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return 0;
+    return this.second_conste_buff;
   }
 
   calculate_char_result_dmg_buff() {;
