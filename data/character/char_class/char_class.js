@@ -1384,7 +1384,7 @@ class amber {
     {
         attckRate = resultStatusArray[4] * dmg_rate[4][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][];
+                  + resultStatusArray[4] * dmg_rate[4][1];
       return basicDmg;
     }
     else

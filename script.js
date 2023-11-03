@@ -353,7 +353,7 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
       char_instance = new xiangling(base_status, fixed_status, result_status, parameter);
       break;
     case "10":
-    char_instance = new amber(base_status, fixed_status, result_status, parameter);
+      char_instance = new amber(base_status, fixed_status, result_status, parameter);
     break;
     case "11":
       char_instance = new nirou(base_status, fixed_status, result_status, parameter);
