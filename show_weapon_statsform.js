@@ -310,6 +310,30 @@ async function show_weapon_statsform() {
                 weaponInfo.appendChild(traitLabel);
               }
 
+              else if (selectedWeaponId == "128") {
+                const traits = [
+                  {
+                    id: "traitCheckbox",
+                    label: "神楽の真意：神楽舞　"
+                  }
+                ];
+                const traitCheckbox = document.createElement("input");
+                traitCheckbox.type = "checkbox";
+                traitCheckbox.id = traits[0].id;
+                traitCheckbox.value = traits[0].id;
+                traitCheckbox.checked = true;
+        
+                const traitLabel = document.createElement("label");
+                traitLabel.htmlFor = traits[0].id;
+                traitLabel.textContent = traits[0].label;
+                
+                const selectlist = createweaponSelectList("KagurasVerity_buff", 0, 3, "", "層", 3);
+        
+                weaponInfo.appendChild(traitCheckbox);
+                weaponInfo.appendChild(traitLabel);
+                weaponInfo.appendChild(selectlist);
+              }
+
               else if (selectedWeaponId == "131") {
                 const traits = [
                   {

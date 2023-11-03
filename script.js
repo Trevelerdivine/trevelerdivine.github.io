@@ -492,6 +492,9 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
       break;
+    case "128":
+      weapon_instance = new KagurasVerity(base_status, fixed_status, result_status);
+      break;
     case "131":
       weapon_instance = new LostPrayertotheSacredWinds(base_status, fixed_status, result_status);
       break;
