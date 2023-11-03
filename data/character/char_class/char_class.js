@@ -1070,6 +1070,197 @@ class yanfei {
   }
 }
 
+class bennett {
+  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+    this.base_status_array = base_status_array;
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+    this.parameter = parameter;
+    this.talent1effect = 0;
+    this.first_conste_buff = 0;
+    this.sixth_conste_buff = 0;
+    this.char_constellations = 0;
+    this.reaction_coeff = 0;
+    this.talent2_buff = 0;
+    this.skill_buff = 0;
+    this.trueCount = 0;
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    const Vaporize_pyro = document.getElementById("Vaporize_pyro");
+    if (Vaporize_pyro.checked) {
+      this.reaction_coeff = 1.5;
+    }
+    const Melt_pyro = document.getElementById("Melt-pyro");
+    if (Melt_pyro.checked) {
+      this.reaction_coeff = 2;
+    }
+  
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/hutao.json");
+    const data = await response.json();
+
+    const hutaoE_level = parseInt(document.getElementById("hutaoE_level").value);
+    this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][hutaoE_level]);
+
+    if (this.char_constellations > 0)
+    {
+      this.first_conste_buff = 0.2;
+    }
+
+    if (this.char_constellations > 3)
+    {
+      const sixth_conste_check = document.getElementById("traitCheckbox6");
+      if (sixth_conste_check.checked)
+      {
+        this.sixth_conste_buff = 0.15;
+      }
+    }
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attack_rate = 0;
+    let initial_index;
+    let final_index;
+
+    if (attack_method == 16) {
+      initial_index = 0;
+      final_index = 1;
+    }
+    else if (attack_method == 17) {
+      initial_index = 1;
+      final_index = 3;
+      if (this.char_constellations > 2)
+      {
+        initial_index = 1;
+        final_index = 4;
+      }
+    }
+    else if (attack_method == 18) {
+      initial_index = 4;
+      final_index = 7;
+    }
+    const checkboxContainer = document.getElementById("select_reaction_method");
+    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+    let elm_react = []
+    let elm_nonreact = [];
+    // 各チェックボックスの状態を調べて配列に追加
+    checkboxes.forEach(checkbox => {
+      elm_react.push(checkbox.checked ? 1 : 0);
+      elm_nonreact.push(checkbox.checked ? 0 : 1);
+
+      if (checkbox.checked) {
+        this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+      }
+    });
+    
+      let elm_react_dmgrate = 0;
+      let elm_nonreact_dmgrate = 0;
+      for (let i = 0; i < 7; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+    dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp() {
+    return 0;
+  }
+
+  calculate_char_result_hp() {
+    return 0;
+  }
+
+  calculate_char_fixed_attck() {
+    return 0;
+  }
+
+  calculate_char_result_attck() {
+    return 0;
+  }
+
+  calculate_char_fixed_deff() {
+    return 0;
+  }
+
+  calculate_char_result_deff() {
+    return 0;
+  }
+
+  calculate_char_fixed_elm() {
+    return 0;
+  }
+
+  calculate_char_result_elm() {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge() {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge() {
+    return 0;
+  }
+
+  calculate_char_fixed_cr() {
+    return 0;
+  }
+
+  calculate_char_result_cr() {
+    return 0;
+  }
+
+  calculate_char_fixed_cd() {
+    return 0;
+  }
+
+  calculate_char_result_cd() {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff() {
+      return 0;
+  }
+
+  calculate_char_result_dmg_buff() {
+      return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate) {
+    const resultStatusArray = this.result_status_array;
+    let basicDmg;
+    let attckRate;
+    if (this.reaction_coeff > 0)
+    {
+      attckRate = resultStatusArray[4] * dmg_rate[4][0];
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                + resultStatusArray[4] * dmg_rate[4][1];
+      return basicDmg;
+    }
+    else
+    {
+      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      basicDmg = attckRate;
+      return basicDmg;
+    }
+    return attckRate;
+  }
+
+  update_status(fixed_status_array, result_status_array)
+  {
+    this.fixed_status_array = fixed_status_array;
+    this.result_status_array = result_status_array;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class xiangling {
   constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
     this.base_status_array = base_status_array;
