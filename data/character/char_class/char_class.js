@@ -1243,7 +1243,7 @@ class amber {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.parameter = parameter;
-    this.talent2effect = 0;
+    this.talent2_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
   }
@@ -1265,17 +1265,17 @@ class amber {
 
     if (this.char_constellations > 3)
     {
-      const six_conste_buff_conste_check = document.getElementById("traitCheckbox2");
-      if (first_conste_check.checked)
+      const sixth_conste_buff_conste_check = document.getElementById("traitCheckbox2");
+      if (sixth_conste_buff_conste_check.checked)
       {
-        this.first_conste_buff = 0.15;
+        this.sixth_conste_buff = 0.15;
       }
     } 
 
     let talent2_box = document.getElementById("talent2checkbox2");
     if (talent2_box.checked) 
     {
-      this.talent2 = 0.15;
+      this.talent2_buff = 0.15;
     }
   
     // 攻撃方法に応じてダメージ率を計算
@@ -1321,7 +1321,7 @@ class amber {
   }
 
   calculate_char_fixed_attck() {
-    return (this.talent2 + this.sixth_conste_buff) * this.base_status_array[4];
+    return (this.talent2_buff + this.sixth_conste_buff) * this.base_status_array[4];
   }
 
   calculate_char_result_attck() {
