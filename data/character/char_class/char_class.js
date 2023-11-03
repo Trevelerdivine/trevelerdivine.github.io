@@ -1097,7 +1097,7 @@ class bennett {
     }
 
     // JSON データを取得
-    const response = await fetch("./data/character/char_data/hutao.json");
+    const response = await fetch("./data/character/char_data/bennett.json");
     const data = await response.json();
 
     const bennett_Q_check = document.getElementById("bennett_Q");
