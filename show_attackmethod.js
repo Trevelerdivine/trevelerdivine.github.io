@@ -6,8 +6,6 @@ async function show_attack_method()
   elemental_reaction.innerHTML = "";
   const attack_method_prop = document.getElementById("attack_method_prop");
   attack_method_prop.innerHTML = "";
-  const char_talent = document.getElementById("char_talent");
-  char_talent.innerHTML = "";
   await calculate_depend_status();
 
   let elements_const_dmg;
