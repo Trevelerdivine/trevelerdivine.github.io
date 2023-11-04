@@ -692,15 +692,18 @@ async function show_attack_method()
               attack_method_prop.appendChild(keqing_attack_count);
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 5, "", "回", 5);
             } else if (attack_method == 21) {
-              elementsToAddToCharTalent = [
-                createCheckbox("keqing_talent2", true),
-                createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%"),
-                document.createElement("br"),
-              ];
-
-              elementsToAddToCharTalent.forEach(element => {
-                char_talent.appendChild(element);
-              });
+              const existingCheckbox = document.getElementById("keqing_talent2");
+              if (existingCheckbox === null) {
+                // IDが"keqing_talent2"のチェックボックスが存在しない場合、新しいチェックボックスを作成
+                const newCheckbox = createCheckbox("keqing_talent2", true);
+                const label = createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%");
+                const lineBreak = document.createElement("br");
+              
+                // 新しいチェックボックスと関連する要素を追加
+                char_talent.appendChild(newCheckbox);
+                char_talent.appendChild(label);
+                char_talent.appendChild(lineBreak);
+              }              
               keqing_selectlist = createSelectList("keqing_agg_count", 0, 10, "", "回", 3);
             }
             select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
