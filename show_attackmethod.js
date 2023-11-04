@@ -288,19 +288,47 @@ async function show_attack_method()
                   { text: "３段目", value: "2" },
                   { text: "４段目", value: "3", checked: true },
                 ];
+                createCheckboxList_br(options);
               }else if (attack_method == 16) {
                 options = [
                   { text: "１段目", value: "0", checked: true },
                   { text: "２段目", value: "1" },
                   { text: "３段目", value: "2" }
                 ];
+                createCheckboxList_br(options);
             }
             else if (attack_method == 21) {          
-              options = [
-                { text: "安神秘法", value: "0", checked: true },
+              elementsToAddToCharTalent = [
+                createLabel("diluc_1_count", "斬撃ダメージヒット回数"),
+                createSelectList("diluc_1_count", 0, 1, "", "回", 1),
+                document.createElement("br"),
+                createLabel("diluc_2_count", "継続ダメージヒット回数"),
+                createSelectList("diluc_2_count", 0, 10, "", "回", 8),
+                document.createElement("br"),
+                createLabel("diluc_3_count", "爆発ダメージヒット回数"),
+                createSelectList("diluc_3_count", 0, 1, "", "回", 1),
+                document.createElement("br"),
               ];
+
+              const elementsReactionToAddToCharTalent = [
+                createLabel("diluc_1_reactioncount", "斬撃ダメージヒット回数"),
+                createSelectList("diluc_1_reactioncount", 0, 1, "", "回", 1),
+                document.createElement("br"),
+                createLabel("diluc_2_reactioncount", "継続ダメージヒット回数"),
+                createSelectList("diluc_2_reactioncount", 0, 10, "", "回", 8),
+                document.createElement("br"),
+                createLabel("diluc_3_reactioncount", "爆発ダメージヒット回数"),
+                createSelectList("diluc_3_reactioncount", 0, 1, "", "回", 1),
+                document.createElement("br"),
+              ];
+            
+              elementsToAddToCharTalent.forEach(element => {
+                attack_method_prop.appendChild(element);
+              });
+              elementsReactionToAddToCharTalent.forEach(element => {
+                select_reaction_method.appendChild(element);
+              });
           }
-            createCheckboxList(options)
         break
 
         case "6":
@@ -321,7 +349,7 @@ async function show_attack_method()
                 ];
               
                 elementsToAddToCharTalent.forEach(element => {
-                  char_talent.appendChild(element);
+                  tenporary_char_talent.appendChild(element);
                 });
                 const yanfei_text = createTextNode("　丹火の印：")
                 const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
@@ -496,7 +524,7 @@ async function show_attack_method()
               ];
             
               elementsToAddToCharTalent.forEach(element => {
-                char_talent.appendChild(element);
+                tenporary_char_talent.appendChild(element);
               });
           }
       break
