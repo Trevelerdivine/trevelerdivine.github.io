@@ -192,6 +192,65 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "4") {
+      traits = [
+        { id: "traitCheckbox1", label: "第1重：HPが50%を超えている敵に対して、ダメージバフ+15％" },
+        { id: "traitCheckbox2", label: "第2重：灼熱余燼 攻撃力 " },
+        { id: "traitCheckbox4", label: "第4重：流火焼灼 逆焔の刃のダメージ+40％ " },
+        { id: "traitCheckbox6", label: "第6重：闇を清算する炎の剣 通常攻撃ダメージ+30％ " },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃（炎元素付与状態1ループ）", value: "1" },
+        { text: "スキル（逆焔の刃）", value: "16" },
+        { text: "元素爆発（黎明）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+        const diluc_talent1_list = createanySelectList("diluc_conste2", 0, 3, "+", "%", 3, 10)
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(diluc_talent1_list);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[2].id, true);
+        traitLabel = createLabel(traits[2].id, traits[2].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[3].id, true);
+        traitLabel = createLabel(traits[3].id, traits[3].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "6") {
       traits = [
         { id: "traitCheckbox2", label: "第2重：HP50%未満の敵に重撃会心率+20%" },

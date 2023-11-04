@@ -305,6 +305,40 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "4":
+              elementsToAddToCharTalent = [
+                createCheckbox("diluc_talent2", true),
+                createLabel("diluc_talent2", "溶融の翼：黎明効果継続中に与える炎元素ダメージ+20%"),
+                document.createElement("br"),
+              ];
+
+              elementsToAddToCharTalent.forEach(element => {
+                char_talent.appendChild(element);
+              });
+
+              if (attack_method == 1)
+              {
+                options = [
+                  { text: "１段目", value: "0", checked: true },
+                  { text: "２段目", value: "1" },
+                  { text: "３段目", value: "2" },
+                  { text: "４段目", value: "3", checked: true },
+                ];
+              }else if (attack_method == 16) {
+                options = [
+                  { text: "１段目", value: "0", checked: true },
+                  { text: "２段目", value: "1" },
+                  { text: "３段目", value: "2" }
+                ];
+            }
+            else if (attack_method == 21) {          
+              options = [
+                { text: "安神秘法", value: "0", checked: true },
+              ];
+          }
+            createCheckboxList(options)
+        break
+
         case "6":
             if (attack_method == 1) {
               options = [
