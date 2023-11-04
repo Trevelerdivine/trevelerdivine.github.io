@@ -311,13 +311,13 @@ async function show_attack_method()
               ];
 
               const elementsReactionToAddToCharTalent = [
-                createLabel("diluc_1_reactioncount", "斬撃ダメージヒット回数"),
+                createLabel("diluc_1_reactioncount", "斬撃ダメージヒット回数："),
                 createSelectList("diluc_1_reactioncount", 0, 1, "", "回", 1),
                 document.createElement("br"),
-                createLabel("diluc_2_reactioncount", "継続ダメージヒット回数"),
+                createLabel("diluc_2_reactioncount", "継続ダメージヒット回数："),
                 createSelectList("diluc_2_reactioncount", 0, 10, "", "回", 8),
                 document.createElement("br"),
-                createLabel("diluc_3_reactioncount", "爆発ダメージヒット回数"),
+                createLabel("diluc_3_reactioncount", "爆発ダメージヒット回数："),
                 createSelectList("diluc_3_reactioncount", 0, 1, "", "回", 1),
                 document.createElement("br"),
               ];
