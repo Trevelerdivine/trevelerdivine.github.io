@@ -232,20 +232,6 @@ async function show_attack_method()
         break
 
         case "1":
-              elementsToAddToCharTalent = [
-                createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
-                document.createElement("br"),
-                createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
-                createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
-                document.createElement("br"),
-                createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ "),
-                createanySelectList("yoimiya_talent1", 0, 10, "+", "%", 10, 2),
-                document.createElement("br"),
-              ];
-            
-              elementsToAddToCharTalent.forEach(element => {
-                char_talent.appendChild(element);
-              });
               if (attack_method == 1)
               {
                 options = [

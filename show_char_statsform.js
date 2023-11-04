@@ -126,6 +126,21 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "1") {
+      elementsToAddToCharTalent = [
+        createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
+        document.createElement("br"),
+        createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
+        createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
+        document.createElement("br"),
+        createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ "),
+        createanySelectList("yoimiya_talent1", 0, 10, "+", "%", 10, 2),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
       traits = [
         { id: "traitCheckbox1", label: "1重　紅玉の琉金：宵宮の攻撃力+20%" },
         { id: "traitCheckbox2", label: "2重　万燈の火：炎元素ダメージ+25%" },
