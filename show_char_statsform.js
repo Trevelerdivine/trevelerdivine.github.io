@@ -168,6 +168,21 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "2") {
+      elementsToAddToCharTalent = [
+        createLabel("hutao_E", "蝶導来世"),
+        document.createElement("br"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("hutaoE_level", 1, 13, "Lv.", "", 10),
+        document.createElement("br"),
+        createCheckbox("hutao_talent2", true),
+        createLabel("hutao_talent2", "血のかまど：胡桃のHPが50%以下の時、炎元素ダメージ+33%"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
       traits = [
         { id: "traitCheckbox6", label: "６重　冥蝶の抱擁：会心率+100%" },
       ];
@@ -193,6 +208,17 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "4") {
+
+      elementsToAddToCharTalent = [
+        createCheckbox("diluc_talent2", true),
+        createLabel("diluc_talent2", "溶融の翼：黎明効果継続中に与える炎元素ダメージ+20%"),
+        document.createElement("br"),
+      ];
+
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
       traits = [
         { id: "traitCheckbox1", label: "第1重：HPが50%を超えている敵に対して、ダメージバフ+15％" },
         { id: "traitCheckbox2", label: "第2重：灼熱余燼 攻撃力 " },

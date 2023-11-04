@@ -6,6 +6,8 @@ async function show_attack_method()
   elemental_reaction.innerHTML = "";
   const attack_method_prop = document.getElementById("attack_method_prop");
   attack_method_prop.innerHTML = "";
+  const char_talent = document.getElementById("char_talent");
+  char_talent.innerHTML = "";
   await calculate_depend_status();
 
   let elements_const_dmg;
@@ -262,20 +264,6 @@ async function show_attack_method()
         break
 
         case "2":
-              elementsToAddToCharTalent = [
-                createLabel("hutao_E", "蝶導来世"),
-                document.createElement("br"),
-                createTextNode("　元素スキル天賦レベル："),
-                createSelectList("hutaoE_level", 1, 13, "Lv.", "", 10),
-                document.createElement("br"),
-                createCheckbox("hutao_talent2", true),
-                createLabel("hutao_talent2", "血のかまど：胡桃のHPが50%以下の時、炎元素ダメージ+33%"),
-                document.createElement("br"),
-              ];
-            
-              elementsToAddToCharTalent.forEach(element => {
-                char_talent.appendChild(element);
-              });
               if (attack_method == 1)
               {
                 options = [
@@ -306,16 +294,6 @@ async function show_attack_method()
         break
 
         case "4":
-              elementsToAddToCharTalent = [
-                createCheckbox("diluc_talent2", true),
-                createLabel("diluc_talent2", "溶融の翼：黎明効果継続中に与える炎元素ダメージ+20%"),
-                document.createElement("br"),
-              ];
-
-              elementsToAddToCharTalent.forEach(element => {
-                char_talent.appendChild(element);
-              });
-
               if (attack_method == 1)
               {
                 options = [
