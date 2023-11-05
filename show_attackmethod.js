@@ -204,9 +204,9 @@ async function show_attack_method()
           } else if (attack_method==17) {
             nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
           }
-          select_reaction_method.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-          select_reaction_method.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
-          select_reaction_method.appendChild(document.createElement("br"));
+          elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+          elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
+          elemental_reaction.appendChild(document.createElement("br"));
         break
           
 

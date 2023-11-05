@@ -3379,8 +3379,8 @@ class nahida {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
-    this.constValue = null;
     this.aggcount = 0;
+    this.reaction_coeff = 0;
     this.skill_buff = 0;
     this.talent1effect = -1;
     this.mytalent1 = 0;
@@ -3409,18 +3409,12 @@ class nahida {
         this.talent1effect = elm_buff;
       }
     }
-  
-    // Spread チェックボックスの状態を取得
-    const agg = document.getElementById("Spread");
-    let agg_reaction = 0; // デフォルト値
-    
-    if (agg) { // 要素が存在する場合
-      agg_reaction = agg.checked ? 1 : 0;
+    const reaction_check = document.getElementById(reactionon_flag);
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById(nahida_agg_count).value);
+      this.reaction_coeff = 1.25
     }
-    
-  
-    // チェックボックスの数と Spread の状態から aggcount を計算
-    this.aggcount = trueCount * agg_reaction;
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/nahida.json");
@@ -3562,12 +3556,12 @@ class nahida {
   }
 
   calculate_basic_dmg(dmg_rate) {
-    if (depend_status[2] == 1)
+    if (this.reaction_coeff > 0)
     {
       const resultStatusArray = this.result_status_array;
       const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
       const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-      let basicDmg = (attckRate + elmRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
       return basicDmg;
     }
     else
