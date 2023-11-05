@@ -2540,7 +2540,7 @@ class cyno {
     else
     {
       const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100 + this.base_dmg_buff * resultStatusArray[2];
+      const attckRate = resultStatusArray[4] * dmg_rate[4] + this.base_dmg_buff * resultStatusArray[2];
       return attckRate;
     }
   }

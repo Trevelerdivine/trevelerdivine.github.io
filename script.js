@@ -815,6 +815,11 @@ async function create_afset_instance()
 
 async function calculate_elmreaction_constdmg(reaction_coeff) 
 {
+  const reaction_check = document.getElementById("reactionon_flag");
+  if (!reaction_check.checked)
+  {
+    return 0;
+  }
   let reaction_count = 0;
   if (char_propaty[0] == 0)
   {
