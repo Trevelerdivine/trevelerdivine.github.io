@@ -15,7 +15,7 @@ async function show_attack_method()
   const ReactionOffRadioButton = document.createElement("input");
   ReactionOffRadioButton.type = "radio";
   ReactionOffRadioButton.id = "reactionoff_flag";
-  ReactionOffRadioButton.name = "reactionoff_flag";
+  ReactionOffRadioButton.name = "reaction_flag";
   ReactionOffRadioButton.checked = true;
   ReactionOffRadioButton.value = "reactionoff_flag";
   
@@ -29,13 +29,13 @@ async function show_attack_method()
   const ReactionOnRadioButton = document.createElement("input");
   ReactionOnRadioButton.type = "radio";
   ReactionOnRadioButton.id = "reactionon_flag";
-  ReactionOnRadioButton.name = "reactionon_flag";
+  ReactionOnRadioButton.name = "reaction_flag";
   ReactionOnRadioButton.checked = false;
   ReactionOnRadioButton.value = "reactionon_flag";
   
   const ReactionOnRadio_label = document.createElement("label");
   ReactionOnRadio_label.htmlFor = "reactionon_flag";
-  ReactionOnRadio_label.textContent = "反応なし ";
+  ReactionOnRadio_label.textContent = "反応あり ";
   
   elemental_reaction.appendChild(ReactionOnRadioButton);
   elemental_reaction.appendChild(ReactionOnRadio_label);
