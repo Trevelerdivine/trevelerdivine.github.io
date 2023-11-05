@@ -22,8 +22,8 @@ async function show_attack_method()
   radio_label.htmlFor = "no-reaction";
   radio_label.textContent = "反応なし";
   
-  elemental_reaction.appendChild(radiobutton);
-  elemental_reaction.appendChild(radio_label);
+  select_reaction_method.appendChild(radiobutton);
+  select_reaction_method.appendChild(radio_label);
 
   const char_constellations = document.getElementById("char_constellations").value;
   const agg_text = createTextNode("激化回数：");
@@ -51,10 +51,10 @@ async function show_attack_method()
     traitLabel2.htmlFor = elm_reaction_obj[2].id;
     traitLabel2.textContent = elm_reaction_obj[2].label;
 
-    elemental_reaction.appendChild(traitCheckbox1);
-    elemental_reaction.appendChild(traitLabel1);
-    elemental_reaction.appendChild(traitCheckbox2);
-    elemental_reaction.appendChild(traitLabel2);
+    select_reaction_method.appendChild(traitCheckbox1);
+    select_reaction_method.appendChild(traitLabel1);
+    select_reaction_method.appendChild(traitCheckbox2);
+    select_reaction_method.appendChild(traitLabel2);
 
     elements_const_dmg = [
       document.createElement("br"),
@@ -83,8 +83,8 @@ async function show_attack_method()
     traitLabel1.htmlFor = elm_reaction_obj[1].id;
     traitLabel1.textContent = elm_reaction_obj[1].label;
 
-    elemental_reaction.appendChild(traitCheckbox1);
-    elemental_reaction.appendChild(traitLabel1);
+    select_reaction_method.appendChild(traitCheckbox1);
+    select_reaction_method.appendChild(traitLabel1);
     elements_const_dmg = [
     document.createElement("br"),
     createLabel("Electro_Charged", "　感電回数：　"),
@@ -109,8 +109,8 @@ async function show_attack_method()
     traitLabel1.htmlFor = elm_reaction_obj[3].id;
     traitLabel1.textContent = elm_reaction_obj[3].label;
 
-    elemental_reaction.appendChild(traitCheckbox1);
-    elemental_reaction.appendChild(traitLabel1);
+    select_reaction_method.appendChild(traitCheckbox1);
+    select_reaction_method.appendChild(traitLabel1);
 
   }
 
@@ -126,8 +126,8 @@ async function show_attack_method()
     traitLabel1.htmlFor = elm_reaction_obj[5].id;
     traitLabel1.textContent = elm_reaction_obj[5].label;
 
-    elemental_reaction.appendChild(traitCheckbox1);
-    elemental_reaction.appendChild(traitLabel1);
+    select_reaction_method.appendChild(traitCheckbox1);
+    select_reaction_method.appendChild(traitLabel1);
 
     elements_const_dmg = [
       document.createElement("br"),
@@ -146,30 +146,6 @@ async function show_attack_method()
       elemental_reaction.appendChild(element);
     });
   }
-
-  else if (char_propaty[0] == 4)
-  {
-
-    elements_const_dmg = [
-      document.createElement("br"),
-      createLabel("Swirl_pyro", "　拡散-炎回数：　"),
-      createSelectList("Swirl_pyro", 0, 50, "", "回", 0),
-      document.createElement("br"),
-      createLabel("Swirl_hydro", "　拡散-水回数：　"),
-      createSelectList("Swirl_hydro", 0, 50, "", "回", 0),
-      document.createElement("br"),
-      createLabel("Swirl_cyro", "　拡散-氷回数：　"),
-      createSelectList("Swirl_cyro", 0, 50, "", "回", 0),
-      document.createElement("br"),
-      createLabel("Swirl_electro", "　拡散-雷回数：　"),
-      createSelectList("Swirl_electro", 0, 50, "", "回", 0),
-    ];
-  
-    elements_const_dmg.forEach(element => {
-      elemental_reaction.appendChild(element);
-    });
-  }
-
 
   else if (char_propaty[0] == 5)
   {
