@@ -1241,7 +1241,7 @@ async function monte_carlo_calculate()
       weapon_instance.update_status(fixed_status, result_status);
 
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
-      if (depend_status_status[2] == 1) {
+      if (depend_tatus[2] == 1) {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
         *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
       } else {
@@ -1362,7 +1362,7 @@ async function monte_carlo_calculate()
       weapon_instance.update_status(fixed_status, result_status);
 
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
-      if (depend_status_status[2] == 1) {
+      if (depend_status[2] == 1) {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
         *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
       } else {
