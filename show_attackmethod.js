@@ -689,6 +689,7 @@ async function show_attack_method()
               const raidenskill_selectlist = createSelectList("raiden_resolve", 0, 60, "", "層", 60);
               attack_method_prop.appendChild(raidenskill_text);
               attack_method_prop.appendChild(raidenskill_selectlist);
+              attack_method_prop.appendChild(document.createElement("br"));
             if (attack_method == 21) {
               options = [
                 { text: "１段目", value: "0", checked: true },

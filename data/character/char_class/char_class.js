@@ -862,7 +862,6 @@ class diluc {
     this.fixed_status_array = fixed_status_array;
     this.result_status_array = result_status_array;
     this.parameter = parameter;
-    this.talent1effect = 0;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
     this.fourth_conste_buff = 0;
@@ -870,7 +869,6 @@ class diluc {
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
-    this.skill_buff = 0;
     this.trueCount = 0;
   }
 
@@ -889,18 +887,18 @@ class diluc {
     const response = await fetch("./data/character/char_data/diluc.json");
     const data = await response.json();
 
-    const yoimiyaE_level = parseInt(document.getElementById("yoimiyaE_level").value);
-    this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][yoimiyaE_level]);
-
-    this.talent1_buff = parseFloat(document.getElementById("yoimiya_talent1").value) / 100;
-
+    const diluc_talent2_check = document.getElementById("diluc_talent2");
+    if (diluc_talent2_check.checked)
+    {
+      this.talent2_buff = 0.2;
+    }
 
     if (this.char_constellations > 0)
     {
       const first_conste_check = document.getElementById("traitCheckbox1");
       if (first_conste_check.checked)
       {
-        this.first_conste_buff = 0.2;
+        this.first_conste_buff = 0.15;
       }
     }
 
@@ -909,9 +907,28 @@ class diluc {
       const second_conste_check = document.getElementById("traitCheckbox2");
       if (second_conste_check.checked)
       {
-        this.second_conste_buff = 0.25;
+        this.second_conste_buff = parseFloat(document.getElementById("diluc_conste2").value) / 100;
       }
     }
+
+    if (this.char_constellations > 2 && attack_method == 16)
+    {
+      const fourth_conste_check = document.getElementById("traitCheckbox4");
+      if (fourth_conste_check.checked)
+      {
+        this.fourth_conste_buff = 0.4;
+      }
+    }
+    if (this.char_constellations > 3 && attack_method == 1)
+    {
+      const sixth_conste_check = document.getElementById("traitCheckbox6");
+      if (sixth_conste_check.checked)
+      {
+        this.fourth_conste_buff = 0.3;
+      }
+    }
+
+
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
@@ -925,13 +942,7 @@ class diluc {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
-        }
       });
-        console.log(elm_react);
-        console.log(elm_nonreact);
-        console.log(this.trueCount);
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
         for (let i = 0; i < 4; i++) {
@@ -949,9 +960,6 @@ class diluc {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
-        }
       });
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
@@ -1011,7 +1019,7 @@ class diluc {
   }
 
   calculate_char_fixed_attck() {
-    return 0;
+    return this.second_conste_buff * this.base_status_array[4];
   }
 
   calculate_char_result_attck() {
@@ -1059,7 +1067,7 @@ class diluc {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return 0;
+    return this.talent2_buff + this.first_conste_buff + this.sixth_conste_buff;
   }
 
   calculate_char_result_dmg_buff() {
