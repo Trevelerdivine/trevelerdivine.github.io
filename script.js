@@ -242,7 +242,7 @@ async function calculate_depend_status()
       depend_status[i] = 1
     }
   }
-  const button = document.getElementById("no-reaction");
+  const button = document.getElementById("reactionoff_flag");
 
   if (button !== null && !button.checked && char_propaty[0] != 7) {
     depend_status[2] = 1;

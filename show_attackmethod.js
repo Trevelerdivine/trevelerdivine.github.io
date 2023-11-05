@@ -11,6 +11,35 @@ async function show_attack_method()
   await calculate_depend_status();
 
   let elements_const_dmg;
+
+  const ReactionOffRadioButton = document.createElement("input");
+  ReactionOffRadioButton.type = "radio";
+  ReactionOffRadioButton.id = "reactionoff_flag";
+  ReactionOffRadioButton.name = "reactionoff_flag";
+  ReactionOffRadioButton.checked = true;
+  ReactionOffRadioButton.value = "reactionoff_flag";
+  
+  const ReactionOffRadio_label = document.createElement("label");
+  ReactionOffRadio_label.htmlFor = "reactionoff_flag";
+  ReactionOffRadio_label.textContent = "反応なし ";
+  
+  elemental_reaction.appendChild(ReactionOffRadioButton);
+  elemental_reaction.appendChild(ReactionOffRadio_label);
+
+  const ReactionOnRadioButton = document.createElement("input");
+  ReactionOnRadioButton.type = "radio";
+  ReactionOnRadioButton.id = "reactionon_flag";
+  ReactionOnRadioButton.name = "reactionon_flag";
+  ReactionOnRadioButton.checked = false;
+  ReactionOnRadioButton.value = "reactionon_flag";
+  
+  const ReactionOnRadio_label = document.createElement("label");
+  ReactionOnRadio_label.htmlFor = "reactionon_flag";
+  ReactionOnRadio_label.textContent = "反応なし ";
+  
+  elemental_reaction.appendChild(ReactionOnRadioButton);
+  elemental_reaction.appendChild(ReactionOnRadio_label);
+
   const radiobutton = document.createElement("input");
   radiobutton.type = "radio";
   radiobutton.id = "no-reaction";
@@ -56,6 +85,8 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitCheckbox2);
     select_reaction_method.appendChild(traitLabel2);
     select_reaction_method.appendChild(document.createElement("br"));
+    select_reaction_method.appendChild(document.createElement("br"));
+
 
     elements_const_dmg = [
       document.createElement("br"),
@@ -87,6 +118,8 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(document.createElement("br"));
+    select_reaction_method.appendChild(document.createElement("br"));
+
     elements_const_dmg = [
     document.createElement("br"),
     createLabel("Electro_Charged", "　感電回数：　"),
@@ -114,6 +147,8 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(document.createElement("br"));
+    select_reaction_method.appendChild(document.createElement("br"));
+
 
   }
 
@@ -132,6 +167,8 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(document.createElement("br"));
+    select_reaction_method.appendChild(document.createElement("br"));
+
 
     elements_const_dmg = [
       document.createElement("br"),
@@ -166,6 +203,8 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(document.createElement("br"));
+    select_reaction_method.appendChild(document.createElement("br"));
+
   }
 
   else if (char_propaty[0] == 7)
@@ -183,6 +222,8 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(document.createElement("br"));
+    select_reaction_method.appendChild(document.createElement("br"));
+
   }
 
   attack_method = document.getElementById("attack_method_id").value;     
