@@ -769,7 +769,7 @@ async function show_attack_method()
           tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
         }
         elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-        elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
+        elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
         elemental_reaction.appendChild(document.createElement("br"));
       break
 
