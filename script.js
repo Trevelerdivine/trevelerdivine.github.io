@@ -1021,7 +1021,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
   console.log(basic_dmg);
-  if (depend_status_status[2] == 1) {
+  if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
   } else {
