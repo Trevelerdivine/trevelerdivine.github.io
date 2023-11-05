@@ -865,6 +865,7 @@ class diluc {
     this.talent1effect = 0;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
+    this.fourth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
