@@ -639,7 +639,7 @@ async function show_attack_method()
               attack_method_prop.appendChild(kujousara_count_text);
               attack_method_prop.appendChild(kujousara_attack_count);
 
-              kujousara_agg_countlist = createSelectList("kujousara_agg_countlist", 0, 30, "", "回", 2);
+              kujousara_agg_countlist = createSelectList("kujousara_agg_count", 0, 30, "", "回", 2);
             }
 
       
