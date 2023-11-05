@@ -1021,9 +1021,13 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
   console.log(basic_dmg);
-  exp_dmg = basic_dmg *(1 + result_status[5]*result_status[6])
+  if (typeof result_status[2] === "number") {
+    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
-  result_status.push(exp_dmg);
+  } else {
+    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
+    *(1 + result_status[7]);
+  }
   return result_status;
 }
 
@@ -1357,10 +1361,13 @@ async function monte_carlo_calculate()
       weapon_instance.update_status(fixed_status, result_status);
 
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate);
-      exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
+      if (typeof result_status[2] === "number") {
+        exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
         *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
-      critical_dmg = basic_dmg*(1 + result_status[6])
+      } else {
+        exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
         *(1 + result_status[7]);
+      }
       
       if (temp_exp_dmg < exp_dmg)
       {
