@@ -3412,7 +3412,7 @@ class nahida {
     const reaction_check = document.getElementById("reactionon_flag");
     if (reaction_check.checked)
     {
-      this.aggcount = parseInt(document.getElementById(nahida_agg_count).value);
+      this.aggcount = parseInt(document.getElementById("nahida_agg_count").value);
       this.reaction_coeff = 1.25
     }
   
