@@ -643,9 +643,9 @@ async function show_attack_method()
             }
 
       
-        elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-        elemental_reaction.appendChild(keqing_agg_countlist); // ラベルを select_reaction_method に追加
-        elemental_reaction.appendChild(document.createElement("br"));
+            elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+            elemental_reaction.appendChild(kujousara_agg_countlist); // ラベルを select_reaction_method に追加
+            elemental_reaction.appendChild(document.createElement("br"));
             break
 
             case "39":
