@@ -170,16 +170,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
-      if (char_constellations > 3)
-      {
-        traitCheckbox = createCheckbox(traits[2].id, true);
-        traitLabel = createLabel(traits[2].id, traits[2].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
     }
 
     else if (selectedCharId == "2") {
