@@ -3251,7 +3251,7 @@ class kujousara {
     const reaction_check = document.getElementById("reactionon_flag");
     if (reaction_check.checked)
     {
-      this.aggcount = parseInt(document.getElementById("kujousara_agg_countlist").value);
+      this.aggcount = parseInt(document.getElementById("kujousara_agg_count").value);
       this.reaction_coeff = 1.15
     }
 
