@@ -39,6 +39,7 @@ async function show_attack_method()
   
   elemental_reaction.appendChild(ReactionOnRadioButton);
   elemental_reaction.appendChild(ReactionOnRadio_label);
+  elemental_reaction.appendChild(document.createElement("br"));
 
   const radiobutton = document.createElement("input");
   radiobutton.type = "radio";
