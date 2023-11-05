@@ -156,22 +156,6 @@ async function show_attack_method()
 
   else if (char_propaty[0] == 3)
   {
-    const traitCheckbox1 = document.createElement("input");
-    traitCheckbox1.type = "radio";
-    traitCheckbox1.name = "elemental-reaction";
-    traitCheckbox1.id = elm_reaction_obj[5].id;
-    traitCheckbox1.value = elm_reaction_obj[5].id;
-
-    const traitLabel1 = document.createElement("label");
-    traitLabel1.htmlFor = elm_reaction_obj[5].id;
-    traitLabel1.textContent = elm_reaction_obj[5].label;
-
-    select_reaction_method.appendChild(traitCheckbox1);
-    select_reaction_method.appendChild(traitLabel1);
-    select_reaction_method.appendChild(document.createElement("br"));
-    select_reaction_method.appendChild(document.createElement("br"));
-
-
     elements_const_dmg = [
       document.createElement("br"),
       createLabel("Overloaded", "　過負荷回数：　"),
