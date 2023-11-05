@@ -20,7 +20,7 @@ async function show_attack_method()
   
   const radio_label = document.createElement("label");
   radio_label.htmlFor = "no-reaction";
-  radio_label.textContent = "反応なし";
+  radio_label.textContent = "反応なし ";
   
   select_reaction_method.appendChild(radiobutton);
   select_reaction_method.appendChild(radio_label);
@@ -55,6 +55,7 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(traitCheckbox2);
     select_reaction_method.appendChild(traitLabel2);
+    select_reaction_method.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
       document.createElement("br"),
@@ -85,6 +86,7 @@ async function show_attack_method()
 
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
+    select_reaction_method.appendChild(document.createElement("br"));
     elements_const_dmg = [
     document.createElement("br"),
     createLabel("Electro_Charged", "　感電回数：　"),
@@ -111,6 +113,7 @@ async function show_attack_method()
 
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
+    select_reaction_method.appendChild(document.createElement("br"));
 
   }
 
@@ -128,6 +131,7 @@ async function show_attack_method()
 
     select_reaction_method.appendChild(traitCheckbox1);
     select_reaction_method.appendChild(traitLabel1);
+    select_reaction_method.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
       document.createElement("br"),
@@ -159,8 +163,9 @@ async function show_attack_method()
     traitLabel1.htmlFor = elm_reaction_obj[4].id;
     traitLabel1.textContent = elm_reaction_obj[4].label;
 
-    elemental_reaction.appendChild(traitCheckbox1);
-    elemental_reaction.appendChild(traitLabel1);
+    select_reaction_method.appendChild(traitCheckbox1);
+    select_reaction_method.appendChild(traitLabel1);
+    select_reaction_method.appendChild(document.createElement("br"));
   }
 
   else if (char_propaty[0] == 7)
@@ -175,8 +180,9 @@ async function show_attack_method()
     traitLabel1.htmlFor = elm_reaction_obj[6].id;
     traitLabel1.textContent = elm_reaction_obj[6].label;
 
-    elemental_reaction.appendChild(traitCheckbox1);
-    elemental_reaction.appendChild(traitLabel1);
+    select_reaction_method.appendChild(traitCheckbox1);
+    select_reaction_method.appendChild(traitLabel1);
+    select_reaction_method.appendChild(document.createElement("br"));
   }
 
   attack_method = document.getElementById("attack_method_id").value;     
