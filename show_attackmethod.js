@@ -595,13 +595,13 @@ async function show_attack_method()
         case "35":
             let keqing_selectlist;
             if (attack_method == 1) {
-              keqing_selectlist = createSelectList("keqing_agg_count", 0, 6, "", "回", 2);
+              keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 2);
             } else if (attack_method == 6) {
               const keqing_count_text = createTextNode("　重撃回数：")
               const keqing_attack_count = createSelectList("keqing_attack_count", 0, 5, "", "回", 5);
               attack_method_prop.appendChild(keqing_count_text);
               attack_method_prop.appendChild(keqing_attack_count);
-              keqing_selectlist = createSelectList("keqing_agg_count", 0, 5, "", "回", 5);
+              keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 5);
             } else if (attack_method == 21) {
                 const newCheckbox = createCheckbox("keqing_talent2", true);
                 const label = createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%");
@@ -611,11 +611,11 @@ async function show_attack_method()
                 tenporary_char_talent.appendChild(newCheckbox);
                 tenporary_char_talent.appendChild(label);
                 tenporary_char_talent.appendChild(lineBreak);          
-                keqing_selectlist = createSelectList("keqing_agg_count", 0, 10, "", "回", 3);
+                keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 3);
             }
-            select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
-            select_reaction_method.appendChild(keqing_selectlist); // ラベルを select_reaction_method に追加
-            select_reaction_method.appendChild(document.createElement("br"));
+          elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+          elemental_reaction.appendChild(keqing_agg_countlist); // ラベルを select_reaction_method に追加
+          elemental_reaction.appendChild(document.createElement("br"));
             break
 
             case "38":

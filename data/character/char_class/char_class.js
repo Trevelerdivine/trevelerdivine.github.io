@@ -2918,10 +2918,11 @@ class keqing {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
 
-    const Aggravate = document.getElementById("Aggravate");
-    if (Aggravate.checked) {
-      this.reaction_coeff = 1.15;
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
+    {
       this.aggcount = parseInt(document.getElementById("keqing_agg_count").value);
+      this.reaction_coeff = 1.15
     }
 
     if (this.char_constellations > 2)
