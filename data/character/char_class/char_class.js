@@ -1121,7 +1121,7 @@ class diluc {
         }
         else
         {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] + dmg_rate[4][2] + dmg_rate[4][3]);
+          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
           basicDmg = attckRate;
           return basicDmg;
         }
