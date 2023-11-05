@@ -668,9 +668,9 @@ async function show_attack_method()
                   attack_method_prop.appendChild(fischl_talent2_count);
                   attack_method_prop.appendChild(document.createElement("br"));
                   let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 10);
-                  select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
-                  select_reaction_method.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
-                  select_reaction_method.appendChild(document.createElement("br"));
+                  elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+                  elemental_reaction.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
+                  elemental_reaction.appendChild(document.createElement("br"));
                 }
                 else
                 {
@@ -690,9 +690,9 @@ async function show_attack_method()
                     attack_method_prop.appendChild(fischl_conste6_text);
                     attack_method_prop.appendChild(fischl_conste6_count);
                     let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 14);
-                    select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
-                    select_reaction_method.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
-                    select_reaction_method.appendChild(document.createElement("br"));
+                    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+                    elemental_reaction.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
+                    elemental_reaction.appendChild(document.createElement("br"));
                   }
                 }
               }
