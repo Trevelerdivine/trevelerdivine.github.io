@@ -3558,17 +3558,39 @@ class nahida {
   calculate_basic_dmg(dmg_rate) {
     if (this.reaction_coeff > 0)
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-      const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-      let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
-      return basicDmg;
+      if (attack_method == 16 || attack_method == 17)
+      { 
+        const resultStatusArray = this.result_status_array;
+        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
+        let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        return basicDmg;
+      }
+      else
+      {
+        const resultStatusArray = this.result_status_array;
+        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        return basicDmg;
+      }
     }
     else
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-      return attckRate;
+      if (attack_method == 16 || attack_method == 17)
+      {
+        const resultStatusArray = this.result_status_array;
+        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
+        let basicDmg = attckRate + elmRate;
+        return basicDmg;
+      }
+      else
+      {
+        const resultStatusArray = this.result_status_array;
+        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        let basicDmg = attckRate;
+        return basicDmg;
+      }
     }
   }
 
