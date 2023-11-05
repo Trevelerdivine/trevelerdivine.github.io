@@ -55,7 +55,8 @@ async function show_attack_method()
   select_reaction_method.appendChild(radio_label);
 
   const char_constellations = document.getElementById("char_constellations").value;
-  const agg_text = createTextNode("激化回数：");
+  const Aggravate_text = createTextNode("　超激化回数：　");
+  const Spread_text = createTextNode("　草激化回数：　");
   const vap_text = createTextNode("蒸発回数：");
 
   if (char_propaty[0] == 0)
@@ -187,45 +188,6 @@ async function show_attack_method()
       elemental_reaction.appendChild(element);
     });
   }
-
-  else if (char_propaty[0] == 5)
-  {
-    const traitCheckbox1 = document.createElement("input");
-    traitCheckbox1.type = "radio";
-    traitCheckbox1.id = elm_reaction_obj[4].id;
-    traitCheckbox1.name = "elemental-reaction";
-    traitCheckbox1.value = elm_reaction_obj[4].id;
-
-    const traitLabel1 = document.createElement("label");
-    traitLabel1.htmlFor = elm_reaction_obj[4].id;
-    traitLabel1.textContent = elm_reaction_obj[4].label;
-
-    select_reaction_method.appendChild(traitCheckbox1);
-    select_reaction_method.appendChild(traitLabel1);
-    select_reaction_method.appendChild(document.createElement("br"));
-    select_reaction_method.appendChild(document.createElement("br"));
-
-  }
-
-  else if (char_propaty[0] == 7)
-  {
-    const traitCheckbox1 = document.createElement("input");
-    traitCheckbox1.type = "radio";
-    traitCheckbox1.id = elm_reaction_obj[6].id;
-    traitCheckbox1.name = "elemental-reaction";
-    traitCheckbox1.value = elm_reaction_obj[6].id;
-
-    const traitLabel1 = document.createElement("label");
-    traitLabel1.htmlFor = elm_reaction_obj[6].id;
-    traitLabel1.textContent = elm_reaction_obj[6].label;
-
-    select_reaction_method.appendChild(traitCheckbox1);
-    select_reaction_method.appendChild(traitLabel1);
-    select_reaction_method.appendChild(document.createElement("br"));
-    select_reaction_method.appendChild(document.createElement("br"));
-
-  }
-
   attack_method = document.getElementById("attack_method_id").value;     
   let options = [];
   let elementsToAddToCharTalent;
@@ -233,28 +195,20 @@ async function show_attack_method()
     switch (selectedCharId)
     {
         case "56":        
-            if (attack_method == 1) {
-              options = [
-                { text: "１段目", value: "0", checked: true },
-                { text: "２段目", value: "1" },
-                { text: "３段目", value: "2" },
-                { text: "４段目", value: "3", checked: true },
-              ];
-            } else if (attack_method == 6) {
-              options = [
-                { text: "重撃", value: "0", checked: true },
-              ];
-            } else if (attack_method==16) {
-              options = [
-                { text: "滅浄三業", value: "0", checked: true },
-              ];
-            } else if (attack_method==17) {
-              options = [
-                { text: "滅浄三業·破業障(6凸)", value: "0", checked: true },
-              ];
-            }
-            createCheckboxList(options)
+          if (attack_method == 1) {
+            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
+          } else if (attack_method == 6) {
+            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+          } else if (attack_method==16) {
+            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+          } else if (attack_method==17) {
+            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+          }
+          select_reaction_method.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+          select_reaction_method.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
+          select_reaction_method.appendChild(document.createElement("br"));
         break
+          
 
         case "1":
               if (attack_method == 1)
