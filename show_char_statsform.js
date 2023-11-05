@@ -644,16 +644,6 @@ async function show_char_statsform()
         characterInfo.appendChild(cyno_talent1_list);
         characterInfo.appendChild(document.createElement("br"));
       }
-
-      if (char_constellations > 2)
-      {
-        traitCheckbox = createCheckbox(traits[1].id, true);
-        traitLabel = createLabel(traits[1].id, traits[1].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
     }
 
     else if (selectedCharId == "33") {

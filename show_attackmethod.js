@@ -639,12 +639,13 @@ async function show_attack_method()
               attack_method_prop.appendChild(kujousara_count_text);
               attack_method_prop.appendChild(kujousara_attack_count);
 
-              kujousara_selectlist = createSelectList("kujousara_agg_count", 0, 30, "", "回", 2);
+              kujousara_agg_countlist = createSelectList("kujousara_agg_countlist", 0, 30, "", "回", 2);
             }
 
-            select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
-            select_reaction_method.appendChild(kujousara_selectlist); // ラベルを select_reaction_method に追加
-            select_reaction_method.appendChild(document.createElement("br"));
+      
+        elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+        elemental_reaction.appendChild(keqing_agg_countlist); // ラベルを select_reaction_method に追加
+        elemental_reaction.appendChild(document.createElement("br"));
             break
 
             case "39":

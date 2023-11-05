@@ -3246,15 +3246,17 @@ class kujousara {
       }
     }
 
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById("keqing_agg_count").value);
+      this.reaction_coeff = 1.15
+    }
+
     let dmg_attack_rate = 0;
     let dmg_rate;
     
     if (attack_method == 21) {
-      const Aggravate = document.getElementById("Aggravate");
-      if (Aggravate.checked) {
-        this.reaction_coeff = 1.15;
-        this.aggcount = parseInt(document.getElementById("kujousara_agg_count").value);
-      }
       const attack_count = parseInt(document.getElementById("kujousara_attack_count").value);
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count;
