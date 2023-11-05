@@ -581,25 +581,15 @@ async function show_attack_method()
               attack_method_prop.appendChild(raidenskill_selectlist);
               attack_method_prop.appendChild(document.createElement("br"));
             if (attack_method == 21) {
-              options = [
-                { text: "１段目", value: "0", checked: true },
-                { text: "２段目", value: "1" },
-                { text: "３段目", value: "2" },
-                { text: "４段目", value: "3", checked: true},
-                { text: "５段目", value: "4" },
-              ];
-              createCheckboxList(options);
+              raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 2);
             } else if (attack_method == 22) {
-              options = [
-                { text: "重撃", value: "0", checked: true },
-              ];
-              createCheckboxList(options);
+              raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
             } else if (attack_method == 23) {
-              options = [
-                { text: "夢想の一太刀", value: "0", checked: true },
-              ];
-              createCheckboxList_br(options);
+              raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
             }
+            elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+            elemental_reaction.appendChild(raiden_agg_countlist); // ラベルを select_reaction_method に追加
+            elemental_reaction.appendChild(document.createElement("br"));
         break
 
         case "35":
