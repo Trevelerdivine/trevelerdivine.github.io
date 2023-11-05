@@ -288,14 +288,14 @@ async function show_attack_method()
                   { text: "３段目", value: "2" },
                   { text: "４段目", value: "3", checked: true },
                 ];
-                createCheckboxList_br(options);
+                createCheckboxList(options);
               }else if (attack_method == 16) {
                 options = [
                   { text: "１段目", value: "0", checked: true },
                   { text: "２段目", value: "1" },
                   { text: "３段目", value: "2" }
                 ];
-                createCheckboxList_br(options);
+                createCheckboxList(options);
             }
             else if (attack_method == 21) {          
               elementsToAddToCharTalent = [

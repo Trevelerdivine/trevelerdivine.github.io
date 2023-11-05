@@ -917,8 +917,6 @@ class diluc {
     let dmg_rate;
     let dmg_attack_rate = 0;
     if (attack_method == 1) {
-      if (this.char_constellations < 4)
-      {
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       let elm_react = []
@@ -941,7 +939,64 @@ class diluc {
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-      }
+    }
+    else if (attack_method == 16) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) {
+          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+        }
+      });
+        let elm_react_dmgrate = 0;
+        let elm_nonreact_dmgrate = 0;
+        if (this.char_constellations < 3)
+        {
+          for (let i = 0; i < 3; i++) {
+            elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+            elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+          }
+          dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+        }
+        else
+        {
+          const first_react_dmgrate =  elm_react[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+          const first_nonreact_dmgrate = elm_nonreact[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+          for (let i = 1; i < 3; i++) {
+            elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+            elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+          }
+          dmg_rate = [0, 0, 0, 0, [first_react_dmgrate, first_nonreact_dmgrate, elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+        }
+    }
+    else if (attack_method == 21) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) {
+          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+        }
+      });
+        console.log(elm_react);
+        console.log(elm_nonreact);
+        console.log(this.trueCount);
+        let elm_react_dmgrate = 0;
+        let elm_nonreact_dmgrate = 0;
+        for (let i = 0; i < 4; i++) {
+          elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
   
     return dmg_rate;
@@ -956,7 +1011,7 @@ class diluc {
   }
 
   calculate_char_fixed_attck() {
-    return this.base_status_array[4] * this.first_conste_buff;
+    return 0;
   }
 
   calculate_char_result_attck() {
@@ -1004,11 +1059,11 @@ class diluc {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.second_conste_buff + this.talent1_buff;
+    return 0;
   }
 
   calculate_char_result_dmg_buff() {
-      return 0;
+    return 0;
   }
 
   calculate_basic_dmg(dmg_rate) {
@@ -1019,23 +1074,14 @@ class diluc {
     {
       if (attack_method == 1)
       {
-        if (this.char_constellations < 4)
-        {
-          attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * dmg_rate[4][1] * this.skill_buff;
-          return basicDmg;
-        }
-        else
-        {
-          basicDmg = (resultStatusArray[4] * dmg_rate[4] * this.skill_buff / 3) * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * dmg_rate[4] * this.skill_buff * 2 / 3;
-          return basicDmg;
-        }
+        attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                  + resultStatusArray[4] * dmg_rate[4][1] * this.skill_buff;
+        return basicDmg;
       }
-      else
+      else if (attack_method == 16)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
         return basicDmg;
       }
