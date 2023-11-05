@@ -1082,16 +1082,16 @@ class diluc {
       {
         if (this.fourth_conste_buff > 0)
         {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * (dmg_rate[4][1] + dmg_rate[4][3] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
-        return basicDmg;
+          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
+          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                    + resultStatusArray[4] * (dmg_rate[4][1] + dmg_rate[4][3] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
+          return basicDmg;
         }
         else
         {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][2]);
+          attckRate = resultStatusArray[4] * dmg_rate[4][0];
           basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * (dmg_rate[4][1] + dmg_rate[4][3]);
+                    + resultStatusArray[4] * dmg_rate[4][1];
           return basicDmg;
         }
       }
