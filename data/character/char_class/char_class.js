@@ -1080,7 +1080,7 @@ class diluc {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
+        attckRate = resultStatusArray[4] * dmg_rate[4][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
                   + resultStatusArray[4] * dmg_rate[4][1];
         return basicDmg;
@@ -1091,23 +1091,20 @@ class diluc {
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
         return basicDmg;
       }
+      else if (attack_method == 21)
+      {
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        return basicDmg;
+      }
     }
     else
     {
       if (attack_method == 1)
       {
-        if( this.char_constellations < 4)
-        {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
-          basicDmg = attckRate;
-          return basicDmg;
-        }
-        else
-        {
-          attckRate = resultStatusArray[4] * dmg_rate[4];
-          basicDmg = attckRate;
-          return basicDmg;
-        }
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        basicDmg = attckRate;
+        return basicDmg;
       }
       else
       {
