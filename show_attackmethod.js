@@ -549,7 +549,7 @@ async function show_attack_method()
         case "32":
           let cyno_selectlist;
           if (attack_method == 1) {
-            cyno_selectlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
+            cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
           } else if (attack_method == 16) {
             let cyno_E_text = createTextNode("　律淵渡魂ヒット回数：")
             let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 5);
@@ -562,11 +562,11 @@ async function show_attack_method()
             attack_method_prop.appendChild(cyno_talent1_count);
             attack_method_prop.appendChild(document.createElement("br"));
 
-            cyno_selectlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 10);
-          } 
-          select_reaction_method.appendChild(agg_text); // チェックボックスを select_reaction_method に追加
-          select_reaction_method.appendChild(cyno_selectlist); // ラベルを select_reaction_method に追加
-          select_reaction_method.appendChild(document.createElement("br"));
+            cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 10);
+          }
+            elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+            elemental_reaction.appendChild(cyno_agg_countlist); // ラベルを select_reaction_method に追加
+            elemental_reaction.appendChild(document.createElement("br"));
       break
 
         case "33":
