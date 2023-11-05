@@ -981,27 +981,20 @@ class diluc {
         }
     }
     else if (attack_method == 21) {
-      const checkboxContainer = document.getElementById("select_reaction_method");
-      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-      let elm_react = []
-      let elm_nonreact = [];
-      // 各チェックボックスの状態を調べて配列に追加
-      checkboxes.forEach(checkbox => {
-        elm_react.push(checkbox.checked ? 1 : 0);
-        elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
-        }
-      });
-        console.log(elm_react);
-        console.log(elm_nonreact);
-        console.log(this.trueCount);
+        let diluc_1_count = parseInt(document.getElementById("diluc_1_count").value);
+        let diluc_2_count = parseInt(document.getElementById("diluc_2_count").value);
+        let diluc_3_count = parseInt(document.getElementById("diluc_3_count").value);
+        let diluc_1_reactioncount = parseInt(document.getElementById("diluc_1_reactioncount").value);
+        let diluc_2_reactioncount = parseInt(document.getElementById("diluc_2_reactioncount").value);
+        let diluc_3_reactioncount = parseInt(document.getElementById("diluc_3_reactioncount").value);
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
-        for (let i = 0; i < 4; i++) {
-          elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        }
+        let diluc_1_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+        let diluc_2_dmgrate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        let diluc_3_dmgrate = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
+        elm_react_dmgrate = diluc_1_dmgrate * diluc_1_reactioncount + diluc_2_dmgrate * diluc_2_reactioncount + diluc_3_dmgrate * diluc_3_count;
+        elm_nonreact_dmgrate = diluc_1_dmgrate * (diluc_1_count - diluc_1_reactioncount) + diluc_2_dmgrate * (diluc_2_count - diluc_2_reactioncount) + diluc_3_dmgrate * (diluc_3_count - diluc_3_reactioncount);
+
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
   
@@ -1087,14 +1080,26 @@ class diluc {
       }
       else if (attack_method == 16)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        if (this.fourth_conste_buff > 0)
+        {
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                  + resultStatusArray[4] * (dmg_rate[4][1] + dmg_rate[4][3] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
         return basicDmg;
+        }
+        else
+        {
+          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][2]);
+          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                    + resultStatusArray[4] * (dmg_rate[4][1] + dmg_rate[4][3]);
+          return basicDmg;
+        }
       }
       else if (attack_method == 21)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        attckRate = resultStatusArray[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                   + resultStatusArray[4] * dmg_rate[4][1];
         return basicDmg;
       }
     }
@@ -1106,13 +1111,27 @@ class diluc {
         basicDmg = attckRate;
         return basicDmg;
       }
-      else
+      else if (attack_method == 16)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        if (this.fourth_conste_buff > 0)
+        {
+          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] + (dmg_rate[4][2] + dmg_rate[4][3]) * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
+          basicDmg = attckRate;
+          return basicDmg;
+        }
+        else
+        {
+          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] + dmg_rate[4][2] + dmg_rate[4][3]);
+          basicDmg = attckRate;
+          return basicDmg;
+        }
+      }
+      else if (attack_method == 21)
+      {
+        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate;
         return basicDmg;
       }
-        attckRate = resultStatusArray[4] * dmg_rate[4] * this.attack_count / 100;
     }
     return attckRate;
   }
