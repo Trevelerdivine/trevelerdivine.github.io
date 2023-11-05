@@ -3409,12 +3409,6 @@ class nahida {
         this.talent1effect = elm_buff;
       }
     }
-    const reaction_check = document.getElementById("reactionon_flag");
-    if (reaction_check.checked)
-    {
-      this.aggcount = parseInt(document.getElementById("nahida_agg_count").value);
-      this.reaction_coeff = 1.25
-    }
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/nahida.json");
@@ -3621,10 +3615,9 @@ class tighnari {
     this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
-    this.constValue = null;
-    this.aggcount1 = 0;
-    this.aggcount2= 0
     this.talent1_buff = 0;
+    this.aggcount = 0;
+    this.reaction_coeff = 0;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
     this.fourth_conste_buff = 0;
@@ -3637,37 +3630,11 @@ class tighnari {
     this.char_constellations = document.getElementById("char_constellations").value;
     
     // チェックボックスとチェックされた数を取得
-    let agg_reaction = 0; // デフォルト値
-    const agg = document.getElementById("Spread");
-      if (agg) { // 要素が存在する場合
-        agg_reaction = agg.checked ? 1 : 0;
-      }
-    if (agg_reaction == 1)
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
     {
-      if (attack_method == 6)
-      {
-        const checkboxContainer = document.getElementById("select_reaction_method");
-        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-        const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
-        const first_attack = document.getElementById("checkbox_0");
-        // Spread チェックボックスの状態を取得
-        if (first_attack.checked)
-        {
-          this.aggcount1 = 0;
-          this.aggcount2 = trueCount * agg_reaction;
-        }
-        else
-        {
-          this.aggcount1 = 1 * agg_reaction;
-          this.aggcount2 = (trueCount - 1) * agg_reaction;
-        }
-    
-      }
-      else
-      {
-        this.aggcount1 = agg_reaction * document.getElementById("tighnariburst1").value;
-        this.aggcount2 = agg_reaction * document.getElementById("tighnariburst2").value;
-      }
+      this.aggcount = parseInt(document.getElementById("tighnari_agg_count").value);
+      this.reaction_coeff = 1.25
     }
 
     const talent1_check = document.getElementById("tighnari_talent1");
@@ -3800,14 +3767,14 @@ class tighnari {
       {
         const resultStatusArray = this.result_status_array;
         const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff + 12 * (1.6 + (this.weapon_rank -1) * 0.4) * resultStatusArray[2];
-        let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2)* 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
         return basicDmg;
       }
       else
       {
       const resultStatusArray = this.result_status_array;
       const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff;
-      let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2)* 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
       return basicDmg;
       }
     }
@@ -3815,7 +3782,7 @@ class tighnari {
     {
       const resultStatusArray = this.result_status_array;
       const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
-      let basicDmg = (attckRate + (this.aggcount1 + this.aggcount2) * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
       return basicDmg;
     }
   }

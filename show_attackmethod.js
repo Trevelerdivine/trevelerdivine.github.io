@@ -195,22 +195,6 @@ async function show_attack_method()
 
     switch (selectedCharId)
     {
-        case "56":        
-          if (attack_method == 1) {
-            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
-          } else if (attack_method == 6) {
-            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-          } else if (attack_method==16) {
-            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-          } else if (attack_method==17) {
-            nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-          }
-          elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-          elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
-          elemental_reaction.appendChild(document.createElement("br"));
-        break
-          
-
         case "1":
               if (attack_method == 1)
               {
@@ -542,47 +526,6 @@ async function show_attack_method()
         attack_method_prop.appendChild(eulaburst_selectlist);
       break
 
-        case "57":        
-        if (attack_method == 6)
-        {
-          if (char_constellations < 4)
-          {
-            options = [
-              { text: "花筐の矢", value: "0", checked: true },
-              { text: "蔵蘊の花矢1", value: "1", checked: true  },
-              { text: "蔵蘊の花矢2", value: "2" },
-              { text: "蔵蘊の花矢3", value: "3"},
-              { text: "蔵蘊の花矢4", value: "4",},
-            ];
-          }
-          else
-          {
-            options = [
-              { text: "花筐の矢", value: "0", checked: true },
-              { text: "蔵蘊の花矢1", value: "1", checked: true  },
-              { text: "蔵蘊の花矢2", value: "2" },
-              { text: "蔵蘊の花矢3", value: "3"},
-              { text: "蔵蘊の花矢4", value: "4",},
-              { text: "蔵蘊の花矢5", value: "5", checked: true },
-            ];
-          }
-          createCheckboxList_br(options)
-        } else if (attack_method == 21)
-        {
-          const tighnari_text1 = createTextNode("　蔓纏いの矢：")
-          const tighnariburst1_selectlist = createSelectList("tighnariburst1", 0, 6, "", "回", 2);
-          const tighnari_text2 = createTextNode("　次級・蔓纏いの矢：")
-          const tighnariburst2_selectlist = createSelectList("tighnariburst2", 0, 6, "", "回", 2);
-          select_reaction_method.appendChild(agg_text);
-          select_reaction_method.appendChild(document.createElement("br"));
-          select_reaction_method.appendChild(tighnari_text1);
-          select_reaction_method.appendChild(tighnariburst1_selectlist);
-          select_reaction_method.appendChild(document.createElement("br"));
-          select_reaction_method.appendChild(tighnari_text2);
-          select_reaction_method.appendChild(tighnariburst2_selectlist);
-        }
-    break
-
     case "23":
             if (attack_method == 6) {
               options = [
@@ -794,6 +737,41 @@ async function show_attack_method()
                 }
               }
               break
+      case "56":        
+        if (attack_method == 1) {
+          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
+        } else if (attack_method == 6) {
+          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+        } else if (attack_method==16) {
+          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+        } else if (attack_method==17) {
+          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+        }
+        elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+        elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
+        elemental_reaction.appendChild(document.createElement("br"));
+      break
+
+      case "57":        
+        if (attack_method == 6)
+        {
+          if (char_constellations < 4)
+          {
+            tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 2);
+          }
+          else
+          {
+            tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 3);
+          }
+          createCheckboxList_br(options)
+        } else if (attack_method == 21)
+        {
+          tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
+        }
+        elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+        elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
+        elemental_reaction.appendChild(document.createElement("br"));
+      break
 
         case "63":
             if (attack_method == 6) {
