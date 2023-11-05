@@ -2564,6 +2564,7 @@ class yaemiko {
     this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.aggcount = 0;
+    this.reaction_coeff = 0;
     this.skill_buff = 0;
     this.talent2effect = 0;
     this.four_conste_buff = 0;
@@ -2576,15 +2577,13 @@ class yaemiko {
     const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
     const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
     this.char_constellations = document.getElementById("char_constellations").value;
-    // Spread チェックボックスの状態を取得
-    const agg = document.getElementById("Aggravate");
-    let agg_reaction = 0; // デフォルト値
-    
-    if (agg) { // 要素が存在する場合
-      agg_reaction = agg.checked ? 1 : 0;
+
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById("yaemiko_agg_count").value);
+      this.reaction_coeff = 1.15
     }
-    // チェックボックスの数と Spread の状態から aggcount を計算
-    this.aggcount = trueCount * agg_reaction;
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/yaemiko.json");
@@ -2619,7 +2618,7 @@ class yaemiko {
     } else if (attack_method == 21) {
       const first_dmg_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       const second_dmg_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      const Q_dmg_rate = [first_dmg_rate, second_dmg_rate];
+      const Q_dmg_rate = first_dmg_rate + second_dmg_rate * 3;
       dmg_rate = [0, 0, 0, 0, Q_dmg_rate, 0, 0];
     }
     return dmg_rate;
@@ -2701,30 +2700,17 @@ class yaemiko {
     const resultStatusArray = this.result_status_array;
     let basicDmg;
     let attckRate;
-    if (depend_status[2] == 1)
+    if (this.reaction_coeff > 0)
     {
-      if (attack_method !=21)
-      {
-        attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        attckRate = resultStatusArray[4] * dmg_rate[4];
         basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
-      }
-      else
-      {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
-        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
-      }
-      return basicDmg;
+        return basicDmg;
     }
     else
     {
       if (attack_method != 21)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-       
-      }
-      else
-      {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] * 3) / 100;
+        attckRate = resultStatusArray[4] * dmg_rate[4];
       }
     }
     return attckRate;

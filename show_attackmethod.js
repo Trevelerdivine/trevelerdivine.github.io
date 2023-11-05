@@ -555,16 +555,9 @@ async function show_attack_method()
 
         case "33":
             if (attack_method == 1) {
-              options = [
-                { text: "１段目", value: "0", checked: true },
-                { text: "２段目", value: "1" },
-                { text: "３段目", value: "2" },
-              ];
-              createCheckboxList(options);
+              yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
             } else if (attack_method == 6) {
-              options = [
-                { text: "重撃", value: "0", checked: true },
-              ];
+              yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
               createCheckboxList(options);
             } else if (attack_method==16) {
               const yaeskill_text = createTextNode("　殺生櫻：")
@@ -572,21 +565,13 @@ async function show_attack_method()
               attack_method_prop.appendChild(document.createElement("br"));
               attack_method_prop.appendChild(yaeskill_text);
               attack_method_prop.appendChild(yaeskill_selectlist);
-              options = [
-                { text: "殺生櫻１ヒット目", value: "0", checked: true },
-                { text: "殺生櫻２ヒット目", value: "1" },
-                { text: "殺生櫻３ヒット目", value: "2" },
-              ];
-              createCheckboxList_br(options);
+              yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
             } else if (attack_method==21) {
-              options = [
-                { text: "元素爆発　初撃", value: "0", checked: true },
-                { text: "天狐雷霆１ヒット目", value: "1", checked: true },
-                { text: "天狐雷霆２ヒット目", value: "2", checked: true },
-                { text: "天狐雷霆３ヒット目", value: "3", checked: true  },
-              ];
-              createCheckboxList_br(options)
+              yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 4);
             }
+            elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+            elemental_reaction.appendChild(yaemiko_agg_countlist); // ラベルを select_reaction_method に追加
+            elemental_reaction.appendChild(document.createElement("br"));
         break
 
         case "34":
