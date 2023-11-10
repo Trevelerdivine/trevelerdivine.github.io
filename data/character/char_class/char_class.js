@@ -3397,6 +3397,13 @@ class nahida {
         this.talent1effect = elm_buff;
       }
     }
+
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById("nahida_agg_count").value);
+      this.reaction_coeff = 1.25
+    }    
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/nahida.json");
