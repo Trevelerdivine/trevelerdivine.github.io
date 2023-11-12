@@ -1103,7 +1103,7 @@ async function monte_carlo_calculate()
   let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let af_score = my_af_score_distribution[7];
   const my_af_score = my_af_score_distribution[7];
-  const dlt_score = 0.01;
+  const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
   let response = "<br>";
@@ -1172,7 +1172,7 @@ async function monte_carlo_calculate()
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
 
-    for (let i = 0; i < 100000; i++)
+    for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
@@ -1271,7 +1271,7 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 50000; k++)
+    for (let k = 0; k < 5000; k++)
     {
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
