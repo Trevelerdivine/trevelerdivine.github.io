@@ -513,6 +513,8 @@ class klee {
       {
         this.talent1_buff = 0.5;
       }
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       let elm_react = []
       let elm_nonreact = [];
       // 各チェックボックスの状態を調べて配列に追加
