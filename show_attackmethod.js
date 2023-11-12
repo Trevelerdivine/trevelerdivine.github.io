@@ -274,13 +274,13 @@ async function show_attack_method()
         }else if (attack_method == 21) {
           elementsToAddToCharTalent = [
             createLabel("element-mastery-label", "　ヒット回数："),
-            createInputWithUnit("text", "element-mastery", "18.95","回"),
+            createInputWithUnit("text", "klee_Q_attackcount", "18.95","回"),
             document.createElement("br")
           ];
 
           const elementsReactionToAddToCharTalent = [
             createLabel("element-mastery-label", "　ヒット回数："),
-            createInputWithUnit("text", "element-mastery", "7","回"),
+            createInputWithUnit("text", "klee_Q_reactioncount", "7","回"),
             document.createElement("br")
           ];
         

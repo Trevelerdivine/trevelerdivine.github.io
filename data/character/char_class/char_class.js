@@ -444,11 +444,11 @@ class klee {
     this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
+    this.second_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
-    this.skill_buff = 0;
     this.trueCount = 0;
   }
 
@@ -466,12 +466,6 @@ class klee {
     // JSON データを取得
     const response = await fetch("./data/character/char_data/klee.json");
     const data = await response.json();
-
-    const talent1_check = document.getElementById("klee_talent1");
-    if (talent1_check.checked)
-    {
-      this.talent1_buff = 0.5;
-    }
 
     if (this.char_constellations > 1)
     {
@@ -494,6 +488,8 @@ class klee {
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
     let dmg_attack_rate = 0;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
 
     if (attack_method == 1) {
       const checkboxContainer = document.getElementById("select_reaction_method");
@@ -506,27 +502,54 @@ class klee {
         elm_nonreact.push(checkbox.checked ? 0 : 1);
 
       });
-        console.log(elm_react);
-        console.log(elm_nonreact);
-        let elm_react_dmgrate = 0;
-        let elm_nonreact_dmgrate = 0;
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 3; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
-      dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 21) {
-      const hutao_hp_check = document.getElementById("hutao_Q_effect");
-      const hutao_hp_flag = 0;
-      if (hutao_hp_check.cheked)
+      const talent1_check = document.getElementById("klee_talent1");
+      if (talent1_check.checked)
       {
-        hutao_hp_flag = 1
+        this.talent1_buff = 0.5;
       }
-      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][hutao_hp_flag]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+
+      });
+        for (let i = 0; i < 1; i++) {
+          elm_react_dmgrate += elm_react[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 16) {
+      const attack_count1 = parseInt(document.getElementById("klee_1_count").value);
+      const reaction_count1 = parseInt(document.getElementById("klee_1_reactioncount").value);
+      const attack_count2 = parseInt(document.getElementById("klee_2_count").value);
+      const reaction_count2 = parseInt(document.getElementById("klee_2_reactioncount").value);
+
+      const attack_rate1 = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+      const attack_rate2 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+
+      elm_react_dmgrate = reaction_count1 * attack_rate1 + reaction_count2 * attack_rate2;
+      elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * attack_rate1 + (attack_count2 - reaction_count2) * attack_rate2;
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 21) {
+
+      const attack_count = parseFloat(document.getElementById("klee_Q_attackcount").value);
+      const reaction_count = parseFloat(document.getElementById("klee_Q_reactioncount").value);
+
+      const attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+
+      elm_react_dmgrate = reaction_count * attack_rate;
+      elm_nonreact_dmgrate = (attack_count - reaction_count) * attack_rate;
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
   
     return dmg_rate;
@@ -545,7 +568,7 @@ class klee {
   }
 
   calculate_char_result_attck() {
-    return Math.min(4 * this.base_status_array[4], this.skill_buff * this.result_status_array[0]);
+    return 0;
   }
 
   calculate_char_fixed_deff() {
@@ -573,7 +596,7 @@ class klee {
   }
 
   calculate_char_fixed_cr() {
-    return this.sixth_conste_buff;
+    return 0;
   }
 
   calculate_char_result_cr() {
@@ -589,7 +612,7 @@ class klee {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return this.talent2_buff;
+      return 0;
   }
 
   calculate_char_result_dmg_buff() {
@@ -602,37 +625,18 @@ class klee {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      if (attack_method == 1)
-      {
         attckRate = resultStatusArray[4] * dmg_rate[4][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
                   + resultStatusArray[4] * dmg_rate[4][1];
         return basicDmg;
-      }
-      else
-      {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
-        return basicDmg;
-      }
+      
     }
     else
     {
-      if (attack_method == 1)
-      {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
-        basicDmg = attckRate;
-        return basicDmg;
-      }
-      else
-      {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = attckRate;
-        return basicDmg;
-      }
-        attckRate = resultStatusArray[4] * dmg_rate[4] * this.attack_count / 100;
+      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      basicDmg = attckRate;
+      return basicDmg;
     }
-    return attckRate;
   }
 
   update_status(fixed_status_array, result_status_array)
