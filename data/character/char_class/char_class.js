@@ -1883,7 +1883,8 @@ class nirou {
     const resultStatusArray = this.result_status_array;
     let basicDmg;
     let attckRate;
-
+    if (this.reaction_coeff > 0)
+    {
       if (attack_method == 16)
       {
         attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (resultStatusArray[7] + this.first_conste_buff) / resultStatusArray[7]);
@@ -1897,6 +1898,19 @@ class nirou {
                   + resultStatusArray[0] * dmg_rate[0][1];
       }
       return basicDmg;
+    }
+    else
+    {
+      if (attack_method == 16)
+      {
+        basicDmg = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1] + dmg_rate[0][2] + dmg_rate[0][3] * (resultStatusArray[7] + this.first_conste_buff) / resultStatusArray[7]);
+      }
+      else
+      {
+        basicDmg = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
+      }
+      return basicDmg;
+    }
   }
 
   update_status(fixed_status_array, result_status_array)
