@@ -212,6 +212,43 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "3") {
+      traits = [
+        { id: "traitCheckbox2", label: "第2重：弾丸の破片 敵の防御力-23%" },
+        { id: "traitCheckbox6", label: "第6重：炎元素ダメージ+10%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃（1ループ）", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "スキル（ボンボン爆弾）", value: "16" },
+        { text: "元素爆発（ドッカン花火）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "4") {
 
       elementsToAddToCharTalent = [

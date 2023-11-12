@@ -225,6 +225,67 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "3":
+          if (attack_method == 1)
+          {
+            options = [
+              { text: "１段目", value: "0", checked: true },
+              { text: "２段目", value: "1" },
+              { text: "３段目", value: "2" },
+            ];
+          } 
+          else if (attack_method == 6) {
+            options = [
+              { text: "重撃", value: "0", checked: true },
+            ];
+          }else if (attack_method == 16) {
+            elementsToAddToCharTalent = [
+              createLabel("klee_1_count", "ボンボン爆弾ヒット回数："),
+              createSelectList("klee_1_count", 0, 3, "", "回", 3),
+              document.createElement("br"),
+              createLabel("klee_2_count", "ブービートラップヒット回数："),
+              createSelectList("klee_2_count", 0, 8, "", "回", 8),
+              document.createElement("br"),
+            ];
+
+            const elementsReactionToAddToCharTalent = [
+              createLabel("klee_1_reactioncount", "ボンボン爆弾ヒット回数："),
+              createSelectList("klee_1_reactioncount", 0, 3, "", "回", 1),
+              document.createElement("br"),
+              createLabel("klee_2_reactioncount", "ブービートラップヒット回数："),
+              createSelectList("klee_2_reactioncount", 0, 8, "", "回", 3),
+              document.createElement("br"),
+            ];
+          
+            elementsToAddToCharTalent.forEach(element => {
+              attack_method_prop.appendChild(element);
+            });
+            elementsReactionToAddToCharTalent.forEach(element => {
+              select_reaction_method.appendChild(element);
+            });
+        }else if (attack_method == 21) {
+          elementsToAddToCharTalent = [
+            createLabel("element-mastery-label", "　ヒット回数："),
+            createInputWithUnit("text", "element-mastery", "18.95","回"),
+            document.createElement("br")
+          ];
+
+          const elementsReactionToAddToCharTalent = [
+            createLabel("element-mastery-label", "　ヒット回数："),
+            createInputWithUnit("text", "element-mastery", "7","回"),
+            document.createElement("br")
+          ];
+        
+          elementsToAddToCharTalent.forEach(element => {
+            attack_method_prop.appendChild(element);
+          });
+          elementsReactionToAddToCharTalent.forEach(element => {
+            select_reaction_method.appendChild(element);
+          });
+        }
+        createCheckboxList(options)
+    break
+
         case "4":
               if (attack_method == 1)
               {
