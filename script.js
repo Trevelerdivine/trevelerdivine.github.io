@@ -346,6 +346,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "2":
       char_instance = new hutao(base_status, fixed_status, result_status, parameter);
       break;
+    case "3":
+      char_instance = new klee(base_status, fixed_status, result_status, parameter);
+      break;
     case "4":
       char_instance = new diluc(base_status, fixed_status, result_status, parameter);
       break;
