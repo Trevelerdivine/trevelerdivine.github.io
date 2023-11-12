@@ -238,6 +238,14 @@ async function show_attack_method()
             options = [
               { text: "重撃", value: "0", checked: true },
             ];
+            const newCheckbox = createCheckbox("klee_talent1", true);
+            const label = createLabel("klee_talent1", "こんこんプレゼント：与えるダメージ+50%");
+            const lineBreak = document.createElement("br");
+          
+            // 新しいチェックボックスと関連する要素を追加
+            tenporary_char_talent.appendChild(newCheckbox);
+            tenporary_char_talent.appendChild(label);
+            tenporary_char_talent.appendChild(lineBreak);   
           }else if (attack_method == 16) {
             elementsToAddToCharTalent = [
               createLabel("klee_1_count", "ボンボン爆弾ヒット回数："),
