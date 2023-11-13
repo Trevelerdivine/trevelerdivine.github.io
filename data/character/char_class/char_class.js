@@ -648,7 +648,7 @@ class klee {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0, this.talent1_buff, 0];
+    let char_debuff = [0, this.second_conste_buff, 0];
     return char_debuff;
   }
 }
