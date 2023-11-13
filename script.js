@@ -1106,6 +1106,7 @@ async function monte_carlo_calculate()
   const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
+  let excess_crscore;
   let response = "<br>";
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
@@ -1344,10 +1345,6 @@ async function monte_carlo_calculate()
       if (depend_status[5] == 1)
       {
         result_status[5] += await (char_instance.calculate_char_result_cr() + weapon_instance.calculate_weapon_result_cr());
-        if (result_status[5] > 1)
-        {
-          result_status[5] = 1;
-        }
         char_instance.update_status(fixed_status, result_status);
         weapon_instance.update_status(fixed_status, result_status);
       }
@@ -1367,6 +1364,22 @@ async function monte_carlo_calculate()
       else
       {
         result_status[7] += await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+      }
+
+      if (result_status[5] > 1)
+      {
+        excess_crscore = (result_status[5] - 1) * 200;
+        new_score_distribution[5] -= excess_crscore;
+        if (new_score_distribution[5] > 0)
+        {
+          new_score_distribution[6] += excess_crscore;
+          result_status[6] += excess_crscore / 100;
+        }
+        else
+        {
+          new_score_distribution[5] = 0;
+        }
+        result_status[5] = 1;
       }
       
       char_instance.update_status(fixed_status, result_status);
