@@ -614,7 +614,7 @@ class klee {
   }
 
   calculate_char_fixed_dmg_buff() {
-      return 0;
+      return this.sixth_conste_buff + this.talent1_buff;
   }
 
   calculate_char_result_dmg_buff() {
@@ -648,7 +648,7 @@ class klee {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [0, this.talent1_buff, 0];
     return char_debuff;
   }
 }
