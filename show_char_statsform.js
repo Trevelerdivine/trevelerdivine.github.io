@@ -125,6 +125,32 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "0") {
+
+      traits = [
+        { id: "traitCheckbox6", label: "６重　冥蝶の抱擁：会心率+100%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常1ループ（冥蝶の舞状態）", value: "1" },
+        { text: "重撃（冥蝶の舞状態）", value: "6" },
+        { text: "元素爆発（安神秘法）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
     else if (selectedCharId == "1") {
       elementsToAddToCharTalent = [
         createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
