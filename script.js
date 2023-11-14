@@ -340,6 +340,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
   let char_instance;
 
   switch (selectedCharId) {
+    case "0":
+      char_instance = new dehya(base_status, fixed_status, result_status, parameter);
+      break;
     case "1":
       char_instance = new yoimiya(base_status, fixed_status, result_status, parameter);
       break;
