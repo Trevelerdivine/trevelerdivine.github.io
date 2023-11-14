@@ -148,7 +148,6 @@ class dehya {
         return basicDmg;
       }
     }
-  }
 
   update_status(fixed_status_array, result_status_array)
   {
