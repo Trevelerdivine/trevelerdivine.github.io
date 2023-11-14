@@ -179,6 +179,35 @@ async function show_attack_method()
 
     switch (selectedCharId)
     {
+      case "0":
+              if (attack_method == 21)
+              {
+                elementsToAddToCharTalent = [
+                  createLabel("dehya_1_count", "熾鬣拳ヒット回数："),
+                  createSelectList("dehya_1_count", 0, 15, "", "回", 10),
+                  document.createElement("br"),
+                  createLabel("dehya_2_count", "残火蹴ヒット回数："),
+                  createSelectList("dehya_2_count", 0, 1, "", "回", 1),
+                  document.createElement("br"),
+                ];
+    
+                const elementsReactionToAddToCharTalent = [
+                  createLabel("dehya_1_reactioncount", "熾鬣拳ヒット回数："),
+                  createSelectList("dehya_1_reactioncount", 0, 15, "", "回", 4),
+                  document.createElement("br"),
+                  createLabel("dehya_2_reactioncount", "残火蹴ヒット回数："),
+                  createSelectList("dehya_2_reactioncount", 0, 1, "", "回", 1),
+                  document.createElement("br"),
+                ];
+              
+                elementsToAddToCharTalent.forEach(element => {
+                  attack_method_prop.appendChild(element);
+                });
+                elementsReactionToAddToCharTalent.forEach(element => {
+                  select_reaction_method.appendChild(element);
+                });
+              }
+        break
         case "1":
               if (attack_method == 1)
               {

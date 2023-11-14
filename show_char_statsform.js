@@ -128,14 +128,12 @@ async function show_char_statsform()
     else if (selectedCharId == "0") {
 
       traits = [
-        { id: "traitCheckbox6", label: "６重　冥蝶の抱擁：会心率+100%" },
+        { id: "traitCheckbox6", label: "６重　黄金を裂く焔爪：会心ダメージ " },
       ];
 
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常1ループ（冥蝶の舞状態）", value: "1" },
-        { text: "重撃（冥蝶の舞状態）", value: "6" },
-        { text: "元素爆発（安神秘法）", value: "21" }
+        { text: "元素爆発（炎哮獅子咬）", value: "21" }
       ];
     
       createchar_attackmethod(options);
@@ -144,9 +142,11 @@ async function show_char_statsform()
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
-    
+        const dehya_talent1_list = createanySelectList("dehya_conste2", 0, 4, "+", "%", 4, 15);
+
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(dehya_talent1_list);
         characterInfo.appendChild(document.createElement("br"));
       }
     }
