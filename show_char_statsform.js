@@ -142,11 +142,11 @@ async function show_char_statsform()
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
-        const dehya_talent1_list = createanySelectList("dehya_conste2", 0, 4, "+", "%", 4, 15);
+        const dehya_sixthbuff_list = createanySelectList("dehya_sixth_conste_buff", 0, 4, "+", "%", 4, 15);
 
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(dehya_talent1_list);
+        characterInfo.appendChild(dehya_sixthbuff_list);
         characterInfo.appendChild(document.createElement("br"));
       }
     }
