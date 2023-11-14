@@ -56,10 +56,18 @@ class dehya {
       const hp_rate1 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
       const hp_rate2 = parseFloat(data["元素爆発"]["詳細"][3]["数値"][this.parameter[3]]);
 
-      elm_react_dmgrate = reaction_count1 * attack_rate1 + reaction_count2 * attack_rate2;
-      elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * attack_rate1 + (attack_count2 - reaction_count2) * attack_rate2;
+      if (this.char_constellations > 0)
+      {
+        hp_rate1 += 0.06;
+        hp_rate2 += 0.06;
+      }
 
-      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      let attack_react_dmgrate = reaction_count1 * attack_rate1 + reaction_count2 * attack_rate2;
+      let attack_nonreact_dmgrate = (attack_count1 - reaction_count1) * attack_rate1 + (attack_count2 - reaction_count2) * attack_rate2;
+      let Hp_react_dmgrate = reaction_count1 * hp_rate1 + reaction_count2 * hp_rate2;
+      let Hp_nonreact_dmgrate = (attack_count1 - reaction_count1) * hp_rate1 + (attack_count2 - reaction_count2) * hp_rate2;
+
+      dmg_rate = [[Hp_react_dmgrate, Hp_nonreact_dmgrate], 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
     }
     return dmg_rate;
   }
@@ -132,57 +140,14 @@ class dehya {
     const resultStatusArray = this.result_status_array;
     let basicDmg;
     let attckRate;
-    if (this.reaction_coeff > 0)
-    {
-      if (attack_method == 1)
+      if (attack_method == 21)
       {
-        if (this.char_constellations < 4)
-        {
-          attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * dmg_rate[4][1] * this.skill_buff;
-          return basicDmg;
-        }
-        else
-        {
-          basicDmg = (resultStatusArray[4] * dmg_rate[4] * this.skill_buff / 3) * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * dmg_rate[4] * this.skill_buff * 2 / 3;
-          return basicDmg;
-        }
-      }
-      else
-      {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        attckRate = resultStatusArray[0] * dmg_rate[0][0] + resultStatusArray[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+                  + resultStatusArray[0] * dmg_rate[0][1] + resultStatusArray[4] * dmg_rate[4][1];
         return basicDmg;
       }
     }
-    else
-    {
-      if (attack_method == 1)
-      {
-        if( this.char_constellations < 4)
-        {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff;
-          basicDmg = attckRate;
-          return basicDmg;
-        }
-        else
-        {
-          attckRate = resultStatusArray[4] * dmg_rate[4] * this.skill_buff;
-          basicDmg = attckRate;
-          return basicDmg;
-        }
-      }
-      else
-      {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = attckRate;
-        return basicDmg;
-      }
-        attckRate = resultStatusArray[4] * dmg_rate[4] * this.attack_count / 100;
-    }
-    return attckRate;
   }
 
   update_status(fixed_status_array, result_status_array)
