@@ -415,6 +415,23 @@ async function show_attack_method()
             createCheckboxList(options)
         break
 
+        case "7":
+              if (attack_method == 6) {
+                elementsToAddToCharTalent = [
+                  createLabel("xinyan1_count", "連続重撃ヒット回数："),
+                  createSelectList("xinyan1_count", 0, 20, "", "回", 10),
+                  document.createElement("br"),
+                  createLabel("xinyan2_count", "重撃フィニッシュヒット回数："),
+                  createSelectList("xinyan2_count", 0, 1, "", "回", 1),
+                  document.createElement("br"),
+                ];
+
+                elementsToAddToCharTalent.forEach(element => {
+                  attack_method_prop.appendChild(element);
+                });
+              }
+        break
+      
         case "8":
           if (attack_method == 16) {
             options = [
