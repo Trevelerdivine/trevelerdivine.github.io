@@ -358,6 +358,9 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
     case "6":
       char_instance = new yanfei(base_status, fixed_status, result_status, parameter);
       break;
+    case "7":
+      char_instance = new xinyan(base_status, fixed_status, result_status, parameter);
+      break;
     case "8":
       char_instance = new bennett(base_status, fixed_status, result_status, parameter);
       break;
