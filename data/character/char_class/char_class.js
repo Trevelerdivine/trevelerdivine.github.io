@@ -1384,7 +1384,6 @@ class xinyan {
       for (let i = 0; i < 4; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
-
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 6) {
       const attack_count1 = parseInt(document.getElementById("xinyan1_count").value);
@@ -1413,7 +1412,12 @@ class xinyan {
   }
 
   calculate_char_result_attck() {
-    return this.result_status_array[1] * this.sixth_conste_buff;
+    let attack_buff = 0;
+    if (this.char_constellations == 4)
+    {
+      attack_buff = this.result_status_array[1] * this.sixth_conste_buff
+    }
+    return attack_buff;
   }
 
   calculate_char_fixed_deff() {
