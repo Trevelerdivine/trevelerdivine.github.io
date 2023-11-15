@@ -1349,13 +1349,9 @@ class xinyan {
       this.talent2_buff = 0.15;
     }
 
-    if (this.char_constellations > 1)
+    if (this.char_constellations > 1 && attack_method == 21)
     {
-      const second_conste_check = document.getElementById("traitCheckbox2");
-      if (second_conste_check.checked && attack_method == 6)
-      {
-        this.second_conste_buff = 1;
-      }
+      this.second_conste_buff = 1;
     }
 
     if (this.char_constellations > 2)
