@@ -926,6 +926,36 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    
+    else if (selectedCharId  == "49")
+    {
+      const elementsToAddToCharTalent = [
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("faruzan_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
+        createCheckbox("faruzan_talent1", true),
+        createLabel("faruzan_burst1", "詭風の禍つ：敵の風元素耐性-30%"),
+        document.createElement("br"),
+        createCheckbox("faruzan_talent2", true),
+        createLabel("faruzan_burst2", "祈風の恵み：風元素ダメージアップ"),
+        document.createElement("br"),
+        createCheckbox("faruzan_talent2", true),
+        createLabel("faruzan_talent2", "固有天賦2：七窟遺智 基礎ダメージアップ"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃（フルチャージ）", value: "1" },
+        { text: "元素スキル（非想風天）", value: "16" },
+        { text: "元素爆発（搏風秘道）", value: "21" },
+      ];
+      createchar_attackmethod(options)  
+    }
+
     else if (selectedCharId  == "57")
     {
       const elementsToAddToCharTalent = [

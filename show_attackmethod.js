@@ -812,6 +812,9 @@ async function show_attack_method()
                 }
               }
               break
+              case "49":
+               
+              break
       case "56":        
         if (attack_method == 1) {
           nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
