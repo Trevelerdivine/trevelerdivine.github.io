@@ -930,7 +930,7 @@ async function show_char_statsform()
     else if (selectedCharId  == "49")
     {
       const elementsToAddToCharTalent = [
-        createTextNode("　元素爆発天賦レベル："),
+        createTextNode("元素爆発天賦レベル："),
         createSelectList("faruzan_Q_level", 1, 13, "Lv.", "", 8),
         document.createElement("br"),
         createCheckbox("faruzan_talent1", true),
@@ -940,7 +940,7 @@ async function show_char_statsform()
         createLabel("faruzan_burst2", "祈風の恵み：風元素ダメージアップ"),
         document.createElement("br"),
         createCheckbox("faruzan_talent2", true),
-        createLabel("faruzan_talent2", "固有天賦2：七窟遺智 基礎ダメージアップ"),
+        createLabel("faruzan_talent2", "固有天賦2 七窟遺智：基礎ダメージアップ"),
       ];
     
       elementsToAddToCharTalent.forEach(element => {

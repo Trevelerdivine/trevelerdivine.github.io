@@ -36,10 +36,6 @@ async function show_attack_method()
   const ReactionOnRadio_label = document.createElement("label");
   ReactionOnRadio_label.htmlFor = "reactionon_flag";
   ReactionOnRadio_label.textContent = "反応あり ";
-  
-  elemental_reaction.appendChild(ReactionOnRadioButton);
-  elemental_reaction.appendChild(ReactionOnRadio_label);
-  elemental_reaction.appendChild(document.createElement("br"));
 
   const radiobutton = document.createElement("input");
   radiobutton.type = "radio";
@@ -62,6 +58,10 @@ async function show_attack_method()
 
   if (char_propaty[0] == 0)
   {
+    elemental_reaction.appendChild(ReactionOnRadioButton);
+    elemental_reaction.appendChild(ReactionOnRadio_label);
+    elemental_reaction.appendChild(document.createElement("br"));
+
     const traitCheckbox1 = document.createElement("input");
     traitCheckbox1.type = "radio";
     traitCheckbox1.id = elm_reaction_obj[0].id;
@@ -107,6 +107,10 @@ async function show_attack_method()
 
   if (char_propaty[0] == 1)
   {
+    elemental_reaction.appendChild(ReactionOnRadioButton);
+    elemental_reaction.appendChild(ReactionOnRadio_label);
+    elemental_reaction.appendChild(document.createElement("br"));
+
     const traitCheckbox1 = document.createElement("input");
     traitCheckbox1.type = "radio";
     traitCheckbox1.name = "elemental-reaction";
@@ -136,6 +140,10 @@ async function show_attack_method()
 
   else if (char_propaty[0] == 2)
   {
+    elemental_reaction.appendChild(ReactionOnRadioButton);
+    elemental_reaction.appendChild(ReactionOnRadio_label);
+    elemental_reaction.appendChild(document.createElement("br"));
+
     const traitCheckbox1 = document.createElement("input");
     traitCheckbox1.type = "radio";
     traitCheckbox1.id = elm_reaction_obj[3].id;
@@ -151,11 +159,14 @@ async function show_attack_method()
     select_reaction_method.appendChild(document.createElement("br"));
     select_reaction_method.appendChild(document.createElement("br"));
 
-
   }
 
   else if (char_propaty[0] == 3)
   {
+    elemental_reaction.appendChild(ReactionOnRadioButton);
+    elemental_reaction.appendChild(ReactionOnRadio_label);
+    elemental_reaction.appendChild(document.createElement("br"));
+
     elements_const_dmg = [
       document.createElement("br"),
       createLabel("Overloaded", "　過負荷回数：　"),
@@ -172,6 +183,13 @@ async function show_attack_method()
     elements_const_dmg.forEach(element => {
       elemental_reaction.appendChild(element);
     });
+  }
+
+  else if (char_propaty[0] == 5)
+  {
+    elemental_reaction.appendChild(ReactionOnRadioButton);
+    elemental_reaction.appendChild(ReactionOnRadio_label);
+    elemental_reaction.appendChild(document.createElement("br"));
   }
   attack_method = document.getElementById("attack_method_id").value;     
   let options = [];
