@@ -1,8 +1,6 @@
 class dehya {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.first_conste_buff = 0;
@@ -72,88 +70,81 @@ class dehya {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return this.base_status_array[0] * this.first_conste_buff;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return this.sixth_conste_buff[0];
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return this.sixth_conste_buff[1];
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return 0;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
       if (attack_method == 21)
       {
-        attckRate = resultStatusArray[0] * dmg_rate[0][0] + resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[0] * dmg_rate[0][1] + resultStatusArray[4] * dmg_rate[4][1];
+        attckRate = status[0] * dmg_rate[0][0] + status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1];
         return basicDmg;
       }
     }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
-  }
 
   calculate_char_debuff() {
     let char_debuff = [0,0,0];
@@ -162,10 +153,8 @@ class dehya {
 }
 
 class yoimiya {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.first_conste_buff = 0;
@@ -259,72 +248,71 @@ class yoimiya {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return this.base_status_array[4] * this.first_conste_buff;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.second_conste_buff + this.talent1_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
@@ -333,22 +321,22 @@ class yoimiya {
       {
         if (this.char_constellations < 4)
         {
-          attckRate = resultStatusArray[4] * dmg_rate[4][0] * this.skill_buff;
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * dmg_rate[4][1] * this.skill_buff;
+          attckRate = status[4] * dmg_rate[4][0] * this.skill_buff;
+          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                    + status[4] * dmg_rate[4][1] * this.skill_buff;
           return basicDmg;
         }
         else
         {
-          basicDmg = (resultStatusArray[4] * dmg_rate[4] * this.skill_buff / 3) * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * dmg_rate[4] * this.skill_buff * 2 / 3;
+          basicDmg = (status[4] * dmg_rate[4] * this.skill_buff / 3) * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                    + status[4] * dmg_rate[4] * this.skill_buff * 2 / 3;
           return basicDmg;
         }
       }
       else
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        attckRate = status[4] * dmg_rate[4];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
         return basicDmg;
       }
     }
@@ -358,32 +346,26 @@ class yoimiya {
       {
         if( this.char_constellations < 4)
         {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff;
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff;
           basicDmg = attckRate;
           return basicDmg;
         }
         else
         {
-          attckRate = resultStatusArray[4] * dmg_rate[4] * this.skill_buff;
+          attckRate = status[4] * dmg_rate[4] * this.skill_buff;
           basicDmg = attckRate;
           return basicDmg;
         }
       }
       else
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate;
         return basicDmg;
       }
-        attckRate = resultStatusArray[4] * dmg_rate[4] * this.attack_count / 100;
+        attckRate = status[4] * dmg_rate[4] * this.attack_count / 100;
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -393,10 +375,8 @@ class yoimiya {
 }
 
 class hutao {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.sixth_conste_buff = 0;
@@ -485,87 +465,86 @@ class hutao {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
-    return Math.min(4 * this.base_status_array[4], this.skill_buff * this.result_status_array[0]);
+  calculate_char_result_attck(status) {
+    return Math.min(4 * this.base_status_array[4], this.skill_buff * status[0]);
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1];
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1];
         return basicDmg;
       }
       else
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        attckRate = status[4] * dmg_rate[4];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
         return basicDmg;
       }
     }
@@ -573,25 +552,19 @@ class hutao {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate;
         return basicDmg;
       }
       else
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate;
         return basicDmg;
       }
-        attckRate = resultStatusArray[4] * dmg_rate[4] * this.attack_count / 100;
+        attckRate = status[4] * dmg_rate[4] * this.attack_count / 100;
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -601,10 +574,8 @@ class hutao {
 }
 
 class klee {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.second_conste_buff = 0;
@@ -720,94 +691,87 @@ class klee {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.sixth_conste_buff + this.talent1_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1];
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1];
         return basicDmg;
       
     }
     else
     {
-      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
       basicDmg = attckRate;
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -817,10 +781,8 @@ class klee {
 }
 
 class diluc {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
@@ -961,105 +923,104 @@ class diluc {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return this.second_conste_buff * this.base_status_array[4];
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.talent2_buff + this.first_conste_buff + this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1];
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1];
         return basicDmg;
       }
       else if (attack_method == 16)
       {
         if (this.fourth_conste_buff > 0)
         {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * (dmg_rate[4][1] + dmg_rate[4][3] * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (status[7] + 0.4) / status[7]);
+          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                    + status[4] * (dmg_rate[4][1] + dmg_rate[4][3] * (status[7] + 0.4) / status[7]);
           return basicDmg;
         }
         else
         {
-          attckRate = resultStatusArray[4] * dmg_rate[4][0];
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                    + resultStatusArray[4] * dmg_rate[4][1];
+          attckRate = status[4] * dmg_rate[4][0];
+          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                    + status[4] * dmg_rate[4][1];
           return basicDmg;
         }
       }
       else if (attack_method == 21)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                   + resultStatusArray[4] * dmg_rate[4][1];
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                   + status[4] * dmg_rate[4][1];
         return basicDmg;
       }
     }
@@ -1067,7 +1028,7 @@ class diluc {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate;
         return basicDmg;
       }
@@ -1075,31 +1036,25 @@ class diluc {
       {
         if (this.fourth_conste_buff > 0)
         {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1] + (dmg_rate[4][2] + dmg_rate[4][3]) * (resultStatusArray[7] + 0.4) / resultStatusArray[7]);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1] + (dmg_rate[4][2] + dmg_rate[4][3]) * (status[7] + 0.4) / status[7]);
           basicDmg = attckRate;
           return basicDmg;
         }
         else
         {
-          attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
           basicDmg = attckRate;
           return basicDmg;
         }
       }
       else if (attack_method == 21)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate;
         return basicDmg;
       }
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -1109,10 +1064,8 @@ class diluc {
 }
 
 class yanfei {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.second_conste_buff = 0;
@@ -1196,93 +1149,92 @@ class yanfei {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.talent1_buff + this.burst_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1];
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1];
         return basicDmg;
       }
       else if (attack_method == 6)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        attckRate = status[4] * dmg_rate[4] + status[5] * 0.8 * status[4];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
         return basicDmg;
       }
       else 
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        attckRate = status[4] * dmg_rate[4];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
         return basicDmg;
       }
     }
@@ -1290,30 +1242,24 @@ class yanfei {
     {
       if (attack_method == 1)
       {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1])
         basicDmg = attckRate;
         return basicDmg;
       }
       else if (attack_method == 6)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4] + resultStatusArray[5] * 0.8 * resultStatusArray[4];
+        attckRate = status[4] * dmg_rate[4] + status[5] * 0.8 * status[4];
         basicDmg = attckRate;
         return basicDmg;
       }
       else 
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate;
         return basicDmg;
       }
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -1323,10 +1269,8 @@ class yanfei {
 }
 
 class xinyan {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.char_constellations = 0;
@@ -1395,88 +1339,81 @@ class xinyan {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     let attack_buff = 0;
     if (this.char_constellations == 4)
     {
-      attack_buff = this.result_status_array[1] * this.sixth_conste_buff
+      attack_buff = status[1] * this.sixth_conste_buff
     }
     return attack_buff;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
-    attckRate = resultStatusArray[4] * dmg_rate[4];
+    attckRate = status[4] * dmg_rate[4];
     basicDmg = attckRate;
     return basicDmg;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -1486,10 +1423,8 @@ class xinyan {
 }
 
 class bennett {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.first_conste_buff = 0;
@@ -1584,94 +1519,87 @@ class bennett {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return (this.first_conste_buff + this.bennett_Q_buff) * this.base_status_array[4];
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = resultStatusArray[4] * dmg_rate[4][0];
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                + resultStatusArray[4] * dmg_rate[4][1];
+      attckRate = status[4] * dmg_rate[4][0];
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[4] * dmg_rate[4][1];
       return basicDmg;
     }
     else
     {
-      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
       basicDmg = attckRate;
       return basicDmg;
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -1681,10 +1609,8 @@ class bennett {
 }
 
 class xiangling {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.first_conste_buff = 0;
@@ -1753,92 +1679,85 @@ class xiangling {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return this.talent2 ;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.six_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-        basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
+        attckRate = status[4] * dmg_rate[4] / 100;
+        basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + attckRate * (this.attack_count - this.reaction_count);
       return basicDmg;
     }
     else
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4] * this.attack_count / 100;
+        attckRate = status[4] * dmg_rate[4] * this.attack_count / 100;
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -1848,10 +1767,8 @@ class xiangling {
 }
 
 class amber {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent2_buff = 0;
     this.sixth_conste_buff = 0;
@@ -1922,92 +1839,85 @@ class amber {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return (this.talent2_buff + this.sixth_conste_buff) * this.base_status_array[4];
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return 0;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1];
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1];
       return basicDmg;
     }
     else
     {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.attack_count / 100;
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.attack_count / 100;
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -2017,11 +1927,9 @@ class amber {
 }
 
 class nirou {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.talent1_buff = 0;
@@ -2141,87 +2049,86 @@ class nirou {
     return dmg_rate;
   }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return this.talent1_buff;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
-    return Math.min(0.3,this.sixth_conste_buff * (this.result_status_array[0] / 1000) * 0.006);
+  calculate_char_result_cr(status) {
+    return Math.min(0.3,this.sixth_conste_buff * (status[0] / 1000) * 0.006);
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
-    return  Math.min(0.6,this.sixth_conste_buff * (this.result_status_array[0] / 1000) * 0.012);
+  calculate_char_result_cd(status) {
+    return  Math.min(0.6,this.sixth_conste_buff * (status[0] / 1000) * 0.012);
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.fourth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 16)
       {
-        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (resultStatusArray[7] + this.first_conste_buff) / resultStatusArray[7]);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                + resultStatusArray[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (resultStatusArray[7] + this.first_conste_buff) / resultStatusArray[7]);
+        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (status[7] + this.first_conste_buff) / status[7]);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (status[7] + this.first_conste_buff) / status[7]);
       }
       else
       {
-        attckRate = resultStatusArray[0] * dmg_rate[0][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[0] * dmg_rate[0][1];
+        attckRate = status[0] * dmg_rate[0][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * dmg_rate[0][1];
       }
       return basicDmg;
     }
@@ -2229,20 +2136,14 @@ class nirou {
     {
       if (attack_method == 16)
       {
-        basicDmg = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1] + dmg_rate[0][2] + dmg_rate[0][3] * (resultStatusArray[7] + this.first_conste_buff) / resultStatusArray[7]);
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1] + dmg_rate[0][2] + dmg_rate[0][3] * (status[7] + this.first_conste_buff) / status[7]);
       }
       else
       {
-        basicDmg = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
       }
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -2252,10 +2153,8 @@ class nirou {
 }
 
 class yelan {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
     this.second_conste_buff = 0;
@@ -2337,87 +2236,86 @@ class yelan {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return this.base_status_array[0] * this.talent1_buff;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 21)
       {
-        attckRate = resultStatusArray[0] * dmg_rate[0][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[0] * dmg_rate[0][1];
+        attckRate = status[0] * dmg_rate[0][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * dmg_rate[0][1];
         return basicDmg;
       }
       else 
       {
-        attckRate = resultStatusArray[0] * dmg_rate[0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400));
+        attckRate = status[0] * dmg_rate[0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
         return basicDmg;
       }
     }
@@ -2425,24 +2323,18 @@ class yelan {
     {
       if (attack_method == 21)
       {
-        attckRate = resultStatusArray[0] * (dmg_rate[0][0] + dmg_rate[0][1])
+        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][1])
         basicDmg = attckRate;
         return basicDmg;
       }
       else 
       {
-        attckRate = resultStatusArray[0] * dmg_rate[0];
+        attckRate = status[0] * dmg_rate[0];
         basicDmg = attckRate;
         return basicDmg;
       }
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -2452,11 +2344,9 @@ class yelan {
 }
 
 class kamisatoayato {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.first_conste_buff = 0;
@@ -2541,93 +2431,86 @@ class kamisatoayato {
     return dmg_rate;
   }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return this.base_status_array[0] * this.second_conste_buff;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.first_conste_buff + this.burst_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = resultStatusArray[4] * dmg_rate[4][0] + resultStatusArray[0] * this.skill_buff * this.buff_effect_count;
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                + resultStatusArray[4] * dmg_rate[4][1] + resultStatusArray[0] * this.skill_buff * (3 - this.buff_effect_count);
+      attckRate = status[4] * dmg_rate[4][0] + status[0] * this.skill_buff * this.buff_effect_count;
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[4] * dmg_rate[4][1] + status[0] * this.skill_buff * (3 - this.buff_effect_count);
       return basicDmg;
     }
     else
     {
-      attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + resultStatusArray[0] * this.skill_buff * 3;
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + status[0] * this.skill_buff * 3;
       basicDmg = attckRate;
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -2637,11 +2520,9 @@ class kamisatoayato {
 }
 
 class xingqiu {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.second_conste_buff = 0;
@@ -2712,93 +2593,86 @@ class xingqiu {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return 0.2;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4][0];
-        basicDmg = (attckRate * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + resultStatusArray[4] * dmg_rate[4][1]) * this.forth_conste_buff;
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = (attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1]) * this.forth_conste_buff;
         return basicDmg;
     }
     else
     {
-        attckRate = resultStatusArray[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.forth_conste_buff;
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.forth_conste_buff;
         basicDmg = attckRate;
         return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -2808,10 +2682,8 @@ class xingqiu {
 }
 
 class eula {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.first_conste_buff = 0;
     this.forth_conste_buff = 1;
@@ -2866,86 +2738,79 @@ class eula {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.first_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
       return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (attack_method == 21)
     {
-      attckRate = resultStatusArray[4] * dmg_rate[4] * this.forth_conste_buff;
+      attckRate = status[4] * dmg_rate[4] * this.forth_conste_buff;
       basicDmg = attckRate;
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -2955,11 +2820,9 @@ class eula {
 }
 
 class cyno {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.second_conste_buff = 0;
@@ -3021,90 +2884,84 @@ class cyno {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 100;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {;
+  calculate_char_result_dmg_buff(status) {;
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4] + this.base_dmg_buff * resultStatusArray[2];
-      let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+
+      const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2];
+      let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4] + this.base_dmg_buff * resultStatusArray[2];
+
+      const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2];
       return attckRate;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -3114,10 +2971,8 @@ class cyno {
 }
 
 class yaemiko {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.aggcount = 0;
     this.reaction_coeff = 0;
@@ -3180,70 +3035,70 @@ class yaemiko {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
       return this.four_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     if (this.talent2effect == 1)
     {
-      let talent2skill_buff = this.result_status_array[2] * 0.15 / 100;
+      let talent2skill_buff = status[2] * 0.15 / 100;
       return talent2skill_buff;
     }
     else
@@ -3252,30 +3107,23 @@ class yaemiko {
     }
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
-        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        attckRate = status[4] * dmg_rate[4];
+        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
     }
     else
     {
       if (attack_method != 21)
       {
-        attckRate = resultStatusArray[4] * dmg_rate[4];
+        attckRate = status[4] * dmg_rate[4];
       }
     }
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -3293,11 +3141,9 @@ class yaemiko {
 }
 
 class raiden {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.aggcount = 0;
@@ -3353,92 +3199,85 @@ class raiden {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.skill_buff;
   }
 
-  calculate_char_result_dmg_buff() {
-    const resultStatusArray = this.result_status_array;
-    const talent2_buff = (resultStatusArray[3] - 1) * 0.4;
+  calculate_char_result_dmg_buff(status) {
+    const talent2_buff = (status[3] - 1) * 0.4;
     return talent2_buff;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
-      let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+
+      const attckRate = status[4] * dmg_rate[4];
+      let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
+
+      const attckRate = status[4] * dmg_rate[4];
       return attckRate;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -3456,11 +3295,9 @@ class raiden {
 }
 
 class keqing {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.forth_conste_buff = 0;
@@ -3524,90 +3361,84 @@ class keqing {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return this.forth_conste_buff * this.base_status_array[4];
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+
+      const attckRate = status[4] * dmg_rate[4];
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
+
+      const attckRate = status[4] * dmg_rate[4];
       return attckRate;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -3617,11 +3448,9 @@ class keqing {
 }
 
 class fischl {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.forth_conste_buff = 0;
@@ -3674,90 +3503,84 @@ class fischl {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+
+      const attckRate = status[4] * dmg_rate[4];
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
+
+      const attckRate = status[4] * dmg_rate[4];
       return attckRate;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -3767,11 +3590,9 @@ class fischl {
 }
 
 class faruzan {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.sixth_conste_buff = 0;
@@ -3833,80 +3654,73 @@ class faruzan {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.burst2_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    const resultStatusArray = this.result_status_array;
-    const attckRate = resultStatusArray[4] * (dmg_rate[4] + this.talent2_buff);
+  calculate_basic_dmg(dmg_rate, status) {
+    const attckRate = status[4] * (dmg_rate[4] + this.talent2_buff);
     return attckRate;
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -3916,11 +3730,9 @@ class faruzan {
 }
 
 class kujousara {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) 
+  constructor(base_status_array, parameter) 
   {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
     this.sixth_conste_buff = 0;
@@ -3973,90 +3785,84 @@ class kujousara {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return this.skill_buff;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+
+      const attckRate = status[4] * dmg_rate[4];
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
+
+      const attckRate = status[4] * dmg_rate[4];
       return attckRate;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -4297,10 +4103,8 @@ class nahida {
 }
 
 class tighnari {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.talent1_buff = 0;
@@ -4384,101 +4188,95 @@ class tighnari {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return this.fourth_conste_buff + this.talent1_buff;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return this.first_conste_buff;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
-    return Math.min(this.result_status_array[2] * 0.0006, 0.6);
+  calculate_char_result_dmg_buff(status) {
+    return Math.min(status[2] * 0.0006, 0.6);
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     if (attack_method == 6)
     {
       if (selectedWeaponId ==92)
       {
-        const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff + 12 * (1.6 + (this.weapon_rank -1) * 0.4) * resultStatusArray[2];
-        let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+  
+        const attckRate = status[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff + 12 * (1.6 + (this.weapon_rank -1) * 0.4) * status[2];
+        let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
       else
       {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff;
-      let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+
+      const attckRate = status[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff;
+      let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
       }
     }
     else if (attack_method == 21)
     {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
-      let basicDmg = (attckRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+
+      const attckRate = status[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
+      let basicDmg = (attckRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -4488,10 +4286,8 @@ class tighnari {
 }
 
 class ganyu {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.talent1_buff = 0;
@@ -4569,73 +4365,73 @@ class ganyu {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return this.talent1_buff;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return  this.talent2_buff + this.fourth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
-    let resultStatusArray = this.result_status_array;
+    let status = status;
     let basicDmg;
     if (attack_method == 6)
     {
@@ -4643,14 +4439,14 @@ class ganyu {
       {
         let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[1] * dmg_rate[4][1];
         let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[1] * dmg_rate[4][1];
-        basicDmg = Melt_attack_rate * resultStatusArray[4] * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + NonMelt_attack_rate * resultStatusArray[4];
+        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + NonMelt_attack_rate * status[4];
         return basicDmg;
       }
       else
       {
         attckRate = dmg_rate[4][0] + dmg_rate[4][1];
-        basicDmg = attckRate * resultStatusArray[4];
+        basicDmg = attckRate * status[4];
         return basicDmg;
       }
     }
@@ -4660,23 +4456,17 @@ class ganyu {
       {
         let Melt_attack_rate = this.Q_melt_count * dmg_rate[4];
         let NonMelt_attack_rate = (this.Q_nonmelt_count - this.Q_melt_count) * dmg_rate[4];
-        basicDmg = Melt_attack_rate * resultStatusArray[4] * this.reaction_coeff * (1 + 2.78 * resultStatusArray[2] / (resultStatusArray[2] + 1400))
-                  + NonMelt_attack_rate * resultStatusArray[4];
+        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + NonMelt_attack_rate * status[4];
         return basicDmg;
       }
       else
       {
         attckRate = dmg_rate[4] * this.Q_nonmelt_count;
-        basicDmg = attckRate * resultStatusArray[4];
+        basicDmg = attckRate * status[4];
         return basicDmg;
       }
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -4694,10 +4484,8 @@ class ganyu {
 }
 
 class aratakiitto {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.talent2_buff = 0;
@@ -4768,91 +4556,85 @@ class aratakiitto {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return this.base_status_array[4] * this.fourth_conste_buff;
   }
 
-  calculate_char_result_attck() {
-    return this.burst_buff_rate * this.fixed_status_array[1];
+  calculate_char_result_attck(status) {
+    return this.burst_buff_rate * status[1];
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return this.base_status_array[1] * this.fourth_conste_buff;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
-    let resultStatusArray = this.result_status_array;
+    let status = status;
     let basicDmg;
     if (attack_method == 6)
     {
       attckRate = dmg_rate[4][0] * (this.attack_count - 1) + dmg_rate[4][1];
-      basicDmg = attckRate * resultStatusArray[4] + this.talent2_buff * resultStatusArray[1] * this.attack_count + calculate_weapon_basedmg(this.attack_count, resultStatusArray, this.weapon_rank);
+      basicDmg = attckRate * status[4] + this.talent2_buff * status[1] * this.attack_count + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
       return basicDmg;
     }
     else if (attack_method == 16)
     {
-      basicDmg = dmg_rate[4] * resultStatusArray[4];
+      basicDmg = dmg_rate[4] * status[4];
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -4862,10 +4644,8 @@ class aratakiitto {
 }
 
 class albedo {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.talent1_buff = 0;
@@ -4931,91 +4711,85 @@ class albedo {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.talent1_buff + this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
-    let resultStatusArray = this.result_status_array;
+    let status = status;
     let basicDmg;
     if (attack_method == 16)
     {
       attckRate = dmg_rate[1] * this.attack_count;
-      basicDmg = attckRate * resultStatusArray[1] + calculate_weapon_basedmg(this.attack_count, resultStatusArray, this.weapon_rank);
+      basicDmg = attckRate * status[1] + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
       return basicDmg;
     }
     else if (attack_method == 21)
     {
-      basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff * (this.attack_count + 1)) * resultStatusArray[1] + dmg_rate[4] * resultStatusArray[4];
+      basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff * (this.attack_count + 1)) * status[1] + dmg_rate[4] * status[4];
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -5025,10 +4799,8 @@ class albedo {
 }
 
 class noelle {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.sixth_conste_buff = 0;
@@ -5064,84 +4836,78 @@ class noelle {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
-    return this.sixth_conste_buff * this.result_status_array[1];
+  calculate_char_result_attck(status) {
+    return this.sixth_conste_buff * status[1];
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    let resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
+    let status = status;
     let basicDmg;
     if (attack_method == 1)
     {
-      basicDmg = dmg_rate[4] * resultStatusArray[4] + calculate_weapon_basedmg(4, resultStatusArray, this.weapon_rank);
+      basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(4, status, this.weapon_rank);
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
@@ -5151,10 +4917,8 @@ class noelle {
 }
 
 class zhongli {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.sixth_conste_buff = 0;
@@ -5179,84 +4943,78 @@ class zhongli {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return 0;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     return 0;
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     return 0;
   }
 
-  calculate_basic_dmg(dmg_rate) {
-    let resultStatusArray = this.result_status_array;
+  calculate_basic_dmg(dmg_rate, status) {
+    let status = status;
     let basicDmg;
     if (attack_method == 21)
     {
-      basicDmg = dmg_rate[4] * resultStatusArray[4] + resultStatusArray[0] * 0.33;
+      basicDmg = dmg_rate[4] * status[4] + status[0] * 0.33;
       return basicDmg;
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {
