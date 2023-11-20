@@ -1166,7 +1166,6 @@ async function monte_carlo_calculate()
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd() + weapon_instance.calculate_weapon_fixed_cd() + team_fix_buff[6]);
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
 
-
   while (n_count < 30)
   {
     let exp_dmg = 0;
@@ -1377,7 +1376,7 @@ async function monte_carlo_calculate()
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
-    if (abs_dmg_error < 1 )break;
+    if (abs_dmg_error < 1 ) break;
 
     if (dmg_error < 0)
     {
@@ -1389,6 +1388,7 @@ async function monte_carlo_calculate()
       af_score_lower_limit = af_score;
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
+    console.log(af_score);
   }
   const char_debuff = await char_instance.calculate_char_debuff();
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
