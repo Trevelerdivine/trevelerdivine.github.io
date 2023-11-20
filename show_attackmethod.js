@@ -839,7 +839,7 @@ async function show_attack_method()
   
                   faruzan_count1_text = createTextNode("　スキル初撃ヒット回数：")
                   faruzan_attack1_count = createSelectList("faruzan_attack1_count", 0, 5, "", "回", 1);
-                  faruzan_count2_text = createTextNode("　風圧崩潰ヒット回数：")
+                  faruzan_count2_text = createTextNode("　風圧崩潰ヒット回数　：")
                   faruzan_attack2_count = createSelectList("faruzan_attack2_count", 0, 10, "", "回", 2);
                   attack_method_prop.appendChild(faruzan_count1_text);
                   attack_method_prop.appendChild(faruzan_attack1_count);

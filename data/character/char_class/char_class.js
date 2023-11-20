@@ -3788,21 +3788,19 @@ class faruzan {
     // 攻撃方法に応じてダメージ率を計算
     let dmg_attack_rate = 0;
     let dmg_rate;
-    
     if (attack_method == 6) {
-      dmg_attack_rate = parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      dmg_attack_rate = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 16) {
-      const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
-      const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent2_count;
+      const attack_count1 = parseInt(document.getElementById("faruzan_attack1_count").value);
+      const attack_count2 = parseInt(document.getElementById("faruzan_attack2_count").value);
+      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1;
+      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
       const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent2_count;
+      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
     
@@ -3874,19 +3872,9 @@ class faruzan {
   }
 
   calculate_basic_dmg(dmg_rate) {
-    if (this.reaction_coeff > 0)
-    {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
-      return basicDmg;
-    }
-    else
-    {
-      const resultStatusArray = this.result_status_array;
-      const attckRate = resultStatusArray[4] * dmg_rate[4];
-      return attckRate;
-    }
+    const resultStatusArray = this.result_status_array;
+    const attckRate = resultStatusArray[4] * dmg_rate[4];
+    return attckRate;
   }
 
   update_status(fixed_status_array, result_status_array)
