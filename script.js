@@ -745,11 +745,11 @@ async function calculate_table_status()
   {
     zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
     console.log(zetsuen_dmgbuff);
-    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff(result_status) + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
   }
   else
   {
-    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff() + weapon_instance.calculate_weapon_result_dmg_buff());
+    result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff(result_status) + weapon_instance.calculate_weapon_result_dmg_buff());
   }
   buff_status[7] = result_status[7] - af_main_status_buff[7] - base_status[7];
   document.getElementById("table_buff_dmg_buff").innerHTML = (buff_status[7]*100).toFixed(1) + "％";
