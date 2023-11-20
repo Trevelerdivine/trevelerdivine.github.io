@@ -4431,7 +4431,6 @@ class ganyu {
 
   calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
-    let status = status;
     let basicDmg;
     if (attack_method == 6)
     {
@@ -4622,7 +4621,6 @@ class aratakiitto {
 
   calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
-    let status = status;
     let basicDmg;
     if (attack_method == 6)
     {
@@ -4777,7 +4775,6 @@ class albedo {
 
   calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
-    let status = status;
     let basicDmg;
     if (attack_method == 16)
     {
@@ -4901,7 +4898,6 @@ class noelle {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    let status = status;
     let basicDmg;
     if (attack_method == 1)
     {
@@ -5008,7 +5004,6 @@ class zhongli {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    let status = status;
     let basicDmg;
     if (attack_method == 21)
     {
