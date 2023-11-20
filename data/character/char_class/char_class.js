@@ -4068,8 +4068,6 @@ class kujousara {
 class nahida {
   constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.aggcount = 0;
@@ -4162,7 +4160,7 @@ class nahida {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp() {
+  calculate_char_fixed_hp(status) {
     return 0;
   }
 
@@ -4170,7 +4168,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_fixed_attck() {
+  calculate_char_fixed_attck(status) {
     return 0;
   }
 
@@ -4178,7 +4176,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_fixed_deff() {
+  calculate_char_fixed_deff(status) {
     return 0;
   }
 
@@ -4186,7 +4184,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_fixed_elm() {
+  calculate_char_fixed_elm(status) {
     return this.four_conste_buff;
   }
 
@@ -4203,7 +4201,7 @@ class nahida {
     return talent1elm_buff;
   }
 
-  calculate_char_fixed_elm_charge() {
+  calculate_char_fixed_elm_charge(status) {
     return 0;
   }
 
@@ -4211,7 +4209,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_fixed_cr() {
+  calculate_char_fixed_cr(status) {
     return 0;
   }
 
@@ -4226,7 +4224,7 @@ class nahida {
   }
   }
 
-  calculate_char_fixed_cd() {
+  calculate_char_fixed_cd(status) {
     return 0;
   }
 
@@ -4234,7 +4232,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff() {
+  calculate_char_fixed_dmg_buff(status) {
     return this.q_pyrobuff;
   }
 

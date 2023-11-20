@@ -8,7 +8,7 @@ class AThousandFloatingDreams {
     this.updateSelectValues(); // 初期値を取得するためにupdateSelectValuesを呼び出す
   }
 
-  calculate_weapon_fixed_hp() {
+  calculate_weapon_fixed_hp(status) {
     return 0;
   }
 
@@ -16,7 +16,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_attck() {
+  calculate_weapon_fixed_attck(status) {
     return 0;
   }
 
@@ -24,7 +24,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_deff() {
+  calculate_weapon_fixed_deff(status) {
     return 0;
   }
 
@@ -32,7 +32,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_elm() {
+  calculate_weapon_fixed_elm(status) {
     return (32 + 8 * (this.weapon_rank - 1)) * this.select1; // キャッシュしたselect1の値を使用する
   }
 
@@ -40,7 +40,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge() {
+  calculate_weapon_fixed_elm_charge(status) {
     return 0;
   }
 
@@ -48,7 +48,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_cr() {
+  calculate_weapon_fixed_cr(status) {
     return 0;
   }
 
@@ -56,7 +56,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_cd() {
+  calculate_weapon_fixed_cd(status) {
     return 0;
   }
 
@@ -64,7 +64,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff() {
+  calculate_weapon_fixed_dmg_buff(status) {
     return (0.1 + 0.04 * (this.weapon_rank - 1))* this.select2; // キャッシュしたselect2の値を使用する
   }
 
