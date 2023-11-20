@@ -685,7 +685,6 @@ async function calculate_table_status()
   fixed_status[7] += await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff());
   result_status = fixed_status.slice();
 
-  char_instance.update_status(fixed_status, result_status);
   weapon_instance.update_status(fixed_status, result_status);
 
 
@@ -699,7 +698,6 @@ async function calculate_table_status()
       document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
       document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
       document.getElementById(`table_final_${tablePrefix}`).innerHTML = (resultStatus[index]*100).toFixed(1) + "％";
-      char_instance.update_status(fixed_status, resultStatus);
       weapon_instance.update_status(fixed_status, resultStatus);
       }
       else if (index == 5)
@@ -709,7 +707,6 @@ async function calculate_table_status()
         document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
         document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
         document.getElementById(`table_final_${tablePrefix}`).innerHTML = Math.min((resultStatus[index]*100).toFixed(1),100) + "％";
-        char_instance.update_status(fixed_status, resultStatus);
         weapon_instance.update_status(fixed_status, resultStatus);
 
       }
@@ -720,7 +717,6 @@ async function calculate_table_status()
         document.getElementById(`table_buff_${tablePrefix}`).innerHTML = buffStatus[index].toFixed(0);
         document.getElementById(`table_af_${tablePrefix}`).innerHTML = afBuff[index].toFixed(0);
         document.getElementById(`table_final_${tablePrefix}`).innerHTML =resultStatus[index].toFixed(0);
-        char_instance.update_status(fixed_status, resultStatus);
         weapon_instance.update_status(fixed_status, resultStatus);
       }
     } 
