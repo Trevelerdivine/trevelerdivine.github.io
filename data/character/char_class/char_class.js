@@ -3808,7 +3808,8 @@ class faruzan {
       const talent2_check = document.getElementById("faruzan_talent2");
       if (talent2_check.checked)
       {
-        this.talent2_buff = 0.32;
+        const talent2_count = parseInt(document.getElementById("faruzan_talent2_count").value)
+        this.talent2_buff = 0.32 * talent2_count;
       }
     }
     
