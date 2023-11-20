@@ -4066,7 +4066,7 @@ class kujousara {
 }
 
 class nahida {
-  constructor(base_status_array, fixed_status_array, result_status_array,parameter) {
+  constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
@@ -4280,12 +4280,6 @@ class nahida {
         return basicDmg;
       }
     }
-  }
-
-  update_status(fixed_status_array, result_status_array)
-  {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   calculate_char_debuff() {

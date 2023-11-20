@@ -336,7 +336,7 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 ////////////////////////
 
-async function create_char_instance(base_status, fixed_status, result_status, parameter) {
+async function create_char_instance(base_status, parameter) {
   let char_instance;
 
   switch (selectedCharId) {
@@ -410,7 +410,7 @@ async function create_char_instance(base_status, fixed_status, result_status, pa
       char_instance = new faruzan(base_status, fixed_status, result_status, parameter);
       break;
     case "56":
-      char_instance = new nahida(base_status, fixed_status, result_status, parameter);
+      char_instance = new nahida(base_status, parameter);
       break;
     case "57":
       char_instance = new tighnari(base_status, fixed_status, result_status, parameter);
@@ -505,7 +505,7 @@ async function create_weapon_instance(base_status, fixed_status, result_status) 
     weapon_instance = new Slingshot(base_status, fixed_status, result_status);
     break;
     case "127":
-      weapon_instance = new AThousandFloatingDreams(base_status, fixed_status, result_status);
+      weapon_instance = new AThousandFloatingDreams(base_status);
       break;
     case "128":
       weapon_instance = new KagurasVerity(base_status, fixed_status, result_status);
@@ -671,8 +671,8 @@ async function calculate_table_status()
   }
   fixed_status[7] += af_main_status_buff[7] + team_fix_buff[7];
   
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
-  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+  const char_instance = await create_char_instance(base_status, char_parameter);
+  const weapon_instance = await create_weapon_instance(base_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   
   fixed_status[0] += await (char_instance.calculate_char_fixed_hp(fixed_status) + weapon_instance.calculate_weapon_fixed_hp(fixed_status));
@@ -945,8 +945,8 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   fixed_status[7] = base_status[7] + af_main_status_buff[7] + team_fix_buff[7];
   result_status = fixed_status.slice();
 
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status,char_parameter);
-  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+  const char_instance = await create_char_instance(base_status, char_parameter);
+  const weapon_instance = await create_weapon_instance(base_status);
   const dmg_rate = await char_instance.dmg_rate_data();
 
   if (depend_status[0] == 1)
@@ -1123,8 +1123,8 @@ async function monte_carlo_calculate()
   let basic_dmg;
   let n_count = 0;
 
-  const char_instance = await create_char_instance(base_status, fixed_status, result_status, char_parameter);
-  const weapon_instance = await create_weapon_instance(base_status, fixed_status, result_status);
+  const char_instance = await create_char_instance(base_status, char_parameter);
+  const weapon_instance = await create_weapon_instance(base_status);
   const dmg_rate = await char_instance.dmg_rate_data();
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;

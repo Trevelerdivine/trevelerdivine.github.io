@@ -1,5 +1,5 @@
 class AThousandFloatingDreams {
-  constructor(base_status_array, fixed_status_array, result_status_array) {
+  constructor(base_status_array) {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
     this.select1 = 0; // select1の初期値を0に設定
@@ -70,11 +70,6 @@ class AThousandFloatingDreams {
 
   calculate_weapon_result_dmg_buff(ststus) {
     return 0;
-  }
-
-  update_status(fixed_status_array, result_status_array) {
-    this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
   }
 
   updateSelectValues() {
