@@ -941,6 +941,11 @@ async function show_char_statsform()
         document.createElement("br"),
         createCheckbox("faruzan_talent2", true),
         createLabel("faruzan_talent2", "固有天賦2 七窟遺智：基礎ダメージアップ"),
+        document.createElement("br"),
+        createTextNode("　発動回数："),
+        createSelectList("faruzan_talent2_count",0, 10, "", "回", 1),
+
+
       ];
     
       elementsToAddToCharTalent.forEach(element => {

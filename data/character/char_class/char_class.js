@@ -3775,6 +3775,8 @@ class faruzan {
     this.parameter = parameter;
     this.char_constellations = 0;
     this.sixth_conste_buff = 0;
+    this.burst1_buff = 0;
+    this.burst2_buff = 0;
     this.talent2_buff = 0;
     this.burst_buff = 0;
   }
@@ -3785,6 +3787,31 @@ class faruzan {
     // JSON データを取得
     const response = await fetch("./data/character/char_data/faruzan.json");
     const data = await response.json();
+
+    if (this.char_constellations > 3)
+    {
+      this.sixth_conste_buff = 0.4;
+    } 
+
+    const burst1_check = document.getElementById("faruzan_burst1");
+    if (burst1_check.checked) 
+    {
+      this.burst1_buff = 0.3;
+    }
+
+    const burst2_check = document.getElementById("faruzan_burst2");
+    if (burst1_check.checked) 
+    {
+      const burst_level = parseInt(document.getElementById("faruzan_Q_level").value);
+      this.burst2_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
+
+      const talent2_check = document.getElementById("faruzan_talent2");
+      if (talent2_check.checked)
+      {
+        this.talent2_buff = 0.32;
+      }
+    }
+    
     // 攻撃方法に応じてダメージ率を計算
     let dmg_attack_rate = 0;
     let dmg_rate;
@@ -3798,8 +3825,6 @@ class faruzan {
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
-      const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
-      const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
@@ -3856,7 +3881,7 @@ class faruzan {
   }
 
   calculate_char_fixed_cd() {
-    return 0;
+    return this.sixth_conste_buff;
   }
 
   calculate_char_result_cd() {
@@ -3864,7 +3889,7 @@ class faruzan {
   }
 
   calculate_char_fixed_dmg_buff() {
-    return 0;
+    return this.burst2_buff;
   }
 
   calculate_char_result_dmg_buff() {
@@ -3873,7 +3898,7 @@ class faruzan {
 
   calculate_basic_dmg(dmg_rate) {
     const resultStatusArray = this.result_status_array;
-    const attckRate = resultStatusArray[4] * dmg_rate[4];
+    const attckRate = resultStatusArray[4] * (dmg_rate[4] + this.talent2_buff);
     return attckRate;
   }
 
@@ -3884,7 +3909,7 @@ class faruzan {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [this.burst1_buff,0,0];
     return char_debuff;
   }
 }
