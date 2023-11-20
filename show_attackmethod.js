@@ -831,7 +831,23 @@ async function show_attack_method()
               }
               break
               case "49":
-               
+                if (attack_method == 16) {
+                  let faruzan_count1_text;
+                  let faruzan_attack1_count;
+                  let faruzan_count2_text;
+                  let faruzan_attack2_count;
+  
+                  faruzan_count1_text = createTextNode("　スキル初撃ヒット回数：")
+                  faruzan_attack1_count = createSelectList("faruzan_attack1_count", 0, 5, "", "回", 1);
+                  faruzan_count2_text = createTextNode("　風圧崩潰ヒット回数：")
+                  faruzan_attack2_count = createSelectList("faruzan_attack2_count", 0, 10, "", "回", 2);
+                  attack_method_prop.appendChild(faruzan_count1_text);
+                  attack_method_prop.appendChild(faruzan_attack1_count);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  attack_method_prop.appendChild(faruzan_count2_text);
+                  attack_method_prop.appendChild(faruzan_attack2_count);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  }
               break
       case "56":        
         if (attack_method == 1) {
