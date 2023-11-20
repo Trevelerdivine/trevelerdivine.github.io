@@ -2,7 +2,6 @@ class AThousandFloatingDreams {
   constructor(base_status_array, fixed_status_array, result_status_array) {
     this.base_status_array = base_status_array;
     this.fixed_status_array = fixed_status_array;
-    this.result_status_array = result_status_array;
     this.select1 = 0; // select1の初期値を0に設定
     this.select2 = 0; // select2の初期値を0に設定
     this.weapon_rank = 1;
@@ -13,7 +12,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_result_hp() {
+  calculate_weapon_result_hp(ststus) {
     return 0;
   }
 
@@ -21,7 +20,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_result_attck() {
+  calculate_weapon_result_attck(ststus) {
     return 0;
   }
 
@@ -29,7 +28,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_result_deff() {
+  calculate_weapon_result_deff(ststus) {
     return 0;
   }
 
@@ -37,7 +36,7 @@ class AThousandFloatingDreams {
     return (32 + 8 * (this.weapon_rank - 1)) * this.select1; // キャッシュしたselect1の値を使用する
   }
 
-  calculate_weapon_result_elm() {
+  calculate_weapon_result_elm(ststus) {
     return 0;
   }
 
@@ -45,7 +44,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge() {
+  calculate_weapon_result_elm_charge(ststus) {
     return 0;
   }
 
@@ -53,7 +52,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_result_cr() {
+  calculate_weapon_result_cr(ststus) {
     return 0;
   }
 
@@ -61,7 +60,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_result_cd() {
+  calculate_weapon_result_cd(ststus) {
     return 0;
   }
 
@@ -69,7 +68,7 @@ class AThousandFloatingDreams {
     return (0.1 + 0.04 * (this.weapon_rank - 1))* this.select2; // キャッシュしたselect2の値を使用する
   }
 
-  calculate_weapon_result_dmg_buff() {
+  calculate_weapon_result_dmg_buff(ststus) {
     return 0;
   }
 
