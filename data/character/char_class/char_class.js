@@ -4218,7 +4218,7 @@ class nahida {
   calculate_char_result_cr(status) {
     if (attack_method_index == 3)
     {
-      return Math.min(Math.max(0, this.status[2] - 200), 800) * 0.0003 * this.skill_buff;
+      return Math.min(Math.max(0, status[2] - 200), 800) * 0.0003 * this.skill_buff;
     }
   else
   {
@@ -4241,7 +4241,7 @@ class nahida {
   calculate_char_result_dmg_buff(status) {
     if (attack_method_index == 3)
     {
-      return Math.min(Math.max(0, this.status[2] - 200), 800) * 0.001 * this.skill_buff;
+      return Math.min(Math.max(0, status[2] - 200), 800) * 0.001 * this.skill_buff;
     }
     else
     {
