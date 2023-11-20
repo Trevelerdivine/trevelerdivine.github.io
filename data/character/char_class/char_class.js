@@ -4166,7 +4166,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_result_hp() {
+  calculate_char_result_hp(status) {
     return 0;
   }
 
@@ -4174,7 +4174,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_result_attck() {
+  calculate_char_result_attck(status) {
     return 0;
   }
 
@@ -4182,7 +4182,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_result_deff() {
+  calculate_char_result_deff(status) {
     return 0;
   }
 
@@ -4190,7 +4190,7 @@ class nahida {
     return this.four_conste_buff;
   }
 
-  calculate_char_result_elm() {
+  calculate_char_result_elm(status) {
 
     if (this.talent1effect > -1) {
       return this.talent1effect;
@@ -4207,7 +4207,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_result_elm_charge() {
+  calculate_char_result_elm_charge(status) {
     return 0;
   }
 
@@ -4215,10 +4215,10 @@ class nahida {
     return 0;
   }
 
-  calculate_char_result_cr() {
+  calculate_char_result_cr(status) {
     if (attack_method_index == 3)
     {
-      return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.0003 * this.skill_buff;
+      return Math.min(Math.max(0, this.status[2] - 200), 800) * 0.0003 * this.skill_buff;
     }
   else
   {
@@ -4230,7 +4230,7 @@ class nahida {
     return 0;
   }
 
-  calculate_char_result_cd() {
+  calculate_char_result_cd(status) {
     return 0;
   }
 
@@ -4238,10 +4238,10 @@ class nahida {
     return this.q_pyrobuff;
   }
 
-  calculate_char_result_dmg_buff() {
+  calculate_char_result_dmg_buff(status) {
     if (attack_method_index == 3)
     {
-      return Math.min(Math.max(0, this.result_status_array[2] - 200), 800) * 0.001 * this.skill_buff;
+      return Math.min(Math.max(0, this.status[2] - 200), 800) * 0.001 * this.skill_buff;
     }
     else
     {
@@ -4249,22 +4249,20 @@ class nahida {
     }
   }
 
-  calculate_basic_dmg(dmg_rate) {
+  calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 16 || attack_method == 17)
       { 
-        const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-        const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
-        let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        const attckRate = status[4] * dmg_rate[4] / 100;
+        const elmRate = status[2] * dmg_rate[2] / 100;
+        let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
       else
       {
-        const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * resultStatusArray[2] / (resultStatusArray[2] + 1200)));
+        const attckRate = status[4] * dmg_rate[4] / 100;
+        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
     }
@@ -4272,16 +4270,14 @@ class nahida {
     {
       if (attack_method == 16 || attack_method == 17)
       {
-        const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
-        const elmRate = resultStatusArray[2] * dmg_rate[2] / 100;
+        const attckRate = status[4] * dmg_rate[4] / 100;
+        const elmRate = status[2] * dmg_rate[2] / 100;
         let basicDmg = attckRate + elmRate;
         return basicDmg;
       }
       else
       {
-        const resultStatusArray = this.result_status_array;
-        const attckRate = resultStatusArray[4] * dmg_rate[4] / 100;
+        const attckRate = status[4] * dmg_rate[4] / 100;
         let basicDmg = attckRate;
         return basicDmg;
       }
