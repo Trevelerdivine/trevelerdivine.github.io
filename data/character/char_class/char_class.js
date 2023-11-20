@@ -4197,7 +4197,7 @@ class nahida {
     {
       return 0;
     }
-    let talent1elm_buff = Math.min(this.fixed_status_array[2]/4, 250)
+    let talent1elm_buff = Math.min(status[2]/4, 250)
     return talent1elm_buff;
   }
 
