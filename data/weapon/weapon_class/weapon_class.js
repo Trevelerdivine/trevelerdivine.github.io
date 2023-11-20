@@ -1,7 +1,6 @@
 class AThousandFloatingDreams {
   constructor(base_status_array) {
     this.base_status_array = base_status_array;
-    this.fixed_status_array = fixed_status_array;
     this.select1 = 0; // select1の初期値を0に設定
     this.select2 = 0; // select2の初期値を0に設定
     this.weapon_rank = 1;
