@@ -708,7 +708,6 @@ async function calculate_table_status()
         document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
         document.getElementById(`table_final_${tablePrefix}`).innerHTML = Math.min((resultStatus[index]*100).toFixed(1),100) + "％";
         weapon_instance.update_status(fixed_status, resultStatus);
-
       }
       else
       {
@@ -1168,7 +1167,7 @@ async function monte_carlo_calculate()
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff() + weapon_instance.calculate_weapon_fixed_dmg_buff() + team_fix_buff[7]);
 
 
-  while (abs_dmg_error > 1 && n_count < 30)
+  while (n_count < 30)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
@@ -1378,6 +1377,8 @@ async function monte_carlo_calculate()
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
+    if (abs_dmg_error < 1 )break;
+
     if (dmg_error < 0)
     {
       af_score_upper_limit = af_score;
