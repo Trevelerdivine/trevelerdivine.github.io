@@ -341,91 +341,91 @@ async function create_char_instance(base_status, parameter) {
 
   switch (selectedCharId) {
     case "0":
-      char_instance = new dehya(base_status, fixed_status, result_status, parameter);
+      char_instance = new dehya(base_status, parameter);
       break;
     case "1":
-      char_instance = new yoimiya(base_status, fixed_status, result_status, parameter);
+      char_instance = new yoimiya(base_status, parameter);
       break;
     case "2":
-      char_instance = new hutao(base_status, fixed_status, result_status, parameter);
+      char_instance = new hutao(base_status, parameter);
       break;
     case "3":
-      char_instance = new klee(base_status, fixed_status, result_status, parameter);
+      char_instance = new klee(base_status, parameter);
       break;
     case "4":
-      char_instance = new diluc(base_status, fixed_status, result_status, parameter);
+      char_instance = new diluc(base_status, parameter);
       break;
     case "6":
-      char_instance = new yanfei(base_status, fixed_status, result_status, parameter);
+      char_instance = new yanfei(base_status, parameter);
       break;
     case "7":
-      char_instance = new xinyan(base_status, fixed_status, result_status, parameter);
+      char_instance = new xinyan(base_status, parameter);
       break;
     case "8":
-      char_instance = new bennett(base_status, fixed_status, result_status, parameter);
+      char_instance = new bennett(base_status, parameter);
       break;
     case "9":
-      char_instance = new xiangling(base_status, fixed_status, result_status, parameter);
+      char_instance = new xiangling(base_status, parameter);
       break;
     case "10":
-      char_instance = new amber(base_status, fixed_status, result_status, parameter);
+      char_instance = new amber(base_status, parameter);
     break;
     case "11":
-      char_instance = new nirou(base_status, fixed_status, result_status, parameter);
+      char_instance = new nirou(base_status, parameter);
       break;
     case "12":
-      char_instance = new yelan(base_status, fixed_status, result_status, parameter);
+      char_instance = new yelan(base_status, parameter);
       break;
     case "13":
-      char_instance = new kamisatoayato(base_status, fixed_status, result_status, parameter);
+      char_instance = new kamisatoayato(base_status, parameter);
       break;
     case "19":
-      char_instance = new xingqiu(base_status, fixed_status, result_status, parameter);
+      char_instance = new xingqiu(base_status, parameter);
       break;
     case "22":
-      char_instance = new eula(base_status, fixed_status, result_status, parameter);
+      char_instance = new eula(base_status, parameter);
       break;
     case "23":
-      char_instance = new ganyu(base_status, fixed_status, result_status, parameter);
+      char_instance = new ganyu(base_status, parameter);
       break;
     case "32":
-      char_instance = new cyno(base_status, fixed_status, result_status, parameter);
+      char_instance = new cyno(base_status, parameter);
       break;
     case "33":
-      char_instance = new yaemiko(base_status, fixed_status, result_status, parameter);
+      char_instance = new yaemiko(base_status, parameter);
       break;
     case "34":
-      char_instance = new raiden(base_status, fixed_status, result_status, parameter);
+      char_instance = new raiden(base_status, parameter);
       break;
     case "35":
-      char_instance = new keqing(base_status, fixed_status, result_status, parameter);
+      char_instance = new keqing(base_status, parameter);
       break;
     case "38":
-      char_instance = new kujousara(base_status, fixed_status, result_status, parameter);
+      char_instance = new kujousara(base_status, parameter);
       break;
     case "39":
-      char_instance = new fischl(base_status, fixed_status, result_status, parameter);
+      char_instance = new fischl(base_status, parameter);
       break;
     case "49":
-      char_instance = new faruzan(base_status, fixed_status, result_status, parameter);
+      char_instance = new faruzan(base_status, parameter);
       break;
     case "56":
       char_instance = new nahida(base_status, parameter);
       break;
     case "57":
-      char_instance = new tighnari(base_status, fixed_status, result_status, parameter);
+      char_instance = new tighnari(base_status, parameter);
       break;
     case "63":
-      char_instance = new aratakiitto(base_status, fixed_status, result_status, parameter);
+      char_instance = new aratakiitto(base_status, parameter);
       break;
     case "64":
-      char_instance = new albedo(base_status, fixed_status, result_status, parameter);
+      char_instance = new albedo(base_status, parameter);
       break;
     case "65":
-      char_instance = new zhongli(base_status, fixed_status, result_status, parameter);
+      char_instance = new zhongli(base_status, parameter);
       break;
     case "68":
-      char_instance = new noelle(base_status, fixed_status, result_status, parameter);
+      char_instance = new noelle(base_status, parameter);
       break;
     default:
       // 未知のキャラクターIDに対する処理を追加することもできます
@@ -438,86 +438,86 @@ async function create_char_instance(base_status, parameter) {
 
 ///////////////////////
 
-async function create_weapon_instance(base_status, fixed_status, result_status) {
+async function create_weapon_instance(base_status) {
   let weapon_instance;
   switch (selectedWeaponId) {
     case "3":
-      weapon_instance = new MistsplitterReforged(base_status, fixed_status, result_status);
+      weapon_instance = new MistsplitterReforged(base_status);
       break;
     case "5":
-      weapon_instance = new PrimordialJadeCutter(base_status, fixed_status, result_status);
+      weapon_instance = new PrimordialJadeCutter(base_status);
       break;
     case "17":
-      weapon_instance = new CinnabarSpindle(base_status, fixed_status, result_status);
+      weapon_instance = new CinnabarSpindle(base_status);
       break;
     case "27":
-      weapon_instance = new SacrificialSword(base_status, fixed_status, result_status);
+      weapon_instance = new SacrificialSword(base_status);
       break;
     case "36":
-      weapon_instance = new RedhornStonethresher(base_status, fixed_status, result_status);
+      weapon_instance = new RedhornStonethresher(base_status);
       break;
     case "39":
-      weapon_instance = new WolfsGravestone(base_status, fixed_status, result_status);
+      weapon_instance = new WolfsGravestone(base_status);
       break;
     case "54":
-      weapon_instance = new Whiteblind(base_status, fixed_status, result_status);
+      weapon_instance = new Whiteblind(base_status);
       break;
     case "66":
-      weapon_instance = new StaffoftheScarletSands(base_status, fixed_status, result_status);
+      weapon_instance = new StaffoftheScarletSands(base_status);
       break;
     case "68":
-      weapon_instance = new EngulfingLightning(base_status, fixed_status, result_status);
+      weapon_instance = new EngulfingLightning(base_status);
       break;
     case "69":
-      weapon_instance = new StaffofHoma(base_status, fixed_status, result_status);
+      weapon_instance = new StaffofHoma(base_status);
       break;
     case "78":
-      weapon_instance = new TheCatch(base_status, fixed_status, result_status);
+      weapon_instance = new TheCatch(base_status);
       break;
     case "88":
-    weapon_instance = new DragonsBane(base_status, fixed_status, result_status);
+    weapon_instance = new DragonsBane(base_status);
     break;
     case "92":
-      weapon_instance = new HuntersPath(base_status, fixed_status, result_status);
+      weapon_instance = new HuntersPath(base_status);
       break;
     case "93":
-      weapon_instance = new AquaSimulacra(base_status, fixed_status, result_status);
+      weapon_instance = new AquaSimulacra(base_status);
       break;
     case "94":
-      weapon_instance = new PolarStar(base_status, fixed_status, result_status);
+      weapon_instance = new PolarStar(base_status);
       break;
     case "95":
-    weapon_instance = new ThunderingPulse(base_status, fixed_status, result_status);
+    weapon_instance = new ThunderingPulse(base_status);
     break;
     case "98":
-      weapon_instance = new SkywardHarp(base_status, fixed_status, result_status);
+      weapon_instance = new SkywardHarp(base_status);
       break;
     case "114":
-      weapon_instance = new Rust(base_status, fixed_status, result_status);
+      weapon_instance = new Rust(base_status);
       break;
     case "117":
-      weapon_instance = new TheStringless(base_status, fixed_status, result_status);
+      weapon_instance = new TheStringless(base_status);
       break;
     case "118":
-      weapon_instance = new FavoniusWarbow(base_status, fixed_status, result_status);
+      weapon_instance = new FavoniusWarbow(base_status);
       break;
     case "120":
-    weapon_instance = new Slingshot(base_status, fixed_status, result_status);
+    weapon_instance = new Slingshot(base_status);
     break;
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status);
       break;
     case "128":
-      weapon_instance = new KagurasVerity(base_status, fixed_status, result_status);
+      weapon_instance = new KagurasVerity(base_status);
       break;
     case "131":
-      weapon_instance = new LostPrayertotheSacredWinds(base_status, fixed_status, result_status);
+      weapon_instance = new LostPrayertotheSacredWinds(base_status);
       break;
     case "149":
-      weapon_instance = new SacrificialFragments(base_status, fixed_status, result_status);
+      weapon_instance = new SacrificialFragments(base_status);
       break;
     case "150":
-      weapon_instance = new TheWidsith(base_status, fixed_status, result_status);
+      weapon_instance = new TheWidsith(base_status);
       break;
     default:
       // 未知の武器IDに対する処理を追加することもできます
