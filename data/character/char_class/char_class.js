@@ -3639,7 +3639,7 @@ class wanderer {
       } 
 
       dmg_attack_rate *= wanderer_skill_buff * this.sixth_conste_buff;
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 6) {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       const wanderer_skill_level = parseInt(document.getElementById("wandererE_level").value);
