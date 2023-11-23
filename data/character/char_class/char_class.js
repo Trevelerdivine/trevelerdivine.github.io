@@ -3643,7 +3643,7 @@ class wanderer {
     } else if (attack_method == 6) {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       const wanderer_skill_level = parseInt(document.getElementById("wanderer_talent2_count").value);
-      const wanderer_skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][wanderer_skill_level]);
+      const wanderer_skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][wanderer_skill_level]);
       dmg_attack_rate *= wanderer_skill_buff;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
