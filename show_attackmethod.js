@@ -834,7 +834,7 @@ async function show_attack_method()
               break
 
               case "44":
-                const wanderer_talent;
+                let wanderer_talent;
                 if (attack_method == 1) {
                   wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
                   wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 3, "", "回", 1);
