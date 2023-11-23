@@ -6,8 +6,8 @@ async function show_attack_method()
   elemental_reaction.innerHTML = "";
   const attack_method_prop = document.getElementById("attack_method_prop");
   attack_method_prop.innerHTML = "";
-  const tenporary_char_talent = document.getElementById("tenporary_char_talent");
-  tenporary_char_talent.innerHTML = "";
+  const temporary_char_talent = document.getElementById("temporary_char_talent");
+  temporary_char_talent.innerHTML = "";
   await calculate_depend_status();
 
   let elements_const_dmg;
@@ -292,9 +292,9 @@ async function show_attack_method()
             const lineBreak = document.createElement("br");
           
             // 新しいチェックボックスと関連する要素を追加
-            tenporary_char_talent.appendChild(newCheckbox);
-            tenporary_char_talent.appendChild(label);
-            tenporary_char_talent.appendChild(lineBreak);   
+            temporary_char_talent.appendChild(newCheckbox);
+            temporary_char_talent.appendChild(label);
+            temporary_char_talent.appendChild(lineBreak);   
           }else if (attack_method == 16) {
             elementsToAddToCharTalent = [
               createLabel("klee_1_count", "ボンボン爆弾ヒット回数："),
@@ -413,7 +413,7 @@ async function show_attack_method()
                 ];
               
                 elementsToAddToCharTalent.forEach(element => {
-                  tenporary_char_talent.appendChild(element);
+                  temporary_char_talent.appendChild(element);
                 });
                 const yanfei_text = createTextNode("　丹火の印：")
                 const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
@@ -605,7 +605,7 @@ async function show_attack_method()
               ];
             
               elementsToAddToCharTalent.forEach(element => {
-                tenporary_char_talent.appendChild(element);
+                temporary_char_talent.appendChild(element);
               });
           }
       break
@@ -743,9 +743,9 @@ async function show_attack_method()
                 const lineBreak = document.createElement("br");
               
                 // 新しいチェックボックスと関連する要素を追加
-                tenporary_char_talent.appendChild(newCheckbox);
-                tenporary_char_talent.appendChild(label);
-                tenporary_char_talent.appendChild(lineBreak);          
+                temporary_char_talent.appendChild(newCheckbox);
+                temporary_char_talent.appendChild(label);
+                temporary_char_talent.appendChild(lineBreak);          
                 keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 3);
             }
           elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
@@ -834,11 +834,28 @@ async function show_attack_method()
               break
 
               case "44":
+                const wanderer_talent;
                 if (attack_method == 1) {
                   wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
                   wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 3, "", "回", 1);
                   attack_method_prop.appendChild(wanderer_talent2_text);
                   attack_method_prop.appendChild(wanderer_talent2_count);
+                
+                  wanderer_talent = [
+                    createLabel("wandererE_level", "焔硝の庭火舞い"),
+                    document.createElement("br"),
+                    createLabel("wandererE_level", "　元素スキル天賦レベル："),
+                    createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
+                    document.createElement("br"),
+                    createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
+                    document.createElement("br"),
+                    createCheckbox("talent1_pyro", true),
+                    createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
+                    document.createElement("br"),
+                    createCheckbox("talent1_cyro", true),
+                    createLabel("talent1_cyro", "氷元素: 会心率+20%"),
+                    document.createElement("br")
+                  ];
                   }
                 else if (attack_method == 6)
                 {
@@ -846,6 +863,21 @@ async function show_attack_method()
                   wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 1, "", "回", 1);
                   attack_method_prop.appendChild(wanderer_talent2_text);
                   attack_method_prop.appendChild(wanderer_talent2_count);
+                  wanderer_talent = [
+                    createLabel("wandererE_level", "焔硝の庭火舞い"),
+                    document.createElement("br"),
+                    createLabel("wandererE_level", "　元素スキル天賦レベル："),
+                    createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
+                    document.createElement("br"),
+                    createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
+                    document.createElement("br"),
+                    createCheckbox("talent1_pyro", true),
+                    createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
+                    document.createElement("br"),
+                    createCheckbox("talent1_cyro", true),
+                    createLabel("talent1_cyro", "氷元素: 会心率+20%"),
+                    document.createElement("br")
+                  ];
                 }
                 else if (attack_method == 21)
                 {
@@ -854,16 +886,30 @@ async function show_attack_method()
                     elementsToAddToCharTalent = [
                       createLabel("wanderer", "2重：弐番・箙島廓白浪"),
                       document.createElement("br"),
-                      createLabel("wanderer_dmgbuff", "　与えるダメージ ＋"),
+                      createLabel("wanderer_dmgbuff", "　 与えるダメージ ＋"),
                       createInputWithUnit("text", "wanderer_dmgbuff", "200","%"),
                       document.createElement("br")
                     ];
                   
                     elementsToAddToCharTalent.forEach(element => {
-                      tenporary_char_talent.appendChild(element);
+                      temporary_char_talent.appendChild(element);
                     });
                   }
+
+                  wanderer_talent = [
+                    createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
+                    document.createElement("br"),
+                    createCheckbox("talent1_pyro", true),
+                    createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
+                    document.createElement("br"),
+                    createCheckbox("talent1_cyro", true),
+                    createLabel("talent1_cyro", "氷元素: 会心率+20%"),
+                    document.createElement("br")
+                  ];
                 }
+                elementsToAddToCharTalent.forEach(element => {
+                  temporary_char_talent.appendChild(element);
+                });
               break
 
               case "49":

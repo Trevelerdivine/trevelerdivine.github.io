@@ -934,21 +934,6 @@ async function show_char_statsform()
         { text: "元素爆発（狂言・式楽伍番）", value: "21" },
       ];
       createchar_attackmethod(options);
-    
-      const elementsToAddToCharTalent = [
-        createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
-        document.createElement("br"),
-        createCheckbox("talent1_pyro", true),
-        createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
-        document.createElement("br"),
-        createCheckbox("talent1_cyro", true),
-        createLabel("talent1_cyro", "氷元素: 会心率+20%"),
-        document.createElement("br")
-      ];
-    
-      elementsToAddToCharTalent.forEach(element => {
-        char_talent.appendChild(element);
-      });
     }
 
     

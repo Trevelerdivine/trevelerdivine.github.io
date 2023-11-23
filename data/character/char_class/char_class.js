@@ -3595,23 +3595,37 @@ class wanderer {
     this.base_status_array = base_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
-    this.sixth_conste_buff = 0;
-    this.burst1_buff = 0;
-    this.burst2_buff = 0;
+    this.second_conste_buff = 0;
+    this.sixth_conste_buff = 1;
+    this.talent1_pyro = 0;
+    this.talent1_cyro = 0;
     this.talent2_buff = 0;
     this.burst_buff = 0;
+    this.attack_count = 0;
   }
 
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
 
     // JSON データを取得
-    const response = await fetch("./data/character/char_data/faruzan.json");
+    const response = await fetch("./data/character/char_data/wanderer.json");
     const data = await response.json();
+
+    const talent1_pyro_check =  document.getElementById("talent1_pyro")
+    if (talent1_pyro_check.checked)
+    {
+      this.talent1_pyro = 0.3;
+    } 
+
+    const talent1_cyro_check =  document.getElementById("talent1_cyro")
+    if (talent1_cyro_check.checked)
+    {
+      this.talent1_cyro = 0.2;
+    } 
 
     if (this.char_constellations > 3)
     {
-      this.sixth_conste_buff = 0.4;
+      this.sixth_conste_buff = 1.4;
     } 
 
     const burst1_check = document.getElementById("faruzan_burst1");
@@ -3619,32 +3633,19 @@ class wanderer {
     {
       this.burst1_buff = 0.3;
     }
-
-    const burst2_check = document.getElementById("faruzan_burst2");
-    if (burst1_check.checked) 
-    {
-      const burst_level = parseInt(document.getElementById("faruzan_Q_level").value);
-      this.burst2_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
-
-      const talent2_check = document.getElementById("faruzan_talent2");
-      if (talent2_check.checked)
-      {
-        const talent2_count = parseInt(document.getElementById("faruzan_talent2_count").value)
-        this.talent2_buff = 0.32 * talent2_count;
-      }
-    }
     
     // 攻撃方法に応じてダメージ率を計算
     let dmg_attack_rate = 0;
     let dmg_rate;
-    if (attack_method == 6) {
+    if (attack_method == 1) {
+      for (let i = 0; i < 3; i++) {
+        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      this.attack_count = parseInt(document.getElementById("wanderer_talent2_count").value);
+      const wanderer_skill_level = parseInt(document.getElementById("wanderer_talent2_count").value);
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 6) {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 16) {
-      const attack_count1 = parseInt(document.getElementById("faruzan_attack1_count").value);
-      const attack_count2 = parseInt(document.getElementById("faruzan_attack2_count").value);
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1;
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -3695,7 +3696,7 @@ class wanderer {
   }
 
   calculate_char_fixed_cr(status) {
-    return 0;
+    return this.talent1_cyro;
   }
 
   calculate_char_result_cr(status) {
@@ -3703,7 +3704,7 @@ class wanderer {
   }
 
   calculate_char_fixed_cd(status) {
-    return this.sixth_conste_buff;
+    return 0;
   }
 
   calculate_char_result_cd(status) {
@@ -3711,7 +3712,7 @@ class wanderer {
   }
 
   calculate_char_fixed_dmg_buff(status) {
-    return this.burst2_buff;
+    return 0;
   }
 
   calculate_char_result_dmg_buff(status) {
@@ -3724,7 +3725,7 @@ class wanderer {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [this.burst1_buff,0,0];
+    let char_debuff = [0,0,0];
     return char_debuff;
   }
 }
