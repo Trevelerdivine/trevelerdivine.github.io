@@ -3723,7 +3723,7 @@ class wanderer {
   }
 
   calculate_char_fixed_dmg_buff(status) {
-    return second_conste_buff;
+    return this.second_conste_buff;
   }
 
   calculate_char_result_dmg_buff(status) {
