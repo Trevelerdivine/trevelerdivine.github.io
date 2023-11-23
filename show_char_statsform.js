@@ -931,7 +931,7 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（児姿優風 1ループ）", value: "1" },
         { text: "重撃（児姿優風）", value: "6" },
-        { text: "スキル（狂言・式楽伍番）", value: "21" },
+        { text: "元素爆発（狂言・式楽伍番）", value: "21" },
       ];
       createchar_attackmethod(options);
     
