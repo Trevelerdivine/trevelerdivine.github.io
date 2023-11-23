@@ -837,18 +837,24 @@ async function show_attack_method()
                 if (attack_method == 1) {
                   wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
                   wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 3, "", "回", 1);
+                  attack_method_prop.appendChild(wanderer_talent2_text);
+                  attack_method_prop.appendChild(wanderer_talent2_count);
                   }
                 else if (attack_method == 6)
                 {
                   wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
                   wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 1, "", "回", 1);
+                  attack_method_prop.appendChild(wanderer_talent2_text);
+                  attack_method_prop.appendChild(wanderer_talent2_count);
                 }
                 else if (attack_method == 21)
                 {
                   if (char_constellations > 1)
                   {
                     elementsToAddToCharTalent = [
-                      createLabel("wanderer_dmgbuff", "2重：弐番・箙島廓白浪 与えるダメージ ＋"),
+                      createLabel("wanderer", "2重：弐番・箙島廓白浪"),
+                      document.createElement("br"),
+                      createLabel("wanderer_dmgbuff", "　与えるダメージ ＋"),
                       createInputWithUnit("text", "wanderer_dmgbuff", "200","%"),
                       document.createElement("br")
                     ];
