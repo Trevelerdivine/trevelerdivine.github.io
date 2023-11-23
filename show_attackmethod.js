@@ -848,13 +848,13 @@ async function show_attack_method()
                   if (char_constellations > 1)
                   {
                     elementsToAddToCharTalent = [
-                      createLabel("wanderer_dmgbuff", "2重：弐番・箙島廓白浪 与えるダメージ＋"),
+                      createLabel("wanderer_dmgbuff", "2重：弐番・箙島廓白浪 与えるダメージ ＋"),
                       createInputWithUnit("text", "wanderer_dmgbuff", "200","%"),
                       document.createElement("br")
                     ];
                   
                     elementsToAddToCharTalent.forEach(element => {
-                      characterInfo.appendChild(element);
+                      tenporary_char_talent.appendChild(element);
                     });
                   }
                 }

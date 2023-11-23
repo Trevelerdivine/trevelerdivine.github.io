@@ -1442,6 +1442,9 @@ function createInputWithUnit(type, id, value, unit) {
   input.type = type;
   input.id = id;
   input.value = value;
+  
+  // input要素のwidthを50pxに設定
+  input.style.width = '50px';
 
   // 単位を表示するための span 要素を作成
   const unitSpan = document.createElement("span");
