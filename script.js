@@ -406,6 +406,9 @@ async function create_char_instance(base_status, parameter) {
     case "39":
       char_instance = new fischl(base_status, parameter);
       break;
+    case "44":
+      char_instance = new wanderer(base_status, parameter);
+      break;
     case "49":
       char_instance = new faruzan(base_status, parameter);
       break;
