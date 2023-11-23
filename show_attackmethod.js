@@ -836,11 +836,6 @@ async function show_attack_method()
               case "44":
                 let wanderer_talent;
                 if (attack_method == 1) {
-                  wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
-                  wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 3, "", "回", 1);
-                  attack_method_prop.appendChild(wanderer_talent2_text);
-                  attack_method_prop.appendChild(wanderer_talent2_count);
-                
                   wanderer_talent = [
                     createLabel("wandererE_level", "焔硝の庭火舞い"),
                     document.createElement("br"),
@@ -849,20 +844,16 @@ async function show_attack_method()
                     document.createElement("br"),
                     createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
                     document.createElement("br"),
-                    createCheckbox("talent1_pyro", true),
+                    createCheckbox("talent1_pyro", false),
                     createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
                     document.createElement("br"),
-                    createCheckbox("talent1_cyro", true),
+                    createCheckbox("talent1_cyro", false),
                     createLabel("talent1_cyro", "氷元素: 会心率+20%"),
                     document.createElement("br")
                   ];
                   }
                 else if (attack_method == 6)
                 {
-                  wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
-                  wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 1, "", "回", 1);
-                  attack_method_prop.appendChild(wanderer_talent2_text);
-                  attack_method_prop.appendChild(wanderer_talent2_count);
                   wanderer_talent = [
                     createLabel("wandererE_level", "焔硝の庭火舞い"),
                     document.createElement("br"),
@@ -871,10 +862,10 @@ async function show_attack_method()
                     document.createElement("br"),
                     createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
                     document.createElement("br"),
-                    createCheckbox("talent1_pyro", true),
+                    createCheckbox("talent1_pyro", false),
                     createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
                     document.createElement("br"),
-                    createCheckbox("talent1_cyro", true),
+                    createCheckbox("talent1_cyro", false),
                     createLabel("talent1_cyro", "氷元素: 会心率+20%"),
                     document.createElement("br")
                   ];
@@ -895,14 +886,13 @@ async function show_attack_method()
                       temporary_char_talent.appendChild(element);
                     });
                   }
-
                   wanderer_talent = [
                     createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
                     document.createElement("br"),
-                    createCheckbox("talent1_pyro", true),
+                    createCheckbox("talent1_pyro", false),
                     createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
                     document.createElement("br"),
-                    createCheckbox("talent1_cyro", true),
+                    createCheckbox("talent1_cyro", false),
                     createLabel("talent1_cyro", "氷元素: 会心率+20%"),
                     document.createElement("br")
                   ];

@@ -3622,11 +3622,6 @@ class wanderer {
     {
       this.talent1_cyro = 0.2;
     } 
-
-    if (this.char_constellations > 3)
-    {
-      this.sixth_conste_buff = 1.4;
-    } 
     
     // 攻撃方法に応じてダメージ率を計算
     let dmg_attack_rate = 0;
@@ -3635,10 +3630,15 @@ class wanderer {
       for (let i = 0; i < 3; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
-      this.attack_count = parseInt(document.getElementById("wanderer_talent2_count").value);
       const wanderer_skill_level = parseInt(document.getElementById("wandererE_level").value);
       const wanderer_skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][wanderer_skill_level]);
-      dmg_attack_rate *= wanderer_skill_buff;
+
+      if (this.char_constellations > 3)
+      {
+        this.sixth_conste_buff = 1.4;
+      } 
+
+      dmg_attack_rate *= wanderer_skill_buff * this.sixth_conste_buff;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 6) {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -3648,6 +3648,18 @@ class wanderer {
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * 5;
+      if (this.char_constellations > 1)
+      {
+        this.second_conste_buff = parseFloat(document.getElementById("wanderer_dmgbuff").value)/ 100;
+        if (this.second_conste_buff > 2)
+        {
+          this.second_conste_buff = 2;
+        }
+        else if (this.second_conste_buff < 0)
+        {
+          this.second_conste_buff = 0;
+        } 
+      }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
     
@@ -3711,7 +3723,7 @@ class wanderer {
   }
 
   calculate_char_fixed_dmg_buff(status) {
-    return 0;
+    return second_conste_buff;
   }
 
   calculate_char_result_dmg_buff(status) {
