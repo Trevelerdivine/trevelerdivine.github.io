@@ -128,7 +128,7 @@ async function show_char_statsform()
     else if (selectedCharId == "0") {
 
       traits = [
-        { id: "traitCheckbox6", label: "６重　黄金を裂く焔爪：会心ダメージ " },
+        { id: "traitCheckbox6", label: "6重　黄金を裂く焔爪：会心ダメージ " },
       ];
 
       options = [
@@ -924,6 +924,33 @@ async function show_char_statsform()
         { text: "元素スキル（夜巡りの翼）", value: "16" },
       ];
       createchar_attackmethod(options)  
+    }
+
+    else if (selectedCharId == "44") {
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃（児姿優風 1ループ）", value: "1" },
+        { text: "重撃（児姿優風）", value: "6" },
+        { text: "スキル（狂言・式楽伍番）", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
+    
+      const elementsToAddToCharTalent = [
+        createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
+        document.createElement("br"),
+        createCheckbox("talent1_pyro", true),
+        createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
+        document.createElement("br"),
+        createCheckbox("talent1_cyro", true),
+        createLabel("talent1_cyro", "氷元素: 会心率+20%"),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
     }
 
     

@@ -52,9 +52,11 @@ async function show_attack_method()
   select_reaction_method.appendChild(radio_label);
 
   const char_constellations = document.getElementById("char_constellations").value;
+  const characterInfo = document.getElementById("characterInfo");
   const Aggravate_text = createTextNode("　超激化回数：　");
   const Spread_text = createTextNode("　草激化回数：　");
   const vap_text = createTextNode("蒸発回数：");
+  let traits;
 
   if (char_propaty[0] == 0)
   {
@@ -830,6 +832,34 @@ async function show_attack_method()
                 }
               }
               break
+
+              case "44":
+                if (attack_method == 1) {
+                  wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
+                  wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 3, "", "回", 1);
+                  }
+                else if (attack_method == 6)
+                {
+                  wanderer_talent2_text = createTextNode("　固有天賦2発動回数：")
+                  wanderer_talent2_count = createSelectList("wanderer_talent2_count", 0, 1, "", "回", 1);
+                }
+                else if (attack_method == 21)
+                {
+                  if (char_constellations > 1)
+                  {
+                    elementsToAddToCharTalent = [
+                      createLabel("wanderer_dmgbuff", "2重：弐番・箙島廓白浪 与えるダメージ＋"),
+                      createInputWithUnit("text", "wanderer_dmgbuff", "200","%"),
+                      document.createElement("br")
+                    ];
+                  
+                    elementsToAddToCharTalent.forEach(element => {
+                      characterInfo.appendChild(element);
+                    });
+                  }
+                }
+              break
+
               case "49":
                 if (attack_method == 16) {
                   let faruzan_count1_text;
