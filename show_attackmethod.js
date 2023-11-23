@@ -907,7 +907,7 @@ async function show_attack_method()
                     document.createElement("br")
                   ];
                 }
-                elementsToAddToCharTalent.forEach(element => {
+                wanderer_talent.forEach(element => {
                   temporary_char_talent.appendChild(element);
                 });
               break
