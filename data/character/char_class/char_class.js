@@ -3633,18 +3633,18 @@ class wanderer {
     let dmg_rate;
     if (attack_method == 1) {
       for (let i = 0; i < 3; i++) {
-        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       this.attack_count = parseInt(document.getElementById("wanderer_talent2_count").value);
       const wanderer_skill_level = parseInt(document.getElementById("wanderer_talent2_count").value);
       const wanderer_skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][wanderer_skill_level]);
-      dmg_attck_rate *= wanderer_skill_buff;
+      dmg_attack_rate *= wanderer_skill_buff;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 6) {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       const wanderer_skill_level = parseInt(document.getElementById("wanderer_talent2_count").value);
       const wanderer_skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][wanderer_skill_level]);
-      dmg_attck_rate *= wanderer_skill_buff;
+      dmg_attack_rate *= wanderer_skill_buff;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * 5;
