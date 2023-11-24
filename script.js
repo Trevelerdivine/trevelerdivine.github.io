@@ -528,7 +528,7 @@ async function create_weapon_instance(base_status) {
     case "131":
       weapon_instance = new LostPrayertotheSacredWinds(base_status);
       break;
-    case "131":
+    case "146":
       weapon_instance = new PrototypeAmber(base_status);
       break;
     case "149":
