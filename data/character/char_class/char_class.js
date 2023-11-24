@@ -3755,7 +3755,7 @@ class xiao {
     this.char_constellations = document.getElementById("char_constellations").value;
 
     // JSON データを取得
-    const response = await fetch("./data/character/char_data/wanderer.json");
+    const response = await fetch("./data/character/char_data/xiao.json");
     const data = await response.json();
 
     this.talent1_buff = parseInt(document.getElementById("xiao_talent1").value) / 100;
