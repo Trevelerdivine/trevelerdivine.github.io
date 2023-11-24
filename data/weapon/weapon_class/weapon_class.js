@@ -2160,7 +2160,7 @@ class HarbingerofDawn {
   }
 
   calculate_weapon_fixed_cr(status) {
-    return (this.weapon_rank + 3) * 0.0035 * this.weapon_effect;
+    return (this.weapon_rank + 3) * 0.035 * this.weapon_effect;
   }
 
   calculate_weapon_result_cr(status) {
