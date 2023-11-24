@@ -2264,3 +2264,79 @@ class FavoniusSword {
     return weapon_debuff
   }
 }
+
+class PrototypeAmber {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  calculate_weapon_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_attck(status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_weapon_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
