@@ -936,6 +936,32 @@ async function show_char_statsform()
       createchar_attackmethod(options);
     }
 
+    else if (selectedCharId == "46") {
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃（児姿優風 1ループ）", value: "1" },
+        { text: "重撃（児姿優風）", value: "6" },
+        { text: "落下攻撃（低空）", value: "11" },
+        { text: "落下攻撃（高空）", value: "12" },
+        { text: "元素スキル（風輪両立）", value: "16" },
+      ];
+      createchar_attackmethod(options);
+
+      const elementsToAddToCharTalent = [
+        createTextNode("元素爆発天賦レベル："),
+        createSelectList("xiao_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
+        createCheckbox("xiao_talent1", true),
+        createLabel("xiao_talent1", "固有天賦1 降魔・平妖大聖：与えるダメージ"),
+        createanySelectList("xiao_talent1", 0, 5, "+", "%", 5, 5),
+        document.createElement("br"),
+      ];
+  
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+    }
+
     
     else if (selectedCharId  == "49")
     {
@@ -954,8 +980,6 @@ async function show_char_statsform()
         document.createElement("br"),
         createTextNode("　発動回数："),
         createSelectList("faruzan_talent2_count",0, 10, "", "回", 1),
-
-
       ];
     
       elementsToAddToCharTalent.forEach(element => {

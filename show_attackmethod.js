@@ -902,6 +902,20 @@ async function show_attack_method()
                 });
               break
 
+              case "46":
+                let xiao_talent;
+                if (attack_method == 16)
+                {
+                  xiao_talent = [
+                    createLabel("xiao_talent2", "固有天賦2 壊劫・国土砕き 与えるダメージ"),
+                    createanySelectList("xiao_talent1", 0, 3, "+", "%", 1, 15),
+                  ];
+                }
+                xiao_talent.forEach(element => {
+                  temporary_char_talent.appendChild(element);
+                });
+              break
+
               case "49":
                 if (attack_method == 16) {
                   let faruzan_count1_text;
