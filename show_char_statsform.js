@@ -951,7 +951,6 @@ async function show_char_statsform()
         createTextNode("元素爆発天賦レベル："),
         createSelectList("xiao_Q_level", 1, 13, "Lv.", "", 8),
         document.createElement("br"),
-        createCheckbox("xiao_talent1", true),
         createLabel("xiao_talent1", "固有天賦1 降魔・平妖大聖：与えるダメージ"),
         createanySelectList("xiao_talent1", 0, 5, "+", "%", 5, 5),
         document.createElement("br"),

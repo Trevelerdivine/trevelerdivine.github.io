@@ -907,8 +907,8 @@ async function show_attack_method()
                 if (attack_method == 16)
                 {
                   xiao_talent = [
-                    createLabel("xiao_talent2", "固有天賦2 壊劫・国土砕き 与えるダメージ"),
-                    createanySelectList("xiao_talent1", 0, 3, "+", "%", 1, 15),
+                    createLabel("xiao_talent2_buff", "固有天賦2 壊劫・国土砕き：与えるダメージ"),
+                    createanySelectList("xiao_talent2_buff", 0, 3, "+", "%", 1, 15),
                   ];
                 }
                 xiao_talent.forEach(element => {

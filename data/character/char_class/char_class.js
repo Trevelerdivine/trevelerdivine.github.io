@@ -3630,21 +3630,20 @@ class wanderer {
       for (let i = 0; i < 3; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
-      const wanderer_skill_level = parseInt(document.getElementById("wandererE_level").value);
-      const wanderer_skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][wanderer_skill_level]);
+      const xiao_burst_level = parseInt(document.getElementById("wandererE_level").value);
+      const xiao_burst_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][xiao_burst_level]);
 
       if (this.char_constellations > 3)
       {
         this.sixth_conste_buff = 1.4;
       } 
 
-      dmg_attack_rate *= wanderer_skill_buff * this.sixth_conste_buff;
+      dmg_attack_rate *= xiao_burst_buff * this.sixth_conste_buff;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 6) {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      const wanderer_skill_level = parseInt(document.getElementById("wandererE_level").value);
-      const wanderer_skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][wanderer_skill_level]);
-      dmg_attack_rate *= wanderer_skill_buff;
+      const xiao_burst_level = parseInt(document.getElementById("wandererE_level").value);
+      const xiao_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][xiao_burst_level]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * 5;
@@ -3724,6 +3723,129 @@ class wanderer {
 
   calculate_char_fixed_dmg_buff(status) {
     return this.second_conste_buff;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    const attckRate = status[4] * dmg_rate[4];
+    return attckRate;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
+class xiao {
+  constructor(base_status_array, parameter) 
+  {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.talent1_buff = 0;
+    this.talent2_buff = 0;
+    this.burst_buff = 0;
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/wanderer.json");
+    const data = await response.json();
+
+    this.talent1_buff = parseInt(document.getElementById("xiao_talent1").value) / 100;
+
+    const xiao_burst_level = parseInt(document.getElementById("xiao_Q_level").value);
+    this.burst_buff = parseFloat(data["元素爆発"]["詳細"][0]["数値"][xiao_burst_level]);
+    
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_attack_rate = 0;
+    let dmg_rate;
+    if (attack_method == 1) {
+      for (let i = 0; i < 6; i++) {
+        dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    } else if (attack_method == 6) {
+      dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    } else if (attack_method == 11) {
+      dmg_attack_rate = parseFloat(data["落下攻撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    } else if (attack_method == 12) {
+      dmg_attack_rate = parseFloat(data["落下攻撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    } else if (attack_method == 16) {
+      this.talent2_buff = parseInt(document.getElementById("xiao_talent2_buff").value) / 100;
+      dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    }
+  return dmg_rate;
+}
+
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return this.talent1_buff + this.talent2_buff + this.burst_buff;
   }
 
   calculate_char_result_dmg_buff(status) {
