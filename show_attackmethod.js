@@ -910,10 +910,10 @@ async function show_attack_method()
                     createLabel("xiao_talent2_buff", "固有天賦2 壊劫・国土砕き：与えるダメージ"),
                     createanySelectList("xiao_talent2_buff", 0, 3, "+", "%", 1, 15),
                   ];
+                  xiao_talent.forEach(element => {
+                    temporary_char_talent.appendChild(element);
+                  });
                 }
-                xiao_talent.forEach(element => {
-                  temporary_char_talent.appendChild(element);
-                });
               break
 
               case "49":
