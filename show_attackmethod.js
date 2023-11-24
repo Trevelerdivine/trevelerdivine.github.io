@@ -997,11 +997,16 @@ async function show_attack_method()
             attack_method_prop.appendChild(albedocount_selectlist);
           }
         break
-
-        case "64":
-        break
           
-        case "68":
+        case "70":
+          if (attack_method == 21)
+          {
+            travelergeo_burstcount_text = createTextNode("　風圧崩潰ヒット回数　：")
+            travelergeo_burstcount = createSelectList("travelergeo_burstcount", 0, 4, "", "回", 4);
+            attack_method_prop.appendChild(travelergeo_burstcount_text);
+            attack_method_prop.appendChild(travelergeo_burstcount);
+            attack_method_prop.appendChild(document.createElement("br"));
+          }
         break
     }
     let hp_form = document.getElementById("hp_form");

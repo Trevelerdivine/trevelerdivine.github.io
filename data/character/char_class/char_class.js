@@ -5330,7 +5330,8 @@ class travelergeo {
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
     else if (attack_method == 21) {
-      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      const attack_count = parseInt(document.getElementById("travelergeo_burstcount").value);
+      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
     return dmg_rate;
