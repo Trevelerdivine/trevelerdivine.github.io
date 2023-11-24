@@ -1285,6 +1285,32 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    else if (selectedCharId  == "70")
+    {
+      const traits = [
+        {
+          id: "traitCheckbox1",
+          label: "第1重：会心率+10%"
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素スキル", value: "16" },
+        { text: "元素爆発", value: "21" },
+      ];
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, false);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+
+      createchar_attackmethod(options)  
+    }
+
     showFormElements();
   }
 
