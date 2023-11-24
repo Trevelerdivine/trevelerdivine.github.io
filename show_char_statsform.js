@@ -1296,8 +1296,8 @@ async function show_char_statsform()
 
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "元素スキル", value: "16" },
-        { text: "元素爆発", value: "21" },
+        { text: "元素スキル（星落としの剣）", value: "16" },
+        { text: "元素爆発（岩潮幾重）", value: "21" },
       ];
       if (char_constellations > 0)
       {
