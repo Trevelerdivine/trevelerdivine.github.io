@@ -1329,7 +1329,7 @@ async function show_char_statsform()
         { text: "元素爆発（岩潮幾重）", value: "21" },
       ];
 
-      traitCheckbox = createCheckbox(traits[1].id, false);
+      traitCheckbox = createCheckbox(traits[1].id, true);
       traitLabel = createLabel(traits[1].id, traits[1].label);
       characterInfo.appendChild(traitCheckbox);
       characterInfo.appendChild(traitLabel);
