@@ -1285,6 +1285,31 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    else if (selectedCharId  == "69")
+    {
+      const traits = [
+        {
+          id: "talent2_buff",
+          label: "固有天賦2 備えあれば憂いなし：岩元素ダメージ+12%"
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃", value: "1" },
+        { text: "重撃", value: "6" },        
+        { text: "元素スキル（璇璣屏）", value: "16" },
+        { text: "元素爆発（天権崩玉）", value: "21" },
+      ];
+
+      traitCheckbox = createCheckbox(traits[0].id, true);
+      traitLabel = createLabel(traits[0].id, traits[0].label);
+
+      characterInfo.appendChild(traitCheckbox);
+      characterInfo.appendChild(traitLabel);
+      createchar_attackmethod(options)  
+    }
+
     else if (selectedCharId  == "70")
     {
       const traits = [
