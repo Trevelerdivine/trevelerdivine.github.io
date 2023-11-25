@@ -4003,6 +4003,127 @@ class faruzan {
   }
 }
 
+class shikanoinheizou {
+  constructor(base_status_array, parameter) 
+  {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.sixth_conste_crbuff = 0;
+    this.sixth_conste_cdbuff = 0;
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/shikanoinheizou.json");
+    const data = await response.json();
+    
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_attack_rate = 0;
+    let dmg_rate;
+    if (attack_method == 16) {
+      const attack_effect = parseInt(document.getElementById("shikanoinheizou_attack_count").value);
+      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                      +  parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_effect;
+      if (attack_effect == 4) 
+      {
+        dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+      }
+
+      if (this.char_constellations == 4)
+      {
+        this.sixth_conste_crbuff = 0.04 * attack_effect;
+        if (attack_effect == 4) 
+        {
+          this.sixth_conste_cdbuff = 0.32;
+        }
+      }
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    } else if (attack_method == 21) {
+      dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    }
+    
+  return dmg_rate;
+}
+
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return this.sixth_conste_crbuff;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return this.sixth_conste_cdbuff;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    const attckRate = status[4] * dmg_rate[4];
+    return attckRate;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class kujousara {
   constructor(base_status_array, parameter) 
   {

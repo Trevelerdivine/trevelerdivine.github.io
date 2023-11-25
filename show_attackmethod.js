@@ -939,12 +939,12 @@ async function show_attack_method()
               case "50":
                 if (attack_method == 16) {
                   let shikanoinheizou_count1_text;
-                  let shikanoinheizou_count_attack_count;
+                  let shikanoinheizou_attack_count;
   
                   shikanoinheizou_count1_text = createTextNode("　変格層数：")
-                  shikanoinheizou_count_attack_count = createSelectList("shikanoinheizou_count_attack_count", 0, 4, "", "層", 4);
+                  shikanoinheizou_attack_count = createSelectList("shikanoinheizou_attack_count", 0, 4, "", "層", 4);
                   attack_method_prop.appendChild(shikanoinheizou_count1_text);
-                  attack_method_prop.appendChild(shikanoinheizou_count_attack_count);
+                  attack_method_prop.appendChild(shikanoinheizou_attack_count);
                   attack_method_prop.appendChild(document.createElement("br"));
                   }
               break
