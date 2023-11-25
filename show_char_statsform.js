@@ -683,7 +683,6 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "21") {
-    
       traits = [
         { id: "traitCheckbox4", label: "第4重：栄枯盛衰  敵の防御力-30%" },
       ];

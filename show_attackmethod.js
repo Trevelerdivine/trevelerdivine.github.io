@@ -693,10 +693,10 @@ async function show_attack_method()
                   elementsToAddToCharTalent = [
                     createLabel("kamisatoayaka_melt_count", "重撃溶解回数："),
                     createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 3),
-                    elemental_reaction.appendChild(document.createElement("br")),
+                    document.createElement("br"),
                   ];
                   elementsToAddToCharTalent.forEach(element => {
-                    elemental_reaction.appendChild(element);
+                    select_reaction_method.appendChild(element);
                   });
                 }
                 else if (attack_method == 16)
@@ -704,10 +704,10 @@ async function show_attack_method()
                   elementsToAddToCharTalent = [
                     createCheckbox("kamisatoayaka_skill_react", true),
                     createLabel("kamisatoayaka_skill_react", "元素スキル"),
-                    elemental_reaction.appendChild(document.createElement("br")),
+                    document.createElement("br"),
                   ];
                   elementsToAddToCharTalent.forEach(element => {
-                    elemental_reaction.appendChild(element);
+                    select_reaction_method.appendChild(element);
                   });
                 }
                 else if (attack_method == 21)
@@ -726,12 +726,12 @@ async function show_attack_method()
                   elementsToAddToCharTalent = [
                     createLabel("kamisatoayaka_melt_count1", "斬撃溶解回数："),
                     createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 7),
-                    elemental_reaction.appendChild(document.createElement("br")),
+                    document.createElement("br"),
                     createLabel("kamisatoayaka_melt_count2", "咲き溶解回数："),
                     createSelectList("kamisatoayaka_melt_count2", 0, 1, "", "回", 1),
                   ];
                   elementsToAddToCharTalent.forEach(element => {
-                    elemental_reaction.appendChild(element);
+                    select_reaction_method.appendChild(element);
                   });
                 }
               break
