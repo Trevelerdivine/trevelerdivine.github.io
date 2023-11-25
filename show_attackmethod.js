@@ -638,6 +638,104 @@ async function show_attack_method()
             }
       break
 
+      case "21":
+                let kamisatoayaka_talent;
+                let elementsToAddToCharTalent;
+                if (attack_method == 1) {
+                  kamisatoayaka_talent = [
+                    createCheckbox("kamisatoayaka_talent1", true),
+                    createLabel("kamisatoayaka_talent1", "固有天賦1：天つ罪・国つ罪の鎮詞 通常攻撃ダメージ+30%"),
+                    document.createElement("br"),
+                    createCheckbox("kamisatoayaka_talent2", true),
+                    createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+                    document.createElement("br"),
+                  ];
+                  kamisatoayaka_talent.forEach(element => {
+                    temporary_char_talent.appendChild(element);
+                  });
+
+                  options = [
+                    { text: "１段目", value: "0", checked: true },
+                    { text: "２段目", value: "1" },
+                    { text: "３段目", value: "2" },
+                    { text: "４段目-１", value: "3", checked: true },
+                    { text: "４段目-２", value: "4"},
+                    { text: "４段目-３", value: "5"},
+                    { text: "５段目", value: "6", checked: true },
+                  ];
+                  createCheckboxList_br(options);
+                }
+                else if (attack_method == 6)
+                {
+                  kamisatoayaka_talent = [
+                    createCheckbox("kamisatoayaka_talent1", true),
+                    createLabel("kamisatoayaka_talent1", "固有天賦1：天つ罪・国つ罪の鎮詞 重撃ダメージ+30%"),
+                    document.createElement("br"),
+                    createCheckbox("kamisatoayaka_talent2", true),
+                    createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+                    document.createElement("br"),
+                  ];
+                  kamisatoayaka_talent.forEach(element => {
+                    temporary_char_talent.appendChild(element);
+                  });
+
+                  elementsToAddToCharTalent = [
+                    createTextNode("　重撃1回 = 3ヒット"),
+                    document.createElement("br"),
+                    createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
+                    createSelectList("kamisatoayaka_count", 0, 15, "", "回", 9),
+                    document.createElement("br"),
+                  ];
+                  elementsToAddToCharTalent.forEach(element => {
+                    attack_method_prop.appendChild(element);
+                  });
+
+                  elementsToAddToCharTalent = [
+                    createLabel("kamisatoayaka_melt_count", "重撃溶解回数："),
+                    createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 3),
+                    elemental_reaction.appendChild(document.createElement("br")),
+                  ];
+                  elementsToAddToCharTalent.forEach(element => {
+                    elemental_reaction.appendChild(element);
+                  });
+                }
+                else if (attack_method == 16)
+                {
+                  elementsToAddToCharTalent = [
+                    createCheckbox("kamisatoayaka_skill_react", true),
+                    createLabel("kamisatoayaka_skill_react", "元素スキル"),
+                    elemental_reaction.appendChild(document.createElement("br")),
+                  ];
+                  elementsToAddToCharTalent.forEach(element => {
+                    elemental_reaction.appendChild(element);
+                  });
+                }
+                else if (attack_method == 21)
+                {
+                  elementsToAddToCharTalent = [
+                    createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
+                    createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
+                    document.createElement("br"),
+                    createLabel("kamisatoayaka_attack_count2", "　咲きヒット回数："),
+                    createSelectList("kamisatoayaka_attack_count2", 0, 1, "", "回", 1),
+                  ];
+                  elementsToAddToCharTalent.forEach(element => {
+                    attack_method_prop.appendChild(element);
+                  });
+
+                  elementsToAddToCharTalent = [
+                    createLabel("kamisatoayaka_melt_count1", "斬撃溶解回数："),
+                    createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 7),
+                    elemental_reaction.appendChild(document.createElement("br")),
+                    createLabel("kamisatoayaka_melt_count2", "咲き溶解回数："),
+                    createSelectList("kamisatoayaka_melt_count2", 0, 1, "", "回", 1),
+                  ];
+                  elementsToAddToCharTalent.forEach(element => {
+                    elemental_reaction.appendChild(element);
+                  });
+                }
+              break
+
       case "22":
         const eulaburst_text = createTextNode("　エネルギー：")
         const eulaburst_selectlist = createSelectList("eula_enelgy", 0, 30, "", "重", 15);

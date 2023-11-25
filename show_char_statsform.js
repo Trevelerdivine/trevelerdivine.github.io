@@ -51,6 +51,8 @@ async function show_char_statsform()
 
     let traits;
     let options;
+    let traitCheckbox;
+    let traitLabel;
 
     if (selectedCharId == "56") {
       traits = [
@@ -101,8 +103,8 @@ async function show_char_statsform()
     
       if (char_constellations > 1)
       {
-        let traitCheckbox = createCheckbox(traits[1].id, true);
-        let traitLabel = createLabel(traits[1].id, traits[1].label);
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
@@ -679,6 +681,34 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+
+    else if (selectedCharId == "21") {
+    
+      traits = [
+        { id: "traitCheckbox4", label: "第4重：栄枯盛衰  敵の防御力-30%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ(氷元素)", value: "1" },
+        { text: "重撃(氷元素)", value: "6" },
+        { text: "元素スキル（神里流・氷華）", value: "16" },
+        { text: "元素爆発（神里流・霜滅）", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+
 
     else if (selectedCharId == "22") {
 
