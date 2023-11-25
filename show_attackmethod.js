@@ -691,7 +691,7 @@ async function show_attack_method()
                   });
 
                   elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_melt_count", "重撃溶解回数："),
+                    createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
                     createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 3),
                     document.createElement("br"),
                   ];
@@ -712,27 +712,64 @@ async function show_attack_method()
                 }
                 else if (attack_method == 21)
                 {
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_attack_count2", "　咲きヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count2", 0, 1, "", "回", 1),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    attack_method_prop.appendChild(element);
-                  });
+                  if (char_constellations < 2)
+                  {
+                    elementsToAddToCharTalent = [
+                      createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
+                      createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_attack_count2", "　咲きヒット回数："),
+                      createSelectList("kamisatoayaka_attack_count2", 0, 1, "", "回", 1),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      attack_method_prop.appendChild(element);
+                    });
 
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_melt_count1", "斬撃溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 7),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_melt_count2", "咲き溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count2", 0, 1, "", "回", 1),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    select_reaction_method.appendChild(element);
-                  });
+                    elementsToAddToCharTalent = [
+                      createLabel("kamisatoayaka_melt_count1", "　斬撃溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 4),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_melt_count2", "　咲き溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count2", 0, 1, "", "回", 1),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      select_reaction_method.appendChild(element);
+                    });
+                  }
+                  else
+                  {
+                    elementsToAddToCharTalent = [
+                      createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
+                      createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_attack_count2", "　斬撃(小)ヒット回数："),
+                      createSelectList("kamisatoayaka_attack_count2", 0, 38, "", "回", 20),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_attack_count3", "　咲きヒット回数："),
+                      createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
+                      createLabel("kamisatoayaka_attack_count4", "　咲き(小)ヒット回数："),
+                      createSelectList("kamisatoayaka_attack_count4", 0, 2, "", "回", 2),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      attack_method_prop.appendChild(element);
+                    });
+
+                    elementsToAddToCharTalent = [
+                      createLabel("kamisatoayaka_melt_count1", "　斬撃溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 4),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_melt_count2", "　斬撃(小)溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count2", 0, 38, "", "回", 7),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_melt_count3", "　咲き溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
+                      createLabel("kamisatoayaka_melt_count4", "　咲き(小)溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count4", 0, 2, "", "回", 2),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      select_reaction_method.appendChild(element);
+                    });
+                  }
                 }
               break
 
