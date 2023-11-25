@@ -935,111 +935,125 @@ async function show_attack_method()
                   attack_method_prop.appendChild(document.createElement("br"));
                   }
               break
-      case "56":        
-        if (attack_method == 1) {
-          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
-        } else if (attack_method == 6) {
-          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-        } else if (attack_method==16) {
-          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-        } else if (attack_method==17) {
-          nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-        }
-        elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-        elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
-        elemental_reaction.appendChild(document.createElement("br"));
-      break
 
-      case "57":        
-        if (attack_method == 6)
-        {
-          if (char_constellations < 4)
-          {
-            tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 2);
-          }
-          else
-          {
-            tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 3);
-          }
-          createCheckboxList_br(options)
-        } else if (attack_method == 21)
-        {
-          tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
-        }
-        elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-        elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
-        elemental_reaction.appendChild(document.createElement("br"));
-      break
+              case "50":
+                if (attack_method == 16) {
+                  let shikanoinheizou_count1_text;
+                  let shikanoinheizou_count_attack_count;
+  
+                  shikanoinheizou_count1_text = createTextNode("　変格層数：")
+                  shikanoinheizou_count_attack_count = createSelectList("shikanoinheizou_count_attack_count", 0, 4, "", "層", 4);
+                  attack_method_prop.appendChild(shikanoinheizou_count1_text);
+                  attack_method_prop.appendChild(shikanoinheizou_count_attack_count);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  }
+              break
 
-        case "63":
-            if (attack_method == 6) {
-              const arataki_text = createTextNode("　重撃ヒット回数：")
-              const aratakicount_selectlist = createSelectList("arataki_count", 0, 10, "", "回", 3);
-              attack_method_prop.appendChild(document.createElement("br"));
-              attack_method_prop.appendChild(arataki_text);
-              attack_method_prop.appendChild(aratakicount_selectlist);
-            }
-        break
+              case "56":        
+                if (attack_method == 1) {
+                  nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
+                } else if (attack_method == 6) {
+                  nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+                } else if (attack_method==16) {
+                  nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+                } else if (attack_method==17) {
+                  nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+                }
+                elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+                elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
+                elemental_reaction.appendChild(document.createElement("br"));
+              break
 
-        case "64":
-          if (attack_method == 16) {
-            const albedo_text = createTextNode("　スキル追撃ヒット回数：")
-            const albedocount_selectlist = createSelectList("albedo_count", 1, 15, "", "回", 5);
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(albedo_text);
-            attack_method_prop.appendChild(albedocount_selectlist);
-          }
-          else if (attack_method == 21) {
-            const albedo_text = createTextNode("　生滅の花ヒット回数：")
-            const albedocount_selectlist = createSelectList("albedo_count", 1, 7, "", "回", 3);
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(albedo_text);
-            attack_method_prop.appendChild(albedocount_selectlist);
-          }
-        break
+              case "57":        
+                if (attack_method == 6)
+                {
+                  if (char_constellations < 4)
+                  {
+                    tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 2);
+                  }
+                  else
+                  {
+                    tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 3);
+                  }
+                  createCheckboxList_br(options)
+                } else if (attack_method == 21)
+                {
+                  tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
+                }
+                elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+                elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
+                elemental_reaction.appendChild(document.createElement("br"));
+              break
 
-        case "69":
-          if (attack_method == 1) {
-            const ningguang_text = createTextNode("　通常攻撃ヒット回数：")
-            const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 10, "", "回", 3);
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(ningguang_text);
-            attack_method_prop.appendChild(ningguangcount_selectlist);
-          } else if (attack_method == 6) {
-            const ningguang_text = createTextNode("　星璇枚数：")
-            let ningguangcount_selectlist = createSelectList("ningguang_count", 0, 3, "", "枚", 3);
+              case "63":
+                  if (attack_method == 6) {
+                    const arataki_text = createTextNode("　重撃ヒット回数：")
+                    const aratakicount_selectlist = createSelectList("arataki_count", 0, 10, "", "回", 3);
+                    attack_method_prop.appendChild(document.createElement("br"));
+                    attack_method_prop.appendChild(arataki_text);
+                    attack_method_prop.appendChild(aratakicount_selectlist);
+                  }
+              break
 
-            if (char_constellations == 4)
-            {
-              let ningguang_sixth_conste_buff = document.createElement("option");
-              ningguang_sixth_conste_buff.value = 7;
-              ningguang_sixth_conste_buff.text = `${""}${7}${"枚"}`;   
-              ningguang_sixth_conste_buff.selected = true;  
-              ningguangcount_selectlist.appendChild(ningguang_sixth_conste_buff);
-            }
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(ningguang_text);
-            attack_method_prop.appendChild(ningguangcount_selectlist);
-          } else if (attack_method == 21) {
-            const ningguang_text = createTextNode("　天権崩玉 宝石弾ヒット数：")
-            const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 12, "", "発", 10);
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(ningguang_text);
-            attack_method_prop.appendChild(ningguangcount_selectlist);
-          }
-          
-        break
-          
-        case "70":
-          if (attack_method == 21)
-          {
-            travelergeo_burstcount_text = createTextNode("　岩潮幾重ヒット回数　：")
-            travelergeo_burstcount = createSelectList("travelergeo_burstcount", 0, 4, "", "回", 4);
-            attack_method_prop.appendChild(travelergeo_burstcount_text);
-            attack_method_prop.appendChild(travelergeo_burstcount);
-            attack_method_prop.appendChild(document.createElement("br"));
-          }
-        break
+              case "64":
+                if (attack_method == 16) {
+                  const albedo_text = createTextNode("　スキル追撃ヒット回数：")
+                  const albedocount_selectlist = createSelectList("albedo_count", 1, 15, "", "回", 5);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  attack_method_prop.appendChild(albedo_text);
+                  attack_method_prop.appendChild(albedocount_selectlist);
+                }
+                else if (attack_method == 21) {
+                  const albedo_text = createTextNode("　生滅の花ヒット回数：")
+                  const albedocount_selectlist = createSelectList("albedo_count", 1, 7, "", "回", 3);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  attack_method_prop.appendChild(albedo_text);
+                  attack_method_prop.appendChild(albedocount_selectlist);
+                }
+              break
+
+              case "69":
+                if (attack_method == 1) {
+                  const ningguang_text = createTextNode("　通常攻撃ヒット回数：")
+                  const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 10, "", "回", 3);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  attack_method_prop.appendChild(ningguang_text);
+                  attack_method_prop.appendChild(ningguangcount_selectlist);
+                } else if (attack_method == 6) {
+                  const ningguang_text = createTextNode("　星璇枚数：")
+                  let ningguangcount_selectlist = createSelectList("ningguang_count", 0, 3, "", "枚", 3);
+
+                  if (char_constellations == 4)
+                  {
+                    let ningguang_sixth_conste_buff = document.createElement("option");
+                    ningguang_sixth_conste_buff.value = 7;
+                    ningguang_sixth_conste_buff.text = `${""}${7}${"枚"}`;   
+                    ningguang_sixth_conste_buff.selected = true;  
+                    ningguangcount_selectlist.appendChild(ningguang_sixth_conste_buff);
+                  }
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  attack_method_prop.appendChild(ningguang_text);
+                  attack_method_prop.appendChild(ningguangcount_selectlist);
+                } else if (attack_method == 21) {
+                  const ningguang_text = createTextNode("　天権崩玉 宝石弾ヒット数：")
+                  const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 12, "", "発", 10);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                  attack_method_prop.appendChild(ningguang_text);
+                  attack_method_prop.appendChild(ningguangcount_selectlist);
+                }
+                
+              break
+                
+              case "70":
+                if (attack_method == 21)
+                {
+                  travelergeo_burstcount_text = createTextNode("　岩潮幾重ヒット回数　：")
+                  travelergeo_burstcount = createSelectList("travelergeo_burstcount", 0, 4, "", "回", 4);
+                  attack_method_prop.appendChild(travelergeo_burstcount_text);
+                  attack_method_prop.appendChild(travelergeo_burstcount);
+                  attack_method_prop.appendChild(document.createElement("br"));
+                }
+              break
     }
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");

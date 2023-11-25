@@ -994,6 +994,17 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
 
+    else if (selectedCharId  == "50")
+    {
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素スキル（非想風天）", value: "16" },
+        { text: "元素爆発（戮心拳 追撃無し）", value: "21" },
+      ];
+      createchar_attackmethod(options)  
+    }
+
     else if (selectedCharId  == "57")
     {
       const elementsToAddToCharTalent = [
