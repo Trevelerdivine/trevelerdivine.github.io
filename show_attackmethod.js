@@ -1033,7 +1033,7 @@ async function show_attack_method()
         case "70":
           if (attack_method == 21)
           {
-            travelergeo_burstcount_text = createTextNode("　風圧崩潰ヒット回数　：")
+            travelergeo_burstcount_text = createTextNode("　岩潮幾重ヒット回数　：")
             travelergeo_burstcount = createSelectList("travelergeo_burstcount", 0, 4, "", "回", 4);
             attack_method_prop.appendChild(travelergeo_burstcount_text);
             attack_method_prop.appendChild(travelergeo_burstcount);
