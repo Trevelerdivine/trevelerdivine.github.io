@@ -667,6 +667,13 @@ async function show_attack_method()
                 }
                 else if (attack_method == 6)
                 {
+                  const traitCheckbox = createCheckbox("traitCheckbox6", true);
+                  const traitLabel = createLabel("traitCheckbox6", "第6重：間水月 重撃ダメージ+298%");
+              
+                  characterInfo.appendChild(traitCheckbox);
+                  characterInfo.appendChild(traitLabel);
+                  characterInfo.appendChild(document.createElement("br"));
+
                   kamisatoayaka_talent = [
                     createCheckbox("kamisatoayaka_talent1", true),
                     createLabel("kamisatoayaka_talent1", "固有天賦1：天つ罪・国つ罪の鎮詞 重撃ダメージ+30%"),
@@ -701,6 +708,14 @@ async function show_attack_method()
                 }
                 else if (attack_method == 16)
                 {
+                  kamisatoayaka_talent = [
+                    createCheckbox("kamisatoayaka_talent2", true),
+                    createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+                    document.createElement("br"),
+                  ];
+                  kamisatoayaka_talent.forEach(element => {
+                    temporary_char_talent.appendChild(element);
+                  });
                   elementsToAddToCharTalent = [
                     createCheckbox("kamisatoayaka_skill_react", true),
                     createLabel("kamisatoayaka_skill_react", "元素スキル"),
@@ -712,6 +727,14 @@ async function show_attack_method()
                 }
                 else if (attack_method == 21)
                 {
+                  kamisatoayaka_talent = [
+                    createCheckbox("kamisatoayaka_talent2", true),
+                    createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+                    document.createElement("br"),
+                  ];
+                  kamisatoayaka_talent.forEach(element => {
+                    temporary_char_talent.appendChild(element);
+                  });
                   if (char_constellations < 2)
                   {
                     elementsToAddToCharTalent = [
@@ -747,6 +770,7 @@ async function show_attack_method()
                       document.createElement("br"),
                       createLabel("kamisatoayaka_attack_count3", "　咲きヒット回数："),
                       createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
+                      document.createElement("br"),
                       createLabel("kamisatoayaka_attack_count4", "　咲き(小)ヒット回数："),
                       createSelectList("kamisatoayaka_attack_count4", 0, 2, "", "回", 2),
                     ];
@@ -763,6 +787,7 @@ async function show_attack_method()
                       document.createElement("br"),
                       createLabel("kamisatoayaka_melt_count3", "　咲き溶解回数："),
                       createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
+                      document.createElement("br"),
                       createLabel("kamisatoayaka_melt_count4", "　咲き(小)溶解回数："),
                       createSelectList("kamisatoayaka_melt_count4", 0, 2, "", "回", 2),
                     ];
