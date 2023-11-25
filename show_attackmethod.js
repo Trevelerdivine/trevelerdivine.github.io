@@ -670,9 +670,9 @@ async function show_attack_method()
                   const traitCheckbox = createCheckbox("traitCheckbox6", true);
                   const traitLabel = createLabel("traitCheckbox6", "第6重：間水月 重撃ダメージ+298%");
               
-                  characterInfo.appendChild(traitCheckbox);
-                  characterInfo.appendChild(traitLabel);
-                  characterInfo.appendChild(document.createElement("br"));
+                  temporary_char_talent.appendChild(traitCheckbox);
+                  temporary_char_talent.appendChild(traitLabel);
+                  temporary_char_talent.appendChild(document.createElement("br"));
 
                   kamisatoayaka_talent = [
                     createCheckbox("kamisatoayaka_talent1", true),
@@ -741,8 +741,8 @@ async function show_attack_method()
                       createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
                       createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
                       document.createElement("br"),
-                      createLabel("kamisatoayaka_attack_count2", "　咲きヒット回数："),
-                      createSelectList("kamisatoayaka_attack_count2", 0, 1, "", "回", 1),
+                      createLabel("kamisatoayaka_attack_count3", "　咲きヒット回数："),
+                      createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
                     ];
                     elementsToAddToCharTalent.forEach(element => {
                       attack_method_prop.appendChild(element);
@@ -752,8 +752,8 @@ async function show_attack_method()
                       createLabel("kamisatoayaka_melt_count1", "　斬撃溶解回数："),
                       createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 4),
                       document.createElement("br"),
-                      createLabel("kamisatoayaka_melt_count2", "　咲き溶解回数："),
-                      createSelectList("kamisatoayaka_melt_count2", 0, 1, "", "回", 1),
+                      createLabel("kamisatoayaka_melt_count3", "　咲き溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
                     ];
                     elementsToAddToCharTalent.forEach(element => {
                       select_reaction_method.appendChild(element);

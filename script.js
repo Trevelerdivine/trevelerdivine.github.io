@@ -392,6 +392,9 @@ async function create_char_instance(base_status, parameter) {
     case "19":
       char_instance = new xingqiu(base_status, parameter);
       break;
+    case "21":
+      char_instance = new kamisatoayaka(base_status, parameter);
+      break;
     case "22":
       char_instance = new eula(base_status, parameter);
       break;

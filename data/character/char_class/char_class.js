@@ -2681,6 +2681,206 @@ class xingqiu {
   }
 }
 
+class kamisatoayaka {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.talent1effect = 0;
+    this.fourth_conste_buff = 0;
+    this.char_constellations = 0;
+    this.reaction_coeff = 0;
+    this.talent1_buff = 0;
+    this.talent2_buff = 0;
+  }
+
+  async dmg_rate_data() {
+    const Melt_cyro = document.getElementById("Melt-cyro");
+    if (Melt_cyro.checked) {
+      this.reaction_coeff = 1.5;
+    }
+  
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/kamisatoayaka.json");
+    const data = await response.json();
+
+    const talent1_check = document.getElementById("kamisatoayaka_talent1");
+    if (talent1_check.checked)
+    {
+      this.talent1_buff = 0.3;
+    }
+
+    if (attack_method == 1 || attack_method == 6)
+    {
+      const talent2_check = document.getElementById("kamisatoayaka_talent2");
+      if (talent2_check.checked)
+      {
+        this.talent2_buff = 0.18;
+      }
+    }
+
+    if (this.char_constellations > 2)
+    {
+      const fourth_conste_check = document.getElementById("traitCheckbox4");
+      if (fourth_conste_check.checked)
+      {
+        this.fourth_conste_buff = 0.3;
+      }
+    }
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attack_rate = 0;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
+
+    if (attack_method == 1) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+
+        if (checkbox.checked) {
+          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+        }
+      });
+        for (let i = 0; i < 7; i++) {
+          elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 6) {
+      const attack_count = parseInt(document.getElementById("kamisatoayaka_count").value);
+      const react_count = parseInt(document.getElementById("kamisatoayaka_melt_count").value);
+
+      elm_react_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * react_count
+      elm_nonreact_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    }else if (attack_method == 16) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+
+        if (checkbox.checked) {
+          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+        }
+      });
+        elm_react_dmgrate += elm_react[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 21) {
+      const attack_count1 = parseInt(document.getElementById("kamisatoayaka_attack_count1").value);
+      const attack_count3 = parseInt(document.getElementById("kamisatoayaka_attack_count3").value);
+      const react_count1 = parseInt(document.getElementById("kamisatoayaka_melt_count1").value);
+      const react_count3 = parseInt(document.getElementById("kamisatoayaka_melt_count3").value);
+
+      elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count1
+                         + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count3;
+      elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count1 - react_count1)
+                            + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count3 - react_count3);
+      if(this.char_constellations > 1)
+      {
+        const attack_count2 = parseInt(document.getElementById("kamisatoayaka_attack_count2").value);
+        const attack_count4 = parseInt(document.getElementById("kamisatoayaka_attack_count4").value);
+        const react_count2 = parseInt(document.getElementById("kamisatoayaka_melt_count2").value);
+        const react_count4 = parseInt(document.getElementById("kamisatoayaka_melt_count4").value);
+        elm_react_dmgrate += (parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count2
+                           + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count4) * 0.2;
+        elm_nonreact_dmgrate += (parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count2 - react_count2)
+                              + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count4 - react_count4)) * 0.2;
+      }
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    }
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+      return this.talent1_buff + this.talent2_buff;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+      return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    let attckRate;
+    attckRate = status[4] * dmg_rate[4][0];
+    basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+              + status[4] * dmg_rate[4][1];
+    return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class eula {
   constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
