@@ -1317,6 +1317,10 @@ async function show_char_statsform()
           id: "traitCheckbox1",
           label: "第1重：会心率+10%"
         },
+        {
+          id: "special_buff",
+          label: "活性化済み・缶詰知識：基礎攻撃力+3"
+        },
       ];
 
       const options = [
@@ -1324,6 +1328,13 @@ async function show_char_statsform()
         { text: "元素スキル（星落としの剣）", value: "16" },
         { text: "元素爆発（岩潮幾重）", value: "21" },
       ];
+
+      traitCheckbox = createCheckbox(traits[1].id, false);
+      traitLabel = createLabel(traits[1].id, traits[1].label);
+      characterInfo.appendChild(traitCheckbox);
+      characterInfo.appendChild(traitLabel);
+      characterInfo.appendChild(document.createElement("br"));
+
       if (char_constellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, false);

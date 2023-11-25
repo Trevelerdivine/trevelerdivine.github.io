@@ -80,6 +80,16 @@ async function calculate_char_base_status()
   const char_base_cr = data.ステータス.基礎会心率[char_level];
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
+
+  if (char_propaty[0] == 70)
+  {
+    const special_buff_check = document.getElementById("special_buff");
+    if(special_buff_check.checked)
+    {
+      char_base_attck += 3;
+    }
+  }
+
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];
   return char_base_status;
