@@ -5297,6 +5297,130 @@ class zhongli {
   }
 }
 
+class ningguang {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.dmg_rateCache = null;
+    this.parameter = parameter;
+    this.talent2_buff = 0;
+    this.char_constellations = 0;
+  }
+  
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    
+      const talent2_check =  document.getElementById("talent2_buff");
+      if (talent2_check.checked)
+      {
+        this.talent2_buff = 0.12;
+      }
+
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/ningguang.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attck_rate = 0;
+    if (attack_method == 1) {
+      const attack_count = parseInt(document.getElementById("ningguang_count").value);
+      dmg_attck_rate = parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } 
+    else if (attack_method == 6) {
+      const attack_count = parseInt(document.getElementById("ningguang_count").value);
+      dmg_attck_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) 
+                     + parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])* attack_count;
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } 
+    else if (attack_method == 16) {
+      dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } 
+    else if (attack_method == 21) {
+      const attack_count = parseInt(document.getElementById("ningguang_count").value);
+      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } 
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return this.talent2_buff;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    basicDmg = dmg_rate[4] * status[4];
+    return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class travelergeo {
   constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;

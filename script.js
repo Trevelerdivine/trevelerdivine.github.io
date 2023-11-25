@@ -433,6 +433,9 @@ async function create_char_instance(base_status, parameter) {
     case "68":
       char_instance = new noelle(base_status, parameter);
       break;
+    case "69":
+      char_instance = new ningguang(base_status, parameter);
+      break;
     case "70":
       char_instance = new travelergeo(base_status, parameter);
       break;

@@ -1013,21 +1013,21 @@ async function show_attack_method()
             {
               let ningguang_sixth_conste_buff = document.createElement("option");
               ningguang_sixth_conste_buff.value = 7;
-              ningguang_sixth_conste_buff.text = `${""}${7}${"枚"}`;     
+              ningguang_sixth_conste_buff.text = `${""}${7}${"枚"}`;   
+              ningguang_sixth_conste_buff.selected = true;  
               ningguangcount_selectlist.appendChild(ningguang_sixth_conste_buff);
             }
             attack_method_prop.appendChild(document.createElement("br"));
             attack_method_prop.appendChild(ningguang_text);
             attack_method_prop.appendChild(ningguangcount_selectlist);
+          } else if (attack_method == 21) {
+            const ningguang_text = createTextNode("　天権崩玉 宝石弾ヒット数：")
+            const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 12, "", "発", 10);
+            attack_method_prop.appendChild(document.createElement("br"));
+            attack_method_prop.appendChild(ningguang_text);
+            attack_method_prop.appendChild(ningguangcount_selectlist);
           }
           
-          else if (attack_method == 21) {
-            const albedo_text = createTextNode("　生滅の花ヒット回数：")
-            const albedocount_selectlist = createSelectList("ningguang_count", 1, 7, "", "回", 3);
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(albedo_text);
-            attack_method_prop.appendChild(albedocount_selectlist);
-          }
         break
           
         case "70":
