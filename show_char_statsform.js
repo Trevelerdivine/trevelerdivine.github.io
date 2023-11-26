@@ -756,6 +756,27 @@ async function show_char_statsform()
       }
     }
 
+    else if (selectedCharId == "28") {
+      traits = [
+        { id: "rosaria_talent1", label: "固有天賦1：懺悔に耳を傾ける幻影 会心率+12%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ(物理)", value: "1" },
+        { text: "元素スキル（罪喰いの懺悔）", value: "16" },
+        { text: "元素爆発（臨終の聖礼）", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
+      traitCheckbox = createCheckbox(traits[0].id, true);
+      traitLabel = createLabel(traits[0].id, traits[0].label);
+  
+      characterInfo.appendChild(traitCheckbox);
+      characterInfo.appendChild(traitLabel);
+      characterInfo.appendChild(document.createElement("br"));
+    }
+
     else if (selectedCharId == "32") {
 
       traits = [

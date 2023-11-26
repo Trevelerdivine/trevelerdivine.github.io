@@ -689,7 +689,7 @@ async function show_attack_method()
                       createSelectList("kamisatoayaka_count", 0, 15, "", "回", 6),
                       document.createElement("br"),
                       createLabel("kamisatoayaka_sixth_count", "　6重強化重撃ヒット回数："),
-                      createSelectList("kamisatoayaka_sixth_count", 0, 3, "", "回", 1),
+                      createSelectList("kamisatoayaka_sixth_count", 0, 3, "", "回", 3),
                       document.createElement("br"),
                     ];
                     elementsToAddToCharTalent.forEach(element => {
@@ -848,6 +848,67 @@ async function show_attack_method()
               select_reaction_method.appendChild(ganyureaction_text); // チェックボックスを select_reaction_method に追加
               select_reaction_method.appendChild(ganyureaction_selectlist); 
             }
+        break
+
+        case "28":
+          if (attack_method == 1) {
+            let rosaria_talent;
+            if (char_constellations == 4)
+            {
+              rosaria_talent = [
+                createCheckbox("rosaria_first_buff", true),
+                createLabel("rosaria_first_buff", "第1重：罪の導き 通常攻撃のダメージ+10%"),
+                document.createElement("br"),
+                createCheckbox("rosaria_sixth_buff", true),
+                createLabel("rosaria_sixth_buff", "第6重：代行裁判 敵の物理耐性-20%"),
+              ];
+              rosaria_talent.forEach(element => {
+                temporary_char_talent.appendChild(element);
+              });
+            }
+            else if (char_constellations > 0)
+            {
+              rosaria_talent = [
+                createCheckbox("rosaria_first_buff", true),
+                createLabel("rosaria_first_buff", "第1重：罪の導き 通常攻撃のダメージ+10%"),
+                document.createElement("br"),
+              ];
+              rosaria_talent.forEach(element => {
+                temporary_char_talent.appendChild(element);
+              });
+            }
+          } 
+          else if (attack_method == 16) {
+            options = [
+              { text: "スキルダメージ1", value: "0", checked: true },
+              { text: "スキルダメージ2", value: "1"},
+            ];
+            createCheckboxList_br(options);
+          } else if (attack_method == 21) {
+            options = [
+              { text: "スキルダメージ1", value: "0", checked: true },
+              { text: "スキルダメージ2", value: "1"},
+            ];
+            createCheckboxList_br(options);
+            const rosariaburst_text = createTextNode("　継続攻撃ヒット回数：");
+            let rosariaburst_selectlist;
+            const rosariareaction_text = createTextNode("　元素反応回数：")
+            let rosariareaction_selectlist;
+            if (char_constellations < 2)
+            {
+              rosariaburst_selectlist = createSelectList("rosaria_Q_count", 1, 4, "", "回", 4);
+              rosariareaction_selectlist = createSelectList("rosaria_Qreact", 0, 4, "", "回", 4);
+            }
+            else
+            {
+              rosariaburst_selectlist = createSelectList("rosaria_Q_count", 1, 6, "", "回", 6);
+              rosariareaction_selectlist = createSelectList("rosaria_Qreact", 0, 6, "", "回", 6);
+            }
+            attack_method_prop.appendChild(rosariaburst_text);
+            attack_method_prop.appendChild(rosariaburst_selectlist);
+            select_reaction_method.appendChild(rosariareaction_text); // チェックボックスを select_reaction_method に追加
+            select_reaction_method.appendChild(rosariareaction_selectlist); 
+          }
         break
 
         case "32":
