@@ -2759,6 +2759,16 @@ class kamisatoayaka {
 
       elm_react_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * react_count
       elm_nonreact_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
+      
+      if (this.char_constellations == 4)
+      {
+        const sixth_attack_count = parseInt(document.getElementById("kamisatoayaka_sixth_count").value);
+        const sixth_react_count = parseInt(document.getElementById("kamisatoayaka_sixth_melt_count").value);
+
+      elm_react_dmgrate += (parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + 2.98) * sixth_react_count
+      elm_nonreact_dmgrate += (parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + 2.98) * (sixth_attack_count - sixth_react_count)
+      }
+      
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }else if (attack_method == 16) {
       const checkboxContainer = document.getElementById("select_reaction_method");

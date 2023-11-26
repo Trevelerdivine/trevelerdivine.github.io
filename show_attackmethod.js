@@ -667,12 +667,6 @@ async function show_attack_method()
                 }
                 else if (attack_method == 6)
                 {
-                  const traitCheckbox = createCheckbox("traitCheckbox6", true);
-                  const traitLabel = createLabel("traitCheckbox6", "第6重：間水月 重撃ダメージ+298%");
-              
-                  temporary_char_talent.appendChild(traitCheckbox);
-                  temporary_char_talent.appendChild(traitLabel);
-                  temporary_char_talent.appendChild(document.createElement("br"));
 
                   kamisatoayaka_talent = [
                     createCheckbox("kamisatoayaka_talent1", true),
@@ -686,25 +680,56 @@ async function show_attack_method()
                     temporary_char_talent.appendChild(element);
                   });
 
-                  elementsToAddToCharTalent = [
-                    createTextNode("　重撃1回 = 3ヒット"),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
-                    createSelectList("kamisatoayaka_count", 0, 15, "", "回", 9),
-                    document.createElement("br"),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    attack_method_prop.appendChild(element);
-                  });
+                  if (char_constellations == 4)
+                  {
+                    elementsToAddToCharTalent = [
+                      createTextNode("　重撃1回 = 3ヒット"),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
+                      createSelectList("kamisatoayaka_count", 0, 15, "", "回", 6),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_sixth_count", "　6重強化重撃ヒット回数："),
+                      createSelectList("kamisatoayaka_sixth_count", 0, 3, "", "回", 1),
+                      document.createElement("br"),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      attack_method_prop.appendChild(element);
+                    });
 
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 3),
-                    document.createElement("br"),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    select_reaction_method.appendChild(element);
-                  });
+                    elementsToAddToCharTalent = [
+                      createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 2),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_sixth_melt_count", "　6重強化重撃溶解回数："),
+                      createSelectList("kamisatoayaka_sixth_melt_count", 0, 3, "", "回", 1),
+                      document.createElement("br"),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      select_reaction_method.appendChild(element);
+                    });
+                  }
+                  else
+                  {
+                    elementsToAddToCharTalent = [
+                      createTextNode("　重撃1回 = 3ヒット"),
+                      document.createElement("br"),
+                      createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
+                      createSelectList("kamisatoayaka_count", 0, 15, "", "回", 9),
+                      document.createElement("br"),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      attack_method_prop.appendChild(element);
+                    });
+
+                    elementsToAddToCharTalent = [
+                      createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
+                      createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 3),
+                      document.createElement("br"),
+                    ];
+                    elementsToAddToCharTalent.forEach(element => {
+                      select_reaction_method.appendChild(element);
+                    });
+                  }
                 }
                 else if (attack_method == 16)
                 {
