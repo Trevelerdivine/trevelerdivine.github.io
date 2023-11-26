@@ -2703,19 +2703,19 @@ class kamisatoayaka {
     const response = await fetch("./data/character/char_data/kamisatoayaka.json");
     const data = await response.json();
 
-    const talent1_check = document.getElementById("kamisatoayaka_talent1");
-    if (talent1_check.checked)
-    {
-      this.talent1_buff = 0.3;
-    }
-
     if (attack_method == 1 || attack_method == 6)
     {
-      const talent2_check = document.getElementById("kamisatoayaka_talent2");
-      if (talent2_check.checked)
+      const talent1_check = document.getElementById("kamisatoayaka_talent1");
+      if (talent1_check.checked)
       {
-        this.talent2_buff = 0.18;
+        this.talent1_buff = 0.3;
       }
+    }
+
+    const talent2_check = document.getElementById("kamisatoayaka_talent2");
+    if (talent2_check.checked)
+    {
+      this.talent2_buff = 0.18;
     }
 
     if (this.char_constellations > 2)
@@ -2768,10 +2768,6 @@ class kamisatoayaka {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
-        }
       });
         elm_react_dmgrate += elm_react[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -2876,7 +2872,7 @@ class kamisatoayaka {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [0,this.fourth_conste_buff,0];
     return char_debuff;
   }
 }
