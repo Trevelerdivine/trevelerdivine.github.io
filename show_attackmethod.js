@@ -944,8 +944,8 @@ async function show_attack_method()
             }
             else
             {
-              kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 6, "", "回", 16);
-              kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 6, "", "回", 6);
+              kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 30, "", "回", 16);
+              kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 30, "", "回", 6);
             }
             attack_method_prop.appendChild(document.createElement("br"));
             attack_method_prop.appendChild(kaeyaburst_text);
