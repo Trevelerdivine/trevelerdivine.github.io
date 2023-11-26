@@ -863,7 +863,7 @@ async function show_attack_method()
                 createLabel("rosaria_sixth_buff", "第6重：代行裁判 敵の物理耐性-20%"),
               ];
               rosaria_talent.forEach(element => {
-                characterInfo.appendChild(element);
+                temporary_char_talent.appendChild(element);
               });
             }
             else if (char_constellations > 0)
