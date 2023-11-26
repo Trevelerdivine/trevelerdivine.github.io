@@ -784,6 +784,8 @@ async function show_char_statsform()
         { text: "元素スキル（霜の襲撃）", value: "16" },
         { text: "元素爆発（凛冽なる輪舞）", value: "21" },
       ];
+    
+      createchar_attackmethod(options);
     }
 
     else if (selectedCharId == "32") {
