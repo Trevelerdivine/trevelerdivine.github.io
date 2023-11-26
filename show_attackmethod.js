@@ -918,8 +918,8 @@ async function show_attack_method()
             if (char_constellations > 0)
             {
               kaeya_talent = [
-                createCheckbox("rosaria_first_buff", true),
-                createLabel("rosaria_first_buff", "第1重：優れた血筋 通常攻撃の会心率+15%"),
+                createCheckbox("kaeya_first_buff", true),
+                createLabel("kaeya_first_buff", "第1重：優れた血筋 通常攻撃の会心率+15%"),
                 document.createElement("br"),
               ];
               kaeya_talent.forEach(element => {
@@ -928,7 +928,10 @@ async function show_attack_method()
             }
           } 
           else if (attack_method == 16) {
-
+            options = [
+              { text: "霜の襲撃", value: "0", checked: true },
+            ];
+            createCheckboxList(options)
           } else if (attack_method == 21) {
             const kaeyaburst_text = createTextNode("　寒氷の柱ヒット回数：");
             let kaeyaburst_selectlist;

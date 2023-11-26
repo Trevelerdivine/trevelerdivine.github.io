@@ -3429,6 +3429,173 @@ class rosaria {
   }
 }
 
+class kaeya {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.dmg_rateCache = null;
+    this.parameter = parameter;
+    this.reaction_coeff = 0;
+    this.first_conste_buff = 0;
+    this.char_constellations = 0;
+  }
+  
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+
+    if (char_propaty[0] != 7)
+    {
+      const Melt_cyro = document.getElementById("Melt-cyro");
+      const reaction_flag = document.getElementById("reactionon_flag");
+      if (Melt_cyro.checked && reaction_flag.checked) {
+        this.reaction_coeff = 1.5;
+      }
+    }
+    
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/kaeya.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attack_rate = 0;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
+
+    if (attack_method == 1) {
+      if (this.char_constellations > 0)
+      {
+        const first_conste_check =  document.getElementById("kaeya_first_buff");
+        if (first_conste_check.checked)
+        {
+          this.first_conste_buff = 0.15;
+        }
+      }
+
+      for (let i = 0; i < 5; i++) {
+        dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    }else if (attack_method == 16) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      for (let i = 0; i < 2; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 21) {
+      const attack_count = parseInt(document.getElementById("kaeya_Q_count").value);
+      const react_count = parseInt(document.getElementById("kaeya_Qreact").value);
+
+      elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
+      elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    }
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return this.first_conste_buff;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return  0;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let attckRate;
+    let basicDmg;
+    if (this.reaction_coeff > 0)
+    {
+        basicDmg = dmg_rate[4][0] * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + dmg_rate[4][1] * status[4];
+        return basicDmg;
+    }
+    else
+    {
+      if (attack_method != 1)
+      {
+        attckRate = dmg_rate[4][0] + dmg_rate[4][1];
+        basicDmg = attckRate * status[4];
+        return basicDmg;
+      }
+      else
+      {
+        basicDmg = dmg_rate[4] * status[4];
+        return basicDmg;
+      }
+    }
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class cyno {
   constructor(base_status_array, parameter) 
   {
