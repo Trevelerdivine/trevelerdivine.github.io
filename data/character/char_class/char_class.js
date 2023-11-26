@@ -2694,6 +2694,8 @@ class kamisatoayaka {
   }
 
   async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    
     const Melt_cyro = document.getElementById("Melt-cyro");
     const reaction_flag = document.getElementById("reactionon_flag");
     if (Melt_cyro.checked && reaction_flag.checked) {
