@@ -863,7 +863,7 @@ async function show_attack_method()
                 createLabel("rosaria_sixth_buff", "第6重：代行裁判 敵の物理耐性-20%"),
               ];
               rosaria_talent.forEach(element => {
-                temporary_char_talent.appendChild(element);
+                characterInfo.appendChild(element);
               });
             }
             else if (char_constellations > 0)
@@ -874,7 +874,7 @@ async function show_attack_method()
                 document.createElement("br"),
               ];
               rosaria_talent.forEach(element => {
-                temporary_char_talent.appendChild(element);
+                characterInfo.appendChild(element);
               });
             }
           } 
@@ -892,7 +892,7 @@ async function show_attack_method()
             createCheckboxList_br(options);
             const rosariaburst_text = createTextNode("　継続攻撃ヒット回数：");
             let rosariaburst_selectlist;
-            const rosariareaction_text = createTextNode("　元素反応回数：")
+            const rosariareaction_text = createTextNode("　継続攻撃反応回数：")
             let rosariareaction_selectlist;
             if (char_constellations < 2)
             {
@@ -904,6 +904,7 @@ async function show_attack_method()
               rosariaburst_selectlist = createSelectList("rosaria_Q_count", 1, 6, "", "回", 6);
               rosariareaction_selectlist = createSelectList("rosaria_Qreact", 0, 6, "", "回", 6);
             }
+            attack_method_prop.appendChild(document.createElement("br"));
             attack_method_prop.appendChild(rosariaburst_text);
             attack_method_prop.appendChild(rosariaburst_selectlist);
             select_reaction_method.appendChild(rosariareaction_text); // チェックボックスを select_reaction_method に追加

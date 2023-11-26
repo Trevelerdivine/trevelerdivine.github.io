@@ -2695,7 +2695,7 @@ class kamisatoayaka {
 
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
-    
+
     const Melt_cyro = document.getElementById("Melt-cyro");
     const reaction_flag = document.getElementById("reactionon_flag");
     if (Melt_cyro.checked && reaction_flag.checked) {
@@ -3031,6 +3031,400 @@ class eula {
 
   calculate_char_debuff() {
     let char_debuff = [this.debuff,0,0];
+    return char_debuff;
+  }
+}
+
+class ganyu {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.dmg_rateCache = null;
+    this.parameter = parameter;
+    this.talent1_buff = 0;
+    this.talent2_buff = 0;
+    this.reaction_coeff = 0;
+    this.fourth_conste_buff = 0;
+    this.char_constellations = 0;
+    this.Melt_react = [];
+    this.Melt_nonreact = [];
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.Q_melt_count = 0;
+    this.Q_nonmelt_count = 0;
+  }
+  
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    
+    const Melt_cyro = document.getElementById("Melt-cyro");
+    if (Melt_cyro.checked) {
+      this.reaction_coeff = 1.5;
+    }
+    const talent1_check = document.getElementById("ganyu_talent1");
+    if (talent1_check.checked && attack_method == 6)
+    {
+      this.talent1_buff = 0.2;
+    }
+
+    const talent2_check = document.getElementById("ganyu_talent2");
+    if (talent2_check.checked && attack_method ==6)
+    {
+      this.talent2_buff = 0.2;
+    }
+
+    if (this.char_constellations > 2)
+    {
+      const fourth_conste_check =  document.getElementById("traitCheckbox4");
+      if (fourth_conste_check.checked)
+      {
+        this.fourth_conste_buff = parseInt(document.getElementById("four_conste_buff").value) / 100;
+      }
+    }
+    
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/ganyu.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attck_rate = 0;
+  
+    if (attack_method == 6) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+
+      // チェックボックスの状態を格納するための配列を初期化
+
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        this.Melt_react.push(checkbox.checked ? 1 : 0);
+        this.Melt_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      const dmg_rate1 = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      dmg_attck_rate = [dmg_rate1, dmg_rate2];
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 21) {
+      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
+      this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    }
+
+    // 計算結果をキャッシュして返す
+    this.dmg_rateCache = dmg_rate;
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return this.talent1_buff;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return  this.talent2_buff + this.fourth_conste_buff;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let attckRate;
+    let basicDmg;
+    if (attack_method == 6)
+    {
+      if (this.reaction_coeff == 1.5)
+      {
+        let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[1] * dmg_rate[4][1];
+        let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[1] * dmg_rate[4][1];
+        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + NonMelt_attack_rate * status[4];
+        return basicDmg;
+      }
+      else
+      {
+        attckRate = dmg_rate[4][0] + dmg_rate[4][1];
+        basicDmg = attckRate * status[4];
+        return basicDmg;
+      }
+    }
+    else if (attack_method == 21)
+    {
+      if (this.reaction_coeff == 1.5)
+      {
+        let Melt_attack_rate = this.Q_melt_count * dmg_rate[4];
+        let NonMelt_attack_rate = (this.Q_nonmelt_count - this.Q_melt_count) * dmg_rate[4];
+        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + NonMelt_attack_rate * status[4];
+        return basicDmg;
+      }
+      else
+      {
+        attckRate = dmg_rate[4] * this.Q_nonmelt_count;
+        basicDmg = attckRate * status[4];
+        return basicDmg;
+      }
+    }
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    if (this.char_constellations > 0)
+    {
+      const first_conste_check =  document.getElementById("traitCheckbox1");
+      if (first_conste_check.checked)
+      {
+        char_debuff = [0.15,0,0];
+      }
+    }
+    return char_debuff;
+  }
+}
+
+class rosaria {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.dmg_rateCache = null;
+    this.parameter = parameter;
+    this.talent1_buff = 0;
+    this.reaction_coeff = 0;
+    this.first_conste_buff = 0;
+    this.second_conste_buff = 0;
+    this.char_constellations = 0;
+  }
+  
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+
+    if (char_propaty[0] != 7)
+    {
+      const Melt_cyro = document.getElementById("Melt-cyro");
+      const reaction_flag = document.getElementById("reactionon_flag");
+      if (Melt_cyro.checked && reaction_flag.checked) {
+        this.reaction_coeff = 1.5;
+      }
+    }
+
+    const talent1_check = document.getElementById("rosaria_talent1");
+    if (talent1_check.checked)
+    {
+      this.talent1_buff = 0.12;
+    }
+
+    if (this.char_constellations > 2)
+    {
+      const fourth_conste_check =  document.getElementById("traitCheckbox4");
+      if (fourth_conste_check.checked)
+      {
+        this.fourth_conste_buff = parseInt(document.getElementById("four_conste_buff").value) / 100;
+      }
+    }
+    
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/rosaria.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attack_rate = 0;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
+
+    if (attack_method == 1) {
+
+      for (let i = 0; i < 7; i++) {
+        dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    }else if (attack_method == 16) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      for (let i = 0; i < 2; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 21) {
+      const attack_count = parseInt(document.getElementById("rosaria_Q_count").value);
+      const react_count = parseInt(document.getElementById("rosaria_Qreact").value);
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      for (let i = 0; i < 2; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]) * react_count1
+      elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    }
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return this.talent1_buff;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return  0;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let attckRate;
+    let basicDmg;
+    if (this.reaction_coeff > 0)
+    {
+        basicDmg = dmg_rate[4][0] * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + dmg_rate[4][1] * status[4];
+        return basicDmg;
+    }
+    else
+    {
+      if (attack_method != 1)
+      {
+        attckRate = dmg_rate[4][0] + dmg_rate[4][1];
+        basicDmg = attckRate * status[4];
+        return basicDmg;
+      }
+      else
+      {
+        basicDmg = dmg_rate[4] * status[4];
+        return basicDmg;
+      }
+    }
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    if (this.char_constellations > 0)
+    {
+      const first_conste_check =  document.getElementById("traitCheckbox1");
+      if (first_conste_check.checked)
+      {
+        char_debuff = [0.15,0,0];
+      }
+    }
     return char_debuff;
   }
 }
@@ -4892,203 +5286,6 @@ class tighnari {
 
   calculate_char_debuff() {
     let char_debuff = [0,0,0];
-    return char_debuff;
-  }
-}
-
-class ganyu {
-  constructor(base_status_array, parameter) {
-    this.base_status_array = base_status_array;
-    this.dmg_rateCache = null;
-    this.parameter = parameter;
-    this.talent1_buff = 0;
-    this.talent2_buff = 0;
-    this.reaction_coeff = 0;
-    this.fourth_conste_buff = 0;
-    this.char_constellations = 0;
-    this.Melt_react = [];
-    this.Melt_nonreact = [];
-    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.Q_melt_count = 0;
-    this.Q_nonmelt_count = 0;
-  }
-  
-  async dmg_rate_data() {
-    this.char_constellations = document.getElementById("char_constellations").value;
-    
-    const Melt_cyro = document.getElementById("Melt-cyro");
-    if (Melt_cyro.checked) {
-      this.reaction_coeff = 1.5;
-    }
-    const talent1_check = document.getElementById("ganyu_talent1");
-    if (talent1_check.checked && attack_method == 6)
-    {
-      this.talent1_buff = 0.2;
-    }
-
-    const talent2_check = document.getElementById("ganyu_talent2");
-    if (talent2_check.checked && attack_method ==6)
-    {
-      this.talent2_buff = 0.2;
-    }
-
-    if (this.char_constellations > 2)
-    {
-      const fourth_conste_check =  document.getElementById("traitCheckbox4");
-      if (fourth_conste_check.checked)
-      {
-        this.fourth_conste_buff = parseInt(document.getElementById("four_conste_buff").value) / 100;
-      }
-    }
-    
-    // JSON データを取得
-    const response = await fetch("./data/character/char_data/ganyu.json");
-    const data = await response.json();
-  
-    // 攻撃方法に応じてダメージ率を計算
-    let dmg_rate;
-    let dmg_attck_rate = 0;
-  
-    if (attack_method == 6) {
-      const checkboxContainer = document.getElementById("select_reaction_method");
-      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-
-      // チェックボックスの状態を格納するための配列を初期化
-
-      // 各チェックボックスの状態を調べて配列に追加
-      checkboxes.forEach(checkbox => {
-        this.Melt_react.push(checkbox.checked ? 1 : 0);
-        this.Melt_nonreact.push(checkbox.checked ? 0 : 1);
-      });
-      const dmg_rate1 = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attck_rate = [dmg_rate1, dmg_rate2];
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    } else if (attack_method == 21) {
-      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
-      this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    }
-
-    // 計算結果をキャッシュして返す
-    this.dmg_rateCache = dmg_rate;
-    return dmg_rate;
-  }
-  
-  calculate_char_fixed_hp(status) {
-    return 0;
-  }
-
-  calculate_char_result_hp(status) {
-    return 0;
-  }
-
-  calculate_char_fixed_attck(status) {
-    return 0;
-  }
-
-  calculate_char_result_attck(status) {
-    return 0;
-  }
-
-  calculate_char_fixed_deff(status) {
-    return 0;
-  }
-
-  calculate_char_result_deff(status) {
-    return 0;
-  }
-
-  calculate_char_fixed_elm(status) {
-    return 0;
-  }
-
-  calculate_char_result_elm(status) {
-    return 0;
-  }
-
-  calculate_char_fixed_elm_charge(status) {
-    return 0;
-  }
-
-  calculate_char_result_elm_charge(status) {
-    return 0;
-  }
-
-  calculate_char_fixed_cr(status) {
-    return this.talent1_buff;
-  }
-
-  calculate_char_result_cr(status) {
-    return 0;
-  }
-
-  calculate_char_fixed_cd(status) {
-    return 0;
-  }
-
-  calculate_char_result_cd(status) {
-    return 0;
-  }
-
-  calculate_char_fixed_dmg_buff(status) {
-    return  this.talent2_buff + this.fourth_conste_buff;
-  }
-
-  calculate_char_result_dmg_buff(status) {
-    return 0;
-  }
-
-  calculate_basic_dmg(dmg_rate, status) {
-    let attckRate;
-    let basicDmg;
-    if (attack_method == 6)
-    {
-      if (this.reaction_coeff == 1.5)
-      {
-        let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[1] * dmg_rate[4][1];
-        let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[1] * dmg_rate[4][1];
-        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + NonMelt_attack_rate * status[4];
-        return basicDmg;
-      }
-      else
-      {
-        attckRate = dmg_rate[4][0] + dmg_rate[4][1];
-        basicDmg = attckRate * status[4];
-        return basicDmg;
-      }
-    }
-    else if (attack_method == 21)
-    {
-      if (this.reaction_coeff == 1.5)
-      {
-        let Melt_attack_rate = this.Q_melt_count * dmg_rate[4];
-        let NonMelt_attack_rate = (this.Q_nonmelt_count - this.Q_melt_count) * dmg_rate[4];
-        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + NonMelt_attack_rate * status[4];
-        return basicDmg;
-      }
-      else
-      {
-        attckRate = dmg_rate[4] * this.Q_nonmelt_count;
-        basicDmg = attckRate * status[4];
-        return basicDmg;
-      }
-    }
-  }
-
-  calculate_char_debuff() {
-    let char_debuff = [0,0,0];
-    if (this.char_constellations > 0)
-    {
-      const first_conste_check =  document.getElementById("traitCheckbox1");
-      if (first_conste_check.checked)
-      {
-        char_debuff = [0.15,0,0];
-      }
-    }
     return char_debuff;
   }
 }
