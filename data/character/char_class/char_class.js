@@ -3240,7 +3240,7 @@ class rosaria {
     this.talent1_buff = 0;
     this.reaction_coeff = 0;
     this.first_conste_buff = 0;
-    this.second_conste_buff = 0;
+    this.sixth_conste_buff = 0;
     this.char_constellations = 0;
   }
   
@@ -3261,15 +3261,6 @@ class rosaria {
     {
       this.talent1_buff = 0.12;
     }
-
-    if (this.char_constellations > 2)
-    {
-      const fourth_conste_check =  document.getElementById("traitCheckbox4");
-      if (fourth_conste_check.checked)
-      {
-        this.fourth_conste_buff = parseInt(document.getElementById("four_conste_buff").value) / 100;
-      }
-    }
     
     // JSON データを取得
     const response = await fetch("./data/character/char_data/rosaria.json");
@@ -3282,6 +3273,23 @@ class rosaria {
     let elm_nonreact_dmgrate = 0;
 
     if (attack_method == 1) {
+      if (this.char_constellations > 0)
+      {
+        const first_conste_check =  document.getElementById("rosaria_first_buff");
+        if (first_conste_check.checked)
+        {
+          this.first_conste_buff = 0.1;
+        }
+      }
+
+      if (this.char_constellations == 4)
+      {
+        const sixth_conste_check =  document.getElementById("rosaria_sixth_buff");
+        if (sixth_conste_check.checked)
+        {
+          this.sixth_conste_buff = 0.2;
+        }
+      }
 
       for (let i = 0; i < 7; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -3319,7 +3327,7 @@ class rosaria {
         elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
       }
-      elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]) * react_count1
+      elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]) * react_count;
       elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
@@ -3383,7 +3391,7 @@ class rosaria {
   }
 
   calculate_char_fixed_dmg_buff(status) {
-    return  0;
+    return  this.first_conste_buff;
   }
 
   calculate_char_result_dmg_buff(status) {
@@ -3416,7 +3424,7 @@ class rosaria {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [this.sixth_conste_buff,0,0];
     return char_debuff;
   }
 }
