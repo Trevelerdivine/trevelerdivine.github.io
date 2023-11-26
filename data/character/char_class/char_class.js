@@ -2695,7 +2695,8 @@ class kamisatoayaka {
 
   async dmg_rate_data() {
     const Melt_cyro = document.getElementById("Melt-cyro");
-    if (Melt_cyro.checked) {
+    const reaction_flag = document.getElementById("reactionon_flag");
+    if (Melt_cyro.checked || reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
   
@@ -2865,9 +2866,16 @@ class kamisatoayaka {
   calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
-    attckRate = status[4] * dmg_rate[4][0];
-    basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-              + status[4] * dmg_rate[4][1];
+    if (this.reaction_coeff > 0)
+    {
+      attckRate = status[4] * dmg_rate[4][0];
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[4] * dmg_rate[4][1];
+    }
+    else
+    {
+      basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][0]);
+    }
     return basicDmg;
   }
 
