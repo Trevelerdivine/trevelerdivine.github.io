@@ -3324,11 +3324,11 @@ class rosaria {
         elm_nonreact.push(checkbox.checked ? 0 : 1);
       });
       for (let i = 0; i < 2; i++) {
-        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
-        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]) * react_count;
-      elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
+      elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]) * (attack_count - react_count)
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
     return dmg_rate;
