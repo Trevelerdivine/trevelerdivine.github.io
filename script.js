@@ -401,6 +401,9 @@ async function create_char_instance(base_status, parameter) {
     case "23":
       char_instance = new ganyu(base_status, parameter);
       break;
+    case "28":
+      char_instance = new rosaria(base_status, parameter);
+      break;
     case "32":
       char_instance = new cyno(base_status, parameter);
       break;
