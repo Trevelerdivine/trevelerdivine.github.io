@@ -912,6 +912,46 @@ async function show_attack_method()
           }
         break
 
+        case "31":
+          if (attack_method == 1) {
+            let kaeya_talent;
+            if (char_constellations > 0)
+            {
+              kaeya_talent = [
+                createCheckbox("rosaria_first_buff", true),
+                createLabel("rosaria_first_buff", "第1重：優れた血筋 通常攻撃の会心率+15%"),
+                document.createElement("br"),
+              ];
+              kaeya_talent.forEach(element => {
+                temporary_char_talent.appendChild(element);
+              });
+            }
+          } 
+          else if (attack_method == 16) {
+
+          } else if (attack_method == 21) {
+            const kaeyaburst_text = createTextNode("　寒氷の柱ヒット回数：");
+            let kaeyaburst_selectlist;
+            const kaeyareaction_text = createTextNode("　寒氷の柱反応回数：")
+            let kaeyareaction_selectlist;
+            if (char_constellations < 4)
+            {
+              kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 30, "", "回", 12);
+              kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 30, "", "回", 6);
+            }
+            else
+            {
+              kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 6, "", "回", 16);
+              kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 6, "", "回", 6);
+            }
+            attack_method_prop.appendChild(document.createElement("br"));
+            attack_method_prop.appendChild(kaeyaburst_text);
+            attack_method_prop.appendChild(kaeyaburst_selectlist);
+            select_reaction_method.appendChild(kaeyareaction_text); // チェックボックスを select_reaction_method に追加
+            select_reaction_method.appendChild(kaeyareaction_selectlist); 
+          }
+        break
+
         case "32":
           let cyno_selectlist;
           if (attack_method == 1) {
