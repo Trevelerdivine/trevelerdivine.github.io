@@ -2874,7 +2874,7 @@ class kamisatoayaka {
     }
     else
     {
-      basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][0]);
+      basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
     }
     return basicDmg;
   }
