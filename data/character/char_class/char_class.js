@@ -2696,7 +2696,7 @@ class kamisatoayaka {
   async dmg_rate_data() {
     const Melt_cyro = document.getElementById("Melt-cyro");
     const reaction_flag = document.getElementById("reactionon_flag");
-    if (Melt_cyro.checked || reaction_flag.checked) {
+    if (Melt_cyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
   
