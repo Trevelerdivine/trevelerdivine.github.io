@@ -3484,6 +3484,10 @@ class chongyun {
     }else if (attack_method == 16) {
       const attack_count = parseInt(document.getElementById("chongyun_skill_count").value) + parseInt(document.getElementById("chongyun_talent_count").value);
       const react_count = parseInt(document.getElementById("chongyun_skill_react").value) + parseInt(document.getElementById("chongyun_talent_react").value);
+      if (this.reaction_coeff == 0)
+      {
+        react_count = 0;
+      }
 
       elm_react_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
       elm_nonreact_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count);
@@ -3500,6 +3504,10 @@ class chongyun {
 
       const attack_count = parseInt(document.getElementById("chongyun_Q_count").value);
       const react_count = parseInt(document.getElementById("chongyun_Qreact").value);
+      if (this.reaction_coeff == 0)
+      {
+        react_count = 0;
+      }
 
       elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
       elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
