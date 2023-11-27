@@ -404,6 +404,9 @@ async function create_char_instance(base_status, parameter) {
     case "28":
       char_instance = new rosaria(base_status, parameter);
       break;
+    case "30":
+      char_instance = new chongyun(base_status, parameter);
+      break;
     case "31":
       char_instance = new kaeya(base_status, parameter);
       break;

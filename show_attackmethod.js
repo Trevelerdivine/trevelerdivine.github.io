@@ -925,10 +925,10 @@ async function show_attack_method()
           else if (attack_method == 16) {
             traits = [
               document.createElement("br"),
-              createTextNode("　巨大霊刃ヒット回数："),
+              createLabel("chongyun_skill_count", "　巨大霊刃ヒット回数："),
               createSelectList("chongyun_skill_count", 0, 1, "", "回", 1),
               document.createElement("br"),
-              createLabel("chongyun_skill_count2", "　追氷剣訣ヒット回数："),
+              createLabel("chongyun_talent_count", "　追氷剣訣ヒット回数："),
               createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
               document.createElement("br"),
             ];
@@ -938,17 +938,29 @@ async function show_attack_method()
 
             traits = [
               document.createElement("br"),
-              createTextNode("　巨大霊刃反応回数："),
-              createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+              createLabel("chongyun_skill_react", "　巨大霊刃反応回数："),
+              createSelectList("chongyun_skill_react", 0, 1, "", "回", 1),
               document.createElement("br"),
               createLabel("chongyun_talent_react", "　追氷剣訣反応回数："),
-              createSelectList("chongyun_skill_count1", 0, 1, "", "回", 1),
+              createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
               document.createElement("br"),
             ];
             traits.forEach(element => {
               select_reaction_method.appendChild(element);
             });
           } else if (attack_method == 21) {
+            if (char_constellations == 4)
+            {
+              const chongyun_talent = [
+                createCheckbox("chongyun_sixth_buff", true),
+                createLabel("chongyun_sixth_buff", "第6重：四霊の捧げ 元素爆発ダメージ+15%"),
+                document.createElement("br"),
+              ];
+              chongyun_talent.forEach(element => {
+                temporary_char_talent.appendChild(element);
+              });
+            }
+
             const chongyunburst_text = createTextNode("　巨大霊刃ヒット回数：");
             let chongyunburst_selectlist;
             const chongyunreaction_text = createTextNode("　巨大霊刃反応回数：")
