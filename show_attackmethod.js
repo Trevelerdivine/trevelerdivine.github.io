@@ -11,6 +11,9 @@ async function show_attack_method()
   await calculate_depend_status();
 
   let elements_const_dmg;
+  attack_method = document.getElementById("attack_method_id").value;     
+  let options = [];
+  let elementsToAddToCharTalent;
 
   const ReactionOffRadioButton = document.createElement("input");
   ReactionOffRadioButton.type = "radio";
@@ -91,7 +94,6 @@ async function show_attack_method()
     select_reaction_method.appendChild(document.createElement("br"));
     select_reaction_method.appendChild(document.createElement("br"));
 
-
     elements_const_dmg = [
       document.createElement("br"),
       createLabel("Overloaded", "　過負荷回数：　"),
@@ -129,15 +131,15 @@ async function show_attack_method()
     select_reaction_method.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
-    document.createElement("br"),
-    createLabel("Electro_Charged", "　感電回数：　"),
-    createSelectList("Electro_Charged", 0, 50, "", "回", 0),
-    document.createElement("br"),
-  ];
+      document.createElement("br"),
+      createLabel("Electro_Charged", "　感電回数：　"),
+      createSelectList("Electro_Charged", 0, 50, "", "回", 0),
+      document.createElement("br"),
+    ];
 
-  elements_const_dmg.forEach(element => {
-    elemental_reaction.appendChild(element);
-  });
+    elements_const_dmg.forEach(element => {
+      elemental_reaction.appendChild(element);
+    });
   }
 
   else if (char_propaty[0] == 2)
@@ -160,7 +162,6 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(document.createElement("br"));
     select_reaction_method.appendChild(document.createElement("br"));
-
   }
 
   else if (char_propaty[0] == 3)
@@ -193,10 +194,6 @@ async function show_attack_method()
     elemental_reaction.appendChild(ReactionOnRadio_label);
     elemental_reaction.appendChild(document.createElement("br"));
   }
-
-  attack_method = document.getElementById("attack_method_id").value;     
-  let options = [];
-  let elementsToAddToCharTalent;
 
   switch (selectedCharId)
   {

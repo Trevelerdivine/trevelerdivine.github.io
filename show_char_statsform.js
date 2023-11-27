@@ -1,5 +1,5 @@
 async function show_char_statsform()
-   {
+  {
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
     let deff_form = document.getElementById("deff_form");
@@ -53,8 +53,10 @@ async function show_char_statsform()
     let options;
     let traitCheckbox;
     let traitLabel;
+    let elementsToAddToCharTalent;
 
-    if (selectedCharId == "56") {
+    if (selectedCharId == "56")
+    {
       traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
         { id: "traitCheckbox2", label: "第2重：防御力-30%" },
@@ -69,10 +71,10 @@ async function show_char_statsform()
         { text: "スキル（滅浄三業）", value: "16" },
         { text: "滅浄三業·破業障(6凸)", disabled: char_constellations < 4, value: "17" }
       ];
-    
+  
       createchar_attackmethod(options);
-    
-      const elementsToAddToCharTalent = [
+  
+      elementsToAddToCharTalent = [
         createCheckbox("nahida_Q", true),
         createLabel("nahida_Q", "摩耶の宮殿"),
         createCheckbox("talent1", true),
@@ -126,9 +128,8 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
-
-    else if (selectedCharId == "0") {
-
+    else if (selectedCharId == "0")
+    {
       traits = [
         { id: "traitCheckbox6", label: "6重　黄金を裂く焔爪：会心ダメージ " },
       ];
@@ -137,7 +138,6 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "元素爆発（炎哮獅子咬）", value: "21" }
       ];
-    
       createchar_attackmethod(options);
 
       if (char_constellations > 3)
@@ -152,55 +152,55 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "1") {
-      elementsToAddToCharTalent = [
-        createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
-        document.createElement("br"),
-        createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
-        createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
-        document.createElement("br"),
-        createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ "),
-        createanySelectList("yoimiya_talent1", 0, 10, "+", "%", 10, 2),
-        document.createElement("br"),
-      ];
-    
-      elementsToAddToCharTalent.forEach(element => {
-        char_talent.appendChild(element);
-      });
-
-      traits = [
-        { id: "traitCheckbox1", label: "1重　紅玉の琉金：宵宮の攻撃力+20%" },
-        { id: "traitCheckbox2", label: "2重　万燈の火：炎元素ダメージ+25%" },
-      ];
-
-      options = [
-        { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常1ループ（熾焔の矢）", value: "1" },
-      ];
-    
-      createchar_attackmethod(options);
-      if (char_constellations > 0)
+    else if (selectedCharId == "1")
       {
-        traitCheckbox = createCheckbox(traits[0].id, true);
-        traitLabel = createLabel(traits[0].id, traits[0].label);
+        elementsToAddToCharTalent = [
+          createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
+          document.createElement("br"),
+          createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
+          createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
+          document.createElement("br"),
+          createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ "),
+          createanySelectList("yoimiya_talent1", 0, 10, "+", "%", 10, 2),
+          document.createElement("br"),
+        ];
     
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
-      if (char_constellations > 1)
-      {
-        traitCheckbox = createCheckbox(traits[1].id, true);
-        traitLabel = createLabel(traits[1].id, traits[1].label);
+        elementsToAddToCharTalent.forEach(element => {
+          char_talent.appendChild(element);
+        });
+
+        traits = [
+          { id: "traitCheckbox1", label: "1重　紅玉の琉金：宵宮の攻撃力+20%" },
+          { id: "traitCheckbox2", label: "2重　万燈の火：炎元素ダメージ+25%" },
+        ];
+
+        options = [
+          { text: "攻撃方法", value: "0", disabled: true, selected: true },
+          { text: "通常1ループ（熾焔の矢）", value: "1" },
+        ];
     
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
+        createchar_attackmethod(options);
+        if (char_constellations > 0)
+        {
+          traitCheckbox = createCheckbox(traits[0].id, true);
+          traitLabel = createLabel(traits[0].id, traits[0].label);
+      
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          characterInfo.appendChild(document.createElement("br"));
+        }
+        if (char_constellations > 1)
+        {
+          traitCheckbox = createCheckbox(traits[1].id, true);
+          traitLabel = createLabel(traits[1].id, traits[1].label);
+      
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          characterInfo.appendChild(document.createElement("br"));
+        }
     }
-
-    else if (selectedCharId == "2") {
+    else if (selectedCharId == "2")
+    {
       elementsToAddToCharTalent = [
         createLabel("hutao_E", "蝶導来世"),
         document.createElement("br"),
@@ -239,8 +239,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "3") {
+    else if (selectedCharId == "3")
+    {
       traits = [
         { id: "traitCheckbox2", label: "第2重：弾丸の破片 敵の防御力-23%" },
         { id: "traitCheckbox6", label: "第6重：炎元素ダメージ+10%" },
@@ -276,9 +276,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "4") {
-
+    else if (selectedCharId == "4")
+    {
       elementsToAddToCharTalent = [
         createCheckbox("diluc_talent2", true),
         createLabel("diluc_talent2", "溶融の翼：黎明効果継続中に与える炎元素ダメージ+20%"),
@@ -325,7 +324,6 @@ async function show_char_statsform()
         characterInfo.appendChild(diluc_talent1_list);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       if (char_constellations > 2)
       {
         traitCheckbox = createCheckbox(traits[2].id, true);
@@ -335,7 +333,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       if (char_constellations > 3)
       {
         traitCheckbox = createCheckbox(traits[3].id, true);
@@ -346,8 +343,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "6") {
+    else if (selectedCharId == "6")
+    {
       traits = [
         { id: "traitCheckbox2", label: "第2重：HP50%未満の敵に重撃会心率+20%" },
         { id: "traitCheckbox6", label: "第6重：所持できる丹火の印の最大枚数+1" },
@@ -372,7 +369,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       if (char_constellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
@@ -383,8 +379,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "7") {
+    else if (selectedCharId == "7")
+    {
       elementsToAddToCharTalent = [
         createCheckbox("xinyan_talent2", true),
         createLabel("xinyan_talent2", "…これこそがロックだ！ 物理ダメージ+15%"),
@@ -428,11 +424,9 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-
-    else if (selectedCharId == "8") {
-
-      const elementsToAddToCharTalent = [
+    else if (selectedCharId == "8")
+    {
+      elementsToAddToCharTalent = [
         createCheckbox("bennett_Q", true),
         createLabel("bennett_Q", "素晴らしい旅"),
         document.createElement("br"),
@@ -468,9 +462,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-
-    else if (selectedCharId == "9") {
+    else if (selectedCharId == "9")
+    {
       traits = [
         { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
         { id: "traitCheckbox3", label: "第6重：炎元素ダメージ+15%。" },
@@ -497,7 +490,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       if (char_constellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
@@ -508,9 +500,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "10") {
-
+    else if (selectedCharId == "10")
+    {
       traits = [
         { id: "talent2checkbox2", label: "固有天賦2：令制圧射撃 攻撃力+15% " },
         { id: "traitCheckbox6", label: "第6重：野火の如く 攻撃力+15%。" },
@@ -540,10 +531,9 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "11") {
-
-      const elementsToAddToCharTalent = [
+    else if (selectedCharId == "11")
+    {
+      elementsToAddToCharTalent = [
         createCheckbox("nirou_talent1", false),
         createLabel("nirou_talent1", "固有天賦1：元素熟知+100"),
         document.createElement("br")
@@ -574,10 +564,9 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "12") {
-
-      const elementsToAddToCharTalent = [
+    else if (selectedCharId == "12")
+    {
+      elementsToAddToCharTalent = [
         createCheckbox("yelan_Q", false),
         createLabel("yelan_Q", "玲瓏一擲　"),
         createCheckbox("yelan_entrance", false),
@@ -587,7 +576,7 @@ async function show_char_statsform()
         createInputWithUnit("text", "yelan_talent2_buff", "25.5","(%)"),
         document.createElement("br")
       ];
-    
+
       elementsToAddToCharTalent.forEach(element => {
         char_talent.appendChild(element);
       });
@@ -613,17 +602,15 @@ async function show_char_statsform()
       {
         traitLabel = createLabel(traits[0].id, traits[0].label);
         const yelan_selectlist = createSelectList("yelan_forth_buff", 1, 4, "", "体", 4);
-    
         
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(yelan_selectlist);
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "13") {
-
-      const elementsToAddToCharTalent = [
+    else if (selectedCharId == "13")
+    {
+      elementsToAddToCharTalent = [
         createCheckbox("kamisatoayato_Q", true),
         createLabel("kamisatoayato_Q", "神里流・水囿"),
         document.createElement("br"),
@@ -656,9 +643,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "19") {
-    
+    else if (selectedCharId == "19")
+    {
       traits = [
         { id: "traitCheckbox2", label: "第2重：古華剣・画雨籠山  水元素耐性-15％" },
       ];
@@ -711,7 +697,7 @@ async function show_char_statsform()
 
     else if (selectedCharId == "22") {
 
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("eula_E", true),
         createLabel("eula_E", "氷潮の渦 "),
         document.createElement("br"),
@@ -778,7 +764,7 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "30") {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("chongyun_talent2", true),
         createLabel("chongyun_talent2", "固有天賦2：追氷剣訣 氷元素耐性-10%"),
         document.createElement("br"),
@@ -876,7 +862,7 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "34")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("raiden_E", true),
         createLabel("raiden_E", "元素スキル：雷罰悪曜の眼"),
         document.createElement("br"),
@@ -958,7 +944,7 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "38")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("kujousara", true),
         createLabel("kujousara", "元素スキル：烏天狗雷霆召呪"),
         document.createElement("br"),
@@ -1027,7 +1013,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
 
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createTextNode("元素爆発天賦レベル："),
         createSelectList("xiao_Q_level", 1, 13, "Lv.", "", 8),
         document.createElement("br"),
@@ -1044,7 +1030,7 @@ async function show_char_statsform()
     
     else if (selectedCharId  == "49")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createTextNode("元素爆発天賦レベル："),
         createSelectList("faruzan_Q_level", 1, 13, "Lv.", "", 8),
         document.createElement("br"),
@@ -1087,7 +1073,7 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "57")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("tighnari_talent1", true),
         createLabel("tighnari_talent1", "固有天賦1：元素熟知+50"),
       ];
@@ -1152,7 +1138,7 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "23")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("ganyu_talent1", true),
         createLabel("ganyu_talent1", "固有天賦1：霜華の矢と霜華満開の会心率+20%"),
         document.createElement("br"),
@@ -1220,7 +1206,7 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "63")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("arataki_burst_effect", true),
         createLabel("arataki_burst_effect", "元素爆発：防御力を基準に攻撃力がアップ",),
         document.createElement("br"),
@@ -1276,7 +1262,7 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "64")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("albedo_talent1", true),
         createLabel("albedo_talent1", "固有天賦1：スキルダメージバフ+25％"),
         document.createElement("br"),
@@ -1333,7 +1319,7 @@ async function show_char_statsform()
 
     else if (selectedCharId  == "65")
     {
-      const elementsToAddToCharTalent = [
+      elementsToAddToCharTalent = [
         createCheckbox("zhongli_skill", true),
         createLabel("zhongli_skill", "玉璋シールド：敵の全耐性-20％"),
         document.createElement("br"),
