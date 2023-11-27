@@ -777,6 +777,16 @@ async function show_char_statsform()
       characterInfo.appendChild(document.createElement("br"));
     }
 
+    else if (selectedCharId == "30") {
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ(霊刃・重華積霜)", value: "1" },
+        { text: "元素スキル（霜の襲撃）", value: "16" },
+        { text: "元素爆発（凛冽なる輪舞）", value: "21" },
+      ];
+      createchar_attackmethod(options);
+    }
+
     else if (selectedCharId == "31") {
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },

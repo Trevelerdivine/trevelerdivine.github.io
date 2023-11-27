@@ -912,6 +912,69 @@ async function show_attack_method()
           }
         break
 
+        case "30":
+          if (attack_method == 1) {
+            options = [
+              { text: "１段目", value: "0", checked: true },
+              { text: "２段目", value: "1" },
+              { text: "３段目", value: "2" },
+              { text: "４段目", value: "3", checked: true},
+            ];
+            createCheckboxList_br(options);
+          } 
+          else if (attack_method == 16) {
+            const chongyunreaction_text2 = createTextNode("　追氷剣訣反応回数：")
+            let chongyunreaction_selectlist1;
+            let chongyunreaction_selectlist2;
+
+            elementsToAddToCharTalent = [
+              document.createElement("br"),
+              createTextNode("　巨大霊刃ヒット回数："),
+              createSelectList("chongyun_skill_count", 0, 1, "", "回", 1),
+              document.createElement("br"),
+              createLabel("chongyun_skill_count2", "　追氷剣訣ヒット回数："),
+              createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
+              document.createElement("br"),
+            ];
+            elementsToAddToCharTalent.forEach(element => {
+              attack_method_prop.appendChild(element);
+            });
+
+            elementsToAddToCharTalent = [
+              document.createElement("br"),
+              createTextNode("　巨大霊刃反応回数："),
+              createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+              document.createElement("br"),
+              createLabel("chongyun_talent_react", "　追氷剣訣反応回数："),
+              createSelectList("chongyun_skill_count1", 0, 1, "", "回", 1),
+              document.createElement("br"),
+            ];
+            elementsToAddToCharTalent.forEach(element => {
+              attack_method_prop.appendChild(element);
+            });
+          } else if (attack_method == 21) {
+            const chongyunburst_text = createTextNode("　巨大霊刃ヒット回数：");
+            let chongyunburst_selectlist;
+            const chongyunreaction_text = createTextNode("　巨大霊刃反応回数：")
+            let chongyunreaction_selectlist;
+            if (char_constellations < 4)
+            {
+              chongyunburst_selectlist = createSelectList("chongyun_Q_count", 1, 3, "", "回", 3);
+              chongyunreaction_selectlist = createSelectList("chongyun_Qreact", 0, 3, "", "回", 1);
+            }
+            else
+            {
+              chongyunburst_selectlist = createSelectList("chongyun_Q_count", 1, 4, "", "回", 4);
+              chongyunreaction_selectlist = createSelectList("chongyun_Qreact", 0, 4, "", "回", 1);
+            }
+            attack_method_prop.appendChild(document.createElement("br"));
+            attack_method_prop.appendChild(chongyunburst_text);
+            attack_method_prop.appendChild(chongyunburst_selectlist);
+            select_reaction_method.appendChild(chongyunreaction_text); // チェックボックスを select_reaction_method に追加
+            select_reaction_method.appendChild(chongyunreaction_selectlist); 
+          }
+        break
+
         case "31":
           if (attack_method == 1) {
             let kaeya_talent;
