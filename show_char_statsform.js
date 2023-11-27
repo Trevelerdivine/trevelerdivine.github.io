@@ -667,8 +667,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "21") {
+    else if (selectedCharId == "21")
+    {
       traits = [
         { id: "traitCheckbox4", label: "第4重：栄枯盛衰  敵の防御力-30%" },
       ];
@@ -693,10 +693,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-
-    else if (selectedCharId == "22") {
-
+    else if (selectedCharId == "22")
+    {
       elementsToAddToCharTalent = [
         createCheckbox("eula_E", true),
         createLabel("eula_E", "氷潮の渦 "),
@@ -730,7 +728,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       if (char_constellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
@@ -741,8 +738,75 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "23")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("ganyu_talent1", true),
+        createLabel("ganyu_talent1", "固有天賦1：霜華の矢と霜華満開の会心率+20%"),
+        document.createElement("br"),
+        createCheckbox("ganyu_talent2", true),
+        createLabel("ganyu_talent2", "固有天賦2：氷元素ダメージ+20%"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+     
+      const traits = [
+        {
+          id: "traitCheckbox1",
+          label: "第1重：敵の氷元素耐性-15%"
+        },
+        {
+          id: "traitCheckbox4",
+          label: "第4重：ダメージバフ"
+        },
+      ];
 
-    else if (selectedCharId == "28") {
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃（2段チャージ）", value: "6" },
+        { text: "元素爆発(降衆天華)", value: "21" },
+      ];
+
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        const selectList = document.createElement("select");
+        const elm_buff = [0, 5, 10, 15, 20, 25]; 
+        selectList.id = "four_conste_buff";
+      
+        for (let j = 0; j <= 5; j++)
+        {
+          const option = document.createElement("option");
+          option.value = elm_buff[j];
+          option.text = `${"+"}${elm_buff[j]}${"%"}`;
+
+          if (j == 5)
+          {
+            option.selected = true;
+          }
+          selectList.appendChild(option);
+        }
+        characterInfo.appendChild(selectList);
+      }
+      createchar_attackmethod(options)  
+    }
+    else if (selectedCharId == "28")
+    {
       traits = [
         { id: "rosaria_talent1", label: "固有天賦1：懺悔に耳を傾ける幻影 会心率+12%" },
       ];
@@ -762,8 +826,8 @@ async function show_char_statsform()
       characterInfo.appendChild(traitLabel);
       characterInfo.appendChild(document.createElement("br"));
     }
-
-    else if (selectedCharId == "30") {
+    else if (selectedCharId == "30")
+    {
       elementsToAddToCharTalent = [
         createCheckbox("chongyun_talent2", true),
         createLabel("chongyun_talent2", "固有天賦2：追氷剣訣 氷元素耐性-10%"),
@@ -782,8 +846,8 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-
-    else if (selectedCharId == "31") {
+    else if (selectedCharId == "31")
+    {
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃1ループ(物理)", value: "1" },
@@ -792,9 +856,8 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-
-    else if (selectedCharId == "32") {
-
+    else if (selectedCharId == "32")
+    {
       traits = [
         { id: "traitCheckbox2", label: "第2重：令儀・拝謁返霊 雷元素ダメージ " },
       ];
@@ -820,8 +883,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId == "33") {
+    else if (selectedCharId == "33")
+    {
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
         { id: "traitCheckbox3", label: "第4重：雷元素ダメージ+20%" },
@@ -848,7 +911,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       if (char_constellations > 3)
       {
         traitCheckbox = createCheckbox(traits[2].id, true);
@@ -859,8 +921,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-    else if (selectedCharId  == "34")
+    else if (selectedCharId == "34")
     {
       elementsToAddToCharTalent = [
         createCheckbox("raiden_E", true),
@@ -900,8 +961,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "35")
+    else if (selectedCharId == "35")
     {
       const traits = [
         {
@@ -929,7 +989,6 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       if (char_constellations > 3)
       {
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -938,11 +997,9 @@ async function show_char_statsform()
         characterInfo.appendChild(keqing_conste6_list);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "38")
+    else if (selectedCharId == "38")
     {
       elementsToAddToCharTalent = [
         createCheckbox("kujousara", true),
@@ -956,13 +1013,13 @@ async function show_char_statsform()
       elementsToAddToCharTalent.forEach(element => {
         char_talent.appendChild(element);
       });
+
       const traits = [
         {
           id: "traitCheckbox6",
           label: "第6重：会心ダメージ+60% "
         }
       ];
-
 
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
@@ -979,11 +1036,8 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-
-
-    else if (selectedCharId  == "39")
+    else if (selectedCharId == "39")
     {
-
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常1ループ（物理）", value: "1" },
@@ -991,8 +1045,8 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId == "44") {
+    else if (selectedCharId == "44")
+    {
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（児姿優風 1ループ）", value: "1" },
@@ -1001,8 +1055,8 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-
-    else if (selectedCharId == "46") {
+    else if (selectedCharId == "46")
+    {
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（児姿優風 1ループ）", value: "1" },
@@ -1026,9 +1080,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
     }
-
-    
-    else if (selectedCharId  == "49")
+    else if (selectedCharId == "49")
     {
       elementsToAddToCharTalent = [
         createTextNode("元素爆発天賦レベル："),
@@ -1059,10 +1111,8 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "50")
+    else if (selectedCharId == "50")
     {
-
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "元素スキル（非想風天）", value: "16" },
@@ -1070,8 +1120,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "57")
+    else if (selectedCharId == "57")
     {
       elementsToAddToCharTalent = [
         createCheckbox("tighnari_talent1", true),
@@ -1132,79 +1181,9 @@ async function show_char_statsform()
         }
         characterInfo.appendChild(selectList);
       }
-
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "23")
-    {
-      elementsToAddToCharTalent = [
-        createCheckbox("ganyu_talent1", true),
-        createLabel("ganyu_talent1", "固有天賦1：霜華の矢と霜華満開の会心率+20%"),
-        document.createElement("br"),
-        createCheckbox("ganyu_talent2", true),
-        createLabel("ganyu_talent2", "固有天賦2：氷元素ダメージ+20%"),
-      ];
-    
-      elementsToAddToCharTalent.forEach(element => {
-        char_talent.appendChild(element);
-      });
-     
-      const traits = [
-        {
-          id: "traitCheckbox1",
-          label: "第1重：敵の氷元素耐性-15%"
-        },
-        {
-          id: "traitCheckbox4",
-          label: "第4重：ダメージバフ"
-        },
-      ];
-
-      const options = [
-        { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "重撃（2段チャージ）", value: "6" },
-        { text: "元素爆発(降衆天華)", value: "21" },
-      ];
-
-      if (char_constellations > 0)
-      {
-        traitCheckbox = createCheckbox(traits[0].id, true);
-        traitLabel = createLabel(traits[0].id, traits[0].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
-      if (char_constellations > 2)
-      {
-        traitCheckbox = createCheckbox(traits[1].id, true);
-        traitLabel = createLabel(traits[1].id, traits[1].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        const selectList = document.createElement("select");
-        const elm_buff = [0, 5, 10, 15, 20, 25]; 
-        selectList.id = "four_conste_buff";
-      
-        for (let j = 0; j <= 5; j++) { // 条件を j <= optionsCount に変更
-          const option = document.createElement("option");
-          option.value = elm_buff[j];
-          option.text = `${"+"}${elm_buff[j]}${"%"}`;
-          
-          if (j == 5) {
-            option.selected = true;
-          }
-          
-          selectList.appendChild(option);
-        }
-        characterInfo.appendChild(selectList);
-      }
-
-      createchar_attackmethod(options)  
-    }
-
-    else if (selectedCharId  == "63")
+    else if (selectedCharId == "63")
     {
       elementsToAddToCharTalent = [
         createCheckbox("arataki_burst_effect", true),
@@ -1256,11 +1235,9 @@ async function show_char_statsform()
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
       }
-
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "64")
+    else if (selectedCharId == "64")
     {
       elementsToAddToCharTalent = [
         createCheckbox("albedo_talent1", true),
@@ -1313,11 +1290,9 @@ async function show_char_statsform()
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
       }
-
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "65")
+    else if (selectedCharId == "65")
     {
       elementsToAddToCharTalent = [
         createCheckbox("zhongli_skill", true),
@@ -1333,11 +1308,9 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "元素爆発(天星)", value: "21" },
       ];
-
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "68")
+    else if (selectedCharId == "68")
     {
       const traits = [
         {
@@ -1358,11 +1331,9 @@ async function show_char_statsform()
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
       }
-
       createchar_attackmethod(options)  
     }
-
-    else if (selectedCharId  == "69")
+    else if (selectedCharId == "69")
     {
       const traits = [
         {
@@ -1386,7 +1357,6 @@ async function show_char_statsform()
       characterInfo.appendChild(traitLabel);
       createchar_attackmethod(options)  
     }
-
     else if (selectedCharId  == "70")
     {
       const traits = [
@@ -1420,10 +1390,8 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-
       createchar_attackmethod(options)  
     }
-
     showFormElements();
   }
 
@@ -1437,10 +1405,12 @@ function createchar_attackmethod(options)
     const optionElement = document.createElement("option");
     optionElement.text = option.text;
     optionElement.value = option.value;
-    if (option.disabled) {
+    if (option.disabled)
+    {
       optionElement.disabled = true;
     }
-    if (option.selected) {
+    if (option.selected)
+    {
       optionElement.selected = true;
     }
     selectElement.appendChild(optionElement);
@@ -1479,9 +1449,12 @@ function showFormElements()
     { forms: [cr_form, team_cr_form], index: 5 },
     { forms: [cd_form, team_cd_form], index: 6 }
   ];
-  for (const element of formElements) {
-    if (depend_status[element.index] == 1) {
-      for (let i = 0; i < element.forms.length; i++) {
+  for (const element of formElements)
+  {
+    if (depend_status[element.index] == 1)
+    {
+      for (let i = 0; i < element.forms.length; i++)
+      {
         element.forms[i].style.display = "table-row";
       }
     }
@@ -1510,7 +1483,8 @@ async function elementalcharge_reaction_add()
 }
 
 // チェックボックスを生成するユーティリティ関数
-function createCheckbox(id, checked) {
+function createCheckbox(id, checked)
+{
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.id = id;
@@ -1519,7 +1493,8 @@ function createCheckbox(id, checked) {
 }
 
 // ラベルを生成するユーティリティ関数
-function createLabel(forId, labelText) {
+function createLabel(forId, labelText)
+{
   const label = document.createElement("label");
   label.htmlFor = forId;
   label.textContent = labelText;
@@ -1527,50 +1502,53 @@ function createLabel(forId, labelText) {
 }
 
 // テキストノードを生成するユーティリティ関数
-function createTextNode(text) {
+function createTextNode(text)
+{
   return document.createTextNode(text);
 }
 
 // セレクトリストを生成するユーティリティ関数
-function createSelectList(id, initial, optionsCount, head_unit, unit, select_index) {
+function createSelectList(id, initial, optionsCount, head_unit, unit, select_index)
+{
   const selectList = document.createElement("select");
   selectList.id = id;
 
-  for (let j = initial; j <= optionsCount; j++) { // 条件を j <= optionsCount に変更
+  for (let j = initial; j <= optionsCount; j++)
+  {
     const option = document.createElement("option");
     option.value = j;
     option.text = `${head_unit}${j}${unit}`;
     
-    if (j == select_index) {
+    if (j == select_index)
+    {
       option.selected = true;
     }
-    
     selectList.appendChild(option);
   }
-
   return selectList;
 }
 
-function createanySelectList(id, initial, optionsCount, head_unit, unit, select_index, rate) {
+function createanySelectList(id, initial, optionsCount, head_unit, unit, select_index, rate)
+{
   const selectList = document.createElement("select");
   selectList.id = id;
-
-  for (let j = initial; j <= optionsCount; j++) { // 条件を j <= optionsCount に変更
+  for (let j = initial; j <= optionsCount; j++)
+  {
     const option = document.createElement("option");
     option.value = j * rate;
     option.text = `${head_unit}${j * rate}${unit}`;
     
-    if (j == select_index) {
+    if (j == select_index)
+    {
       option.selected = true;
     }
-    
     selectList.appendChild(option);
   }
-
   return selectList;
 }
 
-function createRadio(name, value, checked, id, labelText) {
+function createRadio(name, value, checked, id, labelText)
+{
   const radio = document.createElement("input");
   radio.type = "radio";
   radio.name = name;
@@ -1580,11 +1558,9 @@ function createRadio(name, value, checked, id, labelText) {
   return radio;
 }
 
-function createInputWithUnit(type, id, value, unit) {
-  // フォームをラップする div 要素を作成
+function createInputWithUnit(type, id, value, unit)
+{
   const inputContainer = document.createElement("span");
-
-  // フォーム要素を作成
   const input = document.createElement("input");
   input.type = type;
   input.id = id;
