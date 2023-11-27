@@ -3483,7 +3483,7 @@ class chongyun {
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }else if (attack_method == 16) {
       const attack_count = parseInt(document.getElementById("chongyun_skill_count").value) + parseInt(document.getElementById("chongyun_talent_count").value);
-      const react_count = parseInt(document.getElementById("chongyun_skill_react").value) + parseInt(document.getElementById("chongyun_talent_react").value);
+      let react_count = parseInt(document.getElementById("chongyun_skill_react").value) + parseInt(document.getElementById("chongyun_talent_react").value);
       if (this.reaction_coeff == 0)
       {
         react_count = 0;
