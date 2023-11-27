@@ -137,13 +137,17 @@ class dehya {
   calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
-      if (attack_method == 21)
+      if (this.reaction_coeff > 0)
       {
         attckRate = status[0] * dmg_rate[0][0] + status[4] * dmg_rate[4][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1];
-        return basicDmg;
       }
+      else
+      {
+        basicDmg =  (dmg_rate[0][0] + dmg_rate[4][0]) * status[0] + (dmg_rate[0][1] + dmg_rate[4][1]) * status[4];
+      }
+      return basicDmg;
     }
 
   calculate_char_debuff() {
@@ -3483,11 +3487,7 @@ class chongyun {
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }else if (attack_method == 16) {
       const attack_count = parseInt(document.getElementById("chongyun_skill_count").value) + parseInt(document.getElementById("chongyun_talent_count").value);
-      let react_count = parseInt(document.getElementById("chongyun_skill_react").value) + parseInt(document.getElementById("chongyun_talent_react").value);
-      if (this.reaction_coeff == 0)
-      {
-        react_count = 0;
-      }
+      const react_count = parseInt(document.getElementById("chongyun_skill_react").value) + parseInt(document.getElementById("chongyun_talent_react").value);
 
       elm_react_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
       elm_nonreact_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count);
@@ -3504,10 +3504,6 @@ class chongyun {
 
       const attack_count = parseInt(document.getElementById("chongyun_Q_count").value);
       const react_count = parseInt(document.getElementById("chongyun_Qreact").value);
-      if (this.reaction_coeff == 0)
-      {
-        react_count = 0;
-      }
 
       elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
       elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
@@ -3583,8 +3579,15 @@ class chongyun {
   calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
     let basicDmg;
-    basicDmg = dmg_rate[4][0] * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-              + dmg_rate[4][1] * status[4];
+    if (this.reaction_coeff > 0)
+    {
+      basicDmg = dmg_rate[4][0] * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + dmg_rate[4][1] * status[4];
+    }
+    else
+    {
+      basicDmg = (dmg_rate[4][0] + dmg_rate[4][1]) * status[4];
+    }
     return basicDmg;
   }
 
