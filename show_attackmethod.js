@@ -661,784 +661,809 @@ async function show_attack_method()
       }
       break;
     case "21":
-              let kamisatoayaka_talent;
-              let elementsToAddToCharTalent;
-              if (attack_method == 1) {
-                kamisatoayaka_talent = [
-                  createCheckbox("kamisatoayaka_talent1", true),
-                  createLabel("kamisatoayaka_talent1", "固有天賦1：天つ罪・国つ罪の鎮詞 通常攻撃ダメージ+30%"),
-                  document.createElement("br"),
-                  createCheckbox("kamisatoayaka_talent2", true),
-                  createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
-                  document.createElement("br"),
-                ];
-                kamisatoayaka_talent.forEach(element => {
-                  temporary_char_talent.appendChild(element);
-                });
+      let kamisatoayaka_talent;
+      let elementsToAddToCharTalent;
+      if (attack_method == 1)
+      {
+        kamisatoayaka_talent = [
+          createCheckbox("kamisatoayaka_talent1", true),
+          createLabel("kamisatoayaka_talent1", "固有天賦1：天つ罪・国つ罪の鎮詞 通常攻撃ダメージ+30%"),
+          document.createElement("br"),
+          createCheckbox("kamisatoayaka_talent2", true),
+          createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+          document.createElement("br"),
+        ];
+        kamisatoayaka_talent.forEach(element => {
+          temporary_char_talent.appendChild(element);
+        });
 
-                options = [
-                  { text: "１段目", value: "0", checked: true },
-                  { text: "２段目", value: "1" },
-                  { text: "３段目", value: "2" },
-                  { text: "４段目-１", value: "3", checked: true },
-                  { text: "４段目-２", value: "4"},
-                  { text: "４段目-３", value: "5"},
-                  { text: "５段目", value: "6", checked: true },
-                ];
-                createCheckboxList_br(options);
-              }
-              else if (attack_method == 6)
-              {
+        options = [
+          { text: "１段目", value: "0", checked: true },
+          { text: "２段目", value: "1" },
+          { text: "３段目", value: "2" },
+          { text: "４段目-１", value: "3", checked: true },
+          { text: "４段目-２", value: "4"},
+          { text: "４段目-３", value: "5"},
+          { text: "５段目", value: "6", checked: true },
+        ];
+        createCheckboxList_br(options);
+      }
+      else if (attack_method == 6)
+      {
+        kamisatoayaka_talent = [
+          createCheckbox("kamisatoayaka_talent1", true),
+          createLabel("kamisatoayaka_talent1", "固有天賦1：天つ罪・国つ罪の鎮詞 重撃ダメージ+30%"),
+          document.createElement("br"),
+          createCheckbox("kamisatoayaka_talent2", true),
+          createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+          document.createElement("br"),
+        ];
+        kamisatoayaka_talent.forEach(element => {
+          temporary_char_talent.appendChild(element);
+        });
 
-                kamisatoayaka_talent = [
-                  createCheckbox("kamisatoayaka_talent1", true),
-                  createLabel("kamisatoayaka_talent1", "固有天賦1：天つ罪・国つ罪の鎮詞 重撃ダメージ+30%"),
-                  document.createElement("br"),
-                  createCheckbox("kamisatoayaka_talent2", true),
-                  createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
-                  document.createElement("br"),
-                ];
-                kamisatoayaka_talent.forEach(element => {
-                  temporary_char_talent.appendChild(element);
-                });
+        if (char_constellations == 4)
+        {
+          elementsToAddToCharTalent = [
+            createTextNode("　重撃1回 = 3ヒット"),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
+            createSelectList("kamisatoayaka_count", 0, 15, "", "回", 6),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_sixth_count", "　6重強化重撃ヒット回数："),
+            createSelectList("kamisatoayaka_sixth_count", 0, 3, "", "回", 3),
+            document.createElement("br"),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            attack_method_prop.appendChild(element);
+          });
 
-                if (char_constellations == 4)
-                {
-                  elementsToAddToCharTalent = [
-                    createTextNode("　重撃1回 = 3ヒット"),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
-                    createSelectList("kamisatoayaka_count", 0, 15, "", "回", 6),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_sixth_count", "　6重強化重撃ヒット回数："),
-                    createSelectList("kamisatoayaka_sixth_count", 0, 3, "", "回", 3),
-                    document.createElement("br"),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    attack_method_prop.appendChild(element);
-                  });
+          elementsToAddToCharTalent = [
+            createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
+            createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 2),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_sixth_melt_count", "　6重強化重撃溶解回数："),
+            createSelectList("kamisatoayaka_sixth_melt_count", 0, 3, "", "回", 1),
+            document.createElement("br"),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            select_reaction_method.appendChild(element);
+          });
+        }
+        else
+        {
+          elementsToAddToCharTalent = [
+            createTextNode("　重撃1回 = 3ヒット"),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
+            createSelectList("kamisatoayaka_count", 0, 15, "", "回", 9),
+            document.createElement("br"),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            attack_method_prop.appendChild(element);
+          });
 
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 2),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_sixth_melt_count", "　6重強化重撃溶解回数："),
-                    createSelectList("kamisatoayaka_sixth_melt_count", 0, 3, "", "回", 1),
-                    document.createElement("br"),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    select_reaction_method.appendChild(element);
-                  });
-                }
-                else
-                {
-                  elementsToAddToCharTalent = [
-                    createTextNode("　重撃1回 = 3ヒット"),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_count", "　重撃ヒット回数："),
-                    createSelectList("kamisatoayaka_count", 0, 15, "", "回", 9),
-                    document.createElement("br"),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    attack_method_prop.appendChild(element);
-                  });
+          elementsToAddToCharTalent = [
+            createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
+            createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 3),
+            document.createElement("br"),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            select_reaction_method.appendChild(element);
+          });
+        }
+      }
+      else if (attack_method == 16)
+      {
+        kamisatoayaka_talent = [
+          createCheckbox("kamisatoayaka_talent2", true),
+          createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+          document.createElement("br"),
+        ];
+        kamisatoayaka_talent.forEach(element => {
+          temporary_char_talent.appendChild(element);
+        });
+        elementsToAddToCharTalent = [
+          createCheckbox("kamisatoayaka_skill_react", true),
+          createLabel("kamisatoayaka_skill_react", "元素スキル"),
+          document.createElement("br"),
+        ];
+        elementsToAddToCharTalent.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
+      }
+      else if (attack_method == 21)
+      {
+        kamisatoayaka_talent = [
+          createCheckbox("kamisatoayaka_talent2", true),
+          createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+          document.createElement("br"),
+        ];
+        kamisatoayaka_talent.forEach(element => {
+          temporary_char_talent.appendChild(element);
+        });
+        if (char_constellations < 2)
+        {
+          elementsToAddToCharTalent = [
+            createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
+            createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_attack_count3", "　咲きヒット回数："),
+            createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            attack_method_prop.appendChild(element);
+          });
 
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_melt_count", "　重撃溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count", 0, 15, "", "回", 3),
-                    document.createElement("br"),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    select_reaction_method.appendChild(element);
-                  });
-                }
-              }
-              else if (attack_method == 16)
-              {
-                kamisatoayaka_talent = [
-                  createCheckbox("kamisatoayaka_talent2", true),
-                  createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
-                  document.createElement("br"),
-                ];
-                kamisatoayaka_talent.forEach(element => {
-                  temporary_char_talent.appendChild(element);
-                });
-                elementsToAddToCharTalent = [
-                  createCheckbox("kamisatoayaka_skill_react", true),
-                  createLabel("kamisatoayaka_skill_react", "元素スキル"),
-                  document.createElement("br"),
-                ];
-                elementsToAddToCharTalent.forEach(element => {
-                  select_reaction_method.appendChild(element);
-                });
-              }
-              else if (attack_method == 21)
-              {
-                kamisatoayaka_talent = [
-                  createCheckbox("kamisatoayaka_talent2", true),
-                  createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
-                  document.createElement("br"),
-                ];
-                kamisatoayaka_talent.forEach(element => {
-                  temporary_char_talent.appendChild(element);
-                });
-                if (char_constellations < 2)
-                {
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_attack_count3", "　咲きヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    attack_method_prop.appendChild(element);
-                  });
+          elementsToAddToCharTalent = [
+            createLabel("kamisatoayaka_melt_count1", "　斬撃溶解回数："),
+            createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 4),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_melt_count3", "　咲き溶解回数："),
+            createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            select_reaction_method.appendChild(element);
+          });
+        }
+        else
+        {
+          elementsToAddToCharTalent = [
+            createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
+            createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_attack_count2", "　斬撃(小)ヒット回数："),
+            createSelectList("kamisatoayaka_attack_count2", 0, 38, "", "回", 20),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_attack_count3", "　咲きヒット回数："),
+            createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_attack_count4", "　咲き(小)ヒット回数："),
+            createSelectList("kamisatoayaka_attack_count4", 0, 2, "", "回", 2),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            attack_method_prop.appendChild(element);
+          });
 
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_melt_count1", "　斬撃溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 4),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_melt_count3", "　咲き溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    select_reaction_method.appendChild(element);
-                  });
-                }
-                else
-                {
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_attack_count1", "　斬撃ヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count1", 0, 19, "", "回", 10),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_attack_count2", "　斬撃(小)ヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count2", 0, 38, "", "回", 20),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_attack_count3", "　咲きヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_attack_count4", "　咲き(小)ヒット回数："),
-                    createSelectList("kamisatoayaka_attack_count4", 0, 2, "", "回", 2),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    attack_method_prop.appendChild(element);
-                  });
-
-                  elementsToAddToCharTalent = [
-                    createLabel("kamisatoayaka_melt_count1", "　斬撃溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 4),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_melt_count2", "　斬撃(小)溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count2", 0, 38, "", "回", 7),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_melt_count3", "　咲き溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
-                    document.createElement("br"),
-                    createLabel("kamisatoayaka_melt_count4", "　咲き(小)溶解回数："),
-                    createSelectList("kamisatoayaka_melt_count4", 0, 2, "", "回", 2),
-                  ];
-                  elementsToAddToCharTalent.forEach(element => {
-                    select_reaction_method.appendChild(element);
-                  });
-                }
-              }
-            break
-
+          elementsToAddToCharTalent = [
+            createLabel("kamisatoayaka_melt_count1", "　斬撃溶解回数："),
+            createSelectList("kamisatoayaka_melt_count1", 0, 19, "", "回", 4),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_melt_count2", "　斬撃(小)溶解回数："),
+            createSelectList("kamisatoayaka_melt_count2", 0, 38, "", "回", 7),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_melt_count3", "　咲き溶解回数："),
+            createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
+            document.createElement("br"),
+            createLabel("kamisatoayaka_melt_count4", "　咲き(小)溶解回数："),
+            createSelectList("kamisatoayaka_melt_count4", 0, 2, "", "回", 2),
+          ];
+          elementsToAddToCharTalent.forEach(element => {
+            select_reaction_method.appendChild(element);
+          });
+        }
+      }
+      break;
     case "22":
       const eulaburst_text = createTextNode("　エネルギー：")
       const eulaburst_selectlist = createSelectList("eula_enelgy", 0, 30, "", "重", 15);
       attack_method_prop.appendChild(eulaburst_text);
       attack_method_prop.appendChild(eulaburst_selectlist);
-    break
-
-  case "23":
-          if (attack_method == 6) {
-            options = [
-              { text: "霜華の矢", value: "0", checked: true },
-              { text: "霜華の矢・霜華満開", value: "1" , checked: true},
-            ];
-            createCheckboxList_br(options);
-          } else if (attack_method == 21) {
-            const ganyuburst_text = createTextNode("　ヒット回数：")
-            const ganyuburst_selectlist = createSelectList("ganyu_Q_count", 1, 50, "", "回", 15);
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(ganyuburst_text);
-            attack_method_prop.appendChild(ganyuburst_selectlist);
-            const ganyureaction_text = createTextNode("　元素反応回数：")
-            const ganyureaction_selectlist = createSelectList("ganyu_Q", 0, 50, "", "回", 5);
-            select_reaction_method.appendChild(ganyureaction_text); // チェックボックスを select_reaction_method に追加
-            select_reaction_method.appendChild(ganyureaction_selectlist); 
-          }
+      break;
+    case "23":
+      if (attack_method == 6)
+      {
+        options = [
+          { text: "霜華の矢", value: "0", checked: true },
+          { text: "霜華の矢・霜華満開", value: "1" , checked: true},
+        ];
+        createCheckboxList_br(options);
+      }
+      else if (attack_method == 21)
+      {
+        const ganyuburst_text = createTextNode("　ヒット回数：")
+        const ganyuburst_selectlist = createSelectList("ganyu_Q_count", 1, 50, "", "回", 15);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(ganyuburst_text);
+        attack_method_prop.appendChild(ganyuburst_selectlist);
+        const ganyureaction_text = createTextNode("　元素反応回数：")
+        const ganyureaction_selectlist = createSelectList("ganyu_Q", 0, 50, "", "回", 5);
+        select_reaction_method.appendChild(ganyureaction_text); // チェックボックスを select_reaction_method に追加
+        select_reaction_method.appendChild(ganyureaction_selectlist); 
+      }
       break
-
-      case "28":
-        if (attack_method == 1) {
-          let rosaria_talent;
-          if (char_constellations == 4)
-          {
-            rosaria_talent = [
-              createCheckbox("rosaria_first_buff", true),
-              createLabel("rosaria_first_buff", "第1重：罪の導き 通常攻撃のダメージ+10%"),
-              document.createElement("br"),
-              createCheckbox("rosaria_sixth_buff", true),
-              createLabel("rosaria_sixth_buff", "第6重：代行裁判 敵の物理耐性-20%"),
-            ];
-            rosaria_talent.forEach(element => {
-              temporary_char_talent.appendChild(element);
-            });
-          }
-          else if (char_constellations > 0)
-          {
-            rosaria_talent = [
-              createCheckbox("rosaria_first_buff", true),
-              createLabel("rosaria_first_buff", "第1重：罪の導き 通常攻撃のダメージ+10%"),
-              document.createElement("br"),
-            ];
-            rosaria_talent.forEach(element => {
-              characterInfo.appendChild(element);
-            });
-          }
-        } 
-        else if (attack_method == 16) {
-          options = [
-            { text: "スキルダメージ1", value: "0", checked: true },
-            { text: "スキルダメージ2", value: "1"},
-          ];
-          createCheckboxList_br(options);
-        } else if (attack_method == 21) {
-          options = [
-            { text: "スキルダメージ1", value: "0", checked: true },
-            { text: "スキルダメージ2", value: "1"},
-          ];
-          createCheckboxList_br(options);
-          const rosariaburst_text = createTextNode("　継続攻撃ヒット回数：");
-          let rosariaburst_selectlist;
-          const rosariareaction_text = createTextNode("　継続攻撃反応回数：")
-          let rosariareaction_selectlist;
-          if (char_constellations < 2)
-          {
-            rosariaburst_selectlist = createSelectList("rosaria_Q_count", 1, 4, "", "回", 4);
-            rosariareaction_selectlist = createSelectList("rosaria_Qreact", 0, 4, "", "回", 4);
-          }
-          else
-          {
-            rosariaburst_selectlist = createSelectList("rosaria_Q_count", 1, 6, "", "回", 6);
-            rosariareaction_selectlist = createSelectList("rosaria_Qreact", 0, 6, "", "回", 6);
-          }
-          attack_method_prop.appendChild(document.createElement("br"));
-          attack_method_prop.appendChild(rosariaburst_text);
-          attack_method_prop.appendChild(rosariaburst_selectlist);
-          select_reaction_method.appendChild(rosariareaction_text); // チェックボックスを select_reaction_method に追加
-          select_reaction_method.appendChild(rosariareaction_selectlist); 
-        }
-      break
-
-      case "30":
-        if (attack_method == 1) {
-          options = [
-            { text: "１段目", value: "0", checked: true },
-            { text: "２段目", value: "1" },
-            { text: "３段目", value: "2" },
-            { text: "４段目", value: "3", checked: true},
-          ];
-          createCheckboxList_br(options);
-        } 
-        else if (attack_method == 16) {
-          traits = [
+    case "28":
+      if (attack_method == 1)
+      {
+        let rosaria_talent;
+        if (char_constellations == 4)
+        {
+          rosaria_talent = [
+            createCheckbox("rosaria_first_buff", true),
+            createLabel("rosaria_first_buff", "第1重：罪の導き 通常攻撃のダメージ+10%"),
             document.createElement("br"),
-            createLabel("chongyun_skill_count", "　巨大霊刃ヒット回数："),
-            createSelectList("chongyun_skill_count", 0, 1, "", "回", 1),
-            document.createElement("br"),
-            createLabel("chongyun_talent_count", "　追氷剣訣ヒット回数："),
-            createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
-            document.createElement("br"),
+            createCheckbox("rosaria_sixth_buff", true),
+            createLabel("rosaria_sixth_buff", "第6重：代行裁判 敵の物理耐性-20%"),
           ];
-          traits.forEach(element => {
-            attack_method_prop.appendChild(element);
+          rosaria_talent.forEach(element => {
+            temporary_char_talent.appendChild(element);
           });
-
-          traits = [
-            document.createElement("br"),
-            createLabel("chongyun_skill_react", "　巨大霊刃反応回数："),
-            createSelectList("chongyun_skill_react", 0, 1, "", "回", 1),
-            document.createElement("br"),
-            createLabel("chongyun_talent_react", "　追氷剣訣反応回数："),
-            createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+        }
+        else if (char_constellations > 0)
+        {
+          rosaria_talent = [
+            createCheckbox("rosaria_first_buff", true),
+            createLabel("rosaria_first_buff", "第1重：罪の導き 通常攻撃のダメージ+10%"),
             document.createElement("br"),
           ];
-          traits.forEach(element => {
-            select_reaction_method.appendChild(element);
+          rosaria_talent.forEach(element => {
+            characterInfo.appendChild(element);
           });
-        } else if (attack_method == 21) {
-          if (char_constellations == 4)
-          {
-            const chongyun_talent = [
-              createCheckbox("chongyun_sixth_buff", true),
-              createLabel("chongyun_sixth_buff", "第6重：四霊の捧げ 元素爆発ダメージ+15%"),
-              document.createElement("br"),
-            ];
-            chongyun_talent.forEach(element => {
-              temporary_char_talent.appendChild(element);
-            });
-          }
-
-          const chongyunburst_text = createTextNode("　巨大霊刃ヒット回数：");
-          let chongyunburst_selectlist;
-          const chongyunreaction_text = createTextNode("　巨大霊刃反応回数：")
-          let chongyunreaction_selectlist;
-          if (char_constellations < 4)
-          {
-            chongyunburst_selectlist = createSelectList("chongyun_Q_count", 1, 3, "", "回", 3);
-            chongyunreaction_selectlist = createSelectList("chongyun_Qreact", 0, 3, "", "回", 1);
-          }
-          else
-          {
-            chongyunburst_selectlist = createSelectList("chongyun_Q_count", 1, 4, "", "回", 4);
-            chongyunreaction_selectlist = createSelectList("chongyun_Qreact", 0, 4, "", "回", 1);
-          }
-          attack_method_prop.appendChild(document.createElement("br"));
-          attack_method_prop.appendChild(chongyunburst_text);
-          attack_method_prop.appendChild(chongyunburst_selectlist);
-          attack_method_prop.appendChild(document.createElement("br"));
-          select_reaction_method.appendChild(chongyunreaction_text); // チェックボックスを select_reaction_method に追加
-          select_reaction_method.appendChild(chongyunreaction_selectlist); 
         }
-      break
+      }
+      else if (attack_method == 16)
+      {
+        options = [
+          { text: "スキルダメージ1", value: "0", checked: true },
+          { text: "スキルダメージ2", value: "1"},
+        ];
+        createCheckboxList_br(options);
+      }
+      else if (attack_method == 21)
+      {
+        options = [
+          { text: "スキルダメージ1", value: "0", checked: true },
+          { text: "スキルダメージ2", value: "1"},
+        ];
+        createCheckboxList_br(options);
+        const rosariaburst_text = createTextNode("　継続攻撃ヒット回数：");
+        let rosariaburst_selectlist;
+        const rosariareaction_text = createTextNode("　継続攻撃反応回数：")
+        let rosariareaction_selectlist;
+        if (char_constellations < 2)
+        {
+          rosariaburst_selectlist = createSelectList("rosaria_Q_count", 1, 4, "", "回", 4);
+          rosariareaction_selectlist = createSelectList("rosaria_Qreact", 0, 4, "", "回", 4);
+        }
+        else
+        {
+          rosariaburst_selectlist = createSelectList("rosaria_Q_count", 1, 6, "", "回", 6);
+          rosariareaction_selectlist = createSelectList("rosaria_Qreact", 0, 6, "", "回", 6);
+        }
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(rosariaburst_text);
+        attack_method_prop.appendChild(rosariaburst_selectlist);
+        select_reaction_method.appendChild(rosariareaction_text); // チェックボックスを select_reaction_method に追加
+        select_reaction_method.appendChild(rosariareaction_selectlist); 
+      }
+      break;
+    case "30":
+      if (attack_method == 1)
+      {
+        options = [
+          { text: "１段目", value: "0", checked: true },
+          { text: "２段目", value: "1" },
+          { text: "３段目", value: "2" },
+          { text: "４段目", value: "3", checked: true},
+        ];
+        createCheckboxList_br(options);
+      } 
+      else if (attack_method == 16)
+      {
+        traits = [
+          document.createElement("br"),
+          createLabel("chongyun_skill_count", "　巨大霊刃ヒット回数："),
+          createSelectList("chongyun_skill_count", 0, 1, "", "回", 1),
+          document.createElement("br"),
+          createLabel("chongyun_talent_count", "　追氷剣訣ヒット回数："),
+          createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
 
-      case "31":
-        if (attack_method == 1) {
-          let kaeya_talent;
-          if (char_constellations > 0)
-          {
-            kaeya_talent = [
-              createCheckbox("kaeya_first_buff", true),
-              createLabel("kaeya_first_buff", "第1重：優れた血筋 通常攻撃の会心率+15%"),
-              document.createElement("br"),
-            ];
-            kaeya_talent.forEach(element => {
-              temporary_char_talent.appendChild(element);
-            });
-          }
-        } 
-        else if (attack_method == 16) {
-          options = [
-            { text: "霜の襲撃", value: "0", checked: true },
+        traits = [
+          document.createElement("br"),
+          createLabel("chongyun_skill_react", "　巨大霊刃反応回数："),
+          createSelectList("chongyun_skill_react", 0, 1, "", "回", 1),
+          document.createElement("br"),
+          createLabel("chongyun_talent_react", "　追氷剣訣反応回数："),
+          createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
+      }
+      else if (attack_method == 21)
+      {
+        if (char_constellations == 4)
+        {
+          const chongyun_talent = [
+            createCheckbox("chongyun_sixth_buff", true),
+            createLabel("chongyun_sixth_buff", "第6重：四霊の捧げ 元素爆発ダメージ+15%"),
+            document.createElement("br"),
           ];
-          createCheckboxList(options)
-        } else if (attack_method == 21) {
-          const kaeyaburst_text = createTextNode("　寒氷の柱ヒット回数：");
-          let kaeyaburst_selectlist;
-          const kaeyareaction_text = createTextNode("　寒氷の柱反応回数：")
-          let kaeyareaction_selectlist;
-          if (char_constellations < 4)
-          {
-            kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 30, "", "回", 12);
-            kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 30, "", "回", 6);
-          }
-          else
-          {
-            kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 30, "", "回", 16);
-            kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 30, "", "回", 6);
-          }
-          attack_method_prop.appendChild(document.createElement("br"));
-          attack_method_prop.appendChild(kaeyaburst_text);
-          attack_method_prop.appendChild(kaeyaburst_selectlist);
-          select_reaction_method.appendChild(kaeyareaction_text); // チェックボックスを select_reaction_method に追加
-          select_reaction_method.appendChild(kaeyareaction_selectlist); 
+          chongyun_talent.forEach(element => {
+            temporary_char_talent.appendChild(element);
+          });
         }
-      break
 
-      case "32":
-        let cyno_selectlist;
-        if (attack_method == 1) {
-          cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
-        } else if (attack_method == 16) {
-          let cyno_E_text = createTextNode("　律淵渡魂ヒット回数：")
-          let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 5);
-          let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
-          let cyno_talent1_count = createSelectList("cyno_talent1_count", 1, 60, "", "回", 15);
-          attack_method_prop.appendChild(cyno_E_text);
-          attack_method_prop.appendChild(cyno_E_count);
-          attack_method_prop.appendChild(document.createElement("br"));
-          attack_method_prop.appendChild(cyno_talent1_text);
-          attack_method_prop.appendChild(cyno_talent1_count);
-          attack_method_prop.appendChild(document.createElement("br"));
-
-          cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 10);
+        const chongyunburst_text = createTextNode("　巨大霊刃ヒット回数：");
+        let chongyunburst_selectlist;
+        const chongyunreaction_text = createTextNode("　巨大霊刃反応回数：");
+        let chongyunreaction_selectlist;
+        if (char_constellations < 4)
+        {
+          chongyunburst_selectlist = createSelectList("chongyun_Q_count", 1, 3, "", "回", 3);
+          chongyunreaction_selectlist = createSelectList("chongyun_Qreact", 0, 3, "", "回", 1);
         }
-          elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-          elemental_reaction.appendChild(cyno_agg_countlist); // ラベルを select_reaction_method に追加
-          elemental_reaction.appendChild(document.createElement("br"));
-    break
-
-      case "33":
-          if (attack_method == 1) {
-            yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
-          } else if (attack_method == 6) {
-            yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
-            createCheckboxList(options);
-          } else if (attack_method==16) {
-            const yaeskill_text = createTextNode("　殺生櫻：")
-            const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
-            attack_method_prop.appendChild(document.createElement("br"));
-            attack_method_prop.appendChild(yaeskill_text);
-            attack_method_prop.appendChild(yaeskill_selectlist);
-            yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
-          } else if (attack_method==21) {
-            yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 4);
-          }
-          elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-          elemental_reaction.appendChild(yaemiko_agg_countlist); // ラベルを select_reaction_method に追加
-          elemental_reaction.appendChild(document.createElement("br"));
+        else
+        {
+          chongyunburst_selectlist = createSelectList("chongyun_Q_count", 1, 4, "", "回", 4);
+          chongyunreaction_selectlist = createSelectList("chongyun_Qreact", 0, 4, "", "回", 1);
+        }
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(chongyunburst_text);
+        attack_method_prop.appendChild(chongyunburst_selectlist);
+        attack_method_prop.appendChild(document.createElement("br"));
+        select_reaction_method.appendChild(chongyunreaction_text); // チェックボックスを select_reaction_method に追加
+        select_reaction_method.appendChild(chongyunreaction_selectlist); 
+      }
       break
-
-      case "34":
-            const raidenskill_text = createTextNode("　願力の層数：")
-            const raidenskill_selectlist = createSelectList("raiden_resolve", 0, 60, "", "層", 60);
-            attack_method_prop.appendChild(raidenskill_text);
-            attack_method_prop.appendChild(raidenskill_selectlist);
-            attack_method_prop.appendChild(document.createElement("br"));
-          if (attack_method == 21) {
-            raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 2);
-          } else if (attack_method == 22) {
-            raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
-          } else if (attack_method == 23) {
-            raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
-          }
-          elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-          elemental_reaction.appendChild(raiden_agg_countlist); // ラベルを select_reaction_method に追加
-          elemental_reaction.appendChild(document.createElement("br"));
+    case "31":
+      if (attack_method == 1)
+      {
+        let kaeya_talent;
+        if (char_constellations > 0)
+        {
+          kaeya_talent = [
+            createCheckbox("kaeya_first_buff", true),
+            createLabel("kaeya_first_buff", "第1重：優れた血筋 通常攻撃の会心率+15%"),
+            document.createElement("br"),
+          ];
+          kaeya_talent.forEach(element => {
+            temporary_char_talent.appendChild(element);
+          });
+        }
+      } 
+      else if (attack_method == 16)
+      {
+        options = [
+          { text: "霜の襲撃", value: "0", checked: true },
+        ];
+        createCheckboxList(options)
+      }
+      else if (attack_method == 21)
+      {
+        const kaeyaburst_text = createTextNode("　寒氷の柱ヒット回数：");
+        let kaeyaburst_selectlist;
+        const kaeyareaction_text = createTextNode("　寒氷の柱反応回数：");
+        let kaeyareaction_selectlist;
+        if (char_constellations < 4)
+        {
+          kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 30, "", "回", 12);
+          kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 30, "", "回", 6);
+        }
+        else
+        {
+          kaeyaburst_selectlist = createSelectList("kaeya_Q_count", 1, 30, "", "回", 16);
+          kaeyareaction_selectlist = createSelectList("kaeya_Qreact", 0, 30, "", "回", 6);
+        }
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(kaeyaburst_text);
+        attack_method_prop.appendChild(kaeyaburst_selectlist);
+        select_reaction_method.appendChild(kaeyareaction_text); // チェックボックスを select_reaction_method に追加
+        select_reaction_method.appendChild(kaeyareaction_selectlist); 
+      }
       break
+    case "32":
+      let cyno_selectlist;
+      if (attack_method == 1)
+      {
+        cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
+      }
+      else if (attack_method == 16)
+      {
+        let cyno_E_text = createTextNode("　律淵渡魂ヒット回数：")
+        let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 5);
+        let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
+        let cyno_talent1_count = createSelectList("cyno_talent1_count", 1, 60, "", "回", 15);
+        attack_method_prop.appendChild(cyno_E_text);
+        attack_method_prop.appendChild(cyno_E_count);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(cyno_talent1_text);
+        attack_method_prop.appendChild(cyno_talent1_count);
+        attack_method_prop.appendChild(document.createElement("br"));
 
-      case "35":
-          let keqing_selectlist;
-          if (attack_method == 1) {
-            keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 2);
-          } else if (attack_method == 6) {
-            const keqing_count_text = createTextNode("　重撃回数：")
-            const keqing_attack_count = createSelectList("keqing_attack_count", 0, 5, "", "回", 5);
-            attack_method_prop.appendChild(keqing_count_text);
-            attack_method_prop.appendChild(keqing_attack_count);
-            keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 5);
-          } else if (attack_method == 21) {
-              const newCheckbox = createCheckbox("keqing_talent2", true);
-              const label = createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%");
-              const lineBreak = document.createElement("br");
-            
-              // 新しいチェックボックスと関連する要素を追加
-              temporary_char_talent.appendChild(newCheckbox);
-              temporary_char_talent.appendChild(label);
-              temporary_char_talent.appendChild(lineBreak);          
-              keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 3);
-          }
-        elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-        elemental_reaction.appendChild(keqing_agg_countlist); // ラベルを select_reaction_method に追加
-        elemental_reaction.appendChild(document.createElement("br"));
-          break
-
-          case "38":
-          let kujousara_selectlist;
-
-          if (attack_method == 21) {
-            let kujousara_count_text;
-            let kujousara_attack_count;
-
-            if (char_constellations <3)
-            {
-              kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：")
-              kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 20, "", "回", 4);
-            }
-            else
-            {
-              kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：")
-              kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 30, "", "回", 6);
-            }
-
-            attack_method_prop.appendChild(kujousara_count_text);
-            attack_method_prop.appendChild(kujousara_attack_count);
-
-            kujousara_agg_countlist = createSelectList("kujousara_agg_count", 0, 30, "", "回", 2);
-          }
-
-    
+        cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 10);
+      }
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(cyno_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      break
+    case "33":
+      if (attack_method == 1)
+      {
+        yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
+      }
+      else if (attack_method == 6)
+      {
+        yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
+        createCheckboxList(options);
+      }
+      else if (attack_method==16)
+      {
+        const yaeskill_text = createTextNode("　殺生櫻：");
+        const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(yaeskill_text);
+        attack_method_prop.appendChild(yaeskill_selectlist);
+        yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
+      } 
+      else if (attack_method==21)
+      {
+        yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 4);
+      }
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(yaemiko_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      break
+    case "34":
+      const raidenskill_text = createTextNode("　願力の層数：");
+      const raidenskill_selectlist = createSelectList("raiden_resolve", 0, 60, "", "層", 60);
+      attack_method_prop.appendChild(raidenskill_text);
+      attack_method_prop.appendChild(raidenskill_selectlist);
+      attack_method_prop.appendChild(document.createElement("br"));
+      if (attack_method == 21)
+      {
+        raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 2);
+      }
+      else if (attack_method == 22)
+      {
+        raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
+      }
+      else if (attack_method == 23)
+      {
+        raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
+      }
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(raiden_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      break
+    case "35":
+      let keqing_selectlist;
+      if (attack_method == 1)
+      {
+        keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 2);
+      }
+      else if (attack_method == 6)
+      {
+        const keqing_count_text = createTextNode("　重撃回数：");
+        const keqing_attack_count = createSelectList("keqing_attack_count", 0, 5, "", "回", 5);
+        attack_method_prop.appendChild(keqing_count_text);
+        attack_method_prop.appendChild(keqing_attack_count);
+        keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 5);
+      }
+      else if (attack_method == 21)
+      {
+        const newCheckbox = createCheckbox("keqing_talent2", true);
+        const label = createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%");
+        const lineBreak = document.createElement("br");
+      
+        // 新しいチェックボックスと関連する要素を追加
+        temporary_char_talent.appendChild(newCheckbox);
+        temporary_char_talent.appendChild(label);
+        temporary_char_talent.appendChild(lineBreak);          
+        keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 3);
+      }
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(keqing_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      break;
+    case "38":
+      let kujousara_selectlist;
+      if (attack_method == 21)
+      {
+        let kujousara_count_text;
+        let kujousara_attack_count;
+        if (char_constellations < 3)
+        {
+          kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：");
+          kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 20, "", "回", 4);
+        }
+        else
+        {
+          kujousara_count_text = createTextNode("　天狗呪雷・雷礫ヒット回数：");
+          kujousara_attack_count = createSelectList("kujousara_attack_count", 0, 30, "", "回", 6);
+        }
+        attack_method_prop.appendChild(kujousara_count_text);
+        attack_method_prop.appendChild(kujousara_attack_count);
+        kujousara_agg_countlist = createSelectList("kujousara_agg_count", 0, 30, "", "回", 2);
+      }
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(kujousara_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      break;
+    case "39":
+      if (attack_method == 16)
+      {
+        let fischl_count_text;
+        let fischl_attack_count;
+        let fischl_talent1_text;
+        let fischl_talent1_count;
+        if (char_constellations != 4)
+        {
+          fischl_count_text = createTextNode("　元素スキルヒット回数：");
+          fischl_attack_count = createSelectList("fischl_attack_count", 1, 10, "", "回", 10);
+          fischl_talent2_text = createTextNode("　固有天賦2発動回数：");
+          fischl_talent2_count = createSelectList("fischl_talent2_count", 0, 20, "", "回", 8);
+          attack_method_prop.appendChild(fischl_count_text);
+          attack_method_prop.appendChild(fischl_attack_count);
+          attack_method_prop.appendChild(document.createElement("br"));
+          attack_method_prop.appendChild(fischl_talent2_text);
+          attack_method_prop.appendChild(fischl_talent2_count);
+          attack_method_prop.appendChild(document.createElement("br"));
+          let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 10);
           elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-          elemental_reaction.appendChild(kujousara_agg_countlist); // ラベルを select_reaction_method に追加
+          elemental_reaction.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
           elemental_reaction.appendChild(document.createElement("br"));
-          break
+        }
+        else
+        {
+          fischl_count_text = createTextNode("　元素スキルヒット回数：");
+          fischl_attack_count = createSelectList("fischl_attack_count", 1, 12, "", "回", 12);
+          fischl_talent2_text = createTextNode("　固有天賦2発動回数：");
+          fischl_talent2_count = createSelectList("fischl_talent2_count", 0, 24, "", "回", 8);
+          fischl_conste6_text = createTextNode("　6重効果：追撃回数　");
+          fischl_conste6_count = createSelectList("fischl_conste6_count", 0, 24, "", "回", 12);
+          attack_method_prop.appendChild(fischl_count_text);
+          attack_method_prop.appendChild(fischl_attack_count);
+          attack_method_prop.appendChild(document.createElement("br"));
+          attack_method_prop.appendChild(fischl_talent2_text);
+          attack_method_prop.appendChild(fischl_talent2_count);
+          attack_method_prop.appendChild(document.createElement("br"));
+          attack_method_prop.appendChild(fischl_conste6_text);
+          attack_method_prop.appendChild(fischl_conste6_count);
+          let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 14);
+          elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+          elemental_reaction.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
+          elemental_reaction.appendChild(document.createElement("br"));
+        }
+      }
+      break;
+    case "44":
+      let wanderer_talent;
+      if (attack_method == 1)
+      {
+        wanderer_talent = [
+          createLabel("wandererE_level", "焔硝の庭火舞い"),
+          document.createElement("br"),
+          createLabel("wandererE_level", "　元素スキル天賦レベル："),
+          createSelectList("wandererE_level", 1, 13, "Lv.", "", 10),
+          document.createElement("br"),
+          createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
+          document.createElement("br"),
+          createCheckbox("talent1_pyro", false),
+          createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
+          document.createElement("br"),
+          createCheckbox("talent1_cyro", false),
+          createLabel("talent1_cyro", "氷元素: 会心率+20%"),
+          document.createElement("br")
+        ];
+      }
+      else if (attack_method == 6)
+      {
+        wanderer_talent = [
+          createLabel("wandererE_level", "焔硝の庭火舞い"),
+          document.createElement("br"),
+          createLabel("wandererE_level", "　元素スキル天賦レベル："),
+          createSelectList("wandererE_level", 1, 13, "Lv.", "", 10),
+          document.createElement("br"),
+          createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
+          document.createElement("br"),
+          createCheckbox("talent1_pyro", false),
+          createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
+          document.createElement("br"),
+          createCheckbox("talent1_cyro", false),
+          createLabel("talent1_cyro", "氷元素: 会心率+20%"),
+          document.createElement("br")
+        ];
+      }
+      else if (attack_method == 21)
+      {
+        if (char_constellations > 1)
+        {
+          elementsToAddToCharTalent = [
+            createLabel("wanderer", "2重：弐番・箙島廓白浪"),
+            document.createElement("br"),
+            createLabel("wanderer_dmgbuff", "　 与えるダメージ ＋"),
+            createInputWithUnit("text", "wanderer_dmgbuff", "200","%"),
+            document.createElement("br")
+          ];
+        
+          elementsToAddToCharTalent.forEach(element => {
+            temporary_char_talent.appendChild(element);
+          });
+        }
+        wanderer_talent = [
+          createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
+          document.createElement("br"),
+          createCheckbox("talent1_pyro", false),
+          createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
+          document.createElement("br"),
+          createCheckbox("talent1_cyro", false),
+          createLabel("talent1_cyro", "氷元素: 会心率+20%"),
+          document.createElement("br")
+        ];
+      }
+      wanderer_talent.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
+      break;
+    case "46":
+      let xiao_talent;
+      if (attack_method == 16)
+      {
+        xiao_talent = [
+          createLabel("xiao_talent2_buff", "固有天賦2 壊劫・国土砕き：与えるダメージ"),
+          createanySelectList("xiao_talent2_buff", 0, 3, "+", "%", 1, 15),
+        ];
+        xiao_talent.forEach(element => {
+          temporary_char_talent.appendChild(element);
+        });
+      }
+      break;
+    case "49":
+      if (attack_method == 16)
+      {
+        let faruzan_count1_text;
+        let faruzan_attack1_count;
+        let faruzan_count2_text;
+        let faruzan_attack2_count;
 
-          case "39":
-              if (attack_method == 16) {
-              let fischl_count_text;
-              let fischl_attack_count;
-              let fischl_talent1_text;
-              let fischl_talent1_count;
+        faruzan_count1_text = createTextNode("　スキル初撃ヒット回数：")
+        faruzan_attack1_count = createSelectList("faruzan_attack1_count", 0, 5, "", "回", 1);
+        faruzan_count2_text = createTextNode("　風圧崩潰ヒット回数　：")
+        faruzan_attack2_count = createSelectList("faruzan_attack2_count", 0, 10, "", "回", 2);
+        attack_method_prop.appendChild(faruzan_count1_text);
+        attack_method_prop.appendChild(faruzan_attack1_count);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(faruzan_count2_text);
+        attack_method_prop.appendChild(faruzan_attack2_count);
+        attack_method_prop.appendChild(document.createElement("br"));
+      }
+      break;
+    case "50":
+      if (attack_method == 16)
+      {
+        let shikanoinheizou_count1_text;
+        let shikanoinheizou_attack_count;
 
-              if (char_constellations != 4)
-              {
-                fischl_count_text = createTextNode("　元素スキルヒット回数：")
-                fischl_attack_count = createSelectList("fischl_attack_count", 1, 10, "", "回", 10);
-                fischl_talent2_text = createTextNode("　固有天賦2発動回数：")
-                fischl_talent2_count = createSelectList("fischl_talent2_count", 0, 20, "", "回", 8);
-                attack_method_prop.appendChild(fischl_count_text);
-                attack_method_prop.appendChild(fischl_attack_count);
-                attack_method_prop.appendChild(document.createElement("br"));
-                attack_method_prop.appendChild(fischl_talent2_text);
-                attack_method_prop.appendChild(fischl_talent2_count);
-                attack_method_prop.appendChild(document.createElement("br"));
-                let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 10);
-                elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-                elemental_reaction.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
-                elemental_reaction.appendChild(document.createElement("br"));
-              }
-              else
-              {
-                {
-                  fischl_count_text = createTextNode("　元素スキルヒット回数：")
-                  fischl_attack_count = createSelectList("fischl_attack_count", 1, 12, "", "回", 12);
-                  fischl_talent2_text = createTextNode("　固有天賦2発動回数：")
-                  fischl_talent2_count = createSelectList("fischl_talent2_count", 0, 24, "", "回", 8);
-                  fischl_conste6_text = createTextNode("　6重効果：追撃回数　")
-                  fischl_conste6_count = createSelectList("fischl_conste6_count", 0, 24, "", "回", 12);
-                  attack_method_prop.appendChild(fischl_count_text);
-                  attack_method_prop.appendChild(fischl_attack_count);
-                  attack_method_prop.appendChild(document.createElement("br"));
-                  attack_method_prop.appendChild(fischl_talent2_text);
-                  attack_method_prop.appendChild(fischl_talent2_count);
-                  attack_method_prop.appendChild(document.createElement("br"));
-                  attack_method_prop.appendChild(fischl_conste6_text);
-                  attack_method_prop.appendChild(fischl_conste6_count);
-                  let fischl_selectlist = createSelectList("fischl_agg_count", 0, 30, "", "回", 14);
-                  elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-                  elemental_reaction.appendChild(fischl_selectlist); // ラベルを select_reaction_method に追加
-                  elemental_reaction.appendChild(document.createElement("br"));
-                }
-              }
-            }
-            break
-
-            case "44":
-              let wanderer_talent;
-              if (attack_method == 1) {
-                wanderer_talent = [
-                  createLabel("wandererE_level", "焔硝の庭火舞い"),
-                  document.createElement("br"),
-                  createLabel("wandererE_level", "　元素スキル天賦レベル："),
-                  createSelectList("wandererE_level", 1, 13, "Lv.", "", 10),
-                  document.createElement("br"),
-                  createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
-                  document.createElement("br"),
-                  createCheckbox("talent1_pyro", false),
-                  createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
-                  document.createElement("br"),
-                  createCheckbox("talent1_cyro", false),
-                  createLabel("talent1_cyro", "氷元素: 会心率+20%"),
-                  document.createElement("br")
-                ];
-                }
-              else if (attack_method == 6)
-              {
-                wanderer_talent = [
-                  createLabel("wandererE_level", "焔硝の庭火舞い"),
-                  document.createElement("br"),
-                  createLabel("wandererE_level", "　元素スキル天賦レベル："),
-                  createSelectList("wandererE_level", 1, 13, "Lv.", "", 10),
-                  document.createElement("br"),
-                  createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
-                  document.createElement("br"),
-                  createCheckbox("talent1_pyro", false),
-                  createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
-                  document.createElement("br"),
-                  createCheckbox("talent1_cyro", false),
-                  createLabel("talent1_cyro", "氷元素: 会心率+20%"),
-                  document.createElement("br")
-                ];
-              }
-              else if (attack_method == 21)
-              {
-                if (char_constellations > 1)
-                {
-                  elementsToAddToCharTalent = [
-                    createLabel("wanderer", "2重：弐番・箙島廓白浪"),
-                    document.createElement("br"),
-                    createLabel("wanderer_dmgbuff", "　 与えるダメージ ＋"),
-                    createInputWithUnit("text", "wanderer_dmgbuff", "200","%"),
-                    document.createElement("br")
-                  ];
-                
-                  elementsToAddToCharTalent.forEach(element => {
-                    temporary_char_talent.appendChild(element);
-                  });
-                }
-                wanderer_talent = [
-                  createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
-                  document.createElement("br"),
-                  createCheckbox("talent1_pyro", false),
-                  createLabel("talent1_pyro", "炎元素: 攻撃力+30%"),
-                  document.createElement("br"),
-                  createCheckbox("talent1_cyro", false),
-                  createLabel("talent1_cyro", "氷元素: 会心率+20%"),
-                  document.createElement("br")
-                ];
-              }
-              wanderer_talent.forEach(element => {
-                temporary_char_talent.appendChild(element);
-              });
-            break
-
-            case "46":
-              let xiao_talent;
-              if (attack_method == 16)
-              {
-                xiao_talent = [
-                  createLabel("xiao_talent2_buff", "固有天賦2 壊劫・国土砕き：与えるダメージ"),
-                  createanySelectList("xiao_talent2_buff", 0, 3, "+", "%", 1, 15),
-                ];
-                xiao_talent.forEach(element => {
-                  temporary_char_talent.appendChild(element);
-                });
-              }
-            break
-
-            case "49":
-              if (attack_method == 16) {
-                let faruzan_count1_text;
-                let faruzan_attack1_count;
-                let faruzan_count2_text;
-                let faruzan_attack2_count;
-
-                faruzan_count1_text = createTextNode("　スキル初撃ヒット回数：")
-                faruzan_attack1_count = createSelectList("faruzan_attack1_count", 0, 5, "", "回", 1);
-                faruzan_count2_text = createTextNode("　風圧崩潰ヒット回数　：")
-                faruzan_attack2_count = createSelectList("faruzan_attack2_count", 0, 10, "", "回", 2);
-                attack_method_prop.appendChild(faruzan_count1_text);
-                attack_method_prop.appendChild(faruzan_attack1_count);
-                attack_method_prop.appendChild(document.createElement("br"));
-                attack_method_prop.appendChild(faruzan_count2_text);
-                attack_method_prop.appendChild(faruzan_attack2_count);
-                attack_method_prop.appendChild(document.createElement("br"));
-                }
-            break
-
-            case "50":
-              if (attack_method == 16) {
-                let shikanoinheizou_count1_text;
-                let shikanoinheizou_attack_count;
-
-                shikanoinheizou_count1_text = createTextNode("　変格層数：")
-                shikanoinheizou_attack_count = createSelectList("shikanoinheizou_attack_count", 0, 4, "", "層", 4);
-                attack_method_prop.appendChild(shikanoinheizou_count1_text);
-                attack_method_prop.appendChild(shikanoinheizou_attack_count);
-                attack_method_prop.appendChild(document.createElement("br"));
-                }
-            break
-
-            case "56":        
-              if (attack_method == 1) {
-                nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
-              } else if (attack_method == 6) {
-                nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-              } else if (attack_method==16) {
-                nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-              } else if (attack_method==17) {
-                nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
-              }
-              elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-              elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
-              elemental_reaction.appendChild(document.createElement("br"));
-            break
-
-            case "57":        
-              if (attack_method == 6)
-              {
-                if (char_constellations < 4)
-                {
-                  tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 2);
-                }
-                else
-                {
-                  tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 3);
-                }
-                createCheckboxList_br(options)
-              } else if (attack_method == 21)
-              {
-                tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
-              }
-              elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-              elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
-              elemental_reaction.appendChild(document.createElement("br"));
-            break
-
-            case "63":
-                if (attack_method == 6) {
-                  const arataki_text = createTextNode("　重撃ヒット回数：")
-                  const aratakicount_selectlist = createSelectList("arataki_count", 0, 10, "", "回", 3);
-                  attack_method_prop.appendChild(document.createElement("br"));
-                  attack_method_prop.appendChild(arataki_text);
-                  attack_method_prop.appendChild(aratakicount_selectlist);
-                }
-            break
-
-            case "64":
-              if (attack_method == 16) {
-                const albedo_text = createTextNode("　スキル追撃ヒット回数：")
-                const albedocount_selectlist = createSelectList("albedo_count", 1, 15, "", "回", 5);
-                attack_method_prop.appendChild(document.createElement("br"));
-                attack_method_prop.appendChild(albedo_text);
-                attack_method_prop.appendChild(albedocount_selectlist);
-              }
-              else if (attack_method == 21) {
-                const albedo_text = createTextNode("　生滅の花ヒット回数：")
-                const albedocount_selectlist = createSelectList("albedo_count", 1, 7, "", "回", 3);
-                attack_method_prop.appendChild(document.createElement("br"));
-                attack_method_prop.appendChild(albedo_text);
-                attack_method_prop.appendChild(albedocount_selectlist);
-              }
-            break
-
-            case "69":
-              if (attack_method == 1) {
-                const ningguang_text = createTextNode("　通常攻撃ヒット回数：")
-                const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 10, "", "回", 3);
-                attack_method_prop.appendChild(document.createElement("br"));
-                attack_method_prop.appendChild(ningguang_text);
-                attack_method_prop.appendChild(ningguangcount_selectlist);
-              } else if (attack_method == 6) {
-                const ningguang_text = createTextNode("　星璇枚数：")
-                let ningguangcount_selectlist = createSelectList("ningguang_count", 0, 3, "", "枚", 3);
-
-                if (char_constellations == 4)
-                {
-                  let ningguang_sixth_conste_buff = document.createElement("option");
-                  ningguang_sixth_conste_buff.value = 7;
-                  ningguang_sixth_conste_buff.text = `${""}${7}${"枚"}`;   
-                  ningguang_sixth_conste_buff.selected = true;  
-                  ningguangcount_selectlist.appendChild(ningguang_sixth_conste_buff);
-                }
-                attack_method_prop.appendChild(document.createElement("br"));
-                attack_method_prop.appendChild(ningguang_text);
-                attack_method_prop.appendChild(ningguangcount_selectlist);
-              } else if (attack_method == 21) {
-                const ningguang_text = createTextNode("　天権崩玉 宝石弾ヒット数：")
-                const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 12, "", "発", 10);
-                attack_method_prop.appendChild(document.createElement("br"));
-                attack_method_prop.appendChild(ningguang_text);
-                attack_method_prop.appendChild(ningguangcount_selectlist);
-              }
-              
-            break
-              
-            case "70":
-              if (attack_method == 21)
-              {
-                travelergeo_burstcount_text = createTextNode("　岩潮幾重ヒット回数　：")
-                travelergeo_burstcount = createSelectList("travelergeo_burstcount", 0, 4, "", "回", 4);
-                attack_method_prop.appendChild(travelergeo_burstcount_text);
-                attack_method_prop.appendChild(travelergeo_burstcount);
-                attack_method_prop.appendChild(document.createElement("br"));
-              }
-            break
+        shikanoinheizou_count1_text = createTextNode("　変格層数：");
+        shikanoinheizou_attack_count = createSelectList("shikanoinheizou_attack_count", 0, 4, "", "層", 4);
+        attack_method_prop.appendChild(shikanoinheizou_count1_text);
+        attack_method_prop.appendChild(shikanoinheizou_attack_count);
+        attack_method_prop.appendChild(document.createElement("br"));
+      }
+      break
+    case "56":        
+      if (attack_method == 1)
+      {
+        nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 2);
+      }
+      else if (attack_method == 6)
+      {
+        nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+      }
+      else if (attack_method==16)
+      {
+        nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+      }
+      else if (attack_method==17)
+      {
+        nahida_agg_countlist = createSelectList("nahida_agg_count", 0, 50, "", "回", 1);
+      }
+      elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(nahida_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      break;
+    case "57":        
+      if (attack_method == 6)
+      {
+        if (char_constellations < 4)
+        {
+          tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 2);
+        }
+        else
+        {
+          tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 3);
+        }
+        createCheckboxList_br(options);
+      }
+      else if (attack_method == 21)
+      {
+        tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
+      }
+      elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      break;
+    case "63":
+      if (attack_method == 6)
+      {
+        const arataki_text = createTextNode("　重撃ヒット回数：");
+        const aratakicount_selectlist = createSelectList("arataki_count", 0, 10, "", "回", 3);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(arataki_text);
+        attack_method_prop.appendChild(aratakicount_selectlist);
+      }
+      break
+    case "64":
+      if (attack_method == 16)
+      {
+        const albedo_text = createTextNode("　スキル追撃ヒット回数：");
+        const albedocount_selectlist = createSelectList("albedo_count", 1, 15, "", "回", 5);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(albedo_text);
+        attack_method_prop.appendChild(albedocount_selectlist);
+      }
+      else if (attack_method == 21)
+      {
+        const albedo_text = createTextNode("　生滅の花ヒット回数：");
+        const albedocount_selectlist = createSelectList("albedo_count", 1, 7, "", "回", 3);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(albedo_text);
+        attack_method_prop.appendChild(albedocount_selectlist);
+      }
+      break
+    case "69":
+      if (attack_method == 1)
+      {
+        const ningguang_text = createTextNode("　通常攻撃ヒット回数：");
+        const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 10, "", "回", 3);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(ningguang_text);
+        attack_method_prop.appendChild(ningguangcount_selectlist);
+      }
+      else if (attack_method == 6)
+      {
+        const ningguang_text = createTextNode("　星璇枚数：");
+        let ningguangcount_selectlist = createSelectList("ningguang_count", 0, 3, "", "枚", 3);
+        if (char_constellations == 4)
+        {
+          let ningguang_sixth_conste_buff = document.createElement("option");
+          ningguang_sixth_conste_buff.value = 7;
+          ningguang_sixth_conste_buff.text = `${""}${7}${"枚"}`;   
+          ningguang_sixth_conste_buff.selected = true;  
+          ningguangcount_selectlist.appendChild(ningguang_sixth_conste_buff);
+        }
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(ningguang_text);
+        attack_method_prop.appendChild(ningguangcount_selectlist);
+      }
+      else if (attack_method == 21)
+      {
+        const ningguang_text = createTextNode("　天権崩玉 宝石弾ヒット数：");
+        const ningguangcount_selectlist = createSelectList("ningguang_count", 1, 12, "", "発", 10);
+        attack_method_prop.appendChild(document.createElement("br"));
+        attack_method_prop.appendChild(ningguang_text);
+        attack_method_prop.appendChild(ningguangcount_selectlist);
+      }
+      break;
+    case "70":
+      if (attack_method == 21)
+      {
+        travelergeo_burstcount_text = createTextNode("　岩潮幾重ヒット回数　：");
+        travelergeo_burstcount = createSelectList("travelergeo_burstcount", 0, 4, "", "回", 4);
+        attack_method_prop.appendChild(travelergeo_burstcount_text);
+        attack_method_prop.appendChild(travelergeo_burstcount);
+        attack_method_prop.appendChild(document.createElement("br"));
+      }
+      break;
     }
+
     let hp_form = document.getElementById("hp_form");
     let attck_form = document.getElementById("attck_form");
     let deff_form = document.getElementById("deff_form");
@@ -1456,8 +1481,6 @@ async function show_attack_method()
     let team_elm_charge_form = document.getElementById("team_elm_charge_form");
     let team_cr_form = document.getElementById("team_cr_form");
     let team_cd_form = document.getElementById("team_cd_form")
-
-
 
     hp_form.style.display = "none";  // HPフォームを非表示
     attck_form.style.display = "none";  // 攻撃力フォームを非表示
@@ -1479,8 +1502,6 @@ async function show_attack_method()
     calculate_table_status();
     showFormElements();
 }
-
-
 
 function createCheckboxList(options) {
     const select_reaction_method = document.getElementById("select_reaction_method"); // チェックボックスを追加する要素を指定
