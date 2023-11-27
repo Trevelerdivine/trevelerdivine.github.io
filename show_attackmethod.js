@@ -13,7 +13,7 @@ async function show_attack_method()
   let elements_const_dmg;
   attack_method = document.getElementById("attack_method_id").value;     
   let options = [];
-  let elementsToAddToCharTalent;
+  let elementsToAddToCharTalent = [];
 
   const ReactionOffRadioButton = document.createElement("input");
   ReactionOffRadioButton.type = "radio";

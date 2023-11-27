@@ -1,5 +1,5 @@
 class dehya {
-  constructor(base_status_array, parameter) {
+  constructor(base_status_array, parameter){
     this.base_status_array = base_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
@@ -12,21 +12,22 @@ class dehya {
     this.trueCount = 0;
   }
 
-  async dmg_rate_data() {
+  async dmg_rate_data(){
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked)
+    {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked)
+    {
       this.reaction_coeff = 2;
     }
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/dehya.json");
     const data = await response.json();
-
 
     if (this.char_constellations > 0)
     {
@@ -127,14 +128,14 @@ class dehya {
   }
 
   calculate_char_fixed_dmg_buff(status) {
-      return 0;
+    return 0;
   }
 
   calculate_char_result_dmg_buff(status) {
-      return 0;
+    return 0;
   }
 
-  calculate_basic_dmg(dmg_rate, status) {
+  calculate_basic_dmg(dmg_rate, status){
     let basicDmg;
     let attckRate;
       if (this.reaction_coeff > 0)
@@ -148,8 +149,8 @@ class dehya {
         basicDmg =  (dmg_rate[0][0] + dmg_rate[4][0]) * status[0] + (dmg_rate[0][1] + dmg_rate[4][1]) * status[4];
       }
       return basicDmg;
-    }
-
+  }
+  
   calculate_char_debuff() {
     let char_debuff = [0,0,0];
     return char_debuff;
