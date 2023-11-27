@@ -14,13 +14,14 @@ class dehya {
 
   async dmg_rate_data(){
     this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked)
+    if (Vaporize_pyro.checked && reaction_flag.checked)
     {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked)
+    if (Melt_pyro.checked && reaction_flag.checked)
     {
       this.reaction_coeff = 2;
     }
@@ -150,7 +151,7 @@ class dehya {
       }
       return basicDmg;
   }
-  
+
   calculate_char_debuff() {
     let char_debuff = [0,0,0];
     return char_debuff;
@@ -175,11 +176,11 @@ class yoimiya {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
   
@@ -395,11 +396,11 @@ class hutao {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
   
@@ -594,11 +595,11 @@ class klee {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
   
@@ -802,11 +803,11 @@ class diluc {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
   
@@ -1084,11 +1085,11 @@ class yanfei {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
   
@@ -1443,11 +1444,11 @@ class bennett {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
 
@@ -1630,11 +1631,11 @@ class xiangling {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
   
@@ -1783,11 +1784,11 @@ class amber {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     const Vaporize_pyro = document.getElementById("Vaporize_pyro");
-    if (Vaporize_pyro.checked) {
+    if (Vaporize_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
     const Melt_pyro = document.getElementById("Melt-pyro");
-    if (Melt_pyro.checked) {
+    if (Melt_pyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 2;
     }
   
