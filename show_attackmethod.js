@@ -11,6 +11,9 @@ async function show_attack_method()
   await calculate_depend_status();
 
   let elements_const_dmg;
+  attack_method = document.getElementById("attack_method_id").value;     
+  let options = [];
+  let elementsToAddToCharTalent;
 
   const ReactionOffRadioButton = document.createElement("input");
   ReactionOffRadioButton.type = "radio";
@@ -193,9 +196,6 @@ async function show_attack_method()
     elemental_reaction.appendChild(ReactionOnRadio_label);
     elemental_reaction.appendChild(document.createElement("br"));
   }
-  attack_method = document.getElementById("attack_method_id").value;     
-  let options = [];
-  let elementsToAddToCharTalent = [];
 
     switch (selectedCharId)
     {
@@ -640,7 +640,6 @@ async function show_attack_method()
 
       case "21":
                 let kamisatoayaka_talent;
-                let elementsToAddToCharTalent;
                 if (attack_method == 1) {
                   kamisatoayaka_talent = [
                     createCheckbox("kamisatoayaka_talent1", true),
