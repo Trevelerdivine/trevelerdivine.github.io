@@ -923,10 +923,6 @@ async function show_attack_method()
             createCheckboxList_br(options);
           } 
           else if (attack_method == 16) {
-            const chongyunreaction_text2 = createTextNode("　追氷剣訣反応回数：")
-            let chongyunreaction_selectlist1;
-            let chongyunreaction_selectlist2;
-
             elementsToAddToCharTalent = [
               document.createElement("br"),
               createTextNode("　巨大霊刃ヒット回数："),
@@ -950,7 +946,7 @@ async function show_attack_method()
               document.createElement("br"),
             ];
             elementsToAddToCharTalent.forEach(element => {
-              attack_method_prop.appendChild(element);
+              select_reaction_method.appendChild(element);
             });
           } else if (attack_method == 21) {
             const chongyunburst_text = createTextNode("　巨大霊刃ヒット回数：");
@@ -970,6 +966,7 @@ async function show_attack_method()
             attack_method_prop.appendChild(document.createElement("br"));
             attack_method_prop.appendChild(chongyunburst_text);
             attack_method_prop.appendChild(chongyunburst_selectlist);
+            attack_method_prop.appendChild(document.createElement("br"));
             select_reaction_method.appendChild(chongyunreaction_text); // チェックボックスを select_reaction_method に追加
             select_reaction_method.appendChild(chongyunreaction_selectlist); 
           }
