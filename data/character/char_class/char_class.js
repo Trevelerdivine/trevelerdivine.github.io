@@ -3486,7 +3486,7 @@ class chongyun {
       const react_count = parseInt(document.getElementById("chongyun_skill_react").value) + parseInt(document.getElementById("chongyun_talent_react").value);
 
       elm_react_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
-      elm_nonreact_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
+      elm_nonreact_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count);
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 21) {
       if (this.char_constellations == 4)
