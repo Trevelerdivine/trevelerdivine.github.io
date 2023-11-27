@@ -778,6 +778,16 @@ async function show_char_statsform()
     }
 
     else if (selectedCharId == "30") {
+      const elementsToAddToCharTalent = [
+        createCheckbox("chongyun_talent1", false),
+        createLabel("chongyun_talent1", "固有天賦1：追氷剣訣 氷元素耐性-10%"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃1ループ(霊刃・重華積霜)", value: "1" },

@@ -923,7 +923,7 @@ async function show_attack_method()
             createCheckboxList_br(options);
           } 
           else if (attack_method == 16) {
-            elementsToAddToCharTalent = [
+            traits = [
               document.createElement("br"),
               createTextNode("　巨大霊刃ヒット回数："),
               createSelectList("chongyun_skill_count", 0, 1, "", "回", 1),
@@ -932,11 +932,11 @@ async function show_attack_method()
               createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
               document.createElement("br"),
             ];
-            elementsToAddToCharTalent.forEach(element => {
+            traits.forEach(element => {
               attack_method_prop.appendChild(element);
             });
 
-            elementsToAddToCharTalent = [
+            traits = [
               document.createElement("br"),
               createTextNode("　巨大霊刃反応回数："),
               createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
@@ -945,7 +945,7 @@ async function show_attack_method()
               createSelectList("chongyun_skill_count1", 0, 1, "", "回", 1),
               document.createElement("br"),
             ];
-            elementsToAddToCharTalent.forEach(element => {
+            traits.forEach(element => {
               select_reaction_method.appendChild(element);
             });
           } else if (attack_method == 21) {
