@@ -1920,7 +1920,7 @@ class nirou {
     this.char_constellations = document.getElementById("char_constellations").value;
     const reaction_flag = document.getElementById("reactionon_flag");
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
-    if (nirou_talent1_check.checked && reaction_flag.checked)
+    if (Vaporize_hydro.checked && reaction_flag.checked)
     {
       this.reaction_coeff = 2;
     }
@@ -2182,8 +2182,8 @@ class yelan {
       const attack_count = parseInt(document.getElementById("yelan_burst_count").value);
       const react_count = parseInt(document.getElementById("yelan_react_count").value);
       
-        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        elm_react_dmgrate += react_count * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += (attack_count - react_count) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
 
       if (this.char_constellations > 1)
       {
@@ -2301,18 +2301,9 @@ class yelan {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      if (attack_method == 21)
-      {
-        attckRate = status[0] * dmg_rate[0][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] * dmg_rate[0][1];
-      }
-      else 
-      {
-        attckRate = status[0] * dmg_rate[0][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] * dmg_rate[0][1];
-      }
+      attckRate = status[0] * dmg_rate[0][0];
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[0] * dmg_rate[0][1];
     }
     else
     {
