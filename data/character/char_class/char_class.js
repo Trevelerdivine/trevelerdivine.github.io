@@ -2212,8 +2212,8 @@ class yelan {
       const attack_count = parseInt(document.getElementById("yelan_attack_count").value);
       const react_count = parseInt(document.getElementById("yelan_react_count").value);
 
-      elm_react_dmgrate += react_count * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
-      elm_nonreact_dmgrate += (attack_count - react_count) * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
+      elm_react_dmgrate += react_count * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * 1.56;
+      elm_nonreact_dmgrate += (attack_count - react_count) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * 1.56;
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     }
   
@@ -2325,8 +2325,12 @@ class kamisatoayato {
 
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
-    this.reaction_coeff = Vaporize_hydro.checked ? 2 : 0;
+    if (Vaporize_hydro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 2;
+    }
   
     if (this.char_constellations > 0) {
       const first_conste_check = document.getElementById("traitCheckbox1");
