@@ -1355,11 +1355,11 @@ async function show_attack_method()
     let lisa_agg_count;
     if (attack_method == 1)
     {
-      lisa_agg_count = createSelectList("raiden_agg_count", 0, 4, "", "回", 1);
+      lisa_agg_count = createSelectList("lisa_agg_count", 0, 4, "", "回", 1);
     }
     else if (attack_method == 6)
     {
-      lisa_agg_count = createSelectList("raiden_agg_count", 0, 1, "", "回", 1);
+      lisa_agg_count = createSelectList("lisa_agg_count", 0, 1, "", "回", 1);
     }
     else if (attack_method == 16)
     {
