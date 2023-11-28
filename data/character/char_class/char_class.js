@@ -2175,10 +2175,10 @@ class yelan {
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
     let dmg_attack_rate = 0;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
 
     if (attack_method == 21) {   
-      let elm_react_dmgrate = 0;
-      let elm_nonreact_dmgrate = 0;
       const attack_count = parseInt(document.getElementById("yelan_burst_count").value);
       const react_count = parseInt(document.getElementById("yelan_react_count").value);
       
@@ -2203,8 +2203,6 @@ class yelan {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
       });
-      let elm_react_dmgrate = 0;
-      let elm_nonreact_dmgrate = 0;
       for (let i = 0; i < 1; i++) {
         elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
