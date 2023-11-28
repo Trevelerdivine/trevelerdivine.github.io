@@ -2362,39 +2362,33 @@ class kamisatoayato {
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       let elm_react = [];
       let elm_nonreact = [];
-      this.trueCount = 0;
   
-      checkboxes.forEach(checkbox => {
-        elm_react.push(checkbox.checked ? 1 : 0);
-        elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) {
-          this.trueCount++;
-        }
-      });
+      let attack_count1 = parseInt(document.getElementById("ayato_attack1_count").value);
+      let attack_count2 = parseInt(document.getElementById("ayato_attack2_count").value);
+      let attack_count3 = parseInt(document.getElementById("ayato_attack3_count").value);
 
-        for (let i = 0; i < 3; i++) {
-          elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        }
+      let react_count1 = parseInt(document.getElementById("ayato_react1_count").value);
+      let react_count2 = parseInt(document.getElementById("ayato_react2_count").value);
+      let react_count3 = parseInt(document.getElementById("ayato_react3_count").value);
 
-        if (this.char_constellations == 4)
-        {
-          const syunsui1_check = document.getElementById("checkbox_3");
-          const syunsui2_check = document.getElementById("checkbox_4");
-    
-          if (syunsui1_check.checked) {
-            this.buff_effect_count -= 1;
-          }
-          if (syunsui2_check.checked) {
-            this.buff_effect_count -= 1;
-          }
-          for (let i = 3; i < 5; i++) {
-            elm_react_dmgrate += elm_react[i] * 4.5;
-            elm_nonreact_dmgrate += elm_nonreact[i] * 4.5;
-          }
-        }
-        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
-        console.log(dmg_rate);
+      elm_react_dmgrate += react_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        +  react_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                        +  react_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+      elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                           +  (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                           +  (attack_count3 - react_count3) * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+
+      if (this.char_constellations == 4)
+      {
+        let attack_count4 = parseInt(document.getElementById("ayato_attack4_count").value);
+        let react_count4 = parseInt(document.getElementById("ayato_react4_count").value);
+
+        elm_react_dmgrate += 4.5 * react_count4;
+        elm_nonreact_dmgrate += 4.5 * (attack_count4 - react_count4);
+
+      }
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+      console.log(dmg_rate);
       }
     return dmg_rate;
   }

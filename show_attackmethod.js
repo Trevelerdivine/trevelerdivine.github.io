@@ -649,23 +649,74 @@ async function show_attack_method()
     {
       if (char_constellations < 4)
       {
-        options = [
-          { text: "瞬水剣1段", value: "0", checked: true },
-          { text: "瞬水剣2段", value: "1"},
-          { text: "瞬水剣3段", value: "2"},
+        traits = [
+          document.createElement("br"),
+          createLabel("ayato_attack1_count", "　瞬水剣1段ヒット回数："),
+          createSelectList("ayato_attack1_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_attack2_count", "　瞬水剣2段ヒット回数："),
+          createSelectList("ayato_attack2_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_attack3_count", "　瞬水剣3段ヒット回数："),
+          createSelectList("ayato_attack3_count", 1, 8, "", "回", 5),
         ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+  
+        traits = [
+          document.createElement("br"),
+          createLabel("ayato_react1_count", "　瞬水剣1段反応回数："),
+          createSelectList("ayato_react1_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_react2_count", "　瞬水剣2段反応回数："),
+          createSelectList("ayato_react2_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_react3_count", "　瞬水剣3段反応回数："),
+          createSelectList("ayato_react3_count", 1, 8, "", "回", 5),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
       }
       else
       {
-        options = [
-          { text: "瞬水剣1段", value: "0", checked: true },
-          { text: "瞬水剣2段", value: "1"},
-          { text: "瞬水剣3段", value: "2"},
-          { text: "6重瞬水剣1", value: "3", checked: true },
-          { text: "6重瞬水剣2", value: "4", checked: true },
+        traits = [
+          document.createElement("br"),
+          createLabel("ayato_attack1_count", "　瞬水剣1段ヒット回数："),
+          createSelectList("ayato_attack1_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_attack2_count", "　瞬水剣2段ヒット回数："),
+          createSelectList("ayato_attack2_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_attack3_count", "　瞬水剣3段ヒット回数："),
+          createSelectList("ayato_attack3_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_attack4_count", "　6重瞬水剣ヒット回数："),
+          createSelectList("ayato_attack4_count", 0, 2, "", "回", 2),
         ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+  
+        traits = [
+          document.createElement("br"),
+          createLabel("ayato_react1_count", "　瞬水剣1段反応回数："),
+          createSelectList("ayato_react1_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_react2_count", "　瞬水剣2段反応回数："),
+          createSelectList("ayato_react2_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_react3_count", "　瞬水剣3段反応回数："),
+          createSelectList("ayato_react3_count", 1, 8, "", "回", 5),
+          document.createElement("br"),
+          createLabel("ayato_react4_count", "　6重瞬水剣反応回数："),
+          createSelectList("ayato_react4_count", 0, 2, "", "回", 1),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
       }
-      createCheckboxList_br(options);
 
       let rousen_count;
       if (char_constellations > 1)
