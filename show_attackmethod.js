@@ -228,7 +228,7 @@ async function show_attack_method()
   }
   else if (selectedCharId == "1")
   {
-    if (attack_method == 1)
+    if (attack_method == 1 && char_constellations < 4)
     {
       options = [
         { text: "１段目-１", value: "0", checked: true },
@@ -1483,6 +1483,7 @@ async function show_attack_method()
       attack_method_prop.appendChild(ningguangcount_selectlist);
     }
   }
+
   else if (selectedCharId == "70")
   {
     if (attack_method == 21)
