@@ -1350,6 +1350,36 @@ async function show_attack_method()
       }
     }
   }
+  else if (selectedCharId == "42")
+  {
+    if (attack_method == 16)
+    {
+      traits = [
+        document.createElement("br"),
+        createLabel("lisa_skill_count", "　誘雷層数："),
+        createSelectList("lisa_skill_count", 0, 3, "", "回", 3),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+    }
+    else if (attack_method == 21)
+    {
+      elementsToAddToCharTalent = [
+        createLabel("lisa_skill_count", "　放電ヒット回数："),
+        createSelectList("lisa_skill_count", 0, 29, "", "回", 29),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
+    }
+    wanderer_talent.forEach(element => {
+      temporary_char_talent.appendChild(element);
+    });
+  }
   else if (selectedCharId == "44")
   {
     let wanderer_talent;
@@ -1578,7 +1608,6 @@ async function show_attack_method()
       attack_method_prop.appendChild(ningguangcount_selectlist);
     }
   }
-
   else if (selectedCharId == "70")
   {
     if (attack_method == 21)

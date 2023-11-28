@@ -1045,6 +1045,27 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId == "42")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("lisa_talent2", true),
+        createLabel("lisa_talent2", "固有天賦2：静電気フィールド 敵の防御力-15%"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "元素スキル（蒼雷）", value: "16" },
+        { text: "元素爆発（薔薇の雷光）", value: "21" },
+      ];
+      createchar_attackmethod(options);
+    }
     else if (selectedCharId == "44")
     {
       const options = [
