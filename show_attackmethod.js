@@ -1,8 +1,5 @@
 async function show_attack_method()
 {
-  let elements_const_dmg;
-  let options = [];
-  let elementsToAddToCharTalent = [];
   attack_method = document.getElementById("attack_method_id").value;     
   const select_reaction_method = document.getElementById("select_reaction_method");
   select_reaction_method.innerHTML = "";
@@ -13,6 +10,8 @@ async function show_attack_method()
   const temporary_char_talent = document.getElementById("temporary_char_talent");
   temporary_char_talent.innerHTML = "";
   await calculate_depend_status();
+
+  let elements_const_dmg;
 
   const ReactionOffRadioButton = document.createElement("input");
   ReactionOffRadioButton.type = "radio";
@@ -193,7 +192,8 @@ async function show_attack_method()
     elemental_reaction.appendChild(ReactionOnRadio_label);
     elemental_reaction.appendChild(document.createElement("br"));
   }
-
+  var options = [];
+  var elementsToAddToCharTalent = [];
   switch (selectedCharId)
   {
     case "0":
