@@ -2496,8 +2496,10 @@ class xingqiu {
 
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
-    if (Vaporize_hydro.checked) {
+    if (Vaporize_hydro.checked && reaction_flag.checked)
+    {
       this.reaction_coeff = 2;
     }
 
@@ -3018,9 +3020,11 @@ class ganyu {
     this.char_constellations = document.getElementById("char_constellations").value;
     
     const Melt_cyro = document.getElementById("Melt-cyro");
-    if (Melt_cyro.checked) {
+    const reaction_flag = document.getElementById("reactionon_flag");
+    if (Melt_cyro.checked && reaction_flag.checked) {
       this.reaction_coeff = 1.5;
     }
+    
     const talent1_check = document.getElementById("ganyu_talent1");
     if (talent1_check.checked && attack_method == 6)
     {
@@ -3146,7 +3150,7 @@ class ganyu {
     let basicDmg;
     if (attack_method == 6)
     {
-      if (this.reaction_coeff == 1.5)
+      if (this.reaction_coeff > 0)
       {
         let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[1] * dmg_rate[4][1];
         let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[1] * dmg_rate[4][1];
@@ -3163,7 +3167,7 @@ class ganyu {
     }
     else if (attack_method == 21)
     {
-      if (this.reaction_coeff == 1.5)
+      if (this.reaction_coeff > 0)
       {
         let Melt_attack_rate = this.Q_melt_count * dmg_rate[4];
         let NonMelt_attack_rate = (this.Q_nonmelt_count - this.Q_melt_count) * dmg_rate[4];
@@ -3540,7 +3544,7 @@ class chongyun {
     if (this.reaction_coeff > 0)
     {
       basicDmg = dmg_rate[4][0] * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                + dmg_rate[4][1] * status[4];
+               + dmg_rate[4][1] * status[4];
     }
     else
     {

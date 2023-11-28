@@ -665,15 +665,14 @@ async function show_attack_method()
         });
   
         traits = [
-          document.createElement("br"),
           createLabel("ayato_react1_count", "　瞬水剣1段反応回数："),
-          createSelectList("ayato_react1_count", 1, 8, "", "回", 5),
+          createSelectList("ayato_react1_count", 1, 8, "", "回", 2),
           document.createElement("br"),
           createLabel("ayato_react2_count", "　瞬水剣2段反応回数："),
-          createSelectList("ayato_react2_count", 1, 8, "", "回", 5),
+          createSelectList("ayato_react2_count", 1, 8, "", "回", 2),
           document.createElement("br"),
           createLabel("ayato_react3_count", "　瞬水剣3段反応回数："),
-          createSelectList("ayato_react3_count", 1, 8, "", "回", 5),
+          createSelectList("ayato_react3_count", 1, 8, "", "回", 2),
         ];
         traits.forEach(element => {
           select_reaction_method.appendChild(element);
@@ -700,15 +699,14 @@ async function show_attack_method()
         });
   
         traits = [
-          document.createElement("br"),
           createLabel("ayato_react1_count", "　瞬水剣1段反応回数："),
-          createSelectList("ayato_react1_count", 1, 8, "", "回", 5),
+          createSelectList("ayato_react1_count", 1, 8, "", "回", 2),
           document.createElement("br"),
           createLabel("ayato_react2_count", "　瞬水剣2段反応回数："),
-          createSelectList("ayato_react2_count", 1, 8, "", "回", 5),
+          createSelectList("ayato_react2_count", 1, 8, "", "回", 2),
           document.createElement("br"),
           createLabel("ayato_react3_count", "　瞬水剣3段反応回数："),
-          createSelectList("ayato_react3_count", 1, 8, "", "回", 5),
+          createSelectList("ayato_react3_count", 1, 8, "", "回", 2),
           document.createElement("br"),
           createLabel("ayato_react4_count", "　6重瞬水剣反応回数："),
           createSelectList("ayato_react4_count", 0, 2, "", "回", 1),
