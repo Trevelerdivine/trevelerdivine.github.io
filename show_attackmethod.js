@@ -192,13 +192,14 @@ async function show_attack_method()
     elemental_reaction.appendChild(ReactionOnRadio_label);
     elemental_reaction.appendChild(document.createElement("br"));
   }
-  var options = [];
-  var elementsToAddToCharTalent = [];
+
   switch (selectedCharId)
   {
     case "0":
       if (attack_method == 21)
       {
+        let options = [];
+        let elementsToAddToCharTalent = [];
         elementsToAddToCharTalent = [
           createLabel("dehya_1_count", "熾鬣拳ヒット回数："),
           createSelectList("dehya_1_count", 0, 15, "", "回", 10),
