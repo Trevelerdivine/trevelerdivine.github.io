@@ -578,22 +578,49 @@ async function show_attack_method()
     {
       if (char_constellations < 2)
       {
-        options = [
-          { text: "玲瓏一擲1", value: "0", checked: true },
-          { text: "玲瓏一擲2", value: "1"},
-          { text: "玲瓏一擲3", value: "2"},
+        traits = [
+          document.createElement("br"),
+          createLabel("yelan_burst_count", "　玲瓏一擲ヒット回数："),
+          createSelectList("yelan_burst_count", 1, 45, "", "回", 30),
         ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+  
+        traits = [
+          createLabel("yelan_react_count", "　玲瓏一擲反応回数："),
+          createSelectList("yelan_react_count", 0, 45, "", "回", 10),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
       }
       else
       {
-        options = [
-          { text: "玲瓏一擲1", value: "0", checked: true },
-          { text: "玲瓏一擲2", value: "1"},
-          { text: "玲瓏一擲3", value: "2"},
-          { text: "追加追撃", value: "3", checked: true },
+        traits = [
+          document.createElement("br"),
+          createLabel("yelan_burst_count", "　玲瓏一擲ヒット回数："),
+          createSelectList("yelan_burst_count", 1, 45, "", "回", 30),
+          document.createElement("br"),
+          createLabel("yelan_add_count", "　2重追撃ヒット回数："),
+          createSelectList("yelan_add_count", 0, 8, "", "回", 5),
         ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+  
+        traits = [
+          createLabel("yelan_react_count", "　玲瓏一擲反応回数："),
+          createSelectList("yelan_react_count", 0, 45, "", "回", 10),
+          document.createElement("br"),
+          createLabel("yelan_add_react_count", "　2重追撃反応回数："),
+          createSelectList("yelan_add_react_count", 0, 8, "", "回", 5),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
       }
-      createCheckboxList_br(options);
     }
   }
   else if (selectedCharId == "13")
@@ -979,7 +1006,6 @@ async function show_attack_method()
       });
 
       traits = [
-        document.createElement("br"),
         createLabel("chongyun_skill_react", "　巨大霊刃反応回数："),
         createSelectList("chongyun_skill_react", 0, 1, "", "回", 1),
         document.createElement("br"),

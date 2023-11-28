@@ -1918,9 +1918,12 @@ class nirou {
 
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
-    this.reaction_coeff = Vaporize_hydro.checked ? 2 : 0;
-
+    if (nirou_talent1_check.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 2;
+    }
     const nirou_talent1_check = document.getElementById("nirou_talent1");
     if (nirou_talent1_check.checked)
     {
@@ -1958,7 +1961,6 @@ class nirou {
     let dmg_rate;
     let elm_react_dmgrate = 0;
     let elm_nonreact_dmgrate = 0;
-  
   
     if (attack_method == 16) {
       const checkboxContainer = document.getElementById("select_reaction_method");
@@ -2105,7 +2107,6 @@ class nirou {
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * dmg_rate[0][1];
       }
-      return basicDmg;
     }
     else
     {
@@ -2117,8 +2118,8 @@ class nirou {
       {
         basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
       }
-      return basicDmg;
     }
+    return basicDmg;
   }
 
   calculate_char_debuff() {
@@ -2143,8 +2144,10 @@ class yelan {
 
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
-    if (Vaporize_hydro.checked) {
+    if (nirou_talent1_check.checked && reaction_flag.checked)
+    {
       this.reaction_coeff = 2;
     }
 
@@ -2174,38 +2177,56 @@ class yelan {
     let dmg_attack_rate = 0;
 
     if (attack_method == 21) {   
-    const checkboxContainer = document.getElementById("select_reaction_method");
-    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-    let elm_react = []
-    let elm_nonreact = [];
-    // 各チェックボックスの状態を調べて配列に追加
-    checkboxes.forEach(checkbox => {
-      elm_react.push(checkbox.checked ? 1 : 0);
-      elm_nonreact.push(checkbox.checked ? 0 : 1);
-
-      if (checkbox.checked) {
-        this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
-      }
-    });
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
-      for (let i = 0; i < 3; i++) {
+      const attack_count = parseInt(document.getElementById("yelan_burst_count").value);
+      const react_count = parseInt(document.getElementById("yelan_react_count").value);
+      
         elm_react_dmgrate += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      }
+
       if (this.char_constellations > 1)
       {
-        elm_react_dmgrate += elm_react[3] * 0.07;
-        elm_nonreact_dmgrate += elm_nonreact[3] * 0.07;
+        const attack_count2 = parseInt(document.getElementById("yelan_add_count").value);
+        const react_count2 = parseInt(document.getElementById("yelan_add_react_count").value);
+        elm_react_dmgrate += react_count2 * 0.14;
+        elm_nonreact_dmgrate += (attack_count2 - react_count2) * 0.14;
       }
-
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 16) {
-      dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_rate = [dmg_attack_rate, 0, 0, 0, 0, 0, 0];
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      let elm_react_dmgrate = 0;
+      let elm_nonreact_dmgrate = 0;
+      for (let i = 0; i < 1; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 6) {
-      dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * 1.56;
-      dmg_rate = [dmg_attack_rate, 0, 0, 0, 0, 0, 0];
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      let elm_react_dmgrate = 0;
+      let elm_nonreact_dmgrate = 0;
+      for (let i = 0; i < 1; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
+      }
+      dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     }
   
     return dmg_rate;
@@ -2285,31 +2306,20 @@ class yelan {
         attckRate = status[0] * dmg_rate[0][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * dmg_rate[0][1];
-        return basicDmg;
       }
       else 
       {
-        attckRate = status[0] * dmg_rate[0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
-        return basicDmg;
+        attckRate = status[0] * dmg_rate[0][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * dmg_rate[0][1];
       }
     }
     else
     {
-      if (attack_method == 21)
-      {
-        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][1])
-        basicDmg = attckRate;
-        return basicDmg;
-      }
-      else 
-      {
-        attckRate = status[0] * dmg_rate[0];
-        basicDmg = attckRate;
-        return basicDmg;
-      }
+      attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][1])
+      basicDmg = attckRate;
     }
-    return attckRate;
+    return basicDmg;
   }
 
   calculate_char_debuff() {
