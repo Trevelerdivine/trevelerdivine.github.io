@@ -147,7 +147,7 @@ class dehya {
       }
       else
       {
-        basicDmg =  (dmg_rate[0][0] + dmg_rate[4][0]) * status[0] + (dmg_rate[0][1] + dmg_rate[4][1]) * status[4];
+        basicDmg =  (dmg_rate[0][0] + dmg_rate[0][1]) * status[0] + (dmg_rate[4][0] + dmg_rate[4][1]) * status[4];
       }
       return basicDmg;
   }
