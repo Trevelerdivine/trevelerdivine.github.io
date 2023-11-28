@@ -1387,7 +1387,7 @@ async function show_attack_method()
       lisa_agg_count = createSelectList("lisa_agg_count", 0, 29, "", "回", 10);
     }
     elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(raiden_agg_countlist); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(lisa_agg_count); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "44")
