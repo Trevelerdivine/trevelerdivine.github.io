@@ -53,8 +53,8 @@ class dehya {
 
       const attack_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       const attack_rate2 = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
-      const hp_rate1 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      const hp_rate2 = parseFloat(data["元素爆発"]["詳細"][3]["数値"][this.parameter[3]]);
+      let hp_rate1 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+      let hp_rate2 = parseFloat(data["元素爆発"]["詳細"][3]["数値"][this.parameter[3]]);
 
       if (this.char_constellations > 0)
       {
