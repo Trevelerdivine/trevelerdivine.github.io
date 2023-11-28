@@ -2146,7 +2146,7 @@ class yelan {
     this.char_constellations = document.getElementById("char_constellations").value;
     const reaction_flag = document.getElementById("reactionon_flag");
     const Vaporize_hydro = document.getElementById("Vaporize-hydro");
-    if (nirou_talent1_check.checked && reaction_flag.checked)
+    if (Vaporize_hydro.checked && reaction_flag.checked)
     {
       this.reaction_coeff = 2;
     }
