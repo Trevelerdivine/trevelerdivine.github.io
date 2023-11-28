@@ -1375,7 +1375,6 @@ async function show_attack_method()
         attack_method_prop.appendChild(element);
       });
     }
-    }
     wanderer_talent.forEach(element => {
       temporary_char_talent.appendChild(element);
     });
