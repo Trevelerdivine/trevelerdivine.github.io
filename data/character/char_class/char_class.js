@@ -441,20 +441,13 @@ class hutao {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
-        }
       });
-        console.log(elm_react);
-        console.log(elm_nonreact);
-        console.log(this.trueCount);
-        let elm_react_dmgrate = 0;
-        let elm_nonreact_dmgrate = 0;
-        for (let i = 0; i < 7; i++) {
-          elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        }
+      let elm_react_dmgrate = 0;
+      let elm_nonreact_dmgrate = 0;
+      for (let i = 0; i < 7; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -547,13 +540,11 @@ class hutao {
         attckRate = status[4] * dmg_rate[4][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1];
-        return basicDmg;
       }
       else
       {
         attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
-        return basicDmg;
       }
     }
     else
@@ -562,17 +553,14 @@ class hutao {
       {
         attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate;
-        return basicDmg;
       }
       else
       {
         attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate;
-        return basicDmg;
       }
-        attckRate = status[4] * dmg_rate[4] * this.attack_count / 100;
     }
-    return attckRate;
+    return basicDmg;
   }
 
   calculate_char_debuff() {
@@ -1002,69 +990,50 @@ class diluc {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      if (attack_method == 1)
+      if (attack_method != 16)
       {
         attckRate = status[4] * dmg_rate[4][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1];
-        return basicDmg;
       }
-      else if (attack_method == 16)
+      else
       {
         if (this.fourth_conste_buff > 0)
         {
           attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (status[7] + 0.4) / status[7]);
           basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                     + status[4] * (dmg_rate[4][1] + dmg_rate[4][3] * (status[7] + 0.4) / status[7]);
-          return basicDmg;
         }
         else
         {
           attckRate = status[4] * dmg_rate[4][0];
           basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                     + status[4] * dmg_rate[4][1];
-          return basicDmg;
         }
-      }
-      else if (attack_method == 21)
-      {
-        attckRate = status[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                   + status[4] * dmg_rate[4][1];
-        return basicDmg;
       }
     }
     else
     {
-      if (attack_method == 1)
+      if (attack_method != 16)
       {
         attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
         basicDmg = attckRate;
-        return basicDmg;
       }
-      else if (attack_method == 16)
+      else
       {
         if (this.fourth_conste_buff > 0)
         {
           attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1] + (dmg_rate[4][2] + dmg_rate[4][3]) * (status[7] + 0.4) / status[7]);
           basicDmg = attckRate;
-          return basicDmg;
         }
         else
         {
           attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
           basicDmg = attckRate;
-          return basicDmg;
         }
       }
-      else if (attack_method == 21)
-      {
-        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
-        basicDmg = attckRate;
-        return basicDmg;
-      }
     }
-    return attckRate;
+    return basicDmg;
   }
 
   calculate_char_debuff() {
@@ -1234,19 +1203,16 @@ class yanfei {
         attckRate = status[4] * dmg_rate[4][0];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1];
-        return basicDmg;
       }
       else if (attack_method == 6)
       {
         attckRate = status[4] * dmg_rate[4] + status[5] * 0.8 * status[4];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
-        return basicDmg;
       }
       else 
       {
         attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
-        return basicDmg;
       }
     }
     else
@@ -1255,22 +1221,19 @@ class yanfei {
       {
         attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1])
         basicDmg = attckRate;
-        return basicDmg;
       }
       else if (attack_method == 6)
       {
         attckRate = status[4] * dmg_rate[4] + status[5] * 0.8 * status[4];
         basicDmg = attckRate;
-        return basicDmg;
       }
       else 
       {
         attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate;
-        return basicDmg;
       }
     }
-    return attckRate;
+    return basicDmg;
   }
 
   calculate_char_debuff() {
@@ -1761,16 +1724,15 @@ class xiangling {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = status[4] * dmg_rate[4] / 100;
+        attckRate = status[4] * dmg_rate[4];
         basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + attckRate * (this.attack_count - this.reaction_count);
-      return basicDmg;
     }
     else
     {
-        attckRate = status[4] * dmg_rate[4] * this.attack_count / 100;
+      basicDmg = status[4] * dmg_rate[4] * this.attack_count;
     }
-    return attckRate;
+    return basicDmg;
   }
 
   calculate_char_debuff() {
@@ -1922,16 +1884,15 @@ class amber {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = status[4] * dmg_rate[4][0];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[4] * dmg_rate[4][1];
-      return basicDmg;
+      attckRate = status[4] * dmg_rate[4][0];
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[4] * dmg_rate[4][1];
     }
     else
     {
-        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.attack_count / 100;
+      basicDmg = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
     }
-    return attckRate;
+    return basicDmg;
   }
 
   calculate_char_debuff() {
