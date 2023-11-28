@@ -622,6 +622,26 @@ async function show_attack_method()
         });
       }
     }
+    else
+    {
+      traits = [
+        document.createElement("br"),
+        createLabel("yelan_attack_count", "　特殊打破の矢ヒット回数："),
+        createSelectList("yelan_attack_count", 1, 5, "", "回", 5),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("yelan_react_count", "　特殊打破の矢反応回数："),
+        createSelectList("yelan_react_count", 0, 5, "", "回", 2),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
   }
   else if (selectedCharId == "13")
   {

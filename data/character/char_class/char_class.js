@@ -2211,21 +2211,11 @@ class yelan {
       }
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     } else if (attack_method == 6) {
-      const checkboxContainer = document.getElementById("select_reaction_method");
-      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-      let elm_react = []
-      let elm_nonreact = [];
-      // 各チェックボックスの状態を調べて配列に追加
-      checkboxes.forEach(checkbox => {
-        elm_react.push(checkbox.checked ? 1 : 0);
-        elm_nonreact.push(checkbox.checked ? 0 : 1);
-      });
-      let elm_react_dmgrate = 0;
-      let elm_nonreact_dmgrate = 0;
-      for (let i = 0; i < 1; i++) {
-        elm_react_dmgrate += elm_react[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
-        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
-      }
+      const attack_count = parseInt(document.getElementById("yelan_attack_count").value);
+      const react_count = parseInt(document.getElementById("yelan_react_count").value);
+
+      elm_react_dmgrate += react_count * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
+      elm_nonreact_dmgrate += (attack_count - react_count) * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]) * 1.56;
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     }
   
