@@ -1352,32 +1352,43 @@ async function show_attack_method()
   }
   else if (selectedCharId == "42")
   {
-    if (attack_method == 16)
+    let lisa_agg_count;
+    if (attack_method == 1)
+    {
+      lisa_agg_count = createSelectList("raiden_agg_count", 0, 4, "", "回", 1);
+    }
+    else if (attack_method == 6)
+    {
+      lisa_agg_count = createSelectList("raiden_agg_count", 0, 1, "", "回", 1);
+    }
+    else if (attack_method == 16)
     {
       traits = [
         document.createElement("br"),
         createLabel("lisa_skill_count", "　誘雷層数："),
-        createSelectList("lisa_skill_count", 0, 3, "", "回", 3),
+        createSelectList("lisa_skill_count", 0, 3, "", "層", 3),
       ];
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
       });
+
+      lisa_agg_count = createSelectList("lisa_agg_count", 0, 1, "", "回", 1);
     }
     else if (attack_method == 21)
     {
       traits = [
         document.createElement("br"),
-        createLabel("lisa_skill_count", "　放電ヒット回数："),
-        createSelectList("lisa_skill_count", 0, 29, "", "回", 29),
+        createLabel("lisa_attack_count", "　放電ヒット回数："),
+        createSelectList("lisa_attack_count", 0, 29, "", "回", 29),
       ];
-    
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
       });
+      lisa_agg_count = createSelectList("lisa_agg_count", 0, 29, "", "回", 10);
     }
-    wanderer_talent.forEach(element => {
-      temporary_char_talent.appendChild(element);
-    });
+    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(raiden_agg_countlist); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "44")
   {
