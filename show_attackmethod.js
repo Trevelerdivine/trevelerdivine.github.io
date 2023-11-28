@@ -1358,7 +1358,6 @@ async function show_attack_method()
         document.createElement("br"),
         createLabel("lisa_skill_count", "　誘雷層数："),
         createSelectList("lisa_skill_count", 0, 3, "", "回", 3),
-        document.createElement("br"),
       ];
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
@@ -1366,15 +1365,16 @@ async function show_attack_method()
     }
     else if (attack_method == 21)
     {
-      elementsToAddToCharTalent = [
+      traits = [
+        document.createElement("br"),
         createLabel("lisa_skill_count", "　放電ヒット回数："),
         createSelectList("lisa_skill_count", 0, 29, "", "回", 29),
-        document.createElement("br"),
       ];
     
-      elementsToAddToCharTalent.forEach(element => {
-        temporary_char_talent.appendChild(element);
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
       });
+    }
     }
     wanderer_talent.forEach(element => {
       temporary_char_talent.appendChild(element);
