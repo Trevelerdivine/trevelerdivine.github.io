@@ -1411,7 +1411,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
   const select_reaction_method = document.getElementById("select_reaction_method");
   const elemental_reaction = document.getElementById("element_action");
 
-  indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
+  indexDisplay.textContent = DisplayCharName[selectedCharId];
 
   async function handleCharClick() {
     attack_method_prop.innerHTML = "";
@@ -1425,7 +1425,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     popupImage.setAttribute('src', selectedImageSrc);
     popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
 
-    indexDisplay.textContent = `選択された画像のID: ${selectedCharId || '-'}`;
+    indexDisplay.textContent = DisplayCharName[selectedCharId];
 
     const checkbox = document.getElementById('pop-up_char');
     checkbox.checked = false;

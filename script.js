@@ -9,6 +9,16 @@ let attack_method = 0;
 let attack_method_index = 0;
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
+const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディルック","トーマ","煙緋","辛炎","ベネット","香菱",
+                            "アンバー","ニィロウ","夜蘭","神里綾人","珊瑚宮心海","タルタリヤ","モナ","キャンディス","バーバラ","行秋",
+                            "申鶴","神里綾華","エウルア","甘雨","七七","アーロイ","ミカ","レイラ","ロサリア","ディオナ",
+                            "重雲","ガイア","セノ","八重神子","雷電将軍","刻晴","ドリー","久岐忍","九条裟羅","フィッシュル",
+                            "北斗","レザー","リサ","雷旅人","放浪者","楓原万葉 ","魈","ウェンティ","ジン","ファルザン",
+                            "鹿野院平蔵","早柚","スクロース","風旅人","白朮","アルハイゼン","ナヒーダ","ティナリ","綺良々","カーヴェ",
+                            "ヨォーヨ","コレイ","岩旅人","荒瀧一斗","アルベド","鍾離","雲菫","ゴロー","ノエル","凝光",
+                            "岩旅人"
+];
+
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
                    "shenhe","kamisatoayaka","eula","ganyu","qiqi","aloy","mika","layla","rosaria","diona",
