@@ -1045,6 +1045,25 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId == "40")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("beidou_talent2", true),
+        createLabel("beidou_talent2", "固有天賦2：満天の霹靂 ダメージ+15%"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素スキル（浪追い）", value: "16" },
+        { text: "元素爆発（雷斫り）", value: "21" },
+      ];
+      createchar_attackmethod(options)  
+    }
     else if (selectedCharId == "42")
     {
       elementsToAddToCharTalent = [

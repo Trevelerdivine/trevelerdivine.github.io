@@ -1350,6 +1350,41 @@ async function show_attack_method()
       }
     }
   }
+  else if (selectedCharId == "40")
+  {
+    let beidou_agg_count;
+    if (attack_method == 16)
+    {
+      traits = [
+        document.createElement("br"),
+        createLabel("beidou_skill_count", "　最大ダメージアップ回数："),
+        createSelectList("beidou_skill_count", 0, 2, "", "層", 2),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      lisa_agg_count = createSelectList("lisa_agg_count", 0, 1, "", "回", 1);
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        document.createElement("br"),
+        createLabel("beidou_attack_count", "　初撃ヒット回数："),
+        createSelectList("beidou_attack_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("beidou_attack_count", "　稲妻ヒット回数："),
+        createSelectList("beidou_attack_count", 0, 15, "", "回", 10),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+      lisa_agg_count = createSelectList("lisa_agg_count", 0, 15, "", "回", 4);
+    }
+    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(lisa_agg_count); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
   else if (selectedCharId == "42")
   {
     let lisa_agg_count;
