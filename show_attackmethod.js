@@ -93,7 +93,6 @@ async function show_attack_method()
     select_reaction_method.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
-      document.createElement("br"),
       createLabel("Overloaded", "　過負荷回数：　"),
       createSelectList("Overloaded", 0, 50, "", "回", 0),
       document.createElement("br"),
@@ -129,7 +128,6 @@ async function show_attack_method()
     select_reaction_method.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
-      document.createElement("br"),
       createLabel("Electro_Charged", "　感電回数：　"),
       createSelectList("Electro_Charged", 0, 50, "", "回", 0),
       document.createElement("br"),
@@ -169,7 +167,6 @@ async function show_attack_method()
     elemental_reaction.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
-      document.createElement("br"),
       createLabel("Overloaded", "　過負荷回数：　"),
       createSelectList("Overloaded", 0, 50, "", "回", 0),
       document.createElement("br"),
@@ -201,19 +198,19 @@ async function show_attack_method()
     if (attack_method == 21)
     {
       elementsToAddToCharTalent = [
-        createLabel("dehya_1_count", "熾鬣拳ヒット回数："),
+        createLabel("dehya_1_count", "　熾鬣拳ヒット回数："),
         createSelectList("dehya_1_count", 0, 15, "", "回", 10),
         document.createElement("br"),
-        createLabel("dehya_2_count", "残火蹴ヒット回数："),
+        createLabel("dehya_2_count", "　残火蹴ヒット回数："),
         createSelectList("dehya_2_count", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
 
       const elementsReactionToAddToCharTalent = [
-        createLabel("dehya_1_reactioncount", "熾鬣拳ヒット回数："),
+        createLabel("dehya_1_reactioncount", "　熾鬣拳ヒット回数："),
         createSelectList("dehya_1_reactioncount", 0, 15, "", "回", 4),
         document.createElement("br"),
-        createLabel("dehya_2_reactioncount", "残火蹴ヒット回数："),
+        createLabel("dehya_2_reactioncount", "　残火蹴ヒット回数："),
         createSelectList("dehya_2_reactioncount", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
@@ -302,19 +299,19 @@ async function show_attack_method()
     else if (attack_method == 16)
     {
       elementsToAddToCharTalent = [
-        createLabel("klee_1_count", "ボンボン爆弾ヒット回数："),
+        createLabel("klee_1_count", "　ボンボン爆弾ヒット回数："),
         createSelectList("klee_1_count", 0, 3, "", "回", 3),
         document.createElement("br"),
-        createLabel("klee_2_count", "ブービートラップヒット回数："),
+        createLabel("klee_2_count", "　ブービートラップヒット回数："),
         createSelectList("klee_2_count", 0, 8, "", "回", 8),
         document.createElement("br"),
       ];
 
       const elementsReactionToAddToCharTalent = [
-        createLabel("klee_1_reactioncount", "ボンボン爆弾ヒット回数："),
+        createLabel("klee_1_reactioncount", "　ボンボン爆弾ヒット回数："),
         createSelectList("klee_1_reactioncount", 0, 3, "", "回", 1),
         document.createElement("br"),
-        createLabel("klee_2_reactioncount", "ブービートラップヒット回数："),
+        createLabel("klee_2_reactioncount", "　ブービートラップヒット回数："),
         createSelectList("klee_2_reactioncount", 0, 8, "", "回", 3),
         document.createElement("br"),
       ];
@@ -373,25 +370,25 @@ async function show_attack_method()
     else if (attack_method == 21)
     {          
       elementsToAddToCharTalent = [
-        createLabel("diluc_1_count", "斬撃ダメージヒット回数："),
+        createLabel("diluc_1_count", "　斬撃ダメージヒット回数："),
         createSelectList("diluc_1_count", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("diluc_2_count", "継続ダメージヒット回数："),
+        createLabel("diluc_2_count", "　継続ダメージヒット回数："),
         createSelectList("diluc_2_count", 0, 10, "", "回", 8),
         document.createElement("br"),
-        createLabel("diluc_3_count", "爆発ダメージヒット回数："),
+        createLabel("diluc_3_count", "　爆発ダメージヒット回数："),
         createSelectList("diluc_3_count", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
 
       const elementsReactionToAddToCharTalent = [
-        createLabel("diluc_1_reactioncount", "斬撃ダメージヒット回数："),
+        createLabel("diluc_1_reactioncount", "　斬撃ダメージヒット回数："),
         createSelectList("diluc_1_reactioncount", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("diluc_2_reactioncount", "継続ダメージヒット回数："),
+        createLabel("diluc_2_reactioncount", "　継続ダメージヒット回数："),
         createSelectList("diluc_2_reactioncount", 0, 10, "", "回", 3),
         document.createElement("br"),
-        createLabel("diluc_3_reactioncount", "爆発ダメージヒット回数："),
+        createLabel("diluc_3_reactioncount", "　爆発ダメージヒット回数："),
         createSelectList("diluc_3_reactioncount", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
@@ -430,9 +427,9 @@ async function show_attack_method()
       });
       const yanfei_text = createTextNode("　丹火の印：")
       const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
-      attack_method_prop.appendChild(document.createElement("br"));
       attack_method_prop.appendChild(yanfei_text);
       attack_method_prop.appendChild(yanfei_textskill_selectlist);
+      attack_method_prop.appendChild(document.createElement("br"));
       options = [
         { text: "重撃", value: "0", checked: true },
       ];
@@ -456,10 +453,10 @@ async function show_attack_method()
     if (attack_method == 6)
     {
       elementsToAddToCharTalent = [
-        createLabel("xinyan1_count", "連続重撃ヒット回数："),
+        createLabel("xinyan1_count", "　連続重撃ヒット回数："),
         createSelectList("xinyan1_count", 0, 20, "", "回", 10),
         document.createElement("br"),
-        createLabel("xinyan2_count", "重撃フィニッシュヒット回数："),
+        createLabel("xinyan2_count", "　重撃フィニッシュヒット回数："),
         createSelectList("xinyan2_count", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
@@ -508,9 +505,10 @@ async function show_attack_method()
     {
       const xianglingskillcount_text = createTextNode("　ヒット回数：")
       const xianglingcount_selectlist = createSelectList("xiangling_E_count", 1, 4, "", "回", 4);
-      attack_method_prop.appendChild(document.createElement("br"));
       attack_method_prop.appendChild(xianglingskillcount_text);
       attack_method_prop.appendChild(xianglingcount_selectlist);
+      attack_method_prop.appendChild(document.createElement("br"));
+      
       const xianglingskill_text = createTextNode("　元素反応回数：")
       const xianglingskill_selectlist = createSelectList("xiangling_E", 0, 4, "", "回", 4);
       select_reaction_method.appendChild(xianglingskill_text); // チェックボックスを select_reaction_method に追加
@@ -520,9 +518,9 @@ async function show_attack_method()
     {
       const xianglingburst_text = createTextNode("　ヒット回数：")
       const xianglingburst_selectlist = createSelectList("xiangling_Q_count", 1, 22, "", "回", 11);
-      attack_method_prop.appendChild(document.createElement("br"));
       attack_method_prop.appendChild(xianglingburst_text);
       attack_method_prop.appendChild(xianglingburst_selectlist);
+      attack_method_prop.appendChild(document.createElement("br"));
       const xianglinreaction_text = createTextNode("　元素反応回数：")
       const xianglingreaction_selectlist = createSelectList("xiangling_Q", 0, 22, "", "回", 11);
       select_reaction_method.appendChild(xianglinreaction_text); // チェックボックスを select_reaction_method に追加
@@ -579,9 +577,9 @@ async function show_attack_method()
       if (char_constellations < 2)
       {
         traits = [
-          document.createElement("br"),
           createLabel("yelan_burst_count", "　玲瓏一擲ヒット回数："),
           createSelectList("yelan_burst_count", 1, 45, "", "回", 30),
+          document.createElement("br"),
         ];
         traits.forEach(element => {
           attack_method_prop.appendChild(element);
@@ -1212,6 +1210,7 @@ async function show_attack_method()
       const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
       attack_method_prop.appendChild(yaeskill_text);
       attack_method_prop.appendChild(yaeskill_selectlist);
+      attack_method_prop.appendChild(document.createElement("br"));
       yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
     } 
     else if (attack_method==21)
@@ -1725,7 +1724,7 @@ function createCheckboxList(options) {
 
         counter++;
 
-        if (counter % 4 === 0) {
+        if (counter % 4 === 0 && counter > 0) {
             const lineBreak = document.createElement("br");
             select_reaction_method.appendChild(lineBreak); // 4つ追加するごとに改行
         }
