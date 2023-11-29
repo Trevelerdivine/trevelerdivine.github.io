@@ -601,7 +601,7 @@ text-align: center;
 }
 
 .property::before {
-  content: "•";
+  content: "\25C6"; /* ダイヤモンド（◆）のUnicode文字コード */
   margin-right: 5px;
 }
 /* スマートフォンの場合のスタイル */
