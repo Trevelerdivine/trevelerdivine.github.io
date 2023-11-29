@@ -1426,8 +1426,6 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     popupImage.setAttribute('src', selectedImageSrc);
     popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
 
-    indexDisplay.textContent = DisplayCharName[selectedCharId];
-
     const checkbox = document.getElementById('pop-up_char');
     checkbox.checked = false;
 
@@ -1437,6 +1435,8 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     show_weapon_statsform();
     calculate_table_status();
     toggleweapontype(weapon_type_index);
+    indexDisplay.textContent = DisplayCharName[selectedCharId];
+    indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
   }
 
   for (let i = 0; i < images.length; i++) {
@@ -1450,7 +1450,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
 
   function handleWeaponSelection(images, indexDisplay)
   {
-    indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
+    indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
 
     async function handleWeaponClick() 
     { 
@@ -1462,7 +1462,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
       weaponPopupImage.setAttribute('src', selectedImageSrc);
       weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
-      indexDisplay.textContent = `選択された画像のID: ${selectedWeaponId || '-'}`;
+      indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
       await calculate_depend_status()
