@@ -1364,7 +1364,7 @@ async function show_attack_method()
         attack_method_prop.appendChild(element);
       });
 
-      lisa_agg_count = createSelectList("lisa_agg_count", 0, 1, "", "回", 1);
+      beidou_agg_count = createSelectList("beidou_agg_count", 0, 1, "", "回", 1);
     }
     else if (attack_method == 21)
     {
@@ -1379,10 +1379,10 @@ async function show_attack_method()
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
       });
-      lisa_agg_count = createSelectList("lisa_agg_count", 0, 15, "", "回", 4);
+      beidou_agg_count = createSelectList("beidou_agg_count", 0, 15, "", "回", 4);
     }
     elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(lisa_agg_count); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(beidou_agg_count); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "42")
