@@ -600,11 +600,10 @@ text-align: center;
   height: auto; /* ビューポートの高さいっぱいに表示 */
 }
 
-#skillProperty::before {
+.property::before {
   content: "•";
   margin-right: 5px;
 }
-
 /* スマートフォンの場合のスタイル */
 /* スクリーン幅が600px以下の場合のスタイル */
 @media only screen and (max-width: 700px) {
