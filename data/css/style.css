@@ -603,6 +603,7 @@ text-align: center;
 .property::before {
   content: "\25C6"; /* ダイヤモンド（◆）のUnicode文字コード */
   margin-right: 5px;
+  color: lightgreen; /* ライトグリーンに変更する */
 }
 /* スマートフォンの場合のスタイル */
 /* スクリーン幅が600px以下の場合のスタイル */
