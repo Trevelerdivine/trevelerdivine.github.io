@@ -1210,7 +1210,6 @@ async function show_attack_method()
     {
       const yaeskill_text = createTextNode("　殺生櫻：");
       const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
-      attack_method_prop.appendChild(document.createElement("br"));
       attack_method_prop.appendChild(yaeskill_text);
       attack_method_prop.appendChild(yaeskill_selectlist);
       yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
@@ -1370,11 +1369,11 @@ async function show_attack_method()
     {
       traits = [
         document.createElement("br"),
-        createLabel("beidou_attack_count", "　初撃ヒット回数："),
-        createSelectList("beidou_attack_count", 0, 1, "", "回", 1),
+        createLabel("beidou_attack_count1", "　初撃ヒット回数："),
+        createSelectList("beidou_attack_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("beidou_attack_count", "　稲妻ヒット回数："),
-        createSelectList("beidou_attack_count", 0, 15, "", "回", 10),
+        createLabel("beidou_attack_count2", "　稲妻ヒット回数："),
+        createSelectList("beidou_attack_count2", 0, 15, "", "回", 10),
       ];
       traits.forEach(element => {
         attack_method_prop.appendChild(element);

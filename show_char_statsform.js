@@ -752,7 +752,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
      
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox1",
           label: "第1重：敵の氷元素耐性-15%"
@@ -936,7 +936,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
 
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox2",
           label: "第2重：防御力60%無視"
@@ -963,7 +963,7 @@ async function show_char_statsform()
     }
     else if (selectedCharId == "35")
     {
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox4",
           label: "第4重：攻撃力+25%"
@@ -1014,7 +1014,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
 
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox6",
           label: "第6重：会心ダメージ+60% "
@@ -1062,7 +1062,23 @@ async function show_char_statsform()
         { text: "元素スキル（浪追い）", value: "16" },
         { text: "元素爆発（雷斫り）", value: "21" },
       ];
-      createchar_attackmethod(options)  
+      createchar_attackmethod(options);
+
+      traits = [
+        {
+          id: "traitCheckbox6",
+          label: "第6重：雷元素耐性-15%"
+        }
+      ];
+
+      if (char_constellations == 4)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
     }
     else if (selectedCharId == "42")
     {
@@ -1171,7 +1187,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
      
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox2",
           label: "第2重：草元素ダメージ+20%"
@@ -1241,7 +1257,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
      
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox4",
           label: "第4重：防御力+20%、攻撃力+20%"
@@ -1292,7 +1308,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
      
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox2",
           label: "第2重：生式・大地の潮の爆発ダメージと生滅の花のダメージが上昇する"
@@ -1352,7 +1368,7 @@ async function show_char_statsform()
     }
     else if (selectedCharId == "68")
     {
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox6",
           label: "第6重：防御力50%相当の攻撃力をアップ"
@@ -1375,7 +1391,7 @@ async function show_char_statsform()
     }
     else if (selectedCharId == "69")
     {
-      const traits = [
+      traits = [
         {
           id: "talent2_buff",
           label: "固有天賦2 備えあれば憂いなし：岩元素ダメージ+12%"
@@ -1399,7 +1415,7 @@ async function show_char_statsform()
     }
     else if (selectedCharId  == "70")
     {
-      const traits = [
+      traits = [
         {
           id: "traitCheckbox1",
           label: "第1重：会心率+10%"

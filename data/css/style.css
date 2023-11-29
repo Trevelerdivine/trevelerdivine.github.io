@@ -602,7 +602,7 @@ text-align: center;
 
 #skillProperty::before {
   content: "•";
-  margin-right: 0.5em;
+  margin-right: 5px;
 }
 
 /* スマートフォンの場合のスタイル */

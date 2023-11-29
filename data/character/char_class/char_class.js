@@ -4502,12 +4502,10 @@ class beidou {
     this.base_status_array = base_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
-    this.forth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.aggcount = 0;
     this.talent2_buff = 0;
     this.reaction_coeff = 0;
-    this.skill_buff = 0;
   }
 
   async dmg_rate_data() {
@@ -4520,6 +4518,21 @@ class beidou {
       this.reaction_coeff = 1.15
     }
 
+    const talent2_check = document.getElementById("beidou_talent2");
+    if (talent2_check.checked)
+    {
+      this.talent2_buff = 0.15;
+    }
+
+    if (this.char_constellations == 4)
+    {
+      const sixth_conste_check = document.getElementById("traitCheckbox6");
+      if (sixth_conste_check.checked)
+      {
+        this.sixth_conste_buff = 0.15;
+      }
+    } 
+
     // JSON データを取得
     const response = await fetch("./data/character/char_data/beidou.json");
     const data = await response.json();
@@ -4531,6 +4544,12 @@ class beidou {
       const buff_count = parseInt(document.getElementById("beidou_skill_count").value);
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                       +  parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * buff_count;
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    } else if (attack_method == 21) {
+      const attack_count1 = parseInt(document.getElementById("beidou_attack_count1").value);
+      const attack_count2 = parseInt(document.getElementById("beidou_attack_count2").value);
+      dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
+                      +  parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
     
@@ -4594,7 +4613,7 @@ class beidou {
   }
 
   calculate_char_fixed_dmg_buff(status) {
-    return 0;
+    return this.talent2_buff;
   }
 
   calculate_char_result_dmg_buff(status) {
@@ -4604,21 +4623,19 @@ class beidou {
   calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-
       const attckRate = status[4] * dmg_rate[4];
       let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-
       const attckRate = status[4] * dmg_rate[4];
       return attckRate;
     }
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [this.sixth_conste_buff,0,0];
     return char_debuff;
   }
 }
