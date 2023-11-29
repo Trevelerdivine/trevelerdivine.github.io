@@ -452,7 +452,7 @@ async function create_char_instance(base_status, parameter) {
     case "57":
       char_instance = new tighnari(base_status, parameter);
       break;
-    case "57":
+    case "58":
       char_instance = new kirara(base_status, parameter);
       break;
     case "63":
