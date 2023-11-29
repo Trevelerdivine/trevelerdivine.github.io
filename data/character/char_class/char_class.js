@@ -6010,7 +6010,7 @@ class kirara {
       }
       else
       {
-        const attckRate = status[4] * dmg_rate[4] + this.first_conste_buff * this.nyan_dmgrate * Math.min(4,Math.floor(status[0]/8000));
+        const attckRate = status[4] * (dmg_rate[4] + this.first_conste_buff * this.nyan_dmgrate * Math.min(4,Math.floor(status[0]/8000)));
         let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
