@@ -18,7 +18,23 @@ const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディル
                             "ヨォーヨ","コレイ","岩旅人","荒瀧一斗","アルベド","鍾離","雲菫","ゴロー","ノエル","凝光",
                             "岩旅人"
 ];
-
+const DisplayWeaponName = ["萃光の裁葉", "聖顕の鍵", "波乱月白経津", "霧切の廻光", "蒼古なる自由への誓い", "磐岩結緑", "斬山の刃", "天空の刃", "風鷹剣", "船渠剣",
+"狼牙", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "Xiphos'Moonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
+"FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "Lion'sRoar", "RoyalLongsword", "SacrificialSword", "TheFlute.webp", "FavoniusSword",
+"SkyriderSword", "FilletBlade", "Traveler'sHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "WolfsGravestone",
+"SkywardPride", "PortablePowerSaw", "TalkingStick", "TidalShadow", "MailedFlower", "MakhairaAquamarine", "ForestRegalia", "Akuoumaru", "LuxuriousSeaLoad", "KatsuragikiriNagamasa",
+"LithicBlade", "SnowTombedStarsilver", "SerpentSpine", "BlackcliffSlasher", "Whiteblind", "PrototypeArchaic", "RoyalGreatsword", "Rainslasher", "SacrificialGreatsword", "TheBell",
+"FavoniusGreatsword", "SkyriderGreatsword", "DebateClub", "WhiteIronGreatsword", "BloodtaintedGreatsword", "FerrousShadow", "StaffoftheScarletSands", "CalamityQueller", "EngulfingLightning", "StaffofHoma",
+"VortexVanguisher", "SkywardSpine", "PrimordialJadeWingedSpear", "BalladoftheFjords", "RightfulReward", "MissiveWindspear", "Moonpiercer", "Wavebreaker'sFin", "TheCatch", "KitainCrossSpear",
+"LithicSpear", "DragonspineSpear", "RoyalSpear", "FavoniusLance", "Deathmatch", "BlackcliffPole", "CrescentPike", "PrototypeStarglitter", "DragonsBane", "BlackTassel",
+"WhiteTassel", "TheFirstGreatMagic", "HuntersPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
+"SongofStillness", "IbisPiercer", "King'sSquire", "EndoftheLine", "FadingTwilight", "Mouun'sMoon", "Hamayumi", "MitternachtsWaltz", "WindblumeOde", "AlleyHunter",
+"TheViridescentHunt", "BlackcliffWarbow", "CompoundBow", "PrototypeCrescent", "Rust", "RoyalBow", "SacrificialBow", "TheStringless", "FavoniusWarbow", "Messenger",
+"Slingshot", "RecurveBow", "Sharpshooter'sOath", "RavenBow", "TomeoftheEternalFlow", "Jadefall'sSplendor", "Tulaytullah'sRemembrance", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
+"MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladoftheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
+"DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
+"TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide"
+];
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
                    "shenhe","kamisatoayaka","eula","ganyu","qiqi","aloy","mika","layla","rosaria","diona",
