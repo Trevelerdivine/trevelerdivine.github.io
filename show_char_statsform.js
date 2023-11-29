@@ -1239,6 +1239,17 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId == "58")
+    {     
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素スキル(1回押し)", value: "16" },
+        { text: "元素スキル(長押し)", value: "17" },
+        { text: "元素爆発(秘法・サプライズ特別配送)", value: "21" },
+      ];
+
+      createchar_attackmethod(options)  
+    }
     else if (selectedCharId == "63")
     {
       elementsToAddToCharTalent = [

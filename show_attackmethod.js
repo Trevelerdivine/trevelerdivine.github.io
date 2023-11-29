@@ -1572,6 +1572,7 @@ async function show_attack_method()
   }
   else if (selectedCharId == "57")
   {
+    let tighnari_agg_countlist;
     if (attack_method == 6)
     {
       if (char_constellations < 4)
@@ -1590,6 +1591,47 @@ async function show_attack_method()
     }
     elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
     elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
+  else if (selectedCharId == "58")
+  {
+    let kirara_agg_count;
+    if (attack_method == 16)
+    {
+      kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 2);
+    }
+    else if (attack_method == 17)
+    {
+      traits = [
+        createLabel("kirara_skill_count", "　衝突回数："),
+        createSelectList("kirara_skill_count", 0, 20, "", "回", 20),
+        document.createElement("br"),
+        createLabel("kirara_nyan_count", "　くるりん爪撃ヒット回数："),
+        createSelectList("kirara_nyan_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+      kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 8);
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("kirara_skill_count", "　初撃ヒット回数："),
+        createSelectList("kirara_skill_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("kirara_nyan_count", "　ニャンダモンヒット回数："),
+        createSelectList("kirara_nyan_count", 0, 6, "", "回", 6),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+      kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 3);
+    }
+    elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(kirara_agg_count); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "63")
