@@ -1414,7 +1414,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
 
   indexDisplay1.textContent = DisplayCharName[selectedCharId];
   indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
-  
+
   async function handleCharClick() {
     attack_method_prop.innerHTML = "";
     select_reaction_method.innerHTML = "";
@@ -1555,12 +1555,13 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   const charIndexDisplay = document.getElementById('Charindex-display');
   
   // キャラクターの選択処理を実行
-  handleCharSelection(charImages, charPopupImage, charIndexDisplay, weaponIndexDisplay);
 
   // 武器画像
   const weaponImages = document.querySelectorAll('.Weapon_images img');
   weaponPopupImage = document.querySelector('.open_weapon img');
   const weaponIndexDisplay = document.getElementById('Weaponindex-display');
+
+  handleCharSelection(charImages, charPopupImage, charIndexDisplay, weaponIndexDisplay);
 
   // 武器の選択処理を実行
   handleWeaponSelection(weaponImages, weaponIndexDisplay);
