@@ -1174,6 +1174,8 @@
   let af_overlayImages;
   let afpopupImages;
   let weaponPopupImage;
+  let display_char_name = "ナヒーダ";
+  let display_weapon_name = "千夜に浮かぶ夢";
   let char_propaty = [5,0];
   let selectedImageIds = [21, 21];
   let selectedCharId = "56";
@@ -1370,6 +1372,7 @@
     char_propaty[1] = weapon_type_index;
     selectedWeaponId = char_data["武器"];
     selectedImageIds = char_data["聖遺物"];
+    display_char_name = char_data["名前"];
     // 選択されたセット効果の初期化
     let set_eff1;
     let set_eff2;
@@ -1411,7 +1414,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
   const select_reaction_method = document.getElementById("select_reaction_method");
   const elemental_reaction = document.getElementById("element_action");
 
-  indexDisplay.textContent = char_name[selectedCharId];
+  indexDisplay.textContent = display_char_name;
 
   async function handleCharClick() {
     attack_method_prop.innerHTML = "";
@@ -1425,7 +1428,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     popupImage.setAttribute('src', selectedImageSrc);
     popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
 
-    indexDisplay.textContent = char_name[selectedCharId];
+    indexDisplay.textContent = display_char_name;
 
     const checkbox = document.getElementById('pop-up_char');
     checkbox.checked = false;
