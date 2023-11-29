@@ -1104,7 +1104,7 @@ async function import_char_parameter()
 
 async function monte_carlo_calculate()
 {
-
+  console.time('myTimer'); // タイマーを開始
   //入力チェック
   const input_check = identify_condition();
   if (input_check ==1)
@@ -1728,4 +1728,5 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
+  console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
