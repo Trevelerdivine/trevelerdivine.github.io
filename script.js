@@ -1143,7 +1143,7 @@ async function monte_carlo_calculate()
   let critical_dmg;
   let temp_critical_dmg;
   let excess_crscore;
-  let response = "";
+  let response = "計算中";
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
@@ -1731,5 +1731,7 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
+  response = "計算終了";
+  document.getElementById("response").innerHTML = response;
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
