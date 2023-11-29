@@ -1411,7 +1411,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
   const select_reaction_method = document.getElementById("select_reaction_method");
   const elemental_reaction = document.getElementById("element_action");
 
-  indexDisplay.textContent = `char_name[selectedCharId]`;
+  indexDisplay.textContent = char_name[selectedCharId];
 
   async function handleCharClick() {
     attack_method_prop.innerHTML = "";
@@ -1425,7 +1425,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     popupImage.setAttribute('src', selectedImageSrc);
     popupImage.parentNode.classList.toggle('selected', !!selectedCharId);
 
-    indexDisplay.textContent = `char_name[selectedCharId]`;
+    indexDisplay.textContent = char_name[selectedCharId];
 
     const checkbox = document.getElementById('pop-up_char');
     checkbox.checked = false;
@@ -1449,7 +1449,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
 
   function handleWeaponSelection(images, indexDisplay)
   {
-    indexDisplay.textContent = `weapon_name[selectedWeaponId]`;
+    indexDisplay.textContent = weapon_name[selectedWeaponId];
 
     async function handleWeaponClick() 
     { 
@@ -1461,7 +1461,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
       weaponPopupImage.setAttribute('src', selectedImageSrc);
       weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
-      indexDisplay.textContent = `weapon_name[selectedWeaponId]`;
+      indexDisplay.textContent = weapon_name[selectedWeaponId];
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
       await calculate_depend_status()
