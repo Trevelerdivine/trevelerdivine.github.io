@@ -1407,13 +1407,14 @@
 }
 
 
-function handleCharSelection(images, popupImage, indexDisplay) {
+function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   const attack_method_prop = document.getElementById("attack_method_prop");
   const select_reaction_method = document.getElementById("select_reaction_method");
   const elemental_reaction = document.getElementById("element_action");
 
-  indexDisplay.textContent = DisplayCharName[selectedCharId];
-
+  indexDisplay1.textContent = DisplayCharName[selectedCharId];
+  indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
+  
   async function handleCharClick() {
     attack_method_prop.innerHTML = "";
     select_reaction_method.innerHTML = "";
@@ -1435,8 +1436,8 @@ function handleCharSelection(images, popupImage, indexDisplay) {
     show_weapon_statsform();
     calculate_table_status();
     toggleweapontype(weapon_type_index);
-    indexDisplay.textContent = DisplayCharName[selectedCharId];
-    indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
+    indexDisplay1.textContent = DisplayCharName[selectedCharId];
+    indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
   }
 
   for (let i = 0; i < images.length; i++) {
@@ -1554,7 +1555,7 @@ function handleCharSelection(images, popupImage, indexDisplay) {
   const charIndexDisplay = document.getElementById('Charindex-display');
   
   // キャラクターの選択処理を実行
-  handleCharSelection(charImages, charPopupImage, charIndexDisplay);
+  handleCharSelection(charImages, charPopupImage, charIndexDisplay, weaponIndexDisplay);
 
   // 武器画像
   const weaponImages = document.querySelectorAll('.Weapon_images img');
