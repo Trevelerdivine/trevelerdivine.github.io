@@ -5930,6 +5930,11 @@ class kirara {
       dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
                      + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       this.nyan_dmgrate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+      if (this.char_constellations > 2)
+      {
+        const attack_count3 = parseInt(document.getElementById("kirara_mininyan_count").value);
+        dmg_attck_rate += 2 * attack_count3;
+      }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     }
     return dmg_rate;

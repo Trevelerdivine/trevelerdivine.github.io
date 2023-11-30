@@ -1241,14 +1241,29 @@ async function show_char_statsform()
     }
     else if (selectedCharId == "58")
     {     
+      traits = [
+        {
+          id: "traitCheckbox2",
+          label: "第6重：元素ダメージ+12%"
+        },
+      ];
+
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "元素スキル(1回押し)", value: "16" },
         { text: "元素スキル(長押し)", value: "17" },
         { text: "元素爆発(秘法・サプライズ特別配送)", value: "21" },
       ];
-
-      createchar_attackmethod(options)  
+      createchar_attackmethod(options);
+      if (char_constellations == 4)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
     }
     else if (selectedCharId == "63")
     {

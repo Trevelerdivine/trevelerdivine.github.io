@@ -1617,18 +1617,39 @@ async function show_attack_method()
     }
     else if (attack_method == 21)
     {
-      traits = [
-        createLabel("kirara_skill_count", "　初撃ヒット回数："),
-        createSelectList("kirara_skill_count", 0, 1, "", "回", 1),
-        document.createElement("br"),
-        createLabel("kirara_nyan_count", "　ニャンダモンヒット回数："),
-        createSelectList("kirara_nyan_count", 0, 6, "", "回", 6),
-        document.createElement("br"),
-      ];
-      traits.forEach(element => {
-        attack_method_prop.appendChild(element);
-      });
-      kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 3);
+      if(char_constellations < 3)
+      {
+        traits = [
+          createLabel("kirara_skill_count", "　初撃ヒット回数："),
+          createSelectList("kirara_skill_count", 0, 1, "", "回", 1),
+          document.createElement("br"),
+          createLabel("kirara_nyan_count", "　ニャンダモンヒット回数："),
+          createSelectList("kirara_nyan_count", 0, 6, "", "回", 6),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+        kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 3);
+      }
+      else
+      {
+        traits = [
+          createLabel("kirara_skill_count", "　初撃ヒット回数："),
+          createSelectList("kirara_skill_count", 0, 1, "", "回", 1),
+          document.createElement("br"),
+          createLabel("kirara_nyan_count", "　ニャンダモンヒット回数："),
+          createSelectList("kirara_nyan_count", 0, 6, "", "回", 6),
+          document.createElement("br"),
+          createLabel("kirara_mininyan_count", "　ミニニャンダモンヒット回数："),
+          createSelectList("kirara_mininyan_count", 0, 3, "", "回", 3),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+        kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 4);
+      }
     }
     elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
     elemental_reaction.appendChild(kirara_agg_count); // ラベルを select_reaction_method に追加

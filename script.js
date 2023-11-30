@@ -921,14 +921,6 @@ async function calculate_elmreaction_constdmg(reaction_coeff)
     const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
     reaction_count = Overloaded_count * 2 + Hyperbloom_count * 3 + Electro_Charged_count * 1.2;
   }
-  else if (char_propaty[0] == 4)
-  {
-    const Swirl_pyro_count = parseInt(document.getElementById("Swirl_pyro").value);
-    const Swirl_hydro_count = parseInt(document.getElementById("Swirl_hydro").value);
-    const Swirl_cyro_count = parseInt(document.getElementById("Swirl_cyro").value);
-    const Swirl_electro_count = parseInt(document.getElementById("Swirl_electro").value);
-    reaction_count = (Swirl_pyro_count + Swirl_hydro_count + Swirl_cyro_count + Swirl_electro_count) * 0.8;
-  }
   reaction_count = reaction_count * 2 * reaction_coeff;
 
   return reaction_count;
