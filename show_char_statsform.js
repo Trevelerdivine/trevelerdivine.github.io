@@ -1278,10 +1278,6 @@ async function show_char_statsform()
 
       traits = [
         {
-          id: "traitCheckbox4",
-          label: "第4重：元素ダメージ+12%"
-        },
-        {
           id: "traitCheckbox6",
           label: "第6重：元素ダメージ+12%"
         },
@@ -1289,24 +1285,14 @@ async function show_char_statsform()
 
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "元素スキル(草緑剣)", value: "16" },
-        { text: "元素爆発(臥草若化)", value: "21" },
+        { text: "元素スキル（緑剣）", value: "16" },
+        { text: "元素爆発（臥草若化）", value: "21" },
       ];
       createchar_attackmethod(options);
-
-      if (char_constellations > 2)
+      if (char_constellations == 4)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
-      if (char_constellations == 4)
-      {
-        traitCheckbox = createCheckbox(traits[1].id, true);
-        traitLabel = createLabel(traits[1].id, traits[1].label);
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
