@@ -5903,6 +5903,15 @@ class kirara {
     {
       this.first_conste_buff = 1;
     }
+
+    if (this.char_constellations ==4)
+    {
+      const sixth_conste_check =  document.getElementById("traitCheckbox6");
+      if (sixth_conste_check.checked)
+      {
+        this.sixth_conste_buff = 0.12;
+      }
+    }
     
     // JSON データを取得
     const response = await fetch("./data/character/char_data/kirara.json");
@@ -5997,7 +6006,7 @@ class kirara {
   }
 
   calculate_char_fixed_dmg_buff(status) {
-    return 0;
+    return this.sixth_conste_buff;
   }
 
   calculate_char_result_dmg_buff(status) {
