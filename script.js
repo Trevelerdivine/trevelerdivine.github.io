@@ -481,6 +481,9 @@ async function create_char_instance(base_status, parameter) {
     case "58":
       char_instance = new kirara(base_status, parameter);
       break;
+    case "62":
+      char_instance = new travelardendro(base_status, parameter);
+      break;
     case "63":
       char_instance = new aratakiitto(base_status, parameter);
       break;
