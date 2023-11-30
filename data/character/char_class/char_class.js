@@ -4371,13 +4371,6 @@ class fischl {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
 
-    const reaction_check = document.getElementById("reactionon_flag");
-    if (reaction_check.checked)
-    {
-      this.aggcount = parseInt(document.getElementById("fischl_agg_count").value);
-      this.reaction_coeff = 1.15
-    }
-
     // JSON データを取得
     const response = await fetch("./data/character/char_data/fischl.json");
     const data = await response.json();
@@ -4391,6 +4384,12 @@ class fischl {
       }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 16) {
+      const reaction_check = document.getElementById("reactionon_flag");
+      if (reaction_check.checked)
+      {
+        this.aggcount = parseInt(document.getElementById("fischl_agg_count").value);
+        this.reaction_coeff = 1.15
+      }
       const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
       const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
