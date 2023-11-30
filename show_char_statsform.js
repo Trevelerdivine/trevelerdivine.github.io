@@ -1281,6 +1281,10 @@ async function show_char_statsform()
           id: "traitCheckbox6",
           label: "第6重：元素ダメージ+12%"
         },
+        {
+          id: "special_buff",
+          label: "活性化済み・缶詰知識：基礎攻撃力+3"
+        },
       ];
 
       const options = [
@@ -1289,6 +1293,13 @@ async function show_char_statsform()
         { text: "元素爆発（臥草若化）", value: "21" },
       ];
       createchar_attackmethod(options);
+
+      traitCheckbox = createCheckbox(traits[1].id, true);
+      traitLabel = createLabel(traits[1].id, traits[1].label);
+      characterInfo.appendChild(traitCheckbox);
+      characterInfo.appendChild(traitLabel);
+      characterInfo.appendChild(document.createElement("br"));
+      
       if (char_constellations == 4)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);

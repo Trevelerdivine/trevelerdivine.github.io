@@ -107,7 +107,7 @@ async function calculate_char_base_status()
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
   const char_base_dmg_buff = data.ステータス.基礎ダメージバフ[char_level];
 
-  if (selectedCharId == 70)
+  if (selectedCharId == 62 || selectedCharId == 70)
   {
     const special_buff_check = document.getElementById("special_buff");
     if(special_buff_check.checked)
