@@ -1655,6 +1655,32 @@ async function show_attack_method()
     elemental_reaction.appendChild(kirara_agg_count); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));
   }
+  else if (selectedCharId == "62")
+  {
+    let kirara_agg_count;
+    if (attack_method == 16)
+    {
+      kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 2);
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("kirara_skill_count", "　草蓮灯ヒット回数："),
+        createSelectList("kirara_skill_count", 0, 17, "", "回", 17),
+        document.createElement("br"),
+        createLabel("kirara_nyan_count", "　猛爆発ヒット回数："),
+        createSelectList("kirara_nyan_count", 0, 1, "", "回", 0),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+      kirara_agg_count = createSelectList("kirara_agg_count", 0, 50, "", "回", 5);
+    }
+    elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(kirara_agg_count); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
   else if (selectedCharId == "63")
   {
     if (attack_method == 6)
