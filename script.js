@@ -106,7 +106,7 @@ async function calculate_char_base_status()
   const char_base_cr = data.ステータス.基礎会心率[char_level];
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
   const dmg_buff_type = parseInt(data.ステータス.基礎ダメージバフ.元素);
-  const char_base_dmg_buff = 0;
+  let char_base_dmg_buff = 0;
   if (dmg_buff_type == char_propaty[0])
   {
     char_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ.数値[char_level]);
