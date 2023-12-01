@@ -5942,11 +5942,11 @@ class alhaitham {
                           + parseInt(document.getElementById("alhaitham_skill_count3").value) * 2
                           + parseInt(document.getElementById("alhaitham_skill_count4").value) * 3;
 
-      const dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
-                           + parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
-      const dmg_elm_rate = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]]) * attack_count1
-                         + parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]) * attack_count2;
-      dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
+      const dmg_attck_rate1 = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
+      const dmg_attck_rate2 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
+      const dmg_elm_rate1 = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]]) * attack_count1
+      const dmg_elm_rate1 = parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]) * attack_count2;
+      dmg_rate = [0, 0, [dmg_elm_rate1,dmg_elm_rate1], 0, [dmg_attck_rate1,dmg_attck_rate2], 0, 0];
     }
     else if (attack_method == 21) {
       this.talent2_buff_flag = 1;
@@ -6028,7 +6028,14 @@ class alhaitham {
   calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      if (attack_method == 16 || attack_method == 21)
+      if (attack_method == 16)
+      { 
+        const total_rate = status[2] * dmg_rate[2][1] + status[4] * dmg_rate[4][1] 
+                         + (status[2] * dmg_rate[2][1] + status[4] * dmg_rate[4][1] ) * (status[7] - this.talent2_buff) / status[7];
+        let basicDmg = (total_rate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        return basicDmg;
+      }
+      else if (attack_method == 21)
       { 
         const total_rate = status[2] * dmg_rate[2] + status[4] * dmg_rate[4];
         let basicDmg = (total_rate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));

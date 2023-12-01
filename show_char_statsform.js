@@ -1266,7 +1266,7 @@ async function show_char_statsform()
       if (char_constellations > 1)
       {
         traitLabel = createLabel(traits[0].id, traits[0].label);
-        const elmbuff_list = createanySelectList("alhaitham_second_buff", 0, 4, "+", "", 50, 4);
+        const elmbuff_list = createanySelectList("alhaitham_second_buff", 0, 4, "+", "", 4, 50);
 
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(elmbuff_list);
