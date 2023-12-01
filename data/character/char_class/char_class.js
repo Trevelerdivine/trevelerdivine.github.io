@@ -5873,6 +5873,207 @@ class nahida {
   }
 }
 
+class alhaitham {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.dmg_rateCache = null;
+    this.parameter = parameter;
+    this.aggcount = 0;
+    this.reaction_coeff = 0;
+    this.talent2_buff_flag = 0;
+    this.talent2_buff = 0;
+    this.second_conste_buff = 0;
+    this.four_conste_buff = 0;
+    this.sixth_conste_buff = 0;
+    this.char_constellations = 0;
+  }
+
+  async dmg_rate_data() {
+    // チェックボックスとチェックされた数を取得
+
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById("nahida_agg_count").value);
+      this.reaction_coeff = 1.25
+    }    
+  
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/nahida.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attck_rate = 0;
+  
+    if (this.char_constellations > 1)
+    {
+      const second_conste_check = document.getElementById("traitCheckbox2");
+      if (second_conste_check.checked)
+      {
+        this.second_conste_buff = parseInt(document.getElementById("alhaitham_second_buff").value);
+      }
+    }
+    if (this.char_constellations > 2)
+    {
+      this.fourth_conste_buff = parseInt(document.getElementById("alhaitham_fourth1").value) * 0.1;
+    }
+    if (this.char_constellations == 4)
+    {
+      const sixth_conste_check = document.getElementById("traitCheckbox6");
+      if (sixth_conste_check.checked)
+      {
+        this.sixth_conste_buff = 0.1;
+      }
+    }
+
+    if (attack_method == 1) {
+      for (let i = 0; i < 6; i++) {
+        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 6) {
+      dmg_attck_rate = parseFloat(data["重撃"]["詳細"][0]["数値"]["攻撃力"][this.parameter[3]]) * 2;
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 16) {
+      this.talent2_buff_flag = 1;
+      const attack_count1 = parseInt(document.getElementById("alhaitham_skill_count1").value);
+      const attack_count2 = parseInt(document.getElementById("alhaitham_skill_count2").value)
+                          + parseInt(document.getElementById("alhaitham_skill_count3").value) * 2
+                          + parseInt(document.getElementById("alhaitham_skill_count4").value) * 3;
+
+      const dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
+                           + parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
+      const dmg_elm_rate = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]]) * attack_count1
+                         + parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]) * attack_count2;
+      dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
+    }
+    else if (attack_method == 21) {
+      this.talent2_buff_flag = 1;
+    }
+  
+    // 計算結果をキャッシュして返す
+    this.dmg_rateCache = dmg_rate;
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return this.second_conste_buff;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return this.sixth_conste_buff;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return this.sixth_conste_buff * 7;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return this.fourth_conste_buff;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    if (this.talent2_buff_flag > 0)
+    {
+      this.talent2_buff = Math.min(1,status[2] * 0.001);
+    }
+    return this.talent2_buff
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    if (this.reaction_coeff > 0)
+    {
+      if (attack_method == 16 || attack_method == 21)
+      { 
+        const total_rate = status[2] * dmg_rate[2] + status[4] * dmg_rate[4];
+        let basicDmg = (total_rate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        return basicDmg;
+      }
+      else
+      {
+        const attckRate = status[4] * dmg_rate[4];
+        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        return basicDmg;
+      }
+    }
+    else
+    {
+      if (attack_method == 16 || attack_method == 17)
+      {
+        const attckRate = status[4] * dmg_rate[4] / 100;
+        const elmRate = status[2] * dmg_rate[2] / 100;
+        let basicDmg = attckRate + elmRate;
+        return basicDmg;
+      }
+      else
+      {
+        const attckRate = status[4] * dmg_rate[4] / 100;
+        let basicDmg = attckRate;
+        return basicDmg;
+      }
+    }
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    if (this.char_constellations >1)
+    {
+      const two_conste_check = document.getElementById("traitCheckbox2");
+      if(two_conste_check.checked)
+      {
+        char_debuff = [0,0.3,0];
+      }
+    }
+    return char_debuff;
+  }
+}
+
+
 class tighnari {
   constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;

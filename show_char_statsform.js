@@ -1246,10 +1246,10 @@ async function show_char_statsform()
         },
         {
           id: "traitCheckbox4",
-          label: "第4重：エルシデーション"
+          label: "第4重：エルシデーション "
         },
         {
-          id: "traitCheckbox4",
+          id: "traitCheckbox6",
           label: "第6重：会心率+10%、会心ダメージ+70%"
         },
       ];
@@ -1258,7 +1258,6 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃1ループ", value: "1" },
         { text: "重撃（草元素）", value: "6" },
-        { text: "落下攻撃（草元素）", value: "11" },
         { text: "元素スキル（共相・イデア模写）", value: "16" },
         { text: "元素爆発(殊境・顕象結縛)", value: "21" },
       ];
@@ -1288,11 +1287,10 @@ async function show_char_statsform()
       }
       if (char_constellations == 4)
       {
+        traitCheckbox = createCheckbox(traits[2].id, true);
         traitLabel = createLabel(traits[2].id, traits[2].label);
-        const elmbuff_list = createanySelectList("alhaitham_second_buff", 0, 4, "+", "", 50, 4);
-
+        characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(elmbuff_list);
         characterInfo.appendChild(document.createElement("br"));
       }
     }
