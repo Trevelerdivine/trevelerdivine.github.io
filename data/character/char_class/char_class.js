@@ -4703,7 +4703,7 @@ class razor {
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
-        this.aggcount = parseInt(document.getElementById("beidou_agg_count").value);
+        this.aggcount = parseInt(document.getElementById("razor_agg_count").value);
         this.reaction_coeff = 1.15
       }
 
@@ -4713,7 +4713,7 @@ class razor {
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
-        this.aggcount = parseInt(document.getElementById("beidou_agg_count").value);
+        this.aggcount = parseInt(document.getElementById("razor_agg_count").value);
         this.reaction_coeff = 1.15
       }
 
@@ -4723,7 +4723,7 @@ class razor {
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
-        this.aggcount = parseInt(document.getElementById("beidou_agg_count").value);
+        this.aggcount = parseInt(document.getElementById("razor_agg_count").value);
         this.reaction_coeff = 1.15
       }
 
