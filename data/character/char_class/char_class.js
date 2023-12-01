@@ -5883,7 +5883,7 @@ class alhaitham {
     this.talent2_buff_flag = 0;
     this.talent2_buff = 0;
     this.second_conste_buff = 0;
-    this.four_conste_buff = 0;
+    this.fourth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
   }
