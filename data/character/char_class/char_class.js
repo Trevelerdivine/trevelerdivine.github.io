@@ -4721,7 +4721,7 @@ class razor {
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
-      this.skill_buff = parseInt(document.getElementById("razor_agg_count").value) * 0.1;
+      this.skill_buff = parseInt(document.getElementById("razor_skill_count").value) * 0.1;
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
