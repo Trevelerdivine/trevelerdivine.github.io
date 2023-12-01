@@ -514,7 +514,7 @@ text-align: center;
 .enemy-form {
   max-width: 500px;
   width: 100%;
-  margin: 0;
+  margin: auto;
   background-color: #DDFFDD;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -616,7 +616,7 @@ text-align: center;
   .team-buff-form,
   .af-buff-form {
     width: 100%;
-    margin: 0;
+    margin: auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 2px 5px;
