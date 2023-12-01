@@ -1613,6 +1613,9 @@ async function show_attack_method()
     else if (attack_method == 16)
     {
       traits = [
+        createLabel("alhaitham_skill_count1", "　突進攻撃ヒット回数："),
+        createSelectList("alhaitham_skill_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
         createLabel("alhaitham_skill_count2", "　琢光鏡1枚光幕攻撃ヒット回数："),
         createSelectList("alhaitham_skill_count2", 0, 5, "", "回", 2),
         document.createElement("br"),
