@@ -1599,6 +1599,33 @@ async function show_attack_method()
       attack_method_prop.appendChild(document.createElement("br"));
     }
   }
+  else if (selectedCharId == "55")
+  {      
+    let alhaitham_agg_count;
+    if (attack_method == 1)
+    {
+      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 2);
+    }
+    else if (attack_method == 6)
+    {
+      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
+    }
+    else if (attack_method == 10)
+    {
+      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
+    }
+    else if (attack_method == 16)
+    {
+      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
+    }
+    else if (attack_method == 21)
+    {
+      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
+    }
+    elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(alhaitham_agg_countlist); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
   else if (selectedCharId == "56")
   {      
     if (attack_method == 1)

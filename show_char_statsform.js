@@ -1237,6 +1237,51 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId == "55")
+    {   
+      traits = [
+        {
+          id: "traitCheckbox2",
+          label: "第2重：元素熟知 "
+        },
+        {
+          id: "traitCheckbox4",
+          label: "第4重：エルシデーション"
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ", value: "1" },
+        { text: "重撃（草元素）", value: "6" },
+        { text: "落下攻撃（草元素）", value: "11" },
+        { text: "元素スキル（共相・イデア模写）", value: "16" },
+        { text: "元素爆発(殊境・顕象結縛)", value: "21" },
+      ];
+
+      if (char_constellations > 1)
+      {
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        const elmbuff_list = createanySelectList("alhaitham_second_buff", 0, 4, "+", "", 50, 4);
+
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(elmbuff_list);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 2)
+      {
+        elementsToAddToCharTalent = [
+          createLabel("alhaitham_fourth1", "　琢光鏡生成数"),
+          createSelectList("alhaitham_fourth1", 0, 3, "", "枚", 3),
+          document.createElement("br"),
+        ];
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+        characterInfo.appendChild(traitLabel);
+        elementsToAddToCharTalent.forEach(element => {
+          characterInfo.appendChild(element);
+        });
+      }
+    }
     else if (selectedCharId == "57")
     {
       elementsToAddToCharTalent = [
