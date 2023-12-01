@@ -1226,7 +1226,7 @@ async function show_char_statsform()
         { text: "元素スキル（非想風天）", value: "16" },
         { text: "元素爆発（搏風秘道）", value: "21" },
       ];
-      createchar_attackmethod(options)  
+      createchar_attackmethod(options);
     }
     else if (selectedCharId == "50")
     {
@@ -1262,6 +1262,7 @@ async function show_char_statsform()
         { text: "元素スキル（共相・イデア模写）", value: "16" },
         { text: "元素爆発(殊境・顕象結縛)", value: "21" },
       ];
+      createchar_attackmethod(options);
 
       if (char_constellations > 1)
       {
