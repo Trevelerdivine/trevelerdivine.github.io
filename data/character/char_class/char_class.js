@@ -5908,11 +5908,7 @@ class alhaitham {
   
     if (this.char_constellations > 1)
     {
-      const second_conste_check = document.getElementById("traitCheckbox2");
-      if (second_conste_check.checked)
-      {
-        this.second_conste_buff = parseInt(document.getElementById("alhaitham_second_buff").value);
-      }
+      this.second_conste_buff = parseInt(document.getElementById("alhaitham_second_buff").value);
     }
     if (this.char_constellations > 2)
     {
