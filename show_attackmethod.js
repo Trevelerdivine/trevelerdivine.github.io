@@ -1616,10 +1616,35 @@ async function show_attack_method()
     }
     else if (attack_method == 16)
     {
-      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
+      traits = [
+        createLabel("alhaitham_skill_count1", "　突進攻撃ヒット回数："),
+        createSelectList("alhaitham_skill_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("alhaitham_skill_count1", "　琢光鏡1枚光幕攻撃ヒット回数："),
+        createSelectList("alhaitham_skill_count1", 0, 5, "", "回", 2),
+        document.createElement("br"),
+        createLabel("alhaitham_skill_count2", "　琢光鏡2枚光幕攻撃ヒット回数："),
+        createSelectList("alhaitham_skill_count2", 0, 5, "", "回", 2),
+        document.createElement("br"),
+        createLabel("alhaitham_skill_count2", "　琢光鏡3枚光幕攻撃ヒット回数："),
+        createSelectList("alhaitham_skill_count2", 0, 5, "", "回", 2),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 4);
     }
     else if (attack_method == 21)
     {
+      traits = [
+        createLabel("alhaitham_skill_count1", "琢光鏡消費枚数："),
+        createSelectList("alhaitham_skill_count1", 0, 3, "", "枚", 2),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
       alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
     }
     elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加

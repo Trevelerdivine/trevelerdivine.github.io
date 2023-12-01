@@ -1248,6 +1248,10 @@ async function show_char_statsform()
           id: "traitCheckbox4",
           label: "第4重：エルシデーション"
         },
+        {
+          id: "traitCheckbox4",
+          label: "第6重：会心率+10%、会心ダメージ+70%"
+        },
       ];
 
       const options = [
@@ -1280,6 +1284,15 @@ async function show_char_statsform()
         elementsToAddToCharTalent.forEach(element => {
           characterInfo.appendChild(element);
         });
+      }
+      if (char_constellations == 4)
+      {
+        traitLabel = createLabel(traits[2].id, traits[2].label);
+        const elmbuff_list = createanySelectList("alhaitham_second_buff", 0, 4, "+", "", 50, 4);
+
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(elmbuff_list);
+        characterInfo.appendChild(document.createElement("br"));
       }
     }
     else if (selectedCharId == "57")
