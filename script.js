@@ -109,7 +109,7 @@ async function calculate_char_base_status()
   const char_base_dmg_buff = 0;
   if (dmg_buff_type == char_propaty[0])
   {
-    char_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ[char_level]);
+    char_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ.数値[char_level]);
   }
 
   if (selectedCharId == 62 || selectedCharId == 70)
