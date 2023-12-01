@@ -1404,6 +1404,9 @@ async function show_attack_method()
       });
 
       razor_agg_count = createSelectList("razor_agg_count", 0, 1, "", "回", 1);
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(razor_agg_count); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
     else if (attack_method == 17)
     {
@@ -1417,6 +1420,9 @@ async function show_attack_method()
       });
 
       razor_agg_count = createSelectList("razor_agg_count", 0, 1, "", "回", 1);
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(razor_agg_count); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
     else if (attack_method == 21)
     {
@@ -1429,10 +1435,10 @@ async function show_attack_method()
         attack_method_prop.appendChild(element);
       });
       razor_agg_count = createSelectList("razor_agg_count", 0, 15, "", "回", 2);
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(razor_agg_count); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
-    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(razor_agg_count); // ラベルを select_reaction_method に追加
-    elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "42")
   {
