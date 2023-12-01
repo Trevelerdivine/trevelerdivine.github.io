@@ -4649,6 +4649,7 @@ class razor {
     this.second_conste_buff = 0;
     this.fourth_conste_buff = 0;
     this.aggcount = 0;
+    this.skill_buff = 0
     this.talent2_buff = 0;
     this.reaction_coeff = 0;
   }
@@ -4720,6 +4721,7 @@ class razor {
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
+      this.skill_buff = parseInt(document.getElementById("razor_agg_count").value) * 0.1;
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
@@ -4771,7 +4773,7 @@ class razor {
   }
 
   calculate_char_fixed_elm_charge(status) {
-    return this.talent2_buff;
+    return this.talent2_buff + this.skill_buff;
   }
 
   calculate_char_result_elm_charge(status) {
