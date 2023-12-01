@@ -5945,8 +5945,8 @@ class alhaitham {
       const dmg_attck_rate1 = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
       const dmg_attck_rate2 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       const dmg_elm_rate1 = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]]) * attack_count1
-      const dmg_elm_rate1 = parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]) * attack_count2;
-      dmg_rate = [0, 0, [dmg_elm_rate1,dmg_elm_rate1], 0, [dmg_attck_rate1,dmg_attck_rate2], 0, 0];
+      const dmg_elm_rate2 = parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]) * attack_count2;
+      dmg_rate = [0, 0, [dmg_elm_rate1,dmg_elm_rate2], 0, [dmg_attck_rate1,dmg_attck_rate2], 0, 0];
     }
     else if (attack_method == 21) {
       this.talent2_buff_flag = 1;
