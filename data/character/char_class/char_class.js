@@ -6027,7 +6027,7 @@ class alhaitham {
       if (attack_method == 16)
       { 
         const total_rate = status[2] * dmg_rate[2][1] + status[4] * dmg_rate[4][1] 
-                         + (status[2] * dmg_rate[2][0] + status[4] * dmg_rate[4][0] ) * (1 + [7] - this.talent2_buff) / (1 + status[7]);
+                         + (status[2] * dmg_rate[2][0] + status[4] * dmg_rate[4][0] ) * (1 + status[7] - this.talent2_buff) / (1 + status[7]);
         let basicDmg = (total_rate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
