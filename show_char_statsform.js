@@ -1080,6 +1080,67 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "41")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("beidou_talent2", true),
+        createLabel("beidou_talent2", "固有天賦2：満天の霹靂 元素チャージ効率+30％"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ（物理）", value: "1" },
+        { text: "元素スキル（1回押し）", value: "16" },
+        { text: "元素スキル（長押し）", value: "17" },
+        { text: "元素爆発（雷牙）", value: "21" },
+      ];
+      createchar_attackmethod(options);
+
+      traits = [
+        {
+          id: "traitCheckbox1",
+          label: "第1重：与えるダメージ+10％"
+        },
+        {
+          id: "traitCheckbox2",
+          label: "第2重：会心率+10％"
+        },
+        {
+          id: "traitCheckbox4",
+          label: "第4重：敵の防御力-15%"
+        },
+      ];
+
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+        if (char_constellations > 1)
+        {
+          traitCheckbox = createCheckbox(traits[1].id, true);
+          traitLabel = createLabel(traits[1].id, traits[1].label);
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          characterInfo.appendChild(document.createElement("br"));
+          if (char_constellations > 2)
+          {
+            traitCheckbox = createCheckbox(traits[2].id, true);
+            traitLabel = createLabel(traits[2].id, traits[2].label);
+            characterInfo.appendChild(traitCheckbox);
+            characterInfo.appendChild(traitLabel);
+            characterInfo.appendChild(document.createElement("br"));
+          }
+        }
+      }
+    }
     else if (selectedCharId == "42")
     {
       elementsToAddToCharTalent = [
@@ -1299,7 +1360,7 @@ async function show_char_statsform()
       characterInfo.appendChild(traitCheckbox);
       characterInfo.appendChild(traitLabel);
       characterInfo.appendChild(document.createElement("br"));
-      
+
       if (char_constellations == 4)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);

@@ -1389,6 +1389,51 @@ async function show_attack_method()
     elemental_reaction.appendChild(beidou_agg_count); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));
   }
+  else if (selectedCharId == "41")
+  {
+    let razor_agg_count;
+    if (attack_method == 16)
+    {
+      traits = [
+        createLabel("razor_skill_count", "　雷の印："),
+        createSelectList("razor_skill_count", 0, 3, "", "層", 3),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      razor_agg_count = createSelectList("razor_agg_count", 0, 1, "", "回", 1);
+    }
+    else if (attack_method == 17)
+    {
+      traits = [
+        createLabel("razor_skill_count", "　雷の印："),
+        createSelectList("razor_skill_count", 0, 3, "", "層", 0),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      razor_agg_count = createSelectList("razor_agg_count", 0, 1, "", "回", 1);
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("razor_skill_count", "　雷の印："),
+        createSelectList("razor_skill_count", 0, 3, "", "層", 0),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+      razor_agg_count = createSelectList("razor_agg_count", 0, 15, "", "回", 2);
+    }
+    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(razor_agg_count); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
   else if (selectedCharId == "42")
   {
     let lisa_agg_count;
