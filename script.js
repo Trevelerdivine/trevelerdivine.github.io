@@ -105,11 +105,11 @@ async function calculate_char_base_status()
   const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[char_level];
   const char_base_cr = data.ステータス.基礎会心率[char_level];
   const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
-  const dmg_buff_type = data.ステータス.基礎ダメージバフ.元素;
+  const dmg_buff_type = parseInt(data.ステータス.基礎ダメージバフ.元素);
   const char_base_dmg_buff = 0;
   if (dmg_buff_type == char_propaty[0])
   {
-    char_base_dmg_buff = parseInt(data.ステータス.基礎ダメージバフ[char_level]);
+    char_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ[char_level]);
   }
 
   if (selectedCharId == 62 || selectedCharId == 70)
