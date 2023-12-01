@@ -5889,7 +5889,7 @@ class alhaitham {
   }
 
   async dmg_rate_data() {
-    // チェックボックスとチェックされた数を取得
+    this.char_constellations = document.getElementById("char_constellations").value;
 
     const reaction_check = document.getElementById("reactionon_flag");
     if (reaction_check.checked)
