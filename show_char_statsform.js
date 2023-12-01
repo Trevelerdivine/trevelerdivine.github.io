@@ -1275,7 +1275,7 @@ async function show_char_statsform()
       if (char_constellations > 2)
       {
         elementsToAddToCharTalent = [
-          createLabel("alhaitham_fourth1", "　琢光鏡生成数"),
+          createLabel("alhaitham_fourth1", "　琢光鏡生成数 "),
           createSelectList("alhaitham_fourth1", 0, 3, "", "枚", 3),
           document.createElement("br"),
         ];
