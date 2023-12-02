@@ -759,15 +759,15 @@ async function show_attack_method()
         ];
         createCheckboxList_br(options);
         traits = [
-          createLabel("tartaglia_react_count1", "　断流・閃ヒット回数："),
+          createLabel("tartaglia_react_count1", "　断流・閃反応回数："),
           createSelectList("tartaglia_react_count1", 0, 20, "", "回", 0),
           document.createElement("br"),
-          createLabel("tartaglia_react_count2", "　断流・破ヒット回数："),
+          createLabel("tartaglia_react_count2", "　断流・破反応回数："),
           createSelectList("tartaglia_react_count2", 0, 20, "", "回", 0),
           document.createElement("br"),
         ];
         traits.forEach(element => {
-          attack_method_prop.appendChild(element);
+          select_reaction_method.appendChild(element);
         });
     }
     else if(attack_method == 6)
@@ -819,11 +819,11 @@ async function show_attack_method()
     else if(attack_method == 21)
     {
       traits = [
-        createLabel("tartaglia_attack_count1", "　状態切替時ダメージヒット回数："),
+        createLabel("tartaglia_attack_count1", "　元素爆発（遠隔モード）ヒット回数："),
         createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("tartaglia_attack_count2", "　断流・斬ヒット回数："),
-        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 15),
+        createLabel("tartaglia_attack_count2", "　断流・爆ヒット回数："),
+        createSelectList("tartaglia_attack_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {
@@ -831,16 +831,23 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("tartaglia_attack_count1", "　状態切替時ダメージ反応回数："),
+        createLabel("tartaglia_attack_count1", "　元素爆発（遠隔モード）反応回数："),
         createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("tartaglia_attack_count2", "　断流・斬反応回数："),
-        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 5),
+        createLabel("tartaglia_attack_count2", "　断流・爆反応回数："),
+        createSelectList("tartaglia_attack_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {
         select_reaction_method.appendChild(element);
       });
+    }
+    else if(attack_method == 22)
+    {
+      options = [
+        { text: "元素爆発（遠隔モード）", value: "0", checked: true },
+      ];
+      createCheckboxList_br(options);
     }
   }
   else if (selectedCharId == "19")
