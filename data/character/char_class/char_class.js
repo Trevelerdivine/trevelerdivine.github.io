@@ -5929,7 +5929,7 @@ class alhaitham {
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 6) {
-      dmg_attck_rate = parseFloat(data["重撃"]["詳細"][0]["数値"]["攻撃力"][this.parameter[3]]) * 2;
+      dmg_attck_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * 2;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
       this.talent2_buff_flag = 1;

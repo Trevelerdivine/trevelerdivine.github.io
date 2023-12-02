@@ -1635,7 +1635,7 @@ async function show_attack_method()
     {
       traits = [
         createLabel("alhaitham_skill_count1", "琢光鏡消費枚数："),
-        createSelectList("alhaitham_skill_count1", 0, 3, "", "枚", 2),
+        createSelectList("alhaitham_skill_count1", 0, 3, "", "枚", 0),
         document.createElement("br"),
       ];
       traits.forEach(element => {
