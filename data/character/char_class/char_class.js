@@ -5950,7 +5950,7 @@ class alhaitham {
 
       const dmg_attck_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * buff_count
       const dmg_elm_rate1 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * buff_count
-      dmg_rate = [0, 0, dmg_attck_rate1, 0, dmg_elm_rate1, 0, 0];
+      dmg_rate = [0, 0, dmg_elm_rate1, 0, dmg_attck_rate1, 0, 0];
     }
   
     // 計算結果をキャッシュして返す
