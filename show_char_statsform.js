@@ -643,6 +643,19 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "15")
+    {
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ（近接モード）", value: "1" },
+        { text: "重撃（近接モード）", value: "6" },
+        { text: "元素スキル", value: "16" },
+        { text: "元素爆発（近接モード）", value: "21" },
+        { text: "元素爆発（遠隔モード）", value: "22" },
+      ];
+    
+      createchar_attackmethod(options);
+    }
     else if (selectedCharId == "19")
     {
       traits = [

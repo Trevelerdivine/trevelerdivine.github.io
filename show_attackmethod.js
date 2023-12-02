@@ -733,6 +733,116 @@ async function show_attack_method()
       });
     }
   }
+  else if (selectedCharId == "15")
+  {
+    if (attack_method == 1)
+    {
+      traits = [
+        createLabel("tartaglia_attack_count1", "　断流・閃ヒット回数："),
+        createSelectList("tartaglia_attack_count1", 0, 20, "", "回", 0),
+        document.createElement("br"),
+        createLabel("tartaglia_attack_count2", "　断流・破ヒット回数："),
+        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 0),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+        options = [
+          { text: "１段目", value: "0", checked: true },
+          { text: "２段目", value: "1" },
+          { text: "３段目", value: "2" },
+          { text: "４段目", value: "3", checked: true },
+          { text: "５段目", value: "4"},
+          { text: "６段目-１", value: "5" },
+          { text: "６段目-２", value: "5", checked: true },
+        ];
+        createCheckboxList_br(options);
+        traits = [
+          createLabel("tartaglia_react_count1", "　断流・閃ヒット回数："),
+          createSelectList("tartaglia_react_count1", 0, 20, "", "回", 0),
+          document.createElement("br"),
+          createLabel("tartaglia_react_count2", "　断流・破ヒット回数："),
+          createSelectList("tartaglia_react_count2", 0, 20, "", "回", 0),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+    }
+    else if(attack_method == 6)
+    {
+      traits = [
+        createLabel("tartaglia_attack_count", "　重撃（近接モード）ヒット回数："),
+        createSelectList("tartaglia_attack_count", 0, 10, "", "回", 3),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("tartaglia_react_count", "　重撃（近接モード）反応回数："),
+        createSelectList("tartaglia_react_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if(attack_method == 16)
+    {
+      traits = [
+        createLabel("tartaglia_attack_count1", "　状態切替時ダメージヒット回数："),
+        createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("tartaglia_attack_count2", "　断流・斬ヒット回数："),
+        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 15),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("tartaglia_attack_count1", "　状態切替時ダメージ反応回数："),
+        createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("tartaglia_attack_count2", "　断流・斬反応回数："),
+        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 5),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if(attack_method == 21)
+    {
+      traits = [
+        createLabel("tartaglia_attack_count1", "　状態切替時ダメージヒット回数："),
+        createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("tartaglia_attack_count2", "　断流・斬ヒット回数："),
+        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 15),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("tartaglia_attack_count1", "　状態切替時ダメージ反応回数："),
+        createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("tartaglia_attack_count2", "　断流・斬反応回数："),
+        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 5),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+  }
   else if (selectedCharId == "19")
   {
     if (attack_method == 16)
