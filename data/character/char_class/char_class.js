@@ -6051,18 +6051,21 @@ class alhaitham {
     }
     else
     {
-      if (attack_method == 16 || attack_method == 17)
+      if (attack_method == 16)
       {
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        const elmRate = status[2] * dmg_rate[2] / 100;
-        let basicDmg = attckRate + elmRate;
-        return basicDmg;
+        const total_rate = status[2] * dmg_rate[2][1] + status[4] * dmg_rate[4][1] 
+                         + (status[2] * dmg_rate[2][0] + status[4] * dmg_rate[4][0] ) * (1 + status[7] - this.talent2_buff) / (1 + status[7]);
+        return total_rate;
+      }
+      else if (attack_method == 21)
+      {
+        const total_rate = status[2] * dmg_rate[2] + status[4] * dmg_rate[4];
+        return total_rate;
       }
       else
       {
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        let basicDmg = attckRate;
-        return basicDmg;
+        const attckRate = status[4] * dmg_rate[4];
+        return attckRate;
       }
     }
   }
