@@ -2481,6 +2481,166 @@ class kamisatoayato {
   }
 }
 
+class tartaglia {
+  constructor(base_status_array, parameter) 
+  {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.first_conste_buff = 0;
+    this.second_conste_buff = 0;
+    this.trueCount = 0;
+    this.reaction_coeff = 0;
+    this.attack_count = 3;
+    this.buff_effect_count = 3;
+    this.skill_buff = 0;
+    this.burst_buff = 0;
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
+    const Vaporize_hydro = document.getElementById("Vaporize-hydro");
+    if (Vaporize_hydro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 2;
+    }
+  
+    const response = await fetch("./data/character/char_data/tartaglia.json");
+    const data = await response.json();
+  
+    let dmg_attack_rate = 0;
+    let dmg_rate = 0;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
+
+    if (attack_method == 1) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count1"));
+      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count2"));
+      const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
+      const react_count2 = parseInt(document.getElementById("tartaglia_react_count2"));
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      for (let i = 0; i < 7; i++) {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      elm_react_dmgrate += react_count1 * parseFloat(data["通常攻撃"]["詳細"][7]["数値"][this.parameter[3]])
+                        +  react_count2 * parseFloat(data["通常攻撃"]["詳細"][8]["数値"][this.parameter[3]])
+      elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["通常攻撃"]["詳細"][7]["数値"][this.parameter[3]])
+                           +  (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][8]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 6) {
+      const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count"));
+      const react_count1 = parseInt(document.getElementById("tartaglia_react_count"));
+      const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
+      const react_count2 = parseInt(document.getElementById("tartaglia_react_count2"));
+      elm_react_dmgrate += react_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        +  react_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
+      elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                           +  (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+    }
+    return dmg_rate;
+  }
+
+  calculate_char_fixed_hp(status) {
+    return this.base_status_array[0] * this.second_conste_buff;
+  }
+
+  calculate_char_result_hp(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_char_result_dmg_buff(status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    let attckRate;
+    if (this.reaction_coeff > 0)
+    {
+      attckRate = status[4] * dmg_rate[4][0] + status[0] * this.skill_buff * this.buff_effect_count;
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[4] * dmg_rate[4][1] + status[0] * this.skill_buff * (3 - this.buff_effect_count);
+      return basicDmg;
+    }
+    else
+    {
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + status[0] * this.skill_buff * 3;
+      basicDmg = attckRate;
+      return basicDmg;
+    }
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class xingqiu {
   constructor(base_status_array, parameter) 
   {
@@ -6075,7 +6235,6 @@ class alhaitham {
     return char_debuff;
   }
 }
-
 
 class tighnari {
   constructor(base_status_array, parameter) {

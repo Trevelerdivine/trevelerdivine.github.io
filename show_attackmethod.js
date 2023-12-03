@@ -759,10 +759,10 @@ async function show_attack_method()
         ];
         createCheckboxList_br(options);
         traits = [
-          createLabel("tartaglia_react_count1", "　断流・閃反応回数："),
+          createLabel("tartaglia_react_count1", "断流・閃反応回数："),
           createSelectList("tartaglia_react_count1", 0, 20, "", "回", 0),
           document.createElement("br"),
-          createLabel("tartaglia_react_count2", "　断流・破反応回数："),
+          createLabel("tartaglia_react_count2", "断流・破反応回数："),
           createSelectList("tartaglia_react_count2", 0, 20, "", "回", 0),
           document.createElement("br"),
         ];
@@ -773,8 +773,11 @@ async function show_attack_method()
     else if(attack_method == 6)
     {
       traits = [
-        createLabel("tartaglia_attack_count", "　重撃（近接モード）ヒット回数："),
-        createSelectList("tartaglia_attack_count", 0, 10, "", "回", 3),
+        createLabel("tartaglia_attack_count1", "　重撃（近接モード）1ヒット目ヒット回数："),
+        createSelectList("tartaglia_attack_count1", 0, 10, "", "回", 3),
+        document.createElement("br"),
+        createLabel("tartaglia_attack_count2", "　重撃（近接モード）2ヒット目ヒット回数："),
+        createSelectList("tartaglia_attack_count2", 0, 10, "", "回", 3),
         document.createElement("br"),
       ];
       traits.forEach(element => {
@@ -782,8 +785,11 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("tartaglia_react_count", "　重撃（近接モード）反応回数："),
-        createSelectList("tartaglia_react_count", 0, 10, "", "回", 1),
+        createLabel("tartaglia_react_count1", "　重撃（近接モード）1ヒット目反応回数："),
+        createSelectList("tartaglia_react_count1", 0, 10, "", "回", 1),
+        document.createElement("br"),
+        createLabel("tartaglia_react_count2", "　重撃（近接モード）2ヒット目反応回数："),
+        createSelectList("tartaglia_react_count2", 0, 10, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {
