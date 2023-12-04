@@ -69,7 +69,7 @@ async function show_char_statsform()
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（滅浄三業）", value: "16" },
-        { text: "滅浄三業·破業障(6凸)", disabled: char_constellations < 4, value: "17" }
+        { text: "滅浄三業·破業障(6重)", disabled: char_constellations < 4, value: "17" }
       ];
   
       createchar_attackmethod(options);
@@ -525,6 +525,41 @@ async function show_char_statsform()
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
+    else if (selectedCharId == "74")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("nirou_talent1", false),
+        createLabel("nirou_talent1", "固有天賦1：元素熟知+100"),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      traits = [
+        { id: "traitCheckbox2", label: "第2重：水元素耐性-35%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ（6重 水付与）", disabled: char_constellations < 4, value: "1" },
+        { text: "重撃（6重 水付与）", disabled: char_constellations < 4, value: "6" },
+        { text: "スキル（サロン・ソリティア）", value: "16" },
+        { text: "元素爆発(万民のカルナバル)", value: "17" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
