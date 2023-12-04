@@ -612,17 +612,17 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("furina_attack_count1", "　ウーシアの泡反応回数："),
-        createSelectList("furina_attack_count1", 0, 1, "", "回", 1),
+        createLabel("furina_react_count1", "　ウーシアの泡反応回数："),
+        createSelectList("furina_react_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("furina_attack_count2", "　ジェントルマン・アッシャー反応回数："),
-        createSelectList("furina_attack_count2", 0, 8, "", "回", 4),
+        createLabel("furina_react_count2", "　ジェントルマン・アッシャー反応回数："),
+        createSelectList("furina_react_count2", 0, 8, "", "回", 4),
         document.createElement("br"),
-        createLabel("furina_attack_count3", "　シュヴァルマラン婦人反応回数："),
-        createSelectList("furina_attack_count3", 0, 17, "", "回", 6),
+        createLabel("furina_react_count3", "　シュヴァルマラン婦人反応回数："),
+        createSelectList("furina_react_count3", 0, 17, "", "回", 6),
         document.createElement("br"),
-        createLabel("furina_attack_count4", "　クラバレッタさん反応回数："),
-        createSelectList("furina_attack_count4", 0, 5, "", "回", 5),
+        createLabel("furina_react_count4", "　クラバレッタさん反応回数："),
+        createSelectList("furina_react_count4", 0, 5, "", "回", 5),
         document.createElement("br"),
       ];
       traits.forEach(element => {

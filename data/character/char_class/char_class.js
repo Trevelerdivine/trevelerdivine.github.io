@@ -1901,6 +1901,239 @@ class amber {
   }
 }
 
+class Furina {
+  constructor(base_status_array, parameter) 
+  {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.sixth_conste_buff = 0;
+    this.reaction_coeff = 0;
+    this.burst_buff1 = 0;
+    this.burst_buff2 = 0;
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
+    const Vaporize_hydro = document.getElementById("Vaporize-hydro");
+    if (Vaporize_hydro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 2;
+    }
+
+    const response = await fetch("./data/character/char_data/Furina.json");
+    const data = await response.json();
+
+    const buff_count1 = parseInt(document.getElementById("furina_tention_list").value);
+    const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+     this.burst_buff1 = buff_rate * buff_count1;
+    if(this.char_constellations > 1)
+    {
+      const buff_count2 = parseInt(document.getElementById("furina_tention_list2").value);
+      this.burst_buff2 = buff_rate * buff_count2;
+    }
+
+  
+    let dmg_attack_rate = 0;
+    let dmg_rate;
+    let hp_react = 0;
+    let hp_nonreact = 0;
+  
+    if (attack_method == 1) {
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let attack_react = 0;
+      let attack_nonreact = 0;
+      let elm_react = []
+      let elm_nonreact = [];
+  
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+
+        for (let i = 0; i < 4; i++) {
+          attack_react += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          attack_nonreact += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+        for (let i = 0; i < 4; i++) {
+          hp_react += elm_react[i] * 0.18;
+          hp_nonreact += elm_nonreact[i] * 0.18;
+        }
+        dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, [attack_react, attack_nonreact], 0, 0];
+      } else if (attack_method == 6)
+      {
+        const checkboxContainer = document.getElementById("select_reaction_method");
+        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+        let attack_react = 0;
+        let attack_nonreact = 0;
+        let hp_react = 0;
+        let hp_nonreact = 0;
+        let elm_react = []
+        let elm_nonreact = [];
+    
+        checkboxes.forEach(checkbox => {
+          elm_react.push(checkbox.checked ? 1 : 0);
+          elm_nonreact.push(checkbox.checked ? 0 : 1);
+        });
+  
+          for (let i = 0; i < 1; i++) {
+            attack_react += elm_react[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
+            attack_nonreact += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          }
+          for (let i = 0; i < 1; i++) {
+            hp_react += elm_react[i] * 0.18;
+            hp_nonreact += elm_nonreact[i] * 0.18;
+          }
+          dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, [attack_react, attack_nonreact], 0, 0];
+      } else if (attack_method == 16)
+      {
+        const  attack_count1 = parseInt(document.getElementById("furina_attack_count1").value);
+        const  attack_count2 = parseInt(document.getElementById("furina_attack_count2").value);
+        const  attack_count3 = parseInt(document.getElementById("furina_attack_count3").value);
+        const  attack_count4 = parseInt(document.getElementById("furina_attack_count4").value);
+        const  react_count1 = parseInt(document.getElementById("furina_react_count1").value);
+        const  react_count2 = parseInt(document.getElementById("furina_react_count2").value);
+        const  react_count3 = parseInt(document.getElementById("furina_react_count3").value);
+        const  react_count4 = parseInt(document.getElementById("furina_react_count4").value);
+
+        hp_react = react_count1 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                 + react_count2 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+                 + react_count3 * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+                 + react_count4 * parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]);
+
+        hp_nonreact = (attack_count1 - react_count1) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                    + (attack_count2 - react_count2) * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+                    + (attack_count3 - react_count3) * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+                    + (attack_count4 - react_count4) * parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]);
+
+        dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, 0, 0, 0];
+      } else if (attack_method == 21)
+      {
+        const checkboxContainer = document.getElementById("select_reaction_method");
+        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+        let hp_react = 0;
+        let hp_nonreact = 0;
+        let elm_react = []
+        let elm_nonreact = [];
+    
+        checkboxes.forEach(checkbox => {
+          elm_react.push(checkbox.checked ? 1 : 0);
+          elm_nonreact.push(checkbox.checked ? 0 : 1);
+        });
+  
+        for (let i = 0; i < 1; i++) {
+          attack_react += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][i]["数値"][this.parameter[3]]);
+          attack_nonreact += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][i]["数値"][this.parameter[3]]);
+        }
+        dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, 0, 0, 0];
+      }
+    return dmg_rate;
+  }
+
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    let attckRate;
+    if (this.reaction_coeff > 0)
+    {
+      if (attack_method == 1 || attack_method == 6)
+      {
+        attckRate = status[0] * dmg_rate[0][0] + status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1];
+      }
+      else
+      {
+        attckRate = status[0] * dmg_rate[0][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * dmg_rate[0][1];
+      }
+    }
+    else
+    {
+      if (attack_method == 1 || attack_method == 6)
+      {
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]) + status[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+      }
+      else
+      {
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
+      }
+    }
+    return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class nirou {
   constructor(base_status_array, parameter) 
   {
