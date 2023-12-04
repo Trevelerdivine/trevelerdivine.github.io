@@ -579,7 +579,7 @@ function af24_4()
     let checkbox = document.getElementById("af24_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     const af24_4select = document.getElementById("af24_4select");
-    const buff_count = af24_4select.value;
+    const buff_count = parseInt(af24_4select.value);
     let af24_4atkbuff = 0;
     let af24_4dmgbuff = 0;
     if (checkbox.checked)
