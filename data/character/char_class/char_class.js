@@ -2541,7 +2541,7 @@ class tartaglia {
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
       const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count"));
-      const react_count1 = parseInt(document.getElementById("tartaglia_react_count"));
+      const attack_count2 = parseInt(document.getElementById("tartaglia_react_count"));
       const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
       const react_count2 = parseInt(document.getElementById("tartaglia_react_count2"));
       elm_react_dmgrate += react_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
