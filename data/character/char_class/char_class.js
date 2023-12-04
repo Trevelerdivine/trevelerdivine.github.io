@@ -2487,14 +2487,7 @@ class tartaglia {
     this.base_status_array = base_status_array;
     this.parameter = parameter;
     this.char_constellations = 0;
-    this.first_conste_buff = 0;
-    this.second_conste_buff = 0;
-    this.trueCount = 0;
     this.reaction_coeff = 0;
-    this.attack_count = 3;
-    this.buff_effect_count = 3;
-    this.skill_buff = 0;
-    this.burst_buff = 0;
   }
 
   async dmg_rate_data() {
@@ -2537,17 +2530,6 @@ class tartaglia {
                         +  react_count2 * parseFloat(data["通常攻撃"]["詳細"][8]["数値"][this.parameter[3]])
       elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["通常攻撃"]["詳細"][7]["数値"][this.parameter[3]])
                            +  (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][8]["数値"][this.parameter[3]])
-
-      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
-    } else if (attack_method == 6) {
-      const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count"));
-      const attack_count2 = parseInt(document.getElementById("tartaglia_react_count"));
-      const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
-      const react_count2 = parseInt(document.getElementById("tartaglia_react_count2"));
-      elm_react_dmgrate += react_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
-                        +  react_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
-      elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
-                           +  (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
@@ -2597,9 +2579,9 @@ class tartaglia {
         elm_react_dmgrate += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
       }
-
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     }
+    console.log(dmg_rate);
     return dmg_rate;
   }
 
