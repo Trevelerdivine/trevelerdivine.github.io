@@ -41,7 +41,9 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "chongyun","kaeya","cyno","yaemiko","raidenshougun","keqing","dori","kukishinobu","kujousara","fischl",
                    "beidou","razor","lisa","travelarelectro","wanderer","kazuhakaedehara","xiao","venti","jean","faruzan",
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
-                   "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo"];
+                   "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo",
+                   "Lyney", "Neuvillette", "Wriothesley", "Furina"
+                  ];
 const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhand'sAssistant",
 "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "Xiphos'Moonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
 "FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "Lion'sRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
