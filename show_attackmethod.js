@@ -837,11 +837,11 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("tartaglia_attack_count1", "　元素爆発（遠隔モード）反応回数："),
-        createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
+        createLabel("tartaglia_react_count1", "　元素爆発（遠隔モード）反応回数："),
+        createSelectList("tartaglia_react_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("tartaglia_attack_count2", "　断流・爆反応回数："),
-        createSelectList("tartaglia_attack_count2", 0, 1, "", "回", 1),
+        createLabel("tartaglia_react_count2", "　断流・爆反応回数："),
+        createSelectList("tartaglia_react_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {

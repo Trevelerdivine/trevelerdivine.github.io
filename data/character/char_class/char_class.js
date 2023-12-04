@@ -2561,8 +2561,7 @@ class tartaglia {
                            +  (attack_count2 - react_count2) * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
-    }
-    else if (attack_method == 16) {
+    } else if (attack_method == 16) {
       const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count1"));
       const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count1"));
       const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
@@ -2571,6 +2570,33 @@ class tartaglia {
                         +  react_count2 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
       elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                            +  (attack_count2 - react_count2) * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 21) {
+      const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count1"));
+      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count1"));
+      const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
+      const react_count2 = parseInt(document.getElementById("tartaglia_react_count2"));
+      elm_react_dmgrate += react_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                        +  react_count2 * parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]])
+      elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                           +  (attack_count2 - react_count2) * parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+    }
+    else if (attack_method == 22) {
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+      for (let i = 0; i < 1; i++)
+      {
+        elm_react_dmgrate += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+      }
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     }
