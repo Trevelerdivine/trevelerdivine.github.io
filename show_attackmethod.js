@@ -541,6 +541,89 @@ async function show_attack_method()
     }
     createCheckboxList_br(options);
   }
+  else if (selectedCharId == "74")
+  {
+    if (attack_method == 1)
+    {
+      if (char_constellations < 1)
+      {
+        const furina_tention_text = createTextNode("　テンション：");
+        const furina_tention_list = createSelectList("furina_tention1", 0, 300, "", "ポイント", 300);
+        attack_method_prop.appendChild(furina_tention_text);
+        attack_method_prop.appendChild(furina_tention_list);
+        attack_method_prop.appendChild(document.createElement("br"));
+      }
+      else
+      {
+        const furina_tention_text = createTextNode("　テンション：");
+        const furina_tention_list = createSelectList("furina_tention1", 0, 300, "", "ポイント", 300);
+        attack_method_prop.appendChild(furina_tention_text);
+        attack_method_prop.appendChild(furina_tention_list);
+        attack_method_prop.appendChild(document.createElement("br"));
+      }
+
+      options = [
+        { text: "１段目", value: "0", checked: true },
+        { text: "２段目", value: "1" },
+        { text: "３段目", value: "2" },
+        { text: "４段目", value: "3", checked: true },
+      ];
+      createCheckboxList_br(options);
+    }
+    else if (attack_method == 6)
+    {
+      options = [
+        { text: "重撃", value: "0", checked: true },
+      ];
+      createCheckboxList_br(options);
+    }
+    else if (attack_method == 16)
+    {
+
+      traits = [
+        createLabel("furina_attack_count1", "　ウーシアの泡ヒット回数："),
+        createSelectList("furina_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("furina_attack_count2", "　ジェントルマン・アッシャーヒット回数："),
+        createSelectList("furina_attack_count2", 0, 8, "", "回", 8),
+        document.createElement("br"),
+        createLabel("furina_attack_count3", "　シュヴァルマラン婦人ヒット回数："),
+        createSelectList("furina_attack_count3", 0, 17, "", "回", 17),
+        document.createElement("br"),
+        createLabel("furina_attack_count4", "　クラバレッタさんヒット回数："),
+        createSelectList("furina_attack_count4", 0, 5, "", "回", 5),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("furina_attack_count1", "　ウーシアの泡反応回数："),
+        createSelectList("furina_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("furina_attack_count2", "　ジェントルマン・アッシャー反応回数："),
+        createSelectList("furina_attack_count2", 0, 8, "", "回", 4),
+        document.createElement("br"),
+        createLabel("furina_attack_count3", "　シュヴァルマラン婦人反応回数："),
+        createSelectList("furina_attack_count3", 0, 17, "", "回", 6),
+        document.createElement("br"),
+        createLabel("furina_attack_count4", "　クラバレッタさん反応回数："),
+        createSelectList("furina_attack_count4", 0, 5, "", "回", 5),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if (attack_method==21)
+    {
+      options = [
+        { text: "元素爆発ダメージ", value: "0", checked: true },
+      ];
+      createCheckboxList_br(options);
+    }
+  }
   else if (selectedCharId == "11")
   {
     if (attack_method == 16)

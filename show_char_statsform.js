@@ -533,11 +533,6 @@ async function show_char_statsform()
     }
     else if (selectedCharId == "74")
     {
-      elementsToAddToCharTalent = [
-        createCheckbox("nirou_talent1", false),
-        createLabel("nirou_talent1", "固有天賦1：元素熟知+100"),
-        document.createElement("br")
-      ];
     
       elementsToAddToCharTalent.forEach(element => {
         char_talent.appendChild(element);
@@ -551,20 +546,11 @@ async function show_char_statsform()
         { text: "通常攻撃1ループ（6重 水付与）", disabled: char_constellations < 4, value: "1" },
         { text: "重撃（6重 水付与）", disabled: char_constellations < 4, value: "6" },
         { text: "スキル（サロン・ソリティア）", value: "16" },
-        { text: "元素爆発(万民のカルナバル)", value: "17" }
+        { text: "元素爆発(万民のカルナバル)", value: "21" }
       ];
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
-      {
-        traitCheckbox = createCheckbox(traits[0].id, true);
-        traitLabel = createLabel(traits[0].id, traits[0].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
     }
     else if (selectedCharId == "11")
     {
