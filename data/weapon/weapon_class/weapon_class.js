@@ -7,7 +7,7 @@ class AThousandFloatingDreams {
     this.updateSelectValues(); // 初期値を取得するためにupdateSelectValuesを呼び出す
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
@@ -15,7 +15,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
@@ -23,7 +23,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
@@ -31,7 +31,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return (32 + 8 * (this.weapon_rank - 1)) * this.select1; // キャッシュしたselect1の値を使用する
   }
 
@@ -39,7 +39,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
@@ -47,7 +47,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
@@ -55,7 +55,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
@@ -63,7 +63,7 @@ class AThousandFloatingDreams {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return (0.1 + 0.04 * (this.weapon_rank - 1))* this.select2; // キャッシュしたselect2の値を使用する
   }
 
@@ -91,68 +91,68 @@ class SacrificialFragments {
     this.base_status_array = base_status_array;
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
 
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -169,68 +169,68 @@ class EngulfingLightning {
     this.base_status_array = base_status_array;
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return Math.min(status[3]- 1, 0.8/0.28)*0.28*this.base_status_array[1];
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
 
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0.3;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -247,68 +247,68 @@ class TheCatch {
     this.base_status_array = base_status_array;
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
 
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0.12;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0.32;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -325,20 +325,20 @@ class StaffofHoma {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
 
     return this.base_status_array[0] * (0.2 + (this.weapon_rank - 1) * 0.05);
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     const weapon_effect_box = document.getElementById("traitCheckbox");
     let weapon_buff = 0.008 + 0.002 * (this.weapon_rank - 1);
     if (weapon_effect_box.checked)
@@ -348,51 +348,51 @@ class StaffofHoma {
     return status[0] * weapon_buff;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -408,67 +408,67 @@ class HuntersPath {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0.12 + (this.weapon_rank - 1) * 0.03;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -484,67 +484,67 @@ class SkywardHarp {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0.2 + (this.weapon_rank - 1) * 0.05;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -560,67 +560,67 @@ class RedhornStonethresher {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return this.base_status_array[1] * (this.weapon_rank + 3) * 0.07;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -639,67 +639,67 @@ class Whiteblind {
     this.weapon_effect = weaponeffectCheckbox.checked ? 1 : 0;
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return this.base_status_array[4] * (this.weapon_rank + 3) * 0.015 * this.weapon_effect;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return this.base_status_array[1] * (this.weapon_rank + 3) * 0.015 * this.weapon_effect;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -714,67 +714,67 @@ class CinnabarSpindle {
     this.base_status_array = base_status_array;
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -793,67 +793,67 @@ class LostPrayertotheSacredWinds {
     this.weapon_effect = weaponeffectCheckbox.checked ? 1 : 0;
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return (this.weapon_rank + 3) * 0.02 * this.weapon_count * this.weapon_effect;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -870,15 +870,15 @@ class TheWidsith {
     this.weapon_buffkind = parseInt(document.getElementById("TheWidsith_buff").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     let attack_buff = 0
     if (this.weapon_buffkind == 0)
     {
@@ -887,19 +887,19 @@ class TheWidsith {
     return attack_buff;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     let elm_buff = 0
     if (this.weapon_buffkind == 2)
     {
@@ -908,35 +908,35 @@ class TheWidsith {
     return elm_buff;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let dmg_buff = 0
     if (this.weapon_buffkind == 1)
     {
@@ -945,7 +945,7 @@ class TheWidsith {
     return dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -961,63 +961,63 @@ class DragonsBane {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     let weapon_effect_check = document.getElementById("traitCheckbox");
     if (weapon_effect_check.checked)
@@ -1027,7 +1027,7 @@ class DragonsBane {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1043,63 +1043,63 @@ class Rust {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     if (attack_method_index == 0)
     {
@@ -1112,7 +1112,7 @@ class Rust {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1128,63 +1128,63 @@ class Slingshot {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     const weapon_effect_check = document.getElementById("traitCheckbox")
     if (weapon_effect_check.checked && (attack_method_index == 0 || attack_method_index == 1))
@@ -1198,7 +1198,7 @@ class Slingshot {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1215,63 +1215,63 @@ class ThunderingPulse {
     this.weapon_effect = parseInt(document.getElementById("ThunderingPulse_count").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return (this.weapon_rank + 3) * 0.05 * this.base_status_array[4];
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     const buff_mag = [0, 0.03, 0.06, 0.1]
     if (attack_method_index == 0)
@@ -1281,7 +1281,7 @@ class ThunderingPulse {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1296,67 +1296,67 @@ class FavoniusWarbow {
     this.base_status_array = base_status_array;
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1379,67 +1379,67 @@ class WolfsGravestone {
   
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return (0.05 + 0.1 * this.weapon_effect) * (this.weapon_rank + 3) * this.base_status_array[4];
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1456,63 +1456,63 @@ class MistsplitterReforged {
     this.weapon_effectcount = parseInt(document.getElementById("Whiteblind_effect").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_fix_dmgbuff = 0;
     if (this.weapon_effectcount != 3)
     {
@@ -1526,7 +1526,7 @@ class MistsplitterReforged {
     return weapon_fix_dmgbuff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1542,67 +1542,67 @@ class PrimordialJadeCutter {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return (this.weapon_rank + 3) * 0.05 * this.base_status_array[0];
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return (this.weapon_rank + 3) * 0.003 * status[0];
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1618,15 +1618,15 @@ class PolarStar {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     let weapon_attack_buff;
     const weapon_buff_count = parseInt(document.getElementById("PolarStar_count").value);
     if (weapon_buff_count == 4)
@@ -1640,51 +1640,51 @@ class PolarStar {
     return weapon_attack_buff;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     if(attack_method_index == 3 || attack_method_index ==4)
     {
@@ -1693,7 +1693,7 @@ class PolarStar {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1709,63 +1709,63 @@ class AquaSimulacra {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return (this.weapon_rank + 3) * 0.04 * this.base_status_array[0];
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     let weapon_buff_check = document.getElementById(traitCheckbox);
     if(weapon_buff_check.checked)
@@ -1775,7 +1775,7 @@ class AquaSimulacra {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1791,63 +1791,63 @@ class TheStringless {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     if(char_propaty[0] != 7 && (attack_method_index == 3 || attack_method_index == 4))
     {
@@ -1856,7 +1856,7 @@ class TheStringless {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1872,67 +1872,67 @@ class SacrificialSword {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1949,63 +1949,63 @@ class StaffoftheScarletSands {
     this.weapon_buff_count = parseInt(document.getElementById("StaffoftheScarletSands_effect").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
-    return (0.13 + 0.07 * this.weapon_buff_count) * (this.weapon_rank + 3) * status[2];
+  calculate_weapon_result_attck(fixstatus,status) {
+    return (0.13 + 0.07 * this.weapon_buff_count) * (this.weapon_rank + 3) * fixstatus[2];
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     if(char_propaty[0] != 7 && (attack_method_index == 3 || attack_method_index == 4))
     {
@@ -2014,7 +2014,7 @@ class StaffoftheScarletSands {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2031,63 +2031,63 @@ class KagurasVerity {
     this.weapon_buff_count = parseInt(document.getElementById("KagurasVerity_buff").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
     weapon_dmg_buff = (this.weapon_rank + 3) * 0.03 * this.weapon_buff_count;
     if (this.weapon_buff_count == 3)
@@ -2097,7 +2097,7 @@ class KagurasVerity {
     return weapon_dmg_buff;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2119,67 +2119,67 @@ class HarbingerofDawn {
     }
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return (this.weapon_rank + 3) * 0.035 * this.weapon_effect;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2195,67 +2195,67 @@ class FavoniusSword {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2271,67 +2271,67 @@ class PrototypeAmber {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
-  calculate_weapon_fixed_hp(status) {
+  calculate_weapon_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_hp(status) {
+  calculate_weapon_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_attck(status) {
+  calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_attck(status) {
+  calculate_weapon_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_deff(status) {
+  calculate_weapon_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_deff(status) {
+  calculate_weapon_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm(status) {
+  calculate_weapon_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm(status) {
+  calculate_weapon_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_elm_charge(status) {
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_elm_charge(status) {
+  calculate_weapon_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cr(status) {
+  calculate_weapon_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cr(status) {
+  calculate_weapon_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_cd(status) {
+  calculate_weapon_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_cd(status) {
+  calculate_weapon_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_fixed_dmg_buff(status) {
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_weapon_result_dmg_buff(status) {
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 

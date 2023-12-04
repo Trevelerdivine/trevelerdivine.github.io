@@ -72,67 +72,67 @@ class dehya {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return this.base_status_array[0] * this.first_conste_buff;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.sixth_conste_buff[0];
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return this.sixth_conste_buff[1];
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -255,67 +255,67 @@ class yoimiya {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return this.base_status_array[4] * this.first_conste_buff;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.second_conste_buff + this.talent1_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -466,67 +466,67 @@ class hutao {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return Math.min(4 * this.base_status_array[4], this.skill_buff * status[0]);
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -688,67 +688,67 @@ class klee {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.sixth_conste_buff + this.talent1_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -921,67 +921,67 @@ class diluc {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return this.second_conste_buff * this.base_status_array[4];
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.talent2_buff + this.first_conste_buff + this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -1129,67 +1129,67 @@ class yanfei {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.talent1_buff + this.burst_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -1313,19 +1313,19 @@ class xinyan {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     let attack_buff = 0;
     if (this.char_constellations == 4)
     {
@@ -1334,51 +1334,51 @@ class xinyan {
     return attack_buff;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -1494,67 +1494,67 @@ class bennett {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return (this.first_conste_buff + this.bennett_Q_buff) * this.base_status_array[4];
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -1655,67 +1655,67 @@ class xiangling {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return this.talent2 ;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.six_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -1815,67 +1815,67 @@ class amber {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return (this.talent2_buff + this.sixth_conste_buff) * this.base_status_array[4];
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -2026,67 +2026,67 @@ class nirou {
     return dmg_rate;
   }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return this.talent1_buff;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return Math.min(0.3,this.sixth_conste_buff * (status[0] / 1000) * 0.006);
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return  Math.min(0.6,this.sixth_conste_buff * (status[0] / 1000) * 0.012);
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.fourth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2220,67 +2220,67 @@ class yelan {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return this.base_status_array[0] * this.talent1_buff;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -2393,67 +2393,67 @@ class kamisatoayato {
     return dmg_rate;
   }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return this.base_status_array[0] * this.second_conste_buff;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.first_conste_buff + this.burst_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2556,7 +2556,7 @@ class tartaglia {
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 21) {
       const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count1").value);
-      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count1").value);
+      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count2").value);
       const react_count1 = parseInt(document.getElementById("tartaglia_react_count1").value);
       const react_count2 = parseInt(document.getElementById("tartaglia_react_count2").value);
       elm_react_dmgrate += react_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
@@ -2587,67 +2587,67 @@ class tartaglia {
     return dmg_rate;
   }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2751,67 +2751,67 @@ class xingqiu {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0.2;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -2969,67 +2969,67 @@ class kamisatoayaka {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.talent1_buff + this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -3112,67 +3112,67 @@ class eula {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.first_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
       return 0;
   }
 
@@ -3275,67 +3275,67 @@ class ganyu {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.talent1_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return  this.talent2_buff + this.fourth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -3494,67 +3494,67 @@ class rosaria {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.talent1_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return  this.first_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -3668,67 +3668,67 @@ class chongyun {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return  this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -3825,67 +3825,67 @@ class kaeya {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.first_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return  0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -3985,67 +3985,67 @@ class cyno {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 100;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {;
+  calculate_char_result_dmg_buff(fixstatus,status) {;
     return 0;
   }
 
@@ -4136,67 +4136,67 @@ class yaemiko {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
       return this.four_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     if (this.talent2effect == 1)
     {
       let talent2skill_buff = status[2] * 0.15 / 100;
@@ -4300,67 +4300,67 @@ class raiden {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.skill_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     const talent2_buff = (status[3] - 1) * 0.4;
     return talent2_buff;
   }
@@ -4462,67 +4462,67 @@ class keqing {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return this.forth_conste_buff * this.base_status_array[4];
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -4603,67 +4603,67 @@ class fischl {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -4749,67 +4749,67 @@ class beidou {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -4934,67 +4934,67 @@ class razor {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return this.talent2_buff + this.skill_buff;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.first_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -5074,67 +5074,67 @@ class lisa {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -5235,67 +5235,67 @@ class wanderer {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return this.talent1_pyro * this.base_status_array[4];
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.talent1_cyro;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -5358,67 +5358,67 @@ class xiao {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.talent1_buff + this.talent2_buff + this.burst_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -5498,67 +5498,67 @@ class faruzan {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.burst2_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -5619,67 +5619,67 @@ class shikanoinheizou {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.sixth_conste_crbuff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return this.sixth_conste_cdbuff;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -5750,67 +5750,67 @@ class kujousara {
   return dmg_rate;
 }
 
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return this.skill_buff;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -5931,35 +5931,35 @@ class nahida {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return this.four_conste_buff;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
 
     if (this.talent1effect > -1) {
       return this.talent1effect;
@@ -5968,23 +5968,23 @@ class nahida {
     {
       return 0;
     }
-    let talent1elm_buff = Math.min(status[2]/4, 250)
+    let talent1elm_buff = Math.min(fixstatus[2]/4, 250)
     return talent1elm_buff;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     if (attack_method_index == 3)
     {
       return Math.min(Math.max(0, status[2] - 200), 800) * 0.0003 * this.skill_buff;
@@ -5995,19 +5995,19 @@ class nahida {
   }
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.q_pyrobuff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     if (attack_method_index == 3)
     {
       return Math.min(Math.max(0, status[2] - 200), 800) * 0.001 * this.skill_buff;
@@ -6152,67 +6152,67 @@ class alhaitham {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return this.sixth_conste_buff * 7;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.fourth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     if (this.talent2_buff_flag > 0)
     {
       this.talent2_buff = Math.min(1,status[2] * 0.001);
@@ -6356,67 +6356,67 @@ class tighnari {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return this.fourth_conste_buff + this.talent1_buff;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.first_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.second_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return Math.min(status[2] * 0.0006, 0.6);
   }
 
@@ -6530,67 +6530,67 @@ class kirara {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return this.talent2_buff * Math.floor(status[0]/1000);
   }
 
@@ -6691,67 +6691,67 @@ class travelardendro {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return this.talent1_buff;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return this.talent2_buff * status[2];
   }
 
@@ -6848,67 +6848,67 @@ class aratakiitto {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return this.base_status_array[4] * this.fourth_conste_buff;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return this.burst_buff_rate * status[1];
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return this.base_status_array[1] * this.fourth_conste_buff;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return this.sixth_conste_buff;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -7002,67 +7002,67 @@ class albedo {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.talent1_buff + this.sixth_conste_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -7126,67 +7126,67 @@ class noelle {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return this.sixth_conste_buff * status[1];
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -7232,67 +7232,67 @@ class zhongli {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -7364,67 +7364,67 @@ class ningguang {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return this.talent2_buff;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
@@ -7480,67 +7480,67 @@ class travelergeo {
     return dmg_rate;
   }
   
-  calculate_char_fixed_hp(status) {
+  calculate_char_fixed_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_hp(status) {
+  calculate_char_result_hp(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_attck(status) {
+  calculate_char_fixed_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_attck(status) {
+  calculate_char_result_attck(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_deff(status) {
+  calculate_char_fixed_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_deff(status) {
+  calculate_char_result_deff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm(status) {
+  calculate_char_fixed_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm(status) {
+  calculate_char_result_elm(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_elm_charge(status) {
+  calculate_char_fixed_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_elm_charge(status) {
+  calculate_char_result_elm_charge(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cr(status) {
+  calculate_char_fixed_cr(fixstatus,status) {
     return this.first_conste_buff;
   }
 
-  calculate_char_result_cr(status) {
+  calculate_char_result_cr(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_cd(status) {
+  calculate_char_fixed_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_cd(status) {
+  calculate_char_result_cd(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_fixed_dmg_buff(status) {
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
     return 0;
   }
 
-  calculate_char_result_dmg_buff(status) {
+  calculate_char_result_dmg_buff(fixstatus,status) {
     return 0;
   }
 
