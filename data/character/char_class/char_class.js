@@ -2528,7 +2528,8 @@ class tartaglia {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
       });
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 7; i++)
+      {
         elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
@@ -2549,12 +2550,35 @@ class tartaglia {
                            +  (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+    } else if (attack_method == 6) {
+      const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count1"));
+      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count2"));
+      const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
+      const react_count2 = parseInt(document.getElementById("tartaglia_react_count2"));
+      elm_react_dmgrate += react_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        +  react_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
+      elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                           +  (attack_count2 - react_count2) * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
+    }
+    else if (attack_method == 16) {
+      const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count1"));
+      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count1"));
+      const react_count1 = parseInt(document.getElementById("tartaglia_react_count1"));
+      const react_count2 = parseInt(document.getElementById("tartaglia_react_count2"));
+      elm_react_dmgrate += react_count1 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                        +  react_count2 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+      elm_nonreact_dmgrate += (attack_count1 - react_count1) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                           +  (attack_count2 - react_count2) * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     }
     return dmg_rate;
   }
 
   calculate_char_fixed_hp(status) {
-    return this.base_status_array[0] * this.second_conste_buff;
+    return 0;
   }
 
   calculate_char_result_hp(status) {
@@ -2622,14 +2646,14 @@ class tartaglia {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = status[4] * dmg_rate[4][0] + status[0] * this.skill_buff * this.buff_effect_count;
+      attckRate = status[4] * dmg_rate[4][0];
       basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                + status[4] * dmg_rate[4][1] + status[0] * this.skill_buff * (3 - this.buff_effect_count);
+                + status[4] * dmg_rate[4][1];
       return basicDmg;
     }
     else
     {
-      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + status[0] * this.skill_buff * 3;
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
       basicDmg = attckRate;
       return basicDmg;
     }

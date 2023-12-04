@@ -811,11 +811,11 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("tartaglia_attack_count1", "　状態切替時ダメージ反応回数："),
-        createSelectList("tartaglia_attack_count1", 0, 1, "", "回", 1),
+        createLabel("tartaglia_react_count1", "　状態切替時ダメージ反応回数："),
+        createSelectList("tartaglia_react_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("tartaglia_attack_count2", "　断流・斬反応回数："),
-        createSelectList("tartaglia_attack_count2", 0, 20, "", "回", 5),
+        createLabel("tartaglia_react_count2", "　断流・斬反応回数："),
+        createSelectList("tartaglia_react_count2", 0, 20, "", "回", 5),
         document.createElement("br"),
       ];
       traits.forEach(element => {
