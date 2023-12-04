@@ -788,7 +788,7 @@ async function calculate_table_status()
     {
       if (index == 3 || index == 6)
       {
-      resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, result_status);
+      resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, resultStatus);
       buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
       document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
       document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
@@ -796,7 +796,7 @@ async function calculate_table_status()
       }
       else if (index == 5)
       {
-        resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, result_status);
+        resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, resultStatus);
         buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
         document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
         document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
@@ -804,7 +804,7 @@ async function calculate_table_status()
       }
       else
       {
-        resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, result_status);
+        resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, resultStatus);
         buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
         document.getElementById(`table_buff_${tablePrefix}`).innerHTML = buffStatus[index].toFixed(0);
         document.getElementById(`table_af_${tablePrefix}`).innerHTML = afBuff[index].toFixed(0);
