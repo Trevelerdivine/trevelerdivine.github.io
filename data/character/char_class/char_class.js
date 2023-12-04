@@ -2545,7 +2545,7 @@ class tartaglia {
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 16) {
       const attack_count1 = parseInt(document.getElementById("tartaglia_attack_count1").value);
-      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count1").value);
+      const attack_count2 = parseInt(document.getElementById("tartaglia_attack_count2").value);
       const react_count1 = parseInt(document.getElementById("tartaglia_react_count1").value);
       const react_count2 = parseInt(document.getElementById("tartaglia_react_count2").value);
       elm_react_dmgrate += react_count1 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
