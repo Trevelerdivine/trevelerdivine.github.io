@@ -1911,7 +1911,7 @@ class Furina {
     this.reaction_coeff = 0;
     this.burst_buff1 = 0;
     this.burst_buff2 = 0;
-    this.skill_buff = 1;
+    this.talent2_flag = 0;
     this.talent2_buff = 0;
   }
 
@@ -1998,28 +1998,34 @@ class Furina {
           dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, [attack_react, attack_nonreact], 0, 0];
       } else if (attack_method == 16)
       {
-        this.talent2_buff = 1;
-        this.skill_buff +=  parseInt(document.getElementById("furina_skillbuff").value) / 10;
-        const  attack_count1 = parseInt(document.getElementById("furina_attack_count1").value);
-        const  attack_count2 = parseInt(document.getElementById("furina_attack_count2").value);
-        const  attack_count3 = parseInt(document.getElementById("furina_attack_count3").value);
-        const  attack_count4 = parseInt(document.getElementById("furina_attack_count4").value);
-        const  react_count1 = parseInt(document.getElementById("furina_react_count1").value);
-        const  react_count2 = parseInt(document.getElementById("furina_react_count2").value);
-        const  react_count3 = parseInt(document.getElementById("furina_react_count3").value);
-        const  react_count4 = parseInt(document.getElementById("furina_react_count4").value);
+        let first_hp_react = 0;
+        let first_hp_nonreact = 0;
+        this.talent2_flag = 1;
+        const skill_buff = 1 + parseInt(document.getElementById("furina_skillbuff").value) / 10;
+        const attack_count1 = parseInt(document.getElementById("furina_attack_count1").value);
+        const attack_count2 = parseInt(document.getElementById("furina_attack_count2").value);
+        const attack_count3 = parseInt(document.getElementById("furina_attack_count3").value);
+        const attack_count4 = parseInt(document.getElementById("furina_attack_count4").value);
+        const react_count1 = parseInt(document.getElementById("furina_react_count1").value);
+        const react_count2 = parseInt(document.getElementById("furina_react_count2").value);
+        const react_count3 = parseInt(document.getElementById("furina_react_count3").value);
+        const react_count4 = parseInt(document.getElementById("furina_react_count4").value);
 
-        hp_react = react_count1 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
-                 + react_count2 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
-                 + react_count3 * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
-                 + react_count4 * parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]);
+        first_hp_react = react_count1 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
+        first_hp_nonreact = (attack_count1 - react_count1) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
 
-        hp_nonreact = (attack_count1 - react_count1) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
-                    + (attack_count2 - react_count2) * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
-                    + (attack_count3 - react_count3) * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
-                    + (attack_count4 - react_count4) * parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]);
 
-        dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, 0, 0, 0];
+        hp_react = (react_count2 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+                 +  react_count3 * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+                 +  react_count4 * parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]])
+                   ) * skill_buff;
+
+        hp_nonreact = ((attack_count2 - react_count2) * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+                    +  (attack_count3 - react_count3) * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+                    +  (attack_count4 - react_count4) * parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]])
+                      ) * skill_buff;
+
+        dmg_rate = [[first_hp_react, first_hp_nonreact, hp_react, hp_nonreact], 0, 0, 0, 0, 0, 0];
       } else if (attack_method == 21)
       {
         const checkboxContainer = document.getElementById("select_reaction_method");
@@ -2104,7 +2110,8 @@ class Furina {
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
-    return this.burst_buff1 + this.talent2_buff * Math.min(0.28, Math.floor(status[0]/1000));
+    this.talent2_buff = this.talent2_flag * Math.min(0.28, Math.floor(status[0]/1000));
+    return this.burst_buff1 + this.talent2_buff;
   }
 
   calculate_basic_dmg(dmg_rate, status) {
@@ -2121,8 +2128,8 @@ class Furina {
       else
       {
         attckRate = status[0] * dmg_rate[0][0];
-        basicDmg = this.skill_buff * (attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] * dmg_rate[0][1]);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * dmg_rate[0][1];
       }
     }
     else
@@ -2133,7 +2140,7 @@ class Furina {
       }
       else
       {
-        basicDmg = this.skill_buff * (status[0] * (dmg_rate[0][0] + dmg_rate[0][1]));
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
       }
     }
     return basicDmg;
