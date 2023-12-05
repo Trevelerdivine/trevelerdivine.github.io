@@ -2110,7 +2110,7 @@ class Furina {
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
-    this.talent2_buff = this.talent2_flag * Math.min(0.28, status[0]/1000);
+    this.talent2_buff = this.talent2_flag * Math.min(0.28, 0.7 * status[0]/1000);
     return this.burst_buff1 + this.talent2_buff;
   }
 
