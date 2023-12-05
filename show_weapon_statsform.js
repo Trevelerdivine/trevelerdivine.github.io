@@ -97,13 +97,13 @@ async function show_weapon_statsform() {
   
   else if (selectedWeaponId == "155") {
     buff_group = [
-      createTextNode("湖光の朝夕"),
+      createweaponTextNode("湖光の朝夕"),
       document.createElement("br"),
-      createLabel("dmg_buff_count", "　元素スキルダメージバフ："),
-      createSelectList("dmg_buff_count", 0, 3, "", "層", 3),
+      createweaponLabel("dmg_buff_count", "　元素スキルダメージバフ："),
+      createweaponSelectList("dmg_buff_count", 0, 3, "", "層", 3),
       document.createElement("br"),
-      createLabel("HP_buff_count", "　HP%バフ："),
-      createSelectList("HP_buff_count", 0, 2, "", "層", 2),
+      createweaponLabel("HP_buff_count", "　HP%バフ："),
+      createweaponSelectList("HP_buff_count", 0, 2, "", "層", 2),
     ];
   
     buff_group.forEach(element => {
@@ -430,21 +430,66 @@ async function show_weapon_statsform() {
           showFormElements();
 }
 
-function createweaponSelectList(id, initial, optionsCount, head_unit, unit, select_index) {
+function createweaponCheckbox(id, checked)
+{
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = id;
+  checkbox.checked = checked;
+  return checkbox;
+}
+
+// ラベルを生成するユーティリティ関数
+function createweaponLabel(forId, labelText)
+{
+  const label = document.createElement("label");
+  label.htmlFor = forId;
+  label.textContent = labelText;
+  return label;
+}
+
+// テキストノードを生成するユーティリティ関数
+function createweaponTextNode(text)
+{
+  return document.createTextNode(text);
+}
+
+// セレクトリストを生成するユーティリティ関数
+function createweaponSelectList(id, initial, optionsCount, head_unit, unit, select_index)
+{
   const selectList = document.createElement("select");
   selectList.id = id;
 
-  for (let j = initial; j <= optionsCount; j++) { // 条件を j <= optionsCount に変更
+  for (let j = initial; j <= optionsCount; j++)
+  {
     const option = document.createElement("option");
     option.value = j;
     option.text = `${head_unit}${j}${unit}`;
     
-    if (j == select_index) {
+    if (j == select_index)
+    {
       option.selected = true;
     }
-    
     selectList.appendChild(option);
   }
+  return selectList;
+}
 
+function createanyweaponSelectList(id, initial, optionsCount, head_unit, unit, select_index, rate)
+{
+  const selectList = document.createElement("select");
+  selectList.id = id;
+  for (let j = initial; j <= optionsCount; j++)
+  {
+    const option = document.createElement("option");
+    option.value = j * rate;
+    option.text = `${head_unit}${j * rate}${unit}`;
+    
+    if (j == select_index)
+    {
+      option.selected = true;
+    }
+    selectList.appendChild(option);
+  }
   return selectList;
 }
