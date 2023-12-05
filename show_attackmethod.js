@@ -611,6 +611,14 @@ async function show_attack_method()
     }
     else if (attack_method == 6)
     {
+      traits = [
+        createLabel("", "アルケー"),
+        document.createElement("br"),
+        createLabel("", "　"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
       const ushia_radio = document.createElement("input");
       ushia_radio.type = "radio";
       ushia_radio.id = "furina_ushia_radio";
@@ -621,8 +629,8 @@ async function show_attack_method()
       ushia_radio_label.htmlFor = "furina_ushia_radio";
       ushia_radio_label.textContent = "ウーシア　";
       
-      elemental_reaction.appendChild(ushia_radio);
-      elemental_reaction.appendChild(ushia_radio_label);
+      attack_method_prop.appendChild(ushia_radio);
+      attack_method_prop.appendChild(ushia_radio_label);
     
       const puneuma_radio = document.createElement("input");
       puneuma_radio.type = "radio";
@@ -634,9 +642,9 @@ async function show_attack_method()
       puneuma_radio_label.htmlFor = "furina_puneuma_radio";
       puneuma_radio_label.textContent = "プネウマ ";
 
-      elemental_reaction.appendChild(puneuma_radio);
-      elemental_reaction.appendChild(puneuma_radio_label);
-      
+      attack_method_prop.appendChild(puneuma_radio);
+      attack_method_prop.appendChild(puneuma_radio_label);
+
       options = [
         { text: "重撃", value: "0", checked: true },
       ];
