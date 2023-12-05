@@ -535,7 +535,7 @@ async function show_char_statsform()
     {
       elementsToAddToCharTalent = [
         createTextNode("　元素爆発天賦レベル："),
-        createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
+        createSelectList("furina_Q_level", 1, 13, "Lv.", "", 8),
       ];
     
       elementsToAddToCharTalent.forEach(element => {

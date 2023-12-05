@@ -1926,12 +1926,13 @@ class Furina {
     const data = await response.json();
 
     const buff_count1 = parseInt(document.getElementById("furina_tention1").value);
-    const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+    const burst_level = parseInt(document.getElementById("furina_Q_level").value);
+    const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
      this.burst_buff1 = buff_rate * buff_count1;
     if(this.char_constellations > 1)
     {
       const buff_count2 = parseInt(document.getElementById("furina_tention2").value);
-      this.burst_buff2 = buff_rate * buff_count2;
+      this.burst_buff2 = 0.0035 * buff_count2;
     }
 
   
@@ -2033,7 +2034,7 @@ class Furina {
   }
 
   calculate_char_fixed_hp(fixstatus,status) {
-    return 0;
+    return this.base_status_array[0] * this.burst_buff2;
   }
 
   calculate_char_result_hp(fixstatus,status) {
@@ -2093,7 +2094,7 @@ class Furina {
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
-    return 0;
+    return this.burst_buff1;
   }
 
   calculate_basic_dmg(dmg_rate, status) {
