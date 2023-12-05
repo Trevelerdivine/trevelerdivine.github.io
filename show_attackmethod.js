@@ -545,7 +545,7 @@ async function show_attack_method()
   {
     if (char_constellations == 0)
     {
-      const furina_tention_text = createTextNode("　テンション：");
+      const furina_tention_text = createTextNode("テンション：");
       const furina_tention_list = createSelectList("furina_tention1", 0, 300, "", "ポイント", 300);
       temporary_char_talent.appendChild(furina_tention_text);
       temporary_char_talent.appendChild(furina_tention_list);

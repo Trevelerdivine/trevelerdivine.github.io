@@ -536,7 +536,7 @@ async function show_char_statsform()
     else if (selectedCharId == "74")
     {
       elementsToAddToCharTalent = [
-        createTextNode("　元素爆発天賦レベル："),
+        createTextNode("元素爆発天賦レベル："),
         createSelectList("furina_Q_level", 1, 13, "Lv.", "", 8),
       ];
     
