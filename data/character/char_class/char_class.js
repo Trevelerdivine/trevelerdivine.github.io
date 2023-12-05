@@ -2127,9 +2127,9 @@ class Furina {
       }
       else if (attack_method == 16)
       {
-        attckRate = status[0] * (dmg_rate[0][0] * (status[7] - this.talent2_buff) / status[7] + dmg_rate[0][2]);
+        attckRate = status[0] * (dmg_rate[0][0] * (1 + status[7] - this.talent2_buff) / (1 + status[7]) + dmg_rate[0][2]);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] *  (dmg_rate[0][1] * (status[7] - this.talent2_buff) / status[7] + dmg_rate[0][3]);
+                  + status[0] *  (dmg_rate[0][1] * (1 + status[7] - this.talent2_buff) / (1 + status[7]) + dmg_rate[0][3]);
       }
       else
       {
@@ -2146,7 +2146,7 @@ class Furina {
       }
       else if (attack_method == 16)
       {
-        basicDmg = status[0] * ((dmg_rate[0][0] + dmg_rate[0][1]) * (status[7] - this.talent2_buff) / status[7]  + dmg_rate[0][2] + dmg_rate[0][3]);
+        basicDmg = status[0] * ((dmg_rate[0][0] + dmg_rate[0][1]) * (1 + status[7] - this.talent2_buff) / (1 + status[7])  + dmg_rate[0][2] + dmg_rate[0][3]);
       }
       else
       {
