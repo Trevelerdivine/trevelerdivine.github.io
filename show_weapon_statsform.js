@@ -39,6 +39,7 @@ async function show_weapon_statsform() {
   weaponInfo.style.display = "block";
 
   weaponInfo.innerHTML = "";
+  let buff_group;
 
   let treats;
 
@@ -93,9 +94,9 @@ async function show_weapon_statsform() {
       return selectList;
     }
   }
-
+  
   else if (selectedWeaponId == "155") {
-    treats = [
+    buff_group = [
       createTextNode("湖光の朝夕"),
       document.createElement("br"),
       createLabel("dmg_buff_count", "　元素スキルダメージバフ："),
@@ -105,26 +106,10 @@ async function show_weapon_statsform() {
       createSelectList("HP_buff_count", 0, 2, "", "層", 2),
     ];
   
-    treats.forEach(element => {
+    buff_group.forEach(element => {
       weaponInfo.appendChild(element);
     });
       }
-
-      else if (selectedWeaponId == "3") {
-        const traits = [
-          {
-            id: "traitCheckbox",
-            label: "霧切の巴紋: "
-          }
-        ];
-            const Whiteblind_effect = createweaponSelectList("Whiteblind_effect", 0, 3, "", "層", 3);
-            const traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[0].id;
-            traitLabel.textContent = traits[0].label;
-    
-            weaponInfo.appendChild(traitLabel);
-            weaponInfo.appendChild(Whiteblind_effect);
-          }
   
   else if (selectedWeaponId == "68") {
     const traits = [
