@@ -1924,7 +1924,7 @@ class Furina {
       this.reaction_coeff = 2;
     }
 
-    const burst_flag = 0; 
+    let burst_flag = 0; 
     const burst_check = document.getElementById("furina_Qcheck");
     if (burst_check.checked)
     {
