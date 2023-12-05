@@ -538,6 +538,7 @@ async function show_char_statsform()
       elementsToAddToCharTalent = [
         createCheckbox("furina_Qcheck", true),
         createLabel("furina_Qcheck", "もろびとこぞりて"),
+        document.createElement("br"),
         createTextNode("元素爆発天賦レベル："),
         createSelectList("furina_Q_level", 1, 13, "Lv.", "", 8),
       ];

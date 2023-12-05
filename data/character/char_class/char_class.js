@@ -1937,7 +1937,7 @@ class Furina {
     const buff_count1 = parseInt(document.getElementById("furina_tention1").value);
     const burst_level = parseInt(document.getElementById("furina_Q_level").value);
     const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
-     this.burst_buff1 = buff_rate * buff_count1;
+    this.burst_buff1 = buff_rate * buff_count1 * burst_flag;
     if(this.char_constellations > 1)
     {
       const buff_count2 = parseInt(document.getElementById("furina_tention2").value);
@@ -2110,7 +2110,7 @@ class Furina {
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
-    this.talent2_buff = this.talent2_flag * Math.min(0.28, Math.floor(status[0]/1000));
+    this.talent2_buff = this.talent2_flag * Math.min(0.28, status[0]/1000);
     return this.burst_buff1 + this.talent2_buff;
   }
 
@@ -2125,6 +2125,12 @@ class Furina {
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                 + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1];
       }
+      else if (attack_method == 16)
+      {
+        attckRate = status[0] * (dmg_rate[0][0] * (status[7] - this.talent2_buff) / status[7] + dmg_rate[0][2]);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] *  (dmg_rate[0][1] * (status[7] - this.talent2_buff) / status[7] + dmg_rate[0][3]);
+      }
       else
       {
         attckRate = status[0] * dmg_rate[0][0];
@@ -2137,6 +2143,10 @@ class Furina {
       if (attack_method == 1 || attack_method == 6)
       {
         basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]) + status[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+      }
+      else if (attack_method == 16)
+      {
+        basicDmg = status[0] * ((dmg_rate[0][0] + dmg_rate[0][1]) * (status[7] - this.talent2_buff) / status[7]  + dmg_rate[0][2] + dmg_rate[0][3]);
       }
       else
       {
