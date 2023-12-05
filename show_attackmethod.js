@@ -578,7 +578,6 @@ async function show_attack_method()
       createLabel("", "アルケー"),
       document.createElement("br"),
       createLabel("", "　"),
-      document.createElement("br"),
     ];
     traits.forEach(element => {
       attack_method_prop.appendChild(element);
@@ -607,8 +606,9 @@ async function show_attack_method()
       puneuma_radio_label.htmlFor = "furina_puneuma_radio";
       puneuma_radio_label.textContent = "プネウマ ";
 
-      elemental_reaction.appendChild(puneuma_radio);
-      elemental_reaction.appendChild(puneuma_radio_label);
+      attack_method_prop.appendChild(puneuma_radio);
+      attack_method_prop.appendChild(puneuma_radio_label);
+      attack_method_prop.appendChild(document.createElement("br"),);
 
       options = [
         { text: "１段目", value: "0", checked: true },
@@ -624,7 +624,6 @@ async function show_attack_method()
         createLabel("", "アルケー"),
         document.createElement("br"),
         createLabel("", "　"),
-        document.createElement("br"),
       ];
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
@@ -654,6 +653,7 @@ async function show_attack_method()
 
       attack_method_prop.appendChild(puneuma_radio);
       attack_method_prop.appendChild(puneuma_radio_label);
+      attack_method_prop.appendChild(document.createElement("br"),);
 
       options = [
         { text: "重撃", value: "0", checked: true },
