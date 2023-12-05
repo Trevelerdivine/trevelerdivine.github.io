@@ -592,6 +592,14 @@ async function show_attack_method()
     }
     else if (attack_method == 16)
     {
+      traits = [
+        createTextNode("HP50%以上のキャラクターの人数："),
+        createSelectList("furina_skillbuff", 0, 4, "", "人", 4),
+      ];
+    
+      traits.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
 
       traits = [
         createLabel("furina_attack_count1", "　ウーシアの泡ヒット回数："),
