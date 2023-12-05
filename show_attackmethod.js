@@ -575,6 +575,32 @@ async function show_attack_method()
 
     if (attack_method == 1)
     {
+      const ushia_radio = document.createElement("input");
+      ushia_radio.type = "radio";
+      ushia_radio.id = "furina_ushia_radio";
+      ushia_radio.name = "furina_type_radio";
+      ushia_radio.checked = true;
+      
+      const ushia_radio_label = document.createElement("label");
+      ushia_radio_label.htmlFor = "furina_ushia_radio";
+      ushia_radio_label.textContent = "ウーシア　";
+      
+      elemental_reaction.appendChild(ushia_radio);
+      elemental_reaction.appendChild(ushia_radio_label);
+    
+      const puneuma_radio = document.createElement("input");
+      puneuma_radio.type = "radio";
+      puneuma_radio.id = "furina_puneuma_radio";
+      puneuma_radio.name = "furina_type_radio";
+      puneuma_radio.checked = false;
+      
+      const puneuma_radio_label = document.createElement("label");
+      puneuma_radio_label.htmlFor = "furina_puneuma_radio";
+      puneuma_radio_label.textContent = "プネウマ ";
+
+      elemental_reaction.appendChild(puneuma_radio);
+      elemental_reaction.appendChild(puneuma_radio_label);
+
       options = [
         { text: "１段目", value: "0", checked: true },
         { text: "２段目", value: "1" },
@@ -585,6 +611,32 @@ async function show_attack_method()
     }
     else if (attack_method == 6)
     {
+      const ushia_radio = document.createElement("input");
+      ushia_radio.type = "radio";
+      ushia_radio.id = "furina_ushia_radio";
+      ushia_radio.name = "furina_type_radio";
+      ushia_radio.checked = true;
+      
+      const ushia_radio_label = document.createElement("label");
+      ushia_radio_label.htmlFor = "furina_ushia_radio";
+      ushia_radio_label.textContent = "ウーシア　";
+      
+      elemental_reaction.appendChild(ushia_radio);
+      elemental_reaction.appendChild(ushia_radio_label);
+    
+      const puneuma_radio = document.createElement("input");
+      puneuma_radio.type = "radio";
+      puneuma_radio.id = "furina_puneuma_radio";
+      puneuma_radio.name = "furina_type_radio";
+      puneuma_radio.checked = false;
+      
+      const puneuma_radio_label = document.createElement("label");
+      puneuma_radio_label.htmlFor = "furina_puneuma_radio";
+      puneuma_radio_label.textContent = "プネウマ ";
+
+      elemental_reaction.appendChild(puneuma_radio);
+      elemental_reaction.appendChild(puneuma_radio_label);
+      
       options = [
         { text: "重撃", value: "0", checked: true },
       ];
