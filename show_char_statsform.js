@@ -533,14 +533,14 @@ async function show_char_statsform()
     }
     else if (selectedCharId == "74")
     {
+      elementsToAddToCharTalent = [
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
+      ];
     
       elementsToAddToCharTalent.forEach(element => {
         char_talent.appendChild(element);
       });
-      traits = [
-        { id: "traitCheckbox2", label: "第2重：水元素耐性-35%" },
-      ];
-
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃1ループ（6重 水付与）", disabled: char_constellations < 4, value: "1" },
