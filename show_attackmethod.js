@@ -574,7 +574,16 @@ async function show_attack_method()
     }
 
     if (attack_method == 1)
-    {
+    {      traits = [
+      createLabel("", "アルケー"),
+      document.createElement("br"),
+      createLabel("", "　"),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+    
       const ushia_radio = document.createElement("input");
       ushia_radio.type = "radio";
       ushia_radio.id = "furina_ushia_radio";
@@ -615,6 +624,7 @@ async function show_attack_method()
         createLabel("", "アルケー"),
         document.createElement("br"),
         createLabel("", "　"),
+        document.createElement("br"),
       ];
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
