@@ -42,6 +42,7 @@ async function show_char_statsform()
     const method_container = document.getElementById("attack_method");
     const char_talent = document.getElementById("char_talent");
     const temporary_char_talent = document.getElementById("temporary_char_talent");
+    const attack_method_prop = document.getElementById("attack_method_prop");
 
     characterInfo.style.display = "block";
 
@@ -50,6 +51,7 @@ async function show_char_statsform()
     method_container.innerHTML = "";
     char_talent.innerHTML = "";
     temporary_char_talent.innerHTML = "";
+    attack_method_prop.innerHTML = "";
 
     let traits = [];
     let options = [];
