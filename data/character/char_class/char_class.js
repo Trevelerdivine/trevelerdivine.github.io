@@ -1956,6 +1956,8 @@ class Furina {
       let attack_nonreact = 0;
       let elm_react = []
       let elm_nonreact = [];
+      const puneua_check = document.getElementById("furina_puneuma_radio");
+
   
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
@@ -1966,9 +1968,19 @@ class Furina {
           attack_react += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           attack_nonreact += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
-        for (let i = 0; i < 4; i++) {
-          hp_react += elm_react[i] * 0.18;
-          hp_nonreact += elm_nonreact[i] * 0.18;
+        if (puneua_check.checked)
+        {
+          for (let i = 0; i < 4; i++) {
+            hp_react += elm_react[i] * 0.18 + 0.25;
+            hp_nonreact += elm_nonreact[i] * 0.18 + 0.25;
+          }
+        }
+        else
+        {
+          for (let i = 0; i < 4; i++) {
+            hp_react += elm_react[i] * 0.18;
+            hp_nonreact += elm_nonreact[i] * 0.18;
+          }
         }
         dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, [attack_react, attack_nonreact], 0, 0];
       } else if (attack_method == 6)
