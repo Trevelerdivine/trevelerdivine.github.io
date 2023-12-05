@@ -2024,8 +2024,8 @@ class Furina {
         });
   
         for (let i = 0; i < 1; i++) {
-          attack_react += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][i]["数値"][this.parameter[3]]);
-          attack_nonreact += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][i]["数値"][this.parameter[3]]);
+          hp_react += elm_react[i] * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+          hp_nonreact += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
         }
         dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, 0, 0, 0];
       }

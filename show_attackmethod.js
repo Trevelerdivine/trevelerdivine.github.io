@@ -547,30 +547,30 @@ async function show_attack_method()
     {
       const furina_tention_text = createTextNode("　テンション：");
       const furina_tention_list = createSelectList("furina_tention1", 0, 300, "", "ポイント", 300);
-      attack_method_prop.appendChild(furina_tention_text);
-      attack_method_prop.appendChild(furina_tention_list);
-      attack_method_prop.appendChild(document.createElement("br"));
+      temporary_char_talent.appendChild(furina_tention_text);
+      temporary_char_talent.appendChild(furina_tention_list);
+      temporary_char_talent.appendChild(document.createElement("br"));
     }
     else if (char_constellations == 1)
     {
       const furina_tention_text = createTextNode("　テンション：");
       const furina_tention_list = createSelectList("furina_tention1", 0, 400, "", "ポイント", 400);
-      attack_method_prop.appendChild(furina_tention_text);
-      attack_method_prop.appendChild(furina_tention_list);
-      attack_method_prop.appendChild(document.createElement("br"));
+      temporary_char_talent.appendChild(furina_tention_text);
+      temporary_char_talent.appendChild(furina_tention_list);
+      temporary_char_talent.appendChild(document.createElement("br"));
     }
     else
     {
       const furina_tention_text = createTextNode("　テンション：");
       const furina_tention_list = createSelectList("furina_tention1", 0, 400, "", "ポイント", 400);
-      attack_method_prop.appendChild(furina_tention_text);
-      attack_method_prop.appendChild(furina_tention_list);
-      attack_method_prop.appendChild(document.createElement("br"));
+      temporary_char_talent.appendChild(furina_tention_text);
+      temporary_char_talent.appendChild(furina_tention_list);
+      temporary_char_talent.appendChild(document.createElement("br"));
       const furina_tention_text2 = createTextNode("　超過テンション：");
       const furina_tention_list2 = createSelectList("furina_tention2", 0, 400, "", "ポイント", 400);
-      attack_method_prop.appendChild(furina_tention_text2);
-      attack_method_prop.appendChild(furina_tention_list2);
-      attack_method_prop.appendChild(document.createElement("br"));
+      temporary_char_talent.appendChild(furina_tention_text2);
+      temporary_char_talent.appendChild(furina_tention_list2);
+      temporary_char_talent.appendChild(document.createElement("br"));
     }
 
     if (attack_method == 1)
