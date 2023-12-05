@@ -1924,6 +1924,13 @@ class Furina {
       this.reaction_coeff = 2;
     }
 
+    const burst_flag = 0; 
+    const burst_check = document.getElementById("furina_Qcheck");
+    if (burst_check.checked)
+    {
+      burst_flag = 1; 
+    }
+
     const response = await fetch("./data/character/char_data/Furina.json");
     const data = await response.json();
 
@@ -1934,10 +1941,9 @@ class Furina {
     if(this.char_constellations > 1)
     {
       const buff_count2 = parseInt(document.getElementById("furina_tention2").value);
-      this.burst_buff2 = 0.0035 * buff_count2;
+      this.burst_buff2 = 0.0035 * buff_count2 * burst_flag;
     }
 
-  
     let dmg_attack_rate = 0;
     let dmg_rate;
     let hp_react = 0;
