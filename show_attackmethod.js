@@ -220,6 +220,41 @@ async function show_attack_method()
       });
     }
   }
+  else if (selectedCharId == "71")
+  {
+    if (attack_method == 6)
+    {
+      traits = [
+        createLabel("chongyun_skill_count", "　1段チャージ狙い撃ちヒット回数："),
+        createSelectList("chongyun_skill_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("chongyun_talent_count", "　プロップアローヒット回数："),
+        createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("chongyun_talent_count", "　ファニーキャット・ハット起爆回数："),
+        createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("chongyun_skill_react", "　1段チャージ狙い撃ち反応回数："),
+        createSelectList("chongyun_skill_react", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("chongyun_talent_react", "　プロップアロー反応回数："),
+        createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("chongyun_talent_react", "　ファニーキャット・ハット反応回数："),
+        createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+  }
   else if (selectedCharId == "1")
   {
     if (attack_method == 1 && char_constellations < 4)

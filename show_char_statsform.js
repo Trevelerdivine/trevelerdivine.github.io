@@ -151,10 +151,11 @@ async function show_char_statsform()
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
-        const dehya_sixthbuff_list = createanySelectList("Lyney_second_conste_buff", 0, 3, "+", "%", 3, 20);
+        const Lyney_secondbuff_list = createanySelectList("Lyney_second_conste_buff", 0, 3, "+", "%", 3, 20);
 
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(Lyney_secondbuff_list);
         characterInfo.appendChild(document.createElement("br"));
       }
       if (char_constellations > 2)
