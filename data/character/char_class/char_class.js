@@ -2,9 +2,8 @@ class Lyney {
   constructor(base_status_array, parameter){
     this.base_status_array = base_status_array;
     this.parameter = parameter;
-    this.talent1effect = 0;
-    this.first_conste_buff = 0;
-    this.sixth_conste_buff = [0,0];
+    this.second_conste_buff = 0;
+    this.fourth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
@@ -30,17 +29,22 @@ class Lyney {
     const response = await fetch("./data/character/char_data/Lyney.json");
     const data = await response.json();
 
-    if (this.char_constellations > 0)
+    if (this.char_constellations > 1)
     {
-      this.first_conste_buff = 0.2;
+      this.second_conste_buff = parseInt(document.getElementById("Lyney_second_conste_buff").value) / 100
     }
 
-    if (this.char_constellations > 3)
+    if (this.char_constellations > 2)
     {
-      this.sixth_conste_buff[0] = 0.1;
-      this.sixth_conste_buff[1] = parseFloat(document.getElementById("dehya_sixth_conste_buff").value);
+      this.fourth_conste_buff = 0.2
     }
-  
+
+    const talent2_check = document.getElementById("Lyney_talent1_flag");
+    if(talent2_check.checked)
+    {
+      this.talent2_buff = 0.6 + Math.min(0.4, 0.2 * parseInt(document.getElementById("pyro_char_count").value));
+    }
+
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
     let dmg_attack_rate = 0;
@@ -156,7 +160,7 @@ class Lyney {
   }
 
   calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
+    return this.second_conste_buff;
   }
 
   calculate_char_result_cd(fixstatus,status) {
@@ -164,7 +168,7 @@ class Lyney {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return 0;
+    return this.talent2_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
@@ -188,7 +192,7 @@ class Lyney {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [this.fourth_conste_buff,0,0];
     return char_debuff;
   }
 }

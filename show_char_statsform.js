@@ -139,7 +139,7 @@ async function show_char_statsform()
         createLabel("Lyney_talent1_flag", "炎元素付着あり"),
         document.createElement("br"),
         createLabel("pyro_char_count", "チーム内炎元素キャラクター数： "),
-        createSelectList("pyro_char_count", 1, 4, "", "人", 3),
+        createSelectList("pyro_char_count", 0, 3, "", "人", 3),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
