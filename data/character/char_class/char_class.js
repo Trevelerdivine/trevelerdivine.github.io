@@ -39,7 +39,7 @@ class Lyney {
       this.fourth_conste_buff = 0.2
     }
 
-    const talent2_check = document.getElementById("Lyney_talent1_flag");
+    const talent2_check = document.getElementById("Lyney_talent2_flag");
     if(talent2_check.checked)
     {
       this.talent2_buff = 0.6 + Math.min(0.4, 0.2 * parseInt(document.getElementById("pyro_char_count").value));
@@ -152,7 +152,7 @@ class Lyney {
   }
 
   calculate_char_fixed_cr(fixstatus,status) {
-    return this.sixth_conste_buff[0];
+    return 0;
   }
 
   calculate_char_result_cr(fixstatus,status) {

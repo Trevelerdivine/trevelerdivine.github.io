@@ -135,8 +135,8 @@ async function show_char_statsform()
     else if (selectedCharId == "71")
     {
       elementsToAddToCharTalent = [
-        createCheckbox("Lyney_talent1_flag", true),
-        createLabel("Lyney_talent1_flag", "炎元素付着あり"),
+        createCheckbox("Lyney_talent2_flag", true),
+        createLabel("Lyney_talent2_flag", "炎元素付着あり"),
         document.createElement("br"),
         createLabel("pyro_char_count", "チーム内炎元素キャラクター数： "),
         createSelectList("pyro_char_count", 0, 3, "", "人", 3),
