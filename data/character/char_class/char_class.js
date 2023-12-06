@@ -1971,8 +1971,8 @@ class Furina {
         if (puneua_check.checked)
         {
           for (let i = 0; i < 4; i++) {
-            hp_react += elm_react[i] * 0.18 + 0.25;
-            hp_nonreact += elm_nonreact[i] * 0.18 + 0.25;
+            hp_react += elm_react[i] * (0.18 + 0.25);
+            hp_nonreact += elm_nonreact[i] * (0.18 + 0.25);
           }
         }
         else
