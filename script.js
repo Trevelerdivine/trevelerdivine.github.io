@@ -383,6 +383,9 @@ async function create_char_instance(base_status, parameter) {
   let char_instance;
 
   switch (selectedCharId) {
+    case "71":
+      char_instance = new Lyney(base_status, parameter);
+      break;
     case "0":
       char_instance = new dehya(base_status, parameter);
       break;
