@@ -2004,8 +2004,8 @@ class Furina {
             attack_nonreact += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
           }
           for (let i = 0; i < 1; i++) {
-            hp_react += elm_react[i] * 0.18;
-            hp_nonreact += elm_nonreact[i] * 0.18;
+            hp_react += elm_react[i] * (0.18 + 0.25);
+            hp_nonreact += elm_nonreact[i] * (0.18 + 0.25);
           }
           dmg_rate = [[hp_react, hp_nonreact], 0, 0, 0, [attack_react, attack_nonreact], 0, 0];
       } else if (attack_method == 16)

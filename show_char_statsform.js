@@ -132,6 +132,41 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
+    else if (selectedCharId == "71")
+    {
+      traits = [
+        { id: "traitCheckbox6", label: "2重　巧言令色の誘：会心ダメージ " },
+        { id: "traitCheckbox4", label: "4重　熟知熟練の方策：敵の炎元素耐性-20% " },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃", value: "6" },
+        { text: "元素スキル（ビウィルダー・ライト）", value: "16" },
+        { text: "元素爆発（大魔術・ミラクルパレード）", value: "21" }
+      ];
+      createchar_attackmethod(options);
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        const dehya_sixthbuff_list = createanySelectList("Lyney_second_conste_buff", 0, 3, "+", "%", 3, 20);
+
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
     else if (selectedCharId == "0")
     {
       traits = [
