@@ -297,11 +297,11 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("Lyney_attack_count1", "スキル反応回数 "),
-        createSelectList("Lyney_attack_count1", 0, 1, "", "回", 0),
+        createLabel("Lyney_react_count1", "スキル反応回数 "),
+        createSelectList("Lyney_react_count1", 0, 1, "", "回", 0),
         document.createElement("br"),
-        createLabel("Lyney_attack_count2", "クラッカー起爆反応回数 "),
-        createSelectList("Lyney_attack_count2", 0, 1, "", "回", 1),
+        createLabel("Lyney_react_count2", "クラッカー起爆反応回数 "),
+        createSelectList("Lyney_react_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {

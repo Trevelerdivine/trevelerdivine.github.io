@@ -60,17 +60,17 @@ class Lyney {
                                + reaction_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
                                + reaction_count3 * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
                                + reaction_count4 * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])
-                               + reaction_count5 * parseFloat(data["重撃"]["詳細"][3]["数値"][this.parameter[3]]);
       let attack_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
                                   + (attack_count2 - reaction_count2) * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
                                   + (attack_count3 - reaction_count3) * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
                                   + (attack_count4 - reaction_count4) * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])
+                                  + attack_count5 * parseFloat(data["重撃"]["詳細"][3]["数値"][this.parameter[3]])
 
       dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
     }
     else if (attack_method == 16)
     {
-      const buff_count = parseInt(document.getElementById("Lyney_attack_count1").alue);
+      const buff_count = parseInt(document.getElementById("Lyney_attack_count1").value);
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       let elm_react = []
@@ -86,7 +86,7 @@ class Lyney {
           elm_react_dmgrate += elm_react[i] * (parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                              + buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]));
           elm_nonreact_dmgrate += elm_nonreact[i] * (parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
-                             + buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]));
+                               + buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]));
         }
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
