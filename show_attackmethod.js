@@ -226,16 +226,21 @@ async function show_attack_method()
     {
       traits = [
         createLabel("Lyney_attack_count1", "　1段チャージ狙い撃ちヒット回数："),
-        createSelectList("Lyney_attack_count1", 0, 1, "", "回", 1),
+        createSelectList("Lyney_attack_count1", 0, 10, "", "回", 0),
         document.createElement("br"),
         createLabel("Lyney_attack_count2", "　プロップアローヒット回数："),
-        createSelectList("Lyney_attack_count2", 0, 1, "", "回", 1),
+        createSelectList("Lyney_attack_count2", 0, 10, "", "回", 1),
         document.createElement("br"),
-        createLabel("Lyney_attack_count3", "　クラッカーバレット起爆回数："),
-        createSelectList("Lyney_attack_count3", 0, 1, "", "回", 1),
+        createLabel("", "　クラッカーバレット"),
         document.createElement("br"),
-        createLabel("Lyney_attack_count4", "　霊息の棘ヒット回数："),
-        createSelectList("Lyney_attack_count4", 0, 1, "", "回", 1),
+        createLabel("Lyney_attack_count3", "　　HP消費あり"),
+        createSelectList("Lyney_attack_count3", 0, 10, "", "回", 1),
+        document.createElement("br"),
+        createLabel("Lyney_attack_count4", "　　HP消費なし"),
+        createSelectList("Lyney_attack_count4", 0, 10, "", "回", 0),
+        document.createElement("br"),
+        createLabel("Lyney_attack_count5", "　霊息の棘ヒット回数："),
+        createSelectList("Lyney_attack_count5", 0, 20, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {
