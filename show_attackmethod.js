@@ -225,14 +225,17 @@ async function show_attack_method()
     if (attack_method == 6)
     {
       traits = [
-        createLabel("chongyun_skill_count", "　1段チャージ狙い撃ちヒット回数："),
-        createSelectList("chongyun_skill_count", 0, 1, "", "回", 1),
+        createLabel("Lyney_attack_count1", "　1段チャージ狙い撃ちヒット回数："),
+        createSelectList("Lyney_attack_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("chongyun_talent_count", "　プロップアローヒット回数："),
-        createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
+        createLabel("Lyney_attack_count2", "　プロップアローヒット回数："),
+        createSelectList("Lyney_attack_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("chongyun_talent_count", "　ファニーキャット・ハット起爆回数："),
-        createSelectList("chongyun_talent_count", 0, 1, "", "回", 1),
+        createLabel("Lyney_attack_count3", "　クラッカーバレット起爆回数："),
+        createSelectList("Lyney_attack_count3", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("Lyney_attack_count4", "　霊息の棘ヒット回数："),
+        createSelectList("Lyney_attack_count4", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {
@@ -240,14 +243,60 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("chongyun_skill_react", "　1段チャージ狙い撃ち反応回数："),
-        createSelectList("chongyun_skill_react", 0, 1, "", "回", 1),
+        createLabel("Lyney_react_count1", "　1段チャージ狙い撃ち反応回数："),
+        createSelectList("Lyney_react_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("chongyun_talent_react", "　プロップアロー反応回数："),
-        createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+        createLabel("Lyney_react_count2", "　プロップアロー反応回数："),
+        createSelectList("Lyney_react_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("chongyun_talent_react", "　ファニーキャット・ハット反応回数："),
-        createSelectList("chongyun_talent_react", 0, 1, "", "回", 1),
+        createLabel("Lyney_react_count3", "　クラッカーバレット反応回数："),
+        createSelectList("Lyney_react_count3", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if (attack_method == 16)
+    {
+      traits = [
+        createLabel("Lyney_attack_count1", "　プロップ残数 "),
+        createSelectList("Lyney_attack_count1", 0, 5, "", "層", 5),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("Lyney_react_count1", "　スキル反応回数："),
+        createSelectList("Lyney_react_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("Lyney_attack_count1", "スキルヒット回数 "),
+        createSelectList("Lyney_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("Lyney_attack_count2", "クラッカー起爆ヒット回数 "),
+        createSelectList("Lyney_attack_count2", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("Lyney_attack_count1", "スキル反応回数 "),
+        createSelectList("Lyney_attack_count1", 0, 1, "", "回", 0),
+        document.createElement("br"),
+        createLabel("Lyney_attack_count2", "クラッカー起爆反応回数 "),
+        createSelectList("Lyney_attack_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {
