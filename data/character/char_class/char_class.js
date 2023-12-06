@@ -70,6 +70,13 @@ class Lyney {
                                   + (attack_count4 - reaction_count4) * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])
                                   + attack_count5 * parseFloat(data["重撃"]["詳細"][3]["数値"][this.parameter[3]])
 
+      if (this.char_constellations == 4)
+      {
+        const attack_count6 = parseInt(document.getElementById("Lyney_attack_count6").value);
+        const reaction_count5 = parseInt(document.getElementById("Lyney_react_count5").value);
+        attack_react_dmgrate += reaction_count5 * 0.8;
+      }
+
       dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
     }
     else if (attack_method == 16)
