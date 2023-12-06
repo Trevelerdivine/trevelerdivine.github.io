@@ -254,8 +254,13 @@ async function show_attack_method()
         createLabel("Lyney_react_count2", "　プロップアロー反応回数："),
         createSelectList("Lyney_react_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("Lyney_react_count3", "　クラッカーバレット反応回数："),
-        createSelectList("Lyney_react_count3", 0, 1, "", "回", 1),
+        createLabel("", "　クラッカーバレット"),
+        document.createElement("br"),
+        createLabel("Lyney_react_count3", "　　HP消費あり"),
+        createSelectList("Lyney_react_count3", 0, 10, "", "回", 1),
+        document.createElement("br"),
+        createLabel("Lyney_react_count4", "　　HP消費なし"),
+        createSelectList("Lyney_react_count4", 0, 10, "", "回", 0),
         document.createElement("br"),
       ];
       traits.forEach(element => {
@@ -272,15 +277,10 @@ async function show_attack_method()
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
       });
-
-      traits = [
-        createLabel("Lyney_react_count1", "　スキル反応回数："),
-        createSelectList("Lyney_react_count1", 0, 1, "", "回", 1),
-        document.createElement("br"),
+      options = [
+        { text: "スキルダメージ", value: "0", checked: true },
       ];
-      traits.forEach(element => {
-        select_reaction_method.appendChild(element);
-      });
+      createCheckboxList(options);
     }
     else if (attack_method == 21)
     {

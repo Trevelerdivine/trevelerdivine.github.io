@@ -1,3 +1,198 @@
+class Lyney {
+  constructor(base_status_array, parameter){
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.talent1effect = 0;
+    this.first_conste_buff = 0;
+    this.sixth_conste_buff = [0,0];
+    this.char_constellations = 0;
+    this.reaction_coeff = 0;
+    this.talent2_buff = 0;
+    this.skill_buff = 0;
+    this.trueCount = 0;
+  }
+
+  async dmg_rate_data(){
+    this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
+    const Vaporize_pyro = document.getElementById("Vaporize_pyro");
+    if (Vaporize_pyro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 1.5;
+    }
+    const Melt_pyro = document.getElementById("Melt-pyro");
+    if (Melt_pyro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 2;
+    }
+  
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/Lyney.json");
+    const data = await response.json();
+
+    if (this.char_constellations > 0)
+    {
+      this.first_conste_buff = 0.2;
+    }
+
+    if (this.char_constellations > 3)
+    {
+      this.sixth_conste_buff[0] = 0.1;
+      this.sixth_conste_buff[1] = parseFloat(document.getElementById("dehya_sixth_conste_buff").value);
+    }
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attack_rate = 0;
+    if (attack_method == 6)
+    {
+      const attack_count1 = parseInt(document.getElementById("Lyney_attack_count1").value);
+      const attack_count2 = parseInt(document.getElementById("Lyney_attack_count2").value);
+      const attack_count3 = parseInt(document.getElementById("Lyney_attack_count3").value);
+      const attack_count4 = parseInt(document.getElementById("Lyney_attack_count4").value);
+      const attack_count5 = parseInt(document.getElementById("Lyney_attack_count5").value);
+      const reaction_count1 = parseInt(document.getElementById("Lyney_react_count1").value);
+      const reaction_count2 = parseInt(document.getElementById("Lyney_react_count2").value);
+      const reaction_count3 = parseInt(document.getElementById("Lyney_react_count3").value);
+      const reaction_count4 = parseInt(document.getElementById("Lyney_react_count4").value);
+
+      let attack_react_dmgrate = reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                               + reaction_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
+                               + reaction_count3 * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
+                               + reaction_count4 * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])
+                               + reaction_count5 * parseFloat(data["重撃"]["詳細"][3]["数値"][this.parameter[3]]);
+      let attack_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                                  + (attack_count2 - reaction_count2) * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])
+                                  + (attack_count3 - reaction_count3) * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
+                                  + (attack_count4 - reaction_count4) * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
+    }
+    else if (attack_method == 16)
+    {
+      const buff_count = parseInt(document.getElementById("Lyney_attack_count1").alue);
+      const checkboxContainer = document.getElementById("select_reaction_method");
+      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+      let elm_react = []
+      let elm_nonreact = [];
+      // 各チェックボックスの状態を調べて配列に追加
+      checkboxes.forEach(checkbox => {
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
+      });
+        let elm_react_dmgrate = 0;
+        let elm_nonreact_dmgrate = 0;
+        for (let i = 0; i < 1; i++) {
+          elm_react_dmgrate += elm_react[i] * (parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                             + buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]));
+          elm_nonreact_dmgrate += elm_nonreact[i] * (parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                             + buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]));
+        }
+        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    }
+    else if (attack_method == 21)
+    {
+      const attack_count1 = parseInt(document.getElementById("Lyney_attack_count1").value);
+      const attack_count2 = parseInt(document.getElementById("Lyney_attack_count2").value);
+      const reaction_count1 = parseInt(document.getElementById("Lyney_react_count1").value);
+      const reaction_count2 = parseInt(document.getElementById("Lyney_react_count2").value);
+
+      let elm_react_dmgrate = reaction_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                            + reaction_count2 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]])
+      let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                                  + (attack_count2 - reaction_count2) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]])
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    }
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    return this.sixth_conste_buff[0];
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status){
+    let basicDmg;
+    let attckRate;
+      if (this.reaction_coeff > 0)
+      {
+        attckRate = status[4] * dmg_rate[4][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1];
+      }
+      else
+      {
+        basicDmg =  (dmg_rate[4][0] + dmg_rate[4][1]) * status[4];
+      }
+      return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class dehya {
   constructor(base_status_array, parameter){
     this.base_status_array = base_status_array;
