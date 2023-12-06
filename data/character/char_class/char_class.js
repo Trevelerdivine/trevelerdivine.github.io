@@ -73,8 +73,13 @@ class Lyney {
       if (this.char_constellations == 4)
       {
         const attack_count6 = parseInt(document.getElementById("Lyney_attack_count6").value);
+        const attack_count7 = parseInt(document.getElementById("Lyney_attack_count7").value);
         const reaction_count5 = parseInt(document.getElementById("Lyney_react_count5").value);
-        attack_react_dmgrate += reaction_count5 * 0.8;
+        const reaction_count6 = parseInt(document.getElementById("Lyney_react_count6").value);
+        attack_react_dmgrate += (reaction_count5 * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
+                              +  reaction_count6 * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])) * 0.8;
+        attack_nonreact_dmgrate += ((attack_count6 - reaction_count5) * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
+                                 +  (attack_count7 - reaction_count6) * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])) * 0.8;
       }
 
       dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
