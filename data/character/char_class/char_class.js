@@ -2392,11 +2392,7 @@ class Neuvillette {
     this.parameter = parameter;
     this.char_constellations = 0;
     this.talent1_buff = 0;
-    this.first_conste_buff = 0;
     this.second_conste_buff = 0;
-    this.fourth_conste_buff = 0;
-    this.sixth_conste_buff = 0;
-    this.trueCount = 0;
     this.reaction_coeff = 0;
   }
 
@@ -2409,6 +2405,8 @@ class Neuvillette {
       this.reaction_coeff = 2;
     }
 
+    this.talent2_buff = Math.min(0.3,Math.max((parseInt(document.getElementById("Neuvillette_talent2").value)) - 30, 0) * 0.006);
+
     const response = await fetch("./data/character/char_data/Neuvillette.json");
     const data = await response.json();
   
@@ -2418,11 +2416,19 @@ class Neuvillette {
     let elm_nonreact_dmgrate = 0;
   
     if (attack_method == 6) {
+      let buff_constant = [0, 1.1, 1.25, 1.6];
+      let buff_count = parseInt(document.getElementById("Neuvillette_talent1_count").value);
+      const talent1_buff = buff_constant[buff_count];
       const attack_count1 = parseInt(document.getElementById("Neuvillette_attack_count1").value);
       const reaction_count1 = parseInt(document.getElementById("Neuvillette_react_count1").value);
 
-      elm_react_dmgrate = reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
-      elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      if (this.char_constellations > 1)
+      {
+        this.second_conste_buff = buff_count * 0.14;
+      }
+
+      elm_react_dmgrate = talent1_buff * reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+      elm_nonreact_dmgrate = talent1_buff * (attack_count1 - reaction_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
 
       dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
       }
@@ -2510,7 +2516,7 @@ class Neuvillette {
   }
 
   calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
+    return this.second_conste_buff;
   }
 
   calculate_char_result_cd(fixstatus,status) {
@@ -2518,7 +2524,7 @@ class Neuvillette {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return 0;
+    return this.talent2_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {

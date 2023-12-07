@@ -874,6 +874,8 @@ async function show_attack_method()
     if (attack_method == 6)
     {
       traits = [
+        createLabel("Neuvillette_talent1_count", "　遺龍の栄光："),
+        createSelectList("Neuvillette_talent1_count", 0, 3, "", "回", 3),
         createLabel("Neuvillette_attack_count1", "　衡平な裁量ヒット回数："),
         createSelectList("Neuvillette_attack_count1", 1, 15, "", "回", 8),
         document.createElement("br"),
