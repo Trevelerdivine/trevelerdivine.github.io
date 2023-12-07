@@ -43,6 +43,7 @@ async function show_char_statsform()
     const char_talent = document.getElementById("char_talent");
     const temporary_char_talent = document.getElementById("temporary_char_talent");
     const attack_method_prop = document.getElementById("attack_method_prop");
+    const select_reaction_method = document.getElementById("select_reaction_method");
 
     characterInfo.style.display = "block";
 
@@ -52,6 +53,7 @@ async function show_char_statsform()
     char_talent.innerHTML = "";
     temporary_char_talent.innerHTML = "";
     attack_method_prop.innerHTML = "";
+    select_reaction_method.innerHTML = "";
 
     let traits = [];
     let options = [];
@@ -606,6 +608,26 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
+    }
+    else if (selectedCharId == "72")
+    {
+      elementsToAddToCharTalent = [
+        createLabel("Neuvillette_talent2", "固有天賦2：HP割合："),
+        createSelectList("Neuvillette_talent2", 0, 100, "", "%", 100),
+        document.createElement("br")
+      ];
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "特殊重撃（衡平な裁量）", value: "6" },
+        { text: "元素スキル（涙よ、私は必ずや償おう）", value: "16" },
+        { text: "元素爆発（浮蓮のダンス・遠夢聆泉）", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
     }
     else if (selectedCharId == "11")
     {

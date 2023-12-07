@@ -869,6 +869,62 @@ async function show_attack_method()
       createCheckboxList_br(options);
     }
   }
+  else if (selectedCharId == "72")
+  {
+    if (attack_method == 6)
+    {
+      traits = [
+        createLabel("Neuvillette_attack_count1", "　衡平な裁量ヒット回数："),
+        createSelectList("Neuvillette_attack_count1", 1, 15, "", "回", 8),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("Neuvillette_react_count1", "　衡平な裁量反応回数："),
+        createSelectList("Neuvillette_react_count1", 0, 15, "", "回", 3),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if (attack_method == 16)
+    {
+      options = [
+        { text: "元素スキルダメージ", value: "0", checked: true },
+      ];
+      createCheckboxList_br(options);
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("Neuvillette_attack_count1", "　スキルヒット回数："),
+        createSelectList("Neuvillette_attack_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("Neuvillette_attack_count2", "　瀑ヒット回数："),
+        createSelectList("Neuvillette_attack_count2", 0, 2, "", "回", 2),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("Neuvillette_react_count1", "　衡平な裁量反応回数："),
+        createSelectList("Neuvillette_react_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("Neuvillette_react_count2", "　瀑ヒット回数："),
+        createSelectList("Neuvillette_react_count2", 0, 2, "", "回", 0),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+  }
   else if (selectedCharId == "11")
   {
     if (attack_method == 16)
