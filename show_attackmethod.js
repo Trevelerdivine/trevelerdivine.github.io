@@ -913,7 +913,7 @@ async function show_attack_method()
       });
 
       traits = [
-        createLabel("Neuvillette_react_count1", "　衡平な裁量反応回数："),
+        createLabel("Neuvillette_react_count1", "　スキル反応回数："),
         createSelectList("Neuvillette_react_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
         createLabel("Neuvillette_react_count2", "　瀑ヒット回数："),

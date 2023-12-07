@@ -114,9 +114,9 @@ class Lyney {
       const reaction_count2 = parseInt(document.getElementById("Lyney_react_count2").value);
 
       let elm_react_dmgrate = reaction_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
-                            + reaction_count2 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]])
+                            + reaction_count2 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
       let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
-                                  + (attack_count2 - reaction_count2) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]])
+                                  + (attack_count2 - reaction_count2) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
@@ -2375,6 +2375,168 @@ class Furina {
       {
         basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
       }
+    }
+    return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
+class Neuvillette {
+  constructor(base_status_array, parameter) 
+  {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.talent1_buff = 0;
+    this.first_conste_buff = 0;
+    this.second_conste_buff = 0;
+    this.fourth_conste_buff = 0;
+    this.sixth_conste_buff = 0;
+    this.trueCount = 0;
+    this.reaction_coeff = 0;
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
+    const Vaporize_hydro = document.getElementById("Vaporize-hydro");
+    if (Vaporize_hydro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 2;
+    }
+
+    const response = await fetch("./data/character/char_data/Neuvillette.json");
+    const data = await response.json();
+  
+    let dmg_attack_rate = 0;
+    let dmg_rate;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
+  
+    if (attack_method == 6) {
+      const attack_count1 = parseInt(document.getElementById("Neuvillette_attack_count1").value);
+      const reaction_count1 = parseInt(document.getElementById("Neuvillette_react_count1").value);
+
+      elm_react_dmgrate = reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+      elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+
+      dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+      }
+
+      else if (attack_method == 16)
+      {
+        const checkboxContainer = document.getElementById("select_reaction_method");
+        const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+        let elm_react = [];
+        let elm_nonreact = [];
+    
+        checkboxes.forEach(checkbox => {
+          elm_react.push(checkbox.checked ? 1 : 0);
+          elm_nonreact.push(checkbox.checked ? 0 : 1);
+        });
+  
+          for (let i = 0; i < 1; i++) {
+            elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+            elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
+          }
+          dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+      }
+      if (attack_method == 21) {
+        const attack_count1 = parseInt(document.getElementById("Neuvillette_attack_count1").value);
+        const attack_count2 = parseInt(document.getElementById("Neuvillette_attack_count2").value);
+        const reaction_count1 = parseInt(document.getElementById("Neuvillette_react_count1").value);
+        const reaction_count2 = parseInt(document.getElementById("Neuvillette_react_count2").value);
+  
+        let elm_react_dmgrate = reaction_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                              + reaction_count2 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                                    + (attack_count2 - reaction_count2) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+  
+        dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+        }
+    return dmg_rate;
+  }
+
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return  0;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    let attckRate;
+    if (this.reaction_coeff > 0)
+    {
+      attckRate = status[0] * dmg_rate[0][0];
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[0] * dmg_rate[0][1];
+    }
+    else
+    {
+      basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
     }
     return basicDmg;
   }
