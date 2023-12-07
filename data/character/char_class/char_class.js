@@ -2427,8 +2427,16 @@ class Neuvillette {
         this.second_conste_buff = buff_count * 0.14;
       }
 
-      elm_react_dmgrate = talent1_buff * reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+      elm_react_dmgrate = talent1_buff * reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       elm_nonreact_dmgrate = talent1_buff * (attack_count1 - reaction_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+
+      if (this.char_constellations == 4)
+      {
+        const attack_count2 = parseInt(document.getElementById("Neuvillette_attack_count2").value);
+        const reaction_count2 = parseInt(document.getElementById("Neuvillette_react_count2").value);
+        elm_react_dmgrate = talent1_buff * reaction_count1 * 0.1
+        elm_nonreact_dmgrate = talent1_buff * (attack_count1 - reaction_count1) * 0.1;
+      }
 
       dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
       }

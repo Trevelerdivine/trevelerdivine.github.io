@@ -876,10 +876,27 @@ async function show_attack_method()
       traits = [
         createLabel("Neuvillette_talent1_count", "　遺龍の栄光："),
         createSelectList("Neuvillette_talent1_count", 0, 3, "", "回", 3),
+        document.createElement("br"),
         createLabel("Neuvillette_attack_count1", "　衡平な裁量ヒット回数："),
         createSelectList("Neuvillette_attack_count1", 1, 15, "", "回", 8),
         document.createElement("br"),
       ];
+
+      if(char_constellations == 4)
+      {
+        traits = [
+          createLabel("Neuvillette_talent1_count", "　遺龍の栄光："),
+          createSelectList("Neuvillette_talent1_count", 0, 3, "", "層", 3),
+          document.createElement("br"),
+          createLabel("Neuvillette_attack_count1", "　衡平な裁量ヒット回数："),
+          createSelectList("Neuvillette_attack_count1", 1, 40, "", "回", 30),
+          document.createElement("br"),
+          createLabel("Neuvillette_attack_count2", "　洪水ヒット回数："),
+          createSelectList("Neuvillette_attack_count2", 0, 20, "", "回", 12),
+          document.createElement("br"),
+        ];
+      }
+
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
       });
@@ -889,6 +906,19 @@ async function show_attack_method()
         createSelectList("Neuvillette_react_count1", 0, 15, "", "回", 3),
         document.createElement("br"),
       ];
+
+      if(char_constellations == 4)
+      {
+        traits = [
+          createLabel("Neuvillette_react_count1", "　衡平な裁量反応回数："),
+          createSelectList("Neuvillette_react_count1", 0, 15, "", "回", 3),
+          document.createElement("br"),
+          createLabel("Neuvillette_react_count2", "　洪水反応回数："),
+          createSelectList("Neuvillette_react_count2", 0, 20, "", "回", 4),
+          document.createElement("br"),
+        ];
+      }
+
       traits.forEach(element => {
         select_reaction_method.appendChild(element);
       });
