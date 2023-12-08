@@ -2550,12 +2550,10 @@ class Neuvillette {
       if (attack_method == 6)
       {
         attckRate = status[0] * (dmg_rate[0][0] + 
-                  dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6]))
-                                 * (1 + status[7] - this.talent2_buff) / (1 + status[7]));
+                  dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * (dmg_rate[0][1] +
-                  dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6]))
-                  * (1 + status[7] - this.talent2_buff) / (1 + status[7]));
+                  dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
       }
       else
       {
@@ -2569,8 +2567,7 @@ class Neuvillette {
       if (attack_method == 6) 
       {
         basicDmg = status[0] * ((dmg_rate[0][0] + dmg_rate[0][1]) + 
-        (dmg_rate[0][2] + dmg_rate[0][3]) * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6]))
-        * (1 + status[7] - this.talent2_buff) / (1 + status[7]));
+        (dmg_rate[0][2] + dmg_rate[0][3]) * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
       }
       else
       {
