@@ -1302,6 +1302,62 @@ async function show_attack_method()
       select_reaction_method.appendChild(document.createElement("br"));
     }
   }
+  else if (selectedCharId == "73")
+  {
+    let kamisatoayaka_talent;
+    let elementsToAddToCharTalent;
+    if (attack_method == 1)
+    {
+
+      options = [
+        { text: "１段目", value: "0", checked: true },
+        { text: "２段目", value: "1" },
+        { text: "３段目", value: "2" },
+        { text: "４段目-１", value: "3", checked: true },
+        { text: "４段目-２", value: "4"},
+        { text: "５段目", value: "5"},
+      ];
+      createCheckboxList_br(options);
+    }
+    else if (attack_method == 6)
+    {
+
+    }
+    else if (attack_method == 21)
+    {
+      kamisatoayaka_talent = [
+        createCheckbox("kamisatoayaka_talent2", true),
+        createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
+        document.createElement("br"),
+      ];
+      kamisatoayaka_talent.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
+      elementsToAddToCharTalent = [
+        createLabel("kamisatoayaka_attack_count1", "　スキルヒット回数："),
+        createSelectList("kamisatoayaka_attack_count1", 0, 5, "", "回", 5),
+        document.createElement("br"),
+        createLabel("kamisatoayaka_attack_count2", "　迸発の刃ヒット回数："),
+        createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      elementsToAddToCharTalent.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      elementsToAddToCharTalent = [
+        createLabel("kamisatoayaka_melt_count1", "　スキル溶解回数："),
+        createSelectList("kamisatoayaka_melt_count1", 0, 5, "", "回", 2),
+        document.createElement("br"),
+        createLabel("kamisatoayaka_melt_count2", "　迸発の刃ヒット回数："),
+        createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      elementsToAddToCharTalent.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+  }
   else if (selectedCharId == "21")
   {
     let kamisatoayaka_talent;

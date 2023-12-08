@@ -2442,7 +2442,6 @@ class Neuvillette {
       }
 
       dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, sixth_effect_react_rate, sixth_effect_nonreact_rate], 0, 0, 0, 0, 0, 0];
-      console.log(dmg_rate);
       }
 
       else if (attack_method == 16)

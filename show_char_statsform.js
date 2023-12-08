@@ -778,6 +778,31 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "73")
+    {
+      elementsToAddToCharTalent = [
+        createLabel("Wriothesley_talent2", "固有天賦2：抵罪の赦免 "),
+        createSelectList("Wriothesley_talent2", 0, 5, "", "層", 5),
+        document.createElement("br")
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      traits = [
+        { id: "traitCheckbox4", label: "第4重：栄枯盛衰  敵の防御力-30%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "元素爆発（ガンメタル・ウルフバイト）", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
+    }
     else if (selectedCharId == "21")
     {
       traits = [
