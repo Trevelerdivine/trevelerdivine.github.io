@@ -2442,6 +2442,7 @@ class Neuvillette {
       }
 
       dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, sixth_effect_react_rate, sixth_effect_nonreact_rate], 0, 0, 0, 0, 0, 0];
+      console.log(dmg_rate);
       }
 
       else if (attack_method == 16)
@@ -2549,11 +2550,9 @@ class Neuvillette {
     {
       if (attack_method == 6)
       {
-        attckRate = status[0] * (dmg_rate[0][0] + 
-                  dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
+        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] * (dmg_rate[0][1] +
-                  dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
+                  + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
       }
       else
       {
