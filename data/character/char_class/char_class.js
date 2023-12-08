@@ -2421,6 +2421,8 @@ class Neuvillette {
       const talent1_buff = buff_constant[buff_count];
       const attack_count1 = parseInt(document.getElementById("Neuvillette_attack_count1").value);
       const reaction_count1 = parseInt(document.getElementById("Neuvillette_react_count1").value);
+      let sixth_effect_react_rate = 0;
+      let sixth_effect_nonreact_rate = 0;
 
       if (this.char_constellations > 1)
       {
@@ -2434,11 +2436,12 @@ class Neuvillette {
       {
         const attack_count2 = parseInt(document.getElementById("Neuvillette_attack_count2").value);
         const reaction_count2 = parseInt(document.getElementById("Neuvillette_react_count2").value);
-        elm_react_dmgrate = talent1_buff * reaction_count1 * 0.1
-        elm_nonreact_dmgrate = talent1_buff * (attack_count1 - reaction_count1) * 0.1;
+        
+        sixth_effect_react_rate += talent1_buff * reaction_count2 * 0.1
+        sixth_effect_nonreact_rate += talent1_buff * (attack_count2 - reaction_count2) * 0.1;
       }
 
-      dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+      dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, sixth_effect_react_rate, sixth_effect_nonreact_rate], 0, 0, 0, 0, 0, 0];
       }
 
       else if (attack_method == 16)
@@ -2544,13 +2547,35 @@ class Neuvillette {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = status[0] * dmg_rate[0][0];
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                + status[0] * dmg_rate[0][1];
+      if (attack_method == 6)
+      {
+        attckRate = status[0] * (dmg_rate[0][0] + 
+                  dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6]))
+                                 * (1 + status[7] - this.talent2_buff) / (1 + status[7]));
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * (dmg_rate[0][1] +
+                  dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6]))
+                  * (1 + status[7] - this.talent2_buff) / (1 + status[7]));
+      }
+      else
+      {
+        attckRate = status[0] * dmg_rate[0][0];
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[0] * dmg_rate[0][1];
+      }
     }
     else
     {
-      basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
+      if (attack_method == 6) 
+      {
+        basicDmg = status[0] * ((dmg_rate[0][0] + dmg_rate[0][1]) + 
+        (dmg_rate[0][2] + dmg_rate[0][3]) * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6]))
+        * (1 + status[7] - this.talent2_buff) / (1 + status[7]));
+      }
+      else
+      {
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
+      }
     }
     return basicDmg;
   }
