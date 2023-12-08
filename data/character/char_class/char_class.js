@@ -2416,7 +2416,7 @@ class Neuvillette {
     let elm_nonreact_dmgrate = 0;
   
     if (attack_method == 6) {
-      let buff_constant = [0, 1.1, 1.25, 1.6];
+      let buff_constant = [1, 1.1, 1.25, 1.6];
       let buff_count = parseInt(document.getElementById("Neuvillette_talent1_count").value);
       const talent1_buff = buff_constant[buff_count];
       const attack_count1 = parseInt(document.getElementById("Neuvillette_attack_count1").value);
@@ -2550,9 +2550,9 @@ class Neuvillette {
     {
       if (attack_method == 6)
       {
-        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
+        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff)) / (1 + status[5] * status[6]));
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
+                  + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff)) / (1 + status[5] * status[6]));
       }
       else
       {
@@ -2566,7 +2566,7 @@ class Neuvillette {
       if (attack_method == 6) 
       {
         basicDmg = status[0] * ((dmg_rate[0][0] + dmg_rate[0][1]) + 
-        (dmg_rate[0][2] + dmg_rate[0][3]) * (1 + status[5] * (status[6] - this.second_conste_buff) / (1 + status[5] * status[6])));
+        (dmg_rate[0][2] + dmg_rate[0][3]) * (1 + status[5] * (status[6] - this.second_conste_buff)) / (1 + status[5] * status[6]));
       }
       else
       {
