@@ -2455,10 +2455,10 @@ class KeyofKhajNisut {
   }
 
   calculate_weapon_result_elm(fixstatus,status) {
-    let elm_buff = 0.0003 * (this.weapon_rank + 3) * this.buff_count * status[0]
+    let elm_buff = 0.0003 * (this.weapon_rank + 3) * this.buff_count * status[0];
     if (this.buff_count == 3)
     {
-      elm_buff += 0.0005 * (this.weapon_rank + 3) * this.buff_count * status[0]
+      elm_buff += 0.0005 * (this.weapon_rank + 3) * status[0];
     }
     return elm_buff;
   }
