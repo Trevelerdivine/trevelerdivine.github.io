@@ -3547,15 +3547,6 @@ class Wriothesley {
 
     const talent2_count = parseInt(document.getElementById("Wriothesley_talent2").value);
     this.talent2_buff = 0.06 * talent2_count;
-
-    if (this.char_constellations > 2)
-    {
-      const fourth_conste_check = document.getElementById("traitCheckbox4");
-      if (fourth_conste_check.checked)
-      {
-        this.fourth_conste_buff = 0.3;
-      }
-    }
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
