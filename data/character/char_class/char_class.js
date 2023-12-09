@@ -3544,6 +3544,17 @@ class Wriothesley {
     const response = await fetch("./data/character/char_data/Wriothesley.json");
     const data = await response.json();
 
+    const talent2_count = parseInt(document.getElementById("Wriothesley_talent2"));
+    this.talent2_buff = 0.06 * talent2_count;
+
+    if (this.char_constellations > 2)
+    {
+      const fourth_conste_check = document.getElementById("traitCheckbox4");
+      if (fourth_conste_check.checked)
+      {
+        this.fourth_conste_buff = 0.3;
+      }
+    }
   
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
@@ -3568,8 +3579,12 @@ class Wriothesley {
 
         const skill_level = parseInt(document.getElementById("Wriothesley_skill_level").value);
         const skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][skill_level]);
-        elm_react_dmgrate *= skill_buff;
-        elm_nonreact_dmgrate *= skill_buff;
+        const skill_effect_check = document.getElementById("skill_flag");
+        if (skill_effect_check.checked)
+        {
+          elm_react_dmgrate *= skill_buff;
+          elm_nonreact_dmgrate *= skill_buff;
+        }
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     } else if (attack_method == 6) {
@@ -3583,8 +3598,8 @@ class Wriothesley {
         elm_nonreact.push(checkbox.checked ? 0 : 1);
       });
         for (let i = 0; i < 1; i++) {
-          elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          elm_react_dmgrate += elm_react[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
@@ -3596,9 +3611,9 @@ class Wriothesley {
       const react_count2 = parseInt(document.getElementById("Wriothesley_melt_count2").value);
 
       elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count1;
-                         + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count3;
+                         + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count2;
       elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count1 - react_count1);
-                            + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count3 - react_count3);
+                            + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count2 - react_count2);
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
     return dmg_rate;
@@ -3613,7 +3628,7 @@ class Wriothesley {
   }
 
   calculate_char_fixed_attck(fixstatus,status) {
-    return 0;
+    return this.talent2_buff * this.base_status_array[4];
   }
 
   calculate_char_result_attck(fixstatus,status) {
