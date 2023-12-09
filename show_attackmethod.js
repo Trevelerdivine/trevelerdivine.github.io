@@ -1304,11 +1304,9 @@ async function show_attack_method()
   }
   else if (selectedCharId == "73")
   {
-    let kamisatoayaka_talent;
     let elementsToAddToCharTalent;
     if (attack_method == 1)
     {
-
       options = [
         { text: "１段目", value: "0", checked: true },
         { text: "２段目", value: "1" },
@@ -1321,18 +1319,28 @@ async function show_attack_method()
     }
     else if (attack_method == 6)
     {
+      elementsToAddToCharTalent = [
+        createCheckbox("Wriothesley_talent1", true),
+        createLabel("Wriothesley_talent1", "　恩典の戒め"),
+        document.createElement("br"),
+      ];
 
+      elementsToAddToCharTalent.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      elementsToAddToCharTalent = [
+        createLabel("Wriothesley_skill_level", "　元素スキル天賦レベル"),
+        createSelectList("Wriothesley_skill_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
+      ];
+
+      elementsToAddToCharTalent.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
     }
     else if (attack_method == 21)
     {
-      kamisatoayaka_talent = [
-        createCheckbox("kamisatoayaka_talent2", true),
-        createLabel("kamisatoayaka_talent2", "固有天賦2：寒空の宣命祝詞 氷元素ダメージ+18%"),
-        document.createElement("br"),
-      ];
-      kamisatoayaka_talent.forEach(element => {
-        temporary_char_talent.appendChild(element);
-      });
       elementsToAddToCharTalent = [
         createLabel("kamisatoayaka_attack_count1", "　スキルヒット回数："),
         createSelectList("kamisatoayaka_attack_count1", 0, 5, "", "回", 5),
