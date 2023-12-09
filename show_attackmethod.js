@@ -1307,6 +1307,15 @@ async function show_attack_method()
     let elementsToAddToCharTalent;
     if (attack_method == 1)
     {
+      elementsToAddToCharTalent = [
+        createLabel("Wriothesley_skill_level", "　元素スキル天賦レベル"),
+        createSelectList("Wriothesley_skill_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
+      ];
+
+      elementsToAddToCharTalent.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
       options = [
         { text: "１段目", value: "0", checked: true },
         { text: "２段目", value: "1" },
@@ -1328,25 +1337,19 @@ async function show_attack_method()
       elementsToAddToCharTalent.forEach(element => {
         attack_method_prop.appendChild(element);
       });
-
-      elementsToAddToCharTalent = [
-        createLabel("Wriothesley_skill_level", "　元素スキル天賦レベル"),
-        createSelectList("Wriothesley_skill_level", 1, 13, "Lv.", "", 8),
-        document.createElement("br"),
+      options = [
+        { text: "重撃", value: "0", checked: true },
       ];
-
-      elementsToAddToCharTalent.forEach(element => {
-        temporary_char_talent.appendChild(element);
-      });
+      createCheckboxList_br(options);
     }
     else if (attack_method == 21)
     {
       elementsToAddToCharTalent = [
-        createLabel("kamisatoayaka_attack_count1", "　スキルヒット回数："),
-        createSelectList("kamisatoayaka_attack_count1", 0, 5, "", "回", 5),
+        createLabel("Wriothesley_attack_count1", "　スキルヒット回数："),
+        createSelectList("Wriothesley_attack_count1", 0, 5, "", "回", 5),
         document.createElement("br"),
-        createLabel("kamisatoayaka_attack_count2", "　迸発の刃ヒット回数："),
-        createSelectList("kamisatoayaka_attack_count3", 0, 1, "", "回", 1),
+        createLabel("Wriothesley_attack_count1", "　迸発の刃ヒット回数："),
+        createSelectList("Wriothesley_attack_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       elementsToAddToCharTalent.forEach(element => {
@@ -1354,11 +1357,11 @@ async function show_attack_method()
       });
 
       elementsToAddToCharTalent = [
-        createLabel("kamisatoayaka_melt_count1", "　スキル溶解回数："),
-        createSelectList("kamisatoayaka_melt_count1", 0, 5, "", "回", 2),
+        createLabel("Wriothesley_melt_count1", "　スキル溶解回数："),
+        createSelectList("Wriothesley_melt_count1", 0, 5, "", "回", 2),
         document.createElement("br"),
-        createLabel("kamisatoayaka_melt_count2", "　迸発の刃ヒット回数："),
-        createSelectList("kamisatoayaka_melt_count3", 0, 1, "", "回", 1),
+        createLabel("Wriothesley_melt_count2", "　迸発の刃ヒット回数："),
+        createSelectList("Wriothesley_melt_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       elementsToAddToCharTalent.forEach(element => {
