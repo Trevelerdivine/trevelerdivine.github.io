@@ -2602,6 +2602,7 @@ class FreedomSworn {
     if (buff_check.checked)
     {
       this.attack_buff = 0.05 * buff_count * (this.weapon_rank + 3);
+      if (attack_method_index == 0 || attack_method_index == 1 || attack_method_index == 2)
       this.dmg_buff += 0.04 * (this.weapon_rank + 3);
     }
   }
