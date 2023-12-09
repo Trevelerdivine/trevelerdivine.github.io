@@ -3628,6 +3628,7 @@ class Wriothesley {
       elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count1 - react_count1);
                             + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count2 - react_count2);
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      console.log(dmg_rate);
     }
     return dmg_rate;
   }
