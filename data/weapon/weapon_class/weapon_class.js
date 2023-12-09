@@ -2455,7 +2455,12 @@ class KeyofKhajNisut {
   }
 
   calculate_weapon_result_elm(fixstatus,status) {
-    return 0.0003 * (this.weapon_rank + 3) * this.buff_count * status[0];
+    let elm_buff = 0.0003 * (this.weapon_rank + 3) * this.buff_count * status[0]
+    if (this.buff_count == 3)
+    {
+      elm_buff += 0.0005 * (this.weapon_rank + 3) * this.buff_count * status[0]
+    }
+    return elm_buff;
   }
 
   calculate_weapon_fixed_elm_charge(fixstatus,status) {
@@ -2584,7 +2589,7 @@ class FreedomSworn {
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.attack_buff = 0;
     this.dmg_buff = 0.025 * (this.weapon_rank + 3);
-    const buff_check = parseInt(document.getElementById("FreedomSworn_buff_check").value);
+    const buff_check = document.getElementById("FreedomSworn_buff_check");
     if (buff_check.checked)
     {
       this.attack_buff = 0.05 * buff_count * (this.weapon_rank + 3);
