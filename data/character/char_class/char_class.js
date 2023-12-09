@@ -3524,7 +3524,6 @@ class Wriothesley {
     this.base_status_array = base_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
-    this.first_conste_buff = 0;
     this.second_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
@@ -3604,18 +3603,30 @@ class Wriothesley {
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
 
-      if (this.char_constellations > 0)
+      const talent2_check = document.getElementById("Wriothesley_talent1");
+      if (talent2_check.checked)
       {
-        this.talent1_buff = 2
-      }
-      else
-      {
-        this.talent1_buff = 0.5
+        if (this.char_constellations > 0)
+        {
+          this.talent1_buff = 2
+        }
+        else
+        {
+          this.talent1_buff = 0.5
+        }
+        if (this.char_constellations == 4)
+        {
+          this.sixth_conste_buff = 0.1
+        }
       }
 
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
      else if (attack_method == 21) {
+      if (this.char_constellations > 1)
+      {
+        this.second_conste_buff = talent2_count * 0.4;
+      }
       const attack_count1 = parseInt(document.getElementById("Wriothesley_attack_count1").value);
       const attack_count2 = parseInt(document.getElementById("Wriothesley_attack_count2").value);
       const react_count1 = parseInt(document.getElementById("Wriothesley_melt_count1").value);
@@ -3671,7 +3682,7 @@ class Wriothesley {
   }
 
   calculate_char_fixed_cr(fixstatus,status) {
-    return 0;
+    return this.sixth_conste_buff;
   }
 
   calculate_char_result_cr(fixstatus,status) {
@@ -3679,7 +3690,7 @@ class Wriothesley {
   }
 
   calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
+    return this.sixth_conste_buff * 8;
   }
 
   calculate_char_result_cd(fixstatus,status) {
@@ -3687,7 +3698,7 @@ class Wriothesley {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-      return this.talent1_buff;
+      return this.talent1_buff + this.second_conste_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {

@@ -782,7 +782,7 @@ async function show_char_statsform()
     {
       elementsToAddToCharTalent = [
         createCheckbox("skill_flag", true),
-        createLabel("skill_flag", "HP50%以上"),
+        createLabel("skill_flag", "烈霜の懲戒：HP50%以上"),
         document.createElement("br"),
         createLabel("Wriothesley_talent2", "固有天賦2：抵罪の赦免 "),
         createSelectList("Wriothesley_talent2", 0, 5, "", "層", 5),
