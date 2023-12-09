@@ -3524,7 +3524,9 @@ class Wriothesley {
     this.base_status_array = base_status_array;
     this.parameter = parameter;
     this.talent1effect = 0;
-    this.fourth_conste_buff = 0;
+    this.first_conste_buff = 0;
+    this.second_conste_buff = 0;
+    this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
@@ -3602,6 +3604,15 @@ class Wriothesley {
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
 
+      if (this.char_constellations > 0)
+      {
+        this.talent1_buff = 2
+      }
+      else
+      {
+        this.talent1_buff = 0.5
+      }
+
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
      else if (attack_method == 21) {
@@ -3676,7 +3687,7 @@ class Wriothesley {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-      return 0;
+      return this.talent1_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
