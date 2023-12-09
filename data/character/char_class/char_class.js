@@ -3546,7 +3546,7 @@ class Wriothesley {
     const response = await fetch("./data/character/char_data/Wriothesley.json");
     const data = await response.json();
 
-    const talent2_count = parseInt(document.getElementById("Wriothesley_talent2"));
+    const talent2_count = parseInt(document.getElementById("Wriothesley_talent2").value);
     this.talent2_buff = 0.06 * talent2_count;
 
     if (this.char_constellations > 2)
