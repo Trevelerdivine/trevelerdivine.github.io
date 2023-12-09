@@ -562,6 +562,9 @@ async function create_weapon_instance(base_status) {
     case "6":
       weapon_instance = new SummitShaper(base_status);
       break;
+    case "7":
+    weapon_instance = new SkywardBlade(base_status);
+    break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);
       break;
