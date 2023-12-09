@@ -2423,7 +2423,7 @@ class KeyofKhajNisut {
   constructor(base_status_array) {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.buff_count = parseInt(document.getElementById("KeyofKhajNisut").value);
+    this.buff_count = parseInt(document.getElementById("KeyofKhajNisut_count").value);
   }
 
   calculate_weapon_fixed_hp(fixstatus,status) {

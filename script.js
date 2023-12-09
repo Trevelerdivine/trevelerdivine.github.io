@@ -547,6 +547,9 @@ async function create_weapon_instance(base_status) {
     case "1":
       weapon_instance = new KeyofKhajNisut(base_status);
       break;
+    case "2":
+      weapon_instance = new HaranGeppakuFutsu(base_status);
+      break;
     case "3":
       weapon_instance = new MistsplitterReforged(base_status);
       break;
