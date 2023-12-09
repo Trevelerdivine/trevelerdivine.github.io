@@ -142,7 +142,12 @@ async function calculate_weapon_base_status()
   const weapon_base_elm_charge = data.ステータス.基礎元素チャージ効率[weapon_level];
   const weapon_base_cr = data.ステータス.基礎会心率[weapon_level];
   const weapon_base_cd = data.ステータス.基礎会心ダメージ[weapon_level];
-  const weapon_base_dmg_buff = data.ステータス.基礎ダメージバフ[weapon_level];
+  const dmg_buff_type = parseInt(data.ステータス.基礎ダメージバフ.元素);
+  let weapon_base_dmg_buff = 0;
+  if (dmg_buff_type == char_propaty[0])
+  {
+    weapon_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ.数値[weapon_level]);
+  }
   weapon_depend_status = data.ステータス.依存ステータス;
   weapon_base_status = [weapon_base_hp, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_attck, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
   return weapon_base_status;
@@ -565,6 +570,9 @@ async function create_weapon_instance(base_status) {
     case "7":
     weapon_instance = new SkywardBlade(base_status);
     break;
+    case "8":
+      weapon_instance = new AquilaFavonia(base_status);
+      break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);
       break;
