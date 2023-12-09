@@ -155,7 +155,7 @@ async function show_weapon_statsform() {
         label: "波乱月白経津：波乱 "
       }
     ];
-        const KeyofKhajNisut = createweaponSelectList("HaranGeppakuFutsu_count", 0, 3, "", "層", 3);
+        const KeyofKhajNisut = createweaponSelectList("HaranGeppakuFutsu_count", 0, 2, "", "層", 2);
         const traitLabel = document.createElement("label");
         traitLabel.htmlFor = traits[0].id;
         traitLabel.textContent = traits[0].label;
