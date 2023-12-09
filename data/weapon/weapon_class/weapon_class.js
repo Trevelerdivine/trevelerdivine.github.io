@@ -2504,7 +2504,7 @@ class HaranGeppakuFutsu {
     this.dmg_buff = 0.03 * (this.weapon_rank + 3);
     if (attack_method_index == 0)
     {
-      this.dmg_buff = 0.05 * buff_count * (this.weapon_rank + 3);
+      this.dmg_buff += 0.05 * buff_count * (this.weapon_rank + 3);
     }
   }
 
@@ -2518,6 +2518,90 @@ class HaranGeppakuFutsu {
 
   calculate_weapon_fixed_attck(fixstatus,status) {
     return 0;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    return this.dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
+
+class FreedomSworn {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.attack_buff = 0;
+    this.dmg_buff = 0.025 * (this.weapon_rank + 3);
+    const buff_check = parseInt(document.getElementById("FreedomSworn_buff_check").value);
+    if (buff_check.checked)
+    {
+      this.attack_buff = 0.05 * buff_count * (this.weapon_rank + 3);
+      this.dmg_buff += 0.04 * (this.weapon_rank + 3);
+    }
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return this.base_status_array[4] * this.attack_buff;
   }
 
   calculate_weapon_result_attck(fixstatus,status) {

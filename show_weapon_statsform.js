@@ -109,7 +109,7 @@ async function show_weapon_statsform() {
     buff_group.forEach(element => {
       weaponInfo.appendChild(element);
     });
-      }
+  }
   
   else if (selectedWeaponId == "68") {
     const traits = [
@@ -130,7 +130,7 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitCheckbox);
         weaponInfo.appendChild(traitLabel);
-      }
+  }
 
   else if (selectedWeaponId == "1") {
     const traits = [
@@ -162,12 +162,12 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitLabel);
         weaponInfo.appendChild(KeyofKhajNisut);
-      }
+  }
 
   else if (selectedWeaponId == "3") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "Whiteblind_effect",
         label: "霧切の巴紋: "
       }
     ];
@@ -178,12 +178,23 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitLabel);
         weaponInfo.appendChild(Whiteblind_effect);
-      }
+  }
+
+  else if (selectedWeaponId == "4") {
+    buff_group = [
+      createweaponCheckbox("FreedomSworn_buff_check", true),
+      createweaponLabel("FreedomSworn_buff_check", "蒼古なる自由への誓い：千年の大楽章・抗争の歌"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
 
   else if (selectedWeaponId == "54") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "Whiteblind_effect",
         label: "注入の刃: "
       }
     ];
@@ -201,7 +212,7 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitLabel);
         weaponInfo.appendChild(Whiteblind_effect);
-      }
+  }
 
   else if (selectedWeaponId == "33") {
     const traits = [
@@ -222,7 +233,7 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitCheckbox);        
         weaponInfo.appendChild(traitLabel);
-      }
+  }
 
   else if (selectedWeaponId == "39") {
     const traits = [
@@ -244,7 +255,7 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(traitCheckbox);
     weaponInfo.appendChild(traitLabel);
     weaponInfo.appendChild(document.createElement("br"));
-      }
+  }
 
   else if (selectedWeaponId == "66") {
     const traits = [
@@ -260,7 +271,7 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitLabel);
         weaponInfo.appendChild(StaffoftheScarletSands_effect);
-      }
+  }
 
   else if (selectedWeaponId == "69") {
     const traits = [
@@ -281,7 +292,7 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitCheckbox);
         weaponInfo.appendChild(traitLabel);
-      }
+  }
 
   else if (selectedWeaponId == "88") {
     const traits = [
@@ -302,7 +313,7 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitCheckbox);
         weaponInfo.appendChild(traitLabel);
-      }
+  }
 
   else if (selectedWeaponId == "93") {
     const traits = [

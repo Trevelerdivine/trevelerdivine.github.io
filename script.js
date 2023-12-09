@@ -553,6 +553,9 @@ async function create_weapon_instance(base_status) {
     case "3":
       weapon_instance = new MistsplitterReforged(base_status);
       break;
+    case "4":
+      weapon_instance = new FreedomSworn(base_status);
+      break;
     case "5":
       weapon_instance = new PrimordialJadeCutter(base_status);
       break;
