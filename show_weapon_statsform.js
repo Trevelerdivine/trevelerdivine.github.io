@@ -191,6 +191,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "6") {
+    buff_group = [
+      createweaponCheckbox("SummitShaper_onfield", true),
+      createweaponLabel("SummitShaper_onfield", "シールド状態"),
+      document.createElement("br"),
+      createweaponLabel("SummitShaper", "斬山の刃：攻撃力アップ "),
+      createweaponSelectList("SummitShaper", 0, 5, "", "層", 5),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

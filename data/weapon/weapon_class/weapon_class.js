@@ -2601,7 +2601,7 @@ class FreedomSworn {
     const buff_check = document.getElementById("FreedomSworn_buff_check");
     if (buff_check.checked)
     {
-      this.attack_buff = 0.05 * buff_count * (this.weapon_rank + 3);
+      this.attack_buff = 0.05 * (this.weapon_rank + 3);
       if (attack_method_index == 0 || attack_method_index == 1 || attack_method_index == 2)
       this.dmg_buff += 0.04 * (this.weapon_rank + 3);
     }
@@ -2665,6 +2665,89 @@ class FreedomSworn {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return this.dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
+
+class SummitShaper {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    const buff_count = parseInt(document.getElementById("SummitShaper").value);
+    this.attack_buff = 0.01 * (this.weapon_rank + 3) * buff_count;
+    const buff_check = document.getElementById("SummitShaper_onfield");
+    if (buff_check.checked)
+    {
+      this.attack_buff *= 2;
+    }
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return this.base_status_array[4] * this.attack_buff;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    return 0;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
