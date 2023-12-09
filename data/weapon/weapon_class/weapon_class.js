@@ -1454,6 +1454,11 @@ class MistsplitterReforged {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.weapon_effectcount = parseInt(document.getElementById("Whiteblind_effect").value);
+    this.elmental_flag = 0;
+    if (char_propaty[0] != 7)
+    {
+      this.elmental_flag = 1;
+    }
   }
 
   calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1516,11 +1521,11 @@ class MistsplitterReforged {
     let weapon_fix_dmgbuff = 0;
     if (this.weapon_effectcount != 3)
     {
-      weapon_fix_dmgbuff =  (0.03 + 0.02 * this.weapon_effectcount) * (this.weapon_rank + 3);
+      weapon_fix_dmgbuff =  this.elmental_flag * (0.03 + 0.02 * this.weapon_effectcount) * (this.weapon_rank + 3);
     }
     else
     {
-      weapon_fix_dmgbuff =  (0.1) * (this.weapon_rank + 3);
+      weapon_fix_dmgbuff =  this.elmental_flag * (0.1) * (this.weapon_rank + 3);
     }
 
     return weapon_fix_dmgbuff;
@@ -2506,7 +2511,11 @@ class HaranGeppakuFutsu {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     const buff_count = parseInt(document.getElementById("HaranGeppakuFutsu_count").value);
-    this.dmg_buff = 0.03 * (this.weapon_rank + 3);
+    this.dmg_buff = 0;
+    if (char_propaty[0] != 7)
+    {
+      this.dmg_buff += 0.03 * (this.weapon_rank + 3);
+    }
     if (attack_method_index == 0)
     {
       this.dmg_buff += 0.05 * buff_count * (this.weapon_rank + 3);
