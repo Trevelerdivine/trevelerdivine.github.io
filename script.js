@@ -544,6 +544,9 @@ async function create_char_instance(base_status, parameter) {
 async function create_weapon_instance(base_status) {
   let weapon_instance;
   switch (selectedWeaponId) {
+    case "1":
+      weapon_instance = new KeyofKhajNisut(base_status);
+      break;
     case "3":
       weapon_instance = new MistsplitterReforged(base_status);
       break;
