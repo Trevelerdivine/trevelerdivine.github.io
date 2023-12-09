@@ -135,17 +135,33 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "1") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "KeyofKhajNisut_count",
         label: "聖顕の鍵：壮大な詩篇 "
       }
     ];
-        const Whiteblind_effect = createweaponSelectList("KeyofKhajNisut_count", 0, 3, "", "層", 3);
+        const KeyofKhajNisut_effect = createweaponSelectList("KeyofKhajNisut_count", 0, 3, "", "層", 3);
         const traitLabel = document.createElement("label");
         traitLabel.htmlFor = traits[0].id;
         traitLabel.textContent = traits[0].label;
 
         weaponInfo.appendChild(traitLabel);
-        weaponInfo.appendChild(Whiteblind_effect);
+        weaponInfo.appendChild(KeyofKhajNisut_effect);
+  }
+
+  else if (selectedWeaponId == "2") {
+    const traits = [
+      {
+        id: "HaranGeppakuFutsu_count",
+        label: "波乱月白経津：波乱 "
+      }
+    ];
+        const KeyofKhajNisut = createweaponSelectList("HaranGeppakuFutsu_count", 0, 3, "", "層", 3);
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitLabel);
+        weaponInfo.appendChild(KeyofKhajNisut);
       }
 
   else if (selectedWeaponId == "3") {
