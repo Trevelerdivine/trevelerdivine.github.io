@@ -132,302 +132,319 @@ async function show_weapon_statsform() {
         weaponInfo.appendChild(traitLabel);
       }
 
-      else if (selectedWeaponId == "3") {
-        const traits = [
-          {
-            id: "traitCheckbox",
-            label: "霧切の巴紋: "
-          }
-        ];
-            const Whiteblind_effect = createweaponSelectList("Whiteblind_effect", 0, 3, "", "層", 3);
-            const traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[0].id;
-            traitLabel.textContent = traits[0].label;
+  else if (selectedWeaponId == "1") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "聖顕の鍵：壮大な詩篇 "
+      }
+    ];
+        const Whiteblind_effect = createweaponSelectList("KeyofKhajNisut_count", 0, 3, "", "層", 3);
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitLabel);
+        weaponInfo.appendChild(Whiteblind_effect);
+      }
+
+  else if (selectedWeaponId == "3") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "霧切の巴紋: "
+      }
+    ];
+        const Whiteblind_effect = createweaponSelectList("Whiteblind_effect", 0, 3, "", "層", 3);
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitLabel);
+        weaponInfo.appendChild(Whiteblind_effect);
+      }
+
+  else if (selectedWeaponId == "54") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "注入の刃: "
+      }
+    ];
+        const Whiteblind_effect = createweaponSelectList("Whiteblind_effect", 0, 4, "", "層", 4);
+        const traitCheckbox = document.createElement("input");
+        traitCheckbox.type = "checkbox";
+        traitCheckbox.id = traits[0].id;
+        traitCheckbox.value = traits[0].id;
+        traitCheckbox.checked = true;
+
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+
+        weaponInfo.appendChild(traitLabel);
+        weaponInfo.appendChild(Whiteblind_effect);
+      }
+
+  else if (selectedWeaponId == "33") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "黎明の神剣：HP90以上: "
+      }
+    ];
+        const traitCheckbox = document.createElement("input");
+        traitCheckbox.type = "checkbox";
+        traitCheckbox.id = traits[0].id;
+        traitCheckbox.value = traits[0].id;
+        traitCheckbox.checked = true;
+
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitCheckbox);        
+        weaponInfo.appendChild(traitLabel);
+      }
+
+  else if (selectedWeaponId == "39") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "狼のような狩人: 30%以下の敵"
+      }
+    ];
+    const traitCheckbox = document.createElement("input");
+    traitCheckbox.type = "checkbox";
+    traitCheckbox.id = traits[0].id;
+    traitCheckbox.value = traits[0].id;
+    traitCheckbox.checked = true;
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
+
+    weaponInfo.appendChild(traitCheckbox);
+    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(document.createElement("br"));
+      }
+
+  else if (selectedWeaponId == "66") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "赤砂の夢:"
+      }
+    ];
+        const StaffoftheScarletSands_effect = createweaponSelectList("StaffoftheScarletSands_effect", 0, 3, "", "層", 3);
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitLabel);
+        weaponInfo.appendChild(StaffoftheScarletSands_effect);
+      }
+
+  else if (selectedWeaponId == "69") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "護摩の杖：HP50%未満"
+      }
+    ];
+        const traitCheckbox = document.createElement("input");
+        traitCheckbox.type = "checkbox";
+        traitCheckbox.id = traits[0].id;
+        traitCheckbox.value = traits[0].id;
+        traitCheckbox.checked = true;
+
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitCheckbox);
+        weaponInfo.appendChild(traitLabel);
+      }
+
+  else if (selectedWeaponId == "88") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "匣中滅龍：水元素または炎元素の影響を受けた敵"
+      }
+    ];
+        const traitCheckbox = document.createElement("input");
+        traitCheckbox.type = "checkbox";
+        traitCheckbox.id = traits[0].id;
+        traitCheckbox.value = traits[0].id;
+        traitCheckbox.checked = true;
+
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitCheckbox);
+        weaponInfo.appendChild(traitLabel);
+      }
+
+  else if (selectedWeaponId == "93") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "若水：周囲に敵がいる"
+      }
+    ];
+
+    const traitCheckbox = document.createElement("input");
+    traitCheckbox.type = "checkbox";
+    traitCheckbox.id = traits[0].id;
+    traitCheckbox.value = traits[0].id;
+    traitCheckbox.checked = true;
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
+
+    weaponInfo.appendChild(traitCheckbox);
+    weaponInfo.appendChild(traitLabel);
+  }
+
+  else if (selectedWeaponId == "94") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "冬極の白星：白夜極星　"
+      }
+    ];
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
+
+    const selectlist = createweaponSelectList("PolarStar_count", 0, 4, "", "層", 4);
     
-            weaponInfo.appendChild(traitLabel);
-            weaponInfo.appendChild(Whiteblind_effect);
-          }
+    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(selectlist);
+  }
 
-      else if (selectedWeaponId == "54") {
-        const traits = [
-          {
-            id: "traitCheckbox",
-            label: "注入の刃: "
-          }
-        ];
-            const Whiteblind_effect = createweaponSelectList("Whiteblind_effect", 0, 4, "", "層", 4);
-            const traitCheckbox = document.createElement("input");
-            traitCheckbox.type = "checkbox";
-            traitCheckbox.id = traits[0].id;
-            traitCheckbox.value = traits[0].id;
-            traitCheckbox.checked = true;
+  else if (selectedWeaponId == "95") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "飛雷の鳴弦：飛雷の巴紋　"
+      }
+    ];
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
+
+    const selectlist = createweaponSelectList("ThunderingPulse_count", 0, 3, "", "層", 3);
     
-            const traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[0].id;
-            traitLabel.textContent = traits[0].label;
+    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(selectlist);
+  }
 
+  else if (selectedWeaponId == "120") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "弾弓：0.3秒以内に敵に命中"
+      }
+    ];
+    const traitCheckbox = document.createElement("input");
+    traitCheckbox.type = "checkbox";
+    traitCheckbox.id = traits[0].id;
+    traitCheckbox.value = traits[0].id;
+    traitCheckbox.checked = true;
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
     
-            weaponInfo.appendChild(traitLabel);
-            weaponInfo.appendChild(Whiteblind_effect);
-          }
+    weaponInfo.appendChild(traitCheckbox);
+    weaponInfo.appendChild(traitLabel);
+  }
 
-          else if (selectedWeaponId == "33") {
-            const traits = [
-              {
-                id: "traitCheckbox",
-                label: "黎明の神剣：HP90以上: "
-              }
-            ];
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
+  else if (selectedWeaponId == "128") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "神楽の真意：神楽舞　"
+      }
+    ];
+    const traitCheckbox = document.createElement("input");
+    traitCheckbox.type = "checkbox";
+    traitCheckbox.id = traits[0].id;
+    traitCheckbox.value = traits[0].id;
+    traitCheckbox.checked = true;
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
     
-                weaponInfo.appendChild(traitCheckbox);        
-                weaponInfo.appendChild(traitLabel);
-              }
+    const selectlist = createweaponSelectList("KagurasVerity_buff", 0, 3, "", "層", 3);
 
-          else if (selectedWeaponId == "39") {
-            const traits = [
-              {
-                id: "traitCheckbox",
-                label: "狼のような狩人: 30%以下の敵"
-              }
-            ];
-            const traitCheckbox = document.createElement("input");
-            traitCheckbox.type = "checkbox";
-            traitCheckbox.id = traits[0].id;
-            traitCheckbox.value = traits[0].id;
-            traitCheckbox.checked = true;
+    weaponInfo.appendChild(traitCheckbox);
+    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(selectlist);
+  }
+
+  else if (selectedWeaponId == "131") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "四風原典：元素ダメージバフ　"
+      }
+    ];
+    const traitCheckbox = document.createElement("input");
+    traitCheckbox.type = "checkbox";
+    traitCheckbox.id = traits[0].id;
+    traitCheckbox.value = traits[0].id;
+    traitCheckbox.checked = true;
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
     
-            const traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[0].id;
-            traitLabel.textContent = traits[0].label;
+    const selectlist = createweaponSelectList("bursLostPrayertotheSacredWindst_buff", 0, 4, "", "重", 4);
+
+    weaponInfo.appendChild(traitCheckbox);
+    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(selectlist);
+  }
+
+  else if (selectedWeaponId == "150") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "流浪楽章：バフの種類　"
+      }
+    ];
+
+    const traitLabel = document.createElement("label");
+    traitLabel.textContent = traits[0].label;
     
-            weaponInfo.appendChild(traitCheckbox);
-            weaponInfo.appendChild(traitLabel);
-            weaponInfo.appendChild(document.createElement("br"));
-              }
+    const selectList = document.createElement("select");
+    selectList.id = "TheWidsith_buff";
+    const buff_kind = ["攻撃力%", "元素ダメージバフ", "元素熟知"]; 
+  
+    for (let j = 0; j <=2; j++) {
+      const option = document.createElement("option");
+      option.value = j;
+      option.text = `${buff_kind[j]}`;
+      
+      if (j == 1) {
+        option.selected = true;
+      }
+      selectList.appendChild(option);
+    }
+    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(selectList);
+  }
 
-          else if (selectedWeaponId == "66") {
-            const traits = [
-              {
-                id: "traitCheckbox",
-                label: "赤砂の夢:"
-              }
-            ];
-                const StaffoftheScarletSands_effect = createweaponSelectList("StaffoftheScarletSands_effect", 0, 3, "", "層", 3);
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-        
-                weaponInfo.appendChild(traitLabel);
-                weaponInfo.appendChild(StaffoftheScarletSands_effect);
-              }
-
-          else if (selectedWeaponId == "69") {
-            const traits = [
-              {
-                id: "traitCheckbox",
-                label: "護摩の杖：HP50%未満"
-              }
-            ];
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-        
-                weaponInfo.appendChild(traitCheckbox);
-                weaponInfo.appendChild(traitLabel);
-              }
-
-          else if (selectedWeaponId == "88") {
-            const traits = [
-              {
-                id: "traitCheckbox",
-                label: "匣中滅龍：水元素または炎元素の影響を受けた敵"
-              }
-            ];
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-        
-                weaponInfo.appendChild(traitCheckbox);
-                weaponInfo.appendChild(traitLabel);
-              }
-              else if (selectedWeaponId == "93") {
-                const traits = [
-                  {
-                    id: "traitCheckbox",
-                    label: "若水：周囲に敵がいる"
-                  }
-                ];
-        
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-        
-                weaponInfo.appendChild(traitCheckbox);
-                weaponInfo.appendChild(traitLabel);
-              }
-
-              else if (selectedWeaponId == "94") {
-                const traits = [
-                  {
-                    id: "traitCheckbox",
-                    label: "冬極の白星：白夜極星　"
-                  }
-                ];
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-
-                const selectlist = createweaponSelectList("PolarStar_count", 0, 4, "", "層", 4);
-                
-                weaponInfo.appendChild(traitLabel);
-                weaponInfo.appendChild(selectlist);
-              }
-
-              else if (selectedWeaponId == "95") {
-                const traits = [
-                  {
-                    id: "traitCheckbox",
-                    label: "飛雷の鳴弦：飛雷の巴紋　"
-                  }
-                ];
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-
-                const selectlist = createweaponSelectList("ThunderingPulse_count", 0, 3, "", "層", 3);
-                
-                weaponInfo.appendChild(traitLabel);
-                weaponInfo.appendChild(selectlist);
-              }
-
-              else if (selectedWeaponId == "120") {
-                const traits = [
-                  {
-                    id: "traitCheckbox",
-                    label: "弾弓：0.3秒以内に敵に命中"
-                  }
-                ];
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-                
-                weaponInfo.appendChild(traitCheckbox);
-                weaponInfo.appendChild(traitLabel);
-              }
-
-              else if (selectedWeaponId == "128") {
-                const traits = [
-                  {
-                    id: "traitCheckbox",
-                    label: "神楽の真意：神楽舞　"
-                  }
-                ];
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-                
-                const selectlist = createweaponSelectList("KagurasVerity_buff", 0, 3, "", "層", 3);
-        
-                weaponInfo.appendChild(traitCheckbox);
-                weaponInfo.appendChild(traitLabel);
-                weaponInfo.appendChild(selectlist);
-              }
-
-              else if (selectedWeaponId == "131") {
-                const traits = [
-                  {
-                    id: "traitCheckbox",
-                    label: "四風原典：元素ダメージバフ　"
-                  }
-                ];
-                const traitCheckbox = document.createElement("input");
-                traitCheckbox.type = "checkbox";
-                traitCheckbox.id = traits[0].id;
-                traitCheckbox.value = traits[0].id;
-                traitCheckbox.checked = true;
-        
-                const traitLabel = document.createElement("label");
-                traitLabel.htmlFor = traits[0].id;
-                traitLabel.textContent = traits[0].label;
-                
-                const selectlist = createweaponSelectList("bursLostPrayertotheSacredWindst_buff", 0, 4, "", "重", 4);
-        
-                weaponInfo.appendChild(traitCheckbox);
-                weaponInfo.appendChild(traitLabel);
-                weaponInfo.appendChild(selectlist);
-              }
-
-              else if (selectedWeaponId == "150") {
-                const traits = [
-                  {
-                    id: "traitCheckbox",
-                    label: "流浪楽章：バフの種類　"
-                  }
-                ];
-            
-                const traitLabel = document.createElement("label");
-                traitLabel.textContent = traits[0].label;
-                
-                const selectList = document.createElement("select");
-                selectList.id = "TheWidsith_buff";
-                const buff_kind = ["攻撃力%", "元素ダメージバフ", "元素熟知"]; 
-              
-                for (let j = 0; j <=2; j++) {
-                  const option = document.createElement("option");
-                  option.value = j;
-                  option.text = `${buff_kind[j]}`;
-                  
-                  if (j == 1) {
-                    option.selected = true;
-                  }
-                  selectList.appendChild(option);
-                }
-                weaponInfo.appendChild(traitLabel);
-                weaponInfo.appendChild(selectList);
-              }
-
-          showFormElements();
+  showFormElements();
 }
 
 function createweaponCheckbox(id, checked)
