@@ -2852,7 +2852,7 @@ class AquilaFavonia {
   }
 
   calculate_weapon_fixed_attck(fixstatus,status) {
-    return this.base_status_array * this.attack_buff;
+    return this.base_status_array[4] * this.attack_buff;
   }
 
   calculate_weapon_result_attck(fixstatus,status) {

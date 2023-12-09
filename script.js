@@ -420,10 +420,10 @@ async function create_char_instance(base_status, parameter) {
       break;
     case "10":
       char_instance = new amber(base_status, parameter);
-    break;
+      break;
     case "74":
     char_instance = new Furina(base_status, parameter);
-    break;
+      break;
     case "72":
       char_instance = new Neuvillette(base_status, parameter);
       break;
@@ -568,8 +568,8 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new SummitShaper(base_status);
       break;
     case "7":
-    weapon_instance = new SkywardBlade(base_status);
-    break;
+      weapon_instance = new SkywardBlade(base_status);
+      break;
     case "8":
       weapon_instance = new AquilaFavonia(base_status);
       break;
