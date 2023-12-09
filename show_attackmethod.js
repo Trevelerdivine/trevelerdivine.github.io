@@ -1348,8 +1348,8 @@ async function show_attack_method()
         createLabel("Wriothesley_attack_count1", "　スキルヒット回数："),
         createSelectList("Wriothesley_attack_count1", 0, 5, "", "回", 5),
         document.createElement("br"),
-        createLabel("Wriothesley_attack_count1", "　迸発の刃ヒット回数："),
-        createSelectList("Wriothesley_attack_count1", 0, 1, "", "回", 1),
+        createLabel("Wriothesley_attack_count2", "　迸発の刃ヒット回数："),
+        createSelectList("Wriothesley_attack_count2", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       elementsToAddToCharTalent.forEach(element => {
