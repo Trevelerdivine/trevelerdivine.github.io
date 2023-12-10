@@ -245,6 +245,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "12") {
+    buff_group = [
+      createweaponCheckbox("FinaleoftheDeep_attack_buff", true),
+      createweaponLabel("FinaleoftheDeep_attack_buff", "海淵のフィナーレ：攻撃力アップ "),
+      document.createElement("br"),
+      createweaponCheckbox("FinaleoftheDeep_effect", true),
+      createweaponLabel("FinaleoftheDeep_effect", "海淵のフィナーレ：命の契約 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
