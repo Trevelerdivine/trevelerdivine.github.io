@@ -639,6 +639,9 @@ async function create_weapon_instance(base_status) {
     case "30":
       weapon_instance = new SkyriderSword(base_status);
       break;
+    case "31":
+      weapon_instance = new FilletBlade(base_status);
+      break;
     case "33":
       weapon_instance = new HarbingerofDawn(base_status);
       break;
