@@ -356,6 +356,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "26") {
+    buff_group = [
+      createweaponLabel("RoyalLongsword_buff", "旧貴族長剣：会心率アップ "),
+      createweaponSelectList("RoyalLongsword_buff", 0, 5, "", "重", 5),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
