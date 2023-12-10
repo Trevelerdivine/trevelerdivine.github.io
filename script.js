@@ -609,6 +609,9 @@ async function create_weapon_instance(base_status) {
     case "20":
       weapon_instance = new FesteringDesire(base_status);
       break;
+    case "21":
+      weapon_instance = new TheBlackSword(base_status);
+      break;
     case "27":
       weapon_instance = new SacrificialSword(base_status);
       break;
