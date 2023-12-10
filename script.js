@@ -630,8 +630,11 @@ async function create_weapon_instance(base_status) {
     case "27":
       weapon_instance = new SacrificialSword(base_status);
       break;
+    case "28":
+      weapon_instance = new SacrificialSword(base_status);
+      break;
     case "29":
-      weapon_instance = new FavoniusSword(base_status);
+      weapon_instance = new TheFlute(base_status);
       break;
     case "33":
       weapon_instance = new HarbingerofDawn(base_status);
