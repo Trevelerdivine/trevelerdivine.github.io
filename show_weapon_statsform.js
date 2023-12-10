@@ -308,6 +308,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "22") {
+    buff_group = [
+      createweaponLabel("BlackcliffLongsword_buff", "黒岩の長剣：攻撃力アップ "),
+      createweaponSelectList("BlackcliffLongsword_buff", 0, 3, "", "層", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
