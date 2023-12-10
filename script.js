@@ -45,7 +45,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "Lyney", "Neuvillette", "Wriothesley", "Furina"
                   ];
 const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
-"WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "Xiphos'Moonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
+"WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
 "FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "Lion'sRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
 "SkyriderSword", "FilletBlade", "Traveler'sHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "WolfsGravestone",
 "SkywardPride", "PortablePowerSaw", "TalkingStick", "TidalShadow", "MailedFlower", "MakhairaAquamarine", "ForestRegalia", "Akuoumaru", "LuxuriousSeaLoad", "KatsuragikiriNagamasa",
@@ -586,7 +586,10 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new FinaleoftheDeep(base_status);
       break;
     case "13":
-    weapon_instance = new ToukabouShigure(base_status);
+      weapon_instance = new ToukabouShigure(base_status);
+      break;
+    case "14":
+      weapon_instance = new XiphosMoonlight(base_status);
       break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);
