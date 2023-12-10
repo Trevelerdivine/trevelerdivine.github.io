@@ -272,6 +272,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "15") {
+    buff_group = [
+      createweaponCheckbox("SapwoodBlade_buff", true),
+      createweaponLabel("SapwoodBlade_buff", "原木刀：唯識の葉 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

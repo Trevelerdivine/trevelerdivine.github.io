@@ -591,6 +591,9 @@ async function create_weapon_instance(base_status) {
     case "14":
       weapon_instance = new XiphosMoonlight(base_status);
       break;
+    case "15":
+      weapon_instance = new SapwoodBlade(base_status);
+      break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);
       break;
