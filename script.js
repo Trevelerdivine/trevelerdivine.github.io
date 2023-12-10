@@ -44,7 +44,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo",
                    "Lyney", "Neuvillette", "Wriothesley", "Furina"
                   ];
-const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhand'sAssistant",
+const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
 "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "Xiphos'Moonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
 "FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "Lion'sRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
 "SkyriderSword", "FilletBlade", "Traveler'sHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "WolfsGravestone",
@@ -572,6 +572,9 @@ async function create_weapon_instance(base_status) {
       break;
     case "8":
       weapon_instance = new AquilaFavonia(base_status);
+      break;
+    case "9":
+      weapon_instance = new TheDockhandsAssistant(base_status);
       break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);

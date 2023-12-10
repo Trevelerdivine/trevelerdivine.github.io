@@ -206,6 +206,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "9") {
+    buff_group = [
+      createweaponLabel("TheDockhandsAssistant", "船渠剣：消費強靭マーク "),
+      createweaponSelectList("TheDockhandsAssistant", 0, 3, "", "枚", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
