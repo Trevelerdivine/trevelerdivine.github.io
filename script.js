@@ -47,7 +47,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
 const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
 "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
 "FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "LionsRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
-"SkyriderSword", "FilletBlade", "Traveler'sHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "WolfsGravestone",
+"SkyriderSword", "FilletBlade", "TravelersHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "WolfsGravestone",
 "SkywardPride", "PortablePowerSaw", "TalkingStick", "TidalShadow", "MailedFlower", "MakhairaAquamarine", "ForestRegalia", "Akuoumaru", "LuxuriousSeaLoad", "KatsuragikiriNagamasa",
 "LithicBlade", "SnowTombedStarsilver", "SerpentSpine", "BlackcliffSlasher", "Whiteblind", "PrototypeArchaic", "RoyalGreatsword", "Rainslasher", "SacrificialGreatsword", "TheBell",
 "FavoniusGreatsword", "SkyriderGreatsword", "DebateClub", "WhiteIronGreatsword", "BloodtaintedGreatsword", "FerrousShadow", "StaffoftheScarletSands", "CalamityQueller", "EngulfingLightning", "StaffofHoma",
@@ -641,6 +641,9 @@ async function create_weapon_instance(base_status) {
       break;
     case "31":
       weapon_instance = new FilletBlade(base_status);
+      break;
+    case "32":
+      weapon_instance = new TravelersHandySword(base_status);
       break;
     case "33":
       weapon_instance = new HarbingerofDawn(base_status);
