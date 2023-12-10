@@ -233,6 +233,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "11") {
+    buff_group = [
+      createweaponCheckbox("FleuveCendreFerryman_ecbuff", true),
+      createweaponLabel("FleuveCendreFerryman_ecbuff", "サーンドルの渡し守：元素チャージ効率アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
