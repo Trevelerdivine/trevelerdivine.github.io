@@ -380,6 +380,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "34") {
+    buff_group = [
+      createweaponCheckbox("CoolSteel_buff", true),
+      createweaponLabel("CoolSteel_buff", "冷刃：与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
