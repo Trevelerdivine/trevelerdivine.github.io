@@ -368,6 +368,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "30") {
+    buff_group = [
+      createweaponCheckbox("SkyriderSword_buff", true),
+      createweaponLabel("SkyriderSword_buff", "飛天御剣：攻撃力アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
