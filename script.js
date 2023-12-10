@@ -576,6 +576,9 @@ async function create_weapon_instance(base_status) {
     case "9":
       weapon_instance = new TheDockhandsAssistant(base_status);
       break;
+    case "10":
+      weapon_instance = new WolfFang(base_status);
+      break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);
       break;

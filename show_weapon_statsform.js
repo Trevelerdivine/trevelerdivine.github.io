@@ -218,6 +218,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "10") {
+    buff_group = [
+      createweaponLabel("WolfFang_skillbuff", "狼牙：元素スキル会心率アップ "),
+      createweaponSelectList("WolfFang_skillbuff", 0, 4, "", "層", 4),
+      document.createElement("br"),
+      createweaponLabel("WolfFang_burstbuff", "狼牙：元素爆発会心率アップ "),
+      createweaponSelectList("WolfFang_burstbuff", 0, 4, "", "層", 4),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

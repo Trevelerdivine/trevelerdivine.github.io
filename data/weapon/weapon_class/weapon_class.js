@@ -2913,7 +2913,7 @@ class AquilaFavonia {
   }
 }
 
-class AquilaFavonia {
+class TheDockhandsAssistant {
   constructor(base_status_array) {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
@@ -2979,6 +2979,93 @@ class AquilaFavonia {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
+
+class WolfFang {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    const skill_buff_count = parseInt(document.getElementById("WolfFang_skillbuff").value);
+    const burst_buff_count = parseInt(document.getElementById("WolfFang_burstbuff").value);
+    const cr_buff = 0;
+    if (attack_method_index == 3)
+    {
+      cr_buff = 0.005 * (this.weapon_rank + 3) * skill_buff_count
+    }
+    if (attack_method_index == 4)
+    {
+      cr_buff = 0.005 * (this.weapon_rank + 3) * burst_buff_count
+    }
+    return cr_buff;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    return 0.04 * (this.weapon_rank + 3);;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
