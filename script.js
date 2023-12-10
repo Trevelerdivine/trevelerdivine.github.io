@@ -600,6 +600,9 @@ async function create_weapon_instance(base_status) {
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);
       break;
+    case "18":
+      weapon_instance = new AmenomaKageuchi(base_status);
+      break;
     case "27":
       weapon_instance = new SacrificialSword(base_status);
       break;
