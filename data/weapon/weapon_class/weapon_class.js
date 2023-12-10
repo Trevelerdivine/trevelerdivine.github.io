@@ -4062,3 +4062,80 @@ class IronSting {
     return weapon_debuff
   }
 }
+
+class PrototypeRancour {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.buff_count = parseInt(document.getElementById("PrototypeRancour_buff").value);
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return 0.01 * (this.weapon_rank + 3) * this.buff_count * this.base_status_array[4];
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0.01 * (this.weapon_rank + 3) * this.buff_count * this.base_status_array[1];
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}

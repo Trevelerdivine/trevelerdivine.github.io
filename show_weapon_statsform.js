@@ -332,6 +332,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "24") {
+    buff_group = [
+      createweaponLabel("PrototypeRancour_buff", "斬岩·試作：攻撃力＆防御力アップ "),
+      createweaponSelectList("PrototypeRancour_buff", 0, 4, "", "重", 4),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

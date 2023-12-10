@@ -618,6 +618,9 @@ async function create_weapon_instance(base_status) {
     case "23":
       weapon_instance = new IronSting(base_status);
       break;
+    case "24":
+      weapon_instance = new PrototypeRancour(base_status);
+      break;
     case "27":
       weapon_instance = new SacrificialSword(base_status);
       break;
