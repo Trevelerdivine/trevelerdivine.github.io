@@ -260,6 +260,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "13") {
+    buff_group = [
+      createweaponCheckbox("ToukabouShigure_buff", true),
+      createweaponLabel("ToukabouShigure_buff", "東花坊時雨：紙傘の邪気 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

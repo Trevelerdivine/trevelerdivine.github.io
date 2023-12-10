@@ -582,6 +582,12 @@ async function create_weapon_instance(base_status) {
     case "11":
       weapon_instance = new FleuveCendreFerryman(base_status);
       break;
+    case "12":
+      weapon_instance = new FinaleoftheDeep(base_status);
+      break;
+    case "13":
+    weapon_instance = new ToukabouShigure(base_status);
+      break;
     case "17":
       weapon_instance = new CinnabarSpindle(base_status);
       break;

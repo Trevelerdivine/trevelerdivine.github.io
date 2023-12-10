@@ -3198,7 +3198,7 @@ class FinaleoftheDeep {
       attack_buff = 0.03 * (this.weapon_rank + 3) * this.base_status_array[4];
     }
 
-    return 0;
+    return attack_buff;
   }
 
   calculate_weapon_result_attck(fixstatus,status) {
@@ -3247,6 +3247,88 @@ class FinaleoftheDeep {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     return 0;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
+
+class ToukabouShigure {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0;
+    const effect_check = document.getElementById("ToukabouShigure_buff");
+    if (effect_check.checked)
+    {
+      dmg_buff = 0.04 * (this.weapon_rank + 3);
+    }
+    return dmg_buff;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
