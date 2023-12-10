@@ -604,8 +604,11 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new AmenomaKageuchi(base_status);
       break;
     case "19":
-    weapon_instance = new TheAlleyFlash(base_status);
-    break;
+      weapon_instance = new TheAlleyFlash(base_status);
+      break;
+    case "20":
+      weapon_instance = new FesteringDesire(base_status);
+      break;
     case "27":
       weapon_instance = new SacrificialSword(base_status);
       break;
