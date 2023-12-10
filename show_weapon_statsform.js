@@ -284,6 +284,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "16") {
+    buff_group = [
+      createweaponCheckbox("KagotsurubeIsshin_buff", true),
+      createweaponLabel("KagotsurubeIsshin_buff", "籠釣瓶一心：攻撃力アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
