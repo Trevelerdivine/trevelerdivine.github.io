@@ -296,6 +296,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "19") {
+    buff_group = [
+      createweaponCheckbox("TheAlleyFlash_buff", true),
+      createweaponLabel("TheAlleyFlash_buff", "ダークアレイの閃光：与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
