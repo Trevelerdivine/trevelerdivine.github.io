@@ -3040,7 +3040,7 @@ class WolfFang {
   calculate_weapon_fixed_cr(fixstatus,status) {
     const skill_buff_count = parseInt(document.getElementById("WolfFang_skillbuff").value);
     const burst_buff_count = parseInt(document.getElementById("WolfFang_burstbuff").value);
-    const cr_buff = 0;
+    let cr_buff = 0;
     if (attack_method_index == 3)
     {
       cr_buff = 0.005 * (this.weapon_rank + 3) * skill_buff_count
@@ -3065,7 +3065,12 @@ class WolfFang {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
-    return 0.04 * (this.weapon_rank + 3);;
+    let dmg_buff = 0;
+    if (attack_method_index == 3 || attack_method_index == 4)
+    {
+      dmg_buff = 0.04 * (this.weapon_rank + 3);
+    }
+    return dmg_buff;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
