@@ -344,6 +344,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "25") {
+    buff_group = [
+      createweaponCheckbox("LionsRoar_buff", true),
+      createweaponLabel("LionsRoar_buff", "匣中龍吟：与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
