@@ -320,6 +320,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "23") {
+    buff_group = [
+      createweaponLabel("IronSting_buff", "鉄蜂の刺し：与えるダメージアップ "),
+      createweaponSelectList("IronSting_buff", 0, 2, "", "重", 2),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
