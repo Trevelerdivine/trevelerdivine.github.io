@@ -5062,7 +5062,7 @@ class PortablePowerSaw {
   }
 
   calculate_weapon_fixed_elm(fixstatus,status) {
-    const buff_count = parseInt(document.getElementById("TheDockhandsAssistant").value);
+    const buff_count = parseInt(document.getElementById("PortablePowerSaw").value);
     let elm_buff = 10 * buff_count * (this.weapon_rank + 3);
     return elm_buff;
   }
