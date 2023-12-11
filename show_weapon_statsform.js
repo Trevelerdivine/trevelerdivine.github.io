@@ -476,6 +476,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "44") {
+    buff_group = [
+      createweaponCheckbox("MailedFlower_buff1", true),
+      createweaponLabel("MailedFlower_buff1", "鉄彩の花：元素熟知＆攻撃力アップ"),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

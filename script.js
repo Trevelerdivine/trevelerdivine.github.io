@@ -678,6 +678,9 @@ async function create_weapon_instance(base_status) {
     case "43":
       weapon_instance = new TidalShadow(base_status);
       break;
+    case "44":
+      weapon_instance = new MailedFlower(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;
