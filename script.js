@@ -699,6 +699,9 @@ async function create_weapon_instance(base_status) {
     case "50":
       weapon_instance = new LithicBlade(base_status);
       break;
+    case "51":
+      weapon_instance = new SnowTombedStarsilver(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;
