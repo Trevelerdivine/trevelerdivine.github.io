@@ -681,6 +681,9 @@ async function create_weapon_instance(base_status) {
     case "44":
       weapon_instance = new MailedFlower(base_status);
       break;
+    case "45":
+      weapon_instance = new MakhairaAquamarine(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;
@@ -1278,6 +1281,7 @@ async function monte_carlo_calculate()
   const input_check = identify_condition();
   if (input_check ==1)
   {
+    document.getElementById("calculationMessage").style.visibility = "hidden";
     return;
   }
 
