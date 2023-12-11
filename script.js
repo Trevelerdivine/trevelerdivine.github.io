@@ -651,6 +651,9 @@ async function create_weapon_instance(base_status) {
     case "34":
       weapon_instance = new CoolSteel(base_status);
       break;
+    case "35":
+      weapon_instance = new BeaconoftheReedSea(base_status);
+      break;
     case "36":
       weapon_instance = new RedhornStonethresher(base_status);
       break;

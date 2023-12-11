@@ -392,6 +392,24 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "35") {
+    buff_group = [
+      createweaponCheckbox("BeaconoftheReedSea_buff1", true),
+      createweaponLabel("BeaconoftheReedSea_buff1", "葦海の標：元素スキル命中 "),
+      document.createElement("br"),
+      createweaponCheckbox("BeaconoftheReedSea_buff2", true),
+      createweaponLabel("BeaconoftheReedSea_buff2", "葦海の標：ダメージ受ける "),
+      document.createElement("br"),
+      createweaponCheckbox("BeaconoftheReedSea_buff3", true),
+      createweaponLabel("BeaconoftheReedSea_buff3", "葦海の標：シールド状態にない "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
