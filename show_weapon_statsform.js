@@ -571,6 +571,18 @@ async function show_weapon_statsform() {
         weaponInfo.appendChild(Whiteblind_effect);
   }
 
+  else if (selectedWeaponId == "55") {
+    buff_group = [
+      createweaponCheckbox("Rainslasher_buff1", true),
+      createweaponLabel("Rainslasher_buff1", "雨裁：与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+  
   else if (selectedWeaponId == "33") {
     const traits = [
       {

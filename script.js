@@ -714,6 +714,9 @@ async function create_weapon_instance(base_status) {
     case "55":
       weapon_instance = new PrototypeArchaic(base_status);
       break;
+    case "57":
+      weapon_instance = new Rainslasher(base_status);
+      break;
     case "66":
       weapon_instance = new StaffoftheScarletSands(base_status);
       break;
