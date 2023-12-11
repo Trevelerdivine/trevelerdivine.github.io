@@ -675,6 +675,9 @@ async function create_weapon_instance(base_status) {
     case "42":
       weapon_instance = new TalkingStick(base_status);
       break;
+    case "43":
+      weapon_instance = new TidalShadow(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;

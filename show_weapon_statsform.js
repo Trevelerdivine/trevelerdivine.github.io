@@ -464,6 +464,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "43") {
+    buff_group = [
+      createweaponCheckbox("TidalShadow_buff1", true),
+      createweaponLabel("TidalShadow_buff1", "タイダル・シャドー：攻撃力アップ"),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
