@@ -5180,7 +5180,7 @@ class TalkingStick {
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let dmg_buff = 0;
     const dmg_buff_check = document.getElementById("TalkingStick_buff2");
-    if (dmg_buff_check.checked)
+    if (dmg_buff_check.checked && char_propaty[0] != 7)
     {
       dmg_buff = 0.03 * (this.weapon_rank + 3);
     }
