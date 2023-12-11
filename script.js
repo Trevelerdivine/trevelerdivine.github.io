@@ -717,6 +717,12 @@ async function create_weapon_instance(base_status) {
     case "57":
       weapon_instance = new Rainslasher(base_status);
       break;
+    case "58":
+      weapon_instance = new SacrificialGreatsword(base_status);
+      break;
+    case "59":
+      weapon_instance = new TheBell(base_status);
+      break;
     case "66":
       weapon_instance = new StaffoftheScarletSands(base_status);
       break;

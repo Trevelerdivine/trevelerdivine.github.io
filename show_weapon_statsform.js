@@ -582,6 +582,18 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
+
+  else if (selectedWeaponId == "59") {
+    buff_group = [
+      createweaponCheckbox("TheBell_buff1", true),
+      createweaponLabel("TheBell_buff1", "鐘の剣：シールド状態 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "33") {
     const traits = [
