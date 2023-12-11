@@ -684,6 +684,9 @@ async function create_weapon_instance(base_status) {
     case "45":
       weapon_instance = new MakhairaAquamarine(base_status);
       break;
+    case "46":
+      weapon_instance = new ForestRegalia(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;

@@ -488,6 +488,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "46") {
+    buff_group = [
+      createweaponCheckbox("ForestRegalia_buff1", true),
+      createweaponLabel("ForestRegalia_buff1", "森林のレガリア：元素熟知アップ"),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
