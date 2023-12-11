@@ -606,6 +606,30 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
+
+  else if (selectedWeaponId == "64") {
+    buff_group = [
+      createweaponCheckbox("BloodtaintedGreatsword_buff1", true),
+      createweaponLabel("BloodtaintedGreatsword_buff1", "龍血を浴びた剣：与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
+  else if (selectedWeaponId == "65") {
+    buff_group = [
+      createweaponCheckbox("FerrousShadow_buff1", true),
+      createweaponLabel("FerrousShadow_buff1", "鉄影段平：重撃ダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "33") {
     const traits = [

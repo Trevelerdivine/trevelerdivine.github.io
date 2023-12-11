@@ -735,6 +735,12 @@ async function create_weapon_instance(base_status) {
     case "63":
       weapon_instance = new WhiteIronGreatsword(base_status);
       break;
+    case "64":
+      weapon_instance = new BloodtaintedGreatsword(base_status);
+      break;
+    case "65":
+      weapon_instance = new FerrousShadow(base_status);
+      break;
     case "66":
       weapon_instance = new StaffoftheScarletSands(base_status);
       break;
