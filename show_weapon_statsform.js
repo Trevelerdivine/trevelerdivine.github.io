@@ -514,8 +514,20 @@ async function show_weapon_statsform() {
 
   else if (selectedWeaponId == "48") {
     buff_group = [
-      createweaponLabel("LithicBlade_buff1", "千岩古剣：]璃月港出身キャラクター人数 "),
+      createweaponLabel("LithicBlade_buff1", "千岩古剣：璃月港出身キャラクター人数 "),
       createweaponSelectList("LithicBlade_buff1", 0, 4, "", "人", 4),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
+  else if (selectedWeaponId == "52") {
+    buff_group = [
+      createweaponLabel("SerpentSpine_buff1", "螭龍の剣：与えるダメージアップ "),
+      createweaponSelectList("SerpentSpine_buff1", 0, 5, "", "重", 5),
       document.createElement("br"),
     ];
   
