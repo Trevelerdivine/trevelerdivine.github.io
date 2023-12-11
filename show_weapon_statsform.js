@@ -422,6 +422,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "38") {
+    buff_group = [
+      createweaponCheckbox("TheUnforged_buff1", true),
+      createweaponLabel("TheUnforged_buff1", "無工の剣：シールド状態"),
+      document.createElement("br"),
+      createweaponLabel("TheUnforged_buff2", "無工の剣：攻撃力アップ"),
+      createweaponSelectList("TheUnforged_buff2", 0, 5, "", "層", 5),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
