@@ -723,6 +723,9 @@ async function create_weapon_instance(base_status) {
     case "59":
       weapon_instance = new TheBell(base_status);
       break;
+    case "60":
+      weapon_instance = new FavoniusGreatsword(base_status);
+      break;
     case "66":
       weapon_instance = new StaffoftheScarletSands(base_status);
       break;
