@@ -500,6 +500,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "47") {
+    buff_group = [
+      createweaponLabel("Akuoumaru_buff1", "惡王丸：チーム全員の元素エネルギー上限の合計 "),
+      createWeaponInputWithUnit("text", "Akuoumaru_buff1", "280",""),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
@@ -845,4 +857,27 @@ function createanyweaponSelectList(id, initial, optionsCount, head_unit, unit, s
     selectList.appendChild(option);
   }
   return selectList;
+}
+
+function createWeaponInputWithUnit(type, id, value, unit)
+{
+  const inputContainer = document.createElement("span");
+  const input = document.createElement("input");
+  input.type = type;
+  input.id = id;
+  input.value = value;
+  
+  // input要素のwidthを50pxに設定
+  input.style.width = '50px';
+
+  // 単位を表示するための span 要素を作成
+  const unitSpan = document.createElement("span");
+  unitSpan.textContent = unit;
+
+  // フォーム要素と単位要素を div 要素に追加
+  inputContainer.appendChild(input);
+  inputContainer.appendChild(unitSpan);
+
+  // div 要素を返す
+  return inputContainer;
 }
