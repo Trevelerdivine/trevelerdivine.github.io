@@ -449,6 +449,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "42") {
+    buff_group = [
+      createweaponCheckbox("TalkingStick_buff1", true),
+      createweaponLabel("TalkingStick_buff1", "話死合い棒：攻撃力アップ"),
+      document.createElement("br"),
+      createweaponCheckbox("TalkingStick_buff2", true),
+      createweaponLabel("TalkingStick_buff2", "話死合い棒：元素ダメージアップ"),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

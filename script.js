@@ -672,6 +672,9 @@ async function create_weapon_instance(base_status) {
     case "41":
       weapon_instance = new PortablePowerSaw(base_status);
       break;
+    case "42":
+      weapon_instance = new TalkingStick(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;
