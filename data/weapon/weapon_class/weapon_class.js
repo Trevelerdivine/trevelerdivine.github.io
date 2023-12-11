@@ -5584,7 +5584,7 @@ class Akuoumaru {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
-    const total_burst_point = Math.max(0,parseInt(document.getElementById("").value));
+    const total_burst_point = Math.max(0,parseInt(document.getElementById("Akuoumaru_buff1").value));
     let dmg_buff = Math.min(0.1 * (this.weapon_rank + 3), 0.0003 * total_burst_point * (this.weapon_rank + 3));
     return dmg_buff;
   }
