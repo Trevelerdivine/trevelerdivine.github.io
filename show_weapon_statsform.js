@@ -536,6 +536,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "53") {
+    buff_group = [
+      createweaponLabel("BlackcliffSlasher_buff1", "黒岩の斬刀：攻撃力アップ "),
+      createweaponSelectList("BlackcliffSlasher_buff1", 0, 3, "", "重", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {

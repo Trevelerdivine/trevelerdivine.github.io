@@ -705,6 +705,9 @@ async function create_weapon_instance(base_status) {
     case "52":
       weapon_instance = new SerpentSpine(base_status);
       break;
+    case "53":
+      weapon_instance = new BlackcliffSlasher(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;
