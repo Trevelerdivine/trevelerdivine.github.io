@@ -594,6 +594,18 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
+
+  else if (selectedWeaponId == "61") {
+    buff_group = [
+      createweaponLabel("SkyriderGreatsword_buff1", "飛天大御剣：攻撃力アップ "),
+      createweaponSelectList("SkyriderGreatsword_buff1", 0, 4, "", "重", 4),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "33") {
     const traits = [
