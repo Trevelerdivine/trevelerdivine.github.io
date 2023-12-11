@@ -410,6 +410,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "37") {
+    buff_group = [
+      createweaponCheckbox("SongofBrokenPines_buff1", true),
+      createweaponLabel("SongofBrokenPines_buff1", "葦海の標：攻撃力アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
