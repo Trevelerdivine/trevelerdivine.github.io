@@ -696,6 +696,9 @@ async function create_weapon_instance(base_status) {
     case "49":
       weapon_instance = new KatsuragikiriNagamasa(base_status);
       break;
+    case "50":
+      weapon_instance = new LithicBlade(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;
