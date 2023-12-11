@@ -437,6 +437,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "41") {
+    buff_group = [
+      createweaponLabel("PortablePowerSaw", "携帯型チェーンソー：消費強靭マーク "),
+      createweaponSelectList("PortablePowerSaw", 0, 3, "", "枚", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "54") {
     const traits = [
       {
