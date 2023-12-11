@@ -571,7 +571,7 @@ async function show_weapon_statsform() {
         weaponInfo.appendChild(Whiteblind_effect);
   }
 
-  else if (selectedWeaponId == "55") {
+  else if (selectedWeaponId == "57") {
     buff_group = [
       createweaponCheckbox("Rainslasher_buff1", true),
       createweaponLabel("Rainslasher_buff1", "雨裁：与えるダメージアップ "),
