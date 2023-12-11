@@ -69,9 +69,9 @@ function af3_2()
 {
     let checkbox = document.getElementById("af3_2");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
-    if (checkbox.checked && char_propaty [1] == 7)
+    if (checkbox.checked && char_propaty [0] == 7)
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.25]; 
     }
     return status_buff
 }
