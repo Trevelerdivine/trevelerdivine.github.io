@@ -512,7 +512,7 @@ async function show_weapon_statsform() {
     });
   }
 
-  else if (selectedWeaponId == "48") {
+  else if (selectedWeaponId == "50") {
     buff_group = [
       createweaponLabel("LithicBlade_buff1", "千岩古剣：璃月港出身キャラクター人数 "),
       createweaponSelectList("LithicBlade_buff1", 0, 4, "", "人", 4),
