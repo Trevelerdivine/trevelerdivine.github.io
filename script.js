@@ -666,6 +666,9 @@ async function create_weapon_instance(base_status) {
     case "39":
       weapon_instance = new WolfsGravestone(base_status);
       break;
+    case "40":
+      weapon_instance = new SkywardPride(base_status);
+      break;
     case "54":
       weapon_instance = new Whiteblind(base_status);
       break;
