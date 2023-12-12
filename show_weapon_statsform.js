@@ -870,6 +870,18 @@ async function show_weapon_statsform() {
         weaponInfo.appendChild(traitLabel);
   }
 
+  else if (selectedWeaponId == "89") {
+    buff_group = [
+      createweaponCheckbox("BlackTassel_effect", true),
+      createweaponLabel("BlackTassel_effect", "黒纓槍：スライムタイプの敵 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "93") {
     const traits = [
       {

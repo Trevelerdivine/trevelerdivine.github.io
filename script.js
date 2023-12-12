@@ -807,6 +807,9 @@ async function create_weapon_instance(base_status) {
     case "88":
     weapon_instance = new DragonsBane(base_status);
     break;
+    case "89":
+      weapon_instance = new BlackTassel(base_status);
+      break;
     case "92":
       weapon_instance = new HuntersPath(base_status);
       break;
