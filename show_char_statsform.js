@@ -1067,7 +1067,7 @@ async function show_char_statsform()
         createLabel("raiden_E", "元素スキル：雷罰悪曜の眼"),
         document.createElement("br"),
         createTextNode("　元素スキル天賦レベル："),
-        createSelectList("raiden_E_level", 1, 13, "Lv.", "", 10),
+        createSelectList("raiden_E_level", 1, 13, "Lv.", "", 8),
         document.createElement("br"),
       ];
     

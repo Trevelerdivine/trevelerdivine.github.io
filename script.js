@@ -756,6 +756,9 @@ async function create_weapon_instance(base_status) {
     case "70":
       weapon_instance = new VortexVanguisher(base_status);
       break;
+    case "71":
+      weapon_instance = new SkywardSpine(base_status);
+      break;
     case "78":
       weapon_instance = new TheCatch(base_status);
       break;
