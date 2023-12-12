@@ -882,6 +882,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "90") {
+    buff_group = [
+      createweaponCheckbox("WhiteTassel_effect", true),
+      createweaponLabel("WhiteTassel_effect", "白纓槍：通常攻撃ダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "93") {
     const traits = [
       {
