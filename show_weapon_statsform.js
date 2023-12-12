@@ -825,6 +825,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "85") {
+    buff_group = [
+      createweaponLabel("BlackcliffPole_effect", "黒岩の突槍：攻撃力アップ "),
+      createweaponSelectList("BlackcliffPole_effect", 0, 3, "", "層", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {

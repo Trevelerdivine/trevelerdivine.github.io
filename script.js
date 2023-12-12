@@ -795,6 +795,9 @@ async function create_weapon_instance(base_status) {
     case "84":
       weapon_instance = new Deathmatch(base_status);
       break;
+    case "85":
+      weapon_instance = new BlackcliffPole(base_status);
+      break;
     case "88":
     weapon_instance = new DragonsBane(base_status);
     break;
