@@ -5160,7 +5160,7 @@ class raiden {
     let burst_bonus;
     
     if (attack_method == 21) {
-      const attack_count1 = parseflo(document.getElementById("raiden_attack_count1").value);
+      const attack_count1 = parseInt(document.getElementById("raiden_attack_count1").value);
       const attack_count2 = parseInt(document.getElementById("raiden_attack_count2").value);
       const attack_count3 = parseInt(document.getElementById("raiden_attack_count3").value);
       const attack_count4 = parseInt(document.getElementById("raiden_attack_count4").value);
