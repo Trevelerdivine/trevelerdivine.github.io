@@ -783,6 +783,9 @@ async function create_weapon_instance(base_status) {
     case "79":
       weapon_instance = new KitainCrossSpear(base_status);
       break;
+    case "80":
+      weapon_instance = new LithicSpear(base_status);
+      break;
     case "88":
     weapon_instance = new DragonsBane(base_status);
     break;

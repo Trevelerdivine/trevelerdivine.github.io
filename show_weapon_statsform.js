@@ -801,6 +801,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "80") {
+    buff_group = [
+      createweaponLabel("LithicSpear_effect", "千岩長槍：璃月出身キャラクター人数 "),
+      createweaponSelectList("LithicSpear_effect", 0, 4, "", "人", 1),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {
