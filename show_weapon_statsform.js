@@ -741,6 +741,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "72") {
+    buff_group = [
+      createweaponLabel("PrimordialJadeWingedSpear_count", "和璞鳶：攻撃力アップ "),
+      createweaponSelectList("PrimordialJadeWingedSpear_count", 0, 7, "", "層", 7),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {

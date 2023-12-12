@@ -759,6 +759,9 @@ async function create_weapon_instance(base_status) {
     case "71":
       weapon_instance = new SkywardSpine(base_status);
       break;
+    case "72":
+      weapon_instance = new PrimordialJadeWingedSpear(base_status);
+      break;
     case "78":
       weapon_instance = new TheCatch(base_status);
       break;
