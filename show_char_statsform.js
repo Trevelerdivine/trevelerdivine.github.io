@@ -1084,9 +1084,7 @@ async function show_char_statsform()
 
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常1ループ（爆発中）", value: "21" },
-        { text: "重撃（爆発中）", value: "22" },
-        { text: "元素爆発（夢想の一太刀）", value: "23" },
+        { text: "元素爆発（奥義・夢想真説）", value: "21" },
       ];
 
       if (char_constellations > 1)

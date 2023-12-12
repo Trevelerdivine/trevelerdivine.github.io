@@ -1840,14 +1840,34 @@ async function show_attack_method()
     if (attack_method == 21)
     {
       raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 2);
-    }
-    else if (attack_method == 22)
-    {
-      raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
-    }
-    else if (attack_method == 23)
-    {
-      raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 1);
+      traits = [
+        createLabel("", "　元素爆発中ヒット回数"),
+        document.createElement("br"),
+        createLabel("raiden_attack_count1", "　　通常１段："),
+        createSelectList("raiden_attack_count1", 0, 10, "", "回", 3),
+        document.createElement("br"),
+        createLabel("raiden_attack_count2", "　　通常２段："),
+        createSelectList("raiden_attack_count2", 0, 10, "", "回", 3),
+        document.createElement("br"),
+        createLabel("raiden_attack_count3", "　　通常３段："),
+        createSelectList("raiden_attack_count3", 0, 10, "", "回", 3),
+        document.createElement("br"),
+        createLabel("raiden_attack_count4", "　　通常４段："),
+        createSelectList("raiden_attack_count4", 0, 10, "", "回", 3),
+        document.createElement("br"),
+        createLabel("raiden_attack_count5", "　　通常５段："),
+        createSelectList("raiden_attack_count5", 0, 10, "", "回", 3),
+        document.createElement("br"),
+        createLabel("raiden_attack_count6", "　　重撃："),
+        createSelectList("raiden_attack_count6", 0, 10, "", "回", 0),
+        document.createElement("br"),
+        createLabel("raiden_attack_count7", "　　夢想の一太刀："),
+        createSelectList("raiden_attack_count7", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
     }
     elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
     elemental_reaction.appendChild(raiden_agg_countlist); // ラベルを select_reaction_method に追加

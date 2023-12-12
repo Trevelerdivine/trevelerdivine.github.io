@@ -5160,21 +5160,33 @@ class raiden {
     let burst_bonus;
     
     if (attack_method == 21) {
-      for (let i = 0; i < 5; i++) {
-        dmg_attack_rate += parseFloat(data["爆発中通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-      }
+      const attack_count1 = parseInt(document.getElementById("raiden_attack_count1").value);
+      const attack_count2 = parseInt(document.getElementById("raiden_attack_count2").value);
+      const attack_count3 = parseInt(document.getElementById("raiden_attack_count3").value);
+      const attack_count4 = parseInt(document.getElementById("raiden_attack_count4").value);
+      const attack_count5 = parseInt(document.getElementById("raiden_attack_count5").value);
+      const attack_count6 = parseInt(document.getElementById("raiden_attack_count6").value);
+      const attack_count7 = parseInt(document.getElementById("raiden_attack_count7").value);
+
+      dmg_attack_rate = attack_count1 * parseFloat(data["爆発中通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                      + attack_count2 * parseFloat(data["爆発中通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                      + attack_count3 * parseFloat(data["爆発中通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                      + attack_count4 * parseFloat(data["爆発中通常攻撃"]["詳細"][3]["数値"][this.parameter[3]])
+                      + attack_count5 * parseFloat(data["爆発中通常攻撃"]["詳細"][4]["数値"][this.parameter[3]])
+                      + attack_count6 * parseFloat(data["爆発中重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                      + attack_count7 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+
+      const bonus_count = attack_count1 
+                        + attack_count2 
+                        + attack_count3
+                        + attack_count4 * 2
+                        + attack_count5
+                        + attack_count6 * 2
+                        + attack_count7;
+
+
       burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attack_rate += burst_bonus * resolve * skill_effect;
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 22) {
-      dmg_attack_rate = parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]]);
-      burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attack_rate += burst_bonus * resolve * skill_effect * 2;
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    } else if (attack_method == 23) {
-      dmg_attack_rate = parseFloat(data["元素爆発"]["数値"][this.parameter[3]]);
-      burst_bonus = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_attack_rate += burst_bonus * resolve * skill_effect;
+      dmg_attack_rate += bonus_count * burst_bonus * resolve * skill_effect;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
   return dmg_rate;
