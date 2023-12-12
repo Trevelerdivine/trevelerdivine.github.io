@@ -380,6 +380,27 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "33") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "黎明の神剣：HP90以上: "
+      }
+    ];
+        const traitCheckbox = document.createElement("input");
+        traitCheckbox.type = "checkbox";
+        traitCheckbox.id = traits[0].id;
+        traitCheckbox.value = traits[0].id;
+        traitCheckbox.checked = true;
+
+        const traitLabel = document.createElement("label");
+        traitLabel.htmlFor = traits[0].id;
+        traitLabel.textContent = traits[0].label;
+
+        weaponInfo.appendChild(traitCheckbox);        
+        weaponInfo.appendChild(traitLabel);
+  }
+
   else if (selectedWeaponId == "34") {
     buff_group = [
       createweaponCheckbox("CoolSteel_buff", true),
@@ -435,6 +456,28 @@ async function show_weapon_statsform() {
     buff_group.forEach(element => {
       weaponInfo.appendChild(element);
     });
+  }
+
+  else if (selectedWeaponId == "39") {
+    const traits = [
+      {
+        id: "traitCheckbox",
+        label: "狼のような狩人: 30%以下の敵"
+      }
+    ];
+    const traitCheckbox = document.createElement("input");
+    traitCheckbox.type = "checkbox";
+    traitCheckbox.id = traits[0].id;
+    traitCheckbox.value = traits[0].id;
+    traitCheckbox.checked = true;
+
+    const traitLabel = document.createElement("label");
+    traitLabel.htmlFor = traits[0].id;
+    traitLabel.textContent = traits[0].label;
+
+    weaponInfo.appendChild(traitCheckbox);
+    weaponInfo.appendChild(traitLabel);
+    weaponInfo.appendChild(document.createElement("br"));
   }
 
   else if (selectedWeaponId == "41") {
@@ -630,64 +673,6 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
-  
-  else if (selectedWeaponId == "67") {
-    buff_group = [
-      createweaponCheckbox("CalamityQueller_buff1", true),
-      createweaponLabel("CalamityQueller_buff1", "息災：待機中"),
-      document.createElement("br"),
-      createweaponLabel("CalamityQueller_buff2", "息災：攻撃力アップ "),
-      createweaponSelectList("CalamityQueller_buff2", 0, 6, "", "層", 6),
-      document.createElement("br"),
-    ];
-  
-    buff_group.forEach(element => {
-      weaponInfo.appendChild(element);
-    });
-  }
-
-  else if (selectedWeaponId == "33") {
-    const traits = [
-      {
-        id: "traitCheckbox",
-        label: "黎明の神剣：HP90以上: "
-      }
-    ];
-        const traitCheckbox = document.createElement("input");
-        traitCheckbox.type = "checkbox";
-        traitCheckbox.id = traits[0].id;
-        traitCheckbox.value = traits[0].id;
-        traitCheckbox.checked = true;
-
-        const traitLabel = document.createElement("label");
-        traitLabel.htmlFor = traits[0].id;
-        traitLabel.textContent = traits[0].label;
-
-        weaponInfo.appendChild(traitCheckbox);        
-        weaponInfo.appendChild(traitLabel);
-  }
-
-  else if (selectedWeaponId == "39") {
-    const traits = [
-      {
-        id: "traitCheckbox",
-        label: "狼のような狩人: 30%以下の敵"
-      }
-    ];
-    const traitCheckbox = document.createElement("input");
-    traitCheckbox.type = "checkbox";
-    traitCheckbox.id = traits[0].id;
-    traitCheckbox.value = traits[0].id;
-    traitCheckbox.checked = true;
-
-    const traitLabel = document.createElement("label");
-    traitLabel.htmlFor = traits[0].id;
-    traitLabel.textContent = traits[0].label;
-
-    weaponInfo.appendChild(traitCheckbox);
-    weaponInfo.appendChild(traitLabel);
-    weaponInfo.appendChild(document.createElement("br"));
-  }
 
   else if (selectedWeaponId == "66") {
     const traits = [
@@ -703,6 +688,21 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitLabel);
         weaponInfo.appendChild(StaffoftheScarletSands_effect);
+  }
+  
+  else if (selectedWeaponId == "67") {
+    buff_group = [
+      createweaponCheckbox("CalamityQueller_buff1", true),
+      createweaponLabel("CalamityQueller_buff1", "息災：待機中"),
+      document.createElement("br"),
+      createweaponLabel("CalamityQueller_buff2", "息災：攻撃力アップ "),
+      createweaponSelectList("CalamityQueller_buff2", 0, 6, "", "層", 6),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
   }
 
   else if (selectedWeaponId == "69") {
@@ -724,6 +724,21 @@ async function show_weapon_statsform() {
 
         weaponInfo.appendChild(traitCheckbox);
         weaponInfo.appendChild(traitLabel);
+  }
+
+  else if (selectedWeaponId == "70") {
+    buff_group = [
+      createweaponCheckbox("VortexVanguisher_sheild", true),
+      createweaponLabel("VortexVanguisher_sheild", "シールド状態"),
+      document.createElement("br"),
+      createweaponLabel("VortexVanguisher_count", "破天の槍：攻撃力アップ "),
+      createweaponSelectList("VortexVanguisher_count", 0, 5, "", "層", 5),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
   }
 
   else if (selectedWeaponId == "88") {

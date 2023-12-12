@@ -753,6 +753,9 @@ async function create_weapon_instance(base_status) {
     case "69":
       weapon_instance = new StaffofHoma(base_status);
       break;
+    case "70":
+      weapon_instance = new VortexVanguisher(base_status);
+      break;
     case "78":
       weapon_instance = new TheCatch(base_status);
       break;
