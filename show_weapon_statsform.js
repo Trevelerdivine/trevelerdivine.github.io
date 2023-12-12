@@ -765,6 +765,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "75") {
+    buff_group = [
+      createweaponCheckbox("MissiveWindspear_effect", true),
+      createweaponLabel("MissiveWindspear_effect", "風信の矛：攻撃力＆元素熟知アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {
