@@ -1841,6 +1841,7 @@ async function show_attack_method()
     {
       raiden_agg_countlist = createSelectList("raiden_agg_count", 0, 30, "", "回", 2);
       traits = [
+        document.createElement("br"),
         createLabel("", "　元素爆発中ヒット回数"),
         document.createElement("br"),
         createLabel("raiden_attack_count1", "　　通常１段："),

@@ -5173,7 +5173,7 @@ class raiden {
                       + attack_count3 * parseFloat(data["爆発中通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
                       + attack_count4 * parseFloat(data["爆発中通常攻撃"]["詳細"][3]["数値"][this.parameter[3]])
                       + attack_count5 * parseFloat(data["爆発中通常攻撃"]["詳細"][4]["数値"][this.parameter[3]])
-                      + attack_count6 * parseFloat(data["爆発中重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                      + attack_count6 * parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]])
                       + attack_count7 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
 
       const bonus_count = attack_count1 
