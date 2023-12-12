@@ -7183,7 +7183,7 @@ class PrimordialJadeWingedSpear {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
-    const dmg_buff = 0;
+    let dmg_buff = 0;
     if (this.buff_count == 7)
     {
       dmg_buff = 0.03 * (this.weapon_rank + 3)
