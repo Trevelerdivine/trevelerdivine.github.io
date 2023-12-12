@@ -798,6 +798,9 @@ async function create_weapon_instance(base_status) {
     case "85":
       weapon_instance = new BlackcliffPole(base_status);
       break;
+    case "86":
+      weapon_instance = new CrescentPike(base_status);
+      break;
     case "88":
     weapon_instance = new DragonsBane(base_status);
     break;
