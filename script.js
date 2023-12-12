@@ -765,6 +765,9 @@ async function create_weapon_instance(base_status) {
     case "73":
       weapon_instance = new BalladoftheFjords(base_status);
       break;
+    case "74":
+      weapon_instance = new RightfulReward(base_status);
+      break;
     case "78":
       weapon_instance = new TheCatch(base_status);
       break;
