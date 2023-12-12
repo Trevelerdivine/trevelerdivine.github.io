@@ -792,6 +792,9 @@ async function create_weapon_instance(base_status) {
     case "83":
       weapon_instance = new FavoniusLance(base_status);
       break;
+    case "84":
+      weapon_instance = new Deathmatch(base_status);
+      break;
     case "88":
     weapon_instance = new DragonsBane(base_status);
     break;

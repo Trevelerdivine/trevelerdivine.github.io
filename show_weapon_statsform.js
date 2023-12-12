@@ -813,6 +813,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "84") {
+    buff_group = [
+      createweaponCheckbox("LithicSpear_effect", true),
+      createweaponLabel("LithicSpear_effect", "死闘の槍：付近の敵の数が二人以上 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {
