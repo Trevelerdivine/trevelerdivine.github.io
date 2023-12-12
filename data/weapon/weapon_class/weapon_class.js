@@ -7523,7 +7523,7 @@ class Moonpiercer {
   }
 }
 
-class Wavebreaker {
+class WavebreakersFin {
   constructor(base_status_array) {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
