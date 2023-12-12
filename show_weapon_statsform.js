@@ -837,6 +837,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "85") {
+    buff_group = [
+      createweaponLabel("PrototypeStarglitter_effect", "星鎌·試作：通常攻撃＆重撃ダメージアップ "),
+      createweaponSelectList("PrototypeStarglitter_effect", 0, 2, "", "重", 2),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {
