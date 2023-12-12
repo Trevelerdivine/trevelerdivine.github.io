@@ -789,6 +789,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "77") {
+    buff_group = [
+      createweaponLabel("Wavebreaker_buff1", "斬波のひれ長：チーム全員の元素エネルギー上限の合計 "),
+      createWeaponInputWithUnit("text", "Wavebreaker_buff1", "280",""),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {
