@@ -5169,7 +5169,7 @@ class raiden {
     } else if (attack_method == 22) {
       dmg_attack_rate = parseFloat(data["爆発中重撃"]["詳細"]["数値"][this.parameter[3]]);
       burst_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attack_rate += burst_bonus * resolve * skill_effect;
+      dmg_attack_rate += burst_bonus * resolve * skill_effect * 2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 23) {
       dmg_attack_rate = parseFloat(data["元素爆発"]["数値"][this.parameter[3]]);
