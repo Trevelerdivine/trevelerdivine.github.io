@@ -771,6 +771,9 @@ async function create_weapon_instance(base_status) {
     case "75":
       weapon_instance = new MissiveWindspear(base_status);
       break;
+    case "76":
+      weapon_instance = new Moonpiercer(base_status);
+      break;
     case "78":
       weapon_instance = new TheCatch(base_status);
       break;

@@ -777,6 +777,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "76") {
+    buff_group = [
+      createweaponCheckbox("Moonpiercer_effect", true),
+      createweaponLabel("Moonpiercer_effect", "ムーンピアサー：攻撃力アップ"),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {
