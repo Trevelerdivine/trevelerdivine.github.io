@@ -7236,7 +7236,7 @@ class BalladoftheFjords {
     const buff_check = document.getElementById("BalladoftheFjords_effect");
     if (buff_check.checked)
     {
-      elm_buff = 30 + (this.weapon_rank + 3);
+      elm_buff = 30 * (this.weapon_rank + 3);
     }
     return elm_buff;
   }
