@@ -753,6 +753,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "73") {
+    buff_group = [
+      createweaponCheckbox("BalladoftheFjords_effect", true),
+      createweaponLabel("BalladoftheFjords_effect", "フィヨルドの歌：元素熟知アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "88") {
     const traits = [
       {
