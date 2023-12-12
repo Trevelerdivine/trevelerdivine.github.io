@@ -120,7 +120,6 @@ class SacrificialFragments {
   }
 
   calculate_weapon_result_elm(fixstatus,status) {
-
     return 0;
   }
 
@@ -167,6 +166,8 @@ class EngulfingLightning {
   constructor(base_status_array) 
   {
     this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+
   }
 
   calculate_weapon_fixed_hp(fixstatus,status) {
@@ -182,7 +183,7 @@ class EngulfingLightning {
   }
 
   calculate_weapon_result_attck(fixstatus,status) {
-    return Math.min(status[3]- 1, 0.8/0.28)*0.28*this.base_status_array[1];
+    return Math.min(status[3]- 1, 0.8/0.28)*0.07 * (this.weapon_rank + 3)*this.base_status_array[1];
   }
 
   calculate_weapon_fixed_deff(fixstatus,status) {
@@ -203,7 +204,7 @@ class EngulfingLightning {
   }
 
   calculate_weapon_fixed_elm_charge(fixstatus,status) {
-    return 0.3;
+    return 0.05 * (this.weapon_rank + 5);
   }
 
   calculate_weapon_result_elm_charge(fixstatus,status) {
@@ -245,6 +246,7 @@ class TheCatch {
   constructor(base_status_array) 
   {
     this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   calculate_weapon_fixed_hp(fixstatus,status) {
@@ -276,7 +278,6 @@ class TheCatch {
   }
 
   calculate_weapon_result_elm(fixstatus,status) {
-
     return 0;
   }
 
@@ -289,7 +290,8 @@ class TheCatch {
   }
 
   calculate_weapon_fixed_cr(fixstatus,status) {
-    return 0.12;
+  
+    return 0.015 * (this.weapon_rank + 3);
   }
 
   calculate_weapon_result_cr(fixstatus,status) {
@@ -305,7 +307,12 @@ class TheCatch {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
-    return 0.32;
+    let dmg_buff = 0;
+    if (attack_method_index == 4)
+    {
+      dmg_buff = 0.04 * (this.weapon_rank + 3)
+    }
+    return dmg_buff;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
@@ -6846,6 +6853,96 @@ class FerrousShadow {
     if (buff_check.checked && attack_method_index == 1)
     {
       dmg_buff = 0.05 * (this.weapon_rank + 5);
+    }
+    return dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
+
+class CalamityQueller {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    let attack_buff = 0;
+    let buff_effect = 1;
+    const effect_check = document.getElementById("CalamityQueller_buff1");
+    const buff_count = parseInt(document.getElementById("CalamityQueller_buff2").value);
+    if (effect_check.checked)
+    {
+      buff_effect = 2;
+    }
+    attack_buff = 0.008 * buff_count * buff_effect * (this.weapon_rank + 3) * this.base_status_array[4];
+    return attack_buff;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0;
+    if (attack_method_index != 7)
+    {
+      dmg_buff = 0.03 * (this.weapon_rank + 3);
     }
     return dmg_buff;
   }

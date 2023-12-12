@@ -744,6 +744,9 @@ async function create_weapon_instance(base_status) {
     case "66":
       weapon_instance = new StaffoftheScarletSands(base_status);
       break;
+    case "67":
+      weapon_instance = new CalamityQueller(base_status);
+      break;
     case "68":
       weapon_instance = new EngulfingLightning(base_status);
       break;

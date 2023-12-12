@@ -631,6 +631,21 @@ async function show_weapon_statsform() {
     });
   }
   
+  else if (selectedWeaponId == "67") {
+    buff_group = [
+      createweaponCheckbox("CalamityQueller_buff1", true),
+      createweaponLabel("CalamityQueller_buff1", "息災：待機中"),
+      document.createElement("br"),
+      createweaponLabel("CalamityQueller_buff2", "息災：攻撃力アップ "),
+      createweaponSelectList("CalamityQueller_buff2", 0, 6, "", "層", 6),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "33") {
     const traits = [
       {
