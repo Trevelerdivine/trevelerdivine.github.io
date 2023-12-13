@@ -1052,6 +1052,18 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(create_br);
   }
 
+  else if (selectedWeaponId == "105") {
+    buff_group = [
+      createweaponLabel("MouunsMoon_buff1", "曚雲の月：チーム全員の元素エネルギー上限の合計 "),
+      createWeaponInputWithUnit("text", "MouunsMoon_buff1", "280",""),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "120") {
     const traits = [
       {
