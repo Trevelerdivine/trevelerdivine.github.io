@@ -988,6 +988,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "100") {
+    buff_group = [
+      createweaponCheckbox("SongofStillness_effect", true),
+      createweaponLabel("SongofStillness_effect", "静寂の唄：与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "120") {
     const traits = [
       {
