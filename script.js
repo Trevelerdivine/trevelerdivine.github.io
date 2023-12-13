@@ -891,9 +891,12 @@ async function create_weapon_instance(base_status) {
     case "118":
       weapon_instance = new FavoniusWarbow(base_status);
       break;
+    case "119":
+      weapon_instance = new Messenger(base_status);
+      break;
     case "120":
-    weapon_instance = new Slingshot(base_status);
-    break;
+      weapon_instance = new Slingshot(base_status);
+      break;
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status);
       break;
