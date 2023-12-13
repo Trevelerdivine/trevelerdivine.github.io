@@ -1090,6 +1090,18 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
+
+  else if (selectedWeaponId == "108") {
+    buff_group = [
+      createweaponCheckbox("WindblumeOde_effect1", true),
+      createweaponLabel("WindblumeOde_effect1", "風花の頌歌：攻撃力アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "120") {
     const traits = [
