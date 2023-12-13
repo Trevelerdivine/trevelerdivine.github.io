@@ -903,6 +903,9 @@ async function create_weapon_instance(base_status) {
     case "122":
       weapon_instance = new SharpshootersOath(base_status);
       break;
+    case "123":
+      weapon_instance = new RavenBow(base_status);
+      break;
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status);
       break;

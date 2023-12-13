@@ -1184,6 +1184,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "123") {
+    buff_group = [
+      createweaponCheckbox("RavenBow_effect", true),
+      createweaponLabel("RavenBow_effect", "鴉羽の弓：水元素または炎元素の影響を受けた敵 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "128") {
     const traits = [
       {

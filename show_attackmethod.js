@@ -251,7 +251,7 @@ async function show_attack_method()
 
         traits = [
           createLabel("Lyney_react_count1", "　1段チャージ狙い撃ち反応回数："),
-          createSelectList("Lyney_react_count1", 0, 1, "", "回", 1),
+          createSelectList("Lyney_react_count1", 0, 1, "", "回", 0),
           document.createElement("br"),
           createLabel("Lyney_react_count2", "　プロップアロー反応回数："),
           createSelectList("Lyney_react_count2", 0, 1, "", "回", 1),
