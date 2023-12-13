@@ -1012,6 +1012,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "102") {
+    buff_group = [
+      createweaponCheckbox("KingsSquire_effect", true),
+      createweaponLabel("KingsSquire_effect", "王の近侍：元素熟知アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "120") {
     const traits = [
       {
