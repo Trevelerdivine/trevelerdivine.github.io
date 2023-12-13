@@ -855,6 +855,9 @@ async function create_weapon_instance(base_status) {
     case "105":
       weapon_instance = new MouunsMoon(base_status);
       break;
+    case "106":
+      weapon_instance = new Hamayumi(base_status);
+      break;
     case "114":
       weapon_instance = new Rust(base_status);
       break;

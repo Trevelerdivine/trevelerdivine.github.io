@@ -1064,6 +1064,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "106") {
+    buff_group = [
+      createweaponCheckbox("Hamayumi_effect", true),
+      createweaponLabel("Hamayumi_effect", "破魔の弓：元素エネルギーMAX "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+  
   else if (selectedWeaponId == "120") {
     const traits = [
       {
