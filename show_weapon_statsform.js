@@ -1075,6 +1075,21 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
+
+  else if (selectedWeaponId == "107") {
+    buff_group = [
+      createweaponCheckbox("MitternachtsWaltz_effect1", true),
+      createweaponLabel("MitternachtsWaltz_effect1", "幽夜のワルツ：通常攻撃ダメージアップ "),
+      document.createElement("br"),
+      createweaponCheckbox("MitternachtsWaltz_effect2", true),
+      createweaponLabel("MitternachtsWaltz_effect2", "幽夜のワルツ：元素スキルダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "120") {
     const traits = [
