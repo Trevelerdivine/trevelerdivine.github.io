@@ -976,6 +976,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "99") {
+    buff_group = [
+      createweaponCheckbox("ScionoftheBlazingSun_effect", true),
+      createweaponLabel("ScionoftheBlazingSun_effect", "烈日の後嗣：重撃ダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "120") {
     const traits = [
       {

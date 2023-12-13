@@ -834,6 +834,9 @@ async function create_weapon_instance(base_status) {
     case "98":
       weapon_instance = new SkywardHarp(base_status);
       break;
+    case "99":
+      weapon_instance = new ScionoftheBlazingSun(base_status);
+      break;
     case "114":
       weapon_instance = new Rust(base_status);
       break;
