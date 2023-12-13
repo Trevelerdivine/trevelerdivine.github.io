@@ -10262,7 +10262,7 @@ class TomeoftheEternalFlow {
     const buff_count = parseInt(document.getElementById("TomeoftheEternalFlow_count").value);
     if (attack_method_index == 1)
     {
-      dmg_buff = 0.02 + 0.04 * (this.weapon_rank + 2);
+      dmg_buff = (0.02 + 0.04 * (this.weapon_rank + 2)) * buff_count;
     }
     return dmg_buff;
   }

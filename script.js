@@ -56,7 +56,7 @@ const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFut
 "WhiteTassel", "TheFirstGreatMagic", "HuntersPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
 "SongofStillness", "IbisPiercer", "KingsSquire", "EndoftheLine", "FadingTwilight", "MouunsMoon", "Hamayumi", "MitternachtsWaltz", "WindblumeOde", "AlleyHunter",
 "TheViridescentHunt", "BlackcliffWarbow", "CompoundBow", "PrototypeCrescent", "Rust", "RoyalBow", "SacrificialBow", "TheStringless", "FavoniusWarbow", "Messenger",
-"Slingshot", "RecurveBow", "SharpshootersOath", "RavenBow", "TomeoftheEternalFlow", "Jadefall'sSplendor", "Tulaytullah'sRemembrance", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
+"Slingshot", "RecurveBow", "SharpshootersOath", "RavenBow", "TomeoftheEternalFlow", "Jadefall'sSplendor", "JadefallsSplendor", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
 "MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladoftheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
 "DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
 "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters"]
