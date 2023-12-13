@@ -846,6 +846,9 @@ async function create_weapon_instance(base_status) {
     case "102":
       weapon_instance = new KingsSquire(base_status);
       break;
+    case "103":
+      weapon_instance = new EndoftheLine(base_status);
+      break;
     case "114":
       weapon_instance = new Rust(base_status);
       break;
