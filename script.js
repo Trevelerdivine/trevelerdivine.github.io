@@ -882,6 +882,9 @@ async function create_weapon_instance(base_status) {
     case "114":
       weapon_instance = new Rust(base_status);
       break;
+    case "116":
+      weapon_instance = new SacrificialBow(base_status);
+      break;
     case "117":
       weapon_instance = new TheStringless(base_status);
       break;
