@@ -867,6 +867,9 @@ async function create_weapon_instance(base_status) {
     case "109":
       weapon_instance = new AlleyHunter(base_status);
       break;
+    case "110":
+      weapon_instance = new TheViridescentHunt(base_status);
+      break;
     case "114":
       weapon_instance = new Rust(base_status);
       break;
