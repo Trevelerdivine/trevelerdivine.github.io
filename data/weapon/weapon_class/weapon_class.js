@@ -8496,7 +8496,7 @@ class TheFirstGreatMagic {
   }
 }
 
-class AquaSimulacra {
+class ElegyfortheEnd {
   constructor(base_status_array) {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
@@ -8512,14 +8512,10 @@ class AquaSimulacra {
 
   calculate_weapon_fixed_attck(fixstatus,status) {
     let attack_buff = 0;
-    const buff_count = parseInt(document.getElementById("TheFirstGreatMagic_effect").value);
-    if (buff_count < 3)
+    const buff_check = document.getElementById("ElegyfortheEnd_effect");
+    if (buff_check.checked)
     {
-      attack_buff = 0.04 * (this.weapon_rank + 3) * buff_count * this.base_status_array[4];
-    }
-    else
-    {
-      attack_buff = 0.04 * (this.weapon_rank + 3) * 3 * this.base_status_array[4];
+      attack_buff = 0.05 * (this.weapon_rank + 3) * this.base_status_array[4];
     }
     return attack_buff;
   }
@@ -8537,7 +8533,13 @@ class AquaSimulacra {
   }
 
   calculate_weapon_fixed_elm(fixstatus,status) {
-    return 0;
+    let elm_buff = 0;
+    const buff_check = document.getElementById("ElegyfortheEnd_effect");
+    if (buff_check.checked)
+    {
+      elm_buff = 25 * (this.weapon_rank + 3);
+    }
+    return elm_buff;
   }
 
   calculate_weapon_result_elm(fixstatus,status) {
@@ -8569,12 +8571,7 @@ class AquaSimulacra {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
-    let dmg_buff = 0;
-    if (attack_method_index == 1)
-    {
-      dmg_buff = 0.04 * (this.weapon_rank + 3);
-    }
-    return dmg_buff;
+    return 0;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {

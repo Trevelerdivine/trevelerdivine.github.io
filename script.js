@@ -826,8 +826,11 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new PolarStar(base_status);
       break;
     case "95":
-    weapon_instance = new ThunderingPulse(base_status);
-    break;
+      weapon_instance = new ThunderingPulse(base_status);
+      break;
+    case "96":
+      weapon_instance = new ElegyfortheEnd(base_status);
+      break;
     case "98":
       weapon_instance = new SkywardHarp(base_status);
       break;

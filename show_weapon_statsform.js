@@ -964,6 +964,18 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(selectlist);
   }
 
+  else if (selectedWeaponId == "96") {
+    buff_group = [
+      createweaponCheckbox("ElegyfortheEnd_effect", true),
+      createweaponLabel("ElegyfortheEnd_effect", "終焉を嘆く詩：攻撃力＆元素熟知アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "120") {
     const traits = [
       {
