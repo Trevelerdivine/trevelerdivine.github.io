@@ -805,13 +805,16 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new PrototypeStarglitter(base_status);
       break;
     case "88":
-    weapon_instance = new DragonsBane(base_status);
-    break;
+      weapon_instance = new DragonsBane(base_status);
+      break;
     case "89":
       weapon_instance = new BlackTassel(base_status);
       break;
     case "90":
       weapon_instance = new WhiteTassel(base_status);
+      break;
+    case "91":
+      weapon_instance = new TheFirstGreatMagic(base_status);
       break;
     case "92":
       weapon_instance = new HuntersPath(base_status);

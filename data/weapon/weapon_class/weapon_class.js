@@ -1779,7 +1779,7 @@ class AquaSimulacra {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
-    let weapon_buff_check = document.getElementById(traitCheckbox);
+    let weapon_buff_check = document.getElementById("traitCheckbox");
     if(weapon_buff_check.checked)
     {
       weapon_dmg_buff = (this.weapon_rank + 3) * 0.05
@@ -8391,6 +8391,188 @@ class WhiteTassel {
     if (attack_method_index == 0)
     {
       dmg_buff = 0.06 * (this.weapon_rank + 3);
+    }
+    return dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
+
+class TheFirstGreatMagic {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    let attack_buff = 0;
+    const buff_count = parseInt(document.getElementById("TheFirstGreatMagic_effect").value);
+    if (buff_count < 3)
+    {
+      attack_buff = 0.04 * (this.weapon_rank + 3) * buff_count * this.base_status_array[4];
+    }
+    else
+    {
+      attack_buff = 0.04 * (this.weapon_rank + 3) * 3 * this.base_status_array[4];
+    }
+    return attack_buff;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0;
+    if (attack_method_index == 1)
+    {
+      dmg_buff = 0.04 * (this.weapon_rank + 3);
+    }
+    return dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
+
+class AquaSimulacra {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    let attack_buff = 0;
+    const buff_count = parseInt(document.getElementById("TheFirstGreatMagic_effect").value);
+    if (buff_count < 3)
+    {
+      attack_buff = 0.04 * (this.weapon_rank + 3) * buff_count * this.base_status_array[4];
+    }
+    else
+    {
+      attack_buff = 0.04 * (this.weapon_rank + 3) * 3 * this.base_status_array[4];
+    }
+    return attack_buff;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0;
+    if (attack_method_index == 1)
+    {
+      dmg_buff = 0.04 * (this.weapon_rank + 3);
     }
     return dmg_buff;
   }

@@ -894,11 +894,23 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "91") {
+    buff_group = [
+      createweaponLabel("TheFirstGreatMagic_effect", "始まりの大魔術：チーム内、自身と同じ元素タイプの人数 "),
+      createweaponSelectList("TheFirstGreatMagic_effect", 1, 4, "", "人", 2),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "93") {
     const traits = [
       {
         id: "traitCheckbox",
-        label: "若水：周囲に敵がいる"
+        label: "若水：周囲に敵が存在"
       }
     ];
 
