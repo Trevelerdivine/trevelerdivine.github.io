@@ -1105,7 +1105,7 @@ async function show_weapon_statsform() {
 
   else if (selectedWeaponId == "109") {
     buff_group = [
-      createweaponLabel("AlleyHunter_count", "ダークアレイの狩人：与えるダメージ与えるダメージ "),
+      createweaponLabel("AlleyHunter_count", "ダークアレイの狩人：与えるダメージアップ "),
       createweaponSelectList("AlleyHunter_count", 0, 10, "", "層", 10),
       document.createElement("br"),
     ];
@@ -1115,6 +1115,29 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "111") {
+    buff_group = [
+      createweaponLabel("BlackcliffWarbow_count", "黒岩の戦弓：攻撃力アップ "),
+      createweaponSelectList("BlackcliffWarbow_count", 0, 3, "", "層", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
+  else if (selectedWeaponId == "112") {
+    buff_group = [
+      createweaponLabel("CompoundBow_count", "リングボウ：攻撃力アップ "),
+      createweaponSelectList("CompoundBow_count", 0, 4, "", "重", 4),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "120") {
     const traits = [
