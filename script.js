@@ -840,6 +840,9 @@ async function create_weapon_instance(base_status) {
     case "100":
       weapon_instance = new SongofStillness(base_status);
       break;
+    case "101":
+      weapon_instance = new IbisPiercer(base_status);
+      break;
     case "114":
       weapon_instance = new Rust(base_status);
       break;

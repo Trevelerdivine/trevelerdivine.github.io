@@ -1000,6 +1000,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "101") {
+    buff_group = [
+      createweaponLabel("IbisPiercer_count", "トキの嘴：元素熟知アップ "),
+      createweaponSelectList("IbisPiercer_count", 0, 2, "", "層", 2),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "120") {
     const traits = [
       {
