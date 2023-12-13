@@ -64,28 +64,28 @@ const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFut
 
 const elm_reaction_obj = [
   {
-  id: "Vaporize_pyro",
-  label: "蒸発-炎　"
+    id: "Vaporize_pyro",
+    label: "蒸発-炎　"
   },
   {
-  id: "Vaporize-hydro",
-  label: "蒸発-水　"
+    id: "Vaporize-hydro",
+    label: "蒸発-水　"
   },
   {
-  id: "Melt-pyro",
-  label: "溶解-炎　"
+    id: "Melt-pyro",
+    label: "溶解-炎　"
   },
   {
-  id: "Melt-cyro",
-  label: "溶解-氷　"
+    id: "Melt-cyro",
+    label: "溶解-氷　"
   },
   {
-  id: "Spread",
-  label: "草激化　"
+    id: "Spread",
+    label: "草激化　"
   },
   {
-  id: "Aggravate",
-  label: "超激化　"
+    id: "Aggravate",
+    label: "超激化　"
   },
   {
     id: "Aggravate",
@@ -245,7 +245,7 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
   }
   for (let n = 0; n < 7; n++)
   {
-    af_score_distribution[7]=af_score_distribution[7] + af_score_distribution[n];
+    af_score_distribution[7] = af_score_distribution[7] + af_score_distribution[n];
   }
   return af_score_distribution
 }
@@ -281,18 +281,18 @@ async function calculate_depend_status()
   const weapon_response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
   const weapon_data = await weapon_response.json();
   const weapon_depend_status = weapon_data.ステータス.依存ステータス;
-  console.log(weapon_depend_status);
+  const button = document.getElementById("reactionoff_flag");
   for (let i = 0; i < 7; i++)
   {
     depend_status[i] = char_depend_status[i] + weapon_depend_status[i];
-    if (depend_status[i]>1)
+    if (depend_status[i] > 1)
     {
       depend_status[i] = 1
     }
   }
-  const button = document.getElementById("reactionoff_flag");
 
-  if (button !== null && !button.checked && char_propaty[0] != 7) {
+  if (button !== null && !button.checked && char_propaty[0] != 7)
+  {
     depend_status[2] = 1;
   }
 
@@ -305,7 +305,7 @@ async function calculate_depend_status()
     }
   }
 }
-  return depend_status
+  return depend_status;
 }
 
 
@@ -313,7 +313,7 @@ async function calculate_depend_status()
 
 function calc_zetsuen_buff(elm_charge)
 {
-  const zetsuen_dmgbuff = Math.min(elm_charge/4,0.75);
+  const zetsuen_dmgbuff = Math.min(elm_charge / 4, 0.75);
   return zetsuen_dmgbuff;
 }
 
@@ -356,8 +356,8 @@ async function calculate_score_distribute(af_score,depend_status)
   {
     if (depend_status[i]==0)
     {
-    score_distribution[i] = 0;
-    continue;
+      score_distribution[i] = 0;
+      continue;
     }
     score_distribution[i] = depend_status[i] * distribute[k];
     k = k + 1; 
@@ -371,13 +371,13 @@ async function calculate_fixed_status(sd,bs,amsb)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
-  fixed_status[0] = bs[0]*(1 + sd[0]*3/400 + amsb[0]) + 4780;
-  fixed_status[1] = bs[1]*(1 + sd[1]*3/320 + amsb[1]);
-  fixed_status[2] = bs[2] + sd[2]*3 + amsb[2];
-  fixed_status[3] = bs[3] + sd[3]/120 + amsb[3]/100;
-  fixed_status[4] = bs[4]*(1 + sd[4]*3/400 + amsb[4]) + 311;
-  fixed_status[5] = bs[5] + sd[5]/200 + amsb[5]/100;
-  fixed_status[6] = bs[6] + sd[6]/100 + amsb[6]/100;
+  fixed_status[0] = bs[0] * (1 + sd[0] * 3 / 400 + amsb[0]) + 4780;
+  fixed_status[1] = bs[1] * (1 + sd[1] * 3 / 320 + amsb[1]);
+  fixed_status[2] = bs[2] + sd[2] * 3 + amsb[2];
+  fixed_status[3] = bs[3] + sd[3] / 120 + amsb[3]/100;
+  fixed_status[4] = bs[4] * (1 + sd[4] * 3 / 400 + amsb[4]) + 311;
+  fixed_status[5] = bs[5] + sd[5] / 200 + amsb[5] / 100;
+  fixed_status[6] = bs[6] + sd[6] / 100 + amsb[6] / 100;
   fixed_status[7] = bs[7] + amsb[7];
   return fixed_status;
 }
@@ -981,7 +981,7 @@ async function calculate_team_fix_buff(base_status)
     geo_reso: geoCheckbox.checked ? 1 : 0
   };
 
-  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates.hydro_reso + char_base_hpper + weapon_base_hpper)* base_status[0];
+  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates.hydro_reso + char_base_hpper + weapon_base_hpper) * base_status[0];
   team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1] + char_base_deffper + weapon_base_deffper) * base_status[1];
   if (checkboxStates.dendro_reso == 1)
   {
@@ -1067,11 +1067,11 @@ async function calculate_table_status()
   document.getElementById("table_base_hp").innerHTML = base_status[0];
   document.getElementById("table_base_deff").innerHTML = base_status[1];
   document.getElementById("table_base_elm").innerHTML = base_status[2];
-  document.getElementById("table_base_elm_charge").innerHTML = (base_status[3]*100).toFixed(1) + "％";
+  document.getElementById("table_base_elm_charge").innerHTML = (base_status[3] * 100).toFixed(1) + "％";
   document.getElementById("table_base_attck").innerHTML = base_status[4];
-  document.getElementById("table_base_cr").innerHTML = (base_status[5]*100).toFixed(1) + "％";
-  document.getElementById("table_base_cd").innerHTML = (base_status[6]*100).toFixed(1) + "％";
-  document.getElementById("table_base_dmg_buff").innerHTML = (base_status[7]*100).toFixed(1) + "％";
+  document.getElementById("table_base_cr").innerHTML = (base_status[5] * 100).toFixed(1) + "％";
+  document.getElementById("table_base_cd").innerHTML = (base_status[6] * 100).toFixed(1) + "％";
+  document.getElementById("table_base_dmg_buff").innerHTML = (base_status[7] * 100).toFixed(1) + "％";
 
   for (let i = 0; i < 7; i++)
   {
@@ -1098,11 +1098,11 @@ async function calculate_table_status()
     {
       if (index == 3 || index == 6)
       {
-      resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, resultStatus);
-      buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
-      document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
-      document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
-      document.getElementById(`table_final_${tablePrefix}`).innerHTML = (resultStatus[index]*100).toFixed(1) + "％";
+        resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, resultStatus);
+        buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
+        document.getElementById(`table_buff_${tablePrefix}`).innerHTML = (buffStatus[index]*100).toFixed(1) + "％";
+        document.getElementById(`table_af_${tablePrefix}`).innerHTML = (afBuff[index]*100).toFixed(1) + "％";
+        document.getElementById(`table_final_${tablePrefix}`).innerHTML = (resultStatus[index]*100).toFixed(1) + "％";
       }
       else if (index == 5)
       {
