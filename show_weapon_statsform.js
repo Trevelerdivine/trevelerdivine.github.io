@@ -1024,6 +1024,33 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "104") {
+    const FadingTwilight_buff_label = createweaponLabel("FadingTwilight_effect", "落霞：強化効果 ");
+    const create_br = document.createElement("br");
+    const options = [
+      { text: '夕暮', value: '0' },
+      { text: '流霞', value: '1' },
+      { text: '朝日', value: '2' }
+    ];
+  
+    const dropdown = document.createElement("select");
+    dropdown.id = "FadingTwilight_effect";
+  
+    options.forEach(option => {
+      const optionElement = document.createElement('option');
+      optionElement.text = option.text;
+      optionElement.value = option.value;
+      if (option.text === '朝日') {
+        optionElement.selected = true;
+      }  
+      dropdown.appendChild(optionElement);
+    });
+
+    weaponInfo.appendChild(FadingTwilight_buff_label);
+    weaponInfo.appendChild(dropdown);
+    weaponInfo.appendChild(create_br);
+  }
+
   else if (selectedWeaponId == "120") {
     const traits = [
       {
