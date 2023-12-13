@@ -897,6 +897,9 @@ async function create_weapon_instance(base_status) {
     case "120":
       weapon_instance = new Slingshot(base_status);
       break;
+    case "121":
+      weapon_instance = new RecurveBow(base_status);
+      break;
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status);
       break;
