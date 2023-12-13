@@ -1208,6 +1208,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "125") {
+    buff_group = [
+      createweaponCheckbox("JadefallsSplendor_effect", true),
+      createweaponLabel("JadefallsSplendor_effect", "碧落の瓏：定土玉圭発動 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "128") {
     const traits = [
       {
