@@ -1172,6 +1172,18 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(traitLabel);
   }
 
+  else if (selectedWeaponId == "122") {
+    buff_group = [
+      createweaponCheckbox("SharpshootersOath_effect", true),
+      createweaponLabel("SharpshootersOath_effect", "シャープシューターの誓い：弱点に命中 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "128") {
     const traits = [
       {
