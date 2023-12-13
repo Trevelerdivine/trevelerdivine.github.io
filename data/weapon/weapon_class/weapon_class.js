@@ -8860,7 +8860,7 @@ class KingsSquire {
   calculate_weapon_fixed_elm(fixstatus,status) {
     let elm_buff = 0;
     const buff_check = document.getElementById("KingsSquire_effect");
-    if (buff_check.cheked)
+    if (buff_check.checked)
     {
       elm_buff = 20 * (this.weapon_rank + 2);
     }
