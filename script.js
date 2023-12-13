@@ -1618,11 +1618,11 @@ async function monte_carlo_calculate()
       if(zetsuen_check == 1)
       {
         zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff() + zetsuen_dmgbuff);
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
       }
       else
       {
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff());
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
       }
 
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
