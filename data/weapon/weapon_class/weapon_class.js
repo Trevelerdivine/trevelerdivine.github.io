@@ -10192,3 +10192,87 @@ class RavenBow {
     return weapon_debuff
   }
 }
+
+class TomeoftheEternalFlow {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.buff_count = parseInt(document.getElementById("TomeoftheEternalFlow_count").value);
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    const hp_buff = 0.04 * (this.weapon_rank + 3) * this.base_status_array[0];
+    return hp_buff;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0;
+    const buff_count = parseInt(document.getElementById("TomeoftheEternalFlow_count").value);
+    if (attack_method_index == 1)
+    {
+      dmg_buff = 0.02 + 0.04 * (this.weapon_rank + 2);
+    }
+    return dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}

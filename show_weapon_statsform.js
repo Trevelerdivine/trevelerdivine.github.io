@@ -1196,6 +1196,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "124") {
+    buff_group = [
+      createweaponLabel("TomeoftheEternalFlow_count", "久遠流転の大典：重撃ダメージアップ "),
+      createweaponSelectList("TomeoftheEternalFlow_count", 0, 3, "", "重", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "128") {
     const traits = [
       {
