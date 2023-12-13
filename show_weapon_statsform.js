@@ -1138,6 +1138,18 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
+
+  else if (selectedWeaponId == "113") {
+    buff_group = [
+      createweaponCheckbox("PrototypeCrescent_effect", true),
+      createweaponLabel("PrototypeCrescent_effect", "澹月·試作：重撃が弱点に命中 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "120") {
     const traits = [

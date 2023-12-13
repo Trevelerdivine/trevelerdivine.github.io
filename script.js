@@ -876,6 +876,9 @@ async function create_weapon_instance(base_status) {
     case "112":
       weapon_instance = new CompoundBow(base_status);
       break;
+    case "113":
+      weapon_instance = new PrototypeCrescent(base_status);
+      break;
     case "114":
       weapon_instance = new Rust(base_status);
       break;
