@@ -8533,11 +8533,11 @@ class ElegyfortheEnd {
   }
 
   calculate_weapon_fixed_elm(fixstatus,status) {
-    let elm_buff = 0;
+    let elm_buff = 15 * (this.weapon_rank + 3);
     const buff_check = document.getElementById("ElegyfortheEnd_effect");
     if (buff_check.checked)
     {
-      elm_buff = 25 * (this.weapon_rank + 3);
+      elm_buff += 25 * (this.weapon_rank + 3);
     }
     return elm_buff;
   }
