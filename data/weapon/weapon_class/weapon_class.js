@@ -9049,7 +9049,11 @@ class FadingTwilight {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     const buff_count = parseInt(document.getElementById("FadingTwilight_effect").value);
-    let dmg_buff = (0.005 + 0.01 * (buff_count + 1)) * (this.weapon_rank + 3);
+    let dmg_buff = (0.005 + 0.01 * buff_count) * (this.weapon_rank + 3);
+    if (buff_count == 0)
+    {
+      dmg_buff = 0;
+    }
     return dmg_buff;
   }
 

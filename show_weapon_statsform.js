@@ -1028,9 +1028,10 @@ async function show_weapon_statsform() {
     const FadingTwilight_buff_label = createweaponLabel("FadingTwilight_effect", "落霞：強化効果 ");
     const create_br = document.createElement("br");
     const options = [
-      { text: '夕暮', value: '0' },
-      { text: '流霞', value: '1' },
-      { text: '朝日', value: '2' }
+      { text: '効果なし', value: '0' },
+      { text: '夕暮', value: '1' },
+      { text: '流霞', value: '2' },
+      { text: '朝日', value: '3' }
     ];
   
     const dropdown = document.createElement("select");
