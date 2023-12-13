@@ -1102,6 +1102,19 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
+
+  else if (selectedWeaponId == "109") {
+    buff_group = [
+      createweaponLabel("AlleyHunter_count", "ダークアレイの狩人：与えるダメージ与えるダメージ "),
+      createweaponSelectList("AlleyHunter_count", 0, 10, "", "層", 10),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   
   else if (selectedWeaponId == "120") {
     const traits = [
