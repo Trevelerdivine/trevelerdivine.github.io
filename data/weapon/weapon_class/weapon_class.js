@@ -10281,7 +10281,6 @@ class JadefallsSplendor {
   constructor(base_status_array) {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.buff_count = parseInt(document.getElementById("TomeoftheEternalFlow_count").value);
   }
 
   calculate_weapon_fixed_hp(fixstatus,status) {
