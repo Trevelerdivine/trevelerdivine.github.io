@@ -10346,8 +10346,8 @@ class JadefallsSplendor {
   calculate_weapon_result_dmg_buff(fixstatus,status) {
     let dmg_buff = 0;
     const buff_check = document.getElementById("JadefallsSplendor_effect");
-    let buff_count = Math.max(status[0] / 1000 , 0)
-    if (buff_check.checked)
+    let buff_count = status[0] / 1000;
+    if (buff_check.checked && attack_method_index != 7)
     {
       dmg_buff = Math.min((0.04 * (this.weapon_rank * 2 + 1)), (this.weapon_rank * 0.002 + 0.001) * buff_count);
     }
