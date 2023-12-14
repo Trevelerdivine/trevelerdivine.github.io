@@ -1386,6 +1386,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "141") {
+    buff_group = [
+      createweaponCheckbox("WineandSong_effect", true),
+      createweaponLabel("WineandSong_effect", "ダークアレイの酒と詩：攻撃力アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {
