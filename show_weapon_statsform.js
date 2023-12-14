@@ -1220,6 +1220,19 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "126") {
+    buff_group = [
+      createweaponLabel("", "トゥライトゥーラの記憶：ダメージアップ基礎値 [+4.8%/6%/7.2%/8.4%/9.6%]"),
+      document.createElement("br"),
+      createweaponLabel("TulaytullahsRemembrance_count", "　与えるダメージアップ "),
+      createweaponSelectList("TulaytullahsRemembrance_count", 0, 10, "", "層", 10),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "128") {
     const traits = [
       {

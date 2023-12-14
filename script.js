@@ -912,6 +912,9 @@ async function create_weapon_instance(base_status) {
     case "125":
       weapon_instance = new JadefallsSplendor(base_status);
       break;
+    case "126":
+      weapon_instance = new TulaytullahsRemembrance(base_status);
+      break;
     case "127":
       weapon_instance = new AThousandFloatingDreams(base_status);
       break;
