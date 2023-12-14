@@ -960,6 +960,9 @@ async function create_weapon_instance(base_status) {
     case "143":
       weapon_instance = new EyeofPerception(base_status);
       break;
+    case "144":
+      weapon_instance = new BlackcliffAgate(base_status);
+      break;
     case "146":
       weapon_instance = new PrototypeAmber(base_status);
       break;

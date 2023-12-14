@@ -1398,6 +1398,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "144") {
+    buff_group = [
+      createweaponLabel("BlackcliffAgate_count", "黒岩の緋玉：攻撃力アップ "),
+      createweaponSelectList("BlackcliffAgate_count", 0, 3, "", "重", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {
