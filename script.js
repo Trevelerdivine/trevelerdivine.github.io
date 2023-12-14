@@ -981,6 +981,12 @@ async function create_weapon_instance(base_status) {
     case "151":
       weapon_instance = new FavoniusCodex(base_status);
       break;
+    case "152":
+      weapon_instance = new ThrillingTalesofDragonSlayers(base_status);
+      break;
+    case "153":
+      weapon_instance = new MagicGuide(base_status);
+      break;
     case "155":
       weapon_instance = new SplendorOfTranquilWaters(base_status);
       break;

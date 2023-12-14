@@ -1466,6 +1466,18 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(selectList);
   }
 
+  else if (selectedWeaponId == "153") {
+    buff_group = [
+      createweaponCheckbox("MagicGuide_effect", true),
+      createweaponLabel("MagicGuide_effect", "魔導緒論：与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   showFormElements();
 }
 
