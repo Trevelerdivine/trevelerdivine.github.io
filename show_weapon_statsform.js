@@ -1347,6 +1347,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "138") {
+    buff_group = [
+      createweaponCheckbox("OathswornEye_effect", true),
+      createweaponLabel("OathswornEye_effect", "誓いの明瞳：元素チャージ効率アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {
