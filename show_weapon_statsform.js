@@ -1371,6 +1371,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "140") {
+    buff_group = [
+      createweaponCheckbox("DodocoTales_dmg_buff", true),
+      createweaponLabel("DodocoTales_dmg_buff", "ドドコの物語：重撃ダメージアップ "),
+      document.createElement("br"),
+      createweaponCheckbox("DodocoTales_attack_buff", true),
+      createweaponLabel("DodocoTales_attack_buff", "ドドコの物語：攻撃力アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {

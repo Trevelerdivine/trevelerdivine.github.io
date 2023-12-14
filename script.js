@@ -948,6 +948,9 @@ async function create_weapon_instance(base_status) {
     case "139":
       weapon_instance = new HakushinRing(base_status);
       break;
+    case "140":
+      weapon_instance = new DodocoTales(base_status);
+      break;
     case "146":
       weapon_instance = new PrototypeAmber(base_status);
       break;
