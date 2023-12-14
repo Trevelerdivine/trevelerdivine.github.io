@@ -925,6 +925,9 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new LostPrayertotheSacredWinds(base_status);
       break;
     case "132":
+      weapon_instance = new SkywardAtlas(base_status);
+      break;
+    case "133":
       weapon_instance = new BalladOfTheBoundlessBlue(base_status);
       break;
     case "146":
