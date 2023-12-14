@@ -1410,6 +1410,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "145") {
+    buff_group = [
+      createweaponLabel("MappaMare_count", "万国諸海の図譜：元素ダメージアップ "),
+      createweaponSelectList("MappaMare_count", 0, 2, "", "重", 2),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {
