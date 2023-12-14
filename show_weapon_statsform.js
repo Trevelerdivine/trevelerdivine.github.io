@@ -1422,6 +1422,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "147") {
+    buff_group = [
+      createweaponCheckbox("SolarPearl_effect1", true),
+      createweaponLabel("SolarPearl_effect1", "匣中日月：元素スキル＆元素爆発ダメージアップ "),
+      document.createElement("br"),
+      createweaponCheckbox("SolarPearl_effect2", true),
+      createweaponLabel("SolarPearl_effect2", "匣中日月：通常攻撃ダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {

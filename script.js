@@ -969,6 +969,9 @@ async function create_weapon_instance(base_status) {
     case "146":
       weapon_instance = new PrototypeAmber(base_status);
       break;
+    case "147":
+      weapon_instance = new SolarPearl(base_status);
+      break;
     case "149":
       weapon_instance = new SacrificialFragments(base_status);
       break;
