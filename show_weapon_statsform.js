@@ -1257,6 +1257,21 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(selectlist);
   }
 
+  else if (selectedWeaponId == "130") {
+    buff_group = [
+      createweaponCheckbox("MemoryofDust_onfield", true),
+      createweaponLabel("MemoryofDust_onfield", "シールド状態"),
+      document.createElement("br"),
+      createweaponLabel("MemoryofDust", "浮世の錠：攻撃力アップ "),
+      createweaponSelectList("MemoryofDust", 0, 5, "", "層", 5),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "131") {
     const traits = [
       {
