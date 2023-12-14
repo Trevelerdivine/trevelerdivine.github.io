@@ -249,7 +249,8 @@ class dehya {
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
     this.skill_buff = 0;
-    this.trueCount = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
   }
 
   async dmg_rate_data(){
@@ -301,6 +302,11 @@ class dehya {
         hp_rate1 += 0.06;
         hp_rate2 += 0.06;
       }
+
+      this.react_attack_count = reaction_count1
+                              + reaction_count2;
+      this.nonreact_attack_count = attack_count1 - reaction_coun1
+                                 + attack_count2 - reaction_count2;
 
       let attack_react_dmgrate = reaction_count1 * attack_rate1 + reaction_count2 * attack_rate2;
       let attack_nonreact_dmgrate = (attack_count1 - reaction_count1) * attack_rate1 + (attack_count2 - reaction_count2) * attack_rate2;
@@ -381,13 +387,13 @@ class dehya {
     let attckRate;
       if (this.reaction_coeff > 0)
       {
-        attckRate = status[0] * dmg_rate[0][0] + status[4] * dmg_rate[4][0];
+        attckRate = status[0] * dmg_rate[0][0] + status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1];
+                  + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
       }
       else
       {
-        basicDmg =  (dmg_rate[0][0] + dmg_rate[0][1]) * status[0] + (dmg_rate[4][0] + dmg_rate[4][1]) * status[4];
+        basicDmg =  (dmg_rate[0][0] + dmg_rate[0][1]) * status[0] + (dmg_rate[4][0] + dmg_rate[4][1]) * status[4] + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);;
       }
       return basicDmg;
   }
@@ -8489,6 +8495,11 @@ function calculate_weapon_basedmg (attack_count, status_array, weapon_rank)
   else if (selectedWeaponId == 36 && attack_method >= 1 && attack_method <= 10)
   {
     base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
+    return base_dmg;
+  }
+  else if (selectedWeaponId == 92 && attack_method_index == 1)
+  {
+    base_dmg = status_array[2] * (weapon_rank + 3) * 0.4 * attack_count;
     return base_dmg;
   }
   return base_dmg;

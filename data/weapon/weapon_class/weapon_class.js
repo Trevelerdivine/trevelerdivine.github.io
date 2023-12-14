@@ -472,7 +472,12 @@ class HuntersPath {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
-    return 0.12 + (this.weapon_rank - 1) * 0.03;
+    let dmg_buff = 0;
+    if (char_propaty[0] !=7)
+    {
+      dmg_buff = 0.12 + (this.weapon_rank - 1) * 0.03;
+    }
+    return 0;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
