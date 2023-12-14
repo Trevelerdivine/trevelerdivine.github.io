@@ -1335,6 +1335,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "137") {
+    buff_group = [
+      createweaponLabel("FruitofFulfillmenty_count", "満悦の実：盈虚 "),
+      createweaponSelectList("FruitofFulfillmenty_count", 0, 5, "", "層", 5),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {
