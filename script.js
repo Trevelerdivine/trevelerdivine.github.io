@@ -18,22 +18,22 @@ const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディル
                             "ヨォーヨ","コレイ","草旅人","荒瀧一斗","アルベド","鍾離","雲菫","ゴロー","ノエル","凝光",
                             "岩旅人", "リネ", "ヌヴィレット", "リオセスリ", "フリーナ"
 ];
-const DisplayWeaponName = ["萃光の裁葉", "聖顕の鍵", "波乱月白経津", "霧切の廻光", "蒼古なる自由への誓い", "磐岩結緑", "斬山の刃", "天空の刃", "風鷹剣", "船渠剣",
-"狼牙", "サーンドルの渡し守", "海淵のフィナーレ", "東花坊時雨", "サイフォスの月明かり", "原木刀", "籠釣瓶一心", "シナバースピンドル", "天目影打", "ダークアレイの閃光",
-"腐植の剣", "黒剣", "黒岩の長剣", "鉄蜂の刺し", "斬岩·試作", "匣中龍吟", "旧貴族長剣", "祭礼の剣", "笛の剣", "西風剣",
-"飛天御剣", "チ虎魚の刀", "旅道の剣", "黎明の神剣", "冷刃", "葦海の標", "赤角石塵滅砕", "松韻の響く頃", "無工の剣", "狼の末路",
-"天空の傲", "携帯型チェーンソー", "話死合い棒", "タイダル・シャドー", "鉄彩の花", "マカイラの水色", "森林のレガリア", "惡王丸", "銜玉の海皇", "桂木斬長正",
-"千岩古剣", "雪葬の星銀", "螭龍の剣", "黒岩の斬刀", "白影の剣", "古華·試作", "旧貴族大剣", "雨裁", "祭礼の大剣", "鐘の剣",
-"西風大剣", "飛天大御剣", "理屈責め", "白鉄の大剣", "龍血を浴びた剣", "鉄影段平", "赤砂の杖", "息災", "草薙の稲光", "護摩の杖",
-"破天の槍", "天空の脊", "和璞鳶", "フィヨルドの歌	", "正義の報酬", "風信の矛", "ムーンピアサー", "斬波のひれ長", "「漁獲」", "喜多院十文字槍",
-"千岩長槍", "ドラゴンスピア", "旧貴族猟槍", "西風長槍", "死闘の槍", "黒岩の突槍", "流月の針", "星鎌·試作", "匣中滅龍", "黒纓槍",
-"白纓槍", "始まりの大魔術", "狩人の道", "若水", "冬極の白星", "飛雷の鳴弦", "終焉を嘆く詩", "アモスの弓", "天空の翼", "烈日の後嗣",
-"静寂の唄", "トキの嘴", "王の近侍", "竭沢", "落霞", "曚雲の月", "破魔の弓", "幽夜のワルツ", "風花の頌歌", "ダークアレイの狩人",
-"蒼翠の狩猟弓", "黒岩の戦弓", "リングボウ", "澹月·試作", "弓蔵", "旧貴族長弓", "祭礼の弓", "絶弦", "西風猟弓", "文使い",
-"弾弓", "リカーブボウ", "シャープシューターの誓い", "鴉羽の弓", "久遠流転の大典", "碧落の瓏", "トゥライトゥーラの記憶", "千夜に浮かぶ夢", "神楽の真意", "不滅の月華",
-"浮世の錠", "四風原典", "天空の巻", "果てなき紺碧の唄", "古祠の瓏", "純水流華", "彷徨える星", "満悦の実", "誓いの明瞳", "白辰の輪",
-"ドドコの物語", "ダークアレイの酒と詩", "冬忍びの実", "昭心", "黒岩の緋玉", "万国諸海の図譜", "金珀·試作", "匣中日月", "旧貴族秘法録", "祭礼の断片",
-"流浪楽章", "西風秘典", "龍殺しの英傑譚", "魔導緒論", "", "静水流転の輝き"
+const DisplayWeaponName = [ "萃光の裁葉", "聖顕の鍵", "波乱月白経津", "霧切の廻光", "蒼古なる自由への誓い", "磐岩結緑", "斬山の刃", "天空の刃", "風鷹剣", "船渠剣",
+                            "狼牙", "サーンドルの渡し守", "海淵のフィナーレ", "東花坊時雨", "サイフォスの月明かり", "原木刀", "籠釣瓶一心", "シナバースピンドル", "天目影打", "ダークアレイの閃光",
+                            "腐植の剣", "黒剣", "黒岩の長剣", "鉄蜂の刺し", "斬岩·試作", "匣中龍吟", "旧貴族長剣", "祭礼の剣", "笛の剣", "西風剣",
+                            "飛天御剣", "チ虎魚の刀", "旅道の剣", "黎明の神剣", "冷刃", "葦海の標", "赤角石塵滅砕", "松韻の響く頃", "無工の剣", "狼の末路",
+                            "天空の傲", "携帯型チェーンソー", "話死合い棒", "タイダル・シャドー", "鉄彩の花", "マカイラの水色", "森林のレガリア", "惡王丸", "銜玉の海皇", "桂木斬長正",
+                            "千岩古剣", "雪葬の星銀", "螭龍の剣", "黒岩の斬刀", "白影の剣", "古華·試作", "旧貴族大剣", "雨裁", "祭礼の大剣", "鐘の剣",
+                            "西風大剣", "飛天大御剣", "理屈責め", "白鉄の大剣", "龍血を浴びた剣", "鉄影段平", "赤砂の杖", "息災", "草薙の稲光", "護摩の杖",
+                            "破天の槍", "天空の脊", "和璞鳶", "フィヨルドの歌	", "正義の報酬", "風信の矛", "ムーンピアサー", "斬波のひれ長", "「漁獲」", "喜多院十文字槍",
+                            "千岩長槍", "ドラゴンスピア", "旧貴族猟槍", "西風長槍", "死闘の槍", "黒岩の突槍", "流月の針", "星鎌·試作", "匣中滅龍", "黒纓槍",
+                            "白纓槍", "始まりの大魔術", "狩人の道", "若水", "冬極の白星", "飛雷の鳴弦", "終焉を嘆く詩", "アモスの弓", "天空の翼", "烈日の後嗣",
+                            "静寂の唄", "トキの嘴", "王の近侍", "竭沢", "落霞", "曚雲の月", "破魔の弓", "幽夜のワルツ", "風花の頌歌", "ダークアレイの狩人",
+                            "蒼翠の狩猟弓", "黒岩の戦弓", "リングボウ", "澹月·試作", "弓蔵", "旧貴族長弓", "祭礼の弓", "絶弦", "西風猟弓", "文使い",
+                            "弾弓", "リカーブボウ", "シャープシューターの誓い", "鴉羽の弓", "久遠流転の大典", "碧落の瓏", "トゥライトゥーラの記憶", "千夜に浮かぶ夢", "神楽の真意", "不滅の月華",
+                            "浮世の錠", "四風原典", "天空の巻", "果てなき紺碧の唄", "古祠の瓏", "純水流華", "彷徨える星", "満悦の実", "誓いの明瞳", "白辰の輪",
+                            "ドドコの物語", "ダークアレイの酒と詩", "冬忍びの実", "昭心", "黒岩の緋玉", "万国諸海の図譜", "金珀·試作", "匣中日月", "旧貴族秘法録", "祭礼の断片",
+                            "流浪楽章", "西風秘典", "龍殺しの英傑譚", "魔導緒論", "", "静水流転の輝き"
 ];
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
@@ -44,22 +44,23 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo",
                    "Lyney", "Neuvillette", "Wriothesley", "Furina"
                   ];
-const weapon_name = ["LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
-"WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
-"FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "LionsRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
-"SkyriderSword", "FilletBlade", "TravelersHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "WolfsGravestone",
-"SkywardPride", "PortablePowerSaw", "TalkingStick", "TidalShadow", "MailedFlower", "MakhairaAquamarine", "ForestRegalia", "Akuoumaru", "LuxuriousSeaLoad", "KatsuragikiriNagamasa",
-"LithicBlade", "SnowTombedStarsilver", "SerpentSpine", "BlackcliffSlasher", "Whiteblind", "PrototypeArchaic", "RoyalGreatsword", "Rainslasher", "SacrificialGreatsword", "TheBell",
-"FavoniusGreatsword", "SkyriderGreatsword", "DebateClub", "WhiteIronGreatsword", "BloodtaintedGreatsword", "FerrousShadow", "StaffoftheScarletSands", "CalamityQueller", "EngulfingLightning", "StaffofHoma",
-"VortexVanguisher", "SkywardSpine", "PrimordialJadeWingedSpear", "BalladoftheFjords", "RightfulReward", "MissiveWindspear", "Moonpiercer", "WavebreakersFin", "TheCatch", "KitainCrossSpear",
-"LithicSpear", "DragonspineSpear", "RoyalSpear", "FavoniusLance", "Deathmatch", "BlackcliffPole", "CrescentPike", "PrototypeStarglitter", "DragonsBane", "BlackTassel",
-"WhiteTassel", "TheFirstGreatMagic", "HuntersPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
-"SongofStillness", "IbisPiercer", "KingsSquire", "EndoftheLine", "FadingTwilight", "MouunsMoon", "Hamayumi", "MitternachtsWaltz", "WindblumeOde", "AlleyHunter",
-"TheViridescentHunt", "BlackcliffWarbow", "CompoundBow", "PrototypeCrescent", "Rust", "RoyalBow", "SacrificialBow", "TheStringless", "FavoniusWarbow", "Messenger",
-"Slingshot", "RecurveBow", "SharpshootersOath", "RavenBow", "TomeoftheEternalFlow", "JadefallsSplendor", "TulaytullahsRemembrance", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
-"MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladOfTheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
-"DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
-"TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters"]
+const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
+                      "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
+                      "FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "LionsRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
+                      "SkyriderSword", "FilletBlade", "TravelersHandySword", "HarbingerofDawn", "CoolSteel", "BeaconoftheReedSea", "RedhornStonethresher", "SongofBrokenPines", "TheUnforged", "WolfsGravestone",
+                      "SkywardPride", "PortablePowerSaw", "TalkingStick", "TidalShadow", "MailedFlower", "MakhairaAquamarine", "ForestRegalia", "Akuoumaru", "LuxuriousSeaLoad", "KatsuragikiriNagamasa",
+                      "LithicBlade", "SnowTombedStarsilver", "SerpentSpine", "BlackcliffSlasher", "Whiteblind", "PrototypeArchaic", "RoyalGreatsword", "Rainslasher", "SacrificialGreatsword", "TheBell",
+                      "FavoniusGreatsword", "SkyriderGreatsword", "DebateClub", "WhiteIronGreatsword", "BloodtaintedGreatsword", "FerrousShadow", "StaffoftheScarletSands", "CalamityQueller", "EngulfingLightning", "StaffofHoma",
+                      "VortexVanguisher", "SkywardSpine", "PrimordialJadeWingedSpear", "BalladoftheFjords", "RightfulReward", "MissiveWindspear", "Moonpiercer", "WavebreakersFin", "TheCatch", "KitainCrossSpear",
+                      "LithicSpear", "DragonspineSpear", "RoyalSpear", "FavoniusLance", "Deathmatch", "BlackcliffPole", "CrescentPike", "PrototypeStarglitter", "DragonsBane", "BlackTassel",
+                      "WhiteTassel", "TheFirstGreatMagic", "HuntersPath", "AquaSimulacra", "PolarStar", "ThunderingPulse", "ElegyfortheEnd", "Amos'Bow", "SkywardHarp", "ScionoftheBlazingSun",
+                      "SongofStillness", "IbisPiercer", "KingsSquire", "EndoftheLine", "FadingTwilight", "MouunsMoon", "Hamayumi", "MitternachtsWaltz", "WindblumeOde", "AlleyHunter",
+                      "TheViridescentHunt", "BlackcliffWarbow", "CompoundBow", "PrototypeCrescent", "Rust", "RoyalBow", "SacrificialBow", "TheStringless", "FavoniusWarbow", "Messenger",
+                      "Slingshot", "RecurveBow", "SharpshootersOath", "RavenBow", "TomeoftheEternalFlow", "JadefallsSplendor", "TulaytullahsRemembrance", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
+                      "MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladOfTheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
+                      "DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
+                      "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters"
+                    ]
 
 
 const elm_reaction_obj = [
@@ -92,8 +93,6 @@ const elm_reaction_obj = [
     label: "超伝導　"
   }
 ];
-
-/////////////////////
 
 async function calculate_char_base_status() 
 {
@@ -128,8 +127,6 @@ async function calculate_char_base_status()
   return char_base_status;
 }
 
-///////////////  
-
 async function calculate_weapon_base_status() 
 {
   const weapon_level = document.getElementById("weapon_level").value;
@@ -153,8 +150,6 @@ async function calculate_weapon_base_status()
   return weapon_base_status;
 }
 
-///////////////////
-
 async function calculate_base_status() 
 {
   char_base_status = await calculate_char_base_status();
@@ -170,8 +165,6 @@ async function calculate_base_status()
   let base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
   return base_status;
 }
-
-/////////////////////
 
 async function calculate_af_main_status_buff() 
 {
@@ -199,8 +192,6 @@ async function calculate_af_main_status_buff()
 
   return af_main_status_buff;
 }
-
-//////////////////////////
 
 async function calculate_af_score(af_main_status_buff,depend_status,base_status) 
 {
@@ -249,8 +240,6 @@ async function calculate_af_score(af_main_status_buff,depend_status,base_status)
   }
   return af_score_distribution
 }
-
-///////////////////
 
 async function calculate_depend_status()
 {
@@ -308,16 +297,11 @@ async function calculate_depend_status()
   return depend_status;
 }
 
-
-///////////////////
-
 function calc_zetsuen_buff(elm_charge)
 {
   const zetsuen_dmgbuff = Math.min(elm_charge / 4, 0.75);
   return zetsuen_dmgbuff;
 }
-
-///////////////////
 
 async function calculate_depend_status_index(array)
 {
@@ -331,8 +315,6 @@ async function calculate_depend_status_index(array)
   }
   return depend_status_index;
 }
-
-/////////////////////////
 
 async function calculate_score_distribute(af_score,depend_status)
 {
@@ -365,8 +347,6 @@ async function calculate_score_distribute(af_score,depend_status)
   return score_distribution;
 }
 
-////////////////////////////////
-
 async function calculate_fixed_status(sd,bs,amsb)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
@@ -381,8 +361,6 @@ async function calculate_fixed_status(sd,bs,amsb)
   fixed_status[7] = bs[7] + amsb[7];
   return fixed_status;
 }
-
-////////////////////////
 
 async function create_char_instance(base_status, parameter) {
   let char_instance;
@@ -542,9 +520,6 @@ async function create_char_instance(base_status, parameter) {
   
   return char_instance;
 }
-
-
-///////////////////////
 
 async function create_weapon_instance(base_status) {
   let weapon_instance;
@@ -997,8 +972,6 @@ async function create_weapon_instance(base_status) {
   return weapon_instance;
 }
 
-///////////////////////
-
 async function calculate_team_fix_buff(base_status)
 {
   const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value) || 0; // 聖遺物HP上昇量
@@ -1065,8 +1038,6 @@ async function calculate_team_fix_buff(base_status)
   return team_buff
 }
 
-///////////////////////
-
 async function calculate_team_dynamic_buff(base_status)
 {
   const dynamic_hp_buff = parseInt(document.getElementById("dynamic_hp_buff").value) || 0; // 聖遺物HP上昇量
@@ -1093,8 +1064,6 @@ async function calculate_team_dynamic_buff(base_status)
 
   return team_buff
 }
-
-///////////////////////
 
 async function calculate_table_status()
 {
@@ -1216,7 +1185,6 @@ async function calculate_table_status()
   document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
   document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
 }
-///////////////////////
 
 function identify_condition() {
   const attack_method_type = document.getElementById("attack_method_id").value;
@@ -1255,10 +1223,6 @@ function identify_condition() {
   return 0;
 }
 
-
-///////////////////////
-
-
 async function create_afset_instance() 
 {
   const attackSelect = document.getElementById("attack_method_id");
@@ -1283,7 +1247,6 @@ async function create_afset_instance()
   }
   return buff
 }
-
 
 async function calculate_elmreaction_constdmg(reaction_coeff) 
 {
@@ -1316,7 +1279,6 @@ async function calculate_elmreaction_constdmg(reaction_coeff)
   return reaction_count;
 }
 
-///////////////////////
 async function calculateEnemyProps(charDebuff, weaponDebuff) {
   const levelSelect = document.getElementById("char_level");
   const levelIndex = levelSelect.value;
@@ -1368,10 +1330,6 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   const resultCorrection = deffCorrection * resistCorrection;
   return resultCorrection;
 }
-
-
-
-///////////////////////
 
 async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_status)
 {
@@ -1487,11 +1445,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   return result_status;
 }
 
-async function calculate_Correctionfactor (base_status,af_main_status_buff,depend_status)
-{
-  
-}
-//////////////////////
 async function import_char_parameter()
 {
   const levelSelect = document.getElementById("char_level");
@@ -1509,9 +1462,6 @@ async function import_char_parameter()
   const parameter = [selectedLevel, agg_fixed_value, constellations, talent_level_index];
   return parameter;
 }
-
-
-//////////////////////
 
 async function monte_carlo_calculate()
 {

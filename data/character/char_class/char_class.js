@@ -8,7 +8,8 @@ class Lyney {
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
     this.skill_buff = 0;
-    this.trueCount = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
   }
 
   async dmg_rate_data(){
@@ -70,6 +71,17 @@ class Lyney {
                                   + (attack_count4 - reaction_count4) * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])
                                   + attack_count5 * parseFloat(data["重撃"]["詳細"][3]["数値"][this.parameter[3]])
 
+      this.react_attack_count = reaction_count1 
+                              + reaction_count2
+                              + reaction_count3
+                              + reaction_count4;
+      
+      this.nonreact_attack_count = attack_count1 - reaction_count1
+                                 + attack_count2 - reaction_count2
+                                 + attack_count3 - reaction_count3
+                                 + attack_count4 - reaction_count4
+                                 + attack_count5;
+
       if (this.char_constellations == 4)
       {
         const attack_count6 = parseInt(document.getElementById("Lyney_attack_count6").value);
@@ -79,7 +91,12 @@ class Lyney {
         attack_react_dmgrate += (reaction_count5 * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
                               +  reaction_count6 * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])) * 0.8;
         attack_nonreact_dmgrate += ((attack_count6 - reaction_count5) * (parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]]) + 0.8)
-                                 +  (attack_count7 - reaction_count6) * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])) * 0.8;
+                                 +  (attack_count7 - reaction_count6) * parseFloat(data["重撃"]["詳細"][2]["数値"][this.parameter[3]])) * 0.8
+
+        this.react_attack_count += reaction_count5
+                                 + reaction_count6;
+        this.nonreact_attack_count += attack_count6 - reaction_count5
+                                    + attack_count7 - reaction_count6;
       }
 
       dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
@@ -95,6 +112,14 @@ class Lyney {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
@@ -117,7 +142,11 @@ class Lyney {
                             + reaction_count2 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
       let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
                                   + (attack_count2 - reaction_count2) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-
+      this.react_attack_count = reaction_count1
+                              + reaction_count2;
+      this.nonreact_attack_count = attack_count1 - reaction_coun1
+                                  + attack_count2 - reaction_count2;
+                                  
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
     return dmg_rate;
@@ -192,13 +221,13 @@ class Lyney {
     let attckRate;
       if (this.reaction_coeff > 0)
       {
-        attckRate = status[4] * dmg_rate[4][0];
+        attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[4] * dmg_rate[4][1];
+                  + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
       }
       else
       {
-        basicDmg =  (dmg_rate[4][0] + dmg_rate[4][1]) * status[4];
+        basicDmg =  (dmg_rate[4][0] + dmg_rate[4][1]) * status[4] + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
       }
       return basicDmg;
   }
@@ -8449,18 +8478,18 @@ class travelergeo {
 }
 
 
-  function calculate_weapon_basedmg (attack_count, status_array, weapon_rank)
+function calculate_weapon_basedmg (attack_count, status_array, weapon_rank)
+{
+  let base_dmg = 0;
+  if (selectedWeaponId == 17 && attack_method >= 16 && attack_method <= 20)
   {
-    let base_dmg = 0;
-    if (selectedWeaponId == 17 && attack_method >= 16 && attack_method <= 20)
-    {
-      base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
-      return base_dmg;
-    }
-    else if (selectedWeaponId == 36 && attack_method >= 1 && attack_method <= 10)
-    {
-      base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
-      return base_dmg;
-    }
+    base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
     return base_dmg;
   }
+  else if (selectedWeaponId == 36 && attack_method >= 1 && attack_method <= 10)
+  {
+    base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
+    return base_dmg;
+  }
+  return base_dmg;
+}
