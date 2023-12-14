@@ -949,10 +949,10 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new HakushinRing(base_status);
       break;
     case "140":
-      weapon_instance = new WineandSong(base_status);
+      weapon_instance = new DodocoTales(base_status);
       break;
     case "141":
-      weapon_instance = new DodocoTales(base_status);
+      weapon_instance = new WineandSong(base_status);
       break;
     case "142":
       weapon_instance = new Frostbearer(base_status);
