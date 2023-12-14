@@ -1320,6 +1320,21 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "135") {
+    buff_group = [
+      createweaponCheckbox("FlowingPurity_buff", true),
+      createweaponLabel("FlowingPurity_buff", "純水流華：全元素ダメージアップ "),
+      document.createElement("br"),
+      createweaponCheckbox("FlowingPurity_effect", true),
+      createweaponLabel("FlowingPurity_effect", "純水流華：命の契約 "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {

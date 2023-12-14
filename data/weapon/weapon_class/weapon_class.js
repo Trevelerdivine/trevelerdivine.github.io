@@ -10775,3 +10775,91 @@ class SacrificialJade {
     return weapon_debuff
   }
 }
+
+class FlowingPurity {
+  constructor(base_status_array) {
+    this.base_status_array = base_status_array;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.effect_flag = 0;
+    const effect_check = document.getElementById("FlowingPurity_effect");
+    if (effect_check.checked)
+    {
+      this.effect_flag = 1;
+    }
+  }
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0;
+    const buff_check = document.getElementById("FlowingPurity_buff");
+    if (buff_check.checked && char_propaty[0] != 7)
+    {
+      dmg_buff = 0.02 * (this.weapon_rank + 3);
+    }
+    return dmg_buff;
+  }
+
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return Math.min(0.03 * (this.weapon_rank + 3), this.effect_flag * status[0] * 0.24* 0.001 * 0.005 * (this.weapon_rank + 3));
+  }
+
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
+  }
+}
