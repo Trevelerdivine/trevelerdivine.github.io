@@ -10879,11 +10879,11 @@ class WanderingEvenstar {
   }
 
   calculate_weapon_fixed_attck(fixstatus,status) {
-    return 0.06 * (this.weapon_rank + 3) * status[2];
+    return 0;
   }
 
   calculate_weapon_result_attck(fixstatus,status) {
-    return 0;
+    return 0.06 * (this.weapon_rank + 3) * status[2];
   }
 
   calculate_weapon_fixed_deff(fixstatus,status) {
