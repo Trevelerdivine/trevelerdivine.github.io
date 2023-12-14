@@ -11638,7 +11638,7 @@ class MappaMare {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let dmg_buff = 0;
-    const buff_count = parseInt(document.getElementById("MappaMare_count").vakue);
+    const buff_count = parseInt(document.getElementById("MappaMare_count").value);
     if (char_propaty[0] != 7)
     {
       dmg_buff = 0.02 * (this.weapon_rank + 3) * buff_count; 
