@@ -1296,6 +1296,18 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(selectlist);
   }
 
+  else if (selectedWeaponId == "133") {
+    buff_group = [
+      createweaponLabel("BalladOfTheBoundlessBlue_effect", "果てなき紺碧の唄：通常攻撃＆重撃ダメージアップ "),
+      createweaponSelectList("BalladOfTheBoundlessBlue_effect", 0, 3, "", "重", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {
