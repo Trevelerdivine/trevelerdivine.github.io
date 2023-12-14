@@ -524,6 +524,9 @@ async function create_char_instance(base_status, parameter) {
 async function create_weapon_instance(base_status) {
   let weapon_instance;
   switch (selectedWeaponId) {
+    case "0":
+      weapon_instance = new LightofFoliarIncision(base_status);
+      break;
     case "1":
       weapon_instance = new KeyofKhajNisut(base_status);
       break;
