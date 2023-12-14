@@ -1359,6 +1359,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "139") {
+    buff_group = [
+      createweaponCheckbox("HakushinRing_effect", true),
+      createweaponLabel("HakushinRing_effect", "白辰の輪：元素ダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {
