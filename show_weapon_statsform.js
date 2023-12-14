@@ -1308,6 +1308,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "134") {
+    buff_group = [
+      createweaponCheckbox("SacrificialJade_effect", true),
+      createweaponLabel("SacrificialJade_effect", "古祠の瓏：碧玉流転"),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "150") {
     const traits = [
       {

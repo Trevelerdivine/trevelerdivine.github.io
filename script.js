@@ -930,6 +930,9 @@ async function create_weapon_instance(base_status) {
     case "133":
       weapon_instance = new BalladOfTheBoundlessBlue(base_status);
       break;
+    case "134":
+      weapon_instance = new SacrificialJade(base_status);
+      break;
     case "146":
       weapon_instance = new PrototypeAmber(base_status);
       break;
