@@ -954,6 +954,9 @@ async function create_weapon_instance(base_status) {
     case "141":
       weapon_instance = new DodocoTales(base_status);
       break;
+    case "142":
+      weapon_instance = new Frostbearer(base_status);
+      break;
     case "146":
       weapon_instance = new PrototypeAmber(base_status);
       break;
