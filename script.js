@@ -936,6 +936,9 @@ async function create_weapon_instance(base_status) {
     case "135":
       weapon_instance = new FlowingPurity(base_status);
       break;
+    case "136":
+      weapon_instance = new WanderingEvenstar(base_status);
+      break;
     case "146":
       weapon_instance = new PrototypeAmber(base_status);
       break;
