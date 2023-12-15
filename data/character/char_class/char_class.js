@@ -827,20 +827,14 @@ class hutao {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      if (attack_method == 1)
-      {
-        attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
-      }
+      attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
+      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
     }
     else
     {
-      if (attack_method == 1)
-      {
-        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
-        basicDmg = attckRate;
-      }
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
+      basicDmg = attckRate;
     }
     return basicDmg;
   }
