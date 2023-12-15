@@ -2591,7 +2591,7 @@ class Furina {
       else if (attack_method == 16)
       {
         basicDmg = status[0] * ((dmg_rate[0][0] + dmg_rate[0][1]) * (1 + status[7] - this.talent2_buff) / (1 + status[7])  + dmg_rate[0][2] + dmg_rate[0][3])
-                 + calculate_weapon_basedmg(1, status, this.weapon_rank) * (1 + status[7] - this.talent2_buff) / (1 + status[7])
+                 + calculate_weapon_basedmg(this.first_react_count + this.first_nonreact_count, status, this.weapon_rank) * (1 + status[7] - this.talent2_buff) / (1 + status[7])
                  + calculate_weapon_basedmg(this.nonreact_attack_count + this.react_attack_count, status, this.weapon_rank);
       }
       else
