@@ -554,6 +554,11 @@ async function show_attack_method()
   }
   else if (selectedCharId == "6")
   {
+    const yanfei_text = createTextNode("　丹火の印：")
+    const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
+    attack_method_prop.appendChild(yanfei_text);
+    attack_method_prop.appendChild(yanfei_textskill_selectlist);
+    attack_method_prop.appendChild(document.createElement("br"));
     if (attack_method == 1)
     {
       options = [
@@ -576,11 +581,6 @@ async function show_attack_method()
       elementsToAddToCharTalent.forEach(element => {
         temporary_char_talent.appendChild(element);
       });
-      const yanfei_text = createTextNode("　丹火の印：")
-      const yanfei_textskill_selectlist = createSelectList("yanfei_mark", 0, 4, "", "枚", 3);
-      attack_method_prop.appendChild(yanfei_text);
-      attack_method_prop.appendChild(yanfei_textskill_selectlist);
-      attack_method_prop.appendChild(document.createElement("br"));
       options = [
         { text: "重撃", value: "0", checked: true },
       ];

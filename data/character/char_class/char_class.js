@@ -1408,6 +1408,9 @@ class yanfei {
     let elm_react = []
     let elm_nonreact = [];
 
+    const buff_count = parseInt(document.getElementById("yanfei_mark").value);
+    this.talent1_buff = 0.05 * buff_count;
+
     if (attack_method == 1) {   
     const checkboxContainer = document.getElementById("select_reaction_method");
     const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -1436,8 +1439,6 @@ class yanfei {
         const burstlevel = parseInt(document.getElementById("yanfeiQ_level").value);
         this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burstlevel]);
       }
-      const buff_count = parseInt(document.getElementById("yanfei_mark").value);
-      this.talent1_buff = 0.05 * buff_count;
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       // 各チェックボックスの状態を調べて配列に追加
@@ -1586,7 +1587,7 @@ class yanfei {
       {
         attckRate = status[4] * (dmg_rate[4][0] + this.react_list[0] * status[5] * 0.8) + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                 + status[4] * (dmg_rate[4][1] + this.nonreact_list * status[5] * 0.8) + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
+                 + status[4] * (dmg_rate[4][1] + this.nonreact_list[1] * status[5] * 0.8) + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
       }
     }
     else
@@ -1598,7 +1599,7 @@ class yanfei {
       }
       else
       {
-        attckRate = status[4] * dmg_rate[4] + status[5] * 0.8 * status[4] + calculate_weapon_basedmg(1, status, this.weapon_rank);
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + status[5] * 0.8 * status[4] + calculate_weapon_basedmg(1, status, this.weapon_rank);
         basicDmg = attckRate;
       }
     }
