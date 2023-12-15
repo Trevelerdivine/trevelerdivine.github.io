@@ -1622,6 +1622,8 @@ class xinyan {
     this.fourth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.talent2_buff = 0;
+    this.attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -1668,14 +1670,17 @@ class xinyan {
       for (let i = 0; i < 4; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
+      this.attack_count = 4;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 6) {
       const attack_count1 = parseInt(document.getElementById("xinyan1_count").value);
       const attack_count2 = parseInt(document.getElementById("xinyan2_count").value);
 
+      this.attack_count = attack_count1 + attack_count2;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1 + parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
+      this.attack_count = 1;
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
@@ -1755,7 +1760,7 @@ class xinyan {
   calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
     let attckRate;
-    attckRate = status[4] * dmg_rate[4];
+    attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
     basicDmg = attckRate;
     return basicDmg;
   }
