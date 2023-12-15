@@ -8043,8 +8043,9 @@ class noelle {
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
     let dmg_attck_rate = 0;
+    const burst_level = parseInt(document.getElementById("noelle_Q_level").value);
     if (attack_method == 1) {
-      this.sixth_conste_buff = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
+      this.sixth_conste_buff = parseFloat(data["元素爆発"]["詳細"][2]["数値"][burst_level]);
       if (this.char_constellations > 3)
       {
         const sixth_conste_check =  document.getElementById("traitCheckbox6");
