@@ -8490,22 +8490,22 @@ function calculate_weapon_basedmg (attack_count, status_array, weapon_rank)
   if (selectedWeaponId == 0 && (attack_method_index == 0 || attack_method_index == 3))
   {
     base_dmg = status_array[2] * (weapon_rank + 3) * 0.3 * attack_count;
-    return base_dmg;
   }
   else if (selectedWeaponId == 17 && attack_method >= 16 && attack_method <= 20)
   {
     base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
-    return base_dmg;
   }
   else if (selectedWeaponId == 36 && attack_method >= 1 && attack_method <= 10)
   {
     base_dmg = status_array[1] * (weapon_rank + 3) * 0.1 * attack_count;
-    return base_dmg;
   }
   else if (selectedWeaponId == 92 && attack_method_index == 1)
   {
     base_dmg = status_array[2] * (weapon_rank + 3) * 0.4 * attack_count;
-    return base_dmg;
+  }
+  else if (selectedWeaponId == 129 && attack_method_index == 0)
+  {
+    base_dmg = status_array[0] * (weapon_rank + 1) * 0.005 * attack_count;
   }
   return base_dmg;
 }

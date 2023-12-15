@@ -899,6 +899,9 @@ async function create_weapon_instance(base_status) {
     case "128":
       weapon_instance = new KagurasVerity(base_status);
       break;
+    case "129":
+      weapon_instance = new EverlastingMoonglow(base_status);
+      break;
     case "131":
       weapon_instance = new LostPrayertotheSacredWinds(base_status);
       break;
