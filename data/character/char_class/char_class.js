@@ -466,6 +466,8 @@ class yoimiya {
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
     let dmg_attack_rate = 0;
+    let elm_react_dmgrate = 0;
+    let elm_nonreact_dmgrate = 0;
     if (attack_method == 1) {
       if (this.char_constellations < 4)
       {
@@ -486,8 +488,6 @@ class yoimiya {
           this.nonreact_attack_count++;
         }
       });
-        let elm_react_dmgrate = 0;
-        let elm_nonreact_dmgrate = 0;
         for (let i = 0; i < 7; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -501,9 +501,11 @@ class yoimiya {
             dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           }
           dmg_attack_rate = dmg_attack_rate * 1.3
+          let elm_react_dmgrate = dmg_attack_rate / 3;
+          let elm_nonreact_dmgrate = dmg_attack_rate * 2 / 3;
           this.react_attack_count = 3.5;
           this.nonreact_attack_count = 7
-          dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+          dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
       }
     }
   
@@ -581,37 +583,19 @@ class yoimiya {
     {
       if (attack_method == 1)
       {
-        if (this.char_constellations < 4)
-        {
-          attckRate = status[4] * dmg_rate[4][0] * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                    + status[4] * dmg_rate[4][1] * this.skill_buff + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
-          return basicDmg;
-        }
-        else
-        {
-          basicDmg = (status[4] * dmg_rate[4] * this.skill_buff / 3 + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank)) * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                    + status[4] * dmg_rate[4] * this.skill_buff * 2 / 3 * calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
-          return basicDmg;
-        }
+        attckRate = status[4] * dmg_rate[4][0] * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1] * this.skill_buff + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
+        return basicDmg;
       }
     }
     else
     {
       if (attack_method == 1)
       {
-        if( this.char_constellations < 4)
-        {
           attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
           basicDmg = attckRate;
           return basicDmg;
-        }
-        else
-        {
-          attckRate = status[4] * dmg_rate[4] * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
-          basicDmg = attckRate;
-          return basicDmg;
-        }
       }
     }
   }
