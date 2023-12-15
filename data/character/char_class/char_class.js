@@ -1977,6 +1977,7 @@ class xiangling {
     this.reaction_count = 0;
     this.attack_count = 0;
     this.talent2 = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -2106,13 +2107,13 @@ class xiangling {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = status[4] * dmg_rate[4];
+        attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(1, status, this.weapon_rank);
         basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                   + attckRate * (this.attack_count - this.reaction_count);
     }
     else
     {
-      basicDmg = status[4] * dmg_rate[4] * this.attack_count;
+      basicDmg = (status[4] * dmg_rate[4] + calculate_weapon_basedmg(1, status, this.weapon_rank)) * this.attack_count;
     }
     return basicDmg;
   }
