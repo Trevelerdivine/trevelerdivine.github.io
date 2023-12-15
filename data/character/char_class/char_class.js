@@ -10,6 +10,7 @@ class Lyney {
     this.skill_buff = 0;
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data(){
@@ -251,6 +252,7 @@ class dehya {
     this.skill_buff = 0;
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data(){
@@ -416,7 +418,8 @@ class yoimiya {
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
     this.skill_buff = 0;
-    this.trueCount = 0;
+    this.attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
