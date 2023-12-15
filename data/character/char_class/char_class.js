@@ -1314,7 +1314,7 @@ class diluc {
           basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
                     + status[4] * (dmg_rate[4][1] + dmg_rate[4][3]* (1 + status[7] + 0.4) / (1 + status[7]))
                     + calculate_weapon_basedmg(this.nonreact_attack_unique_count, status, this.weapon_rank)
-                    + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank) * (1 + status[7] + 0.4) / (1 + status[7]);;
+                    + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank) * (1 + status[7] + 0.4) / (1 + status[7]);
         }
         else
         {
@@ -1336,7 +1336,7 @@ class diluc {
         if (this.fourth_conste_buff > 0)
         {
           attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]
-                                + (dmg_rate[4][2] + dmg_rate[4][3]) * (status[7] + 0.4) / status[7])
+                                + (dmg_rate[4][2] + dmg_rate[4][3]) * (1 + status[7] + 0.4) / (1 + status[7]))
                                 + calculate_weapon_basedmg(1, status, this.weapon_rank)
                                 + calculate_weapon_basedmg(2, status, this.weapon_rank) * (1 + status[7] + 0.4) / (1 + status[7]);
           basicDmg = attckRate;
