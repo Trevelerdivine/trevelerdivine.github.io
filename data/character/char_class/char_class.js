@@ -7008,6 +7008,7 @@ class alhaitham {
     this.char_constellations = 0;
     this.attack_count = 0;
     this.unique_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
