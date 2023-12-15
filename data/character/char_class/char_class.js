@@ -831,7 +831,9 @@ class klee {
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
-    this.trueCount = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -883,7 +885,14 @@ class klee {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         for (let i = 0; i < 3; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -904,7 +913,14 @@ class klee {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         for (let i = 0; i < 1; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -920,6 +936,11 @@ class klee {
       const attack_rate1 = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       const attack_rate2 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
 
+      this.react_attack_count = reaction_count1 
+                              + reaction_count2;
+      this.nonreact_attack_count = attack_count1 - reaction_count1
+                                 + attack_count2 - reaction_count2;                    
+
       elm_react_dmgrate = reaction_count1 * attack_rate1 + reaction_count2 * attack_rate2;
       elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * attack_rate1 + (attack_count2 - reaction_count2) * attack_rate2;
 
@@ -928,6 +949,9 @@ class klee {
 
       const attack_count = parseFloat(document.getElementById("klee_Q_attackcount").value);
       const reaction_count = parseFloat(document.getElementById("klee_Q_reactioncount").value);
+
+      this.react_attack_count = reaction_count;
+      this.nonreact_attack_count = attack_count - reaction_count;     
 
       const attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
 
@@ -1009,15 +1033,15 @@ class klee {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = status[4] * dmg_rate[4][0];
+        attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[4] * dmg_rate[4][1];
+                  + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);;
         return basicDmg;
       
     }
     else
     {
-      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
       basicDmg = attckRate;
       return basicDmg;
     }
