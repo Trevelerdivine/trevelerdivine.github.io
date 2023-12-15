@@ -1064,7 +1064,11 @@ class diluc {
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
-    this.trueCount = 0;
+    this.react_attack_count = 0;
+    this.react_attack_unique_count = 0;
+    this.nonreact_attack_count = 0;
+    this.nonreact_attack_unique_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -1136,6 +1140,14 @@ class diluc {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
@@ -1154,6 +1166,14 @@ class diluc {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
@@ -1167,6 +1187,10 @@ class diluc {
         }
         else
         {
+          this.react_attack_count -= elm_react[0];
+          this.react_attack_unique_count = elm_react[0];
+          this.nonreact_attack_count -= elm_nonreact[0];
+          this.nonreact_attack_unique_count = elm_nonreact[0];
           const first_react_dmgrate =  elm_react[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
           const first_nonreact_dmgrate = elm_nonreact[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
           for (let i = 1; i < 3; i++) {
@@ -1188,6 +1212,14 @@ class diluc {
         let diluc_1_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
         let diluc_2_dmgrate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         let diluc_3_dmgrate = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
+
+        this.react_attack_count = diluc_1_reactioncount
+                                + diluc_2_reactioncount  
+                                + diluc_3_reactioncount;
+        this.nonreact_attack_count = diluc_1_count - diluc_1_reactioncount
+                                   + diluc_2_count - diluc_2_reactioncount
+                                   + diluc_3_count - diluc_3_reactioncount;
+
         elm_react_dmgrate = diluc_1_dmgrate * diluc_1_reactioncount + diluc_2_dmgrate * diluc_2_reactioncount + diluc_3_dmgrate * diluc_3_count;
         elm_nonreact_dmgrate = diluc_1_dmgrate * (diluc_1_count - diluc_1_reactioncount) + diluc_2_dmgrate * (diluc_2_count - diluc_2_reactioncount) + diluc_3_dmgrate * (diluc_3_count - diluc_3_reactioncount);
 
@@ -1268,23 +1300,27 @@ class diluc {
     {
       if (attack_method != 16)
       {
-        attckRate = status[4] * dmg_rate[4][0];
+        attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[4] * dmg_rate[4][1];
+                  + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
       }
       else
       {
         if (this.fourth_conste_buff > 0)
         {
-          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (status[7] + 0.4) / status[7]);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (1 + status[7] + 0.4) / (1 + status[7]))
+                    + calculate_weapon_basedmg(this.react_attack_unique_count, status, this.weapon_rank)
+                    + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank) * (1 + status[7] + 0.4) / (1 + status[7]);
           basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                    + status[4] * (dmg_rate[4][1] + dmg_rate[4][3] * (status[7] + 0.4) / status[7]);
+                    + status[4] * (dmg_rate[4][1] + dmg_rate[4][3]* (1 + status[7] + 0.4) / (1 + status[7]))
+                    + calculate_weapon_basedmg(this.nonreact_attack_unique_count, status, this.weapon_rank)
+                    + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank) * (1 + status[7] + 0.4) / (1 + status[7]);;
         }
         else
         {
-          attckRate = status[4] * dmg_rate[4][0];
+          attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
           basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                    + status[4] * dmg_rate[4][1];
+                    + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
         }
       }
     }
@@ -1292,19 +1328,22 @@ class diluc {
     {
       if (attack_method != 16)
       {
-        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
         basicDmg = attckRate;
       }
       else
       {
         if (this.fourth_conste_buff > 0)
         {
-          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1] + (dmg_rate[4][2] + dmg_rate[4][3]) * (status[7] + 0.4) / status[7]);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]
+                                + (dmg_rate[4][2] + dmg_rate[4][3]) * (status[7] + 0.4) / status[7])
+                                + calculate_weapon_basedmg(1, status, this.weapon_rank)
+                                + calculate_weapon_basedmg(2, status, this.weapon_rank) * (1 + status[7] + 0.4) / (1 + status[7]);
           basicDmg = attckRate;
         }
         else
         {
-          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(3, status, this.weapon_rank);
           basicDmg = attckRate;
         }
       }
