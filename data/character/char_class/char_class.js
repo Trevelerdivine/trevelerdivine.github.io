@@ -1781,7 +1781,9 @@ class bennett {
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.bennett_Q_buff = 0
-    this.trueCount = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -1853,8 +1855,13 @@ class bennett {
       elm_react.push(checkbox.checked ? 1 : 0);
       elm_nonreact.push(checkbox.checked ? 0 : 1);
 
-      if (checkbox.checked) {
-        this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+      if (checkbox.checked) 
+      {
+        this.react_attack_count++;
+      }
+      else
+      {
+        this.nonreact_attack_count++;
       }
     });
     
@@ -1938,14 +1945,14 @@ class bennett {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = status[4] * dmg_rate[4][0];
+      attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
       basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                + status[4] * dmg_rate[4][1];
+                + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
       return basicDmg;
     }
     else
     {
-      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
       basicDmg = attckRate;
       return basicDmg;
     }
