@@ -418,7 +418,8 @@ class yoimiya {
     this.reaction_coeff = 0;
     this.talent2_buff = 0;
     this.skill_buff = 0;
-    this.attack_count = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
@@ -476,13 +477,15 @@ class yoimiya {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
         }
       });
-        console.log(elm_react);
-        console.log(elm_nonreact);
-        console.log(this.trueCount);
         let elm_react_dmgrate = 0;
         let elm_nonreact_dmgrate = 0;
         for (let i = 0; i < 7; i++) {
@@ -493,10 +496,13 @@ class yoimiya {
       }
       else
       {
+
           for (let i = 0; i < 7; i++) {
             dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           }
           dmg_attack_rate = dmg_attack_rate * 1.3
+          this.react_attack_count = 3.5;
+          this.nonreact_attack_count = 7
           dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       }
     }
@@ -577,23 +583,17 @@ class yoimiya {
       {
         if (this.char_constellations < 4)
         {
-          attckRate = status[4] * dmg_rate[4][0] * this.skill_buff;
+          attckRate = status[4] * dmg_rate[4][0] * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
           basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                    + status[4] * dmg_rate[4][1] * this.skill_buff;
+                    + status[4] * dmg_rate[4][1] * this.skill_buff + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
           return basicDmg;
         }
         else
         {
-          basicDmg = (status[4] * dmg_rate[4] * this.skill_buff / 3) * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                    + status[4] * dmg_rate[4] * this.skill_buff * 2 / 3;
+          basicDmg = (status[4] * dmg_rate[4] * this.skill_buff / 3 + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank)) * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                    + status[4] * dmg_rate[4] * this.skill_buff * 2 / 3 * calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
           return basicDmg;
         }
-      }
-      else
-      {
-        attckRate = status[4] * dmg_rate[4];
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400));
-        return basicDmg;
       }
     }
     else
@@ -602,26 +602,18 @@ class yoimiya {
       {
         if( this.char_constellations < 4)
         {
-          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff;
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
           basicDmg = attckRate;
           return basicDmg;
         }
         else
         {
-          attckRate = status[4] * dmg_rate[4] * this.skill_buff;
+          attckRate = status[4] * dmg_rate[4] * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
           basicDmg = attckRate;
           return basicDmg;
         }
       }
-      else
-      {
-        attckRate = status[4] * dmg_rate[4];
-        basicDmg = attckRate;
-        return basicDmg;
-      }
-        attckRate = status[4] * dmg_rate[4] * this.attack_count / 100;
     }
-    return attckRate;
   }
 
   calculate_char_debuff() {
