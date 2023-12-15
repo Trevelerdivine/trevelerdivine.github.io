@@ -477,7 +477,7 @@ class HuntersPath {
     {
       dmg_buff = 0.12 + (this.weapon_rank - 1) * 0.03;
     }
-    return 0;
+    return dmg_buff;
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
