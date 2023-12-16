@@ -5224,7 +5224,8 @@ class cyno {
     this.char_constellations = 0;
     this.second_conste_buff = 0;
     this.reaction_coeff = 0;
-    this.aggcount = 0;
+    this.aggcount1 = 0;
+    this.aggcount2 = 0;
     this.base_dmg_buff = 0;
     this.skill_buff = 0;
     this.attack_hit_count1 = 0;
@@ -5239,7 +5240,11 @@ class cyno {
     const reaction_check = document.getElementById("reactionon_flag");
     if (reaction_check.checked)
     {
-      this.aggcount = parseInt(document.getElementById("cyno_agg_count").value);
+      this.aggcount1 = parseInt(document.getElementById("cyno_agg_count").value);
+      if (attack_method == 16)
+      {
+        this.aggcount2 = parseInt(document.getElementById("cyno_talent1_agg_count").value);
+      }
       this.reaction_coeff = 1.15
     }
 
@@ -5361,7 +5366,7 @@ class cyno {
       if (attack_method == 1)
       {
         const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank);
-        let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        let basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
       else
@@ -5370,7 +5375,7 @@ class cyno {
                         + dmg_rate[4][1] * (1 + status[7] + 0.35) / (1 + status[7]))
                         + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank)
                         + calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank);
-        let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        let basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
     }

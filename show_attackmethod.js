@@ -1787,7 +1787,7 @@ async function show_attack_method()
     {
       let cyno_E_text = createTextNode("　秘儀・律淵渡魂ヒット回数：")
       let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 5);
-      let cyno_adE_text = createTextNode("　末路真眼 秘儀・律淵渡魂ヒット回数：")
+      let cyno_adE_text = createTextNode("　[裁定]秘儀・律淵渡魂ヒット回数：")
       let cyno_adE_count = createSelectList("cyno_adE_count", 1, 15, "", "回", 5);
       let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
       let cyno_talent1_count = createSelectList("cyno_talent1_count", 1, 60, "", "回", 15);
@@ -1801,10 +1801,15 @@ async function show_attack_method()
       attack_method_prop.appendChild(cyno_talent1_count);
       attack_method_prop.appendChild(document.createElement("br"));
 
-      cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 10);
+      cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 5);
+      let cyno_talent1_agg_text = createTextNode("　[裁定]秘儀・律淵渡魂激化回数：")
+      let cyno_talent1_agg_count = createSelectList("cyno_talent1_agg_count", 0, 30, "", "回", 5);
     }
     elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
     elemental_reaction.appendChild(cyno_agg_countlist); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+    elemental_reaction.appendChild(cyno_talent1_agg_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(cyno_talent1_agg_count); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "33")
