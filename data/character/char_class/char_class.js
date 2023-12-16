@@ -3099,7 +3099,7 @@ class yelan {
     }
 
     if (this.char_constellations > 0) {
-      const fourth_conste_buff_count = parseint(document.getElementById("yelan_forth_buff").value);
+      const fourth_conste_buff_count = parseInt(document.getElementById("yelan_forth_buff").value);
       this.fourth_conste_buff = 0.1 * fourth_conste_buff_count;
     }
 
