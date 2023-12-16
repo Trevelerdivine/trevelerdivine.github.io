@@ -3681,9 +3681,12 @@ class xingqiu {
     this.char_constellations = 0;
     this.second_conste_buff = 0;
     this.forth_conste_buff = 1;
-    this.trueCount = 0;
     this.reaction_coeff = 0;
     this.skill_buff = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+
   }
 
   async dmg_rate_data() {
@@ -3726,13 +3729,15 @@ class xingqiu {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
         }
       });
-        console.log(elm_react);
-        console.log(elm_nonreact);
-        console.log(this.trueCount);
         for (let i = 0; i < 2; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -3742,6 +3747,9 @@ class xingqiu {
       else if (attack_method == 21) {
         const attack_count = parseInt(document.getElementById("xingqiu_attack_count").value);
         const Vaporize_count = parseInt(document.getElementById("xingqiu_vap_count").value);
+        this.react_attack_count = Vaporize_count;
+        this.nonreact_attack_count = attack_count - Vaporize_count;
+
         elm_react_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * Vaporize_count;
         elm_nonreact_dmgrate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count- Vaporize_count);
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
@@ -3818,14 +3826,15 @@ class xingqiu {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = status[4] * dmg_rate[4][0];
-        basicDmg = (attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[4] * dmg_rate[4][1]) * this.forth_conste_buff;
+        attckRate = status[4] * dmg_rate[4][0] * this.forth_conste_buff + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + (status[4] * dmg_rate[4][1]) * this.forth_conste_buff + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
         return basicDmg;
     }
     else
     {
-        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.forth_conste_buff;
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) * this.forth_conste_buff
+                  + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
         basicDmg = attckRate;
         return basicDmg;
     }
