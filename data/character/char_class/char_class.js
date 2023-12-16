@@ -2840,8 +2840,11 @@ class nirou {
     this.second_conste_buff = 0;
     this.fourth_conste_buff = 0;
     this.sixth_conste_buff = 0;
-    this.trueCount = 0;
     this.reaction_coeff = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+
   }
 
   async dmg_rate_data() {
@@ -2895,37 +2898,31 @@ class nirou {
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       let elm_react = [];
       let elm_nonreact = [];
-      this.trueCount = 0;
   
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) {
-          this.trueCount++;
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
         }
       });
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 2; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
 
-        const suigetus_check = parseInt(document.getElementById("checkbox_2").value);
         let suigetsu_elmreact_dmgrate = 0
         let suigetsu_elmnonreact_dmgrate = 0
-        if(suigetus_check.checked)
-        {
-          elm_react_dmgrate -= parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
-          suigetsu_elmreact_dmgrate = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
-        }
-        else
-        {
-          elm_nonreact_dmgrate -= parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
-          suigetsu_elmnonreact_dmgrate = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
-        }
+        suigetsu_elmreact_dmgrate = elm_react[2] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        suigetsu_elmnonreact_dmgrate = elm_nonreact[2] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
 
         dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, suigetsu_elmreact_dmgrate, suigetsu_elmnonreact_dmgrate], 0, 0, 0, 0, 0, 0];
-        console.log(dmg_rate);
       }
 
       else if (attack_method == 21)
