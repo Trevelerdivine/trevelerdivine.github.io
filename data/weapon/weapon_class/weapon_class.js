@@ -7025,7 +7025,7 @@ class CalamityQueller {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let dmg_buff = 0;
-    if (attack_method_index != 7)
+    if (char_propaty[0] != 7)
     {
       dmg_buff = 0.03 * (this.weapon_rank + 3);
     }
