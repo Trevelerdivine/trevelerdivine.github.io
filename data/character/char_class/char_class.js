@@ -4525,8 +4525,8 @@ class ganyu {
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
       const dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      const attack_count = parseInt(document.getElementById("ganyu_Q").value);
-      const react_count = parseInt(document.getElementById("ganyu_Q_count").value);
+      const attack_count = parseInt(document.getElementById("ganyu_Q_count").value);
+      const react_count = parseInt(document.getElementById("ganyu_Q").value);
       elm_react_dmgrate = dmg_attck_rate * react_count;
       elm_nonreact_dmgrate = dmg_attck_rate * (attack_count - react_count);
       this.react_first_count = react_count;
