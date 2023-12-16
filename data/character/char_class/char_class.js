@@ -4503,24 +4503,21 @@ class ganyu {
     // JSON データを取得
     const response = await fetch("./data/character/char_data/ganyu.json");
     const data = await response.json();
+    let dmg_rate;
   
     if (attack_method == 6) {
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       let elm_react = [];
       let elm_nonreact = [];
-      let first_react_dmg_rate = 0;
-      let first_nonreact_dmg_rate = 0;
-      let second_react_dmg_rate = 0;
-      let second_nonreact_dmg_rate = 0;
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
       });
-      first_react_dmg_rate = elm_react[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      first_nonreact_dmg_rate = elm_nonreact[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      second_react_dmg_rate = elm_react[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-      second_nonreact_dmg_rate = elm_nonreact[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      let first_react_dmg_rate = elm_react[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      let first_nonreact_dmg_rate = elm_nonreact[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      let second_react_dmg_rate = elm_react[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      let second_nonreact_dmg_rate = elm_nonreact[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
       this.react_first_count = elm_react[0];
       this.nonreact_first_count = elm_nonreact[0];
       this.react_second_count = elm_react[1];
