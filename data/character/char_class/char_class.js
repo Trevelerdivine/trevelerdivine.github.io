@@ -4484,7 +4484,7 @@ class ganyu {
     }
 
     const talent2_check = document.getElementById("ganyu_talent2");
-    if (talent2_check.checked && attack_method ==6)
+    if (talent2_check.checked)
     {
       this.talent2_buff = 0.2;
     }
