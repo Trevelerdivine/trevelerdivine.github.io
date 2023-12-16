@@ -3857,6 +3857,9 @@ class Wriothesley {
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
     this.talent2_buff = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -3890,6 +3893,14 @@ class Wriothesley {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         for (let i = 0; i < 6; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -3915,6 +3926,14 @@ class Wriothesley {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         for (let i = 0; i < 1; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["重撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -3949,13 +3968,16 @@ class Wriothesley {
       const attack_count2 = parseInt(document.getElementById("Wriothesley_attack_count2").value);
       const react_count1 = parseInt(document.getElementById("Wriothesley_melt_count1").value);
       const react_count2 = parseInt(document.getElementById("Wriothesley_melt_count2").value);
+      this.react_attack_count = react_count1
+                              + react_count2;
+      this.nonreact_attack_count = attack_count1 - react_count1
+                                 + attack_count2 - react_count2;
 
       elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count1
                          + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count2;
       elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count1 - react_count1)
                             + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count2 - react_count2);
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-      console.log(dmg_rate);
     }
     return dmg_rate;
   }
@@ -4029,13 +4051,13 @@ class Wriothesley {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = status[4] * dmg_rate[4][0];
+      attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
       basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                + status[4] * dmg_rate[4][1];
+                + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
     }
     else
     {
-      basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
     }
     return basicDmg;
   }
