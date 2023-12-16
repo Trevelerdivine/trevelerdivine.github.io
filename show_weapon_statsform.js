@@ -115,7 +115,7 @@ async function show_weapon_statsform() {
     const traits = [
       {
         id: "traitCheckbox",
-        label: "非時の夢·常世竈食: 元素チャージ効率が100%を超えた部分の28%分、攻撃力がアップ。最大80%まで。元素チャージ効率+30%"
+        label: "草薙の稲光：元素チャージ効率+30%"
       }
     ];
         const traitCheckbox = document.createElement("input");

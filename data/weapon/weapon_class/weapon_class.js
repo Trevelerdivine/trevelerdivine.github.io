@@ -167,7 +167,6 @@ class EngulfingLightning {
   {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-
   }
 
   calculate_weapon_fixed_hp(fixstatus,status) {
@@ -183,7 +182,7 @@ class EngulfingLightning {
   }
 
   calculate_weapon_result_attck(fixstatus,status) {
-    return Math.min(status[3]- 1, 0.8/0.28)*0.07 * (this.weapon_rank + 3)*this.base_status_array[1];
+    return Math.min((status[3]- 1) * (0.07 * (this.weapon_rank + 3)), 0.1 * (this.weapon_rank + 7)) * this.base_status_array[4];
   }
 
   calculate_weapon_fixed_deff(fixstatus,status) {
@@ -204,7 +203,13 @@ class EngulfingLightning {
   }
 
   calculate_weapon_fixed_elm_charge(fixstatus,status) {
-    return 0.05 * (this.weapon_rank + 5);
+    let elm_cherge_buff = 0;
+    const buff_check = document.getElementById("traitCheckbox");
+    if (buff_check.checked)
+    {
+      elm_cherge_buff = 0.05 * (this.weapon_rank + 5);
+    }
+    return elm_cherge_buff;
   }
 
   calculate_weapon_result_elm_charge(fixstatus,status) {
