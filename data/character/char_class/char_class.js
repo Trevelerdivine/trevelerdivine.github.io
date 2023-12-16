@@ -4873,6 +4873,9 @@ class chongyun {
     this.talent2_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
   
   async dmg_rate_data() {
@@ -4919,6 +4922,8 @@ class chongyun {
     }else if (attack_method == 16) {
       const attack_count = parseInt(document.getElementById("chongyun_skill_count").value) + parseInt(document.getElementById("chongyun_talent_count").value);
       const react_count = parseInt(document.getElementById("chongyun_skill_react").value) + parseInt(document.getElementById("chongyun_talent_react").value);
+      this.react_attack_count = react_count;
+      this.nonreact_attack_count = attack_count - react_count;
 
       elm_react_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
       elm_nonreact_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count);
@@ -4935,6 +4940,8 @@ class chongyun {
 
       const attack_count = parseInt(document.getElementById("chongyun_Q_count").value);
       const react_count = parseInt(document.getElementById("chongyun_Qreact").value);
+      this.react_attack_count = react_count;
+      this.nonreact_attack_count = attack_count - react_count;
 
       elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count;
       elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
@@ -5012,8 +5019,8 @@ class chongyun {
     let basicDmg;
     if (this.reaction_coeff > 0)
     {
-      basicDmg = dmg_rate[4][0] * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-               + dmg_rate[4][1] * status[4];
+      basicDmg = (dmg_rate[4][0] * status[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank)) * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+               + dmg_rate[4][1] * status[4] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);;
     }
     else
     {
