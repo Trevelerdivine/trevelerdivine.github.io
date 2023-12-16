@@ -4078,6 +4078,9 @@ class kamisatoayaka {
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
     this.talent2_buff = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -4132,9 +4135,13 @@ class kamisatoayaka {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-
-        if (checkbox.checked) {
-          this.trueCount++; // チェックボックスがチェックされている場合、trueCountを増やす
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
         }
       });
         for (let i = 0; i < 7; i++) {
@@ -4145,6 +4152,8 @@ class kamisatoayaka {
     } else if (attack_method == 6) {
       const attack_count = parseInt(document.getElementById("kamisatoayaka_count").value);
       const react_count = parseInt(document.getElementById("kamisatoayaka_melt_count").value);
+      this.react_attack_count = react_count;
+      this.nonreact_attack_count = attack_count - react_count;
 
       elm_react_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * react_count
       elm_nonreact_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
@@ -4153,9 +4162,10 @@ class kamisatoayaka {
       {
         const sixth_attack_count = parseInt(document.getElementById("kamisatoayaka_sixth_count").value);
         const sixth_react_count = parseInt(document.getElementById("kamisatoayaka_sixth_melt_count").value);
-
-      elm_react_dmgrate += (parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + 2.98) * sixth_react_count
-      elm_nonreact_dmgrate += (parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + 2.98) * (sixth_attack_count - sixth_react_count)
+        this.react_attack_count += sixth_react_count;
+        this.nonreact_attack_count += sixth_attack_count - sixth_react_count;
+        elm_react_dmgrate += (parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + 2.98) * sixth_react_count;
+        elm_nonreact_dmgrate += (parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) + 2.98) * (sixth_attack_count - sixth_react_count);
       }
       
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
@@ -4168,6 +4178,14 @@ class kamisatoayaka {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
+        if (checkbox.checked) 
+        {
+          this.react_attack_count++;
+        }
+        else
+        {
+          this.nonreact_attack_count++;
+        }
       });
         elm_react_dmgrate += elm_react[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += elm_nonreact[0] * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -4177,6 +4195,10 @@ class kamisatoayaka {
       const attack_count3 = parseInt(document.getElementById("kamisatoayaka_attack_count3").value);
       const react_count1 = parseInt(document.getElementById("kamisatoayaka_melt_count1").value);
       const react_count3 = parseInt(document.getElementById("kamisatoayaka_melt_count3").value);
+      this.react_attack_count = react_count1
+                              + react_count3;
+      this.nonreact_attack_count = attack_count1 - react_count1
+                                 + attack_count3 - react_count3;
 
       elm_react_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * react_count1
                          + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count3;
@@ -4192,6 +4214,10 @@ class kamisatoayaka {
                            + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count4) * 0.2;
         elm_nonreact_dmgrate += (parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count2 - react_count2)
                               + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count4 - react_count4)) * 0.2;
+        this.react_attack_count += react_count2
+                                 + react_count4;
+        this.nonreact_attack_count += attack_count2 - react_count2
+                                    + attack_count4 - react_count4;
       }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
     }
@@ -4267,13 +4293,13 @@ class kamisatoayaka {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-      attckRate = status[4] * dmg_rate[4][0];
+      attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
       basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                + status[4] * dmg_rate[4][1];
+                + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
     }
     else
     {
-      basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
     }
     return basicDmg;
   }
