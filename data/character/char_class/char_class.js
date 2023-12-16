@@ -2904,25 +2904,21 @@ class nirou {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) 
-        {
-          this.react_attack_count++;
-        }
-        else
-        {
-          this.nonreact_attack_count++;
-        }
       });
 
         for (let i = 0; i < 2; i++) {
           elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+          this.react_attack_count += elm_react[i];
+          this.nonreact_attack_count += elm_nonreact[i];
         }
 
         let suigetsu_elmreact_dmgrate = 0
         let suigetsu_elmnonreact_dmgrate = 0
         suigetsu_elmreact_dmgrate = elm_react[2] * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
         suigetsu_elmnonreact_dmgrate = elm_nonreact[2] * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+        this.react_suigetsu_count = elm_react[2];
+        this.nonreact_suigetsu_count = elm_nonreact[2];
 
         dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, suigetsu_elmreact_dmgrate, suigetsu_elmnonreact_dmgrate], 0, 0, 0, 0, 0, 0];
       }
@@ -2953,7 +2949,6 @@ class nirou {
             elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["元素爆発"]["詳細"][i]["数値"][this.parameter[3]]);
           }
           dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
-          console.log(dmg_rate);
       }
     return dmg_rate;
   }
@@ -3029,26 +3024,33 @@ class nirou {
     {
       if (attack_method == 16)
       {
-        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (status[7] + this.first_conste_buff) / status[7]);
+        attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (1 + status[7] + this.first_conste_buff) / (1 + status[7]))
+                  + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank)
+                  + calculate_weapon_basedmg(this.react_suigetsu_count, status, this.weapon_rank) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (status[7] + this.first_conste_buff) / status[7]);
+                 + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (1 + status[7] + this.first_conste_buff) / (1 + status[7]))
+                 + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank)
+                 + calculate_weapon_basedmg(this.nonreact_suigetsu_count, status, this.weapon_rank) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]);
       }
       else
       {
-        attckRate = status[0] * dmg_rate[0][0];
+        attckRate = status[0] * dmg_rate[0][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
         basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + status[0] * dmg_rate[0][1];
+                  + status[0] * dmg_rate[0][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank);
       }
     }
     else
     {
       if (attack_method == 16)
       {
-        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1] + dmg_rate[0][2] + dmg_rate[0][3] * (status[7] + this.first_conste_buff) / status[7]);
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1] + dmg_rate[0][2] + dmg_rate[0][3] * (1 + status[7] + this.first_conste_buff) / (1 + status[7]))
+                 + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank)
+                 + calculate_weapon_basedmg(this.suigetsu_elmreact_dmgrate + this.nonreact_suigetsu_count, status, this.weapon_rank) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]);
       }
       else
       {
-        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1]);
+        basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1])
+                 +  calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
       }
     }
     return basicDmg;
