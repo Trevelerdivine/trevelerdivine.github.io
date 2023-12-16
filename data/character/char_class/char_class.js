@@ -3068,6 +3068,7 @@ class yelan {
     this.parameter = parameter;
     this.talent1effect = 0;
     this.second_conste_buff = 0;
+    this.fourth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
     this.talent1_buff = 0;
@@ -3097,11 +3098,16 @@ class yelan {
       this.talent1_buff = 0.3;
     }
 
+    if (this.char_constellations > 0) {
+      const fourth_conste_buff_count = parseint(document.getElementById("yelan_forth_buff").value);
+      this.fourth_conste_buff = 0.1 * fourth_conste_buff_count;
+    }
+
     const yelan_entrance = document.getElementById("yelan_Q");
     const burst_flag = document.getElementById("yelan_entrance");
     if (yelan_entrance.checked && burst_flag.checked)
     {
-      this.talent2_buff = parseFloat(document.getElementById("yelan_talent2_buff").value)/100 || 0;
+      this.talent2_buff = parseFloat(document.getElementById("yelan_talent2_buff").value) / 100 || 0;
     }
   
     // JSON データを取得
@@ -3172,7 +3178,7 @@ class yelan {
   }
   
   calculate_char_fixed_hp(fixstatus,status) {
-    return this.base_status_array[0] * this.talent1_buff;
+    return this.base_status_array[0] * (this.talent1_buff + this.fourth_conste_buff);
   }
 
   calculate_char_result_hp(fixstatus,status) {
@@ -3266,12 +3272,14 @@ class kamisatoayato {
     this.char_constellations = 0;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
-    this.trueCount = 0;
     this.reaction_coeff = 0;
     this.attack_count = 3;
     this.buff_effect_count = 3;
     this.skill_buff = 0;
     this.burst_buff = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -3322,6 +3330,13 @@ class kamisatoayato {
       let react_count2 = parseInt(document.getElementById("ayato_react2_count").value);
       let react_count3 = parseInt(document.getElementById("ayato_react3_count").value);
 
+      this.react_attack_count = react_count1
+                              + react_count2
+                              + react_count3;
+      this.nonreact_attack_count = attack_count1 - react_count1
+                                 + attack_count2 - react_count2
+                                 + attack_count3 - react_count3;
+
       elm_react_dmgrate += react_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
                         +  react_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
                         +  react_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
@@ -3334,12 +3349,14 @@ class kamisatoayato {
         let attack_count4 = parseInt(document.getElementById("ayato_attack4_count").value);
         let react_count4 = parseInt(document.getElementById("ayato_react4_count").value);
 
+        this.react_attack_count += react_count4;
+        this.nonreact_attack_count += attack_count4 - react_count4;
+
         elm_react_dmgrate += 4.5 * react_count4;
         elm_nonreact_dmgrate += 4.5 * (attack_count4 - react_count4);
 
       }
       dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
-      console.log(dmg_rate);
       }
     return dmg_rate;
   }
