@@ -4319,6 +4319,8 @@ class eula {
     this.char_constellations = 0;
     this.trueCount = 0;
     this.debuff = 0;
+    this.attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -4361,6 +4363,7 @@ class eula {
     const eula_energy = parseInt(document.getElementById("eula_enelgy").value);
     const burst_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
     const burst_energyrate = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
+    this.attack_count = 1;
     dmg_attack_rate = burst_rate + eula_energy * burst_energyrate;
     dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } 
@@ -4436,7 +4439,7 @@ class eula {
     let attckRate;
     if (attack_method == 21)
     {
-      attckRate = status[4] * dmg_rate[4] * this.forth_conste_buff;
+      attckRate = status[4] * dmg_rate[4] * this.forth_conste_buff + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
       basicDmg = attckRate;
       return basicDmg;
     }
