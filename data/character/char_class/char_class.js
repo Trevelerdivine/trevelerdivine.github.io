@@ -2843,6 +2843,8 @@ class nirou {
     this.reaction_coeff = 0;
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
+    this.react_suigetsu_count = 0;
+    this.nonreact_suigetsu_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
 
   }
@@ -2919,8 +2921,8 @@ class nirou {
 
         let suigetsu_elmreact_dmgrate = 0
         let suigetsu_elmnonreact_dmgrate = 0
-        suigetsu_elmreact_dmgrate = elm_react[2] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        suigetsu_elmnonreact_dmgrate = elm_nonreact[2] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+        suigetsu_elmreact_dmgrate = elm_react[2] * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+        suigetsu_elmnonreact_dmgrate = elm_nonreact[2] * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
 
         dmg_rate = [[elm_react_dmgrate, elm_nonreact_dmgrate, suigetsu_elmreact_dmgrate, suigetsu_elmnonreact_dmgrate], 0, 0, 0, 0, 0, 0];
       }
@@ -2936,8 +2938,13 @@ class nirou {
         checkboxes.forEach(checkbox => {
           elm_react.push(checkbox.checked ? 1 : 0);
           elm_nonreact.push(checkbox.checked ? 0 : 1);
-          if (checkbox.checked) {
-            this.trueCount++;
+          if (checkbox.checked) 
+          {
+            this.react_attack_count++;
+          }
+          else
+          {
+            this.nonreact_attack_count++;
           }
         });
   
