@@ -5387,7 +5387,7 @@ class cyno {
                         + dmg_rate[4][1] * (1 + status[7] + 0.35) / (1 + status[7]))
                         + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank)
                         + calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank);
-        return attack_rate;
+        return attackrate;
       }
     }
   }

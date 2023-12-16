@@ -1787,7 +1787,7 @@ async function show_attack_method()
     {
       let cyno_E_text = createTextNode("　秘儀・律淵渡魂ヒット回数：")
       let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 5);
-      let cyno_adE_text = createTextNode("　秘儀・律淵渡魂ヒット回数：")
+      let cyno_adE_text = createTextNode("　末路真眼 秘儀・律淵渡魂ヒット回数：")
       let cyno_adE_count = createSelectList("cyno_adE_count", 1, 15, "", "回", 5);
       let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
       let cyno_talent1_count = createSelectList("cyno_talent1_count", 1, 60, "", "回", 15);
