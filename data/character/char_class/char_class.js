@@ -3044,8 +3044,8 @@ class nirou {
       if (attack_method == 16)
       {
         basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1] + (dmg_rate[0][2] + dmg_rate[0][3]) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]))
-                 + calculate_weapon_basedmg(2, status, this.weapon_rank)
-                 + calculate_weapon_basedmg(1, status, this.weapon_rank) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]);
+                 + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank)
+                 + calculate_weapon_basedmg(this.react_suigetsu_count + this.nonreact_suigetsu_count, status, this.weapon_rank) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]);
       }
       else
       {
