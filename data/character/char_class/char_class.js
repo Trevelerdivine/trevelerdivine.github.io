@@ -3456,6 +3456,9 @@ class tartaglia {
     this.parameter = parameter;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -3658,7 +3661,7 @@ class tartaglia {
     }
     else
     {
-      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank);
       basicDmg = attckRate;
       return basicDmg;
     }
