@@ -875,7 +875,7 @@ async function show_attack_method()
     {
       traits = [
         createLabel("Neuvillette_talent1_count", "　遺龍の栄光："),
-        createSelectList("Neuvillette_talent1_count", 0, 3, "", "回", 3),
+        createSelectList("Neuvillette_talent1_count", 0, 3, "", "層", 3),
         document.createElement("br"),
         createLabel("Neuvillette_attack_count1", "　衡平な裁量ヒット回数："),
         createSelectList("Neuvillette_attack_count1", 1, 15, "", "回", 8),
@@ -2349,7 +2349,7 @@ async function show_attack_method()
           createLabel("kirara_skill_count", "　初撃ヒット回数："),
           createSelectList("kirara_skill_count", 0, 1, "", "回", 1),
           document.createElement("br"),
-          createLabel("kirara_nyan_count", "　ニャンダモンヒット回数："),
+          createLabel("kirara_nyan_count", "　ニャルダモンヒット回数："),
           createSelectList("kirara_nyan_count", 0, 6, "", "回", 6),
           document.createElement("br"),
         ];
