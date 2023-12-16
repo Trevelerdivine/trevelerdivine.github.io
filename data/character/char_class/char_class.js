@@ -4461,8 +4461,6 @@ class ganyu {
     this.reaction_coeff = 0;
     this.fourth_conste_buff = 0;
     this.char_constellations = 0;
-    this.Melt_react = [];
-    this.Melt_nonreact = [];
     this.react_first_count = 0;
     this.nonreact_first_count = 0;
     this.react_second_count = 0;
@@ -4625,15 +4623,15 @@ class ganyu {
       if (attack_method == 6)
       {
         basicDmg = status[4] * (dmg_rate[4][0] + dmg_rate[4][1] + dmg_rate[4][2] + dmg_rate[4][3])
-                 + calculate_weapon_basedmg(this.nonreact_first_count + this.nonreact_second_count, status, this.weapon_rank)
-                 + calculate_weapon_basedmg(this.react_second_count + this.nonreact_second_count, status, this.weapon_rank);
+                 + calculate_weapon_basedmg(this.react_first_count + this.react_second_count, status, this.weapon_rank)
+                 + calculate_weapon_basedmg(this.nonreact_first_count + this.nonreact_second_count, status, this.weapon_rank);
       }
       else
       {
         basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_first_count + this.nonreact_first_count, status, this.weapon_rank);
       }
-      return basicDmg;
     }
+    return basicDmg;
   }
 
   calculate_char_debuff() {
