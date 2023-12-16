@@ -3926,7 +3926,7 @@ class Wriothesley {
       checkboxes.forEach(checkbox => {
         elm_react.push(checkbox.checked ? 1 : 0);
         elm_nonreact.push(checkbox.checked ? 0 : 1);
-        if (checkbox.checked) 
+        if (checkbox.checked)
         {
           this.react_attack_count++;
         }
@@ -4463,9 +4463,11 @@ class ganyu {
     this.char_constellations = 0;
     this.Melt_react = [];
     this.Melt_nonreact = [];
+    this.react_first_count = 0;
+    this.nonreact_first_count = 0;
+    this.react_second_count = 0;
+    this.nonreact_second_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.Q_melt_count = 0;
-    this.Q_nonmelt_count = 0;
   }
   
   async dmg_rate_data() {
@@ -4502,34 +4504,40 @@ class ganyu {
     const response = await fetch("./data/character/char_data/ganyu.json");
     const data = await response.json();
   
-    // 攻撃方法に応じてダメージ率を計算
-    let dmg_rate;
-    let dmg_attck_rate = 0;
-  
     if (attack_method == 6) {
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-
-      // チェックボックスの状態を格納するための配列を初期化
-
-      // 各チェックボックスの状態を調べて配列に追加
+      let elm_react = [];
+      let elm_nonreact = [];
+      let first_react_dmg_rate = 0;
+      let first_nonreact_dmg_rate = 0;
+      let second_react_dmg_rate = 0;
+      let second_nonreact_dmg_rate = 0;
       checkboxes.forEach(checkbox => {
-        this.Melt_react.push(checkbox.checked ? 1 : 0);
-        this.Melt_nonreact.push(checkbox.checked ? 0 : 1);
+        elm_react.push(checkbox.checked ? 1 : 0);
+        elm_nonreact.push(checkbox.checked ? 0 : 1);
       });
-      const dmg_rate1 = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attck_rate = [dmg_rate1, dmg_rate2];
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      first_react_dmg_rate = elm_react[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      first_nonreact_dmg_rate = elm_nonreact[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      second_react_dmg_rate = elm_react[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      second_nonreact_dmg_rate = elm_nonreact[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      this.react_first_count = elm_react[0];
+      this.nonreact_first_count = elm_nonreact[0];
+      this.react_second_count = elm_react[1];
+      this.nonreact_second_count = elm_nonreact[1];
+      dmg_rate = [0, 0, 0, 0, [first_react_dmg_rate, first_nonreact_dmg_rate, second_react_dmg_rate, second_nonreact_dmg_rate], 0, 0];
     } else if (attack_method == 21) {
-      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      this.Q_melt_count = parseInt(document.getElementById("ganyu_Q").value)
-      this.Q_nonmelt_count = parseInt(document.getElementById("ganyu_Q_count").value)
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      let elm_react_dmgrate = 0;
+      let elm_nonreact_dmgrate = 0;
+      const dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      const attack_count = parseInt(document.getElementById("ganyu_Q").value);
+      const react_count = parseInt(document.getElementById("ganyu_Q_count").value);
+      elm_react_dmgrate = dmg_attck_rate * react_count;
+      elm_nonreact_dmgrate = dmg_attck_rate * (attack_count - react_count);
+      this.react_first_count = react_count;
+      this.nonreact_first_count = attack_count - react_count;
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate, elm_nonreact_dmgrate], 0, 0];
     }
-
-    // 計算結果をキャッシュして返す
-    this.dmg_rateCache = dmg_rate;
     return dmg_rate;
   }
   
@@ -4600,39 +4608,34 @@ class ganyu {
   calculate_basic_dmg(dmg_rate, status) {
     let attckRate;
     let basicDmg;
-    if (attack_method == 6)
+    if (this.reaction_coeff > 0)
     {
-      if (this.reaction_coeff > 0)
+      if (attack_method = 6)
       {
-        let Melt_attack_rate = this.Melt_react[0] * dmg_rate[4][0]  + this.Melt_react[1] * dmg_rate[4][1];
-        let NonMelt_attack_rate = this.Melt_nonreact[0] * dmg_rate[4][0]  + this.Melt_nonreact[1] * dmg_rate[4][1];
-        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + NonMelt_attack_rate * status[4];
-        return basicDmg;
+        attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][2]) + calculate_weapon_basedmg(this.react_first_count + this.react_second_count, status, this.weapon_rank);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * (dmg_rate[4][1] + dmg_rate[4][3]) + calculate_weapon_basedmg(this.nonreact_first_count + this.nonreact_second_count, status, this.weapon_rank);
       }
       else
       {
-        attckRate = dmg_rate[4][0] + dmg_rate[4][1];
-        basicDmg = attckRate * status[4];
-        return basicDmg;
+        attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_first_count, status, this.weapon_rank);
+        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_first_count, status, this.weapon_rank);
       }
     }
-    else if (attack_method == 21)
+    else
     {
-      if (this.reaction_coeff > 0)
+      if (attack_method == 6)
       {
-        let Melt_attack_rate = this.Q_melt_count * dmg_rate[4];
-        let NonMelt_attack_rate = (this.Q_nonmelt_count - this.Q_melt_count) * dmg_rate[4];
-        basicDmg = Melt_attack_rate * status[4] * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-                  + NonMelt_attack_rate * status[4];
-        return basicDmg;
+        basicDmg = status[4] * (dmg_rate[4][0] + dmg_rate[4][1] + dmg_rate[4][2] + dmg_rate[4][3])
+                 + calculate_weapon_basedmg(this.nonreact_first_count + this.nonreact_second_count, status, this.weapon_rank)
+                 + calculate_weapon_basedmg(this.react_second_count + this.nonreact_second_count, status, this.weapon_rank);
       }
       else
       {
-        attckRate = dmg_rate[4] * this.Q_nonmelt_count;
-        basicDmg = attckRate * status[4];
-        return basicDmg;
+        basicDmg =  status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_first_count + this.nonreact_first_count, status, this.weapon_rank);
       }
+      return basicDmg;
     }
   }
 
