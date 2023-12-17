@@ -1212,7 +1212,7 @@ class Slingshot {
     {
       weapon_dmg_buff = (this.weapon_rank + 5) * 0.06;
     }
-    else if (!weapon_effect_check.checked && (attack_method_index == 0 || attack_method_index == 1))
+    else if (!weapon_effect_check.checked && (attack_method_index == 0 || attack_method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
     {
       weapon_dmg_buff = -0.1;
     }
