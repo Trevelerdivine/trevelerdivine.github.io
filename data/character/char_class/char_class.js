@@ -5898,6 +5898,151 @@ class keqing {
   }
 }
 
+class kujousara {
+  constructor(base_status_array, parameter) 
+  {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.sixth_conste_buff = 0;
+    this.aggcount = 0;
+    this.reaction_coeff = 0;
+    this.skill_buff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/kujousara.json");
+    const data = await response.json();
+    // 攻撃方法に応じてダメージ率を計算
+
+    const kujou_skill_check = document.getElementById("kujousara");
+    if (kujou_skill_check.checked)
+    {
+      const kujou_skill_level = parseInt(document.getElementById("kujousara_E_level").value);
+      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][kujou_skill_level]) * this.base_status_array[4];
+    }
+
+    if (this.char_constellations == 4)
+    {
+      const sixth_conste_check = document.getElementById("traitCheckbox6");
+      if (sixth_conste_check.checked)
+      {
+      this.sixth_conste_buff = 0.6;
+      }
+    }
+
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById("kujousara_agg_count").value);
+      this.reaction_coeff = 1.15
+    }
+
+    let dmg_attack_rate = 0;
+    let dmg_rate;
+    
+    if (attack_method == 21) {
+      const attack_count = parseInt(document.getElementById("kujousara_attack_count").value);
+      this.attack_hit_count = attack_count;
+      dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count;
+      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+    }
+    
+  return dmg_rate;
+}
+
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    return this.skill_buff;
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return this.sixth_conste_buff;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    if (this.reaction_coeff > 0)
+    {
+
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      return basicDmg;
+    }
+    else
+    {
+
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+      return attckRate;
+    }
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class fischl {
   constructor(base_status_array, parameter) 
   {
@@ -5942,8 +6087,8 @@ class fischl {
       const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);
       this.attack_hit_count = attack_count + fischl_talent2_count;
   
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
-      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent2_count;
+      dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count
+                       + 0.8 * fischl_talent2_count;
       if (this.char_constellations > 1)
       {
         dmg_attack_rate += 2;
@@ -7047,151 +7192,6 @@ class shikanoinheizou {
   calculate_basic_dmg(dmg_rate, status) {
     const attckRate = status[4] * dmg_rate[4];
     return attckRate;
-  }
-
-  calculate_char_debuff() {
-    let char_debuff = [0,0,0];
-    return char_debuff;
-  }
-}
-
-class kujousara {
-  constructor(base_status_array, parameter) 
-  {
-    this.base_status_array = base_status_array;
-    this.parameter = parameter;
-    this.char_constellations = 0;
-    this.sixth_conste_buff = 0;
-    this.aggcount = 0;
-    this.reaction_coeff = 0;
-    this.skill_buff = 0;
-    this.attack_hit_count = 0;
-    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-  }
-
-  async dmg_rate_data() {
-    this.char_constellations = document.getElementById("char_constellations").value;
-
-    // JSON データを取得
-    const response = await fetch("./data/character/char_data/kujousara.json");
-    const data = await response.json();
-    // 攻撃方法に応じてダメージ率を計算
-
-    const kujou_skill_check = document.getElementById("kujousara");
-    if (kujou_skill_check.checked)
-    {
-      const kujou_skill_level = parseInt(document.getElementById("kujousara_E_level").value);
-      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][kujou_skill_level]) * this.base_status_array[4];
-    }
-
-    if (this.char_constellations == 4)
-    {
-      const sixth_conste_check = document.getElementById("traitCheckbox6");
-      if (sixth_conste_check.checked)
-      {
-      this.sixth_conste_buff = 0.6;
-      }
-    }
-
-    const reaction_check = document.getElementById("reactionon_flag");
-    if (reaction_check.checked)
-    {
-      this.aggcount = parseInt(document.getElementById("kujousara_agg_count").value);
-      this.reaction_coeff = 1.15
-    }
-
-    let dmg_attack_rate = 0;
-    let dmg_rate;
-    
-    if (attack_method == 21) {
-      const attack_count = parseInt(document.getElementById("kujousara_attack_count").value);
-      this.attack_hit_count = attack_count;
-      dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count;
-      dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-    }
-    
-  return dmg_rate;
-}
-
-  calculate_char_fixed_hp(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_hp(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_attck(fixstatus,status) {
-    return this.skill_buff;
-  }
-
-  calculate_char_result_attck(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_deff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_deff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_elm(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_elm(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_elm_charge(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_elm_charge(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_cr(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_cr(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_cd(fixstatus,status) {
-    return this.sixth_conste_buff;
-  }
-
-  calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_dmg_buff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_basic_dmg(dmg_rate, status) {
-    if (this.reaction_coeff > 0)
-    {
-
-      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-      return basicDmg;
-    }
-    else
-    {
-
-      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
-      return attckRate;
-    }
   }
 
   calculate_char_debuff() {
