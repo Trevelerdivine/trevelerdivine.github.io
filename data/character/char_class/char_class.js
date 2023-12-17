@@ -7874,6 +7874,8 @@ class kirara {
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.nyan_dmgrate = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
   
   async dmg_rate_data() {
@@ -7910,6 +7912,7 @@ class kirara {
     let dmg_attck_rate = 0;
   
     if (attack_method == 16) {
+      this.attack_hit_count = 1;
       this.talent2_buff = 0.004;
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
@@ -7917,6 +7920,7 @@ class kirara {
       this.talent2_buff = 0.004;
       const attack_count1 = parseInt(document.getElementById("kirara_skill_count").value);
       const attack_count2 = parseInt(document.getElementById("kirara_nyan_count").value);
+      this.attack_hit_count = attack_count1 + attack_count2;
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count1
                      + parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
@@ -7924,6 +7928,7 @@ class kirara {
       this.talent2_buff = 0.003;
       const attack_count1 = parseInt(document.getElementById("kirara_skill_count").value);
       const attack_count2 = parseInt(document.getElementById("kirara_nyan_count").value);
+      this.attack_hit_count = attack_count1 + attack_count2;
       dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
                      + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       this.nyan_dmgrate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
@@ -8006,13 +8011,14 @@ class kirara {
     {
       if (attack_method != 21)
       {
-        const attckRate = status[4] * dmg_rate[4];
+        const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
         let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
       else
       {
-        const attckRate = status[4] * (dmg_rate[4] + this.first_conste_buff * this.nyan_dmgrate * Math.min(4,Math.floor(status[0]/8000)));
+        const attckRate = status[4] * (dmg_rate[4] + this.first_conste_buff * this.nyan_dmgrate * Math.min(4,Math.floor(status[0]/8000)))
+                        + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
         let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
@@ -8021,13 +8027,14 @@ class kirara {
     {
       if (attack_method != 21)
       {
-        const attckRate = status[4] * dmg_rate[4];
+        const attckRate = status[4] * dmg_rate[4] + this.attack_hit_count;
         return attckRate;
       }
       else
       {
         {
-          const attckRate = status[4] * dmg_rate[4] + this.first_conste_buff * this.nyan_dmgrate * Math.min(4,Math.floor(status[0]/8000));;
+          const attckRate = status[4] * dmg_rate[4] + this.first_conste_buff * this.nyan_dmgrate * Math.min(4,Math.floor(status[0]/8000))
+                          + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
           return attckRate;
         }
       }
