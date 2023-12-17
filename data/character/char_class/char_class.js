@@ -6056,6 +6056,8 @@ class beidou {
     this.aggcount = 0;
     this.talent2_buff = 0;
     this.reaction_coeff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -6091,6 +6093,7 @@ class beidou {
     let dmg_rate;
     
     if (attack_method == 16) {
+      this.attack_hit_count = 1;
       const buff_count = parseInt(document.getElementById("beidou_skill_count").value);
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                       +  parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * buff_count;
@@ -6098,6 +6101,7 @@ class beidou {
     } else if (attack_method == 21) {
       const attack_count1 = parseInt(document.getElementById("beidou_attack_count1").value);
       const attack_count2 = parseInt(document.getElementById("beidou_attack_count2").value);
+      this.attack_hit_count = attack_count1 + attack_count2;
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
                       +  parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -6173,13 +6177,13 @@ class beidou {
   calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4]; + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       return attckRate;
     }
   }
