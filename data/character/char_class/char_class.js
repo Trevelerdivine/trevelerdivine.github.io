@@ -8003,7 +8003,7 @@ class kirara {
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
-    return this.talent2_buff * Math.floor(status[0]/1000);
+    return this.talent2_buff * status[0] / 1000;
   }
 
   calculate_basic_dmg(dmg_rate, status) {
