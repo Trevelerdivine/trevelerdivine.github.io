@@ -5584,6 +5584,8 @@ class raiden {
     this.aggcount = 0;
     this.reaction_coeff = 0;
     this.skill_buff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -5621,7 +5623,6 @@ class raiden {
       const attack_count5 = parseInt(document.getElementById("raiden_attack_count5").value);
       const attack_count6 = parseInt(document.getElementById("raiden_attack_count6").value);
       const attack_count7 = parseInt(document.getElementById("raiden_attack_count7").value);
-
       dmg_attack_rate = attack_count1 * parseFloat(data["爆発中通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
                       + attack_count2 * parseFloat(data["爆発中通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
                       + attack_count3 * parseFloat(data["爆発中通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
@@ -5637,6 +5638,7 @@ class raiden {
                         + attack_count5
                         + attack_count6 * 2
       const bonus_count2 = attack_count7;
+      this.attack_hit_count = bonus_count1 + bonus_count2;
 
       burst_bonus = bonus_count1 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]])
                   + bonus_count2 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -5715,14 +5717,14 @@ class raiden {
     if (this.reaction_coeff > 0)
     {
 
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
 
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       return attckRate;
     }
   }
