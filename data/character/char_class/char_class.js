@@ -8027,7 +8027,7 @@ class kirara {
     {
       if (attack_method != 21)
       {
-        const attckRate = status[4] * dmg_rate[4] + this.attack_hit_count;
+        const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
         return attckRate;
       }
       else
