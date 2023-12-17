@@ -114,7 +114,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "68") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "EngulfingLightning_chargebuff",
         label: "草薙の稲光：元素チャージ効率+30%"
       }
     ];
@@ -383,7 +383,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "33") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "HarbingerofDawn_crbuff",
         label: "黎明の神剣：HP90以上: "
       }
     ];
@@ -461,7 +461,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "39") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "WolfsGravestone_attack_buff",
         label: "狼のような狩人: 30%以下の敵"
       }
     ];
@@ -852,7 +852,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "88") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "DragonsBane_dmgbuff",
         label: "匣中滅龍：水元素または炎元素の影響を受けた敵"
       }
     ];
@@ -909,7 +909,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "93") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "AquaSimulacra_dmgbuff",
         label: "若水：周囲に敵が存在"
       }
     ];
@@ -1154,7 +1154,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "120") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "Slingshot_dmgbuff",
         label: "弾弓：0.3秒以内に敵に命中"
       }
     ];
@@ -1275,7 +1275,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "131") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "LostPrayertotheSacredWinds_dmg_buff",
         label: "四風原典：元素ダメージバフ　"
       }
     ];

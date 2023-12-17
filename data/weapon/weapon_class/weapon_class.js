@@ -204,7 +204,7 @@ class EngulfingLightning {
 
   calculate_weapon_fixed_elm_charge(fixstatus,status) {
     let elm_cherge_buff = 0;
-    const buff_check = document.getElementById("traitCheckbox");
+    const buff_check = document.getElementById("EngulfingLightning_chargebuff");
     if (buff_check.checked)
     {
       elm_cherge_buff = 0.05 * (this.weapon_rank + 5);
@@ -805,7 +805,7 @@ class LostPrayertotheSacredWinds {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.weapon_count = parseInt(document.getElementById("bursLostPrayertotheSacredWindst_buff").value);
-    const weaponeffectCheckbox = document.getElementById("traitCheckbox");
+    const weaponeffectCheckbox = document.getElementById("LostPrayertotheSacredWinds_dmg_buff");
     this.weapon_effect = weaponeffectCheckbox.checked ? 1 : 0;
   }
 
@@ -866,7 +866,12 @@ class LostPrayertotheSacredWinds {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
-    return (this.weapon_rank + 3) * 0.02 * this.weapon_count * this.weapon_effect;
+    let dmg_buff = 0
+    if (char_propaty[0] != 7)
+    {
+      dmg_buff = (this.weapon_rank + 3) * 0.02 * this.weapon_count * this.weapon_effect;
+    }
+    return dmg_buff
   }
 
   calculate_weapon_result_dmg_buff(fixstatus,status) {
@@ -1035,7 +1040,7 @@ class DragonsBane {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
-    let weapon_effect_check = document.getElementById("traitCheckbox");
+    let weapon_effect_check = document.getElementById("DragonsBane_dmgbuff");
     if (weapon_effect_check.checked)
     {
       weapon_dmg_buff = (this.weapon_rank + 4) * 0.04;
@@ -1202,7 +1207,7 @@ class Slingshot {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
-    const weapon_effect_check = document.getElementById("traitCheckbox")
+    const weapon_effect_check = document.getElementById("Slingshot_dmgbuff")
     if (weapon_effect_check.checked && (attack_method_index == 0 || attack_method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
     {
       weapon_dmg_buff = (this.weapon_rank + 5) * 0.06;
@@ -1387,7 +1392,7 @@ class WolfsGravestone {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.weapon_effect = 0;
-    const weapon_effect_check = document.getElementById("traitCheckbox");
+    const weapon_effect_check = document.getElementById("WolfsGravestone_attack_buff");
     if(weapon_effect_check.checked)
     {
       this.weapon_effect = 1;
@@ -1864,7 +1869,7 @@ class AquaSimulacra {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
-    let weapon_buff_check = document.getElementById("traitCheckbox");
+    let weapon_buff_check = document.getElementById("AquaSimulacra_dmgbuff");
     if(weapon_buff_check.checked)
     {
       weapon_dmg_buff = (this.weapon_rank + 3) * 0.05
@@ -2204,7 +2209,7 @@ class HarbingerofDawn {
     this.base_status_array = base_status_array;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.weapon_effect = 0;
-    const prop_checkbox = document.getElementById("traitCheckbox");
+    const prop_checkbox = document.getElementById("HarbingerofDawn_crbuff");
     if (prop_checkbox.checked)
     {
       this.weapon_effect = 1;
