@@ -1782,6 +1782,9 @@ async function show_attack_method()
     if (attack_method == 1)
     {
       cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
+      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(cyno_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
     else if (attack_method == 16)
     {
@@ -1804,13 +1807,10 @@ async function show_attack_method()
       cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 30, "", "回", 5);
       let cyno_talent1_agg_text = createTextNode("　[裁定]秘儀・律淵渡魂激化回数：")
       let cyno_talent1_agg_count = createSelectList("cyno_talent1_agg_count", 0, 30, "", "回", 5);
+      elemental_reaction.appendChild(cyno_talent1_agg_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(cyno_talent1_agg_count); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
-    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(cyno_agg_countlist); // ラベルを select_reaction_method に追加
-    elemental_reaction.appendChild(document.createElement("br"));
-    elemental_reaction.appendChild(cyno_talent1_agg_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(cyno_talent1_agg_count); // ラベルを select_reaction_method に追加
-    elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "33")
   {
