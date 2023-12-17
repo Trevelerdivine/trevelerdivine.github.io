@@ -6729,8 +6729,9 @@ class wanderer {
     } else if (attack_method == 6) {
       this.attack_hit_count = 1;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      const xiao_burst_level = parseInt(document.getElementById("wandererE_level").value);
-      const xiao_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][xiao_burst_level]);
+      const wanderer_skill_level = parseInt(document.getElementById("wandererE_level").value);
+      const wanderer_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][wanderer_skill_level]);
+      dmg_attack_rate *= wanderer_burst_buff
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       this.attack_hit_count = 5;
