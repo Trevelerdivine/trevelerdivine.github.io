@@ -6344,6 +6344,8 @@ class razor {
     this.skill_buff = 0
     this.talent2_buff = 0;
     this.reaction_coeff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -6387,12 +6389,15 @@ class razor {
     let dmg_attack_rate = 0;
     let dmg_rate;
     
-    if (attack_method == 1) {
+    if (attack_method == 1) 
+    {
+      this.attack_hit_count = 4;
       for (let i = 0; i < 4; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 16) {
+      this.attack_hit_count = 1;
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
@@ -6403,6 +6408,7 @@ class razor {
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 17) {
+      this.attack_hit_count = 1;
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
@@ -6420,7 +6426,7 @@ class razor {
         this.aggcount = parseInt(document.getElementById("razor_agg_count").value);
         this.reaction_coeff = 1.15
       }
-
+      this.attack_hit_count = 4;
       const attack_burst_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
       for (let i = 0; i < 4; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -6499,13 +6505,13 @@ class razor {
   calculate_basic_dmg(dmg_rate, status) {
     if (this.reaction_coeff > 0)
     {
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);;
       return attckRate;
     }
   }
