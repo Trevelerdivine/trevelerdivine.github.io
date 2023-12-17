@@ -2070,7 +2070,6 @@ async function show_attack_method()
         createSelectList("razor_normal_level", 1, 11, "Lv.", "", 8),
         document.createElement("br"),
         createLabel("razor_skill_count", "　雷の印："),
-        document.createElement("br"),
         createSelectList("razor_skill_count", 0, 3, "", "層", 0),
         document.createElement("br"),
       ];

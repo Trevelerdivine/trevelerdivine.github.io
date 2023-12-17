@@ -182,7 +182,7 @@ class EngulfingLightning {
   }
 
   calculate_weapon_result_attck(fixstatus,status) {
-    return Math.min((status[3]- 1) * (0.07 * (this.weapon_rank + 3)), 0.1 * (this.weapon_rank + 7)) * this.base_status_array[4];
+    return Math.min((fixstatus[3]- 1) * (0.07 * (this.weapon_rank + 3)), 0.1 * (this.weapon_rank + 7)) * this.base_status_array[4];
   }
 
   calculate_weapon_fixed_deff(fixstatus,status) {
