@@ -2069,7 +2069,7 @@ async function show_attack_method()
         createTextNode("通常攻撃天賦レベル："),
         createSelectList("razor_normal_level", 1, 11, "Lv.", "", 8),
         document.createElement("br"),
-        createLabel("razor_skill_count", "　雷の印："),
+        createLabel("razor_skill_count", "雷の印："),
         createSelectList("razor_skill_count", 0, 3, "", "層", 0),
         document.createElement("br"),
       ];
