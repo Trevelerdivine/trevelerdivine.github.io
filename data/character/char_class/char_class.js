@@ -5910,6 +5910,9 @@ class fischl {
     this.talent2_buff = 0;
     this.reaction_coeff = 0;
     this.skill_buff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+
   }
 
   async dmg_rate_data() {
@@ -5923,6 +5926,7 @@ class fischl {
     let dmg_rate;
     
     if (attack_method == 1) {
+      this.attack_hit_count = 5; 
       for (let i = 0; i < 5; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
@@ -5936,6 +5940,8 @@ class fischl {
       }
       const attack_count = parseInt(document.getElementById("fischl_attack_count").value);
       const fischl_talent2_count = parseInt(document.getElementById("fischl_talent2_count").value);
+      this.attack_hit_count = attack_count + fischl_talent2_count;
+  
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.8 * fischl_talent2_count;
       if (this.char_constellations > 1)
@@ -5945,6 +5951,7 @@ class fischl {
       if (this.char_constellations == 4)
       {
         const fischl_sixth_effect_count = parseInt(document.getElementById("fischl_conste6_count").value);
+        this.attack_hit_count += fischl_sixth_effect_count;
         dmg_attack_rate += 0.3 * fischl_sixth_effect_count
       }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -6021,14 +6028,14 @@ class fischl {
     if (this.reaction_coeff > 0)
     {
 
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
 
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       return attckRate;
     }
   }
@@ -7054,6 +7061,8 @@ class kujousara {
     this.aggcount = 0;
     this.reaction_coeff = 0;
     this.skill_buff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -7092,6 +7101,7 @@ class kujousara {
     
     if (attack_method == 21) {
       const attack_count = parseInt(document.getElementById("kujousara_attack_count").value);
+      this.attack_hit_count = attack_count;
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -7168,14 +7178,14 @@ class kujousara {
     if (this.reaction_coeff > 0)
     {
 
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
 
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       return attckRate;
     }
   }
