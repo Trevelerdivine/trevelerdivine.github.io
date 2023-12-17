@@ -54,8 +54,8 @@ async function show_attack_method()
 
   const char_constellations = document.getElementById("char_constellations").value;
   const characterInfo = document.getElementById("characterInfo");
-  const Aggravate_text = createTextNode("　超激化回数：　");
-  const Spread_text = createTextNode("　草激化回数：　");
+  const Aggravate_text = createTextNode("　超激化回数：");
+  const Spread_text = createTextNode("　草激化回数：");
   const vap_text = createTextNode("蒸発回数：");
   let traits;
 
@@ -92,10 +92,10 @@ async function show_attack_method()
     select_reaction_method.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
-      createLabel("Overloaded", "　過負荷回数：　"),
+      createLabel("Overloaded", "　過負荷回数："),
       createSelectList("Overloaded", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Burgeon", "　烈開花回数：　"),
+      createLabel("Burgeon", "　烈開花回数："),
       createSelectList("Burgeon", 0, 50, "", "回", 0),
       document.createElement("br"),
     ];
@@ -126,7 +126,7 @@ async function show_attack_method()
     select_reaction_method.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
-      createLabel("Electro_Charged", "　感電回数：　"),
+      createLabel("Electro_Charged", "　感電回数："),
       createSelectList("Electro_Charged", 0, 50, "", "回", 0),
       document.createElement("br"),
     ];
@@ -164,13 +164,13 @@ async function show_attack_method()
     elemental_reaction.appendChild(document.createElement("br"));
 
     elements_const_dmg = [
-      createLabel("Overloaded", "　過負荷回数：　"),
+      createLabel("Overloaded", "　過負荷回数："),
       createSelectList("Overloaded", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Electro_Charged", "　感電回数：　"),
+      createLabel("Electro_Charged", "　感電回数："),
       createSelectList("Electro_Charged", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Hyperbloom", "　超開花回数：　"),
+      createLabel("Hyperbloom", "　超開花回数："),
       createSelectList("Hyperbloom", 0, 50, "", "回", 0),
       document.createElement("br"),
     ];
@@ -1804,9 +1804,9 @@ async function show_attack_method()
       attack_method_prop.appendChild(cyno_talent1_count);
       attack_method_prop.appendChild(document.createElement("br"));
 
-      let cyno_agg_text = createTextNode("　冥祭＆渡荒の雷激化回数：")
+      let cyno_agg_text = createTextNode("　冥祭＆渡荒の雷 超激化回数：")
       let cyno_agg_count = createSelectList("cyno_agg_count", 0, 30, "", "回", 0);
-      let cyno_talent1_agg_text = createTextNode("　[裁定]冥祭激化回数：")
+      let cyno_talent1_agg_text = createTextNode("　[裁定]冥祭 超激化回数：")
       let cyno_talent1_agg_count = createSelectList("cyno_talent1_agg_count", 0, 30, "", "回", 5);
       elemental_reaction.appendChild(cyno_agg_text); // チェックボックスを select_reaction_method に追加
       elemental_reaction.appendChild(cyno_agg_count); // ラベルを select_reaction_method に追加
@@ -2249,10 +2249,16 @@ async function show_attack_method()
     if (attack_method == 1)
     {
       alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 2);
+      elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(alhaitham_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
     else if (attack_method == 6)
     {
       alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
+      elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(alhaitham_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
     else if (attack_method == 16)
     {
@@ -2273,7 +2279,16 @@ async function show_attack_method()
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
       });
-      alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 4);
+      let alhaitham_agg_text = createTextNode("　突進攻撃 草激化回数：")
+      let alhaitham_agg_count = createSelectList("alhaitham_agg_count", 0, 30, "", "回", 1);
+      let alhaitham_talent1_agg_text = createTextNode("　光幕攻撃 草激化回数：")
+      let alhaitham_talent1_agg_count = createSelectList("alhaitham_talent1_agg_count", 0, 30, "", "回", 4);
+      elemental_reaction.appendChild(alhaitham_agg_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(alhaitham_agg_count); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
+      elemental_reaction.appendChild(alhaitham_talent1_agg_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(alhaitham_talent1_agg_count); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
     else if (attack_method == 21)
     {
@@ -2286,10 +2301,10 @@ async function show_attack_method()
         attack_method_prop.appendChild(element);
       });
       alhaitham_agg_countlist = createSelectList("alhaitham_agg_count", 0, 50, "", "回", 1);
+      elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(alhaitham_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
-    elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(alhaitham_agg_countlist); // ラベルを select_reaction_method に追加
-    elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "56")
   {      

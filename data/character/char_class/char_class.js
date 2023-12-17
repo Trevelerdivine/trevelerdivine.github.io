@@ -7242,6 +7242,7 @@ class alhaitham {
     this.base_status_array = base_status_array;
     this.parameter = parameter;
     this.aggcount = 0;
+    this.unique_agg_count = 0;
     this.reaction_coeff = 0;
     this.talent2_buff_flag = 0;
     this.talent2_buff = 0;
@@ -7261,6 +7262,10 @@ class alhaitham {
     if (reaction_check.checked)
     {
       this.aggcount = parseInt(document.getElementById("alhaitham_agg_count").value);
+      if (attack_method == 16)
+      {
+        this.unique_agg_count = parseInt(document.getElementById("alhaitham_talent1_agg_count").value);
+      }
       this.reaction_coeff = 1.25
     }    
   
@@ -7310,8 +7315,8 @@ class alhaitham {
       const dmg_elm_rate1 = parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]]) * attack_count1
       const dmg_attck_rate2 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       const dmg_elm_rate2 = parseFloat(data["元素スキル"]["詳細"][3]["数値"][this.parameter[3]]) * attack_count2;
-      this.attack_count = attack_count2;
       this.unique_attack_count = attack_count1
+      this.attack_count = attack_count2;
       dmg_rate = [0, 0, [dmg_elm_rate1,dmg_elm_rate2], 0, [dmg_attck_rate1,dmg_attck_rate2], 0, 0];
     }
     else if (attack_method == 21) {
@@ -7400,15 +7405,16 @@ class alhaitham {
     {
       if (attack_method == 16)
       { 
-        const total_rate = status[2] * dmg_rate[2][1] + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
+        const total_rate = status[2] * dmg_rate[2][1] + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank)
                          + (status[2] * dmg_rate[2][0] + status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.unique_attack_count, status, this.weapon_rank)) * (1 + status[7] - this.talent2_buff) / (1 + status[7]);
-        let basicDmg = (total_rate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        let basicDmg = total_rate + (this.aggcount * (1 + status[7] - this.talent2_buff) / (1 + status[7]) + this.unique_agg_count) * this.reaction_coeff * this.parameter[1] 
+                     * (1 + 5 * status[2] / (status[2] + 1200));
         return basicDmg;
       }
       else if (attack_method == 21)
       { 
-        const total_rate = status[2] * dmg_rate[2] + status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);;
-        let basicDmg = (total_rate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        const total_rate = status[2] * dmg_rate[2] + status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
+        let basicDmg = (total_rate + this.aggcount * this.reaction_coeff * this.parameter[1] * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
       else
