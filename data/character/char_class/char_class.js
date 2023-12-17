@@ -6667,7 +6667,7 @@ class lisa {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [this.talent2_buff,0,0];
+    let char_debuff = [0,talent2_buff,0];
     return char_debuff;
   }
 }
@@ -6684,7 +6684,8 @@ class wanderer {
     this.talent1_cyro = 0;
     this.talent2_buff = 0;
     this.burst_buff = 0;
-    this.attack_count = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -6710,6 +6711,7 @@ class wanderer {
     let dmg_attack_rate = 0;
     let dmg_rate;
     if (attack_method == 1) {
+      this.attack_hit_count = 3;
       for (let i = 0; i < 3; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
@@ -6718,17 +6720,20 @@ class wanderer {
 
       if (this.char_constellations > 3)
       {
+        this.attack_hit_count = 6;
         this.sixth_conste_buff = 1.4;
       } 
 
       dmg_attack_rate *= xiao_burst_buff * this.sixth_conste_buff;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 6) {
+      this.attack_hit_count = 1;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       const xiao_burst_level = parseInt(document.getElementById("wandererE_level").value);
       const xiao_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][xiao_burst_level]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
+      this.attack_hit_count = 5;
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * 5;
       if (this.char_constellations > 1)
       {
@@ -6813,7 +6818,7 @@ class wanderer {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    const attckRate = status[4] * dmg_rate[4];
+    const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
     return attckRate;
   }
 
