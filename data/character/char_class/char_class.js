@@ -8381,7 +8381,7 @@ class albedo {
       if (second_conste_check.checked)
       {
         const effect_count = parseInt(document.getElementById("albedo_second_const_buff").value);
-        this.second_conste_buff = 0.3 * effect_count;
+        this.second_conste_buff = 0.3 * (effect_count + 1);
       }
     }
 
@@ -8495,7 +8495,7 @@ class albedo {
     }
     else if (attack_method == 21)
     {
-      basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff * (this.attack_count + 1)) * status[1] + dmg_rate[4] * status[4]
+      basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff) * status[1] + dmg_rate[4] * status[4]
                +  calculate_weapon_basedmg(this.attack_count + 1, status, this.weapon_rank);
       return basicDmg;
     }
