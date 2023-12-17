@@ -6711,7 +6711,7 @@ class wanderer {
     let dmg_attack_rate = 0;
     let dmg_rate;
     if (attack_method == 1) {
-      this.attack_hit_count = 3;
+      this.attack_hit_count = 4;
       for (let i = 0; i < 3; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
