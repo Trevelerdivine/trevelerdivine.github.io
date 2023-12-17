@@ -1789,11 +1789,11 @@ async function show_attack_method()
     else if (attack_method == 16)
     {
       let cyno_E_text = createTextNode("　冥祭ヒット回数：")
-      let cyno_E_count = createSelectList("cyno_E_count", 1, 15, "", "回", 0);
+      let cyno_E_count = createSelectList("cyno_E_count", 0, 15, "", "回", 0);
       let cyno_adE_text = createTextNode("　[裁定]冥祭ヒット回数：")
-      let cyno_adE_count = createSelectList("cyno_adE_count", 1, 15, "", "回", 5);
+      let cyno_adE_count = createSelectList("cyno_adE_count", 0, 15, "", "回", 5);
       let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
-      let cyno_talent1_count = createSelectList("cyno_talent1_count", 1, 60, "", "回", 15);
+      let cyno_talent1_count = createSelectList("cyno_talent1_count", 0, 60, "", "回", 15);
       attack_method_prop.appendChild(cyno_E_text);
       attack_method_prop.appendChild(cyno_E_count);
       attack_method_prop.appendChild(document.createElement("br"));
@@ -1804,9 +1804,9 @@ async function show_attack_method()
       attack_method_prop.appendChild(cyno_talent1_count);
       attack_method_prop.appendChild(document.createElement("br"));
 
-      let cyno_agg_text = createTextNode("　冥祭激化回数：")
-      let cyno_agg_count = createSelectList("cyno_talent1_agg_count", 0, 30, "", "回", 0);
-      let cyno_talent1_agg_text = createTextNode("　[裁定]秘儀・律淵渡魂激化回数：")
+      let cyno_agg_text = createTextNode("　冥祭＆渡荒の雷激化回数：")
+      let cyno_agg_count = createSelectList("cyno_agg_count", 0, 30, "", "回", 0);
+      let cyno_talent1_agg_text = createTextNode("　[裁定]冥祭激化回数：")
       let cyno_talent1_agg_count = createSelectList("cyno_talent1_agg_count", 0, 30, "", "回", 5);
       elemental_reaction.appendChild(cyno_agg_text); // チェックボックスを select_reaction_method に追加
       elemental_reaction.appendChild(cyno_agg_count); // ラベルを select_reaction_method に追加
