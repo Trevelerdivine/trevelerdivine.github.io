@@ -8636,6 +8636,7 @@ class zhongli {
     this.parameter = parameter;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
+    this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
   
@@ -8650,6 +8651,7 @@ class zhongli {
     let dmg_rate;
     let dmg_attck_rate = 0;
     if (attack_method == 21) {
+      this.attack_hit_count = 1;
       dmg_attck_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
@@ -8724,7 +8726,7 @@ class zhongli {
     let basicDmg;
     if (attack_method == 21)
     {
-      basicDmg = dmg_rate[4] * status[4] + status[0] * 0.33;
+      basicDmg = dmg_rate[4] * status[4] + status[0] * 0.33 + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       return basicDmg;
     }
   }
@@ -8747,6 +8749,8 @@ class ningguang {
     this.parameter = parameter;
     this.talent2_buff = 0;
     this.char_constellations = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
   
   async dmg_rate_data() {
@@ -8767,21 +8771,25 @@ class ningguang {
     let dmg_attck_rate = 0;
     if (attack_method == 1) {
       const attack_count = parseInt(document.getElementById("ningguang_count").value);
+      this.attack_hit_count = attack_count;
       dmg_attck_rate = parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
     else if (attack_method == 6) {
       const attack_count = parseInt(document.getElementById("ningguang_count").value);
+      this.attack_hit_count = attack_count;
       dmg_attck_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) 
                      + parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]])* attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
     else if (attack_method == 16) {
+      this.attack_hit_count = 1;
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
     else if (attack_method == 21) {
       const attack_count = parseInt(document.getElementById("ningguang_count").value);
+      this.attack_hit_count = attack_count;
       dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
@@ -8854,7 +8862,7 @@ class ningguang {
 
   calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
-    basicDmg = dmg_rate[4] * status[4];
+    basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
     return basicDmg;
   }
 
@@ -8871,6 +8879,8 @@ class travelergeo {
     this.parameter = parameter;
     this.first_conste_buff = 0;
     this.char_constellations = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
   
   async dmg_rate_data() {
@@ -8893,11 +8903,13 @@ class travelergeo {
     let dmg_rate;
     let dmg_attck_rate = 0;
     if (attack_method == 16) {
+      this.attack_hit_count = 1;
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
     else if (attack_method == 21) {
       const attack_count = parseInt(document.getElementById("travelergeo_burstcount").value);
+      this.attack_hit_count = attack_count;
       dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
@@ -8970,7 +8982,7 @@ class travelergeo {
 
   calculate_basic_dmg(dmg_rate, status) {
     let basicDmg;
-    basicDmg = dmg_rate[4] * status[4];
+    basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
     return basicDmg;
   }
 
