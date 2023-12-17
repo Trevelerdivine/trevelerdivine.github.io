@@ -7628,32 +7628,36 @@ class nahida {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    let attckRate;
+    let elmRate;
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 16 || attack_method == 17)
       { 
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        const elmRate = status[2] * dmg_rate[2] / 100;
-        let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)))
+        attckRate = status[4] * dmg_rate[4] / 100;
+        elmRate = status[2] * dmg_rate[2] / 100;
+        basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)))
                      + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       }
       else
       {
-        const attckRate = status[4] * dmg_rate[4] / 100 + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
-        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        attckRate = status[4] * dmg_rate[4] / 100 + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+        basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       }
     }
     else
     {
       if (attack_method == 16 || attack_method == 17)
       {
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        const elmRate = status[2] * dmg_rate[2] / 100;
-        let basicDmg = attckRate + elmRate + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+        attckRate = status[4] * dmg_rate[4] / 100;
+        elmRate = status[2] * dmg_rate[2] / 100;
+        basicDmg = attckRate + elmRate + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       }
       else
       {
-        const attckRate = status[4] * dmg_rate[4] / 100 + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+        attckRate = status[4] * dmg_rate[4] / 100 + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+        basicDmg = attckRate;
       }
     }
     return basicDmg;
