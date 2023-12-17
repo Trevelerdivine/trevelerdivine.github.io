@@ -6199,7 +6199,6 @@ class beidou {
     this.char_constellations = 0;
     this.sixth_conste_buff = 0;
     this.aggcount = 0;
-    this.talent2_buff = 0;
     this.reaction_coeff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
@@ -6214,13 +6213,6 @@ class beidou {
       this.aggcount = parseInt(document.getElementById("beidou_agg_count").value);
       this.reaction_coeff = 1.15
     }
-
-    const talent2_check = document.getElementById("beidou_talent2");
-    if (talent2_check.checked)
-    {
-      this.talent2_buff = 0.15;
-    }
-
     if (this.char_constellations == 4)
     {
       const sixth_conste_check = document.getElementById("traitCheckbox6");
@@ -6312,7 +6304,7 @@ class beidou {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return this.talent2_buff;
+    return 0;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
