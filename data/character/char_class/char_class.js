@@ -8204,7 +8204,6 @@ class aratakiitto {
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.attack_count;
-    this.burst_talent_level;
     this.burst_buff_rate = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
@@ -8247,7 +8246,6 @@ class aratakiitto {
       this.burst_flag = 1;
       let burst_talent_level  = parseInt(document.getElementById("arataki_burst_level").value);
       this.burst_buff_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][burst_talent_level]);
-      
     }
     // 攻撃方法に応じてダメージ率を計算
     let dmg_rate;
@@ -8343,7 +8341,7 @@ class aratakiitto {
     }
     else if (attack_method == 16)
     {
-      basicDmg = dmg_rate[4] * status[4] + this.talent2_buff * status[1] * this.attack_count + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
+      basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
       return basicDmg;
     }
   }
