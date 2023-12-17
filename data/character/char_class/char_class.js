@@ -7114,6 +7114,8 @@ class shikanoinheizou {
     this.char_constellations = 0;
     this.sixth_conste_crbuff = 0;
     this.sixth_conste_cdbuff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -7127,6 +7129,7 @@ class shikanoinheizou {
     let dmg_attack_rate = 0;
     let dmg_rate;
     if (attack_method == 16) {
+      this.attack_hit_count = 1;
       const attack_effect = parseInt(document.getElementById("shikanoinheizou_attack_count").value);
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                       +  parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_effect;
@@ -7145,6 +7148,7 @@ class shikanoinheizou {
       }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
+      this.attack_hit_count = 1;
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
@@ -7217,7 +7221,7 @@ class shikanoinheizou {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    const attckRate = status[4] * dmg_rate[4];
+    const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank);
     return attckRate;
   }
 
