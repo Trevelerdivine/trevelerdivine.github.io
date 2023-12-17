@@ -1889,6 +1889,14 @@ async function show_attack_method()
   else if (selectedCharId == "35")
   {
   let keqing_selectlist;
+  const newCheckbox = createCheckbox("keqing_talent2", true);
+  const label = createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%");
+  const lineBreak = document.createElement("br");
+
+  // 新しいチェックボックスと関連する要素を追加
+  temporary_char_talent.appendChild(newCheckbox);
+  temporary_char_talent.appendChild(label);
+  temporary_char_talent.appendChild(lineBreak); 
   if (attack_method == 1)
   {
     keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 2);
@@ -1903,15 +1911,7 @@ async function show_attack_method()
     keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 5);
   }
   else if (attack_method == 21)
-  {
-    const newCheckbox = createCheckbox("keqing_talent2", true);
-    const label = createLabel("keqing_talent2", "玉衡の貴：会心率、元素チャージ効率+15%");
-    const lineBreak = document.createElement("br");
-  
-    // 新しいチェックボックスと関連する要素を追加
-    temporary_char_talent.appendChild(newCheckbox);
-    temporary_char_talent.appendChild(label);
-    temporary_char_talent.appendChild(lineBreak);          
+  {         
     keqing_agg_countlist = createSelectList("keqing_agg_count", 0, 30, "", "回", 3);
   }
   elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加

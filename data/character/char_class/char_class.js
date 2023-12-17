@@ -5779,6 +5779,12 @@ class keqing {
       this.sixth_conste_buff = parseInt(document.getElementById("keqing_conste6").value) / 100;
     } 
 
+    const keqing_talent2_check = document.getElementById("keqing_talent2");
+    if (keqing_talent2_check.checked)
+    {
+      this.talent2_buff = 0.15;
+    }
+
     // JSON データを取得
     const response = await fetch("./data/character/char_data/keqing.json");
     const data = await response.json();
@@ -5799,11 +5805,6 @@ class keqing {
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       this.attack_hit_count = 10;
-      const keqing_talent2_check = document.getElementById("keqing_talent2");
-      if (keqing_talent2_check.checked)
-      {
-        this.talent2_buff = 0.15;
-      }
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * 8;
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
