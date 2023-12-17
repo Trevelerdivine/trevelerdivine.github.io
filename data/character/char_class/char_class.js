@@ -8495,7 +8495,7 @@ class albedo {
     }
     else if (attack_method == 21)
     {
-      basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff) * status[1] + dmg_rate[4] * status[4]
+      basicDmg =this.second_conste_buff * status[1] + (dmg_rate[4] + dmg_rate[1] * this.attack_count) * status[4]
                +  calculate_weapon_basedmg(this.attack_count + 1, status, this.weapon_rank);
       return basicDmg;
     }
