@@ -6667,7 +6667,7 @@ class lisa {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,talent2_buff,0];
+    let char_debuff = [0,this.talent2_buff,0];
     return char_debuff;
   }
 }
