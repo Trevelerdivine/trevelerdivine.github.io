@@ -8497,7 +8497,8 @@ class albedo {
     }
     else if (attack_method == 21)
     {
-      basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff * (this.attack_count + 1)) * status[1] + dmg_rate[4] * status[4];
+      basicDmg = (dmg_rate[1] * this.attack_count + this.second_conste_buff * (this.attack_count + 1)) * status[1] + dmg_rate[4] * status[4]
+               +  calculate_weapon_basedmg(this.attack_count + 1, status, this.weapon_rank);
       return basicDmg;
     }
   }
@@ -8516,6 +8517,7 @@ class noelle {
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.attack_hit_count = 0;
   }
   
   async dmg_rate_data() {
@@ -8540,6 +8542,7 @@ class noelle {
         }
       }
       for (let i = 0; i < 4; i++) {
+        this.attack_hit_count = 4;
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
@@ -8615,7 +8618,7 @@ class noelle {
     let basicDmg;
     if (attack_method == 1)
     {
-      basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(4, status, this.weapon_rank);
+      basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       return basicDmg;
     }
   }
