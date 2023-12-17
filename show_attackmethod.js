@@ -2039,7 +2039,7 @@ async function show_attack_method()
         document.createElement("br"),
       ];
       traits.forEach(element => {
-        elementsToAddToCharTalent.appendChild(element);
+        temporary_char_talent.appendChild(element);
       });
 
       razor_agg_count = createSelectList("razor_agg_count", 0, 1, "", "回", 1);
@@ -2055,7 +2055,7 @@ async function show_attack_method()
         document.createElement("br"),
       ];
       traits.forEach(element => {
-        elementsToAddToCharTalent.appendChild(element);
+        temporary_char_talent.appendChild(element);
       });
 
       razor_agg_count = createSelectList("razor_agg_count", 0, 1, "", "回", 1);
@@ -2075,7 +2075,7 @@ async function show_attack_method()
         document.createElement("br"),
       ];
       traits.forEach(element => {
-        elementsToAddToCharTalent.appendChild(element);
+        temporary_char_talent.appendChild(element);
       });
       razor_agg_count = createSelectList("razor_agg_count", 0, 15, "", "回", 2);
       elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
