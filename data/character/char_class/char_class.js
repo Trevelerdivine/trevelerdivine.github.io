@@ -6837,6 +6837,8 @@ class xiao {
     this.talent1_buff = 0;
     this.talent2_buff = 0;
     this.burst_buff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -6855,20 +6857,25 @@ class xiao {
     let dmg_attack_rate = 0;
     let dmg_rate;
     if (attack_method == 1) {
+      this.attack_hit_count = 7;
       for (let i = 0; i < 6; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 6) {
+      this.attack_hit_count = 1;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 11) {
+      this.attack_hit_count = 1;
       dmg_attack_rate = parseFloat(data["落下攻撃"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 12) {
+      this.attack_hit_count = 1;
       dmg_attack_rate = parseFloat(data["落下攻撃"]["詳細"][1]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 16) {
+      this.attack_hit_count = 1;
       this.talent2_buff = parseInt(document.getElementById("xiao_talent2_buff").value) / 100;
       dmg_attack_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -6941,7 +6948,7 @@ class xiao {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    const attckRate = status[4] * dmg_rate[4];
+    const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
     return attckRate;
   }
 
