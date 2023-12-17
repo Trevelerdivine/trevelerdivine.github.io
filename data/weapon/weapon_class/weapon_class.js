@@ -351,7 +351,7 @@ class StaffofHoma {
   }
 
   calculate_weapon_result_attck(fixstatus,status) {
-    const weapon_effect_box = document.getElementById("traitCheckbox");
+    const weapon_effect_box = document.getElementById("staff_of_homa");
     let weapon_buff = 0.008 + 0.002 * (this.weapon_rank - 1);
     if (weapon_effect_box.checked)
     {

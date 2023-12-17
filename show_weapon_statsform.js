@@ -708,7 +708,7 @@ async function show_weapon_statsform() {
   else if (selectedWeaponId == "69") {
     const traits = [
       {
-        id: "traitCheckbox",
+        id: "staff_of_homa",
         label: "護摩の杖：HP50%未満"
       }
     ];
