@@ -6973,6 +6973,8 @@ class faruzan {
     this.burst2_buff = 0;
     this.talent2_buff = 0;
     this.burst_buff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -7011,11 +7013,13 @@ class faruzan {
     let dmg_attack_rate = 0;
     let dmg_rate;
     if (attack_method == 6) {
+      this.attack_hit_count = 1;
       dmg_attack_rate = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 16) {
       const attack_count1 = parseInt(document.getElementById("faruzan_attack1_count").value);
       const attack_count2 = parseInt(document.getElementById("faruzan_attack2_count").value);
+      this.attack_hit_count = attack_count1 + attack_count2;
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1;
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
@@ -7092,7 +7096,7 @@ class faruzan {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    const attckRate = status[4] * (dmg_rate[4] + this.talent2_buff);
+    const attckRate = status[4] * (dmg_rate[4] + this.talent2_buff) + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
     return attckRate;
   }
 
