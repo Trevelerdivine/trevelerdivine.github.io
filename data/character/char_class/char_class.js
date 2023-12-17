@@ -6851,8 +6851,11 @@ class xiao {
 
     this.talent1_buff = parseInt(document.getElementById("xiao_talent1").value) / 100;
 
-    const xiao_burst_level = parseInt(document.getElementById("xiao_Q_level").value);
-    this.burst_buff = parseFloat(data["元素爆発"]["詳細"][0]["数値"][xiao_burst_level]);
+    if (attack_method_index ==0 || this.attack_method_index == 1 || attack_method_index == 2)
+    {
+      const xiao_burst_level = parseInt(document.getElementById("xiao_Q_level").value);
+      this.burst_buff = parseFloat(data["元素爆発"]["詳細"][0]["数値"][xiao_burst_level]);
+    }
     
     // 攻撃方法に応じてダメージ率を計算
     let dmg_attack_rate = 0;
