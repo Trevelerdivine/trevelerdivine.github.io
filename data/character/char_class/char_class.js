@@ -5413,13 +5413,11 @@ class yaemiko {
     this.talent2effect = 0;
     this.four_conste_buff = 0;
     this.char_constellations = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
-    // チェックボックスとチェックされた数を取得
-    const checkboxContainer = document.getElementById("select_reaction_method");
-    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-    const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
     this.char_constellations = document.getElementById("char_constellations").value;
 
     const reaction_check = document.getElementById("reactionon_flag");
@@ -5447,19 +5445,23 @@ class yaemiko {
     let dmg_attck_rate = 0;
   
     if (attack_method == 1) {
+      this.attack_hit_count = 3;
       for (let i = 0; i < 3; i++) {
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 6) {
+      this.attack_hit_count = 1;
       dmg_attck_rate = parseFloat(data["重撃"]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 16) {
+      this.attack_hit_count = 3;
       this.talent2effect = 1;
       const yae_skill_rank = document.getElementById("yaemiko_E").value - 1;
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]])*3;
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 21) {
+      this.attack_hit_count = 4;
       const first_dmg_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       const second_dmg_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
       const Q_dmg_rate = first_dmg_rate + second_dmg_rate * 3;
@@ -5545,7 +5547,7 @@ class yaemiko {
     let attckRate;
     if (this.reaction_coeff > 0)
     {
-        attckRate = status[4] * dmg_rate[4];
+        attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
         basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
     }
@@ -5553,7 +5555,7 @@ class yaemiko {
     {
       if (attack_method != 21)
       {
-        attckRate = status[4] * dmg_rate[4];
+        attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       }
     }
     return attckRate;
