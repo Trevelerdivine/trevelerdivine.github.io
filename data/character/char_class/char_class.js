@@ -6535,6 +6535,8 @@ class lisa {
     this.talent2_buff = 0;
     this.reaction_coeff = 0;
     this.skill_buff = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
   }
 
   async dmg_rate_data() {
@@ -6561,19 +6563,23 @@ class lisa {
     let dmg_rate;
     
     if (attack_method == 1) {
+      this.attack_hit_count = 4;
       for (let i = 0; i < 4; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 6) {
+      this.attack_hit_count = 1;
       dmg_attack_rate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 16) {
+      this.attack_hit_count = 1;
       const buff_count = parseInt(document.getElementById("lisa_skill_count").value) + 1;
       dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][buff_count]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     } else if (attack_method == 21) {
       const attack_count = parseInt(document.getElementById("lisa_attack_count").value);
+      this.attack_hit_count = attack_count;
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count;
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
@@ -6649,13 +6655,13 @@ class lisa {
     if (this.reaction_coeff > 0)
     {
 
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
     {
-      const attckRate = status[4] * dmg_rate[4];
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       return attckRate;
     }
   }
