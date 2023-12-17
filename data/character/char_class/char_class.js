@@ -5553,10 +5553,7 @@ class yaemiko {
     }
     else
     {
-      if (attack_method != 21)
-      {
-        attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
-      }
+      attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
     }
     return attckRate;
   }
