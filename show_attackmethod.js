@@ -2427,7 +2427,7 @@ async function show_attack_method()
     if (attack_method == 6)
     {
       const arataki_text = createTextNode("　重撃ヒット回数：");
-      const aratakicount_selectlist = createSelectList("arataki_count", 0, 10, "", "回", 3);
+      const aratakicount_selectlist = createSelectList("arataki_count", 1, 10, "", "回", 3);
       attack_method_prop.appendChild(arataki_text);
       attack_method_prop.appendChild(aratakicount_selectlist);
       attack_method_prop.appendChild(document.createElement("br"));

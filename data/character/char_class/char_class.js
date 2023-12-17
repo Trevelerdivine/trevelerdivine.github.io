@@ -8261,6 +8261,7 @@ class aratakiitto {
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       console.log(dmg_rate);
     } else if (attack_method == 16) {
+      this.attack_count = 1;
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     }
@@ -8342,7 +8343,7 @@ class aratakiitto {
     }
     else if (attack_method == 16)
     {
-      basicDmg = dmg_rate[4] * status[4];
+      basicDmg = dmg_rate[4] * status[4] + this.talent2_buff * status[1] * this.attack_count + calculate_weapon_basedmg(this.attack_count, status, this.weapon_rank);
       return basicDmg;
     }
   }
