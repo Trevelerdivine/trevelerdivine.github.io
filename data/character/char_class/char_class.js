@@ -5287,9 +5287,12 @@ class cyno {
       const cyno_E_count = parseInt(document.getElementById("cyno_E_count").value);
       const cyno_adE_count = parseInt(document.getElementById("cyno_adE_count").value);
       const cyno_talent1_count = parseInt(document.getElementById("cyno_talent1_count").value);
+      this.aggcount1 = parseInt(document.getElementById("cyno_agg_count").value);
+      this.aggcount2 = parseInt(document.getElementById("cyno_talent1_agg_count").value);
+
       this.attack_hit_count1 = cyno_E_count + cyno_talent1_count;
       this.attack_hit_count2 = cyno_adE_count;
-      dmg_attack_rate1 = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * cyno_E_count + cyno_talent1_count
+      dmg_attack_rate1 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * cyno_E_count + cyno_talent1_count
       dmg_attack_rate2 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * cyno_adE_count;
       dmg_rate = [0, 0, 0, 0, [dmg_attack_rate1, dmg_attack_rate2], 0, 0];
     }
@@ -5367,34 +5370,36 @@ class cyno {
       {
         const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank);
         let basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-        return basicDmg;
       }
       else
       {
-        const attckRate = status[4] * (dmg_rate[4][0] + this.base_dmg_buff * status[2]
-                        + dmg_rate[4][1] * (1 + status[7] + 0.35) / (1 + status[7]))
+        const basicDmg = status[4] * dmg_rate[4][0] 
+                        + this.base_dmg_buff * status[2]
                         + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank)
-                        + calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank);
-        let basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-        return basicDmg;
+                        + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200))
+                        + (calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank)
+                        + status[4] * dmg_rate[4][1]
+                        + this.aggcount2 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)))
+                          * (1 + status[7] + 0.35) / (1 + status[7]);
       }
     }
     else
     {
       if (attack_method == 1)
       {
-        const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
-        return attckRate;
+        const basicDmg = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       }
       else
       {
-        const attckRate = status[4] * (dmg_rate[4][0] + this.base_dmg_buff * status[2]
-                        + dmg_rate[4][1] * (1 + status[7] + 0.35) / (1 + status[7]))
+        const basicDmg = status[4] * dmg_rate[4][0] 
+                        + this.base_dmg_buff * status[2]
                         + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank)
-                        + calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank);
-        return attackrate;
+                        + (calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank)
+                        + status[4] * dmg_rate[4][1])
+                          * (1 + status[7] + 0.35) / (1 + status[7]);
       }
     }
+    return basicDmg;
   }
 
   calculate_char_debuff() {
