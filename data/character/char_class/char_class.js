@@ -7231,237 +7231,6 @@ class shikanoinheizou {
   }
 }
 
-class nahida {
-  constructor(base_status_array, parameter) {
-    this.base_status_array = base_status_array;
-    this.dmg_rateCache = null;
-    this.parameter = parameter;
-    this.aggcount = 0;
-    this.reaction_coeff = 0;
-    this.skill_buff = 0;
-    this.talent1effect = -1;
-    this.mytalent1 = 0;
-    this.q_pyrobuff = 0;
-    this.four_conste_buff = 0;
-    this.char_constellations = 0;
-  }
-
-  async dmg_rate_data() {
-    // チェックボックスとチェックされた数を取得
-    const checkboxContainer = document.getElementById("select_reaction_method");
-    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-    const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
-    this.char_constellations = document.getElementById("char_constellations").value;
-    // Nahida Q および Talent1 チェック
-    const nahida_Q = document.getElementById("nahida_Q");
-    const talent1 = document.getElementById("talent1");
-    if (nahida_Q.checked && talent1.checked) {
-      this.mytalent1 = 1;
-      
-      // "other_label" チェック
-      const otherLabel = document.getElementById("other-label");
-      if (otherLabel.checked) {
-        const elm = parseInt(document.getElementById("element-mastery").value) || 0;
-        const elm_buff = Math.max(Math.min(elm / 4, 250), 0);
-        this.talent1effect = elm_buff;
-      }
-    }
-
-    const reaction_check = document.getElementById("reactionon_flag");
-    if (reaction_check.checked)
-    {
-      this.aggcount = parseInt(document.getElementById("nahida_agg_count").value);
-      this.reaction_coeff = 1.25
-    }    
-  
-    // JSON データを取得
-    const response = await fetch("./data/character/char_data/nahida.json");
-    const data = await response.json();
-  
-    // 攻撃方法に応じてダメージ率を計算
-    let dmg_rate;
-    let dmg_attck_rate = 0;
-  
-    if (this.char_constellations > 2)
-    {
-      const four_conste_index = document.getElementById("four_conste").value;
-      const four_conste_check = document.getElementById("traitCheckbox3");
-      if (four_conste_check.checked && four_conste_index > 0)
-      {
-        this.four_conste_buff = 100 + 20 * (four_conste_index - 1);
-      }
-    }
-
-    if (attack_method == 1) {
-      for (let i = 0; i < 4; i++) {
-        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-      }
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    } else if (attack_method == 6) {
-      dmg_attck_rate = parseFloat(data["重撃"]["数値"]["攻撃力"][this.parameter[3]]);
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-    } else if (attack_method == 16) {
-      if (nahida_Q.checked) {
-        let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
-        if (this.char_constellations > 0) {
-          q_pyro = Math.min((q_pyro + 1), 1);
-        }
-  
-        if (q_pyro > -1) {
-          const nahida_Q_level = document.getElementById("nahida_Q_level").value;
-          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
-        }
-      }
-      const dmg_attck_rate = parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]]);
-      const dmg_elm_rate = parseFloat(data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]]);
-      this.skill_buff = 1;
-      dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
-    } else if (attack_method == 17) {
-      this.skill_buff = 1;
-      dmg_rate = [0, 0, 400, 0, 200, 0, 0];
-    }
-  
-    // 計算結果をキャッシュして返す
-    this.dmg_rateCache = dmg_rate;
-    return dmg_rate;
-  }
-  
-  calculate_char_fixed_hp(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_hp(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_attck(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_attck(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_deff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_deff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_elm(fixstatus,status) {
-    return this.four_conste_buff;
-  }
-
-  calculate_char_result_elm(fixstatus,status) {
-
-    if (this.talent1effect > -1) {
-      return this.talent1effect;
-    }
-    if(this.mytalent1 == 0)
-    {
-      return 0;
-    }
-    let talent1elm_buff = Math.min(fixstatus[2]/4, 250)
-    return talent1elm_buff;
-  }
-
-  calculate_char_fixed_elm_charge(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_elm_charge(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_cr(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_cr(fixstatus,status) {
-    if (attack_method_index == 3)
-    {
-      return Math.min(Math.max(0, status[2] - 200), 800) * 0.0003 * this.skill_buff;
-    }
-  else
-  {
-    return 0;
-  }
-  }
-
-  calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_cd(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return this.q_pyrobuff;
-  }
-
-  calculate_char_result_dmg_buff(fixstatus,status) {
-    if (attack_method_index == 3)
-    {
-      return Math.min(Math.max(0, status[2] - 200), 800) * 0.001 * this.skill_buff;
-    }
-    else
-    {
-      return 0;
-    }
-  }
-
-  calculate_basic_dmg(dmg_rate, status) {
-    if (this.reaction_coeff > 0)
-    {
-      if (attack_method == 16 || attack_method == 17)
-      { 
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        const elmRate = status[2] * dmg_rate[2] / 100;
-        let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-        return basicDmg;
-      }
-      else
-      {
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-        return basicDmg;
-      }
-    }
-    else
-    {
-      if (attack_method == 16 || attack_method == 17)
-      {
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        const elmRate = status[2] * dmg_rate[2] / 100;
-        let basicDmg = attckRate + elmRate;
-        return basicDmg;
-      }
-      else
-      {
-        const attckRate = status[4] * dmg_rate[4] / 100;
-        let basicDmg = attckRate;
-        return basicDmg;
-      }
-    }
-  }
-
-  calculate_char_debuff() {
-    let char_debuff = [0,0,0];
-    if (this.char_constellations >1)
-    {
-      const two_conste_check = document.getElementById("traitCheckbox2");
-      if(two_conste_check.checked)
-      {
-        char_debuff = [0,0.3,0];
-      }
-    }
-    return char_debuff;
-  }
-}
-
 class alhaitham {
   constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
@@ -7666,6 +7435,240 @@ class alhaitham {
 
   calculate_char_debuff() {
     let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
+class nahida {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.dmg_rateCache = null;
+    this.parameter = parameter;
+    this.aggcount = 0;
+    this.reaction_coeff = 0;
+    this.skill_buff = 0;
+    this.talent1effect = -1;
+    this.mytalent1 = 0;
+    this.q_pyrobuff = 0;
+    this.four_conste_buff = 0;
+    this.char_constellations = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+  }
+
+  async dmg_rate_data() {
+    // チェックボックスとチェックされた数を取得
+    const checkboxContainer = document.getElementById("select_reaction_method");
+    const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
+    const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
+    this.char_constellations = document.getElementById("char_constellations").value;
+    // Nahida Q および Talent1 チェック
+    const nahida_Q = document.getElementById("nahida_Q");
+    const talent1 = document.getElementById("talent1");
+    if (nahida_Q.checked && talent1.checked) {
+      this.mytalent1 = 1;
+      
+      // "other_label" チェック
+      const otherLabel = document.getElementById("other-label");
+      if (otherLabel.checked) {
+        const elm = parseInt(document.getElementById("element-mastery").value) || 0;
+        const elm_buff = Math.max(Math.min(elm / 4, 250), 0);
+        this.talent1effect = elm_buff;
+      }
+    }
+
+    const reaction_check = document.getElementById("reactionon_flag");
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById("nahida_agg_count").value);
+      this.reaction_coeff = 1.25
+    }    
+  
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/nahida.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attck_rate = 0;
+  
+    if (this.char_constellations > 2)
+    {
+      const four_conste_index = document.getElementById("four_conste").value;
+      const four_conste_check = document.getElementById("traitCheckbox3");
+      if (four_conste_check.checked && four_conste_index > 0)
+      {
+        this.four_conste_buff = 100 + 20 * (four_conste_index - 1);
+      }
+    }
+
+    if (attack_method == 1) {
+      this.attack_hit_count = 4;
+      for (let i = 0; i < 4; i++) {
+        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 6) {
+      this.attack_hit_count = 1;
+      dmg_attck_rate = parseFloat(data["重撃"]["数値"]["攻撃力"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 16) {
+      this.attack_hit_count = 1;
+      if (nahida_Q.checked) {
+        let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
+        if (this.char_constellations > 0) {
+          q_pyro = Math.min((q_pyro + 1), 1);
+        }
+  
+        if (q_pyro > -1) {
+          const nahida_Q_level = document.getElementById("nahida_Q_level").value;
+          this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
+        }
+      }
+      const dmg_attck_rate = parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]]);
+      const dmg_elm_rate = parseFloat(data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]]);
+      this.skill_buff = 1;
+      dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 17) {
+      this.attack_hit_count = 1;
+      this.skill_buff = 1;
+      dmg_rate = [0, 0, 400, 0, 200, 0, 0];
+    }
+  
+    // 計算結果をキャッシュして返す
+    this.dmg_rateCache = dmg_rate;
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return this.four_conste_buff;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+
+    if (this.talent1effect > -1) {
+      return this.talent1effect;
+    }
+    if(this.mytalent1 == 0)
+    {
+      return 0;
+    }
+    let talent1elm_buff = Math.min(fixstatus[2]/4, 250)
+    return talent1elm_buff;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    if (attack_method_index == 3)
+    {
+      return Math.min(Math.max(0, status[2] - 200), 800) * 0.0003 * this.skill_buff;
+    }
+  else
+  {
+    return 0;
+  }
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    return this.q_pyrobuff;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    if (attack_method_index == 3)
+    {
+      return Math.min(Math.max(0, status[2] - 200), 800) * 0.001 * this.skill_buff;
+    }
+    else
+    {
+      return 0;
+    }
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    if (this.reaction_coeff > 0)
+    {
+      if (attack_method == 16 || attack_method == 17)
+      { 
+        const attckRate = status[4] * dmg_rate[4] / 100;
+        const elmRate = status[2] * dmg_rate[2] / 100;
+        let basicDmg = (attckRate + elmRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)))
+                     + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+      }
+      else
+      {
+        const attckRate = status[4] * dmg_rate[4] / 100 + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+        let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      }
+    }
+    else
+    {
+      if (attack_method == 16 || attack_method == 17)
+      {
+        const attckRate = status[4] * dmg_rate[4] / 100;
+        const elmRate = status[2] * dmg_rate[2] / 100;
+        let basicDmg = attckRate + elmRate + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+      }
+      else
+      {
+        const attckRate = status[4] * dmg_rate[4] / 100 + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+      }
+    }
+    return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    if (this.char_constellations >1)
+    {
+      const two_conste_check = document.getElementById("traitCheckbox2");
+      if(two_conste_check.checked)
+      {
+        char_debuff = [0,0.3,0];
+      }
+    }
     return char_debuff;
   }
 }
