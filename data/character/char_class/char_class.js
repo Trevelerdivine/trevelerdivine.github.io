@@ -5364,16 +5364,17 @@ class cyno {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg
     if (this.reaction_coeff > 0)
     {
       if (attack_method == 1)
       {
         const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank);
-        let basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       }
       else
       {
-        const basicDmg = status[4] * dmg_rate[4][0] 
+        basicDmg = status[4] * dmg_rate[4][0] 
                         + this.base_dmg_buff * status[2]
                         + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank)
                         + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200))
@@ -5387,11 +5388,11 @@ class cyno {
     {
       if (attack_method == 1)
       {
-        const basicDmg = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
+        basicDmg = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank);
       }
       else
       {
-        const basicDmg = status[4] * dmg_rate[4][0] 
+        basicDmg = status[4] * dmg_rate[4][0] 
                         + this.base_dmg_buff * status[2]
                         + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank)
                         + (calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank)
