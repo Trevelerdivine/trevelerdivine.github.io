@@ -6421,6 +6421,7 @@ class razor {
     } else if (attack_method == 21) {
       this.skill_buff = parseInt(document.getElementById("razor_skill_count").value) * 0.2;
       const normal_talent_level = parseInt(document.getElementById("razor_normal_level").value);
+      console.log(normal_talent_level);
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
@@ -6429,14 +6430,13 @@ class razor {
       }
       this.attack_hit_count = 5;
       const attack_burst_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+      console.log(attack_burst_rate);
       for (let i = 0; i < 4; i++) {
         dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"]["normal_talent_level"]) * attack_burst_rate;
       }
       console.log(dmg_attack_rate);
       dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      console.log(dmg_attack_rate);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-      console.log(dmg_rate);
     }
     
   return dmg_rate;
