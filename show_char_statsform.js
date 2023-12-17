@@ -1211,7 +1211,7 @@ async function show_char_statsform()
     {
       elementsToAddToCharTalent = [
         createCheckbox("beidou_talent2", true),
-        createLabel("beidou_talent2", "固有天賦2：満天の霹靂 元素チャージ効率+30％"),
+        createLabel("beidou_talent2", "固有天賦2：飢餓 元素チャージ効率+30％"),
         document.createElement("br"),
       ];
     
