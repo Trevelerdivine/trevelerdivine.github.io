@@ -4467,6 +4467,27 @@ class ganyu {
     this.nonreact_second_count = 0;
     this.unique_dmg_buff = [0, 0];
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    if (selectedWeaponId == 120)
+    {
+      const buff_check1 = document.getElementById("Slingshot_dmgbuff");
+      const buff_check2 = document.getElementById("Slingshot_dmgbuff1");
+      if (buff_check1.checked)
+      {
+        this.unique_dmg_buff[0] = 0.06 * (this.weapon_rank + 5);
+      }
+      else
+      {
+        this.unique_dmg_buff[0] = -0.1;
+      }
+      if (buff_check2.checked)
+      {
+        this.unique_dmg_buff[1] = 0.06 * (this.weapon_rank + 5);
+      }
+      else
+      {
+        this.unique_dmg_buff[1] = -0.1;
+      }
+    }
   }
   
   async dmg_rate_data() {
@@ -4591,27 +4612,6 @@ class ganyu {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    if (selectedWeaponId == 120)
-    {
-      const buff_check1 = document.getElementById("Slingshot_dmgbuff");
-      const buff_check2 = document.getElementById("Slingshot_dmgbuff1");
-      if (buff_check1.checked)
-      {
-        this.unique_dmg_buff[0] = 0.06 * (this.weapon_rank + 5);
-      }
-      else
-      {
-        this.unique_dmg_buff[0] = -0.1;
-      }
-      if (buff_check2.checked)
-      {
-        this.unique_dmg_buff[1] = 0.06 * (this.weapon_rank + 5);
-      }
-      else
-      {
-        this.unique_dmg_buff[1] = -0.1;
-      }
-    }
     return  this.talent2_buff + this.fourth_conste_buff;
   }
 
