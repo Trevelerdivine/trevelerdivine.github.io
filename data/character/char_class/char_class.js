@@ -7715,14 +7715,39 @@ class tighnari {
     this.dmg_rateCache = null;
     this.parameter = parameter;
     this.talent1_buff = 0;
-    this.aggcount = 0;
+    this.aggcount1 = 0;
+    this.aggcount2 = 0;
     this.reaction_coeff = 0;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
     this.fourth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
+    this.attack_hit_count1 = 0;
+    this.attack_hit_count2 = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    this.unique_dmg_buff = [0, 0];
+    if (selectedWeaponId == 120)
+    {
+      const buff_check1 = document.getElementById("Slingshot_dmgbuff");
+      const buff_check2 = document.getElementById("Slingshot_dmgbuff1");
+      if (buff_check1.checked)
+      {
+        this.unique_dmg_buff[0] = 0.06 * (this.weapon_rank + 5);
+      }
+      else
+      {
+        this.unique_dmg_buff[0] = -0.1;
+      }
+      if (buff_check2.checked)
+      {
+        this.unique_dmg_buff[1] = 0.06 * (this.weapon_rank + 5);
+      }
+      else
+      {
+        this.unique_dmg_buff[1] = -0.1;
+      }
+    }
   }
   
   async dmg_rate_data() {
@@ -7764,11 +7789,6 @@ class tighnari {
         this.fourth_conste_buff = parseInt(document.getElementById("four_conste_buff").value);
       }
     }
-
-    if (this.char_constellations > 3 && attack_method == 6)
-    {
-      this.sixth_conste_buff = 1.5;
-    }
     
     // JSON データを取得
     const response = await fetch("./data/character/char_data/tighnari.json");
@@ -7779,19 +7799,29 @@ class tighnari {
     let dmg_attck_rate = 0;
   
     if (attack_method == 6) {
-      const dmg_rate1 = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      const dmg_rate2 = parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attck_rate = [dmg_rate1, dmg_rate2];
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      const attack_count1 = parseInt(document.getElementById("tighnari_attack1_count").value);
+      const attack_count2 = parseInt(document.getElementById("tighnari_attack2_count").value);
+      this.aggcount1 = parseInt(document.getElementById("tighnari_agg_count").value);
+      this.aggcount2 = parseInt(document.getElementById("tighnari_talent1_agg_count").value);
+      this.attack_hit_count1 = attack_count1;
+      this.attack_hit_count2 = attack_count2;
+
+      let first_dmg_rate = attack_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      let second_dmg_rate = attack_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      if (this.char_constellations == 4)
+      {
+        const attack_count3 = parseInt(document.getElementById("tighnari_attack3_count").value);
+        this.attack_hit_count2 += attack_count3;
+        second_dmg_rate += attack_count3 * 1.5;
+      }
+      dmg_rate = [0, 0, 0, 0, [first_dmg_rate, second_dmg_rate], 0, 0];
     } else if (attack_method == 21) {
-      const dmg_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      const dmg_rate2 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-      dmg_attck_rate = [dmg_rate1, dmg_rate2];
-      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      const dmg_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * 6;
+      const dmg_rate2 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * 6;
+      this.attack_hit_count1 = 12;
+      dmg_rate = [0, 0, 0, 0, [dmg_rate1, dmg_rate1], 0, 0];
     }
-  
-    // 計算結果をキャッシュして返す
-    this.dmg_rateCache = dmg_rate;
+
     return dmg_rate;
   }
   
@@ -7860,30 +7890,36 @@ class tighnari {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    if (attack_method == 6)
+    let basicDmg
+    if (this.reaction_coeff > 0)
     {
-      if (selectedWeaponId ==92)
+      if (attack_method == 6)
       {
-  
-        const attckRate = status[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff + 12 * (1.6 + (this.weapon_rank -1) * 0.4) * status[2];
-        let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-        return basicDmg;
+        basicDmg = (status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank) + this.aggcount1 * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)))
+                 * (1 + status[7] + this.unique_dmg_buff[0]) / (1 + status[7])
+                 + (status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank) + this.aggcount2 * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)))
+                 * (1 + status[7] + this.unique_dmg_buff[1]) / (1 + status[7])
+      }
+      else if (attack_method == 21)
+      {
+        const attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        basicDmg = (attckRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      }
+    }
+    else
+    {
+      if (attack_method == 6)
+      {
+        basicDmg = (status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank)) * (1 + status[7] + this.unique_dmg_buff[0]) / (1 + status[7])
+                 + (status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank)) * (1 + status[7] + this.unique_dmg_buff[1]) / (1 + status[7]);
       }
       else
       {
-
-      const attckRate = status[4] * (dmg_rate[4][0] * 3 + dmg_rate[4][1] * 12) / 100 + this.sixth_conste_buff;
-      let basicDmg = (attckRate + this.aggcount * 3 * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-      return basicDmg;
+        const attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        basicDmg = attckRate
       }
     }
-    else if (attack_method == 21)
-    {
-
-      const attckRate = status[4] * (dmg_rate[4][0] * 6 + dmg_rate[4][1] * 6) / 100;
-      let basicDmg = (attckRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
-      return basicDmg;
-    }
+    return basicDmg;
   }
 
   calculate_char_debuff() {
