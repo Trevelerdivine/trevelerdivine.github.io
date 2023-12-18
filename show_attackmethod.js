@@ -2410,6 +2410,18 @@ async function show_attack_method()
     }
     else if (attack_method == 21)
     {
+      traits = [
+        createLabel("tighnari_attack1_count", "　蔓纏いの矢 ヒット回数："),
+        createSelectList("tighnari_attack1_count", 0, 6, "", "回", 6),
+        document.createElement("br"),
+        createLabel("tighnari_attack2_count", "　次級·蔓纏いの矢 ヒット回数："),
+        createSelectList("tighnari_attack2_count", 0, 6, "", "回", 6),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
       tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
       elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
       elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加

@@ -7757,7 +7757,6 @@ class tighnari {
     const reaction_check = document.getElementById("reactionon_flag");
     if (reaction_check.checked)
     {
-      this.aggcount = parseInt(document.getElementById("tighnari_agg_count").value);
       this.reaction_coeff = 1.25
     }
 
@@ -7816,9 +7815,13 @@ class tighnari {
       }
       dmg_rate = [0, 0, 0, 0, [first_dmg_rate, second_dmg_rate], 0, 0];
     } else if (attack_method == 21) {
-      const dmg_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * 6;
-      const dmg_rate2 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * 6;
-      this.attack_hit_count1 = 12;
+      const attack_count1 = parseInt(document.getElementById("tighnari_attack1_count").value);
+      const attack_count2 = parseInt(document.getElementById("tighnari_attack2_count").value);
+      this.aggcount1 = parseInt(document.getElementById("tighnari_agg_count").value);
+      this.attack_hit_count1 = attack_count1;
+      this.attack_hit_count2 = attack_count2;
+      const dmg_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1;
+      const dmg_rate2 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
       dmg_rate = [0, 0, 0, 0, [dmg_rate1, dmg_rate1], 0, 0];
     }
 
@@ -7902,8 +7905,8 @@ class tighnari {
       }
       else if (attack_method == 21)
       {
-        const attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
-        basicDmg = (attckRate + this.aggcount * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        const attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.attack_hit_count1 + this.attack_hit_count2, status, this.weapon_rank);
+        basicDmg = (attckRate + this.aggcount1 * 1.25 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
       }
     }
     else
@@ -7915,7 +7918,7 @@ class tighnari {
       }
       else
       {
-        const attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]);
+        const attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.attack_hit_count1 + this.attack_hit_count2, status, this.weapon_rank);
         basicDmg = attckRate
       }
     }
