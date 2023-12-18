@@ -4643,9 +4643,8 @@ class ganyu {
     {
       if (attack_method == 6)
       {
-        basicDmg = status[4] * (dmg_rate[4][0] + dmg_rate[4][1] + dmg_rate[4][2] + dmg_rate[4][3])
-                 + calculate_weapon_basedmg(this.react_first_count + this.react_second_count, status, this.weapon_rank)
-                 + calculate_weapon_basedmg(this.nonreact_first_count + this.nonreact_second_count, status, this.weapon_rank);
+        basicDmg = (status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_first_count + this.nonreact_first_count, status, this.weapon_rank)) * (1 + status[7] + this.unique_dmg_buff[0]) / (1 + status[7])
+                 + (status[4] * (dmg_rate[4][2] + dmg_rate[4][3]) + calculate_weapon_basedmg(this.react_second_count + this.nonreact_second_count, status, this.weapon_rank)) * (1 + status[7] + this.unique_dmg_buff[1]) / (1 + status[7]);
       }
       else
       {
