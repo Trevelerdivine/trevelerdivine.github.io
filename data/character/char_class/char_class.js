@@ -7822,7 +7822,7 @@ class tighnari {
       this.attack_hit_count2 = attack_count2;
       const dmg_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1;
       const dmg_rate2 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
-      dmg_rate = [0, 0, 0, 0, [dmg_rate1, dmg_rate1], 0, 0];
+      dmg_rate = [0, 0, 0, 0, [dmg_rate1, dmg_rate2], 0, 0];
     }
 
     return dmg_rate;
