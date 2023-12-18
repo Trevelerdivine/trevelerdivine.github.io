@@ -1445,7 +1445,7 @@ async function show_char_statsform()
 
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "重撃×3回（2段チャージ）", value: "6" },
+        { text: "重撃(2段チャージ)", value: "6" },
         { text: "元素爆発(造成・蔓纏いの矢)", value: "21" },
       ];
 
