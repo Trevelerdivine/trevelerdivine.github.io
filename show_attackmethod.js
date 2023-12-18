@@ -2353,21 +2353,68 @@ async function show_attack_method()
     {
       if (char_constellations < 4)
       {
-        tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 2);
+        traits = [
+          createLabel("tighnari_attack1_count", "　花筐の矢 ヒット回数："),
+          createSelectList("tighnari_attack1_count", 0, 3, "", "回", 1),
+          document.createElement("br"),
+          createLabel("tighnari_attack2_count", "　蔵蘊の花矢 ヒット回数："),
+          createSelectList("tighnari_attack2_count", 0, 12, "", "回", 4),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+
+        traits = [
+          createLabel("tighnari_agg_count", "　花筐の矢 草激化回数："),
+          createSelectList("tighnari_agg_count", 0, 3, "", "回", 1),
+          document.createElement("br"),
+          createLabel("tighnari_talent1_agg_count", "　蔵蘊の花矢 草激化回数："),
+          createSelectList("tighnari_talent1_agg_count", 0, 12, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          elemental_reaction.appendChild(element);
+        });
       }
       else
       {
-        tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 3);
+        traits = [
+          createLabel("tighnari_attack1_count", "　花筐の矢 ヒット回数："),
+          createSelectList("tighnari_attack1_count", 0, 3, "", "回", 1),
+          document.createElement("br"),
+          createLabel("tighnari_attack2_count", "　蔵蘊の花矢 ヒット回数："),
+          createSelectList("tighnari_attack2_count", 0, 12, "", "回", 4),
+          document.createElement("br"),
+          createLabel("tighnari_attack3_count", "　6重蔵蘊の花矢 ヒット回数："),
+          createSelectList("tighnari_attack3_count", 0, 3, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+
+        traits = [
+          createLabel("tighnari_agg_count", "　花筐の矢 草激化回数："),
+          createSelectList("tighnari_agg_count", 0, 3, "", "回", 1),
+          document.createElement("br"),
+          createLabel("tighnari_talent1_agg_count", "　蔵蘊の花矢 草激化回数："),
+          createSelectList("tighnari_talent1_agg_count", 0, 12, "", "回", 2),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          elemental_reaction.appendChild(element);
+        });
+        
       }
-      createCheckboxList_br(options);
     }
     else if (attack_method == 21)
     {
       tighnari_agg_countlist = createSelectList("tighnari_agg_count", 0, 50, "", "回", 4);
+      elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+      elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
+      elemental_reaction.appendChild(document.createElement("br"));
     }
-    elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(tighnari_agg_countlist); // ラベルを select_reaction_method に追加
-    elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "58")
   {
