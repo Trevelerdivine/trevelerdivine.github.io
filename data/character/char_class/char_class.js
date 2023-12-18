@@ -4488,6 +4488,13 @@ class ganyu {
         this.unique_dmg_buff[1] = -0.1;
       }
     }
+    else if (selectedWeaponId == 97)
+    {
+      const buff_count1 = parseInt(document.getElementById("AmosBow_dmgbuff").value);
+      const buff_count2 = parseInt(document.getElementById("AmosBow_dmgbuff1").value);
+      this.unique_dmg_buff[0] =  0.02 * (this.weapon_rank + 3) * buff_count1;
+      this.unique_dmg_buff[1] =  0.02 * (this.weapon_rank + 3) * buff_count2;      
+    }
   }
   
   async dmg_rate_data() {
@@ -7747,6 +7754,13 @@ class tighnari {
       {
         this.unique_dmg_buff[1] = -0.1;
       }
+    }
+    else if (selectedWeaponId == 97)
+    {
+      const buff_count1 = parseInt(document.getElementById("AmosBow_dmgbuff").value);
+      const buff_count2 = parseInt(document.getElementById("AmosBow_dmgbuff1").value);
+      this.unique_dmg_buff[0] =  0.02 * (this.weapon_rank + 3) * buff_count1;
+      this.unique_dmg_buff[1] =  0.02 * (this.weapon_rank + 3) * buff_count2;      
     }
   }
   

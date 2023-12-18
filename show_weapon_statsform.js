@@ -976,6 +976,46 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "97") {
+    if (selectedCharId != 23 && selectedCharId != 57)
+    {
+      buff_group = [
+        createweaponLabel("AmosBow_dmgbuff", "アモスの弓：与えるダメージアップ "),
+        createweaponSelectList("AmosBow_dmgbuff", 0, 5, "", "回", 5),
+        document.createElement("br"),
+      ];
+    }
+    else
+    {
+      if (selectedCharId == 23)
+      {
+        buff_group = [
+          createweaponLabel("AmosBow_dmgbuff", "アモスの弓：霜華の矢のダメージアップ"),
+          createweaponSelectList("AmosBow_dmgbuff", 0, 5, "", "回", 2),
+          document.createElement("br"),
+          createweaponLabel("AmosBow_dmgbuff1", "アモスの弓：霜華の矢・霜華満開のダメージアップ"),
+          createweaponSelectList("AmosBow_dmgbuff1", 0, 5, "", "回", 5),
+          document.createElement("br"),
+        ];
+      }
+      else if (selectedCharId == 57)
+      {
+        buff_group = [
+          createweaponLabel("AmosBow_dmgbuff", "アモスの弓：花筐の矢のダメージアップ"),
+          createweaponSelectList("AmosBow_dmgbuff", 0, 5, "", "回", 2),
+          document.createElement("br"),
+          createweaponLabel("AmosBow_dmgbuff1", "アモスの弓：蔵蘊の花矢のダメージアップ"),
+          createweaponSelectList("AmosBow_dmgbuff1", 0, 5, "", "回", 5),
+          document.createElement("br"),
+        ];
+      }
+    }
+
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "99") {
     buff_group = [
       createweaponCheckbox("ScionoftheBlazingSun_effect", true),
