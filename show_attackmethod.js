@@ -1570,11 +1570,29 @@ async function show_attack_method()
   {
     if (attack_method == 6)
     {
-      options = [
-        { text: "霜華の矢", value: "0", checked: true },
-        { text: "霜華の矢・霜華満開", value: "1" , checked: true},
+      traits = [
+        createLabel("ganyu_attack1_count", "　霜華の矢ヒット回数："),
+        createSelectList("ganyu_attack1_count", 0, 5, "", "回", 1),
+        document.createElement("br"),
+        createLabel("ganyu_attack2_count", "　霜華の矢・霜華満開ヒット回数："),
+        createSelectList("ganyu_attack2_count", 0, 5, "", "回", 1),
+        document.createElement("br"),
       ];
-      createCheckboxList_br(options);
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("ganyu_react1_count", "　霜華の矢 反応回数："),
+        createSelectList("ganyu_react1_count", 0, 5, "", "回", 1),
+        document.createElement("br"),
+        createLabel("ganyu_react2_count", "　霜華の矢・霜華満開 反応回数："),
+        createSelectList("ganyu_react2_count", 0, 5, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
     }
     else if (attack_method == 21)
     {

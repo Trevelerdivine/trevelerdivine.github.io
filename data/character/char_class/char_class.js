@@ -4504,22 +4504,19 @@ class ganyu {
     let dmg_rate;
   
     if (attack_method == 6) {
-      const checkboxContainer = document.getElementById("select_reaction_method");
-      const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
-      let elm_react = [];
-      let elm_nonreact = [];
-      checkboxes.forEach(checkbox => {
-        elm_react.push(checkbox.checked ? 1 : 0);
-        elm_nonreact.push(checkbox.checked ? 0 : 1);
-      });
-      let first_react_dmg_rate = elm_react[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      let first_nonreact_dmg_rate = elm_nonreact[0] * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-      let second_react_dmg_rate = elm_react[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-      let second_nonreact_dmg_rate = elm_nonreact[1] * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-      this.react_first_count = elm_react[0];
-      this.nonreact_first_count = elm_nonreact[0];
-      this.react_second_count = elm_react[1];
-      this.nonreact_second_count = elm_nonreact[1];
+      const attack_count1 = parseInt(document.getElementById("ganyu_attack1_count").value);
+      const attack_count2 = parseInt(document.getElementById("ganyu_attack2_count").value);
+      const react_count1 = parseInt(document.getElementById("ganyu_react1_count").value);
+      const react_count2 = parseInt(document.getElementById("ganyu_react2_count").value);
+
+      let first_react_dmg_rate = react_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      let first_nonreact_dmg_rate = (attack_count1 - react_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      let second_react_dmg_rate = react_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      let second_nonreact_dmg_rate = (attack_count2 - react_count2) * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      this.react_first_count = react_count1;
+      this.nonreact_first_count = attack_count1 - react_count1;
+      this.react_second_count = react_count2;
+      this.nonreact_second_count = attack_count2 - react_count2;
       dmg_rate = [0, 0, 0, 0, [first_react_dmg_rate, first_nonreact_dmg_rate, second_react_dmg_rate, second_nonreact_dmg_rate], 0, 0];
     } else if (attack_method == 21) {
       let elm_react_dmgrate = 0;
