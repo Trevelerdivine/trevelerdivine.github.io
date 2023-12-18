@@ -1165,11 +1165,11 @@ async function show_weapon_statsform() {
       if (selectedCharId == 23)
       {
         buff_group = [
-          createweaponCheckbox("Slingshot_dmgbuff1", true),
-          createweaponLabel("Slingshot_dmgbuff1", "弾弓：0.3秒以内に霜華の矢が命中"),
+          createweaponCheckbox("Slingshot_dmgbuff", true),
+          createweaponLabel("Slingshot_dmgbuff", "弾弓：0.3秒以内に霜華の矢が命中"),
           document.createElement("br"),
-          createweaponCheckbox("Slingshot_dmgbuff2", true),
-          createweaponLabel("Slingshot_dmgbuff2", "弾弓：0.3秒以内に霜華の矢・霜華満開が命中"),
+          createweaponCheckbox("Slingshot_dmgbuff1", true),
+          createweaponLabel("Slingshot_dmgbuff1", "弾弓：0.3秒以内に霜華の矢・霜華満開が命中"),
           document.createElement("br"),
         ];
       }
