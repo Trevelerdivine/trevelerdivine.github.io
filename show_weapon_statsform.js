@@ -1166,10 +1166,10 @@ async function show_weapon_statsform() {
       {
         buff_group = [
           createweaponCheckbox("Slingshot_dmgbuff", true),
-          createweaponLabel("Slingshot_dmgbuff", "弾弓：0.3秒以内に花筐の矢が命中"),
+          createweaponLabel("Slingshot_dmgbuff", "弾弓：0.3秒以内に霜華の矢が命中"),
           document.createElement("br"),
           createweaponCheckbox("Slingshot_dmgbuff1", true),
-          createweaponLabel("Slingshot_dmgbuff1", "弾弓：0.3秒以内に蔵蘊の花矢が命中"),
+          createweaponLabel("Slingshot_dmgbuff1", "弾弓：0.3秒以内に霜華の矢・霜華満開が命中"),
           document.createElement("br"),
         ];
       }
@@ -1177,10 +1177,10 @@ async function show_weapon_statsform() {
       {
         buff_group = [
           createweaponCheckbox("Slingshot_dmgbuff", true),
-          createweaponLabel("Slingshot_dmgbuff", "弾弓：0.3秒以内に霜華の矢が命中"),
+          createweaponLabel("Slingshot_dmgbuff", "弾弓：0.3秒以内に花筐の矢が命中"),
           document.createElement("br"),
           createweaponCheckbox("Slingshot_dmgbuff1", true),
-          createweaponLabel("Slingshot_dmgbuff1", "弾弓：0.3秒以内に霜華の矢・霜華満開が命中"),
+          createweaponLabel("Slingshot_dmgbuff1", "弾弓：0.3秒以内に蔵蘊の花矢が命中"),
           document.createElement("br"),
         ];
       }
