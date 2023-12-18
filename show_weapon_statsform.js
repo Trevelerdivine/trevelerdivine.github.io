@@ -1152,24 +1152,36 @@ async function show_weapon_statsform() {
   }
   
   else if (selectedWeaponId == "120") {
-    const traits = [
+    if (selectedCharId != 23 && selectedCharId != 57)
+    {
+      buff_group = [
+        createweaponCheckbox("Slingshot_dmgbuff", true),
+        createweaponLabel("Slingshot_dmgbuff", "弾弓：0.3秒以内に敵に命中 "),
+        document.createElement("br"),
+      ];
+    }
+    else
+    {
+      if (selectedCharId == 23)
       {
-        id: "Slingshot_dmgbuff",
-        label: "弾弓：0.3秒以内に敵に命中"
+        buff_group = [
+          createweaponCheckbox("Slingshot_dmgbuff1", true),
+          createweaponLabel("Slingshot_dmgbuff1", "弾弓：0.3秒以内に霜華の矢が命中"),
+          document.createElement("br"),
+          createweaponCheckbox("Slingshot_dmgbuff2", true),
+          createweaponLabel("Slingshot_dmgbuff2", "弾弓：0.3秒以内に霜華の矢・霜華満開が命中"),
+          document.createElement("br"),
+        ];
       }
-    ];
-    const traitCheckbox = document.createElement("input");
-    traitCheckbox.type = "checkbox";
-    traitCheckbox.id = traits[0].id;
-    traitCheckbox.value = traits[0].id;
-    traitCheckbox.checked = true;
+      else if (selectedCharId == 57)
+      {
+        
+      }
+    }
 
-    const traitLabel = document.createElement("label");
-    traitLabel.htmlFor = traits[0].id;
-    traitLabel.textContent = traits[0].label;
-    
-    weaponInfo.appendChild(traitCheckbox);
-    weaponInfo.appendChild(traitLabel);
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
   }
 
   else if (selectedWeaponId == "122") {
