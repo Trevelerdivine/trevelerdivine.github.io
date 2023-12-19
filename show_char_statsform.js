@@ -1870,7 +1870,7 @@ function showFormElements()
     }
   }
 
-  const formElements = [
+  const resistformElements = [
     { forms: [pyro_resist_form, pyro_debuff_form ], index: 0 },
     { forms: [hydro_resist_form, hydro_debuff_form ], index: 1 },
     { forms: [cyro_resist_form, cyro_debuff_form ], index: 2 },
@@ -1880,7 +1880,7 @@ function showFormElements()
     { forms: [geo_resist_form, geo_debuff_form], index: 6 },
     { forms: [phisics_resist_form, phisics_debuff_form], index: 7 }
   ];
-  for (const element of formElements)
+  for (const element of resistformElements)
   {
     if (depend_element[element.index] == 1)
     {
