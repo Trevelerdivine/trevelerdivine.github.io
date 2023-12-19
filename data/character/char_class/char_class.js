@@ -313,7 +313,7 @@ class dehya {
 
       this.react_attack_count = reaction_count1
                               + reaction_count2;
-      this.nonreact_attack_count = attack_count1 - reaction_coun1
+      this.nonreact_attack_count = attack_count1 - reaction_count1
                                  + attack_count2 - reaction_count2;
 
       let attack_react_dmgrate = reaction_count1 * attack_rate1 + reaction_count2 * attack_rate2;
@@ -9221,7 +9221,11 @@ function calculate_weapon_basedmg (attack_count, status_array, weapon_rank, base
   let base_dmg = base_dmg_buff * attack_count;
   if (depend_status[4] == 1 && attack_method_index == 0 && selectedImageIds[0] == 19 && selectedImageIds[1] == 19)
   {
-    base_dmg += 0.35 * status_array[4] * attack_count
+    const buff_check = document.getElementById("af19_4");
+    if (buff_check)
+    {
+      base_dmg += 0.35 * status_array[4] * attack_count;
+    }
   }
   if (selectedWeaponId == 0 && (attack_method_index == 0 || attack_method_index == 3))
   {
