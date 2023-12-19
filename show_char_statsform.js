@@ -1803,6 +1803,41 @@ function showFormElements()
   team_elm_charge_form.style.display = "none";
   team_cr_form.style.display = "none";
   team_cd_form.style.display = "none";
+  
+  let depend_element = dependElementMap[char_propaty[0]] || [0, 0, 0, 0, 0, 0, 0, 0];
+  let pyro_resist_form = document.getElementById("enemy-pyroresist-form");
+  let pyro_debuff_form = document.getElementById("pyrodebuff-form");
+  let hydro_resist_form = document.getElementById("enemy-hydroresist-form");
+  let hydro_debuff_form = document.getElementById("hydrodebuff-form");
+  let cyro_resist_form = document.getElementById("enemy-cyroresist-form");
+  let cyro_debuff_form = document.getElementById("cyrodebuff-form");
+  let electro_resist_form = document.getElementById("enemy-electroresist-form");
+  let electro_debuff_form = document.getElementById("electrodebuff-form");
+  let anemo_resist_form = document.getElementById("enemy-anemoresist-form");
+  let anemo_debuff_form = document.getElementById("anemodebuff-form");
+  let dendro_resist_form = document.getElementById("enemy-dendroresist-form");
+  let dendro_debuff_form = document.getElementById("dendrodebuff-form");
+  let geo_resist_form = document.getElementById("enemy-georesist-form");
+  let geo_debuff_form = document.getElementById("geodebuff-form");
+  let phisics_resist_form = document.getElementById("enemy-phisicsresist");
+  let phisics_debuff_form = document.getElementById("phisicsdebuff");
+
+  pyro_resist_form.style.display = "none";
+  pyro_debuff_form.style.display = "none";
+  hydro_resist_form.style.display = "none";
+  hydro_debuff_form.style.display = "none";
+  cyro_resist_form.style.display = "none";
+  cyro_debuff_form.style.display = "none";
+  electro_resist_form.style.display = "none";
+  electro_debuff_form.style.display = "none";
+  anemo_resist_form.style.display = "none";
+  anemo_debuff_form.style.display = "none";
+  dendro_resist_form.style.display = "none";
+  dendro_debuff_form.style.display = "none";
+  geo_resist_form.style.display = "none";
+  geo_debuff_form.style.display = "none";
+  phisics_resist_form.style.display = "none";
+  phisics_debuff_form .style.display = "none";
 
   const dependElementMap = {
     0: [1, 0, 0, 0, 0, 1, 0, 0],
@@ -1814,9 +1849,6 @@ function showFormElements()
     6: [0, 0, 0, 0, 0, 0, 1, 0],
     7: [0, 0, 0, 0, 0, 0, 0, 1],
   };
-  
-  let depend_element = dependElementMap[char_propaty[0]] || [0, 0, 0, 0, 0, 0, 0, 0];
-
 
   const formElements = [
     { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
@@ -1830,6 +1862,27 @@ function showFormElements()
   for (const element of formElements)
   {
     if (depend_status[element.index] == 1)
+    {
+      for (let i = 0; i < element.forms.length; i++)
+      {
+        element.forms[i].style.display = "table-row";
+      }
+    }
+  }
+
+  const formElements = [
+    { forms: [pyro_resist_form, pyro_debuff_form ], index: 0 },
+    { forms: [hydro_resist_form, hydro_debuff_form ], index: 1 },
+    { forms: [cyro_resist_form, cyro_debuff_form ], index: 2 },
+    { forms: [electro_resist_form, electro_debuff_form ], index: 3 },
+    { forms: [anemo_resist_form, anemo_debuff_form], index: 4 },
+    { forms: [dendro_resist_form, dendro_debuff_form], index: 5 },
+    { forms: [geo_resist_form, geo_debuff_form], index: 6 },
+    { forms: [phisics_resist_form, phisics_debuff_form], index: 7 }
+  ];
+  for (const element of formElements)
+  {
+    if (depend_element[element.index] == 1)
     {
       for (let i = 0; i < element.forms.length; i++)
       {
