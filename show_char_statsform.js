@@ -1803,6 +1803,17 @@ function showFormElements()
   team_elm_charge_form.style.display = "none";
   team_cr_form.style.display = "none";
   team_cd_form.style.display = "none";
+
+  const dependElementMap = {
+    0: [1, 0, 0, 0, 0, 1, 0, 0],
+    1: [0, 1, 0, 1, 0, 1, 0, 0],
+    2: [0, 0, 1, 0, 0, 0, 0, 0],
+    3: [1, 0, 0, 1, 0, 1, 0, 0],
+    4: [0, 0, 0, 0, 1, 0, 0, 0],
+    5: [0, 0, 0, 0, 0, 1, 0, 0],
+    6: [0, 0, 0, 0, 0, 0, 1, 0],
+    7: [0, 0, 0, 0, 0, 0, 0, 1],
+  };
   
   let depend_element = dependElementMap[char_propaty[0]] || [0, 0, 0, 0, 0, 0, 0, 0];
   let pyro_resist_form = document.getElementById("enemy-pyroresist-form");
@@ -1838,17 +1849,6 @@ function showFormElements()
   geo_debuff_form.style.display = "none";
   phisics_resist_form.style.display = "none";
   phisics_debuff_form .style.display = "none";
-
-  const dependElementMap = {
-    0: [1, 0, 0, 0, 0, 1, 0, 0],
-    1: [0, 1, 0, 1, 0, 1, 0, 0],
-    2: [0, 0, 1, 0, 0, 0, 0, 0],
-    3: [1, 0, 0, 1, 0, 1, 0, 0],
-    4: [0, 0, 0, 0, 1, 0, 0, 0],
-    5: [0, 0, 0, 0, 0, 1, 0, 0],
-    6: [0, 0, 0, 0, 0, 0, 1, 0],
-    7: [0, 0, 0, 0, 0, 0, 0, 1],
-  };
 
   const formElements = [
     { forms: [hp_form, team_hp_form, team_hprate_form], index: 0 },
