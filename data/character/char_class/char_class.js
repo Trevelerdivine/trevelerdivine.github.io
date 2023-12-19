@@ -11,8 +11,9 @@ class Lyney {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data(){
@@ -255,8 +256,9 @@ class dehya {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-    + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data(){
@@ -424,9 +426,9 @@ class yoimiya {
     this.skill_buff = 0;
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
-    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-    + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -625,8 +627,9 @@ class hutao {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -842,8 +845,9 @@ class klee {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -1079,8 +1083,9 @@ class diluc {
     this.nonreact_attack_count = 0;
     this.nonreact_attack_unique_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -1384,8 +1389,9 @@ class yanfei {
     this.nonreact_list = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -1637,8 +1643,9 @@ class xinyan {
     this.talent2_buff = 0;
     this.attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -1799,8 +1806,9 @@ class bennett {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -1995,8 +2003,9 @@ class xiangling {
     this.attack_count = 0;
     this.talent2 = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -2153,8 +2162,9 @@ class amber {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -2329,8 +2339,9 @@ class Furina {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -2644,8 +2655,9 @@ class Neuvillette {
     this.sixth_react_count = 0;
     this.sixth_nonreact_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -2870,8 +2882,9 @@ class nirou {
     this.react_suigetsu_count = 0;
     this.nonreact_suigetsu_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -3102,8 +3115,9 @@ class yelan {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -3307,8 +3321,9 @@ class kamisatoayato {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -3488,8 +3503,9 @@ class tartaglia {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -3717,8 +3733,9 @@ class xingqiu {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -3892,8 +3909,9 @@ class Wriothesley {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -4115,8 +4133,9 @@ class kamisatoayaka {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -4357,8 +4376,9 @@ class eula {
     this.debuff = 0;
     this.attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -4505,8 +4525,9 @@ class ganyu {
     this.nonreact_second_count = 0;
     this.unique_dmg_buff = [0, 0];
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     if (selectedWeaponId == 120)
     {
       const buff_check1 = document.getElementById("Slingshot_dmgbuff");
@@ -4728,8 +4749,9 @@ class rosaria {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -4945,8 +4967,9 @@ class chongyun {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -5117,8 +5140,9 @@ class kaeya {
     this.react_attack_count = 0;
     this.nonreact_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -5304,8 +5328,9 @@ class cyno {
     this.attack_hit_count1 = 0;
     this.attack_hit_count2 = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -5496,8 +5521,9 @@ class yaemiko {
     this.char_constellations = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -5666,8 +5692,9 @@ class raiden {
     this.skill_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -5839,8 +5866,9 @@ class keqing {
     this.skill_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -5997,8 +6025,9 @@ class kujousara {
     this.skill_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -6146,8 +6175,9 @@ class fischl {
     this.skill_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -6292,8 +6322,9 @@ class beidou {
     this.reaction_coeff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -6438,8 +6469,9 @@ class razor {
     this.reaction_coeff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -6631,8 +6663,9 @@ class lisa {
     this.skill_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -6782,8 +6815,9 @@ class wanderer {
     this.burst_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -6938,8 +6972,9 @@ class xiao {
     this.burst_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -7075,8 +7110,9 @@ class faruzan {
     this.burst_buff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -7218,8 +7254,9 @@ class shikanoinheizou {
     this.sixth_conste_cdbuff = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -7351,8 +7388,9 @@ class alhaitham {
     this.attack_count = 0;
     this.unique_attack_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -7566,8 +7604,9 @@ class nahida {
     this.char_constellations = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
 
   async dmg_rate_data() {
@@ -7809,8 +7848,9 @@ class tighnari {
     this.attack_hit_count2 = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.unique_dmg_buff = [0, 0];
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     if (selectedWeaponId == 120)
     {
       const buff_check1 = document.getElementById("Slingshot_dmgbuff");
@@ -8038,8 +8078,9 @@ class kirara {
     this.nyan_dmgrate = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -8224,8 +8265,9 @@ class travelardendro {
     this.char_constellations = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -8371,8 +8413,9 @@ class aratakiitto {
     this.attack_count;
     this.burst_buff_rate = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -8531,8 +8574,9 @@ class albedo {
     this.char_constellations = 0;
     this.attack_count;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -8685,8 +8729,9 @@ class noelle {
     this.char_constellations = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     this.attack_hit_count = 0;
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -8807,8 +8852,9 @@ class zhongli {
     this.char_constellations = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -8922,8 +8968,9 @@ class ningguang {
     this.char_constellations = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
@@ -9054,8 +9101,9 @@ class travelergeo {
     this.char_constellations = 0;
     this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    this.base_dmgbuff = parseFloat(document.getElementById(fix_basedmg_buff).value)
-                      + parseFloat(document.getElementById(dynamic_basedmg_buff).value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
   
   async dmg_rate_data() {
