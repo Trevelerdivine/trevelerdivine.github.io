@@ -1830,8 +1830,8 @@ function showFormElements()
   let dendro_debuff_form = document.getElementById("dendrodebuff-form");
   let geo_resist_form = document.getElementById("enemy-georesist-form");
   let geo_debuff_form = document.getElementById("geodebuff-form");
-  let phisics_resist_form = document.getElementById("enemy-phisicsresist");
-  let phisics_debuff_form = document.getElementById("phisicsdebuff");
+  let phisics_resist_form = document.getElementById("enemy-phisicsresist-form");
+  let phisics_debuff_form = document.getElementById("phisicsdebuff-form");
 
   pyro_resist_form.style.display = "none";
   pyro_debuff_form.style.display = "none";
