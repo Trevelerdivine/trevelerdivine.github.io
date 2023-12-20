@@ -1807,10 +1807,6 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  const char_debuff = await char_instance.calculate_char_debuff();
-  const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
-  const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
-  console.log(correct_coeff);
   output_exp_dmg = (output_exp_dmg * correct_coeff).toFixed(0);
 
 
