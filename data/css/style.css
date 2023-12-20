@@ -510,6 +510,12 @@ text-align: center;
   justify-content: center;
 }
 
+.footer {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
 
 .enemy-form {
   max-width: 500px;
