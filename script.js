@@ -1338,9 +1338,9 @@ function create_reactionbonus_list(){
   return reaction_bonus_list;
 }
 
-function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check, reaction_list, reaction_bonus_list){
+function calculate_elmreaction_constdmg(reaction_coeff, status_array, resist, reaction_check, reaction_list, reaction_bonus_list){
   //reaction_list = [過負荷炎, 烈開花, 感電水, 開花水, 豊穣開花, 過負荷雷, 感電雷, 超開花]
-  const reaction_elm_bunus = 16 * elm / (elm + 2000);
+  const reaction_elm_bunus = 16 * status_array[2] / (status_array[2] + 2000);
   if (reaction_check.checked)
   {
     return 0;
@@ -1353,9 +1353,18 @@ function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_ch
   }
   else if (char_propaty[0] == 1)
   {
-    reaction_dmg = reaction_list[2] * 1.2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
-                 + reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
-                 + reaction_list[4] * 2 * resist[5] * (1 + reaction_bonus_list[4] + reaction_elm_bunus);
+    if (selectedCharId != 11)
+    {
+      reaction_dmg = reaction_list[2] * 1.2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
+                   + reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
+                   + reaction_list[4] * 2 * resist[5] * (1 + reaction_bonus_list[4] + reaction_elm_bunus);
+    }
+    else
+    {
+      reaction_dmg = reaction_list[2] * 1.2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
+                   + reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
+                   + reaction_list[4] * 2 * resist[5] * (1 + Math.min(Math.max(status_array[0] - 30000, 0) * 0.00009, 4) + reaction_elm_bunus);
+    }
   }
   else if (char_propaty[0] == 3)
   {
@@ -1542,7 +1551,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
   } else {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
@@ -1746,7 +1755,7 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
       } else {
         exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                 * (1 + result_status[7]) * correct_coeff[8];
@@ -1860,7 +1869,7 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
       } else {
         exp_dmg = basic_dmg * (1 + result_status[5] * result_status[6])
                 * (1 + result_status[7]) * correct_coeff[8];

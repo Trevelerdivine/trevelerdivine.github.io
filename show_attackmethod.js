@@ -125,20 +125,37 @@ async function show_attack_method()
     select_reaction_method.appendChild(traitLabel1);
     select_reaction_method.appendChild(document.createElement("br"));
 
-    elements_const_dmg = [
-      createLabel("Electro_Charged", "　感電回数："),
-      createSelectList("Electro_Charged", 0, 50, "", "回", 0),
-      document.createElement("br"),
-      createLabel("Bloom", "　開花回数："),
-      createSelectList("Bloom", 0, 50, "", "回", 0),
-      document.createElement("br"),
-      createLabel("NirouBloom", "　豊穣開花回数："),
-      createSelectList("NirouBloom", 0, 50, "", "回", 0),
-      document.createElement("br"),
-      createLabel("Nirou_HP", "　ニィロウHP："),
-      createInputWithUnit("text", "Nirou_HP", "50000",""),
-      document.createElement("br")
-    ];
+    if (selectedCharId != 11)
+    {
+      elements_const_dmg = [
+        createLabel("Electro_Charged", "　感電回数："),
+        createSelectList("Electro_Charged", 0, 50, "", "回", 0),
+        document.createElement("br"),
+        createLabel("Bloom", "　開花回数："),
+        createSelectList("Bloom", 0, 50, "", "回", 0),
+        document.createElement("br"),
+        createLabel("NirouBloom", "　豊穣開花回数："),
+        createSelectList("NirouBloom", 0, 50, "", "回", 0),
+        document.createElement("br"),
+        createLabel("Nirou_HP", "　ニィロウHP："),
+        createInputWithUnit("text", "Nirou_HP", "50000",""),
+        document.createElement("br")
+      ];
+    }
+    else
+    {
+      elements_const_dmg = [
+        createLabel("Electro_Charged", "　感電回数："),
+        createSelectList("Electro_Charged", 0, 50, "", "回", 0),
+        document.createElement("br"),
+        createLabel("Bloom", "　開花回数："),
+        createSelectList("Bloom", 0, 50, "", "回", 0),
+        document.createElement("br"),
+        createLabel("NirouBloom", "　豊穣開花回数："),
+        createSelectList("NirouBloom", 0, 50, "", "回", 0),
+        document.createElement("br"),
+      ];
+    }
 
     elements_const_dmg.forEach(element => {
       elemental_reaction.appendChild(element);
@@ -194,7 +211,6 @@ async function show_attack_method()
     elemental_reaction.appendChild(ReactionOnRadioButton);
     elemental_reaction.appendChild(ReactionOnRadio_label);
     elemental_reaction.appendChild(document.createElement("br"));
-
     elements_const_dmg = [
       createLabel("Bloom", "　開花回数："),
       createSelectList("Bloom", 0, 50, "", "回", 0),
@@ -202,11 +218,10 @@ async function show_attack_method()
       createLabel("NirouBloom", "　豊穣開花回数："),
       createSelectList("NirouBloom", 0, 50, "", "回", 0),
       document.createElement("br"),
-      createLabel("Nirou_HP", "　ニィロウHP："),
+      createLabel("Nirou_HP", "　　ニィロウHP："),
       createInputWithUnit("text", "Nirou_HP", "50000",""),
       document.createElement("br")
     ];
-
     elements_const_dmg.forEach(element => {
       elemental_reaction.appendChild(element);
     });
