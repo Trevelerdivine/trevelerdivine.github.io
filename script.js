@@ -1273,7 +1273,7 @@ async function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, react
   else if (char_propaty[0] == 1)
   {
     const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
-    reaction_dmg = Electro_Charged_count * resist[3];
+    reaction_dmg = Electro_Charged_count * resist[3] * 1.2;
   }
   else if (char_propaty[0] == 3)
   {
