@@ -1257,8 +1257,8 @@ async function create_afset_instance()
   return buff
 }
 
-async function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check)
-{
+function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check, reaction_list){
+  //reaction_list = [過負荷炎, 烈開花, 感電水, 開花水, 豊穣開花, 過負荷雷, 感電雷, 超開花]
   if (reaction_check.checked)
   {
     return 0;
@@ -1454,7 +1454,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check);
+    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check);
   } else {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
@@ -1656,7 +1656,7 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
+        *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
       } else {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
         *(1 + result_status[7]) * correct_coeff[8];
@@ -1770,7 +1770,7 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
+        *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
       } else {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
         *(1 + result_status[7]) * correct_coeff[8];
