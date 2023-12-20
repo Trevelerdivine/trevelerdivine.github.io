@@ -1257,7 +1257,7 @@ async function create_afset_instance()
   return buff
 }
 
-function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check)
+async function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check)
 {
   if (reaction_check.checked)
   {
@@ -1286,7 +1286,7 @@ function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_ch
   return reaction_dmg;
 }
 
-function calculateEnemyProps(charDebuff, weaponDebuff) {
+async function calculateEnemyProps(charDebuff, weaponDebuff) {
   let pyro_resist = (parseInt(document.getElementById("enemy-pyroresist").value) - parseInt(document.getElementById("pyrodebuff").value)) / 100;
   let hydro_resist = (parseInt(document.getElementById("enemy-hydroresist").value) - parseInt(document.getElementById("hydrodebuff").value)) / 100;
   let cyro_resist = (parseInt(document.getElementById("enemy-cyroresist").value) - parseInt(document.getElementById("cyrodebuff").value)) / 100;
@@ -1386,7 +1386,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const dmg_rate = await char_instance.dmg_rate_data();
   const char_debuff = await char_instance.calculate_char_debuff();
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
-  const correct_coeff = calculateEnemyProps(char_debuff, weapon_debuff);
+  const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
   const reaction_check = document.getElementById("reactionoff_flag");
   console.log(correct_coeff);
 
@@ -1456,7 +1456,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
+    *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
   } else {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
