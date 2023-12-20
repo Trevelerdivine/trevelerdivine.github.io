@@ -1257,6 +1257,32 @@ async function create_afset_instance()
   return buff
 }
 
+function create_reactioncount_list(){
+  let reaction_count_list = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0]
+  if (char_propaty[0] == 0)
+  {
+    const Overloaded_count = parseInt(document.getElementById("Overloaded").value);
+    const Burgeon_count = parseInt(document.getElementById("Burgeon").value);
+    reaction_count_list[0] = Overloaded_count;
+    reaction_count_list[1] = Burgeon_count;
+  }
+  else if (char_propaty[0] == 1)
+  {
+    const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
+    reaction_count_list[2] = Electro_Charged_count;
+  }
+  else if (char_propaty[0] == 3)
+  {
+    const Overloaded_count = parseInt(document.getElementById("Overloaded").value);
+    const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
+    const Hyperbloom_count = parseInt(document.getElementById("Hyperbloom").value);
+    reaction_count_list[5] = Overloaded_count;
+    reaction_count_list[6] = Electro_Charged_count;
+    reaction_count_list[7] = Hyperbloom_count;
+  }
+  return reaction_count_list;
+}
+
 function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check, reaction_list){
   //reaction_list = [過負荷炎, 烈開花, 感電水, 開花水, 豊穣開花, 過負荷雷, 感電雷, 超開花]
   if (reaction_check.checked)
@@ -1266,21 +1292,15 @@ function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_ch
   let reaction_dmg = 0;
   if (char_propaty[0] == 0)
   {
-    const Overloaded_count = parseInt(document.getElementById("Overloaded").value);
-    const Burgeon_count = parseInt(document.getElementById("Burgeon").value);
-    reaction_dmg = Overloaded_count * 2 * resist[0] + Burgeon_count * 3 * resist[5];
+    reaction_dmg = reaction_list[0] * 2 * resist[0] + reaction_list[1] * 3 * resist[5];
   }
   else if (char_propaty[0] == 1)
   {
-    const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
-    reaction_dmg = Electro_Charged_count * resist[3] * 1.2;
+    reaction_dmg = reaction_list[2] * resist[3] * 1.2;
   }
   else if (char_propaty[0] == 3)
   {
-    const Overloaded_count = parseInt(document.getElementById("Overloaded").value);
-    const Hyperbloom_count = parseInt(document.getElementById("Hyperbloom").value);
-    const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
-    reaction_dmg = Overloaded_count * 2 * resist[0] + Hyperbloom_count * 3 * resist[5] + Electro_Charged_count * 1.2 * resist[3];
+    reaction_dmg = reaction_list[5] * 2 * resist[0] + reaction_list[7] * 3 * resist[5] + reaction_list[6] * 1.2 * resist[3];
   }
   reaction_dmg *= reaction_coeff * (1 + 16 * elm / (elm + 2000));
   return reaction_dmg;
@@ -1356,6 +1376,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
+  const reaction_count_list = create_reactioncount_list();
   let zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
@@ -1454,7 +1475,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check);
+    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list);
   } else {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
@@ -1563,6 +1584,7 @@ async function monte_carlo_calculate()
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
   const reaction_check = document.getElementById("reactionoff_flag");
+  const reaction_count_list = create_reactioncount_list();
   console.log(correct_coeff);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
@@ -1655,11 +1677,11 @@ async function monte_carlo_calculate()
 
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
-        exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
+        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
+                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list);
       } else {
-        exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) * correct_coeff[8];
+        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
+                * (1 + result_status[7]) * correct_coeff[8];
       }
 
       if (temp_exp_dmg < exp_dmg)
@@ -1769,11 +1791,11 @@ async function monte_carlo_calculate()
 
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
-        exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
+        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
+                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list);
       } else {
-        exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) * correct_coeff[8];
+        exp_dmg = basic_dmg * (1 + result_status[5] * result_status[6])
+                * (1 + result_status[7]) * correct_coeff[8];
       }
       
       if (temp_exp_dmg < exp_dmg)
