@@ -1806,7 +1806,7 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  output_exp_dmg = (output_exp_dmg * correct_coeff).toFixed(0);
+  output_exp_dmg = output_exp_dmg.toFixed(0);
 
 
 
