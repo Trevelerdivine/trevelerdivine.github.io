@@ -16,14 +16,65 @@
      crossorigin="anonymous"></script>
     <style>
       footer {
-        background-color: #f0f0f0;
-        padding: 20px;
+        padding: 15px;
         text-align: center;
       }
+    
+      * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #e6e6e6;
+    }
+    header {
+      padding: 30px 4% 10px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #4b4b4b;
+    }
+    nav {
+      margin: 0 0 0 auto;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      display: flex;
+    }
+    li {
+      margin: 0 0 0 15px;
+      font-size: 14px;
+    }
     </style>
   </head>
   <body>
-  <h1 style="font-size: 24px;">聖遺物最適化スコア計算機</h1>
+  <header>
+    <h1>
+      <a href="/">原神最適化スコア計算機</a>
+    </h1>
+    <nav class="pc-nav">
+      <ul>
+        <li><a href="#">使い方</a></li>
+        <li><a href="#">スコア固定最適計算機</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">バグ報告</a></li>
+      </ul>
+    </nav>
+  </header>
   <div class="wrapper">
     <div>
       <div>
