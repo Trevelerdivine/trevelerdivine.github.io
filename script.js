@@ -1258,7 +1258,7 @@ async function create_afset_instance()
 }
 
 function create_reactioncount_list(){
-  let reaction_count_list = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0]
+  let reaction_count_list = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0];
   if (char_propaty[0] == 0)
   {
     const Overloaded_count = parseInt(document.getElementById("Overloaded").value);
@@ -1269,7 +1269,11 @@ function create_reactioncount_list(){
   else if (char_propaty[0] == 1)
   {
     const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
+    const Bloom_count = parseInt(document.getElementById("Bloom").value);
+    const Niou_bloom_count = parseInt(document.getElementById("NirouBloom").value);
     reaction_count_list[2] = Electro_Charged_count;
+    reaction_count_list[3] = Bloom_count;
+    reaction_count_list[4] = Niou_bloom_count;
   }
   else if (char_propaty[0] == 3)
   {
@@ -1280,11 +1284,61 @@ function create_reactioncount_list(){
     reaction_count_list[6] = Electro_Charged_count;
     reaction_count_list[7] = Hyperbloom_count;
   }
+  else if (char_propaty[0] == 5)
+  {
+    const Bloom_count = parseInt(document.getElementById("Bloom").value);
+    const Niou_bloom_count = parseInt(document.getElementById("NirouBloom").value);
+    reaction_count_list[3] = Bloom_count;
+    reaction_count_list[4] = Niou_bloom_count;
+  }
   return reaction_count_list;
 }
 
-function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check, reaction_list){
+function create_reactionbonus_list(){
+  let reaction_bonus_list = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0];
+  if (char_propaty[0] == 0)
+  {
+    if (selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
+    {
+      reaction_bonus_list[0] = 0.4;
+      reaction_bonus_list[1] = 0.4;
+    }
+    else if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
+    {
+      reaction_bonus_list[0] = 0.4;
+    }
+  }
+  else if (char_propaty[0] == 1)
+  {
+    if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
+    {
+      reaction_bonus_list[2] = 0.4;
+    }
+  }
+  else if (char_propaty[0] == 3)
+  {
+    if (selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
+    {
+      reaction_bonus_list[5] = 0.4;
+    }
+    else if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
+    {
+      reaction_bonus_list[5] = 0.4;
+      reaction_bonus_list[6] = 0.4;
+      reaction_bonus_list[7] = 0.4;
+    }
+  }
+  else if (char_propaty[5] == 3)
+  {
+    const Nirou_HP = parseInt(document.getElementById("Nirou_HP").value);
+    reaction_bonus_list[4] = Math.min(Math.min(Nirou_HP - 30000, 0) * 0.00009, 4);
+  }
+  return reaction_count_list;
+}
+
+function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check, reaction_list, reaction_bonus_list){
   //reaction_list = [過負荷炎, 烈開花, 感電水, 開花水, 豊穣開花, 過負荷雷, 感電雷, 超開花]
+  const reaction_elm_bunus = 16 * elm / (elm + 2000);
   if (reaction_check.checked)
   {
     return 0;
@@ -1292,17 +1346,27 @@ function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_ch
   let reaction_dmg = 0;
   if (char_propaty[0] == 0)
   {
-    reaction_dmg = reaction_list[0] * 2 * resist[0] + reaction_list[1] * 3 * resist[5];
+    reaction_dmg = reaction_list[0] * 2 * resist[0] * (1 + reaction_bonus_list[0] + reaction_elm_bunus) 
+                 + reaction_list[1] * 3 * resist[5] * (1 + reaction_bonus_list[1] + reaction_elm_bunus);
   }
   else if (char_propaty[0] == 1)
   {
-    reaction_dmg = reaction_list[2] * resist[3] * 1.2;
+    reaction_dmg = reaction_list[2] * 1.2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
+                 + reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
+                 + reaction_list[4] * 2 * resist[5] * (1 + reaction_bonus_list[4] + reaction_elm_bunus);
   }
   else if (char_propaty[0] == 3)
   {
-    reaction_dmg = reaction_list[5] * 2 * resist[0] + reaction_list[7] * 3 * resist[5] + reaction_list[6] * 1.2 * resist[3];
+    reaction_dmg = reaction_list[5] * 2 * resist[0] * (1 + reaction_bonus_list[5] + reaction_elm_bunus)
+                 + reaction_list[6] * 1.2 * resist[3] * (1 + reaction_bonus_list[5] + reaction_elm_bunus)
+                 + reaction_list[7] * 3 * resist[5] * (1 + reaction_bonus_list[7] + reaction_elm_bunus);
   }
-  reaction_dmg *= reaction_coeff * (1 + 16 * elm / (elm + 2000));
+  else if (char_propaty[0] == 5)
+  {
+    reaction_dmg = reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
+                 + reaction_list[4] * 2 * resist[5] * (1 + reaction_bonus_list[4] + reaction_elm_bunus);
+  }
+  reaction_dmg *= reaction_coeff;
   return reaction_dmg;
 }
 
@@ -1377,6 +1441,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
   const reaction_count_list = create_reactioncount_list();
+  const reaction_bonus_list = create_reactionbonus_list();
   let zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
@@ -1475,7 +1540,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list);
+    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
   } else {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
@@ -1585,6 +1650,7 @@ async function monte_carlo_calculate()
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
   const reaction_check = document.getElementById("reactionoff_flag");
   const reaction_count_list = create_reactioncount_list();
+  const reaction_bonus_list = create_reactionbonus_list();
   console.log(correct_coeff);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
@@ -1678,7 +1744,7 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list);
+                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
       } else {
         exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                 * (1 + result_status[7]) * correct_coeff[8];
@@ -1792,7 +1858,7 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list);
+                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
       } else {
         exp_dmg = basic_dmg * (1 + result_status[5] * result_status[6])
                 * (1 + result_status[7]) * correct_coeff[8];
