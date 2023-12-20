@@ -1566,6 +1566,7 @@ async function monte_carlo_calculate()
   const char_debuff = await char_instance.calculate_char_debuff();
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
+  const reaction_check = document.getElementById("reactionoff_flag");
   console.log(correct_coeff);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
