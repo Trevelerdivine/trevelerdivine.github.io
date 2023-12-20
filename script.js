@@ -1257,38 +1257,61 @@ async function create_afset_instance()
   return buff
 }
 
-async function calculate_elmreaction_constdmg(reaction_coeff) 
+function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check)
 {
-  const reaction_check = document.getElementById("reactionoff_flag");
   if (reaction_check.checked)
   {
     return 0;
   }
-  let reaction_count = 0;
+  let reaction_dmg = 0;
   if (char_propaty[0] == 0)
   {
     const Overloaded_count = parseInt(document.getElementById("Overloaded").value);
     const Burgeon_count = parseInt(document.getElementById("Burgeon").value);
-    reaction_count = Overloaded_count * 2 + Burgeon_count * 3;
+    reaction_dmg = Overloaded_count * 2 * resist[0] + Burgeon_count * 3 * resist[5];
   }
   else if (char_propaty[0] == 1)
   {
     const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
-    reaction_count = Electro_Charged_count * 1.2;
+    reaction_dmg = Electro_Charged_count * resist[3];
   }
   else if (char_propaty[0] == 3)
   {
     const Overloaded_count = parseInt(document.getElementById("Overloaded").value);
     const Hyperbloom_count = parseInt(document.getElementById("Hyperbloom").value);
     const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
-    reaction_count = Overloaded_count * 2 + Hyperbloom_count * 3 + Electro_Charged_count * 1.2;
+    reaction_dmg = Overloaded_count * 2 * resist[0] + Hyperbloom_count * 3 * resist[5] + Electro_Charged_count * 1.2 * resist[3];
   }
-  reaction_count = reaction_count * 2 * reaction_coeff;
-
-  return reaction_count;
+  reaction_dmg *= (1 + 16 * elm / (elm + 2000));
+  return reaction_dmg;
 }
 
-async function calculateEnemyProps(charDebuff, weaponDebuff) {
+function calculateEnemyProps(charDebuff, weaponDebuff) {
+  let pyro_resist = (parseInt(document.getElementById("enemy-pyroresist").value) - parseInt(document.getElementById("pyrodebuff").value)) / 100;
+  let hydro_resist = (parseInt(document.getElementById("enemy-hydroresist").value) - parseInt(document.getElementById("hydrodebuff").value)) / 100;
+  let cyro_resist = (parseInt(document.getElementById("enemy-cyroresist").value) - parseInt(document.getElementById("cyrodebuff").value)) / 100;
+  let electro_resist = (parseInt(document.getElementById("enemy-electroresist").value) - parseInt(document.getElementById("electrodebuff").value)) / 100;
+  let anemo_resist = (parseInt(document.getElementById("enemy-anemoresist").value) - parseInt(document.getElementById("anemodebuff").value)) / 100;
+  let dendro_resist = (parseInt(document.getElementById("enemy-dendroresist").value) - parseInt(document.getElementById("dendrodebuff").value)) / 100;
+  let geo_resist = (parseInt(document.getElementById("enemy-georesist").value) - parseInt(document.getElementById("geodebuff").value)) / 100;
+  let phisics_resist = (parseInt(document.getElementById("enemy-phisicsresist").value) - parseInt(document.getElementById("phisicsdebuff").value)) / 100;
+  let geo_resonance = document.getElementById("geo_reso");
+
+  if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21)
+  {
+    const deepwoodCheck = document.getElementById("af21_4");
+    if (deepwoodCheck.checked && char_propaty[0] == 5) {
+      dendro_resist -= 0.3;
+    }
+  }
+  if (geo_resonance.checked && char_propaty[0] == 6)
+  {
+    geo_resist -= parseFloat(document.getElementById("geo_reso_select").value) / 100;
+  }
+
+  let enemy_resist = [pyro_resist, hydro_resist, cyro_resist, electro_resist, anemo_resist, dendro_resist, geo_resist, phisics_resist];
+  enemy_resist[char_propaty[0]] -= charDebuff[0] - weaponDebuff[0];
+  
   const levelSelect = document.getElementById("char_level");
   const levelIndex = levelSelect.value;
 
@@ -1303,41 +1326,25 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   const enemyResist = parseFloat(document.getElementById("enemy-resist").value) / 100;
   const enemyResistDebuff = parseFloat(document.getElementById("resist-debuff").value) / 100;
   const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff").value) / 100;
-  const geo_resonance = document.getElementById("geo_reso");
 
   // 防御補正計算
   const deffCorrection = (charLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
 
-  // 抵抗補正計算
-  let enemyResultResist = enemyResist - enemyResistDebuff - charDebuff[0] - weaponDebuff[0];
-
-  // 特定の条件下での補正係数
-  if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21) {
-    const deepwoodCheck = document.getElementById("af21_4");
-    if (deepwoodCheck.checked && char_propaty[0] == 5) {
-      enemyResultResist -= 0.3;
+  // 補正係数の計算
+  let element_resistCorrection = [0, 0, 0, 0, 0, 0, 0, 0, 0];// [炎補正, 水補正, 氷補正, 雷補正, 風補正, 草補正, 岩補正, 物理補正, 攻撃元素補正]
+  for (let i = 0; i < 8; i++)
+  {
+    if (enemy_resist[i] < 0) {
+      element_resistCorrection[i] = (1 - enemy_resist[i] / 2);
+    } else if (enemy_resist[i] > 0.75) {
+      element_resistCorrection[i] = (1 / (4 * enemy_resist[i] + 1));
+    } else {
+      element_resistCorrection[i] = (1 - enemy_resist[i]);
     }
   }
+  element_resistCorrection[8] =  element_resistCorrection[char_propaty[0]] * deffCorrection;
 
-  if (geo_resonance.checked && char_propaty[0] == 6)
-  {
-    const geo_resist_debuff = parseFloat(document.getElementById("geo_reso_select").value)/100;
-    enemyResultResist -= geo_resist_debuff;
-  }
-
-  // 補正係数の計算
-  let resistCorrection;
-  if (enemyResultResist < 0) {
-    resistCorrection = 1 - enemyResultResist / 2;
-  } else if (enemyResultResist > 0.75) {
-    resistCorrection = 1 / (4 * enemyResultResist + 1);
-  } else {
-    resistCorrection = 1 - enemyResultResist;
-  }
-
-  // 最終的な補正計算
-  const resultCorrection = deffCorrection * resistCorrection;
-  return resultCorrection;
+  return element_resistCorrection;
 }
 
 async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_status)
@@ -1351,7 +1358,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const char_parameter = await import_char_parameter();
-  const const_dmg =  await calculate_elmreaction_constdmg(char_parameter[1]);
   let zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
@@ -1378,6 +1384,11 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);
   const dmg_rate = await char_instance.dmg_rate_data();
+  const char_debuff = await char_instance.calculate_char_debuff();
+  const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
+  const correct_coeff = calculateEnemyProps(char_debuff, weapon_debuff);
+  const reaction_check = document.getElementById("reactionoff_flag");
+  console.log(correct_coeff);
 
   if (depend_status[0] == 1)
   {
@@ -1445,10 +1456,10 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
+    *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
   } else {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]);
+    *(1 + result_status[7]) * correct_coeff[8];
   }
   result_status.push(exp_dmg);
   return result_status;
@@ -1552,6 +1563,10 @@ async function monte_carlo_calculate()
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);
   const dmg_rate = await char_instance.dmg_rate_data();
+  const char_debuff = await char_instance.calculate_char_debuff();
+  const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
+  const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
+  console.log(correct_coeff);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
