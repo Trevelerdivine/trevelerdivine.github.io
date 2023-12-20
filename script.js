@@ -1282,7 +1282,7 @@ async function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, react
     const Electro_Charged_count = parseInt(document.getElementById("Electro_Charged").value);
     reaction_dmg = Overloaded_count * 2 * resist[0] + Hyperbloom_count * 3 * resist[5] + Electro_Charged_count * 1.2 * resist[3];
   }
-  reaction_dmg *= (1 + 16 * elm / (elm + 2000));
+  reaction_dmg *= reaction_coeff * (1 + 16 * elm / (elm + 2000));
   return reaction_dmg;
 }
 
@@ -1456,7 +1456,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-    *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
+    *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check);
   } else {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
