@@ -1333,7 +1333,7 @@ function create_reactionbonus_list(){
     const Nirou_HP = parseInt(document.getElementById("Nirou_HP").value);
     reaction_bonus_list[4] = Math.min(Math.min(Nirou_HP - 30000, 0) * 0.00009, 4);
   }
-  return reaction_count_list;
+  return reaction_bonus_list;
 }
 
 function calculate_elmreaction_constdmg(reaction_coeff, elm, resist, reaction_check, reaction_list, reaction_bonus_list){
