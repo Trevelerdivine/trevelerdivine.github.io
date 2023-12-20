@@ -59,6 +59,24 @@
       margin: 0 0 0 15px;
       font-size: 14px;
     }
+    @media screen and (max-width: 767px) {
+      header {
+        padding: 15px 4% 5px; /* スマホサイズ用のパディング */
+        flex-direction: column; /* 縦並びにする */
+        align-items: flex-start; /* 左寄せにする */
+      }
+      nav {
+        display: block; /* ドロップダウンメニューを表示する */
+        margin-top: 10px; /* メニューとタイトルの間の余白 */
+      }
+      ul {
+        flex-direction: column; /* 縦並びにする */
+        padding-left: 0; /* メニューの余白をリセット */
+      }
+      li {
+        margin: 5px 0; /* メニューアイテム間の余白 */
+      }
+    }
     </style>
   </head>
   <body>
