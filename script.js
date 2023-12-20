@@ -1499,8 +1499,6 @@ async function monte_carlo_calculate()
   const characterInfo = document.getElementById("characterInfo");
   const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
   const char_parameter = await import_char_parameter();
-  const const_dmg =  await calculate_elmreaction_constdmg(char_parameter[1]);
-
   checkboxes.forEach((checkbox) => {
     checkboxStates.push(checkbox.checked);
   });
@@ -1660,10 +1658,10 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
+        *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
       } else {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]);
+        *(1 + result_status[7]) * correct_coeff[8];
       }
 
       if (temp_exp_dmg < exp_dmg)
@@ -1774,10 +1772,10 @@ async function monte_carlo_calculate()
       basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
       if (depend_status[2] == 1) {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]) + const_dmg  * (1 + 16 * result_status[2] / (result_status[2] + 2000));
+        *(1 + result_status[7]) * correct_coeff[8] + await calculate_elmreaction_constdmg(char_parameter[1], result_status[2], correct_coeff, reaction_check)
       } else {
         exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
-        *(1 + result_status[7]);
+        *(1 + result_status[7]) * correct_coeff[8];
       }
       
       if (temp_exp_dmg < exp_dmg)
