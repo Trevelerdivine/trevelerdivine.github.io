@@ -1330,7 +1330,7 @@ function create_reactionbonus_list(){
       reaction_bonus_list[7] = 0.4;
     }
   }
-  else if (char_propaty[5] == 3)
+  else if (char_propaty[0] == 5)
   {
     const Nirou_HP = parseInt(document.getElementById("Nirou_HP").value);
     reaction_bonus_list[4] = Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
