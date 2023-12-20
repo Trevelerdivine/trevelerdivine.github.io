@@ -1323,8 +1323,6 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
 
   // 敵の情報取得
   const enemyLevel = parseInt(document.getElementById("enemy-level").value);
-  const enemyResist = parseFloat(document.getElementById("enemy-resist").value) / 100;
-  const enemyResistDebuff = parseFloat(document.getElementById("resist-debuff").value) / 100;
   const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff").value) / 100;
 
   // 防御補正計算
