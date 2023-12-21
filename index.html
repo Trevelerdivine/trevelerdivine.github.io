@@ -35,906 +35,700 @@
     </ul>
   </nav>
   <div id="page-content">
-    <p>Page Content</p>
-  </div>
-  <div class="wrapper">
-    <div>
+    <div class="wrapper">
       <div>
         <div>
-          <table>
-            <td id = choose_char_weapon >
-              <select id="char_level" style="width: 100px; height: 25px;">
-                <option value="60+">Lv.60+</option>
-                <option value="70">Lv.70</option>
-                <option value="70+">Lv.70+</option>
-                <option value="80">Lv.80</option>
-                <option value="80+">Lv.80+</option>
-                <option value="90" selected>Lv.90</option>
-              </select>
-              <br>
-              <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
-              <option value="0" selected>C0</option>
-              <option value="1">C1</option>
-              <option value="2">C2</option>
-              <option value="2">C3</option>
-              <option value="3">C4</option>
-              <option value="3">C5</option>
-              <option value="4">C6</option>
-              </select>
-            </td>
-            <td>
-              <label class="open_char" for="pop-up_char">
-                <img class="popup-image" src="./character/nahida.webp" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
-              </label>
-              <input type="checkbox" id="pop-up_char">
-              <div class="overlay_char">
-                <div class="window">
-                  <div class="table-container1">
-                    <img src="./data/elements/element_pyro.png" onclick="toggleElement(0)" class="element-image" alt="炎元素">
-                    <img src="./data/elements/element_hydro.png" onclick="toggleElement(1)" class="element-image" alt="水元素">
-                    <img src="./data/elements/element_cryo.png" onclick="toggleElement(2)" class="element-image" alt="氷元素">
-                    <img src="./data/elements/element_electro.png" onclick="toggleElement(3)" class="element-image" alt="雷元素">
-                    <img src="./data/elements/element_anemo.png" onclick="toggleElement(4)" class="element-image" alt="風元素">        
-                    <img src="./data/elements/element_dendro.png" onclick="toggleElement(5)" class="element-image" alt="草元素">
-                    <img src="./data/elements/element_geo.png" onclick="toggleElement(6)" class="element-image" alt="岩元素">
-                    <div class="char_images">
-                      <div class="flex-container1">
-                        <div class="tierPyro"><img id="71" class="tier-image3" src="./character/Lyney.webp"></div>
-                        <div class="tierPyro"><img id="0" class="tier-image3" src="./character/dehya.webp"></div>
-                        <div class="tierPyro"><img id="1" class="tier-image3" src="./character/yoimiya.webp"></div>
-                        <div class="tierPyro"><img id="2" class="tier-image3" src="./character/hutao.jpg"></div>
-                        <div class="tierPyro"><img id="3" class="tier-image3" src="./character/klee.webp"></div>
-                        <div class="tierPyro"><img id="4" class="tier-image3" src="./character/diluc.jpg"></div>
-                        <!--<div class="tierPyro"><img id="5" class="tier-image3" src="./character/thoma.webp"></div>-->
-                        <div class="tierPyro"><img id="6" class="tier-image3" src="./character/yanfei.webp"></div>
-                        <div class="tierPyro"><img id="7" class="tier-image3" src="./character/xinyan.webp"></div>
-                        <div class="tierPyro"><img id="8" class="tier-image3" src="./character/bennett.webp"></div>
-                        <div class="tierPyro"><img id="9" class="tier-image3" src="./character/xiangling.webp"></div>
-                        <div class="tierPyro"><img id="10" class="tier-image3" src="./character/amber.jpg"></div>
-                        <div class="tierHydro"><img id="74" class="tier-image3" src="./character/Furina.webp"></div>
-                        <div class="tierHydro"><img id="72" class="tier-image3" src="./character/Neuvillette.webp"></div>
-                        <div class="tierHydro"><img id="11" class="tier-image3" src="./character/nirou.webp"></div>
-                        <div class="tierHydro"><img id="12" class="tier-image3" src="./character/yelan.webp"></div>
-                        <div class="tierHydro"><img id="13" class="tier-image3" src="./character/kamisatoayato.jpg"></div>
-                        <!--<div class="tierHydro"><img id="14" class="tier-image3" src="./character/sangonomiyakokomi.jpg"></div>-->
-                        <div class="tierHydro"><img id="15" class="tier-image3" src="./character/tartaglia.webp"></div>
-                        <!--<div class="tierHydro"><img id="16" class="tier-image3" src="./character/mona.webp"></div>-->
-                        <!--<div class="tierHydro"><img id="17" class="tier-image3" src="./character/candace.jpg"></div>-->
-                        <!--<div class="tierHydro"><img id="18" class="tier-image3" src="./character/barbara.jpg"></div>-->
-                        <div class="tierHydro"><img id="19" class="tier-image3" src="./character/xingqiu.webp"></div>
-                        <div class="tierCyro"><img id="73" class="tier-image3" src="./character/Wriothesley.webp"></div>
-                        <!--<div class="tierCyro"><img id="20" class="tier-image3" src="./character/shenhe.webp"></div>-->
-                        <div class="tierCyro"><img id="21" class="tier-image3" src="./character/kamisatoayaka.webp"></div>
-                        <div class="tierCyro"><img id="22" class="tier-image3" src="./character/eula.webp"></div>
-                        <div class="tierCyro"><img id="23" class="tier-image3" src="./character/ganyu.webp"></div>
-                        <!--<div class="tierCyro"><img id="24" class="tier-image3" src="./character/qiqi.webp"></div>-->
-                        <!--<div class="tierCyro"><img id="25" class="tier-image3" src="./character/aloy.webp"></div>-->
-                        <!--<div class="tierCyro"><img id="26" class="tier-image3" src="./character/mika.webp"></div>-->
-                        <!--<div class="tierCyro"><img id="27" class="tier-image3" src="./character/layla.webp"></div>-->
-                        <div class="tierCyro"><img id="28" class="tier-image3" src="./character/rosaria.webp"></div>
-                        <!--<div class="tierCyro"><img id="29" class="tier-image3" src="./character/diona.webp"></div>-->
-                        <div class="tierCyro"><img id="30" class="tier-image3" src="./character/chongyun.webp"></div>
-                        <div class="tierCyro"><img id="31" class="tier-image3" src="./character/kaeya.jpg"></div>
-                        <div class="tierElectro"><img id="32" class="tier-image3" src="./character/cyno.jpg"></div>
-                        <div class="tierElectro"><img id="33" class="tier-image3" src="./character/yaemiko.webp"></div>
-                        <div class="tierElectro"><img id="34" class="tier-image3" src="./character/raidenshougun.jpg"></div>
-                        <div class="tierElectro"><img id="35" class="tier-image3" src="./character/keqing.jpg"></div>
-                        <!--<div class="tierElectro"><img id="36" class="tier-image3" src="./character/dori.jpg"></div>-->
-                        <!--<div class="tierElectro"><img id="37" class="tier-image3" src="./character/kukishinobu.jpg"></div>-->
-                        <div class="tierElectro"><img id="38" class="tier-image3" src="./character/kujousara.jpg"></div>
-                        <div class="tierElectro"><img id="39" class="tier-image3" src="./character/fischl.webp"></div>
-                        <div class="tierElectro"><img id="40" class="tier-image3" src="./character/beidou.webp"></div>
-                        <div class="tierElectro"><img id="41" class="tier-image3" src="./character/razor.jpg"></div>
-                        <div class="tierElectro"><img id="42" class="tier-image3" src="./character/lisa.jpg"></div>
-                        <!--<div class="tierElectro"><img id="43" class="tier-image3" src="./character/travelarelectro.png"></div>-->
-                        <div class="tierAnemo"><img id="44" class="tier-image3" src="./character/wanderer.webp"></div>
-                        <!--<div class="tierAnemo"><img id="45" class="tier-image3" src="./character/kazuhakaedehara.webp"></div>-->
-                        <div class="tierAnemo"><img id="46" class="tier-image3" src="./character/xiao.webp"></div>
-                        <!--<div class="tierAnemo"><img id="47" class="tier-image3" src="./character/venti.jpg"></div>-->
-                        <!--<div class="tierAnemo"><img id="48" class="tier-image3" src="./character/jean.jpg"></div>-->
-                        <div class="tierAnemo"><img id="49" class="tier-image3" src="./character/faruzan.webp"></div>
-                        <div class="tierAnemo"><img id="50" class="tier-image3" src="./character/shikanoinheizou.webp"></div>
-                        <!--<div class="tierAnemo"><img id="51" class="tier-image3" src="./character/sayu.webp"></div>-->
-                        <!--<div class="tierAnemo"><img id="52" class="tier-image3" src="./character/sucrose.webp"></div>-->
-                        <!--<div class="tierAnemo"><img id="53" class="tier-image3" src="./character/traveraranemo.png"></div>-->
-                        <!--<div class="tierDendro"><img id="54" class="tier-image3" src="./character/baizhu.webp"></div>-->
-                        <div class="tierDendro"><img id="55" class="tier-image3" src="./character/alhaitham.webp"></div>
-                        <div class="tierDendro"><img id="56" class="tier-image3" src="./character/nahida.webp"></div>
-                        <div class="tierDendro"><img id="57" class="tier-image3" src="./character/tighnari.webp"></div>
-                        <div class="tierDendro"><img id="58" class="tier-image3" src="./character/kirara.webp"></div>
-                        <!--<div class="tierDendro"><img id="59" class="tier-image3" src="./character/kaveh.webp"></div>-->
-                        <!--<div class="tierDendro"><img id="60" class="tier-image3" src="./character/yaoyao.webp"></div>-->
-                        <!--<div class="tierDendro"><img id="61" class="tier-image3" src="./character/collei.webp"></div>-->
-                        <div class="tierDendro"><img id="62" class="tier-image3" src="./character/travelardendro.png"></div>
-                        <div class="tierGeo"><img id="63" class="tier-image3" src="./character/aratakiitto.webp"></div>
-                        <div class="tierGeo"><img id="64" class="tier-image3" src="./character/albedo.jpg"></div>
-                        <div class="tierGeo"><img id="65" class="tier-image3" src="./character/zhongli.webp"></div>
-                        <!--<div class="tierGeo"><img id="66" class="tier-image3" src="./character/yunjin.webp"></div>-->
-                        <!--<div class="tierGeo"><img id="67" class="tier-image3" src="./character/gorou.webp"></div>-->
-                        <div class="tierGeo"><img id="68" class="tier-image3" src="./character/noelle.jpg"></div>
-                        <div class="tierGeo"><img id="69" class="tier-image3" src="./character/ningguang.webp"></div>
-                        <div class="tierGeo"><img id="70" class="tier-image3" src="./character/travelergeo.png"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="Charindex-display" style=" display: flex; justify-content: center; align-items: center;">
-              </div>
-            </td>
-          </table>
-          </div>
-          <br>
-          <table>
           <div>
-            <td>
-              <select id="weapon_level" style="width: 100px; height: 25px;">
-                <option value="60+">60+</option>
-                <option value="70">70</option>
-                <option value="70+">70+</option>
-                <option value="80">80</option>
-                <option value="80+">80+</option>
-                <option value="90" selected>90</option>
-              </select>
-              <br>
-              <select id="weapon_rank" style="width: 100px; height: 25px;">
-                <option value="1" selected>R1</option>
-                <option value="2">R2</option>
-                <option value="3">R3</option>
-                <option value="4">R4</option>
-                <option value="5">R5</option>
-              </select>
-            </td>
-            <td>
-              <label class="open_weapon" for="pop-up_weapon">
-                <img class="popup-image" src="./weapon_img/Catalyst/AThousandFloatingDreams.webp" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
-              </label>
-              <input type="checkbox" id="pop-up_weapon">
-              <div class="overlay_weapon">
-                <div class="window">
-                  <div class="table-container1">
-                    <div class="Weapon_images">
-                      <div class="flex-container1">
-                        <div class="sword"><img id="155" class="weapon-image" src="./weapon_img/Sword/SplendorOfTranquilWaters.webp"></div>
-                        <div class="sword"><img id="0" class="weapon-image" src="./weapon_img/Sword/LightofFoliarIncision.webp"></div>
-                        <div class="sword"><img id="1" class="weapon-image" src="./weapon_img/Sword/KeyofKhajNisut.webp"></div>
-                        <div class="sword"><img id="2" class="weapon-image" src="./weapon_img/Sword/HaranGeppakuFutsu.webp"></div>
-                        <div class="sword"><img id="3" class="weapon-image" src="./weapon_img/Sword/MistsplitterReforged.webp"></div>
-                        <div class="sword"><img id="4" class="weapon-image" src="./weapon_img/Sword/FreedomSworn.webp"></div>
-                        <div class="sword"><img id="5" class="weapon-image" src="./weapon_img/Sword/PrimordialJadeCutter.webp"></div>
-                        <div class="sword"><img id="6" class="weapon-image" src="./weapon_img/Sword/SummitShaper.webp"></div>
-                        <div class="sword"><img id="7" class="weapon-image" src="./weapon_img/Sword/SkywardBlade.webp"></div>
-                        <div class="sword"><img id="8" class="weapon-image" src="./weapon_img/Sword/AquilaFavonia.webp"></div>
-                        <div class="sword"><img id="9" class="weapon-image" src="./weapon_img/Sword/TheDockhandsAssistant.webp"></div>
-                        <div class="sword"><img id="10" class="weapon-image" src="./weapon_img/Sword/WolfFang.webp"></div>
-                        <div class="sword"><img id="11" class="weapon-image" src="./weapon_img/Sword/FleuveCendreFerryman.webp"></div>
-                        <div class="sword"><img id="12" class="weapon-image" src="./weapon_img/Sword/FinaleoftheDeep.webp"></div>
-                        <div class="sword"><img id="13" class="weapon-image" src="./weapon_img/Sword/ToukabouShigure.webp"></div>
-                        <div class="sword"><img id="14" class="weapon-image" src="./weapon_img/Sword/XiphosMoonlight.webp"></div>
-                        <div class="sword"><img id="15" class="weapon-image" src="./weapon_img/Sword/SapwoodBlade.webp"></div>
-                        <div class="sword"><img id="16" class="weapon-image" src="./weapon_img/Sword/KagotsurubeIsshin.webp"></div>
-                        <div class="sword"><img id="17" class="weapon-image" src="./weapon_img/Sword/CinnabarSpindle.webp"></div>
-                        <div class="sword"><img id="18" class="weapon-image" src="./weapon_img/Sword/AmenomaKageuchi.webp"></div>
-                        <div class="sword"><img id="19" class="weapon-image" src="./weapon_img/Sword/TheAlleyFlash.webp"></div>
-                        <div class="sword"><img id="20" class="weapon-image" src="./weapon_img/Sword/FesteringDesire.webp"></div>
-                        <div class="sword"><img id="21" class="weapon-image" src="./weapon_img/Sword/TheBlackSword.webp"></div>
-                        <div class="sword"><img id="22" class="weapon-image" src="./weapon_img/Sword/BlackcliffLongsword.webp"></div>
-                        <div class="sword"><img id="23" class="weapon-image" src="./weapon_img/Sword/IronSting.webp"></div>
-                        <div class="sword"><img id="24" class="weapon-image" src="./weapon_img/Sword/PrototypeRancour.webp"></div>
-                        <div class="sword"><img id="25" class="weapon-image" src="./weapon_img/Sword/LionsRoar.webp"></div>
-                        <!--<div class="sword"><img id="26" class="weapon-image" src="./weapon_img/Sword/RoyalLongsword.webp"></div>-->
-                        <div class="sword"><img id="27" class="weapon-image" src="./weapon_img/Sword/SacrificialSword.webp"></div>
-                        <div class="sword"><img id="28" class="weapon-image" src="./weapon_img/Sword/TheFlute.webp"></div>
-                        <div class="sword"><img id="29" class="weapon-image" src="./weapon_img/Sword/FavoniusSword.webp"></div>
-                        <div class="sword"><img id="30" class="weapon-image" src="./weapon_img/Sword/SkyriderSword.webp"></div>
-                        <div class="sword"><img id="31" class="weapon-image" src="./weapon_img/Sword/FilletBlade.webp"></div>
-                        <div class="sword"><img id="32" class="weapon-image" src="./weapon_img/Sword/TravelersHandySword.webp"></div>
-                        <div class="sword"><img id="33" class="weapon-image" src="./weapon_img/Sword/HarbingerofDawn.webp"></div>
-                        <div class="sword"><img id="34" class="weapon-image" src="./weapon_img/Sword/CoolSteel.webp"></div>
-                        <div class="claymore"><img id="35" class="weapon-image" src="./weapon_img/Claymore/BeaconoftheReedSea.webp"></div>
-                        <div class="claymore"><img id="36" class="weapon-image" src="./weapon_img/Claymore/RedhornStonethresher.webp"></div>
-                        <div class="claymore"><img id="37" class="weapon-image" src="./weapon_img/Claymore/SongofBrokenPines.webp"></div>
-                        <div class="claymore"><img id="38" class="weapon-image" src="./weapon_img/Claymore/TheUnforged.webp"></div>
-                        <div class="claymore"><img id="39" class="weapon-image" src="./weapon_img/Claymore/WolfsGravestone.webp"></div>
-                        <div class="claymore"><img id="40" class="weapon-image" src="./weapon_img/Claymore/SkywardPride.webp"></div>
-                        <div class="claymore"><img id="41" class="weapon-image" src="./weapon_img/Claymore/PortablePowerSaw.webp"></div>
-                        <div class="claymore"><img id="42" class="weapon-image" src="./weapon_img/Claymore/TalkingStick.webp"></div>
-                        <div class="claymore"><img id="43" class="weapon-image" src="./weapon_img/Claymore/TidalShadow.webp"></div>
-                        <div class="claymore"><img id="44" class="weapon-image" src="./weapon_img/Claymore/MailedFlower.webp"></div>
-                        <div class="claymore"><img id="45" class="weapon-image" src="./weapon_img/Claymore/MakhairaAquamarine.webp"></div>
-                        <div class="claymore"><img id="46" class="weapon-image" src="./weapon_img/Claymore/ForestRegalia.webp"></div>
-                        <div class="claymore"><img id="47" class="weapon-image" src="./weapon_img/Claymore/Akuoumaru.webp"></div>
-                        <div class="claymore"><img id="48" class="weapon-image" src="./weapon_img/Claymore/LuxuriousSeaLoad.webp"></div>
-                        <div class="claymore"><img id="49" class="weapon-image" src="./weapon_img/Claymore/KatsuragikiriNagamasa.webp"></div>
-                        <div class="claymore"><img id="50" class="weapon-image" src="./weapon_img/Claymore/LithicBlade.webp"></div>
-                        <div class="claymore"><img id="51" class="weapon-image" src="./weapon_img/Claymore/SnowTombedStarsilver.webp"></div>
-                        <div class="claymore"><img id="52" class="weapon-image" src="./weapon_img/Claymore/SerpentSpine.webp"></div>
-                        <div class="claymore"><img id="53" class="weapon-image" src="./weapon_img/Claymore/BlackcliffSlasher.webp"></div>
-                        <div class="claymore"><img id="54" class="weapon-image" src="./weapon_img/Claymore/Whiteblind.webp"></div>
-                        <div class="claymore"><img id="55" class="weapon-image" src="./weapon_img/Claymore/PrototypeArchaic.webp"></div>
-                        <!--<div class="claymore"><img id="56" class="weapon-image" src="./weapon_img/Claymore/RoyalGreatsword.webp"></div>-->
-                        <div class="claymore"><img id="57" class="weapon-image" src="./weapon_img/Claymore/Rainslasher.webp"></div>
-                        <div class="claymore"><img id="58" class="weapon-image" src="./weapon_img/Claymore/SacrificialGreatsword.webp"></div>
-                        <div class="claymore"><img id="59" class="weapon-image" src="./weapon_img/Claymore/TheBell.webp"></div>
-                        <div class="claymore"><img id="60" class="weapon-image" src="./weapon_img/Claymore/FavoniusGreatsword.webp"></div>
-                        <div class="claymore"><img id="61" class="weapon-image" src="./weapon_img/Claymore/SkyriderGreatsword.webp"></div>
-                        <div class="claymore"><img id="62" class="weapon-image" src="./weapon_img/Claymore/DebateClub.webp"></div>
-                        <div class="claymore"><img id="63" class="weapon-image" src="./weapon_img/Claymore/WhiteIronGreatsword.webp"></div>
-                        <div class="claymore"><img id="64" class="weapon-image" src="./weapon_img/Claymore/BloodtaintedGreatsword.webp"></div>
-                        <div class="claymore"><img id="65" class="weapon-image" src="./weapon_img/Claymore/FerrousShadow.webp"></div>
-                        <div class="polearm"><img id="66" class="weapon-image" src="./weapon_img/Polearm/StaffoftheScarletSands.webp"></div>
-                        <div class="polearm"><img id="67" class="weapon-image" src="./weapon_img/Polearm/CalamityQueller.webp"></div>
-                        <div class="polearm"><img id="68" class="weapon-image" src="./weapon_img/Polearm/EngulfingLightning.webp"></div>
-                        <div class="polearm"><img id="69" class="weapon-image" src="./weapon_img/Polearm/StaffofHoma.webp"></div>
-                        <div class="polearm"><img id="70" class="weapon-image" src="./weapon_img/Polearm/VortexVanguisher.webp"></div>
-                        <div class="polearm"><img id="71" class="weapon-image" src="./weapon_img/Polearm/SkywardSpine.webp"></div>
-                        <div class="polearm"><img id="72" class="weapon-image" src="./weapon_img/Polearm/PrimordialJadeWingedSpear.webp"></div>
-                        <div class="polearm"><img id="73" class="weapon-image" src="./weapon_img/Polearm/BalladoftheFjords.webp"></div>
-                        <div class="polearm"><img id="74" class="weapon-image" src="./weapon_img/Polearm/RightfulReward.webp"></div>
-                        <div class="polearm"><img id="75" class="weapon-image" src="./weapon_img/Polearm/MissiveWindspear.webp"></div>
-                        <div class="polearm"><img id="76" class="weapon-image" src="./weapon_img/Polearm/Moonpiercer.webp"></div>
-                        <div class="polearm"><img id="77" class="weapon-image" src="./weapon_img/Polearm/WavebreakersFin.webp"></div>
-                        <div class="polearm"><img id="78" class="weapon-image" src="./weapon_img/Polearm/TheCatch.webp"></div>
-                        <div class="polearm"><img id="79" class="weapon-image" src="./weapon_img/Polearm/KitainCrossSpear.webp"></div>
-                        <div class="polearm"><img id="80" class="weapon-image" src="./weapon_img/Polearm/LithicSpear.webp"></div>
-                        <div class="polearm"><img id="81" class="weapon-image" src="./weapon_img/Polearm/DragonspineSpear.webp"></div>
-                        <!--<div class="polearm"><img id="82" class="weapon-image" src="./weapon_img/Polearm/RoyalSpear.webp"></div>-->
-                        <div class="polearm"><img id="83" class="weapon-image" src="./weapon_img/Polearm/FavoniusLance.webp"></div>
-                        <div class="polearm"><img id="84" class="weapon-image" src="./weapon_img/Polearm/Deathmatch.webp"></div>
-                        <div class="polearm"><img id="85" class="weapon-image" src="./weapon_img/Polearm/BlackcliffPole.webp"></div>
-                        <div class="polearm"><img id="86" class="weapon-image" src="./weapon_img/Polearm/CrescentPike.webp"></div>
-                        <div class="polearm"><img id="87" class="weapon-image" src="./weapon_img/Polearm/PrototypeStarglitter.webp"></div>
-                        <div class="polearm"><img id="88" class="weapon-image" src="./weapon_img/Polearm/DragonsBane.webp"></div>
-                        <div class="polearm"><img id="89" class="weapon-image" src="./weapon_img/Polearm/BlackTassel.webp"></div>
-                        <div class="polearm"><img id="90" class="weapon-image" src="./weapon_img/Polearm/WhiteTassel.webp"></div>
-                        <div class="bow"><img id="91" class="weapon-image" src="./weapon_img/Bow/TheFirstGreatMagic.webp"></div>
-                        <div class="bow"><img id="92" class="weapon-image" src="./weapon_img/Bow/Hunter'sPath.webp"></div>
-                        <div class="bow"><img id="93" class="weapon-image" src="./weapon_img/Bow/AquaSimulacra.webp"></div>
-                        <div class="bow"><img id="94" class="weapon-image" src="./weapon_img/Bow/PolarStar.webp"></div>
-                        <div class="bow"><img id="95" class="weapon-image" src="./weapon_img/Bow/ThunderingPulse.webp"></div>
-                        <div class="bow"><img id="96" class="weapon-image" src="./weapon_img/Bow/ElegyfortheEnd.webp"></div>
-                        <div class="bow"><img id="97" class="weapon-image" src="./weapon_img/Bow/AmosBow.webp"></div>
-                        <div class="bow"><img id="98" class="weapon-image" src="./weapon_img/Bow/SkywardHarp.webp"></div>
-                        <div class="bow"><img id="99" class="weapon-image" src="./weapon_img/Bow/ScionoftheBlazingSun.webp"></div>
-                        <div class="bow"><img id="100" class="weapon-image" src="./weapon_img/Bow/SongofStillness.webp"></div>
-                        <div class="bow"><img id="101" class="weapon-image" src="./weapon_img/Bow/IbisPiercer.webp"></div>
-                        <div class="bow"><img id="102" class="weapon-image" src="./weapon_img/Bow/KingsSquire.webp"></div>
-                        <div class="bow"><img id="103" class="weapon-image" src="./weapon_img/Bow/EndoftheLine.webp"></div>
-                        <div class="bow"><img id="104" class="weapon-image" src="./weapon_img/Bow/FadingTwilight.webp"></div>
-                        <div class="bow"><img id="105" class="weapon-image" src="./weapon_img/Bow/MouunsMoon.webp"></div>
-                        <div class="bow"><img id="106" class="weapon-image" src="./weapon_img/Bow/Hamayumi.jpg"></div>
-                        <div class="bow"><img id="107" class="weapon-image" src="./weapon_img/Bow/MitternachtsWaltz.webp"></div>
-                        <div class="bow"><img id="108" class="weapon-image" src="./weapon_img/Bow/WindblumeOde.webp"></div>
-                        <div class="bow"><img id="109" class="weapon-image" src="./weapon_img/Bow/AlleyHunter.webp"></div>
-                        <div class="bow"><img id="110" class="weapon-image" src="./weapon_img/Bow/TheViridescentHunt.webp"></div>
-                        <div class="bow"><img id="111" class="weapon-image" src="./weapon_img/Bow/BlackcliffWarbow.webp"></div>
-                        <div class="bow"><img id="112" class="weapon-image" src="./weapon_img/Bow/CompoundBow.webp"></div>
-                        <div class="bow"><img id="113" class="weapon-image" src="./weapon_img/Bow/PrototypeCrescent.webp"></div>
-                        <div class="bow"><img id="114" class="weapon-image" src="./weapon_img/Bow/Rust.webp"></div>
-                        <!--<div class="bow"><img id="115" class="weapon-image" src="./weapon_img/Bow/RoyalBow.webp"></div>-->
-                        <div class="bow"><img id="116" class="weapon-image" src="./weapon_img/Bow/SacrificialBow.webp"></div>
-                        <div class="bow"><img id="117" class="weapon-image" src="./weapon_img/Bow/TheStringless.webp"></div>
-                        <div class="bow"><img id="118" class="weapon-image" src="./weapon_img/Bow/FavoniusWarbow.webp"></div>
-                        <div class="bow"><img id="119" class="weapon-image" src="./weapon_img/Bow/Messenger.webp"></div>
-                        <div class="bow"><img id="120" class="weapon-image" src="./weapon_img/Bow/Slingshot.webp"></div>
-                        <div class="bow"><img id="121" class="weapon-image" src="./weapon_img/Bow/RecurveBow.webp"></div>
-                        <div class="bow"><img id="122" class="weapon-image" src="./weapon_img/Bow/SharpshootersOath.webp"></div>
-                        <div class="bow"><img id="123" class="weapon-image" src="./weapon_img/Bow/RavenBow.webp"></div>
-                        <div class="catalyst"><img id="124" class="weapon-image" src="./weapon_img/Catalyst/TomeoftheEternalFlow.webp"></div>
-                        <div class="catalyst"><img id="125" class="weapon-image" src="./weapon_img/Catalyst/JadefallsSplendor.webp"></div>
-                        <div class="catalyst"><img id="126" class="weapon-image" src="./weapon_img/Catalyst/TulaytullahsRemembrance.webp"></div>
-                        <div class="catalyst"><img id="127" class="weapon-image" src="./weapon_img/Catalyst/AThousandFloatingDreams.webp"></div>
-                        <div class="catalyst"><img id="128" class="weapon-image" src="./weapon_img/Catalyst/KagurasVerity.webp"></div>
-                        <div class="catalyst"><img id="129" class="weapon-image" src="./weapon_img/Catalyst/EverlastingMoonglow.webp"></div>
-                        <div class="catalyst"><img id="130" class="weapon-image" src="./weapon_img/Catalyst/MemoryofDust.webp"></div>
-                        <div class="catalyst"><img id="131" class="weapon-image" src="./weapon_img/Catalyst/LostPrayertotheSacredWinds.webp"></div>
-                        <div class="catalyst"><img id="132" class="weapon-image" src="./weapon_img/Catalyst/SkywardAtlas.webp"></div>
-                        <div class="catalyst"><img id="133" class="weapon-image" src="./weapon_img/Catalyst/BalladOfTheBoundlessBlue.webp"></div>
-                        <div class="catalyst"><img id="134" class="weapon-image" src="./weapon_img/Catalyst/SacrificialJade.webp"></div>
-                        <div class="catalyst"><img id="135" class="weapon-image" src="./weapon_img/Catalyst/FlowingPurity.webp"></div>
-                        <div class="catalyst"><img id="136" class="weapon-image" src="./weapon_img/Catalyst/WanderingEvenstar.webp"></div>
-                        <div class="catalyst"><img id="137" class="weapon-image" src="./weapon_img/Catalyst/FruitofFulfillment.webp"></div>
-                        <div class="catalyst"><img id="138" class="weapon-image" src="./weapon_img/Catalyst/OathswornEye.webp"></div>
-                        <div class="catalyst"><img id="139" class="weapon-image" src="./weapon_img/Catalyst/HakushinRing.webp"></div>
-                        <div class="catalyst"><img id="140" class="weapon-image" src="./weapon_img/Catalyst/DodocoTales.webp"></div>
-                        <div class="catalyst"><img id="141" class="weapon-image" src="./weapon_img/Catalyst/WineandSong.webp"></div>
-                        <div class="catalyst"><img id="142" class="weapon-image" src="./weapon_img/Catalyst/Frostbearer.webp"></div>
-                        <div class="catalyst"><img id="143" class="weapon-image" src="./weapon_img/Catalyst/EyeofPerception.webp"></div>
-                        <div class="catalyst"><img id="144" class="weapon-image" src="./weapon_img/Catalyst/BlackcliffAgate.webp"></div>
-                        <div class="catalyst"><img id="145" class="weapon-image" src="./weapon_img/Catalyst/MappaMare.webp"></div>
-                        <div class="catalyst"><img id="146" class="weapon-image" src="./weapon_img/Catalyst/PrototypeAmber.webp"></div>
-                        <div class="catalyst"><img id="147" class="weapon-image" src="./weapon_img/Catalyst/SolarPearl.webp"></div>
-                        <!--<div class="catalyst"><img id="148" class="weapon-image" src="./weapon_img/Catalyst/RoyalGrimoire.webp"></div>-->
-                        <div class="catalyst"><img id="149" class="weapon-image" src="./weapon_img/Catalyst/SacrificialFragments.webp"></div>
-                        <div class="catalyst"><img id="150" class="weapon-image" src="./weapon_img/Catalyst/TheWidsith.webp"></div>
-                        <div class="catalyst"><img id="151" class="weapon-image" src="./weapon_img/Catalyst/FavoniusCodex.webp"></div>
-                        <div class="catalyst"><img id="152" class="weapon-image" src="./weapon_img/Catalyst/ThrillingTalesofDragonSlayers.webp"></div>
-                        <div class="catalyst"><img id="153" class="weapon-image" src="./weapon_img/Catalyst/MagicGuide.webp"></div>
+            <table>
+              <td id = choose_char_weapon >
+                <select id="char_level" style="width: 100px; height: 25px;">
+                  <option value="60+">Lv.60+</option>
+                  <option value="70">Lv.70</option>
+                  <option value="70+">Lv.70+</option>
+                  <option value="80">Lv.80</option>
+                  <option value="80+">Lv.80+</option>
+                  <option value="90" selected>Lv.90</option>
+                </select>
+                <br>
+                <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                <option value="0" selected>C0</option>
+                <option value="1">C1</option>
+                <option value="2">C2</option>
+                <option value="2">C3</option>
+                <option value="3">C4</option>
+                <option value="3">C5</option>
+                <option value="4">C6</option>
+                </select>
+              </td>
+              <td>
+                <label class="open_char" for="pop-up_char">
+                  <img class="popup-image" src="./character/nahida.webp" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+                </label>
+                <input type="checkbox" id="pop-up_char">
+                <div class="overlay_char">
+                  <div class="window">
+                    <div class="table-container1">
+                      <img src="./data/elements/element_pyro.png" onclick="toggleElement(0)" class="element-image" alt="炎元素">
+                      <img src="./data/elements/element_hydro.png" onclick="toggleElement(1)" class="element-image" alt="水元素">
+                      <img src="./data/elements/element_cryo.png" onclick="toggleElement(2)" class="element-image" alt="氷元素">
+                      <img src="./data/elements/element_electro.png" onclick="toggleElement(3)" class="element-image" alt="雷元素">
+                      <img src="./data/elements/element_anemo.png" onclick="toggleElement(4)" class="element-image" alt="風元素">        
+                      <img src="./data/elements/element_dendro.png" onclick="toggleElement(5)" class="element-image" alt="草元素">
+                      <img src="./data/elements/element_geo.png" onclick="toggleElement(6)" class="element-image" alt="岩元素">
+                      <div class="char_images">
+                        <div class="flex-container1">
+                          <div class="tierPyro"><img id="71" class="tier-image3" src="./character/Lyney.webp"></div>
+                          <div class="tierPyro"><img id="0" class="tier-image3" src="./character/dehya.webp"></div>
+                          <div class="tierPyro"><img id="1" class="tier-image3" src="./character/yoimiya.webp"></div>
+                          <div class="tierPyro"><img id="2" class="tier-image3" src="./character/hutao.jpg"></div>
+                          <div class="tierPyro"><img id="3" class="tier-image3" src="./character/klee.webp"></div>
+                          <div class="tierPyro"><img id="4" class="tier-image3" src="./character/diluc.jpg"></div>
+                          <!--<div class="tierPyro"><img id="5" class="tier-image3" src="./character/thoma.webp"></div>-->
+                          <div class="tierPyro"><img id="6" class="tier-image3" src="./character/yanfei.webp"></div>
+                          <div class="tierPyro"><img id="7" class="tier-image3" src="./character/xinyan.webp"></div>
+                          <div class="tierPyro"><img id="8" class="tier-image3" src="./character/bennett.webp"></div>
+                          <div class="tierPyro"><img id="9" class="tier-image3" src="./character/xiangling.webp"></div>
+                          <div class="tierPyro"><img id="10" class="tier-image3" src="./character/amber.jpg"></div>
+                          <div class="tierHydro"><img id="74" class="tier-image3" src="./character/Furina.webp"></div>
+                          <div class="tierHydro"><img id="72" class="tier-image3" src="./character/Neuvillette.webp"></div>
+                          <div class="tierHydro"><img id="11" class="tier-image3" src="./character/nirou.webp"></div>
+                          <div class="tierHydro"><img id="12" class="tier-image3" src="./character/yelan.webp"></div>
+                          <div class="tierHydro"><img id="13" class="tier-image3" src="./character/kamisatoayato.jpg"></div>
+                          <!--<div class="tierHydro"><img id="14" class="tier-image3" src="./character/sangonomiyakokomi.jpg"></div>-->
+                          <div class="tierHydro"><img id="15" class="tier-image3" src="./character/tartaglia.webp"></div>
+                          <!--<div class="tierHydro"><img id="16" class="tier-image3" src="./character/mona.webp"></div>-->
+                          <!--<div class="tierHydro"><img id="17" class="tier-image3" src="./character/candace.jpg"></div>-->
+                          <!--<div class="tierHydro"><img id="18" class="tier-image3" src="./character/barbara.jpg"></div>-->
+                          <div class="tierHydro"><img id="19" class="tier-image3" src="./character/xingqiu.webp"></div>
+                          <div class="tierCyro"><img id="73" class="tier-image3" src="./character/Wriothesley.webp"></div>
+                          <!--<div class="tierCyro"><img id="20" class="tier-image3" src="./character/shenhe.webp"></div>-->
+                          <div class="tierCyro"><img id="21" class="tier-image3" src="./character/kamisatoayaka.webp"></div>
+                          <div class="tierCyro"><img id="22" class="tier-image3" src="./character/eula.webp"></div>
+                          <div class="tierCyro"><img id="23" class="tier-image3" src="./character/ganyu.webp"></div>
+                          <!--<div class="tierCyro"><img id="24" class="tier-image3" src="./character/qiqi.webp"></div>-->
+                          <!--<div class="tierCyro"><img id="25" class="tier-image3" src="./character/aloy.webp"></div>-->
+                          <!--<div class="tierCyro"><img id="26" class="tier-image3" src="./character/mika.webp"></div>-->
+                          <!--<div class="tierCyro"><img id="27" class="tier-image3" src="./character/layla.webp"></div>-->
+                          <div class="tierCyro"><img id="28" class="tier-image3" src="./character/rosaria.webp"></div>
+                          <!--<div class="tierCyro"><img id="29" class="tier-image3" src="./character/diona.webp"></div>-->
+                          <div class="tierCyro"><img id="30" class="tier-image3" src="./character/chongyun.webp"></div>
+                          <div class="tierCyro"><img id="31" class="tier-image3" src="./character/kaeya.jpg"></div>
+                          <div class="tierElectro"><img id="32" class="tier-image3" src="./character/cyno.jpg"></div>
+                          <div class="tierElectro"><img id="33" class="tier-image3" src="./character/yaemiko.webp"></div>
+                          <div class="tierElectro"><img id="34" class="tier-image3" src="./character/raidenshougun.jpg"></div>
+                          <div class="tierElectro"><img id="35" class="tier-image3" src="./character/keqing.jpg"></div>
+                          <!--<div class="tierElectro"><img id="36" class="tier-image3" src="./character/dori.jpg"></div>-->
+                          <!--<div class="tierElectro"><img id="37" class="tier-image3" src="./character/kukishinobu.jpg"></div>-->
+                          <div class="tierElectro"><img id="38" class="tier-image3" src="./character/kujousara.jpg"></div>
+                          <div class="tierElectro"><img id="39" class="tier-image3" src="./character/fischl.webp"></div>
+                          <div class="tierElectro"><img id="40" class="tier-image3" src="./character/beidou.webp"></div>
+                          <div class="tierElectro"><img id="41" class="tier-image3" src="./character/razor.jpg"></div>
+                          <div class="tierElectro"><img id="42" class="tier-image3" src="./character/lisa.jpg"></div>
+                          <!--<div class="tierElectro"><img id="43" class="tier-image3" src="./character/travelarelectro.png"></div>-->
+                          <div class="tierAnemo"><img id="44" class="tier-image3" src="./character/wanderer.webp"></div>
+                          <!--<div class="tierAnemo"><img id="45" class="tier-image3" src="./character/kazuhakaedehara.webp"></div>-->
+                          <div class="tierAnemo"><img id="46" class="tier-image3" src="./character/xiao.webp"></div>
+                          <!--<div class="tierAnemo"><img id="47" class="tier-image3" src="./character/venti.jpg"></div>-->
+                          <!--<div class="tierAnemo"><img id="48" class="tier-image3" src="./character/jean.jpg"></div>-->
+                          <div class="tierAnemo"><img id="49" class="tier-image3" src="./character/faruzan.webp"></div>
+                          <div class="tierAnemo"><img id="50" class="tier-image3" src="./character/shikanoinheizou.webp"></div>
+                          <!--<div class="tierAnemo"><img id="51" class="tier-image3" src="./character/sayu.webp"></div>-->
+                          <!--<div class="tierAnemo"><img id="52" class="tier-image3" src="./character/sucrose.webp"></div>-->
+                          <!--<div class="tierAnemo"><img id="53" class="tier-image3" src="./character/traveraranemo.png"></div>-->
+                          <!--<div class="tierDendro"><img id="54" class="tier-image3" src="./character/baizhu.webp"></div>-->
+                          <div class="tierDendro"><img id="55" class="tier-image3" src="./character/alhaitham.webp"></div>
+                          <div class="tierDendro"><img id="56" class="tier-image3" src="./character/nahida.webp"></div>
+                          <div class="tierDendro"><img id="57" class="tier-image3" src="./character/tighnari.webp"></div>
+                          <div class="tierDendro"><img id="58" class="tier-image3" src="./character/kirara.webp"></div>
+                          <!--<div class="tierDendro"><img id="59" class="tier-image3" src="./character/kaveh.webp"></div>-->
+                          <!--<div class="tierDendro"><img id="60" class="tier-image3" src="./character/yaoyao.webp"></div>-->
+                          <!--<div class="tierDendro"><img id="61" class="tier-image3" src="./character/collei.webp"></div>-->
+                          <div class="tierDendro"><img id="62" class="tier-image3" src="./character/travelardendro.png"></div>
+                          <div class="tierGeo"><img id="63" class="tier-image3" src="./character/aratakiitto.webp"></div>
+                          <div class="tierGeo"><img id="64" class="tier-image3" src="./character/albedo.jpg"></div>
+                          <div class="tierGeo"><img id="65" class="tier-image3" src="./character/zhongli.webp"></div>
+                          <!--<div class="tierGeo"><img id="66" class="tier-image3" src="./character/yunjin.webp"></div>-->
+                          <!--<div class="tierGeo"><img id="67" class="tier-image3" src="./character/gorou.webp"></div>-->
+                          <div class="tierGeo"><img id="68" class="tier-image3" src="./character/noelle.jpg"></div>
+                          <div class="tierGeo"><img id="69" class="tier-image3" src="./character/ningguang.webp"></div>
+                          <div class="tierGeo"><img id="70" class="tier-image3" src="./character/travelergeo.png"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div id="Weaponindex-display" style = "display: flex; justify-content: center; align-items: center;"></div>
-            </td>
-          </div>
-        </table>
-      </div>
-      <fieldset id="attack-setting" style="margin-bottom: 20px; margin-top: 20px; max-width: 476px;">
-        <legend>攻撃方法の設定</legend>
-        <table>
-          <td>
-            <div id="attack_method">
+                <div id="Charindex-display" style=" display: flex; justify-content: center; align-items: center;">
+                </div>
+              </td>
+            </table>
             </div>
-          </td>
-          <td>
-            <select id="talent-level">
-                <option disabled selected>天賦レベル</option>
-                <option value="1">Lv.1</option>
-                <option value="2">Lv.2</option>
-                <option value="3">Lv.3</option>
-                <option value="4">Lv.4</option>
-                <option value="5">Lv.5</option>
-                <option value="6">Lv.6</option>
-                <option value="7">Lv.7</option>
-                <option value="8">Lv.8</option>
-                <option value="9">Lv.9</option>
-                <option value="10">Lv.10</option>
-                <option value="11">Lv.11</option>
-                <option value="12">Lv.12</option>
-                <option value="13">Lv.13</option>
-            </select>
-          </td>
-        </table>
-        <span class="property">スキルプロパティ</span>        
-        <br>
-        <span id = "attack_method_prop">
-        </span>
-        </td>
-        <br>
-        <span class="property">元素反応</span>
-        <div id = "element_action">
-        </div>
-        <br>
-        <span class="property">蒸発、溶解反応箇所</span>
-        <div id = "select_reaction_method">
-        </div>
-      </fieldset>
-    </div>
-    <div>
-      <div>
-        <label class="open" for="pop-up" style="display: inline-block;">
-          <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
-          <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
-        </label>
-    </div>
-      <br>
-      <select id="clock_mainstatus">
-        <option disabled selected >時計メインステ</option>
-        <option value="0">HP％</option>
-        <option value="4">攻撃力％</option>
-        <option value="1">防御力％</option>
-        <option value="2">元素熟知</option>
-        <option value="3">元素チャージ効率</option>
-      </select>
-      <select id="goblet_mainstatus">
-        <option disabled selected>杯メインステ</option>
-        <option value="0">HP％</option>
-        <option value="4">攻撃力％</option>
-        <option value="1">防御力％</option>
-        <option value="2">元素熟知</option>
-        <option value="7">元素ダメージバフ</option> 
-        <option value="8">物理ダメージバフ</option> 
-
-      </select>
-      <select id="circlet_mainstatus">
-        <option disabled selected>冠メインステ</option>
-        <option value="0">HP％</option>
-        <option value="4">攻撃力％</option>
-        <option value="1">防御力％</option>
-        <option value="2">元素熟知</option>
-        <option value="5">会心率</option>  
-        <option value="6">会心ダメージ</option>  
-      </select>
-      <input type="checkbox" id="pop-up">
-      <div class="overlay">
-        <div class="window">
-          <div class="table-container">
-            <div class="flex-container1">
-              <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 25)"></div>
-              <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 24)"></div>
-              <div class="tier-cell"><img id="23" class="tier-image" src="./artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 23)"></div>
-              <div class="tier-cell"><img id="22" class="tier-image" src="./artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 22)"></div>
-              <div class="tier-cell"><img id="21" class="tier-image" src="./artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 20)"></div>
-              <div class="tier-cell"><img id="20" class="tier-image" src="./artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 19)"></div>
-              <div class="tier-cell"><img id="19" class="tier-image" src="./artifact/魂香の花_5.png" onclick="changeImageClass(this, 21)"></div>
-              <div class="tier-cell"><img id="18" class="tier-image" src="./artifact/栄花の期_5.png" onclick="changeImageClass(this, 18)"></div>
-              <div class="tier-cell"><img id="17" class="tier-image" src="./artifact/威厳の鰐_5.png" onclick="changeImageClass(this, 17)"></div>
-              <div class="tier-cell"><img id="16" class="tier-image" src="./artifact/覇絆の花_5.png" onclick="changeImageClass(this, 16)"></div>
-              <div class="tier-cell"><img id="15" class="tier-image" src="./artifact/無垢の花_5.png" onclick="changeImageClass(this, 15)"></div>
-              <div class="tier-cell"><img id="14" class="tier-image" src="./artifact/偉勲の花_5.png" onclick="changeImageClass(this, 14)"></div>
-              <div class="tier-cell"><img id="13" class="tier-image" src="./artifact/金メッキのコサージュ_5.png" onclick="changeImageClass(this, 13)"></div>
-              <div class="tier-cell"><img id="12" class="tier-image" src="./artifact/吹雪の中の思い_5.png" onclick="changeImageClass(this, 12)"></div>
-              <div class="tier-cell"><img id="11" class="tier-image" src="./artifact/魔女の炎の花_5.png" onclick="changeImageClass(this, 11)"></div>
-              <div class="tier-cell"><img id="10" class="tier-image" src="./artifact/火渡りの堅実_5.png" onclick="changeImageClass(this, 10)"></div>
-              <div class="tier-cell"><img id="9" class="tier-image" src="./artifact/雷鳥の憐み.png" onclick="changeImageClass(this, 9)"></div>
-              <div class="tier-cell"><img id="8" class="tier-image" src="./artifact/雷討ちの心.png" onclick="changeImageClass(this, 8)"></div>
-              <div class="tier-cell"><img id="7" class="tier-image" src="./artifact/夏祭りの花_5.jpg" onclick="changeImageClass(this, 7)"></div>
-              <div class="tier-cell"><img id="6" class="tier-image" src="./artifact/悠久の盤岩_5.jpg" onclick="changeImageClass(this, 6)"></div>
-              <div class="tier-cell"><img id="5" class="tier-image" src="./artifact/野花の記憶の草原_5.png" onclick="changeImageClass(this, 5)"></div>
-              <div class="tier-cell"><img id="4" class="tier-image" src="./artifact/彼方にある少女の心_5.png" onclick="changeImageClass(this, 4)"></div>
-              <div class="tier-cell"><img id="3" class="tier-image" src="./artifact/血染めの鉄の心_星5.png" onclick="changeImageClass(this, 3)"></div>
-              <div class="tier-cell"><img id="2" class="tier-image" src="./artifact/旧貴族の花.png" onclick="changeImageClass(this, 2)"></div>
-              <div class="tier-cell"><img id="1" class="tier-image" src="./artifact/楽団の朝の光.png" onclick="changeImageClass(this, 1)"></div>
-              <div class="tier-cell"><img id="0" class="tier-image" src="./artifact/剣闘士の未練.png" onclick="changeImageClass(this, 0)"></div>
+            <br>
+            <table>
+            <div>
+              <td>
+                <select id="weapon_level" style="width: 100px; height: 25px;">
+                  <option value="60+">60+</option>
+                  <option value="70">70</option>
+                  <option value="70+">70+</option>
+                  <option value="80">80</option>
+                  <option value="80+">80+</option>
+                  <option value="90" selected>90</option>
+                </select>
+                <br>
+                <select id="weapon_rank" style="width: 100px; height: 25px;">
+                  <option value="1" selected>R1</option>
+                  <option value="2">R2</option>
+                  <option value="3">R3</option>
+                  <option value="4">R4</option>
+                  <option value="5">R5</option>
+                </select>
+              </td>
+              <td>
+                <label class="open_weapon" for="pop-up_weapon">
+                  <img class="popup-image" src="./weapon_img/Catalyst/AThousandFloatingDreams.webp" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+                </label>
+                <input type="checkbox" id="pop-up_weapon">
+                <div class="overlay_weapon">
+                  <div class="window">
+                    <div class="table-container1">
+                      <div class="Weapon_images">
+                        <div class="flex-container1">
+                          <div class="sword"><img id="155" class="weapon-image" src="./weapon_img/Sword/SplendorOfTranquilWaters.webp"></div>
+                          <div class="sword"><img id="0" class="weapon-image" src="./weapon_img/Sword/LightofFoliarIncision.webp"></div>
+                          <div class="sword"><img id="1" class="weapon-image" src="./weapon_img/Sword/KeyofKhajNisut.webp"></div>
+                          <div class="sword"><img id="2" class="weapon-image" src="./weapon_img/Sword/HaranGeppakuFutsu.webp"></div>
+                          <div class="sword"><img id="3" class="weapon-image" src="./weapon_img/Sword/MistsplitterReforged.webp"></div>
+                          <div class="sword"><img id="4" class="weapon-image" src="./weapon_img/Sword/FreedomSworn.webp"></div>
+                          <div class="sword"><img id="5" class="weapon-image" src="./weapon_img/Sword/PrimordialJadeCutter.webp"></div>
+                          <div class="sword"><img id="6" class="weapon-image" src="./weapon_img/Sword/SummitShaper.webp"></div>
+                          <div class="sword"><img id="7" class="weapon-image" src="./weapon_img/Sword/SkywardBlade.webp"></div>
+                          <div class="sword"><img id="8" class="weapon-image" src="./weapon_img/Sword/AquilaFavonia.webp"></div>
+                          <div class="sword"><img id="9" class="weapon-image" src="./weapon_img/Sword/TheDockhandsAssistant.webp"></div>
+                          <div class="sword"><img id="10" class="weapon-image" src="./weapon_img/Sword/WolfFang.webp"></div>
+                          <div class="sword"><img id="11" class="weapon-image" src="./weapon_img/Sword/FleuveCendreFerryman.webp"></div>
+                          <div class="sword"><img id="12" class="weapon-image" src="./weapon_img/Sword/FinaleoftheDeep.webp"></div>
+                          <div class="sword"><img id="13" class="weapon-image" src="./weapon_img/Sword/ToukabouShigure.webp"></div>
+                          <div class="sword"><img id="14" class="weapon-image" src="./weapon_img/Sword/XiphosMoonlight.webp"></div>
+                          <div class="sword"><img id="15" class="weapon-image" src="./weapon_img/Sword/SapwoodBlade.webp"></div>
+                          <div class="sword"><img id="16" class="weapon-image" src="./weapon_img/Sword/KagotsurubeIsshin.webp"></div>
+                          <div class="sword"><img id="17" class="weapon-image" src="./weapon_img/Sword/CinnabarSpindle.webp"></div>
+                          <div class="sword"><img id="18" class="weapon-image" src="./weapon_img/Sword/AmenomaKageuchi.webp"></div>
+                          <div class="sword"><img id="19" class="weapon-image" src="./weapon_img/Sword/TheAlleyFlash.webp"></div>
+                          <div class="sword"><img id="20" class="weapon-image" src="./weapon_img/Sword/FesteringDesire.webp"></div>
+                          <div class="sword"><img id="21" class="weapon-image" src="./weapon_img/Sword/TheBlackSword.webp"></div>
+                          <div class="sword"><img id="22" class="weapon-image" src="./weapon_img/Sword/BlackcliffLongsword.webp"></div>
+                          <div class="sword"><img id="23" class="weapon-image" src="./weapon_img/Sword/IronSting.webp"></div>
+                          <div class="sword"><img id="24" class="weapon-image" src="./weapon_img/Sword/PrototypeRancour.webp"></div>
+                          <div class="sword"><img id="25" class="weapon-image" src="./weapon_img/Sword/LionsRoar.webp"></div>
+                          <!--<div class="sword"><img id="26" class="weapon-image" src="./weapon_img/Sword/RoyalLongsword.webp"></div>-->
+                          <div class="sword"><img id="27" class="weapon-image" src="./weapon_img/Sword/SacrificialSword.webp"></div>
+                          <div class="sword"><img id="28" class="weapon-image" src="./weapon_img/Sword/TheFlute.webp"></div>
+                          <div class="sword"><img id="29" class="weapon-image" src="./weapon_img/Sword/FavoniusSword.webp"></div>
+                          <div class="sword"><img id="30" class="weapon-image" src="./weapon_img/Sword/SkyriderSword.webp"></div>
+                          <div class="sword"><img id="31" class="weapon-image" src="./weapon_img/Sword/FilletBlade.webp"></div>
+                          <div class="sword"><img id="32" class="weapon-image" src="./weapon_img/Sword/TravelersHandySword.webp"></div>
+                          <div class="sword"><img id="33" class="weapon-image" src="./weapon_img/Sword/HarbingerofDawn.webp"></div>
+                          <div class="sword"><img id="34" class="weapon-image" src="./weapon_img/Sword/CoolSteel.webp"></div>
+                          <div class="claymore"><img id="35" class="weapon-image" src="./weapon_img/Claymore/BeaconoftheReedSea.webp"></div>
+                          <div class="claymore"><img id="36" class="weapon-image" src="./weapon_img/Claymore/RedhornStonethresher.webp"></div>
+                          <div class="claymore"><img id="37" class="weapon-image" src="./weapon_img/Claymore/SongofBrokenPines.webp"></div>
+                          <div class="claymore"><img id="38" class="weapon-image" src="./weapon_img/Claymore/TheUnforged.webp"></div>
+                          <div class="claymore"><img id="39" class="weapon-image" src="./weapon_img/Claymore/WolfsGravestone.webp"></div>
+                          <div class="claymore"><img id="40" class="weapon-image" src="./weapon_img/Claymore/SkywardPride.webp"></div>
+                          <div class="claymore"><img id="41" class="weapon-image" src="./weapon_img/Claymore/PortablePowerSaw.webp"></div>
+                          <div class="claymore"><img id="42" class="weapon-image" src="./weapon_img/Claymore/TalkingStick.webp"></div>
+                          <div class="claymore"><img id="43" class="weapon-image" src="./weapon_img/Claymore/TidalShadow.webp"></div>
+                          <div class="claymore"><img id="44" class="weapon-image" src="./weapon_img/Claymore/MailedFlower.webp"></div>
+                          <div class="claymore"><img id="45" class="weapon-image" src="./weapon_img/Claymore/MakhairaAquamarine.webp"></div>
+                          <div class="claymore"><img id="46" class="weapon-image" src="./weapon_img/Claymore/ForestRegalia.webp"></div>
+                          <div class="claymore"><img id="47" class="weapon-image" src="./weapon_img/Claymore/Akuoumaru.webp"></div>
+                          <div class="claymore"><img id="48" class="weapon-image" src="./weapon_img/Claymore/LuxuriousSeaLoad.webp"></div>
+                          <div class="claymore"><img id="49" class="weapon-image" src="./weapon_img/Claymore/KatsuragikiriNagamasa.webp"></div>
+                          <div class="claymore"><img id="50" class="weapon-image" src="./weapon_img/Claymore/LithicBlade.webp"></div>
+                          <div class="claymore"><img id="51" class="weapon-image" src="./weapon_img/Claymore/SnowTombedStarsilver.webp"></div>
+                          <div class="claymore"><img id="52" class="weapon-image" src="./weapon_img/Claymore/SerpentSpine.webp"></div>
+                          <div class="claymore"><img id="53" class="weapon-image" src="./weapon_img/Claymore/BlackcliffSlasher.webp"></div>
+                          <div class="claymore"><img id="54" class="weapon-image" src="./weapon_img/Claymore/Whiteblind.webp"></div>
+                          <div class="claymore"><img id="55" class="weapon-image" src="./weapon_img/Claymore/PrototypeArchaic.webp"></div>
+                          <!--<div class="claymore"><img id="56" class="weapon-image" src="./weapon_img/Claymore/RoyalGreatsword.webp"></div>-->
+                          <div class="claymore"><img id="57" class="weapon-image" src="./weapon_img/Claymore/Rainslasher.webp"></div>
+                          <div class="claymore"><img id="58" class="weapon-image" src="./weapon_img/Claymore/SacrificialGreatsword.webp"></div>
+                          <div class="claymore"><img id="59" class="weapon-image" src="./weapon_img/Claymore/TheBell.webp"></div>
+                          <div class="claymore"><img id="60" class="weapon-image" src="./weapon_img/Claymore/FavoniusGreatsword.webp"></div>
+                          <div class="claymore"><img id="61" class="weapon-image" src="./weapon_img/Claymore/SkyriderGreatsword.webp"></div>
+                          <div class="claymore"><img id="62" class="weapon-image" src="./weapon_img/Claymore/DebateClub.webp"></div>
+                          <div class="claymore"><img id="63" class="weapon-image" src="./weapon_img/Claymore/WhiteIronGreatsword.webp"></div>
+                          <div class="claymore"><img id="64" class="weapon-image" src="./weapon_img/Claymore/BloodtaintedGreatsword.webp"></div>
+                          <div class="claymore"><img id="65" class="weapon-image" src="./weapon_img/Claymore/FerrousShadow.webp"></div>
+                          <div class="polearm"><img id="66" class="weapon-image" src="./weapon_img/Polearm/StaffoftheScarletSands.webp"></div>
+                          <div class="polearm"><img id="67" class="weapon-image" src="./weapon_img/Polearm/CalamityQueller.webp"></div>
+                          <div class="polearm"><img id="68" class="weapon-image" src="./weapon_img/Polearm/EngulfingLightning.webp"></div>
+                          <div class="polearm"><img id="69" class="weapon-image" src="./weapon_img/Polearm/StaffofHoma.webp"></div>
+                          <div class="polearm"><img id="70" class="weapon-image" src="./weapon_img/Polearm/VortexVanguisher.webp"></div>
+                          <div class="polearm"><img id="71" class="weapon-image" src="./weapon_img/Polearm/SkywardSpine.webp"></div>
+                          <div class="polearm"><img id="72" class="weapon-image" src="./weapon_img/Polearm/PrimordialJadeWingedSpear.webp"></div>
+                          <div class="polearm"><img id="73" class="weapon-image" src="./weapon_img/Polearm/BalladoftheFjords.webp"></div>
+                          <div class="polearm"><img id="74" class="weapon-image" src="./weapon_img/Polearm/RightfulReward.webp"></div>
+                          <div class="polearm"><img id="75" class="weapon-image" src="./weapon_img/Polearm/MissiveWindspear.webp"></div>
+                          <div class="polearm"><img id="76" class="weapon-image" src="./weapon_img/Polearm/Moonpiercer.webp"></div>
+                          <div class="polearm"><img id="77" class="weapon-image" src="./weapon_img/Polearm/WavebreakersFin.webp"></div>
+                          <div class="polearm"><img id="78" class="weapon-image" src="./weapon_img/Polearm/TheCatch.webp"></div>
+                          <div class="polearm"><img id="79" class="weapon-image" src="./weapon_img/Polearm/KitainCrossSpear.webp"></div>
+                          <div class="polearm"><img id="80" class="weapon-image" src="./weapon_img/Polearm/LithicSpear.webp"></div>
+                          <div class="polearm"><img id="81" class="weapon-image" src="./weapon_img/Polearm/DragonspineSpear.webp"></div>
+                          <!--<div class="polearm"><img id="82" class="weapon-image" src="./weapon_img/Polearm/RoyalSpear.webp"></div>-->
+                          <div class="polearm"><img id="83" class="weapon-image" src="./weapon_img/Polearm/FavoniusLance.webp"></div>
+                          <div class="polearm"><img id="84" class="weapon-image" src="./weapon_img/Polearm/Deathmatch.webp"></div>
+                          <div class="polearm"><img id="85" class="weapon-image" src="./weapon_img/Polearm/BlackcliffPole.webp"></div>
+                          <div class="polearm"><img id="86" class="weapon-image" src="./weapon_img/Polearm/CrescentPike.webp"></div>
+                          <div class="polearm"><img id="87" class="weapon-image" src="./weapon_img/Polearm/PrototypeStarglitter.webp"></div>
+                          <div class="polearm"><img id="88" class="weapon-image" src="./weapon_img/Polearm/DragonsBane.webp"></div>
+                          <div class="polearm"><img id="89" class="weapon-image" src="./weapon_img/Polearm/BlackTassel.webp"></div>
+                          <div class="polearm"><img id="90" class="weapon-image" src="./weapon_img/Polearm/WhiteTassel.webp"></div>
+                          <div class="bow"><img id="91" class="weapon-image" src="./weapon_img/Bow/TheFirstGreatMagic.webp"></div>
+                          <div class="bow"><img id="92" class="weapon-image" src="./weapon_img/Bow/Hunter'sPath.webp"></div>
+                          <div class="bow"><img id="93" class="weapon-image" src="./weapon_img/Bow/AquaSimulacra.webp"></div>
+                          <div class="bow"><img id="94" class="weapon-image" src="./weapon_img/Bow/PolarStar.webp"></div>
+                          <div class="bow"><img id="95" class="weapon-image" src="./weapon_img/Bow/ThunderingPulse.webp"></div>
+                          <div class="bow"><img id="96" class="weapon-image" src="./weapon_img/Bow/ElegyfortheEnd.webp"></div>
+                          <div class="bow"><img id="97" class="weapon-image" src="./weapon_img/Bow/AmosBow.webp"></div>
+                          <div class="bow"><img id="98" class="weapon-image" src="./weapon_img/Bow/SkywardHarp.webp"></div>
+                          <div class="bow"><img id="99" class="weapon-image" src="./weapon_img/Bow/ScionoftheBlazingSun.webp"></div>
+                          <div class="bow"><img id="100" class="weapon-image" src="./weapon_img/Bow/SongofStillness.webp"></div>
+                          <div class="bow"><img id="101" class="weapon-image" src="./weapon_img/Bow/IbisPiercer.webp"></div>
+                          <div class="bow"><img id="102" class="weapon-image" src="./weapon_img/Bow/KingsSquire.webp"></div>
+                          <div class="bow"><img id="103" class="weapon-image" src="./weapon_img/Bow/EndoftheLine.webp"></div>
+                          <div class="bow"><img id="104" class="weapon-image" src="./weapon_img/Bow/FadingTwilight.webp"></div>
+                          <div class="bow"><img id="105" class="weapon-image" src="./weapon_img/Bow/MouunsMoon.webp"></div>
+                          <div class="bow"><img id="106" class="weapon-image" src="./weapon_img/Bow/Hamayumi.jpg"></div>
+                          <div class="bow"><img id="107" class="weapon-image" src="./weapon_img/Bow/MitternachtsWaltz.webp"></div>
+                          <div class="bow"><img id="108" class="weapon-image" src="./weapon_img/Bow/WindblumeOde.webp"></div>
+                          <div class="bow"><img id="109" class="weapon-image" src="./weapon_img/Bow/AlleyHunter.webp"></div>
+                          <div class="bow"><img id="110" class="weapon-image" src="./weapon_img/Bow/TheViridescentHunt.webp"></div>
+                          <div class="bow"><img id="111" class="weapon-image" src="./weapon_img/Bow/BlackcliffWarbow.webp"></div>
+                          <div class="bow"><img id="112" class="weapon-image" src="./weapon_img/Bow/CompoundBow.webp"></div>
+                          <div class="bow"><img id="113" class="weapon-image" src="./weapon_img/Bow/PrototypeCrescent.webp"></div>
+                          <div class="bow"><img id="114" class="weapon-image" src="./weapon_img/Bow/Rust.webp"></div>
+                          <!--<div class="bow"><img id="115" class="weapon-image" src="./weapon_img/Bow/RoyalBow.webp"></div>-->
+                          <div class="bow"><img id="116" class="weapon-image" src="./weapon_img/Bow/SacrificialBow.webp"></div>
+                          <div class="bow"><img id="117" class="weapon-image" src="./weapon_img/Bow/TheStringless.webp"></div>
+                          <div class="bow"><img id="118" class="weapon-image" src="./weapon_img/Bow/FavoniusWarbow.webp"></div>
+                          <div class="bow"><img id="119" class="weapon-image" src="./weapon_img/Bow/Messenger.webp"></div>
+                          <div class="bow"><img id="120" class="weapon-image" src="./weapon_img/Bow/Slingshot.webp"></div>
+                          <div class="bow"><img id="121" class="weapon-image" src="./weapon_img/Bow/RecurveBow.webp"></div>
+                          <div class="bow"><img id="122" class="weapon-image" src="./weapon_img/Bow/SharpshootersOath.webp"></div>
+                          <div class="bow"><img id="123" class="weapon-image" src="./weapon_img/Bow/RavenBow.webp"></div>
+                          <div class="catalyst"><img id="124" class="weapon-image" src="./weapon_img/Catalyst/TomeoftheEternalFlow.webp"></div>
+                          <div class="catalyst"><img id="125" class="weapon-image" src="./weapon_img/Catalyst/JadefallsSplendor.webp"></div>
+                          <div class="catalyst"><img id="126" class="weapon-image" src="./weapon_img/Catalyst/TulaytullahsRemembrance.webp"></div>
+                          <div class="catalyst"><img id="127" class="weapon-image" src="./weapon_img/Catalyst/AThousandFloatingDreams.webp"></div>
+                          <div class="catalyst"><img id="128" class="weapon-image" src="./weapon_img/Catalyst/KagurasVerity.webp"></div>
+                          <div class="catalyst"><img id="129" class="weapon-image" src="./weapon_img/Catalyst/EverlastingMoonglow.webp"></div>
+                          <div class="catalyst"><img id="130" class="weapon-image" src="./weapon_img/Catalyst/MemoryofDust.webp"></div>
+                          <div class="catalyst"><img id="131" class="weapon-image" src="./weapon_img/Catalyst/LostPrayertotheSacredWinds.webp"></div>
+                          <div class="catalyst"><img id="132" class="weapon-image" src="./weapon_img/Catalyst/SkywardAtlas.webp"></div>
+                          <div class="catalyst"><img id="133" class="weapon-image" src="./weapon_img/Catalyst/BalladOfTheBoundlessBlue.webp"></div>
+                          <div class="catalyst"><img id="134" class="weapon-image" src="./weapon_img/Catalyst/SacrificialJade.webp"></div>
+                          <div class="catalyst"><img id="135" class="weapon-image" src="./weapon_img/Catalyst/FlowingPurity.webp"></div>
+                          <div class="catalyst"><img id="136" class="weapon-image" src="./weapon_img/Catalyst/WanderingEvenstar.webp"></div>
+                          <div class="catalyst"><img id="137" class="weapon-image" src="./weapon_img/Catalyst/FruitofFulfillment.webp"></div>
+                          <div class="catalyst"><img id="138" class="weapon-image" src="./weapon_img/Catalyst/OathswornEye.webp"></div>
+                          <div class="catalyst"><img id="139" class="weapon-image" src="./weapon_img/Catalyst/HakushinRing.webp"></div>
+                          <div class="catalyst"><img id="140" class="weapon-image" src="./weapon_img/Catalyst/DodocoTales.webp"></div>
+                          <div class="catalyst"><img id="141" class="weapon-image" src="./weapon_img/Catalyst/WineandSong.webp"></div>
+                          <div class="catalyst"><img id="142" class="weapon-image" src="./weapon_img/Catalyst/Frostbearer.webp"></div>
+                          <div class="catalyst"><img id="143" class="weapon-image" src="./weapon_img/Catalyst/EyeofPerception.webp"></div>
+                          <div class="catalyst"><img id="144" class="weapon-image" src="./weapon_img/Catalyst/BlackcliffAgate.webp"></div>
+                          <div class="catalyst"><img id="145" class="weapon-image" src="./weapon_img/Catalyst/MappaMare.webp"></div>
+                          <div class="catalyst"><img id="146" class="weapon-image" src="./weapon_img/Catalyst/PrototypeAmber.webp"></div>
+                          <div class="catalyst"><img id="147" class="weapon-image" src="./weapon_img/Catalyst/SolarPearl.webp"></div>
+                          <!--<div class="catalyst"><img id="148" class="weapon-image" src="./weapon_img/Catalyst/RoyalGrimoire.webp"></div>-->
+                          <div class="catalyst"><img id="149" class="weapon-image" src="./weapon_img/Catalyst/SacrificialFragments.webp"></div>
+                          <div class="catalyst"><img id="150" class="weapon-image" src="./weapon_img/Catalyst/TheWidsith.webp"></div>
+                          <div class="catalyst"><img id="151" class="weapon-image" src="./weapon_img/Catalyst/FavoniusCodex.webp"></div>
+                          <div class="catalyst"><img id="152" class="weapon-image" src="./weapon_img/Catalyst/ThrillingTalesofDragonSlayers.webp"></div>
+                          <div class="catalyst"><img id="153" class="weapon-image" src="./weapon_img/Catalyst/MagicGuide.webp"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="Weaponindex-display" style = "display: flex; justify-content: center; align-items: center;"></div>
+              </td>
             </div>
-          </div>
+          </table>
         </div>
-      </div>
-      <div id="index-display"></div>
-      <fieldset id="artifactInfo" style="max-width: 476px;">
-        <legend>聖遺物情報</legend>
-        <p id="set_eff1">セット効果1: </p>
-        <p id="set_eff2">セット効果2: </p>
-    </fieldset>
-    </div>
-  </div>
-  <br>
-  <br>
-  <div class="wrapper">
-    <div>
-      <div id="status_setting">
-        <form class="af-buff-form">
+        <fieldset id="attack-setting" style="margin-bottom: 20px; margin-top: 20px; max-width: 476px;">
+          <legend>攻撃方法の設定</legend>
           <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>聖遺物ステータス上昇</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr id="hp_form">
-                <td><label for="af_hp">HP</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="af_hp" required min="0" name="af_hp" placeholder="HP">
-                  </div>
-                </td>
-              </tr>
-              <tr id="attck_form">
-                <td><label for="af_attck">攻撃力</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="af_attck" required min="0" name="af_attck" placeholder="攻撃力">
-                  </div>
-                </td>
-              </tr>
-              <tr id="deff_form">
-                <td><label for="af_deff">防御力</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="af_deff" required min="0" name="af_deff" placeholder="防御力">
-                  </div>
-                </td>
-              </tr>
-              <tr id="elm_form">
-                <td><label for="af_elm">元素熟知</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="af_elm" required min="0" name="af_elm" placeholder="元素熟知">
-                  </div>
-                </td>
-              </tr>
-              <tr id="elm_charge_form">
-                <td><label for="af_elm_charge">元素チャージ効率</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="af_elm_charge" required min="0" name="af_elm_charge" placeholder="元素チャージ効率">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="cr_form">
-                <td><label for="af_cr">会心率</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="af_cr" required min="0" name="af_cr" placeholder="会心率">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="cd_form">
-                <td><label for="af_cd">会心ダメージ</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="af_cd" required min="0" name="af_cd" placeholder="会心ダメージ">(%)
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+            <td>
+              <div id="attack_method">
+              </div>
+            </td>
+            <td>
+              <select id="talent-level">
+                  <option disabled selected>天賦レベル</option>
+                  <option value="1">Lv.1</option>
+                  <option value="2">Lv.2</option>
+                  <option value="3">Lv.3</option>
+                  <option value="4">Lv.4</option>
+                  <option value="5">Lv.5</option>
+                  <option value="6">Lv.6</option>
+                  <option value="7">Lv.7</option>
+                  <option value="8">Lv.8</option>
+                  <option value="9">Lv.9</option>
+                  <option value="10">Lv.10</option>
+                  <option value="11">Lv.11</option>
+                  <option value="12">Lv.12</option>
+                  <option value="13">Lv.13</option>
+              </select>
+            </td>
           </table>
-        </form>
+          <span class="property">スキルプロパティ</span>        
+          <br>
+          <span id = "attack_method_prop">
+          </span>
+          </td>
+          <br>
+          <span class="property">元素反応</span>
+          <div id = "element_action">
+          </div>
+          <br>
+          <span class="property">蒸発、溶解反応箇所</span>
+          <div id = "select_reaction_method">
+          </div>
+        </fieldset>
       </div>
-      <br>
-      <div id="team_buff_info">
-        <form class="team-buff-form">
-          <table class="table-borderless" style="width: auto;">
-            <thead>
-              <tr>
-                <th></th>
-                <th>静的バフ</th>
-                <th></th>
-                <th>動的バフ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr id="team_hp_form" style="display: none;">
-                <td><label for="fix_hp_buff">HP実数値</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_hp_buff" required min="0" name="fix_hp_buff" placeholder="HP実数値">
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_hp_buff" required min="0" name="dynamic_hp_buff" placeholder="HP実数値">
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_hprate_form" style="display: none;">
-                <td><label for="fix_hp%_buff">HP%</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_hp%_buff" required min="0" name="fix_hp%_buff" placeholder="HP%">(%)
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_hp%_buff" required min="0" name="dynamic_hp%_buff" placeholder="HP%">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_attack_form" style="display: none;">
-                <td><label for="fix_attack_buff">攻撃力実数値</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_attack_buff" required min="0" name="fix_attack_buff" placeholder="攻撃力実数値">
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_attack_buff" required min="0" name="dynamic_attack_buff" placeholder="攻撃力実数値">
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_attackrate_form" style="display: none;">
-                <td><label for="fix_attack%_buff">攻撃力％</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_attack%_buff" required min="0" name="fix_attack%_buff" placeholder="攻撃力％">(%)
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_attack%_buff" required min="0" name="dynamic_attack%_buff" placeholder="攻撃力％">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_deff_form" style="display: none;">
-                <td><label for="fix_deff_buff">防御力実数値</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_deff_buff" required min="0" name="fix_deff_buff" placeholder="防御力実数値">
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_deff_buff" required min="0" name="dynamic_deff_buff" placeholder="防御力実数値">
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_deffrate_form" style="display: none;">
-                <td><label for="fix_deff%_buff">防御力％</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_deff%_buff" required min="0" name="fix_deff%_buff" placeholder="防御力％">(%)
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_deff%_buff" required min="0" name="dynamic_deff%_buff" placeholder="防御力％">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_elm_form" style="display: none;">
-                <td><label for="fix_elm_buff">元素熟知</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_elm_buff" required min="0" name="fix_elm_buff" placeholder="元素熟知">
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_elm_buff" required min="0" name="dynamic_elm_buff" placeholder="元素熟知">
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_elm_charge_form" style="display: none;">
-                <td><label for="fix_elm_charge_buff">元素チャージ効率</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_elm_charge_buff" required min="0" name="fix_elm_charge_buff" placeholder="元素チャージ効率">(%)
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_elm_charge_buff" required min="0" name="dynamic_elm_charge_buff" placeholder="元素チャージ効率">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_cr_form" style="display: none;">
-                <td><label for="fix_cr_buff">会心率</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_cr_buff" required min="0" name="fix_cr_buff" placeholder="会心率">(%)
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_cr_buff" required min="0" name="dynamic_cr_buff" placeholder="会心率">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_cd_form" style="display: none;">
-                <td><label for="fix_cd_buff">会心ダメージ</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_cd_buff" required min="0" name="fix_cd_buff" placeholder="会心ダメージ">(%)
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_cd_buff" required min="0" name="dynamic_cd_buff" placeholder="会心ダメージ">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_dmg_buff_form">
-                <td><label for="fix_dmg_buff">ダメージバフ</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_dmg_buff" required min="0" name="fix_dmg_buff" placeholder="ダメージバフ">(%)
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_dmg_buff" required min="0" name="dynamic_dmg_buff" placeholder="ダメージバフ">(%)
-                  </div>
-                </td>
-              </tr>
-              <tr id="team_basedmg_buff_form">
-                <td><label for="fix_basedmg_buff">基礎ダメージバフ/1hit</label></td>
-                <td>
-                  <div>
-                    <input type="number" id="fix_basedmg_buff" required min="0" name="fix_basedmg_buff" placeholder="基礎ダメージバフ">
-                  </div>
-                </td>
-                <td></td>
-                <td>
-                  <div>
-                    <input type="number" id="dynamic_basedmg_buff" required min="0" name="dynamic_basedmg_buff" placeholder="基礎ダメージバフ">
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+      <div>
+        <div>
+          <label class="open" for="pop-up" style="display: inline-block;">
+            <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+            <img class="popup-image" src="./artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+          </label>
+      </div>
+        <br>
+        <select id="clock_mainstatus">
+          <option disabled selected >時計メインステ</option>
+          <option value="0">HP％</option>
+          <option value="4">攻撃力％</option>
+          <option value="1">防御力％</option>
+          <option value="2">元素熟知</option>
+          <option value="3">元素チャージ効率</option>
+        </select>
+        <select id="goblet_mainstatus">
+          <option disabled selected>杯メインステ</option>
+          <option value="0">HP％</option>
+          <option value="4">攻撃力％</option>
+          <option value="1">防御力％</option>
+          <option value="2">元素熟知</option>
+          <option value="7">元素ダメージバフ</option> 
+          <option value="8">物理ダメージバフ</option> 
+
+        </select>
+        <select id="circlet_mainstatus">
+          <option disabled selected>冠メインステ</option>
+          <option value="0">HP％</option>
+          <option value="4">攻撃力％</option>
+          <option value="1">防御力％</option>
+          <option value="2">元素熟知</option>
+          <option value="5">会心率</option>  
+          <option value="6">会心ダメージ</option>  
+        </select>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+          <div class="window">
+            <div class="table-container">
+              <div class="flex-container1">
+                <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 25)"></div>
+                <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 24)"></div>
+                <div class="tier-cell"><img id="23" class="tier-image" src="./artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 23)"></div>
+                <div class="tier-cell"><img id="22" class="tier-image" src="./artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 22)"></div>
+                <div class="tier-cell"><img id="21" class="tier-image" src="./artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 20)"></div>
+                <div class="tier-cell"><img id="20" class="tier-image" src="./artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 19)"></div>
+                <div class="tier-cell"><img id="19" class="tier-image" src="./artifact/魂香の花_5.png" onclick="changeImageClass(this, 21)"></div>
+                <div class="tier-cell"><img id="18" class="tier-image" src="./artifact/栄花の期_5.png" onclick="changeImageClass(this, 18)"></div>
+                <div class="tier-cell"><img id="17" class="tier-image" src="./artifact/威厳の鰐_5.png" onclick="changeImageClass(this, 17)"></div>
+                <div class="tier-cell"><img id="16" class="tier-image" src="./artifact/覇絆の花_5.png" onclick="changeImageClass(this, 16)"></div>
+                <div class="tier-cell"><img id="15" class="tier-image" src="./artifact/無垢の花_5.png" onclick="changeImageClass(this, 15)"></div>
+                <div class="tier-cell"><img id="14" class="tier-image" src="./artifact/偉勲の花_5.png" onclick="changeImageClass(this, 14)"></div>
+                <div class="tier-cell"><img id="13" class="tier-image" src="./artifact/金メッキのコサージュ_5.png" onclick="changeImageClass(this, 13)"></div>
+                <div class="tier-cell"><img id="12" class="tier-image" src="./artifact/吹雪の中の思い_5.png" onclick="changeImageClass(this, 12)"></div>
+                <div class="tier-cell"><img id="11" class="tier-image" src="./artifact/魔女の炎の花_5.png" onclick="changeImageClass(this, 11)"></div>
+                <div class="tier-cell"><img id="10" class="tier-image" src="./artifact/火渡りの堅実_5.png" onclick="changeImageClass(this, 10)"></div>
+                <div class="tier-cell"><img id="9" class="tier-image" src="./artifact/雷鳥の憐み.png" onclick="changeImageClass(this, 9)"></div>
+                <div class="tier-cell"><img id="8" class="tier-image" src="./artifact/雷討ちの心.png" onclick="changeImageClass(this, 8)"></div>
+                <div class="tier-cell"><img id="7" class="tier-image" src="./artifact/夏祭りの花_5.jpg" onclick="changeImageClass(this, 7)"></div>
+                <div class="tier-cell"><img id="6" class="tier-image" src="./artifact/悠久の盤岩_5.jpg" onclick="changeImageClass(this, 6)"></div>
+                <div class="tier-cell"><img id="5" class="tier-image" src="./artifact/野花の記憶の草原_5.png" onclick="changeImageClass(this, 5)"></div>
+                <div class="tier-cell"><img id="4" class="tier-image" src="./artifact/彼方にある少女の心_5.png" onclick="changeImageClass(this, 4)"></div>
+                <div class="tier-cell"><img id="3" class="tier-image" src="./artifact/血染めの鉄の心_星5.png" onclick="changeImageClass(this, 3)"></div>
+                <div class="tier-cell"><img id="2" class="tier-image" src="./artifact/旧貴族の花.png" onclick="changeImageClass(this, 2)"></div>
+                <div class="tier-cell"><img id="1" class="tier-image" src="./artifact/楽団の朝の光.png" onclick="changeImageClass(this, 1)"></div>
+                <div class="tier-cell"><img id="0" class="tier-image" src="./artifact/剣闘士の未練.png" onclick="changeImageClass(this, 0)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="index-display"></div>
+        <fieldset id="artifactInfo" style="max-width: 476px;">
+          <legend>聖遺物情報</legend>
+          <p id="set_eff1">セット効果1: </p>
+          <p id="set_eff2">セット効果2: </p>
+      </fieldset>
       </div>
     </div>
-    <div>
-      <div style = "text-align: center;">
-        <button id = "parameterbutton1" class="button-1" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
-        <button id = "parameterbutton2" class="button-1" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
-        <button id = "parameterbutton3" class="button-1" onclick="showOption('option3', 'parameterbutton3')">敵ステータス</button>
-      </div>
-        <div class = "option-field" id = "option1">
-        <fieldset style="width: auto;">
-          <legend>キャラクターバフ</legend>
-          <div id ="char_talent">
-          </div>
-          <div id ="temporary_char_talent">
-          </div>
-          <div id="characterInfo">
-          </div>
-        </fieldset>
-        <fieldset style="width: auto;">
-          <legend>装備バフ</legend>
-          <div id="weaponInfo">
-          </div>
-          <div id="artifact_checkbox">
-          </div>
-        </fieldset>
-      </div>
-      <div class = "option-field" id = "option2">
-        <fieldset>
-          <legend>元素共鳴</legend>
-          <label><input type="checkbox" class="custom-checkbox" id = "pyro_reso"> 炎共鳴：攻撃力+25％</label><br>
-          <label><input type="checkbox" class="custom-checkbox" id = "hydro_reso"> 水共鳴：HP+25％</label><br>
-          <label><input type="checkbox" class="custom-checkbox" id = "cyro_reso"> 氷共鳴：会心率+15％</label><br>
-          <label><input type="checkbox" class="custom-checkbox" id = "dendro_reso"> 草共鳴：元素熟知</label>
-          <select id="dendro_reso_select">
-            <option value="50">+50</option>
-            <option value="80">+80</option>
-            <option value="100">+100</option>
-          </select>
-          <br>
-          <label><input type="checkbox" class="custom-checkbox" id = "geo_reso"> 岩共鳴：ダメージバフ+15％<br>&nbsp;&nbsp;　　　　　岩元素耐性ダウン</label>
-          <select id="geo_reso_select">
-            <option value="0">0%</option>
-            <option value="20">20%</option>
-          </select>
-        </fieldset>
-      </div>
-      <div class = "option-field" id = "option3" style = "text-align: center;">
-        <div id= "enemy-status">
-          <form class="enemy-form">
+    <br>
+    <br>
+    <div class="wrapper">
+      <div>
+        <div id="status_setting">
+          <form class="af-buff-form">
             <table>
               <thead>
                 <tr>
                   <th></th>
-                  <th>敵ステータス</th>
+                  <th>聖遺物ステータス上昇</th>
                 </tr>
               </thead>
               <tbody>
-                <tr id="enemy_level-form">
-                  <td><label for="enemy-level-form">敵レベル</label></td>
+                <tr id="hp_form">
+                  <td><label for="af_hp">HP</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-level" required min="0" name="enemy-level" placeholder="Lv" value="90">
+                      <input type="number" id="af_hp" required min="0" name="af_hp" placeholder="HP">
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-pyroresist-form">
-                  <td><label for="enemy-pyroresist">炎元素耐性</label></td>
+                <tr id="attck_form">
+                  <td><label for="af_attck">攻撃力</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-pyroresist" placeholder="炎元素耐性" value="10">(%)
+                      <input type="number" id="af_attck" required min="0" name="af_attck" placeholder="攻撃力">
                     </div>
                   </td>
                 </tr>
-                <tr id="pyrodebuff-form">
-                  <td><label for="pyrodebuff">炎元素デバフ</label></td>
+                <tr id="deff_form">
+                  <td><label for="af_deff">防御力</label></td>
                   <td>
                     <div>
-                      <input type="number" id="pyrodebuff" placeholder="炎元素耐性" value="0">(%)
+                      <input type="number" id="af_deff" required min="0" name="af_deff" placeholder="防御力">
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-hydroresist-form">
-                  <td><label for="enemy-hydroresist">水元素耐性</label></td>
+                <tr id="elm_form">
+                  <td><label for="af_elm">元素熟知</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-hydroresist" placeholder="水元素耐性" value="10">(%)
+                      <input type="number" id="af_elm" required min="0" name="af_elm" placeholder="元素熟知">
                     </div>
                   </td>
                 </tr>
-                <tr id="hydrodebuff-form">
-                  <td><label for="hydrodebuff">水元素デバフ</label></td>
+                <tr id="elm_charge_form">
+                  <td><label for="af_elm_charge">元素チャージ効率</label></td>
                   <td>
                     <div>
-                      <input type="number" id="hydrodebuff" placeholder="水元素デバフ" value="0">(%)
+                      <input type="number" id="af_elm_charge" required min="0" name="af_elm_charge" placeholder="元素チャージ効率">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-cyroresist-form">
-                  <td><label for="enemy-cyroresist">氷元素耐性</label></td>
+                <tr id="cr_form">
+                  <td><label for="af_cr">会心率</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-cyroresist" placeholder="氷元素耐性" value="10">(%)
+                      <input type="number" id="af_cr" required min="0" name="af_cr" placeholder="会心率">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="cyrodebuff-form">
-                  <td><label for="cyrodebuff">氷元素デバフ</label></td>
+                <tr id="cd_form">
+                  <td><label for="af_cd">会心ダメージ</label></td>
                   <td>
                     <div>
-                      <input type="number" id="cyrodebuff" placeholder="氷元素デバフ" value="0">(%)
+                      <input type="number" id="af_cd" required min="0" name="af_cd" placeholder="会心ダメージ">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-electroresist-form">
-                  <td><label for="enemy-electroresist">雷元素耐性</label></td>
+              </tbody>
+            </table>
+          </form>
+        </div>
+        <br>
+        <div id="team_buff_info">
+          <form class="team-buff-form">
+            <table class="table-borderless" style="width: auto;">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>静的バフ</th>
+                  <th></th>
+                  <th>動的バフ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="team_hp_form" style="display: none;">
+                  <td><label for="fix_hp_buff">HP実数値</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-electroresist" placeholder="雷元素耐性" value="10">(%)
+                      <input type="number" id="fix_hp_buff" required min="0" name="fix_hp_buff" placeholder="HP実数値">
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_hp_buff" required min="0" name="dynamic_hp_buff" placeholder="HP実数値">
                     </div>
                   </td>
                 </tr>
-                <tr id="electrodebuff-form">
-                  <td><label for="electrodebuff">雷元素デバフ</label></td>
+                <tr id="team_hprate_form" style="display: none;">
+                  <td><label for="fix_hp%_buff">HP%</label></td>
                   <td>
                     <div>
-                      <input type="number" id="electrodebuff" placeholder="雷元素デバフ" value="0">(%)
+                      <input type="number" id="fix_hp%_buff" required min="0" name="fix_hp%_buff" placeholder="HP%">(%)
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_hp%_buff" required min="0" name="dynamic_hp%_buff" placeholder="HP%">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-anemoresist-form">
-                  <td><label for="enemy-anemoresist">風元素耐性</label></td>
+                <tr id="team_attack_form" style="display: none;">
+                  <td><label for="fix_attack_buff">攻撃力実数値</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-anemoresist" placeholder="風元素耐性" value="10">(%)
+                      <input type="number" id="fix_attack_buff" required min="0" name="fix_attack_buff" placeholder="攻撃力実数値">
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_attack_buff" required min="0" name="dynamic_attack_buff" placeholder="攻撃力実数値">
                     </div>
                   </td>
                 </tr>
-                <tr id="anemodebuff-form">
-                  <td><label for="anemodebuff">風元素デバフ</label></td>
+                <tr id="team_attackrate_form" style="display: none;">
+                  <td><label for="fix_attack%_buff">攻撃力％</label></td>
                   <td>
                     <div>
-                      <input type="number" id="anemodebuff" placeholder="風元素デバフ" value="0">(%)
+                      <input type="number" id="fix_attack%_buff" required min="0" name="fix_attack%_buff" placeholder="攻撃力％">(%)
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_attack%_buff" required min="0" name="dynamic_attack%_buff" placeholder="攻撃力％">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-dendroresist-form">
-                  <td><label for="enemy-dendroresist">草元素耐性</label></td>
+                <tr id="team_deff_form" style="display: none;">
+                  <td><label for="fix_deff_buff">防御力実数値</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-dendroresist" placeholder="草元素耐性" value="10">(%)
+                      <input type="number" id="fix_deff_buff" required min="0" name="fix_deff_buff" placeholder="防御力実数値">
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_deff_buff" required min="0" name="dynamic_deff_buff" placeholder="防御力実数値">
                     </div>
                   </td>
                 </tr>
-                <tr id="dendrodebuff-form">
-                  <td><label for="dendrodebuff">草元素デバフ</label></td>
+                <tr id="team_deffrate_form" style="display: none;">
+                  <td><label for="fix_deff%_buff">防御力％</label></td>
                   <td>
                     <div>
-                      <input type="number" id="dendrodebuff" placeholder="草元素デバフ" value="0">(%)
+                      <input type="number" id="fix_deff%_buff" required min="0" name="fix_deff%_buff" placeholder="防御力％">(%)
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_deff%_buff" required min="0" name="dynamic_deff%_buff" placeholder="防御力％">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-georesist-form">
-                  <td><label for="enemy-georesist">岩元素耐性</label></td>
+                <tr id="team_elm_form" style="display: none;">
+                  <td><label for="fix_elm_buff">元素熟知</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-georesist" placeholder="岩元素耐性" value="10">(%)
+                      <input type="number" id="fix_elm_buff" required min="0" name="fix_elm_buff" placeholder="元素熟知">
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_elm_buff" required min="0" name="dynamic_elm_buff" placeholder="元素熟知">
                     </div>
                   </td>
                 </tr>
-                <tr id="geodebuff-form">
-                  <td><label for="geodebuff">岩元素デバフ</label></td>
+                <tr id="team_elm_charge_form" style="display: none;">
+                  <td><label for="fix_elm_charge_buff">元素チャージ効率</label></td>
                   <td>
                     <div>
-                      <input type="number" id="geodebuff" placeholder="岩元素デバフ" value="0">(%)
+                      <input type="number" id="fix_elm_charge_buff" required min="0" name="fix_elm_charge_buff" placeholder="元素チャージ効率">(%)
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_elm_charge_buff" required min="0" name="dynamic_elm_charge_buff" placeholder="元素チャージ効率">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="enemy-phisicsresist-form">
-                  <td><label for="enemy-phisicsresist">物理耐性</label></td>
+                <tr id="team_cr_form" style="display: none;">
+                  <td><label for="fix_cr_buff">会心率</label></td>
                   <td>
                     <div>
-                      <input type="number" id="enemy-phisicsresist" placeholder="物理耐性" value="10">(%)
+                      <input type="number" id="fix_cr_buff" required min="0" name="fix_cr_buff" placeholder="会心率">(%)
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_cr_buff" required min="0" name="dynamic_cr_buff" placeholder="会心率">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="phisicsdebuff-form">
-                  <td><label for="phisicsdebuff">物理デバフ</label></td>
+                <tr id="team_cd_form" style="display: none;">
+                  <td><label for="fix_cd_buff">会心ダメージ</label></td>
                   <td>
                     <div>
-                      <input type="number" id="phisicsdebuff" placeholder="物理デバフ" value="0">(%)
+                      <input type="number" id="fix_cd_buff" required min="0" name="fix_cd_buff" placeholder="会心ダメージ">(%)
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_cd_buff" required min="0" name="dynamic_cd_buff" placeholder="会心ダメージ">(%)
                     </div>
                   </td>
                 </tr>
-                <tr id="deff-debuff-form">
-                  <td><label for="deff-debuff-form">防御デバフ</label></td>
+                <tr id="team_dmg_buff_form">
+                  <td><label for="fix_dmg_buff">ダメージバフ</label></td>
                   <td>
                     <div>
-                      <input type="number" id="deff-debuff" required min="0" name="deff-debuff" placeholder="防御デバフ" value="0">(%)
+                      <input type="number" id="fix_dmg_buff" required min="0" name="fix_dmg_buff" placeholder="ダメージバフ">(%)
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_dmg_buff" required min="0" name="dynamic_dmg_buff" placeholder="ダメージバフ">(%)
+                    </div>
+                  </td>
+                </tr>
+                <tr id="team_basedmg_buff_form">
+                  <td><label for="fix_basedmg_buff">基礎ダメージバフ/1hit</label></td>
+                  <td>
+                    <div>
+                      <input type="number" id="fix_basedmg_buff" required min="0" name="fix_basedmg_buff" placeholder="基礎ダメージバフ">
+                    </div>
+                  </td>
+                  <td></td>
+                  <td>
+                    <div>
+                      <input type="number" id="dynamic_basedmg_buff" required min="0" name="dynamic_basedmg_buff" placeholder="基礎ダメージバフ">
                     </div>
                   </td>
                 </tr>
@@ -943,380 +737,585 @@
           </form>
         </div>
       </div>
-      <br>
-      <div class = "tablestyle1">
+      <div>
+        <div style = "text-align: center;">
+          <button id = "parameterbutton1" class="button-1" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
+          <button id = "parameterbutton2" class="button-1" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
+          <button id = "parameterbutton3" class="button-1" onclick="showOption('option3', 'parameterbutton3')">敵ステータス</button>
+        </div>
+          <div class = "option-field" id = "option1">
+          <fieldset style="width: auto;">
+            <legend>キャラクターバフ</legend>
+            <div id ="char_talent">
+            </div>
+            <div id ="temporary_char_talent">
+            </div>
+            <div id="characterInfo">
+            </div>
+          </fieldset>
+          <fieldset style="width: auto;">
+            <legend>装備バフ</legend>
+            <div id="weaponInfo">
+            </div>
+            <div id="artifact_checkbox">
+            </div>
+          </fieldset>
+        </div>
+        <div class = "option-field" id = "option2">
+          <fieldset>
+            <legend>元素共鳴</legend>
+            <label><input type="checkbox" class="custom-checkbox" id = "pyro_reso"> 炎共鳴：攻撃力+25％</label><br>
+            <label><input type="checkbox" class="custom-checkbox" id = "hydro_reso"> 水共鳴：HP+25％</label><br>
+            <label><input type="checkbox" class="custom-checkbox" id = "cyro_reso"> 氷共鳴：会心率+15％</label><br>
+            <label><input type="checkbox" class="custom-checkbox" id = "dendro_reso"> 草共鳴：元素熟知</label>
+            <select id="dendro_reso_select">
+              <option value="50">+50</option>
+              <option value="80">+80</option>
+              <option value="100">+100</option>
+            </select>
+            <br>
+            <label><input type="checkbox" class="custom-checkbox" id = "geo_reso"> 岩共鳴：ダメージバフ+15％<br>&nbsp;&nbsp;　　　　　岩元素耐性ダウン</label>
+            <select id="geo_reso_select">
+              <option value="0">0%</option>
+              <option value="20">20%</option>
+            </select>
+          </fieldset>
+        </div>
+        <div class = "option-field" id = "option3" style = "text-align: center;">
+          <div id= "enemy-status">
+            <form class="enemy-form">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>敵ステータス</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="enemy_level-form">
+                    <td><label for="enemy-level-form">敵レベル</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-level" required min="0" name="enemy-level" placeholder="Lv" value="90">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-pyroresist-form">
+                    <td><label for="enemy-pyroresist">炎元素耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-pyroresist" placeholder="炎元素耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="pyrodebuff-form">
+                    <td><label for="pyrodebuff">炎元素デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="pyrodebuff" placeholder="炎元素耐性" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-hydroresist-form">
+                    <td><label for="enemy-hydroresist">水元素耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-hydroresist" placeholder="水元素耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="hydrodebuff-form">
+                    <td><label for="hydrodebuff">水元素デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="hydrodebuff" placeholder="水元素デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-cyroresist-form">
+                    <td><label for="enemy-cyroresist">氷元素耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-cyroresist" placeholder="氷元素耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="cyrodebuff-form">
+                    <td><label for="cyrodebuff">氷元素デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="cyrodebuff" placeholder="氷元素デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-electroresist-form">
+                    <td><label for="enemy-electroresist">雷元素耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-electroresist" placeholder="雷元素耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="electrodebuff-form">
+                    <td><label for="electrodebuff">雷元素デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="electrodebuff" placeholder="雷元素デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-anemoresist-form">
+                    <td><label for="enemy-anemoresist">風元素耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-anemoresist" placeholder="風元素耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="anemodebuff-form">
+                    <td><label for="anemodebuff">風元素デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="anemodebuff" placeholder="風元素デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-dendroresist-form">
+                    <td><label for="enemy-dendroresist">草元素耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-dendroresist" placeholder="草元素耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="dendrodebuff-form">
+                    <td><label for="dendrodebuff">草元素デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="dendrodebuff" placeholder="草元素デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-georesist-form">
+                    <td><label for="enemy-georesist">岩元素耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-georesist" placeholder="岩元素耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="geodebuff-form">
+                    <td><label for="geodebuff">岩元素デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="geodebuff" placeholder="岩元素デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="enemy-phisicsresist-form">
+                    <td><label for="enemy-phisicsresist">物理耐性</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="enemy-phisicsresist" placeholder="物理耐性" value="10">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="phisicsdebuff-form">
+                    <td><label for="phisicsdebuff">物理デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="phisicsdebuff" placeholder="物理デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id="deff-debuff-form">
+                    <td><label for="deff-debuff-form">防御デバフ</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="deff-debuff" required min="0" name="deff-debuff" placeholder="防御デバフ" value="0">(%)
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+        <br>
+        <div class = "tablestyle1">
+          <table  class="status_table" style="table-layout: fixed">
+            <colgroup>
+              <col style="width: 25%;">
+              <col style="width: 22%;">
+              <col style="width: 14%;">
+              <col style="width: 17%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th>基礎ステータス</th>
+                <th>バフ</th>
+                <th>聖遺物バフ</th>
+                <th>最終ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="text-align: left;">
+                  <span>HP</span>
+                </th>
+                <td id = table_base_hp>-</td>
+                <td id = table_buff_hp>-</td>
+                <td id = table_af_hp>-</td>
+                <td id = table_final_hp>-</td>
+              </tr>
+              <tr>
+                <th style="text-align: left;">
+                  <span>攻撃力</span>
+                </th>
+                <td id = table_base_attck>-</td>
+                <td id = table_buff_attck>-</td>
+                <td id = table_af_attck>-</td>
+                <td id = table_final_attck>-</td>
+              </tr>
+              <tr>
+                <th style="text-align: left;">
+                  <span>防御力</span>
+                </th>
+                <td id = table_base_deff>-</td>
+                <td id = table_buff_deff>-</td>
+                <td id = table_af_deff>-</td>
+                <td id = table_final_deff>-</td>
+              </tr>
+              <tr>
+                <th style="text-align: left;">
+                  <span>元素熟知</span>
+                </th>
+                <td id = table_base_elm>-</td>
+                <td id = table_buff_elm>-</td>
+                <td id = table_af_elm>-</td>
+                <td id = table_final_elm>-</td>
+              </tr>
+              <tr>
+                <th style="text-align: left;">
+                  <span>元素チャージ効率</span>
+                </th>
+                <td id = table_base_elm_charge>-</td>
+                <td id = table_buff_elm_charge>-</td>
+                <td id = table_af_elm_charge>-</td>
+                <td id = table_final_elm_charge>-</td>
+              </tr>
+              <tr>
+                <th style="text-align: left;">
+                  <span>会心率</span>
+                </th>
+                <td id = table_base_cr>-</td>
+                <td id = table_buff_cr>-</td>
+                <td id = table_af_cr>-</td>
+                <td id = table_final_cr>-</td>
+              </tr>
+              <tr>
+                <th style="text-align: left;">
+                  <span>会心ダメージ</span>
+                </th>
+                <td id = table_base_cd>-</td>
+                <td id = table_buff_cd>-</td>
+                <td id = table_af_cd>-</td>
+                <td id = table_final_cd>-</td>
+              </tr>
+              <tr>
+                <th style="text-align: left;">
+                  <span>ダメージバフ</span>
+                </th>
+                <td id = table_base_dmg_buff>-</td>
+                <td id = table_buff_dmg_buff>-</td>
+                <td id = table_af_dmg_buff>-</td>
+                <td id = table_final_dmg_buff>-</td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>
+      </div>
+    </div>
+    <br>
+    <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
+      <div class="button_solid004" onclick="monte_carlo_calculate()">
+        スコア計算開始
+      </div>
+    </div>
+    <p id="calculationMessage" style="visibility: hidden;">計算中...</p>
+    <div id="response"></div>
+    <div id="result"></div>
+    <br>
+    <div class = "centered-container">
+      <div class = "centered-div">
+        <button id = "tablebutton1" class="button-2" onclick="showTable('table1', 'tablebutton1')">各ステータス</button>
+        <button id = "tablebutton2" class="button-2" onclick="showTable('table2', 'tablebutton2')">スコア分布</button>
+        <button id = "tablebutton3" class="button-2" onclick="showTable('table3', 'tablebutton3')">サブステータス分布</button>
+      </div>
+      <div id="table1" class="tablestyle">
+          <!-- 表1の内容 -->
         <table  class="status_table" style="table-layout: fixed">
           <colgroup>
-            <col style="width: 25%;">
-            <col style="width: 22%;">
-            <col style="width: 14%;">
-            <col style="width: 17%;">
+            <col style="width: 30%;">
+            <col style="width: 35%;">
           </colgroup>
           <thead>
             <tr>
               <th></th>
-              <th>基礎ステータス</th>
-              <th>バフ</th>
-              <th>聖遺物バフ</th>
-              <th>最終ステータス</th>
+              <th>自己ステータス</th>
+              <th>最適化ステータス</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>HP</span>
               </th>
-              <td id = table_base_hp>-</td>
-              <td id = table_buff_hp>-</td>
-              <td id = table_af_hp>-</td>
-              <td id = table_final_hp>-</td>
+              <td id = my_result_hp>-</td>
+              <td id = appro_result_hp>-</td>
             </tr>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>攻撃力</span>
               </th>
-              <td id = table_base_attck>-</td>
-              <td id = table_buff_attck>-</td>
-              <td id = table_af_attck>-</td>
-              <td id = table_final_attck>-</td>
+              <td id = my_result_attck>-</td>
+              <td id = appro_result_attck>-</td>
             </tr>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>防御力</span>
               </th>
-              <td id = table_base_deff>-</td>
-              <td id = table_buff_deff>-</td>
-              <td id = table_af_deff>-</td>
-              <td id = table_final_deff>-</td>
+              <td id = my_result_deff>-</td>
+              <td id = appro_result_deff>-</td>
             </tr>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>元素熟知</span>
               </th>
-              <td id = table_base_elm>-</td>
-              <td id = table_buff_elm>-</td>
-              <td id = table_af_elm>-</td>
-              <td id = table_final_elm>-</td>
+              <td id = my_result_elm>-</td>
+              <td id = appro_result_elm>-</td>
             </tr>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>元素チャージ効率</span>
               </th>
-              <td id = table_base_elm_charge>-</td>
-              <td id = table_buff_elm_charge>-</td>
-              <td id = table_af_elm_charge>-</td>
-              <td id = table_final_elm_charge>-</td>
+              <td id = my_result_elm_charge>-</td>
+              <td id = appro_result_elm_charge>-</td>
             </tr>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>会心率</span>
               </th>
-              <td id = table_base_cr>-</td>
-              <td id = table_buff_cr>-</td>
-              <td id = table_af_cr>-</td>
-              <td id = table_final_cr>-</td>
+              <td id = my_result_cr>-</td>
+              <td id = appro_result_cr>-</td>
             </tr>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>会心ダメージ</span>
               </th>
-              <td id = table_base_cd>-</td>
-              <td id = table_buff_cd>-</td>
-              <td id = table_af_cd>-</td>
-              <td id = table_final_cd>-</td>
+              <td id = my_result_cd>-</td>
+              <td id = appro_result_cd>-</td>
             </tr>
             <tr>
-              <th style="text-align: left;">
+              <th rowspan="1" style="text-align: left;">
                 <span>ダメージバフ</span>
               </th>
-              <td id = table_base_dmg_buff>-</td>
-              <td id = table_buff_dmg_buff>-</td>
-              <td id = table_af_dmg_buff>-</td>
-              <td id = table_final_dmg_buff>-</td>
+              <td id = my_result_dmg_buff>-</td>
+              <td id = appro_result_dmg_buff>-</td>
             </tr>
           </tbody>
-        </table> 
+        </table>
       </div>
-    </div>
-  </div>
-  <br>
-  <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
-    <div class="button_solid004" onclick="monte_carlo_calculate()">
-      スコア計算開始
-    </div>
-  </div>
-  <p id="calculationMessage" style="visibility: hidden;">計算中...</p>
-  <div id="response"></div>
-  <div id="result"></div>
-  <br>
-  <div class = "centered-container">
-    <div class = "centered-div">
-      <button id = "tablebutton1" class="button-2" onclick="showTable('table1', 'tablebutton1')">各ステータス</button>
-      <button id = "tablebutton2" class="button-2" onclick="showTable('table2', 'tablebutton2')">スコア分布</button>
-      <button id = "tablebutton3" class="button-2" onclick="showTable('table3', 'tablebutton3')">サブステータス分布</button>
-    </div>
-    <div id="table1" class="tablestyle">
-        <!-- 表1の内容 -->
-      <table  class="status_table" style="table-layout: fixed">
+
+        <div id="table2" class="tablestyle">
+          <!-- 表2の内容 -->
+        <table  class="status_table" style="table-layout: fixed">
         <colgroup>
-          <col style="width: 30%;">
-          <col style="width: 35%;">
+          <col style="width: 21%;">
+          <col style="width: 19%;">
+          <col style="width: 19%;">
+          <col style="width: 19%;">
         </colgroup>
         <thead>
           <tr>
             <th></th>
-            <th>自己ステータス</th>
-            <th>最適化ステータス</th>
+            <th>自己スコア分布</th>
+            <th>最適スコア分布</th>
+            <th>聖遺物スコア差</th>
+            <th>サブステ伸び回数</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th rowspan="1" style="text-align: left;">
+              <span>聖遺物スコア</span>
+            </th>
+            <td id = my_af_score>-</td>
+            <td id = appro_af_score>-</td>
+            <td id = dlt_af_score>-</td>
+            <td id = count_af_score>-</td>
+          </tr>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
               <span>HP</span>
             </th>
-            <td id = my_result_hp>-</td>
-            <td id = appro_result_hp>-</td>
+            <td id = my_hp_score>-</td>
+            <td id = appro_hp_score>-</td>
+            <td id = dlt_hp_score>-</td>
+            <td id = count_hp_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>攻撃力</span>
             </th>
-            <td id = my_result_attck>-</td>
-            <td id = appro_result_attck>-</td>
+            <td id = my_attck_score>-</td>
+            <td id = appro_attck_score>-</td>
+            <td id = dlt_attck_score>-</td>
+            <td id = count_attck_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>防御力</span>
             </th>
-            <td id = my_result_deff>-</td>
-            <td id = appro_result_deff>-</td>
+            <td id = my_deff_score>-</td>
+            <td id = appro_deff_score>-</td>
+            <td id = dlt_deff_score>-</td>
+            <td id = count_deff_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>元素熟知</span>
             </th>
-            <td id = my_result_elm>-</td>
-            <td id = appro_result_elm>-</td>
+            <td id = my_elm_score>-</td>
+            <td id = appro_elm_score>-</td>
+            <td id = dlt_elm_score>-</td>
+            <td id = count_elm_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>元素チャージ効率</span>
             </th>
-            <td id = my_result_elm_charge>-</td>
-            <td id = appro_result_elm_charge>-</td>
+            <td id = my_elm_charge_score>-</td>
+            <td id = appro_elm_charge_score>-</td>
+            <td id = dlt_elm_charge_score>-</td>
+            <td id = count_elm_charge_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>会心率</span>
             </th>
-            <td id = my_result_cr>-</td>
-            <td id = appro_result_cr>-</td>
+            <td id = my_cr_score>-</td>
+            <td id = appro_cr_score>-</td>
+            <td id = dlt_cr_score>-</td>
+            <td id = count_cr_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>会心ダメージ</span>
             </th>
-            <td id = my_result_cd>-</td>
-            <td id = appro_result_cd>-</td>
+            <td id = my_cd_score>-</td>
+            <td id = appro_cd_score>-</td>
+            <td id = dlt_cd_score>-</td>
+            <td id = count_cd_score>-</td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+        <div id="table3" class="tablestyle">
+          <!-- 表3の内容 -->
+        <table  class="status_table" style="table-layout: fixed">
+        <colgroup>
+          <col style="width: 18%;">
+          <col style="width: 23%;">
+          <col style="width: 23%;">
+          <col style="width: 18%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th>自己サブステータス分布</th>
+            <th>最適サブステータス分布</th>
+            <th>サブステータス差</th>
+            <th>サブステ伸び回数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
+              <span>聖遺物スコア</span>
+            </th>
+            <td id = my_af_score3>-</td>
+            <td id = appro_af_score3>-</td>
+            <td id = dlt_af_score3>-</td>
+            <td id = count_af_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
-              <span>ダメージバフ</span>
+              <span>HP</span>
             </th>
-            <td id = my_result_dmg_buff>-</td>
-            <td id = appro_result_dmg_buff>-</td>
+            <td id = my_af_hp>-</td>
+            <td id = appro_af_hp>-</td>
+            <td id = dlt_af_hp>-</td>
+            <td id = count_hp_score3>-</td>
+          </tr>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
+              <span>攻撃力</span>
+            </th>
+            <td id = my_af_attck>-</td>
+            <td id = appro_af_attck>-</td>
+            <td id = dlt_af_attck>-</td>
+            <td id = count_attck_score3>-</td>
+          </tr>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
+              <span>防御力</span>
+            </th>
+            <td id = my_af_deff>-</td>
+            <td id = appro_af_deff>-</td>
+            <td id = dlt_af_deff>-</td>
+            <td id = count_deff_score3>-</td>
+          </tr>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
+              <span>元素熟知</span>
+            </th>
+            <td id = my_af_elm>-</td>
+            <td id = appro_af_elm>-</td>
+            <td id = dlt_af_elm>-</td>
+            <td id = count_elm_score3>-</td>
+          </tr>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
+              <span>元素チャージ効率</span>
+            </th>
+            <td id = my_af_elm_charge>-</td>
+            <td id = appro_af_elm_charge>-</td>
+            <td id = dlt_af_elm_charge>-</td>
+            <td id = count_elm_charge_score3>-</td>
+          </tr>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
+              <span>会心率</span>
+            </th>
+            <td id = my_af_cr>-</td>
+            <td id = appro_af_cr>-</td>
+            <td id = dlt_af_cr>-</td>
+            <td id = count_cr_score3>-</td>
+          </tr>
+          <tr>
+            <th rowspan="1" style="text-align: left;">
+              <span>会心ダメージ</span>
+            </th>
+            <td id = my_af_cd>-</td>
+            <td id = appro_af_cd>-</td>
+            <td id = dlt_af_cd>-</td>
+            <td id = count_cd_score3>-</td>
           </tr>
         </tbody>
       </table>
     </div>
-
-      <div id="table2" class="tablestyle">
-        <!-- 表2の内容 -->
-      <table  class="status_table" style="table-layout: fixed">
-      <colgroup>
-        <col style="width: 21%;">
-        <col style="width: 19%;">
-        <col style="width: 19%;">
-        <col style="width: 19%;">
-      </colgroup>
-      <thead>
-        <tr>
-          <th></th>
-          <th>自己スコア分布</th>
-          <th>最適スコア分布</th>
-          <th>聖遺物スコア差</th>
-          <th>サブステ伸び回数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>聖遺物スコア</span>
-          </th>
-          <td id = my_af_score>-</td>
-          <td id = appro_af_score>-</td>
-          <td id = dlt_af_score>-</td>
-          <td id = count_af_score>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>HP</span>
-          </th>
-          <td id = my_hp_score>-</td>
-          <td id = appro_hp_score>-</td>
-          <td id = dlt_hp_score>-</td>
-          <td id = count_hp_score>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>攻撃力</span>
-          </th>
-          <td id = my_attck_score>-</td>
-          <td id = appro_attck_score>-</td>
-          <td id = dlt_attck_score>-</td>
-          <td id = count_attck_score>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>防御力</span>
-          </th>
-          <td id = my_deff_score>-</td>
-          <td id = appro_deff_score>-</td>
-          <td id = dlt_deff_score>-</td>
-          <td id = count_deff_score>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>元素熟知</span>
-          </th>
-          <td id = my_elm_score>-</td>
-          <td id = appro_elm_score>-</td>
-          <td id = dlt_elm_score>-</td>
-          <td id = count_elm_score>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>元素チャージ効率</span>
-          </th>
-          <td id = my_elm_charge_score>-</td>
-          <td id = appro_elm_charge_score>-</td>
-          <td id = dlt_elm_charge_score>-</td>
-          <td id = count_elm_charge_score>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>会心率</span>
-          </th>
-          <td id = my_cr_score>-</td>
-          <td id = appro_cr_score>-</td>
-          <td id = dlt_cr_score>-</td>
-          <td id = count_cr_score>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>会心ダメージ</span>
-          </th>
-          <td id = my_cd_score>-</td>
-          <td id = appro_cd_score>-</td>
-          <td id = dlt_cd_score>-</td>
-          <td id = count_cd_score>-</td>
-        </tr>
-      </tbody>
-    </table>
-      </div>
-      <div id="table3" class="tablestyle">
-        <!-- 表3の内容 -->
-      <table  class="status_table" style="table-layout: fixed">
-      <colgroup>
-        <col style="width: 18%;">
-        <col style="width: 23%;">
-        <col style="width: 23%;">
-        <col style="width: 18%;">
-      </colgroup>
-      <thead>
-        <tr>
-          <th></th>
-          <th>自己サブステータス分布</th>
-          <th>最適サブステータス分布</th>
-          <th>サブステータス差</th>
-          <th>サブステ伸び回数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>聖遺物スコア</span>
-          </th>
-          <td id = my_af_score3>-</td>
-          <td id = appro_af_score3>-</td>
-          <td id = dlt_af_score3>-</td>
-          <td id = count_af_score3>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>HP</span>
-          </th>
-          <td id = my_af_hp>-</td>
-          <td id = appro_af_hp>-</td>
-          <td id = dlt_af_hp>-</td>
-          <td id = count_hp_score3>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>攻撃力</span>
-          </th>
-          <td id = my_af_attck>-</td>
-          <td id = appro_af_attck>-</td>
-          <td id = dlt_af_attck>-</td>
-          <td id = count_attck_score3>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>防御力</span>
-          </th>
-          <td id = my_af_deff>-</td>
-          <td id = appro_af_deff>-</td>
-          <td id = dlt_af_deff>-</td>
-          <td id = count_deff_score3>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>元素熟知</span>
-          </th>
-          <td id = my_af_elm>-</td>
-          <td id = appro_af_elm>-</td>
-          <td id = dlt_af_elm>-</td>
-          <td id = count_elm_score3>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>元素チャージ効率</span>
-          </th>
-          <td id = my_af_elm_charge>-</td>
-          <td id = appro_af_elm_charge>-</td>
-          <td id = dlt_af_elm_charge>-</td>
-          <td id = count_elm_charge_score3>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>会心率</span>
-          </th>
-          <td id = my_af_cr>-</td>
-          <td id = appro_af_cr>-</td>
-          <td id = dlt_af_cr>-</td>
-          <td id = count_cr_score3>-</td>
-        </tr>
-        <tr>
-          <th rowspan="1" style="text-align: left;">
-            <span>会心ダメージ</span>
-          </th>
-          <td id = my_af_cd>-</td>
-          <td id = appro_af_cd>-</td>
-          <td id = dlt_af_cd>-</td>
-          <td id = count_cd_score3>-</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>
 <footer>
