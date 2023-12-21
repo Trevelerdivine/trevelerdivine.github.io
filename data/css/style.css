@@ -658,6 +658,10 @@ text-align: center;
     }
 
     /* Menu item styles */
+    #drawer ul {
+      list-style-type: none;
+    }
+
     #drawer a {
       display: block;
       padding: 10px;
