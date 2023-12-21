@@ -691,7 +691,7 @@ text-align: center;
       }
 
       #drawer-toggle:checked ~ #page-content {
-        margin-left: calc(100% - 50px);
+        margin-left: calc(100% - 90px);
       }
     }
 
