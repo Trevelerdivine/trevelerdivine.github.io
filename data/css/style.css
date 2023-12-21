@@ -658,18 +658,14 @@ text-align: center;
     }
 
     /* Menu item styles */
-    #drawer ul {
-      list-style-type: none;
-    }
-
-    #drawer ul a {
+    #drawer a {
       display: block;
       padding: 10px;
       color: #c7c7c7;
       text-decoration: none;
     }
 
-    #drawer ul a:hover {
+    #drawer a:hover {
       color: white;
     }
 
