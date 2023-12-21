@@ -1581,11 +1581,23 @@ async function import_char_parameter()
   return parameter;
 }
 
+async function display_calulate(index)
+{
+  if (index == 1)
+  {
+    document.getElementById("calculationMessage").style.visibility = "visible";
+  }
+  else
+  {
+    document.getElementById("calculationMessage").style.visibility = "hidden";
+  }
+  return;
+}
+
 async function monte_carlo_calculate()
 {
   console.time('myTimer'); // タイマーを開始
-  document.getElementById("calculationMessage").style.visibility = "visible";
-  //入力チェック
+  await display_calulate(1);
   const input_check = identify_condition();
   if (input_check ==1)
   {
@@ -2210,7 +2222,6 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
-  
-  document.getElementById("calculationMessage").style.visibility = "hidden";
+  await display_calulate(0);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
