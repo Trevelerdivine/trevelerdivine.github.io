@@ -1581,23 +1581,11 @@ async function import_char_parameter()
   return parameter;
 }
 
-async function display_calulate(index)
-{
-  if (index == 1)
-  {
-    document.getElementById("calculationMessage").style.visibility = "visible";
-  }
-  else
-  {
-    document.getElementById("calculationMessage").style.visibility = "hidden";
-  }
-  return;
-}
-
 async function monte_carlo_calculate()
 {
   console.time('myTimer'); // タイマーを開始
-  await display_calulate(1);
+  document.getElementById("calculationMessage").style.visibility = "visible";
+  //入力チェック
   const input_check = identify_condition();
   if (input_check ==1)
   {
@@ -1635,7 +1623,7 @@ async function monte_carlo_calculate()
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
-    await display_calulate(0);
+    document.getElementById("calculationMessage").style.visibility = "hidden";
     response ="ダメージ期待値が異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -1643,7 +1631,7 @@ async function monte_carlo_calculate()
   
   if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
-    await display_calulate(0);
+    document.getElementById("calculationMessage").style.visibility = "hidden";
     response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -1920,7 +1908,8 @@ async function monte_carlo_calculate()
   }
   output_exp_dmg = output_exp_dmg.toFixed(0);
 
-  await display_calulate(0);
+
+
   let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
@@ -2223,5 +2212,6 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
+  document.getElementById("calculationMessage").style.visibility = "hidden";
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
