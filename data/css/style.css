@@ -662,14 +662,14 @@ text-align: center;
       list-style-type: none;
     }
 
-    #drawer a {
+    #drawer ul a {
       display: block;
       padding: 10px;
       color: #c7c7c7;
       text-decoration: none;
     }
 
-    #drawer a:hover {
+    #drawer ul a:hover {
       color: white;
     }
 
@@ -687,7 +687,7 @@ text-align: center;
 
       #drawer-toggle:checked ~ #drawer {
         width: calc(100% - 50px);
-        padding: 20px;
+        padding: 10px;
       }
 
       #drawer-toggle:checked ~ #page-content {
