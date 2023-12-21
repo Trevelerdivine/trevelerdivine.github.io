@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Centered Accordion</title>
+    <link rel="stylesheet" href="./data/css/style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            margin-bottom: 7px;
+        }
+
+        .accordion-006 {
+            width: 100%;
+            margin-bottom: 7px;
+            border: 1px solid #8da2b5;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #bdd2e5; /* 背景色を再追加 */
+        }
+
+        .accordion-006 summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 1em 2em;
+            color: #6a6868;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .accordion-006 summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .accordion-006 summary::after {
+            transform: translateY(-25%) rotate(45deg);
+            width: 7px;
+            height: 7px;
+            margin-left: 10px;
+            border-bottom: 3px solid #8da2b5;
+            border-right: 3px solid #8da2b5;
+            content: '';
+            transition: transform .3s;
+        }
+
+        .accordion-006[open] summary::after {
+            transform: rotate(225deg);
+        }
+
+        .accordion-006 p {
+            transform: translateY(-10px);
+            opacity: 0;
+            margin: 0;
+            padding: .3em 2em 1.5em;
+            color: #6a6868;
+            transition: transform .5s, opacity .5s;
+        }
+
+        .accordion-006[open] p {
+            transform: none;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+    <label for="drawer-toggle" id="drawer-toggle-label"></label>
+    <header style="font-size: 24px;">聖遺物最適化スコア計算機</header>
+    <nav id="drawer">
+      <ul>
+        <li><a href="#">・使い方</a></li>
+        <li><a href="#">・スコア固定最適化計算機</a></li>
+        <li><a href="./HTML/policy.html">・プライバシーポリシー</a></li>
+        <li><a href="#">・バグ報告</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+        <details class="accordion-006">
+            <summary>これはどのようなテンプレートですか？</summary>
+            <p>背景色付きのシンプルなアコーディオンメニューです。</p>
+        </details>
+        <details class="accordion-006">
+            <summary>免責事項</summary>
+            <p>当ブログからのリンクやバナーなどで移動した先のサイトで提供される情報やサービスについては、一切の責任を負いかねます。また、当ブログのコンテンツ・情報に関しては、最大限の正確性を期しておりますが、その正確性や安全性を保証するものではございません。情報が過去のものとなっている場合もございます。当サイトは参考情報を提供するものであり、特定の目的への適合性や有用性を保証するものではございません。また、提供された情報の利用により生じたいかなる損失や損害についても、一切の責任を負いかねますので、予めご了承ください。</p>
+        </details>
+    </div>
+</body>
+</html>
