@@ -659,7 +659,7 @@ text-align: center;
 
     /* Menu item styles */
     #drawer ul {
-      padding-inline-start: 20px;
+      padding-inline-start: 10px;
       list-style-type: none;
     }
 
@@ -692,7 +692,7 @@ text-align: center;
       }
 
       #drawer-toggle:checked ~ #page-content {
-        margin-left: calc(100% - 50px);
+        margin-left: calc(100% - 80px);
       }
     }
 
