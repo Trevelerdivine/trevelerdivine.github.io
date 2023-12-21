@@ -1589,7 +1589,7 @@ async function display_calulate(index)
   }
   else
   {
-  await display_calulate(0);
+    document.getElementById("calculationMessage").style.visibility = "hidden";
   }
   return;
 }
@@ -1601,7 +1601,7 @@ async function monte_carlo_calculate()
   const input_check = identify_condition();
   if (input_check ==1)
   {
-  await display_calulate(0);
+    document.getElementById("calculationMessage").style.visibility = "hidden";
     return;
   }
 
