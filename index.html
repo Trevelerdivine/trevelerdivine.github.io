@@ -16,7 +16,6 @@
      crossorigin="anonymous"></script>
     <style>
       footer {
-        background-color: #f0f0f0;
         padding: 10px;
         text-align: center;
       }
@@ -24,6 +23,20 @@
   </head>
   <body>
   <h1 style="font-size: 24px;">聖遺物最適化スコア計算機</h1>
+  <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+  <label for="drawer-toggle" id="drawer-toggle-label"></label>
+  <header>Header</header>
+  <nav id="drawer">
+    <ul>
+      <li><a href="#">・使い方</a></li>
+      <li><a href="#">・スコア固定最適化計算機</a></li>
+      <li><a href="#">・プライバシーポリシー</a></li>
+      <li><a href="#">・バグ報告</a></li>
+    </ul>
+  </nav>
+  <div id="page-content">
+    <p>Page Content</p>
+  </div>
   <div class="wrapper">
     <div>
       <div>
@@ -1307,7 +1320,8 @@
   </div>
 </div>
 <footer>
-  <p>本サイト内の画像およびデータはHoYoverse/COGNOSPHEREの著作物です。 Copyright © COGNOSPHERE. All Rights Reserved.</p>
+  <p>本サイト内の画像およびデータはHoYoverse/COGNOSPHEREの著作物です。</p>
+  <p> Copyright © COGNOSPHERE. All Rights Reserved.</p>
 </footer>
 </body>
 <script>
