@@ -1912,6 +1912,7 @@ async function monte_carlo_calculate()
 
   let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
+  document.getElementById("calculationMessage").style.visibility = "hidden";
 
   if (depend_status[0] == 1)
   {
@@ -2212,6 +2213,5 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
-  document.getElementById("calculationMessage").style.visibility = "hidden";
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
