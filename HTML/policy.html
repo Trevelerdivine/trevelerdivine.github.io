@@ -30,19 +30,17 @@
             background-color: #bdd2e5; /* 背景色を再追加 */
         }
 
-        .accordion-006 summary {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            padding: 1em 2em;
+        .accordion-006 p {
+            /* transform: translateY(-10px); この行をコメントアウトまたは削除 */
+            margin: 0;
+            padding: 1.3em 2em 1.5em; /* 上部の余白を調整 */
             color: #6a6868;
-            font-weight: 600;
-            cursor: pointer;
+            transition: transform .5s, opacity .5s;
         }
 
-        .accordion-006 summary::-webkit-details-marker {
-            display: none;
+        .accordion-006[open] p {
+            /* transform: none; この行をコメントアウトまたは削除 */
+            opacity: 1;
         }
 
         .accordion-006 summary::after {
