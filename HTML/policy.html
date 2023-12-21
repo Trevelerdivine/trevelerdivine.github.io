@@ -5,6 +5,14 @@
     <title>Centered Accordion</title>
     <link rel="stylesheet" href="../data/css/style.css">
     <style>
+        .page_size {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -80,18 +88,20 @@
       </ul>
     </nav>
     <div id="page-content">
-        <div class="container">
-            <details class="accordion-006">
-                <summary>広告について</summary>
-                <p>当サイトでは、第三者配信の広告サービス（Googleアドセンス）を利用しており、ユーザーの興味に応じた商品やサービスの広告を表示するため、 Cookie を使用しております。
-                    Cookie を使用することで、当サイトはユーザーのコンピュータを識別できるようになりますが、ユーザー個人を特定できるものではありません。
-                    ユーザーは、広告設定でパーソナライズ広告を無効にできます（また、www.aboutads.info にアクセスすれば、パーソナライズ広告に使われる第三者配信事業者の Cookie を無効にできます）
-                    Cookieを無効にする方法は 広告 – ポリシーと規約 – Google をご確認ください。</p>
-            </details>
-            <details class="accordion-006">
-                <summary>免責事項</summary>
-                <p>当ブログからのリンクやバナーなどで移動した先のサイトで提供される情報やサービスについては、一切の責任を負いかねます。また、当ブログのコンテンツ・情報に関しては、最大限の正確性を期しておりますが、その正確性や安全性を保証するものではございません。情報が過去のものとなっている場合もございます。当サイトは参考情報を提供するものであり、特定の目的への適合性や有用性を保証するものではございません。また、提供された情報の利用により生じたいかなる損失や損害についても、一切の責任を負いかねますので、予めご了承ください。</p>
-            </details>
+        <div id = "page_size">
+            <div class="container">
+                <details class="accordion-006">
+                    <summary>広告について</summary>
+                    <p>当サイトでは、第三者配信の広告サービス（Googleアドセンス）を利用しており、ユーザーの興味に応じた商品やサービスの広告を表示するため、 Cookie を使用しております。
+                        Cookie を使用することで、当サイトはユーザーのコンピュータを識別できるようになりますが、ユーザー個人を特定できるものではありません。
+                        ユーザーは、広告設定でパーソナライズ広告を無効にできます（また、www.aboutads.info にアクセスすれば、パーソナライズ広告に使われる第三者配信事業者の Cookie を無効にできます）
+                        Cookieを無効にする方法は 広告 – ポリシーと規約 – Google をご確認ください。</p>
+                </details>
+                <details class="accordion-006">
+                    <summary>免責事項</summary>
+                    <p>当ブログからのリンクやバナーなどで移動した先のサイトで提供される情報やサービスについては、一切の責任を負いかねます。また、当ブログのコンテンツ・情報に関しては、最大限の正確性を期しておりますが、その正確性や安全性を保証するものではございません。情報が過去のものとなっている場合もございます。当サイトは参考情報を提供するものであり、特定の目的への適合性や有用性を保証するものではございません。また、提供された情報の利用により生じたいかなる損失や損害についても、一切の責任を負いかねますので、予めご了承ください。</p>
+                </details>
+            </div>
         </div>
     </div>
 </body>
