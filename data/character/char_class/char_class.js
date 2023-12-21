@@ -14,6 +14,7 @@ class Lyney {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data(){
@@ -226,7 +227,7 @@ class Lyney {
       if (this.reaction_coeff > 0)
       {
         attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus +2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
       else
@@ -259,6 +260,7 @@ class dehya {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data(){
@@ -396,7 +398,7 @@ class dehya {
       if (this.reaction_coeff > 0)
       {
         attckRate = status[0] * dmg_rate[0][0] + status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus +2.78 * status[2] / (status[2] + 1400))
                   + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
       else
@@ -429,6 +431,7 @@ class yoimiya {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -592,7 +595,7 @@ class yoimiya {
       if (attack_method == 1)
       {
         attckRate = status[4] * dmg_rate[4][0] * this.skill_buff + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1] * this.skill_buff + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
         return basicDmg;
       }
@@ -630,6 +633,7 @@ class hutao {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -815,7 +819,7 @@ class hutao {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
     }
     else
@@ -848,6 +852,7 @@ class klee {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -1048,7 +1053,7 @@ class klee {
     if (this.reaction_coeff > 0)
     {
         attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);;
         return basicDmg;
       
@@ -1086,6 +1091,7 @@ class diluc {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -1318,7 +1324,7 @@ class diluc {
       if (attack_method != 16)
       {
         attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
       else
@@ -1328,7 +1334,7 @@ class diluc {
           attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][2] * (1 + status[7] + 0.4) / (1 + status[7]))
                     + calculate_weapon_basedmg(this.react_attack_unique_count, status, this.weapon_rank, this.base_dmgbuff)
                     + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[7] + 0.4) / (1 + status[7]);
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+          basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                     + status[4] * (dmg_rate[4][1] + dmg_rate[4][3]* (1 + status[7] + 0.4) / (1 + status[7]))
                     + calculate_weapon_basedmg(this.nonreact_attack_unique_count, status, this.weapon_rank, this.base_dmgbuff)
                     + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[7] + 0.4) / (1 + status[7]);
@@ -1336,7 +1342,7 @@ class diluc {
         else
         {
           attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-          basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+          basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                     + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
         }
       }
@@ -1392,6 +1398,7 @@ class yanfei {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -1599,13 +1606,13 @@ class yanfei {
       if (attack_method != 6)
       {
         attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
       else
       {
         attckRate = status[4] * (dmg_rate[4][0] + this.react_list[0] * status[5] * 0.8) + calculate_weapon_basedmg(this.react_attack_count * 2, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                  + status[4] * (dmg_rate[4][1] + this.nonreact_list[0] * status[5] * 0.8) + calculate_weapon_basedmg(this.nonreact_attack_count * 2, status, this.weapon_rank, this.base_dmgbuff);
       }
     }
@@ -1646,6 +1653,7 @@ class xinyan {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -1809,6 +1817,7 @@ class bennett {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -1971,7 +1980,7 @@ class bennett {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       return basicDmg;
     }
@@ -2006,6 +2015,7 @@ class xiangling {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -2136,7 +2146,7 @@ class xiangling {
     if (this.reaction_coeff > 0)
     {
         attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(1, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_count * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + attckRate * (this.attack_count - this.reaction_count);
     }
     else
@@ -2165,6 +2175,7 @@ class amber {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -2306,7 +2317,7 @@ class amber {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
     }
     else
@@ -2342,6 +2353,7 @@ class Furina {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -2595,7 +2607,7 @@ class Furina {
       if (attack_method == 1 || attack_method == 6)
       {
         attckRate = status[0] * dmg_rate[0][0] + status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[0] * dmg_rate[0][1] + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
       else if (attack_method == 16)
@@ -2603,7 +2615,7 @@ class Furina {
         attckRate = status[0] * (dmg_rate[0][0] * (1 + status[7] - this.talent2_buff) / (1 + status[7]) + dmg_rate[0][2])
                   + calculate_weapon_basedmg(this.first_react_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[7] - this.talent2_buff) / (1 + status[7])
                   + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] *  (dmg_rate[0][1] * (1 + status[7] - this.talent2_buff) / (1 + status[7]) + dmg_rate[0][3])
                   + calculate_weapon_basedmg(this.first_nonreact_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[7] - this.talent2_buff) / (1 + status[7])
                   + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
@@ -2611,7 +2623,7 @@ class Furina {
       else
       {
         attckRate = status[0] * dmg_rate[0][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * dmg_rate[0][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
     }
@@ -2658,6 +2670,7 @@ class Neuvillette {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -2830,7 +2843,7 @@ class Neuvillette {
         attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (1 + status[5] * (status[6] - this.second_conste_buff)) / (1 + status[5] * status[6]))
                   + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff) 
                   + calculate_weapon_basedmg(this.sixth_react_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[5] * (status[6] - this.second_conste_buff)) / (1 + status[5] * status[6]);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (1 + status[5] * (status[6] - this.second_conste_buff)) / (1 + status[5] * status[6]))
                   + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff)
                   + calculate_weapon_basedmg(this.sixth_nonreact_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[5] * (status[6] - this.second_conste_buff)) / (1 + status[5] * status[6]);
@@ -2838,7 +2851,7 @@ class Neuvillette {
       else
       {
         attckRate = status[0] * dmg_rate[0][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * dmg_rate[0][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
     }
@@ -2885,6 +2898,7 @@ class nirou {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -3065,7 +3079,7 @@ class nirou {
         attckRate = status[0] * (dmg_rate[0][0] + dmg_rate[0][2] * (1 + status[7] + this.first_conste_buff) / (1 + status[7]))
                   + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff)
                   + calculate_weapon_basedmg(this.react_suigetsu_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                  + status[0] * (dmg_rate[0][1] + dmg_rate[0][3] * (1 + status[7] + this.first_conste_buff) / (1 + status[7]))
                  + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff)
                  + calculate_weapon_basedmg(this.nonreact_suigetsu_count, status, this.weapon_rank, this.base_dmgbuff) * (1 + status[7] + this.first_conste_buff) / (1 + status[7]);
@@ -3073,7 +3087,7 @@ class nirou {
       else
       {
         attckRate = status[0] * dmg_rate[0][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[0] * dmg_rate[0][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       }
     }
@@ -3118,6 +3132,7 @@ class yelan {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -3288,7 +3303,7 @@ class yelan {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[0] * dmg_rate[0][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[0] * dmg_rate[0][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
     }
     else
@@ -3324,6 +3339,7 @@ class kamisatoayato {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -3475,7 +3491,7 @@ class kamisatoayato {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[4] * dmg_rate[4][0] + status[0] * this.skill_buff * this.buff_effect_count + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                + status[4] * dmg_rate[4][1] + status[0] * this.skill_buff * (3 - this.buff_effect_count) + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       return basicDmg;
     }
@@ -3506,6 +3522,7 @@ class tartaglia {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -3702,7 +3719,7 @@ class tartaglia {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       return basicDmg;
     }
@@ -3736,6 +3753,7 @@ class xingqiu {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -3876,7 +3894,7 @@ class xingqiu {
     if (this.reaction_coeff > 0)
     {
         attckRate = status[4] * dmg_rate[4][0] * this.forth_conste_buff + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + (status[4] * dmg_rate[4][1]) * this.forth_conste_buff + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
         return basicDmg;
     }
@@ -3912,6 +3930,7 @@ class Wriothesley {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -4104,7 +4123,7 @@ class Wriothesley {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
     }
     else
@@ -4136,6 +4155,7 @@ class kamisatoayaka {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -4349,7 +4369,7 @@ class kamisatoayaka {
     if (this.reaction_coeff > 0)
     {
       attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-      basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+      basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                 + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
     }
     else
@@ -4379,6 +4399,7 @@ class eula {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -4528,6 +4549,7 @@ class ganyu {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
     if (selectedWeaponId == 120)
     {
       const buff_check1 = document.getElementById("Slingshot_dmgbuff");
@@ -4696,14 +4718,14 @@ class ganyu {
       {
         basicDmg = ((status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_first_count, status, this.weapon_rank, this.base_dmgbuff)) * (1 + status[7] + this.unique_dmg_buff[0]) / (1 + status[7])
                   + (status[4] * dmg_rate[4][2] + calculate_weapon_basedmg(this.react_second_count, status, this.weapon_rank, this.base_dmgbuff)) * (1 + status[7] + this.unique_dmg_buff[1]) / (1 + status[7]))
-                  * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+                  * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + (status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.react_first_count, status, this.weapon_rank, this.base_dmgbuff)) * (1 + status[7] + this.unique_dmg_buff[0]) / (1 + status[7])
                   + (status[4] * dmg_rate[4][3] + calculate_weapon_basedmg(this.react_second_count, status, this.weapon_rank, this.base_dmgbuff)) * (1 + status[7] + this.unique_dmg_buff[1]) / (1 + status[7]);
       }
       else
       {
         attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_first_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_first_count, status, this.weapon_rank, this.base_dmgbuff);
       }
     }
@@ -4752,6 +4774,7 @@ class rosaria {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
   
   async dmg_rate_data() {
@@ -4930,7 +4953,7 @@ class rosaria {
     if (this.reaction_coeff > 0)
     {
       attckRate = dmg_rate[4][0] * status[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = attckRate * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + dmg_rate[4][1] * status[4] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
     }
     else
@@ -4970,6 +4993,7 @@ class chongyun {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
   
   async dmg_rate_data() {
@@ -5113,8 +5137,8 @@ class chongyun {
     let basicDmg;
     if (this.reaction_coeff > 0)
     {
-      basicDmg = (dmg_rate[4][0] * status[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff)) * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
-               + dmg_rate[4][1] * status[4] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);;
+      basicDmg = (dmg_rate[4][0] * status[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff)) * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
+               + dmg_rate[4][1] * status[4] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
     }
     else
     {
@@ -5143,6 +5167,7 @@ class kaeya {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
   
   async dmg_rate_data() {
@@ -5287,7 +5312,7 @@ class kaeya {
     let basicDmg;
     if (this.reaction_coeff > 0)
     {
-        basicDmg = (dmg_rate[4][0] * status[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff)) * this.reaction_coeff * (1 + 2.78 * status[2] / (status[2] + 1400))
+        basicDmg = (dmg_rate[4][0] * status[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff)) * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
                   + dmg_rate[4][1] * status[4] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
         return basicDmg;
     }
@@ -5331,6 +5356,7 @@ class cyno {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -5470,17 +5496,17 @@ class cyno {
       if (attack_method == 1)
       {
         const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       }
       else
       {
         basicDmg = status[4] * dmg_rate[4][0] 
                         + this.base_dmg_buff * status[2]
                         + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank, this.base_dmgbuff)
-                        + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200))
+                        + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200))
                         + (calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank, this.base_dmgbuff)
                         + status[4] * dmg_rate[4][1]
-                        + this.aggcount2 * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)))
+                        + this.aggcount2 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)))
                           * (1 + status[7] + 0.35) / (1 + status[7]);
       }
     }
@@ -5524,6 +5550,7 @@ class yaemiko {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -5657,7 +5684,7 @@ class yaemiko {
     if (this.reaction_coeff > 0)
     {
         attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
     }
     else
@@ -5695,6 +5722,7 @@ class raiden {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -5827,7 +5855,7 @@ class raiden {
     {
 
       const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-      let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
@@ -5869,6 +5897,7 @@ class keqing {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -5996,7 +6025,7 @@ class keqing {
     if (this.reaction_coeff > 0)
     {
       const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
@@ -6028,6 +6057,7 @@ class kujousara {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -6144,7 +6174,7 @@ class kujousara {
     {
 
       const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
@@ -6178,6 +6208,7 @@ class fischl {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -6294,7 +6325,7 @@ class fischl {
     {
 
       const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
@@ -6325,6 +6356,7 @@ class beidou {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -6438,7 +6470,7 @@ class beidou {
     if (this.reaction_coeff > 0)
     {
       const attckRate = status[4] * dmg_rate[4]; + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
@@ -6472,6 +6504,7 @@ class razor {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -6635,7 +6668,7 @@ class razor {
     if (this.reaction_coeff > 0)
     {
       const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
@@ -6666,6 +6699,7 @@ class lisa {
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
     this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
   }
 
   async dmg_rate_data() {
@@ -6785,7 +6819,7 @@ class lisa {
     {
 
       const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
+      let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
       return basicDmg;
     }
     else
@@ -9249,3 +9283,26 @@ function calculate_weapon_basedmg (attack_count, status_array, weapon_rank, base
   }
   return base_dmg;
 }
+
+function calculate_reaction_bonus (weapon_rank)
+{
+  let reaction_bonus = 0;
+  if ((char_propaty[0] == 0 || char_propaty[0] == 1 || char_propaty[0] == 2) && selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
+  {
+    const buff_check = document.getElementById("af11_4");
+    if (buff_check)
+    {
+      reaction_bonus += 0.15
+    }
+  }
+  else if (char_propaty[0] == 3 && selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
+  {
+    const buff_check = document.getElementById("af9_4");
+    if (buff_check)
+    {
+      reaction_bonus += 0.2
+    }
+  }
+  return reaction_bonus;
+}
+
