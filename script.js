@@ -59,7 +59,7 @@ const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFu
                       "Slingshot", "RecurveBow", "SharpshootersOath", "RavenBow", "TomeoftheEternalFlow", "JadefallsSplendor", "TulaytullahsRemembrance", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
                       "MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladOfTheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
                       "DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
-                      "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters"
+                      "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters", "Verdict"
                     ]
 
 
@@ -631,6 +631,9 @@ async function create_weapon_instance(base_status) {
       break;
     case "34":
       weapon_instance = new CoolSteel(base_status);
+      break;
+    case "156":
+      weapon_instance = new Verdict(base_status);
       break;
     case "35":
       weapon_instance = new BeaconoftheReedSea(base_status);

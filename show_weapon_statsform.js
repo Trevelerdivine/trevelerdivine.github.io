@@ -413,6 +413,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "156") {
+    buff_group = [
+      createweaponLabel("Verdict_buff_count", "裁断：契印獲得枚数 "),
+      createweaponSelectList("Verdict_buff_count", 0, 2, "", "枚", 2),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "35") {
     buff_group = [
       createweaponCheckbox("BeaconoftheReedSea_buff1", true),

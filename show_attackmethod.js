@@ -2567,7 +2567,7 @@ async function show_attack_method()
           createSelectList("navia_hitcount", 1, 11, "", "回", 11),
           document.createElement("br"),
           createLabel("navia_buff_count", "　裂晶の欠片消費数"),
-          createSelectList("navia_buff_count", 0, 6, "", "個", 6),
+          createSelectList("navia_buff_count", 0, 6, "", "回", 6),
           document.createElement("br"),
         ];
   
