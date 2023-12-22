@@ -9290,7 +9290,7 @@ function calculate_reaction_bonus (weapon_rank)
   if ((char_propaty[0] == 0 || char_propaty[0] == 1 || char_propaty[0] == 2) && selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
   {
     const buff_check = document.getElementById("af11_4");
-    if (buff_check)
+    if (buff_check.checked)
     {
       reaction_bonus += 0.15
     }
@@ -9298,7 +9298,7 @@ function calculate_reaction_bonus (weapon_rank)
   else if (char_propaty[0] == 3 && selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
   {
     const buff_check = document.getElementById("af9_4");
-    if (buff_check)
+    if (buff_check.checked)
     {
       reaction_bonus += 0.2
     }

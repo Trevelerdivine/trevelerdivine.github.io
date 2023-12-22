@@ -623,13 +623,39 @@ function af25_4()
     return status_buff
 }
 
+function af26_2()
+{
+    let checkbox = document.getElementById("af26_2");
+    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+    if (checkbox.checked)
+    {
+        status_buff = [0, 0, 0, 0, 0.18, 0, 0, 0]; 
+    }
+    return status_buff
+}
+
+function af25_4()
+{
+    let checkbox = document.getElementById("af25_4");
+    let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
+    const af25_4select = document.getElementById("af25_4select");
+    const buff_count = af25_4select.value;
+    let af25_4dmgbuff = 0;
+    if (checkbox.checked && attack_method >= 16 && attack_method <= 25)
+    {
+        af25_4dmgbuff = 0.1 + 0.08 * buff_count;
+        status_buff = [0, 0, 0, 0, 0, 0, 0, af25_4dmgbuff]; 
+    }
+    return status_buff
+}
+
 
 const set_effect2 = [af0_2, af1_2, af2_2, af3_2, af4_2, af5_2, af6_2, af7_2, af8_2, af9_2, af10_2,
     af11_2, af12_2, af13_2, af14_2, af15_2, af16_2, af17_2, af18_2, af19_2, af20_2,
-    af21_2, af22_2, af23_2, af24_2, af25_2
-   ];
+    af21_2, af22_2, af23_2, af24_2, af25_2, af26_2, af27_2, af28_2, af29_2 
+    ];
   
-  const set_effect4 = [ af0_4, af1_4, af2_4, af3_4, af4_4, af5_4, af6_4, af7_4, af8_4, af9_4, af10_4,
-     af11_4, af12_4, af13_4, af14_4, af15_4, af16_4, af17_4, af18_4, af19_4, af20_4,
-     af21_4, af22_4, af23_4, af24_4, af25_4
-   ];
+const set_effect4 = [ af0_4, af1_4, af2_4, af3_4, af4_4, af5_4, af6_4, af7_4, af8_4, af9_4, af10_4,
+    af11_4, af12_4, af13_4, af14_4, af15_4, af16_4, af17_4, af18_4, af19_4, af20_4,
+    af21_4, af22_4, af23_4, af24_4, af25_4, af26_4, af27_4, af28_4, af29_4 
+    ];

@@ -3,6 +3,7 @@ async function show_artifact()
     let traits;
     let traitCheckbox;
     let traitLabel;
+    let buff_group;
     artifact_checkbox.innerHTML = "";
     for (let i = 0; i < 2; i++)
     {
@@ -785,7 +786,6 @@ async function show_artifact()
                 artifact_checkbox.appendChild(af18_4text);
                 artifact_checkbox.appendChild(selectList);
             }
-        
         }
 
         if (selectedImageIds[i] == "19") 
@@ -1109,10 +1109,117 @@ async function show_artifact()
                 artifact_checkbox.appendChild(selectList);
             }
         }
+        if (selectedImageIds[i] == "26") 
+        {
+            buff_group = [
+                createAfCheckbox("af26_2", true),
+                createAfLabel("af26_2", "辰砂往生録2"),
+                document.createElement("br"),
+              ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af26_4", true),
+                    createAfLabel("af26_4", "辰砂往生録4 潜光 "),
+                    createAfSelectList("select", 0, 4, "", "重", 4),
+                    document.createElement("br"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+              });
+        }
 
         if (i === 0)
         {
             artifact_checkbox.appendChild(document.createElement("br"));
         }
     }
+  }
+
+  function createAfCheckbox(id, checked)
+  {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = id;
+    checkbox.checked = checked;
+    return checkbox;
+  }
+  
+  // ラベルを生成するユーティリティ関数
+  function createAfLabel(forId, labelText)
+  {
+    const label = document.createElement("label");
+    label.htmlFor = forId;
+    label.textContent = labelText;
+    return label;
+  }
+  
+  // テキストノードを生成するユーティリティ関数
+  function createAfTextNode(text)
+  {
+    return document.createTextNode(text);
+  }
+  
+  // セレクトリストを生成するユーティリティ関数
+  function createAfSelectList(id, initial, optionsCount, head_unit, unit, select_index)
+  {
+    const selectList = document.createElement("select");
+    selectList.id = id;
+  
+    for (let j = initial; j <= optionsCount; j++)
+    {
+      const option = document.createElement("option");
+      option.value = j;
+      option.text = `${head_unit}${j}${unit}`;
+      
+      if (j == select_index)
+      {
+        option.selected = true;
+      }
+      selectList.appendChild(option);
+    }
+    return selectList;
+  }
+  
+  function createanyAfSelectList(id, initial, optionsCount, head_unit, unit, select_index, rate)
+  {
+    const selectList = document.createElement("select");
+    selectList.id = id;
+    for (let j = initial; j <= optionsCount; j++)
+    {
+      const option = document.createElement("option");
+      option.value = j * rate;
+      option.text = `${head_unit}${j * rate}${unit}`;
+      
+      if (j == select_index)
+      {
+        option.selected = true;
+      }
+      selectList.appendChild(option);
+    }
+    return selectList;
+  }
+  
+  function createAfInputWithUnit(type, id, value, unit)
+  {
+    const inputContainer = document.createElement("span");
+    const input = document.createElement("input");
+    input.type = type;
+    input.id = id;
+    input.value = value;
+    
+    // input要素のwidthを50pxに設定
+    input.style.width = '50px';
+  
+    // 単位を表示するための span 要素を作成
+    const unitSpan = document.createElement("span");
+    unitSpan.textContent = unit;
+  
+    // フォーム要素と単位要素を div 要素に追加
+    inputContainer.appendChild(input);
+    inputContainer.appendChild(unitSpan);
+  
+    // div 要素を返す
+    return inputContainer;
   }
