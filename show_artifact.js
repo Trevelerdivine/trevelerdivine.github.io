@@ -43,7 +43,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
         
-        if (selectedImageIds[i] == "1") 
+        else if (selectedImageIds[i] == "1") 
         {
             traits = [
                 {
@@ -79,7 +79,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "2") 
+        else if (selectedImageIds[i] == "2") 
         {
             traits = [
                 {
@@ -114,8 +114,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
         }
-
-        if (selectedImageIds[i] == "3") 
+        else if (selectedImageIds[i] == "3") 
         {
             traits = [
                 {
@@ -151,7 +150,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "4") 
+        else if (selectedImageIds[i] == "4") 
         {
             traits = [
                 {
@@ -187,7 +186,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "5") 
+        else if (selectedImageIds[i] == "5") 
         {
             traits = [
                 {
@@ -223,7 +222,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "6") 
+        else if (selectedImageIds[i] == "6") 
         {
             traits = [
                 {
@@ -276,7 +275,7 @@ async function show_artifact()
             }
         }
 
-        if (selectedImageIds[i] == "7") 
+        else if (selectedImageIds[i] == "7") 
         {
             traits = [
                 {
@@ -312,7 +311,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "8") 
+        else if (selectedImageIds[i] == "8") 
         {
             traits = [
                 {
@@ -348,7 +347,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "9") 
+        else if (selectedImageIds[i] == "9") 
         {
             traits = [
                 {
@@ -384,7 +383,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "10") 
+        else if (selectedImageIds[i] == "10") 
         {
             traits = [
                 {
@@ -420,7 +419,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "11") 
+        else if (selectedImageIds[i] == "11") 
         {
             traits = [
                 {
@@ -476,7 +475,7 @@ async function show_artifact()
 
         }
 
-        if (selectedImageIds[i] == "12") 
+        else if (selectedImageIds[i] == "12") 
         {
             traits = [
                 {
@@ -531,8 +530,7 @@ async function show_artifact()
             }
 
         }
-
-        if (selectedImageIds[i] == "13") 
+        else if (selectedImageIds[i] == "13") 
         {
             traits = [
                 {
@@ -567,8 +565,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
         }
-
-        if (selectedImageIds[i] == "14") 
+        else if (selectedImageIds[i] == "14") 
         {
             traits = [
                 {
@@ -604,7 +601,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "15") 
+        else if (selectedImageIds[i] == "15") 
         {
             traits = [
                 {
@@ -659,7 +656,7 @@ async function show_artifact()
 
         }
 
-        if (selectedImageIds[i] == "16") 
+        else if (selectedImageIds[i] == "16") 
         {
             traits = [
                 {
@@ -695,7 +692,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "17") 
+        else if (selectedImageIds[i] == "17") 
         {
             traits = [
                 {
@@ -731,7 +728,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "18") 
+        else if (selectedImageIds[i] == "18") 
         {
             traits = [
                 {
@@ -788,7 +785,7 @@ async function show_artifact()
             }
         }
 
-        if (selectedImageIds[i] == "19") 
+        else if (selectedImageIds[i] == "19") 
         {
             traits = [
                 {
@@ -824,7 +821,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "20") 
+        else if (selectedImageIds[i] == "20") 
         {
             traits = [
                 {
@@ -893,7 +890,7 @@ async function show_artifact()
             }
         }
 
-        if (selectedImageIds[i] == "21") 
+        else if (selectedImageIds[i] == "21") 
         {
             traits = [
                 {
@@ -929,7 +926,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "22") 
+        else if (selectedImageIds[i] == "22") 
         {
             traits = [
                 {
@@ -965,7 +962,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "23") 
+        else if (selectedImageIds[i] == "23") 
         {
             traits = [
                 {
@@ -1001,7 +998,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        if (selectedImageIds[i] == "24") 
+        else if (selectedImageIds[i] == "24") 
         {
             traits = [
                 {
@@ -1055,7 +1052,7 @@ async function show_artifact()
             }
         }
 
-        if (selectedImageIds[i] == "25") 
+        else if (selectedImageIds[i] == "25") 
         {
             traits = [
                 {
@@ -1109,20 +1106,82 @@ async function show_artifact()
                 artifact_checkbox.appendChild(selectList);
             }
         }
-        if (selectedImageIds[i] == "26") 
+        else if (selectedImageIds[i] == "26") 
         {
             buff_group = [
                 createAfCheckbox("af26_2", true),
                 createAfLabel("af26_2", "辰砂往生録2"),
-                document.createElement("br"),
               ];
             if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
             {
                 buff_group = [
                     createAfCheckbox("af26_4", true),
                     createAfLabel("af26_4", "辰砂往生録4 潜光 "),
-                    createAfSelectList("select", 0, 4, "", "重", 4),
+                    createAfSelectList("af26_4select", 0, 4, "", "重", 4),
                     document.createElement("br"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+              });
+        }
+
+        else if (selectedImageIds[i] == "27") 
+        {
+            buff_group = [
+                createAfCheckbox("af27_2", true),
+                createAfLabel("af27_2", "黄金の劇団2"),
+              ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af27_4", true),
+                    createAfLabel("af27_4", "黄金の劇団4"),
+                    document.createElement("br"),
+                    createAfLabel("", "　"),
+                    createAfCheckbox("af27_4_effect", true),
+                    createAfLabel("af27_4_effect", "待機中"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+              });
+        }
+        else if (selectedImageIds[i] == "28") 
+        {
+            buff_group = [
+                createAfCheckbox("af28_2", true),
+                createAfLabel("af28_2", "ファントムハンター2"),
+              ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af28_4", true),
+                    createAfLabel("af28_4", "ファントムハンター4 セット効果"),
+                    createAfSelectList("af28_4select", 0, 3, "", "層", 3),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+              });
+        }
+
+        else if (selectedImageIds[i] == "29") 
+        {
+            buff_group = [
+                createAfCheckbox("af29_2", true),
+                createAfLabel("af29_2", "残響の森でささやかれる夜話2"),
+              ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af29_4", true),
+                    createAfLabel("af29_4", "残響の森でささやかれる夜話4 セット効果"),
+                    createAfSelectList("select", 0, 3, "", "層", 3),
+                    document.createElement("br"),
+                    createAfLabel("", "　"),
+                    createAfCheckbox("af29_4_effect", true),
+                    createAfLabel("af29_4_effect", "結晶シールド状態"),
                     ];
             }
             buff_group.forEach(element => {
