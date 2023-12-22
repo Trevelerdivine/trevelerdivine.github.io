@@ -1583,11 +1583,9 @@ async function import_char_parameter()
 
 async function monte_carlo_calculate()
 {
+  const calculationMessage = document.getElementById("calculationMessage")
+  calculationMessage.style.visibility = "visible";
   console.time('myTimer'); // タイマーを開始
-  const calculationMessage = document.getElementById("calculationMessage");
-  setTimeout(() => {
-    calculationMessage.style.visibility = "visible";
-  }, 0); // 0ミリ秒の遅延を加えることで、すぐに実行される
   //入力チェック
   const input_check = identify_condition();
   if (input_check ==1)
