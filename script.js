@@ -1585,12 +1585,12 @@ async function monte_carlo_calculate()
 {
   console.time('myTimer'); // タイマーを開始
   const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.hidden = false;
+  calculationMessage.style.visibility = "visible";
   //入力チェック
   const input_check = identify_condition();
   if (input_check ==1)
   {
-    calculationMessage.hidden = true;
+    calculationMessage.style.visibility = "hidden";
     return;
   }
 
@@ -1624,7 +1624,7 @@ async function monte_carlo_calculate()
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
-    calculationMessage.hidden = true;
+    calculationMessage.style.visibility = "hidden";
     response ="ダメージ期待値が異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -1632,7 +1632,7 @@ async function monte_carlo_calculate()
   
   if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
-    calculationMessage.hidden = true;
+    calculationMessage.style.visibility = "hidden";
     response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -1910,7 +1910,7 @@ async function monte_carlo_calculate()
   output_exp_dmg = output_exp_dmg.toFixed(0);
 
 
-  calculationMessage.hidden = true;
+  calculationMessage.style.visibility = "hidden";
   let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
