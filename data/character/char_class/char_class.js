@@ -8458,10 +8458,7 @@ class Navia {
     this.char_constellations = document.getElementById("char_constellations").value;
     
     const talent2_count=  parseInt(document.getElementById("navia_talent2").vallue);
-    if (talent2_check.checked)
-    {
-      this.talent2_buff = 0.2 * this.talent2_count;
-    }
+    this.talent2_buff = 0.2 * this.talent2_count;
 
     if (this.char_constellations > 2)
     {
@@ -8497,6 +8494,10 @@ class Navia {
       if (this.char_constellations > 1)
       {
         this.second_conste_buff = Math.min(3,buff_count) * 0.12;
+      }
+      if (this.char_constellations == 4)
+      {
+        this.sixth_conste_buff = Math.max(0,buff_count - 3) * 0.45;
       }
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * dmg_buff[hit_count];
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
@@ -8561,7 +8562,7 @@ class Navia {
   }
 
   calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
+    return this.sixth_conste_buff;
   }
 
   calculate_char_result_cd(fixstatus,status) {
