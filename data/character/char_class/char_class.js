@@ -8457,7 +8457,7 @@ class Navia {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     
-    const talent2_count =  parseInt(document.getElementById("navia_talent2").vallue);
+    const talent2_count =  parseInt(document.getElementById("navia_talent2").value);
     this.talent2_buff = 0.2 * talent2_count;
 
     if (this.char_constellations > 2)
@@ -8570,7 +8570,7 @@ class Navia {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return this.talent2_buff + this.skill_buff;
+    return this.talent1_buff + this.skill_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
