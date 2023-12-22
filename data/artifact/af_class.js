@@ -216,7 +216,7 @@ function af9_4()
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     if (checkbox.checked)
     {
-        status_buff = [0, 0, 0, 0, 0, 0, 0, 0.2]; 
+        status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     }
     return status_buff
 }
