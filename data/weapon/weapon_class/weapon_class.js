@@ -12449,11 +12449,11 @@ class CashflowSupervision {
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let dmg_buff = 0
     let buff_count = parseInt(document.getElementById("CashflowSupervision_count").value);
-    if (attack_method_index = 0)
+    if (attack_method_index == 0)
     {
       dmg_buff = 0.04 * (this.weapon_rank + 3) * buff_count;
     }
-    if (attack_method_index = 1)
+    else if (attack_method_index == 1)
     {
       dmg_buff = 0.035 * (this.weapon_rank + 3) * buff_count;
     }
