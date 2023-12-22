@@ -12289,10 +12289,11 @@ class Verdict {
   }
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0;
     const buff_count = parseInt(document.getElementById("Verdict_buff_count").value);
     if (attack_method_index == 3)
     {
-      let dmg_buff = 0.045 * (this.weapon_rank + 3) * buff_count;
+      dmg_buff = 0.045 * (this.weapon_rank + 3) * buff_count;
     }
     return dmg_buff;
   }
