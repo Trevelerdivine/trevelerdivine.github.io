@@ -1585,12 +1585,12 @@ async function monte_carlo_calculate()
 {
   console.time('myTimer'); // タイマーを開始
   const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
+  calculationMessage.hidden = false;
   //入力チェック
   const input_check = identify_condition();
   if (input_check ==1)
   {
-    calculationMessage.style.visibility = "hidden";
+    calculationMessage.hidden = true;
     return;
   }
 
@@ -1624,7 +1624,7 @@ async function monte_carlo_calculate()
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
-    calculationMessage.style.visibility = "hidden";
+    calculationMessage.hidden = true;
     response ="ダメージ期待値が異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -1632,7 +1632,7 @@ async function monte_carlo_calculate()
   
   if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
-    calculationMessage.style.visibility = "hidden";
+    calculationMessage.hidden = true;
     response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
