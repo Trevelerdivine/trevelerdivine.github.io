@@ -8440,6 +8440,7 @@ class Navia {
     this.base_status_array = base_status_array;
     this.dmg_rateCache = null;
     this.parameter = parameter;
+    this.talent1_buff = 0;
     this.talent2_buff = 0;
     this.second_conste_buff = 0;
     this.fourth_conste_buff = 0;
@@ -8462,6 +8463,15 @@ class Navia {
       this.talent2_buff = 0.2 * this.talent2_count;
     }
 
+    if (this.char_constellations > 2)
+    {
+      const fourth_conste_check =  document.getElementById("traitCheckbox4");
+      if (fourth_conste_check.checked)
+      {
+        this.fourth_conste_buff = 0.2;
+      }
+    }
+
     // JSON データを取得
     const response = await fetch("./data/character/char_data/Navia.json");
     const data = await response.json();
@@ -8470,6 +8480,7 @@ class Navia {
     let dmg_rate;
     let dmg_attck_rate = 0;
     if (attack_method == 1) {
+      this.talent2_buff = 0.4;
       this.attack_hit_count = 6;
       for (let i = 0; i < 6; i++) {
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -8480,8 +8491,13 @@ class Navia {
       this.attack_hit_count = 1;
       let dmg_buff = [1, 1.05, 1.1, 1.15, 1.2, 1.36, 1.40, 1.60, 1.666, 1.9, 2];
       let hit_count = parseInt(document.getElementById("navia_hitcount").value) - 1;
-      let skill_buff_count = Math.max(0,parseInt(document.getElementById("navia_buff_count").value) - 3);
+      let buff_count = parseInt(document.getElementById("navia_buff_count").value);
+      let skill_buff_count = Math.max(0,buff_count - 3);
       this.skill_buff = 0.15 * skill_buff_count;
+      if (this.char_constellations > 1)
+      {
+        this.second_conste_buff = Math.min(3,buff_count) * 0.12;
+      }
       dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * dmg_buff[hit_count];
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } 
@@ -8537,7 +8553,7 @@ class Navia {
   }
 
   calculate_char_fixed_cr(fixstatus,status) {
-    return 0;
+    return this.second_conste_buff;
   }
 
   calculate_char_result_cr(fixstatus,status) {
@@ -8553,7 +8569,7 @@ class Navia {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return this.skill_buff;
+    return this.talent2_buff + this.skill_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {
@@ -8567,7 +8583,7 @@ class Navia {
   }
 
   calculate_char_debuff() {
-    let char_debuff = [0,0,0];
+    let char_debuff = [this.fourth_conste_buff,0,0];
     return char_debuff;
   }
 }
