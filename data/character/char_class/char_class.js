@@ -8457,8 +8457,8 @@ class Navia {
   async dmg_rate_data() {
     this.char_constellations = document.getElementById("char_constellations").value;
     
-    const talent2_count=  parseInt(document.getElementById("navia_talent2").vallue);
-    this.talent2_buff = 0.2 * this.talent2_count;
+    const talent2_count =  parseInt(document.getElementById("navia_talent2").vallue);
+    this.talent2_buff = 0.2 * talent2_count;
 
     if (this.char_constellations > 2)
     {
@@ -8477,7 +8477,7 @@ class Navia {
     let dmg_rate;
     let dmg_attck_rate = 0;
     if (attack_method == 1) {
-      this.talent2_buff = 0.4;
+      this.talent1_buff = 0.4;
       this.attack_hit_count = 6;
       for (let i = 0; i < 6; i++) {
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
