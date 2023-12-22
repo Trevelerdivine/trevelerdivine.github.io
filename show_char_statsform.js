@@ -1519,6 +1519,43 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "75")
+    {
+      elementsToAddToCharTalent = [
+        createLabel("navia_talent2", "固有天賦2：炎/雷/氷/水元素のキャラクター数"),
+        createSelectList("navia_talent2", 0, 2, "", "人", 2),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+     
+      traits = [
+        {
+          id: "traitCheckbox4",
+          label: "第4重：敵の岩元素耐性-20%"
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ(岩元素)", value: "1" },        
+        { text: "元素スキル(セレモニアル・クリスタルショット)", value: "16" },
+        { text: "元素爆発(晴天を衝く霰弾のサルート)", value: "21" },
+      ];
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      createchar_attackmethod(options)  
+    }
     else if (selectedCharId == "63")
     {
       elementsToAddToCharTalent = [
