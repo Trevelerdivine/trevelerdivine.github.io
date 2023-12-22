@@ -1267,6 +1267,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "154") {
+    buff_group = [
+      createweaponLabel("CashflowSupervision_count", "凛流の監視者：通常攻撃＆重撃ダメージアップ "),
+      createweaponSelectList("CashflowSupervision_count", 0, 3, "", "層", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "124") {
     buff_group = [
       createweaponLabel("TomeoftheEternalFlow_count", "久遠流転の大典：重撃ダメージアップ "),
