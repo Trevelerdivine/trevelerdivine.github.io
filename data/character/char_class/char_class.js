@@ -8435,6 +8435,143 @@ class travelardendro {
   }
 }
 
+class Navia {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.dmg_rateCache = null;
+    this.parameter = parameter;
+    this.talent2_buff = 0;
+    this.second_conste_buff = 0;
+    this.fourth_conste_buff = 0;
+    this.sixth_conste_buff = 0;
+    this.skill_buff = 0;
+    this.char_constellations = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+  }
+  
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+    
+    const talent2_count=  parseInt(document.getElementById("navia_talent2").vallue);
+    if (talent2_check.checked)
+    {
+      this.talent2_buff = 0.2 * this.talent2_count;
+    }
+
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/Navia.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attck_rate = 0;
+    if (attack_method == 1) {
+      this.attack_hit_count = 6;
+      for (let i = 0; i < 6; i++) {
+        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      }
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } 
+    else if (attack_method == 16) {
+      this.attack_hit_count = 1;
+      let dmg_buff = [1, 1.05, 1.1, 1.15, 1.2, 1.36, 1.40, 1.60, 1.666, 1.9, 2];
+      let hit_count = parseInt(document.getElementById("navia_hitcount").value) - 1;
+      let skill_buff_count = Math.max(0,parseInt(document.getElementById("navia_buff_count").value) - 3);
+      this.skill_buff = 0.15 * skill_buff_count;
+      dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * dmg_buff[hit_count];
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } 
+    else if (attack_method == 21) {
+      const attack_count1 = parseInt(document.getElementById("navia_hitcount1").value);
+      const attack_count2 = parseInt(document.getElementById("navia_hitcount2").value);
+      this.attack_hit_count = attack_count1 + attack_count2;
+      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
+                     + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } 
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    return this.talent2_buff * this.base_status_array[4];
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    return this.skill_buff;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
+    return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    return char_debuff;
+  }
+}
+
 class aratakiitto {
   constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;

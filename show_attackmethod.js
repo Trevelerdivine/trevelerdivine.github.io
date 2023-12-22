@@ -2563,6 +2563,21 @@ async function show_attack_method()
       if (attack_method == 16)
       {
         elementsToAddToCharTalent = [
+          createLabel("navia_hitcount", "　ロースラ晶弾ヒットカウント"),
+          createSelectList("navia_hitcount", 1, 11, "", "回", 11),
+          document.createElement("br"),
+          createLabel("navia_buff_count", "　裂晶の欠片消費数"),
+          createSelectList("navia_buff_count", 0, 6, "", "個", 6),
+          document.createElement("br"),
+        ];
+  
+        elementsToAddToCharTalent.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+      }
+      else if (attack_method == 21)
+      {
+        elementsToAddToCharTalent = [
           createLabel("navia_hitcount1", "　初撃ヒット回数"),
           createSelectList("navia_hitcount1", 0, 1, "", "回", 1),
           document.createElement("br"),
@@ -2574,10 +2589,6 @@ async function show_attack_method()
         elementsToAddToCharTalent.forEach(element => {
           attack_method_prop.appendChild(element);
         });
-      }
-      else if (attack_method == 21)
-      {
-
       }
     }
   }
