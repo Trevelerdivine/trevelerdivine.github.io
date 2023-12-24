@@ -1,46 +1,128 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>連絡先</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算サイトの使い方</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .step {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .step h2 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #333;
+        }
+
+        .step img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
+            background: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .cta a:hover {
+            background: #2980b9;
+        }
+
+            /* CSSスタイル */
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-transition: .25s ease-in-out;
+      -moz-transition: .25s ease-in-out;
+      -o-transition: .25s ease-in-out;
+      transition: .25s ease-in-out;
       margin: 0;
-      padding: 20px;
+      -webkit-text-size-adjust: none;
     }
 
-    .contact-card {
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      padding: 20px;
-      max-width: 400px;
-      margin: 0 auto;
+    html, body {
+      height: 100%;
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      text-align: center;
+    #drawer-toggle {
+      position: absolute;
+      opacity: 0;
     }
 
-    .contact-info {
-      margin-bottom: 15px;
+    #drawer-toggle-label {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      left: 0px;
+      height: 50px;
+      width: 50px;
+      display: block;
+      position: fixed;
+      background: rgba(255, 255, 255, .0);
+      z-index: 1;
     }
 
-    .contact-label {
-      font-weight: bold;
-    }
-
-    .contact-link {
-      text-decoration: none;
-      color: #007bff;
-    }
-
-    .contact-link:hover {
-      text-decoration: underline;
+    #drawer-toggle-label:before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 24px;
+      background: #8d8d8d;
+      left: 13px;
+      top: 18px;
+      box-shadow: 0 6px 0 #8d8d8d, 0 12px 0 #8d8d8d;
     }
 
     header {
@@ -144,28 +226,99 @@
         margin-left: calc(100% - 80px);
       }
     }
-  </style>
+
+        /* スマートフォン用の文字サイズ調整 */
+        @media screen and (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .step {
+                font-size: 16px;
+                padding: 15px;
+                margin-bottom: 30px;
+            }
+
+            .step h2 {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .step p {
+                font-size: 14px;
+            }
+
+            .cta a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    .main-container {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .contact-card {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .contact-info {
+      margin-bottom: 15px;
+    }
+
+    .contact-label {
+      font-weight: bold;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+    </style>
 </head>
 <body>
     <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
-  <label for="drawer-toggle" id="drawer-toggle-label"></label>
-  <header style="font-size: 24px;"><a href="./index.html">聖遺物最適化スコア計算機</a></header>
-  <nav id="drawer">
-    <ul>
-      <li><a href="./index.html">・最適化スコア計算機</a></li>
-      <li><a href="./HTML/index3.html">・使い方</a></li>
-      <li><a href="./HTML/policy.html">・プライバシーポリシー</a></li>
-      <li><a href="./HTML/index4.html">・お問い合わせ</a></li>
-    </ul>
-  </nav>
-  <div id="page-content">
-    <div class="contact-card">
-        <h1>連絡先</h1>
-        <div class="contact-info">
-        <p class="contact-label">X（旧twitter）:</p>
-        <p><a href="https://twitter.com/TravellerDivine" target="_blank" class="contact-link">@TravellerDivine</a></p>
-        <p>不具合、要望、質問等がありましたらX（旧twitter）のDMまでお願いします。</p>
+    <label for="drawer-toggle" id="drawer-toggle-label"></label>
+    <header style="font-size: 24px;"><a href="../index.html">聖遺物最適化スコア計算機</a></header>
+    <nav id="drawer">
+      <ul>
+        <li><a href="../index.html">・最適化スコア計算機</a></li>
+        <li><a href="./index3.html">・使い方</a></li>
+        <li><a href="./policy.html">・プライバシーポリシー</a></li>
+        <li><a href="./index4.html">・お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <div id="page-content">
+	<div class="main-container">
+	  <div class="contact-card">
+    <h1>連絡先</h1>
+    <div class="contact-info">
+      <p class="contact-label">Twitter:</p>
+      <p><a href="https://twitter.com/TravellerDivine" target="_blank" class="contact-link">@TravellerDivine</a></p>
+      <p>不具合、要望、質問等がありましたらX（旧twitter）のDMまでお願いします。</p>
     </div>
   </div>
+	</div>
+    </div>
 </body>
 </html>
