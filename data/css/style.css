@@ -613,6 +613,15 @@ text-align: center;
       z-index: 0;
     }
 
+    header a {
+      color: black; /* リンクの色を黒に指定 */
+      text-decoration: none; /* 下線を削除 */
+    }
+
+    header a:hover {
+      text-decoration: underline; /* マウスオーバー時の下線を表示 */
+    }
+
     #drawer {
       position: fixed;
       top: 0;
