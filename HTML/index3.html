@@ -126,14 +126,16 @@
     }
 
     header {
-      width: 100%;
-      position: fixed;
-      left: 0px;
-      background: #efefef;
-      padding: 10px 10px 10px 50px;
-      font-size: 30px;
-      line-height: 30px;
-      z-index: 0;
+      font-size: 24px;
+    }
+
+    header a {
+      color: black; /* リンクの色を黒に指定 */
+      text-decoration: none; /* 下線を削除 */
+    }
+
+    header a:hover {
+      text-decoration: underline; /* マウスオーバー時の下線を表示 */
     }
 
     #drawer {
@@ -254,7 +256,7 @@
 <body>
     <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
     <label for="drawer-toggle" id="drawer-toggle-label"></label>
-    <header style="font-size: 24px;">聖遺物最適化スコア計算機</header>
+    <header><a href="../index.html">聖遺物最適化スコア計算機</a></header>
     <nav id="drawer">
       <ul>
         <li><a href="../index.html">・最適化スコア計算機</a></li>
