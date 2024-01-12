@@ -57,6 +57,7 @@ async function show_char_statsform()
         createSelectList("nahida_Qpyro",0, 2, "", "人", 0),
         document.createElement("br"),
         createLabel("maxMasteryLabel", "ナヒーダを除くチーム内最大熟知"),
+        document.createElement("br"),
         createLabel("element-mastery-label", "　元素熟知："),
         createInputWithUnit("text", "element-mastery", "800",""),
         document.createElement("br")
