@@ -1926,11 +1926,38 @@ async function monte_carlo_calculate()
   let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
+  let dlthpScore = document.getElementById("dlt_hp_score");
+  let dltAfhp = document.getElementById("dlt_af_hp");
+  let dltdeffScore = document.getElementById("dlt_deff_score");
+  let dltAfdeff = document.getElementById("dlt_af_deff");
+  let dltElmScore = document.getElementById("dlt_elm_score");
+  let dltAfElm = document.getElementById("dlt_af_elm");
+  let dltelmchargeScore = document.getElementById("dlt_elm_charge_score");
+  let dltAfelmcharge = document.getElementById("dlt_af_elm_charge");
+  let dltattckScore = document.getElementById("dlt_attck_score");
+  let dltAfattck = document.getElementById("dlt_af_attck");
+  let dltcrScore = document.getElementById("dlt_cr_score");
+  let dltAfcr = document.getElementById("dlt_af_cr");
+  let dltcdScore = document.getElementById("dlt_cd_score");
+  let dltAfcd = document.getElementById("dlt_af_cd");
+  dlthpScore.style.color = "black";
+  dltAfhp.style.color = "black";
+  dltdeffScore.style.color = "black";
+  dltAfdeff.style.color = "black";
+  dltElmScore.style.color = "black";
+  dltAfElm.style.color = "black";
+  dltelmchargeScore.style.color = "black";
+  dltAfelmcharge.style.color = "black";
+  dltattckScore.style.color = "black";
+  dltAfattck.style.color = "black";
+  dltcrScore.style.color = "black";
+  dltAfcr.style.color = "black";
+  dltcdScore.style.color = "black";
+  dltAfcd.style.color = "black";
+
   if (depend_status[0] == 1)
   {
     let result_dlthp = (my_af_score_distribution[0] - old_score_distribution[0])
-    let dlthpScore = document.getElementById("dlt_hp_score");
-    let dltAfhp = document.getElementById("dlt_af_hp");
     let hpcolor;
     document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(0);
     document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(0);
@@ -1970,8 +1997,6 @@ async function monte_carlo_calculate()
   if (depend_status[1] == 1)
   {
     let result_dltdeff = (my_af_score_distribution[1] - old_score_distribution[1])
-    let dltdeffScore = document.getElementById("dlt_deff_score");
-    let dltAfdeff = document.getElementById("dlt_af_deff");
     let deffcolor;
     document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(0);
     document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(0);
@@ -2011,8 +2036,6 @@ async function monte_carlo_calculate()
   if (depend_status[2] == 1)
   {
     let result_dltelm = (my_af_score_distribution[2] - old_score_distribution[2])
-    let dltElmScore = document.getElementById("dlt_elm_score");
-    let dltAfElm = document.getElementById("dlt_af_elm");
     let elmcolor;
     document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
     document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(0);
@@ -2053,8 +2076,6 @@ async function monte_carlo_calculate()
   if (depend_status[3] == 1)
   {
     let result_dltelmcharge = (my_af_score_distribution[3] - old_score_distribution[3])
-    let dltelmchargeScore = document.getElementById("dlt_elm_charge_score");
-    let dltAfelmcharge = document.getElementById("dlt_af_elm_charge");
     let elmchargecolor;
     document.getElementById("my_result_elm_charge").innerHTML = (my_result_status[3]*100).toFixed(1) + "％";
     document.getElementById("appro_result_elm_charge").innerHTML =(temp_status[3]*100).toFixed(1) + "％";
@@ -2094,8 +2115,6 @@ async function monte_carlo_calculate()
   if (depend_status[4] == 1)
   {
     let result_dltattck = (my_af_score_distribution[4] - old_score_distribution[4])
-    let dltattckScore = document.getElementById("dlt_attck_score");
-    let dltAfattck = document.getElementById("dlt_af_attck");
     let attckcolor;
     document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
     document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(0);
@@ -2135,8 +2154,6 @@ async function monte_carlo_calculate()
   if (depend_status[5] == 1)
   {
     let result_dltcr = (my_af_score_distribution[5] - old_score_distribution[5])
-    let dltcrScore = document.getElementById("dlt_cr_score");
-    let dltAfcr = document.getElementById("dlt_af_cr");
     let crcolor;
     document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(1) + "%";
     document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(1) + "%";
@@ -2176,8 +2193,6 @@ async function monte_carlo_calculate()
   if (depend_status[6] == 1)
   {
     let result_dltcd = (my_af_score_distribution[6] - old_score_distribution[6])
-    let dltcdScore = document.getElementById("dlt_cd_score");
-    let dltAfcd = document.getElementById("dlt_af_cd");
     let cdcolor;
     document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(1) + "%";
     document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(1) + "%";
