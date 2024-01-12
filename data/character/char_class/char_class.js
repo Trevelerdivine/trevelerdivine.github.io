@@ -7637,6 +7637,7 @@ class nahida {
     this.four_conste_buff = 0;
     this.char_constellations = 0;
     this.attack_hit_count = 0;
+    this.team_elm = parseInt(document.getElementById("element-mastery").value) || 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
     const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
@@ -7654,14 +7655,6 @@ class nahida {
     const talent1 = document.getElementById("talent1");
     if (nahida_Q.checked && talent1.checked) {
       this.mytalent1 = 1;
-      
-      // "other_label" チェック
-      const otherLabel = document.getElementById("other-label");
-      if (otherLabel.checked) {
-        const elm = parseInt(document.getElementById("element-mastery").value) || 0;
-        const elm_buff = Math.max(Math.min(elm / 4, 250), 0);
-        this.talent1effect = elm_buff;
-      }
     }
 
     const reaction_check = document.getElementById("reactionon_flag");
@@ -7756,16 +7749,19 @@ class nahida {
   }
 
   calculate_char_result_elm(fixstatus,status) {
-
-    if (this.talent1effect > -1) {
-      return this.talent1effect;
-    }
-    if(this.mytalent1 == 0)
+    let elm_buff = 0;
+    if(this.mytalent1 != 0)
     {
-      return 0;
+      if(this.team_elm > fixstatus[2])
+      {
+        elm_buff = Math.max(Math.min(this.team_elm / 4, 250), 0);
+      }
+      else
+      {
+        elm_buff = Math.min(fixstatus[2]/4, 250)
+      }
     }
-    let talent1elm_buff = Math.min(fixstatus[2]/4, 250)
-    return talent1elm_buff;
+    return elm_buff;
   }
 
   calculate_char_fixed_elm_charge(fixstatus,status) {
