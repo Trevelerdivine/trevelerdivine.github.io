@@ -1307,48 +1307,87 @@ function create_reactioncount_list(){
 }
 
 function create_reactionbonus_list(){
+    //reaction_list = [過負荷炎, 烈開花, 感電水, 開花水, 豊穣開花, 過負荷雷, 感電雷, 超開花]
   let reaction_bonus_list = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0];
   if (char_propaty[0] == 0)
   {
     if (selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
     {
-      reaction_bonus_list[0] = 0.4;
-      reaction_bonus_list[1] = 0.4;
+      reaction_bonus_list[0] += 0.4;
+      reaction_bonus_list[1] += 0.4;
     }
     else if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
     {
-      reaction_bonus_list[0] = 0.4;
+      reaction_bonus_list[0] += 0.4;
+    }
+    else if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[1] += 0.4 + 0.1 * af_24_4count;
+      }
     }
   }
   else if (char_propaty[0] == 1)
   {
     if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
     {
-      reaction_bonus_list[2] = 0.4;
+      reaction_bonus_list[2] += 0.4;
+    }
+    else if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[3] += 0.4 + 0.1 * af_24_4count;
+        reaction_bonus_list[4] += 0.4 + 0.1 * af_24_4count;
+      }
     }
     if (selectedCharId != 11)
     {
       const Nirou_HP = parseInt(document.getElementById("Nirou_HP").value);
-      reaction_bonus_list[4] = Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
+      reaction_bonus_list[4] += Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
     }
   }
   else if (char_propaty[0] == 3)
   {
     if (selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
     {
-      reaction_bonus_list[5] = 0.4;
+      reaction_bonus_list[5] += 0.4;
     }
     else if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
     {
-      reaction_bonus_list[5] = 0.4;
-      reaction_bonus_list[6] = 0.4;
-      reaction_bonus_list[7] = 0.4;
+      reaction_bonus_list[5] += 0.4;
+      reaction_bonus_list[6] += 0.4;
+      reaction_bonus_list[7] += 0.4;
+    }
+    else if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[7] += 0.4 + 0.1 * af_24_4count;
+      }
     }
   }
   else if (char_propaty[0] == 5)
   {
     const Nirou_HP = parseInt(document.getElementById("Nirou_HP").value);
-    reaction_bonus_list[4] = Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
+    reaction_bonus_list[4] += Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
+    if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[3] += 0.4 + 0.1 * af_24_4count;
+        reaction_bonus_list[4] += 0.4 + 0.1 * af_24_4count;
+      }
+    }
   }
   return reaction_bonus_list;
 }
