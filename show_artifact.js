@@ -984,38 +984,22 @@ async function show_artifact()
 
         else if (selectedImageIds[i] == "24") 
         {
-            traits = [
-                {
-                id: "af24_2",
-                label: "楽園の絶花2"
-                },
-                {
-                id: "af24_4",
-                label: "楽園の絶花4"
-                }
-            ];
-            traitCheckbox = document.createElement("input");
-            traitCheckbox.type = "checkbox";
-            traitCheckbox.id = traits[0].id;
-            traitCheckbox.value = traits[0].id;
-            traitCheckbox.checked = true;
-
-            traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[0].id;
-            traitLabel.textContent = traits[0].label;
-
+            buff_group = [
+                createAfCheckbox("af24_2", true),
+                createAfLabel("af24_2", "楽園の絶花2"),
+              ];
             if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
             {
-                traitCheckbox.id = traits[1].id;
-                traitCheckbox.value = traits[1].id;
-                traitCheckbox.checked = true;
-
-                traitLabel.htmlFor = traits[1].id;
-                traitLabel.textContent = traits[1].label;
+                buff_group = [
+                    createAfCheckbox("af24_4", true),
+                    createAfLabel("af24_4", "楽園の絶花4 開花系ダメージアップ "),
+                    createAfSelectList("af24_4select", 0, 4, "", "層", 4),
+                    document.createElement("br"),
+                    ];
             }
-
-            artifact_checkbox.appendChild(traitCheckbox);
-            artifact_checkbox.appendChild(traitLabel);
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+              });
         }
 
         else if (selectedImageIds[i] == "25") 
