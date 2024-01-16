@@ -1428,7 +1428,7 @@ function calculate_elmreaction_constdmg(reaction_coeff, status_array, resist, re
   }
   else if (char_propaty[0] == 5)
   {
-    reaction_dmg = reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
+    reaction_dmg = reaction_list[3] * 2 * resist[5] * (1 + reaction_bonus_list[3] + reaction_elm_bunus)
                  + reaction_list[4] * 2 * resist[5] * (1 + reaction_bonus_list[4] + reaction_elm_bunus);
   }
   reaction_dmg *= reaction_coeff;
