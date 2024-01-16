@@ -787,13 +787,33 @@ async function show_artifact()
 
         else if (selectedImageIds[i] == "19") 
         {
+            buff_group = [
+                createAfCheckbox("af19_2", true),
+                createAfLabel("af19_2", "辰砂往生録2"),
+              ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af19_4", true),
+                    createAfLabel("af19_4", "辰砂往生録4 潜光 "),
+                    createAfSelectList("af19_4select", 0, 4, "", "重", 4),
+                    document.createElement("br"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+              });
+        }
+
+        else if (selectedImageIds[i] == "20") 
+        {
             traits = [
                 {
-                id: "af19_2",
+                id: "af20_2",
                 label: "来歆の余響2"
                 },
                 {
-                id: "af19_4",
+                id: "af20_4",
                 label: "来歆の余響4"
                 }
             ];
@@ -821,15 +841,15 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "20") 
+        else if (selectedImageIds[i] == "21") 
         {
             traits = [
                 {
-                id: "af20_2",
+                id: "af21_2",
                 label: "金メッキの夢2"
                 },
                 {
-                id: "af20_4",
+                id: "af21_4",
                 label: "金メッキの夢4"
                 }
             ];
@@ -855,20 +875,20 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af20_4_1text = document.createTextNode("　同じ元素のキャラ数　　");
-                const af20_4_2text = document.createTextNode("　異なる元素のキャラ数　");
+                const af21_4_1text = document.createTextNode("　同じ元素のキャラ数　　");
+                const af21_4_2text = document.createTextNode("　異なる元素のキャラ数　");
             
                 const selectList1 = createSelectList("traitSelect1", 3); // 1つ目のプルダウンリストを生成
                 const selectList2 = createSelectList("traitSelect2", 3); // 2つ目のプルダウンリストを生成
-                selectList1.id = "af20_4_1select";
-                selectList2.id = "af20_4_2select",
+                selectList1.id = "af21_4_1select";
+                selectList2.id = "af21_4_2select",
                 artifact_checkbox.appendChild(traitCheckbox);
                 artifact_checkbox.appendChild(traitLabel);
                 artifact_checkbox.appendChild(document.createElement("br"));
-                artifact_checkbox.appendChild(af20_4_1text);
+                artifact_checkbox.appendChild(af21_4_1text);
                 artifact_checkbox.appendChild(selectList1);
                 artifact_checkbox.appendChild(document.createElement("br"));
-                artifact_checkbox.appendChild(af20_4_2text);
+                artifact_checkbox.appendChild(af21_4_2text);
                 artifact_checkbox.appendChild(selectList2);
             
                 // プルダウンリストを生成する関数
@@ -890,52 +910,16 @@ async function show_artifact()
             }
         }
 
-        else if (selectedImageIds[i] == "21") 
-        {
-            traits = [
-                {
-                id: "af21_2",
-                label: "深林の記憶2"
-                },
-                {
-                id: "af21_4",
-                label: "深林の記憶4"
-                }
-            ];
-            traitCheckbox = document.createElement("input");
-            traitCheckbox.type = "checkbox";
-            traitCheckbox.id = traits[0].id;
-            traitCheckbox.value = traits[0].id;
-            traitCheckbox.checked = true;
-
-            traitLabel = document.createElement("label");
-            traitLabel.htmlFor = traits[0].id;
-            traitLabel.textContent = traits[0].label;
-
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
-            {
-                traitCheckbox.id = traits[1].id;
-                traitCheckbox.value = traits[1].id;
-                traitCheckbox.checked = true;
-
-                traitLabel.htmlFor = traits[1].id;
-                traitLabel.textContent = traits[1].label;
-            }
-
-            artifact_checkbox.appendChild(traitCheckbox);
-            artifact_checkbox.appendChild(traitLabel);
-        }
-
         else if (selectedImageIds[i] == "22") 
         {
             traits = [
                 {
                 id: "af22_2",
-                label: "砂上の楼閣の史話2"
+                label: "深林の記憶2"
                 },
                 {
                 id: "af22_4",
-                label: "砂上の楼閣の史話4"
+                label: "深林の記憶4"
                 }
             ];
             traitCheckbox = document.createElement("input");
@@ -967,11 +951,11 @@ async function show_artifact()
             traits = [
                 {
                 id: "af23_2",
-                label: "楽園の絶花2"
+                label: "砂上の楼閣の史話2"
                 },
                 {
                 id: "af23_4",
-                label: "楽園の絶花4"
+                label: "砂上の楼閣の史話4"
                 }
             ];
             traitCheckbox = document.createElement("input");
@@ -1003,10 +987,46 @@ async function show_artifact()
             traits = [
                 {
                 id: "af24_2",
-                label: "水仙の夢2"
+                label: "楽園の絶花2"
                 },
                 {
                 id: "af24_4",
+                label: "楽園の絶花4"
+                }
+            ];
+            traitCheckbox = document.createElement("input");
+            traitCheckbox.type = "checkbox";
+            traitCheckbox.id = traits[0].id;
+            traitCheckbox.value = traits[0].id;
+            traitCheckbox.checked = true;
+
+            traitLabel = document.createElement("label");
+            traitLabel.htmlFor = traits[0].id;
+            traitLabel.textContent = traits[0].label;
+
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                traitCheckbox.id = traits[1].id;
+                traitCheckbox.value = traits[1].id;
+                traitCheckbox.checked = true;
+
+                traitLabel.htmlFor = traits[1].id;
+                traitLabel.textContent = traits[1].label;
+            }
+
+            artifact_checkbox.appendChild(traitCheckbox);
+            artifact_checkbox.appendChild(traitLabel);
+        }
+
+        else if (selectedImageIds[i] == "25") 
+        {
+            traits = [
+                {
+                id: "af25_2",
+                label: "水仙の夢2"
+                },
+                {
+                id: "af25_4",
                 label: "水仙の夢4"
                 }
             ];
@@ -1032,10 +1052,10 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af24_4text = document.createTextNode("　セット効果：");
+                const af25_4text = document.createTextNode("　セット効果：");
                 const selectList = document.createElement("select");
                 let option;
-                selectList.id = "af24_4select";
+                selectList.id = "af25_4select";
             
                 for (let j = 0; j < 4; j++) 
                 {
@@ -1047,20 +1067,20 @@ async function show_artifact()
 
                 artifact_checkbox.appendChild(traitCheckbox);
                 artifact_checkbox.appendChild(traitLabel);
-                artifact_checkbox.appendChild(af24_4text);
+                artifact_checkbox.appendChild(af25_4text);
                 artifact_checkbox.appendChild(selectList);
             }
         }
 
-        else if (selectedImageIds[i] == "25") 
+        else if (selectedImageIds[i] == "26") 
         {
             traits = [
                 {
-                id: "af25_2",
+                id: "af26_2",
                 label: "花海甘露の光2"
                 },
                 {
-                id: "af25_4",
+                id: "af26_4",
                 label: "花海甘露の光4"
                 }
             ];
@@ -1086,11 +1106,11 @@ async function show_artifact()
                 traitLabel.htmlFor = traits[1].id;
                 traitLabel.textContent = traits[1].label;
 
-                const af25_4text = document.createTextNode("　ダメージバフ：");
+                const af26_4text = document.createTextNode("　ダメージバフ：");
                 const selectList = document.createElement("select");
                 let option;
                 let dmg_buff;
-                selectList.id = "af25_4select";
+                selectList.id = "af26_4select";
             
                 for (let j = 0; j < 6; j++) {
                   option = document.createElement("option");
@@ -1102,28 +1122,9 @@ async function show_artifact()
 
                 artifact_checkbox.appendChild(traitCheckbox);
                 artifact_checkbox.appendChild(traitLabel);
-                artifact_checkbox.appendChild(af25_4text);
+                artifact_checkbox.appendChild(af26_4text);
                 artifact_checkbox.appendChild(selectList);
             }
-        }
-        else if (selectedImageIds[i] == "26") 
-        {
-            buff_group = [
-                createAfCheckbox("af26_2", true),
-                createAfLabel("af26_2", "辰砂往生録2"),
-              ];
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
-            {
-                buff_group = [
-                    createAfCheckbox("af26_4", true),
-                    createAfLabel("af26_4", "辰砂往生録4 潜光 "),
-                    createAfSelectList("af26_4select", 0, 4, "", "重", 4),
-                    document.createElement("br"),
-                    ];
-            }
-            buff_group.forEach(element => {
-                artifact_checkbox.appendChild(element);
-              });
         }
 
         else if (selectedImageIds[i] == "27") 
