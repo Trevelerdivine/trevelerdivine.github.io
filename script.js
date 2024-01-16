@@ -1407,9 +1407,9 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   let phisics_resist = (parseInt(document.getElementById("enemy-phisicsresist").value) - parseInt(document.getElementById("phisicsdebuff").value)) / 100;
   let geo_resonance = document.getElementById("geo_reso");
 
-  if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21)
+  if (selectedImageIds[0] == 22 && selectedImageIds[1] == 22)
   {
-    const deepwoodCheck = document.getElementById("af21_4");
+    const deepwoodCheck = document.getElementById("af22_4");
     if (deepwoodCheck.checked && char_propaty[0] == 5) {
       dendro_resist -= 0.3;
     }

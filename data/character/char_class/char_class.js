@@ -9403,9 +9403,9 @@ class travelergeo {
 function calculate_weapon_basedmg (attack_count, status_array, weapon_rank, base_dmg_buff)
 {
   let base_dmg = base_dmg_buff * attack_count;
-  if (depend_status[4] == 1 && attack_method_index == 0 && selectedImageIds[0] == 19 && selectedImageIds[1] == 19)
+  if (depend_status[4] == 1 && attack_method_index == 0 && selectedImageIds[0] == 20 && selectedImageIds[1] == 20)
   {
-    const buff_check = document.getElementById("af19_4");
+    const buff_check = document.getElementById("af20_4");
     if (buff_check)
     {
       base_dmg += 0.35 * status_array[4] * attack_count;
