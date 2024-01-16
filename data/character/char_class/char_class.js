@@ -9406,7 +9406,7 @@ function calculate_weapon_basedmg (attack_count, status_array, weapon_rank, base
   if (depend_status[4] == 1 && attack_method_index == 0 && selectedImageIds[0] == 20 && selectedImageIds[1] == 20)
   {
     const buff_check = document.getElementById("af20_4");
-    if (buff_check)
+    if (buff_check.checked)
     {
       base_dmg += 0.35 * status_array[4] * attack_count;
     }
