@@ -5513,7 +5513,7 @@ class cyno {
     {
       if (attack_method == 1)
       {
-        basicDmg = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
+        basicDmg = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank, this.base_dmgbuff);
       }
       else
       {
