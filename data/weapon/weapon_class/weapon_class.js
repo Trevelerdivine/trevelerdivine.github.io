@@ -2189,10 +2189,10 @@ class KagurasVerity {
     if (attack_method_index == 3)
     {
       weapon_dmg_buff = (this.weapon_rank + 3) * 0.03 * this.weapon_buff_count;
-    }
-    if (this.weapon_buff_count == 3)
-    {
-      weapon_dmg_buff += (this.weapon_rank + 3) * 0.03
+      if (this.weapon_buff_count == 3)
+      {
+        weapon_dmg_buff += (this.weapon_rank + 3) * 0.03
+      }
     }
     return weapon_dmg_buff;
   }
