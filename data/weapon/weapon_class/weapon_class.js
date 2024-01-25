@@ -2186,7 +2186,10 @@ class KagurasVerity {
 
   calculate_weapon_fixed_dmg_buff(fixstatus,status) {
     let weapon_dmg_buff = 0;
-    weapon_dmg_buff = (this.weapon_rank + 3) * 0.03 * this.weapon_buff_count;
+    if (attack_method_index == 3)
+    {
+      weapon_dmg_buff = (this.weapon_rank + 3) * 0.03 * this.weapon_buff_count;
+    }
     if (this.weapon_buff_count == 3)
     {
       weapon_dmg_buff += (this.weapon_rank + 3) * 0.03
