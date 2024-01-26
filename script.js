@@ -1745,7 +1745,7 @@ async function monte_carlo_calculate()
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
 
-    for (let i = 0; i < 10000; i++)
+    for (let i = 0; i < 100000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
