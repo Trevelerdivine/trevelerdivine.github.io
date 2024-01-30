@@ -638,7 +638,7 @@ function af26_4()
     let checkbox = document.getElementById("af26_4");
     let status_buff = [0, 0, 0, 0, 0, 0, 0, 0]; 
     const af26_4select = document.getElementById("af26_4select");
-    const buff_count = af25_4select.value;
+    const buff_count = af26_4select.value;
     let af26_4dmgbuff = 0;
     if (checkbox.checked && attack_method >= 16 && attack_method <= 25)
     {
