@@ -2,18 +2,19 @@
 <html lang="ja" dir="ltr">
   <head>
     <meta charset="UTF-8" name="viewport"  content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="jB7aX3_1kB4tfFr8TeVBvbG2NtdqzOZnIV7fSZVEEEg" />
     <title>原神最適化スコア計算機</title>
     <link rel="stylesheet" href="../data/css/style.css">
-    <script src="../script.js"></script>
-    <script src="../data/character/char_class/char_class.js"></script>
+    <script src="../script/script2.js"></script>
+    <script src="../data/character/char_class/char_class2.js"></script>
     <script src="../data/weapon/weapon_class/weapon_class.js"></script>
     <script src="../data/artifact/af_class.js"></script>
-    <script src="../show_char_statsform.js"></script>
-    <script src="../show_weapon_statsform.js"></script>
+    <script src="../script/show_char_statsform2.js"></script>
+    <script src="../script/show_weapon_statsform2.js"></script>
     <script src="../show_artifact.js"></script>
-    <script src="../show_attackmethod.js"></script>
+    <script src="../script/show_attackmethod2.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <style>
       footer {
         padding: 5px;
@@ -27,13 +28,13 @@
   <body>
   <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
   <label for="drawer-toggle" id="drawer-toggle-label"></label>
-  <header style="font-size: 24px;">聖遺物最適化スコア計算機</header>
+  <header style="font-size: 24px;"><a href="../index.html">聖遺物最適化スコア計算機</a></header>
   <nav id="drawer">
     <ul>
-      <li><a href="#">・使い方</a></li>
-      <li><a href="#">・スコア固定最適化計算機</a></li>
+      <li><a href="../index.html">・最適化スコア計算機</a></li>
+      <li><a href="../HTML/index3.html">・使い方</a></li>
       <li><a href="../HTML/policy.html">・プライバシーポリシー</a></li>
-      <li><a href="#">・バグ報告</a></li>
+      <li><a href="../HTML/index4.html">・お問い合わせ</a></li>
     </ul>
   </nav>
   <div id="page-content">
@@ -146,6 +147,7 @@
                           <!--<div class="tierDendro"><img id="60" class="tier-image3" src="../character/yaoyao.webp"></div>-->
                           <!--<div class="tierDendro"><img id="61" class="tier-image3" src="../character/collei.webp"></div>-->
                           <div class="tierDendro"><img id="62" class="tier-image3" src="../character/travelardendro.png"></div>
+                          <div class="tierGeo"><img id="75" class="tier-image3" src="../character/Navia.webp"></div>
                           <div class="tierGeo"><img id="63" class="tier-image3" src="../character/aratakiitto.webp"></div>
                           <div class="tierGeo"><img id="64" class="tier-image3" src="../character/albedo.jpg"></div>
                           <div class="tierGeo"><img id="65" class="tier-image3" src="../character/zhongli.webp"></div>
@@ -231,12 +233,14 @@
                           <div class="sword"><img id="32" class="weapon-image" src="../weapon_img/Sword/TravelersHandySword.webp"></div>
                           <div class="sword"><img id="33" class="weapon-image" src="../weapon_img/Sword/HarbingerofDawn.webp"></div>
                           <div class="sword"><img id="34" class="weapon-image" src="../weapon_img/Sword/CoolSteel.webp"></div>
+                          <div class="claymore"><img id="156" class="weapon-image" src="../weapon_img/Claymore/Verdict.webp"></div>
                           <div class="claymore"><img id="35" class="weapon-image" src="../weapon_img/Claymore/BeaconoftheReedSea.webp"></div>
                           <div class="claymore"><img id="36" class="weapon-image" src="../weapon_img/Claymore/RedhornStonethresher.webp"></div>
                           <div class="claymore"><img id="37" class="weapon-image" src="../weapon_img/Claymore/SongofBrokenPines.webp"></div>
                           <div class="claymore"><img id="38" class="weapon-image" src="../weapon_img/Claymore/TheUnforged.webp"></div>
                           <div class="claymore"><img id="39" class="weapon-image" src="../weapon_img/Claymore/WolfsGravestone.webp"></div>
                           <div class="claymore"><img id="40" class="weapon-image" src="../weapon_img/Claymore/SkywardPride.webp"></div>
+                          <div class="claymore"><img id="157" class="weapon-image" src="../weapon_img/Claymore/UltimateTyrantSuperDevilSword.webp"></div>
                           <div class="claymore"><img id="41" class="weapon-image" src="../weapon_img/Claymore/PortablePowerSaw.webp"></div>
                           <div class="claymore"><img id="42" class="weapon-image" src="../weapon_img/Claymore/TalkingStick.webp"></div>
                           <div class="claymore"><img id="43" class="weapon-image" src="../weapon_img/Claymore/TidalShadow.webp"></div>
@@ -320,6 +324,7 @@
                           <div class="bow"><img id="121" class="weapon-image" src="../weapon_img/Bow/RecurveBow.webp"></div>
                           <div class="bow"><img id="122" class="weapon-image" src="../weapon_img/Bow/SharpshootersOath.webp"></div>
                           <div class="bow"><img id="123" class="weapon-image" src="../weapon_img/Bow/RavenBow.webp"></div>
+                          <div class="catalyst"><img id="154" class="weapon-image" src="../weapon_img/Catalyst/CashflowSupervision.webp"></div>
                           <div class="catalyst"><img id="124" class="weapon-image" src="../weapon_img/Catalyst/TomeoftheEternalFlow.webp"></div>
                           <div class="catalyst"><img id="125" class="weapon-image" src="../weapon_img/Catalyst/JadefallsSplendor.webp"></div>
                           <div class="catalyst"><img id="126" class="weapon-image" src="../weapon_img/Catalyst/TulaytullahsRemembrance.webp"></div>
@@ -441,13 +446,17 @@
           <div class="window">
             <div class="table-container">
               <div class="flex-container1">
-                <div class="tier-cell"><img id="25" class="tier-image" src="../artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 25)"></div>
-                <div class="tier-cell"><img id="24" class="tier-image" src="../artifact/旅中の花.png" onclick="changeImageClass(this, 24)"></div>
-                <div class="tier-cell"><img id="23" class="tier-image" src="../artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 23)"></div>
-                <div class="tier-cell"><img id="22" class="tier-image" src="../artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 22)"></div>
-                <div class="tier-cell"><img id="21" class="tier-image" src="../artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 20)"></div>
-                <div class="tier-cell"><img id="20" class="tier-image" src="../artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 19)"></div>
-                <div class="tier-cell"><img id="19" class="tier-image" src="../artifact/魂香の花_5.png" onclick="changeImageClass(this, 21)"></div>
+                <div class="tier-cell"><img id="29" class="tier-image" src="../artifact/残響の森で囁かれる夜話_5.webp" onclick="changeImageClass(this, 29)"></div>
+                <div class="tier-cell"><img id="28" class="tier-image" src="../artifact/ファントムハンター_5.webp" onclick="changeImageClass(this, 28)"></div>
+                <div class="tier-cell"><img id="27" class="tier-image" src="../artifact/黄金の劇団_5.webp" onclick="changeImageClass(this, 27)"></div>
+                <div class="tier-cell"><img id="26" class="tier-image" src="../artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 26)"></div>
+                <div class="tier-cell"><img id="25" class="tier-image" src="../artifact/旅中の花.png" onclick="changeImageClass(this, 25)"></div>
+                <div class="tier-cell"><img id="24" class="tier-image" src="../artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 24)"></div>
+                <div class="tier-cell"><img id="23" class="tier-image" src="../artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 23)"></div>
+                <div class="tier-cell"><img id="22" class="tier-image" src="../artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 22)"></div>
+                <div class="tier-cell"><img id="21" class="tier-image" src="../artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 21)"></div>
+                <div class="tier-cell"><img id="20" class="tier-image" src="../artifact/魂香の花_5.png" onclick="changeImageClass(this, 20)"></div>
+                <div class="tier-cell"><img id="19" class="tier-image" src="../artifact/辰砂往生録_5.webp" onclick="changeImageClass(this, 19)"></div>
                 <div class="tier-cell"><img id="18" class="tier-image" src="../artifact/栄花の期_5.png" onclick="changeImageClass(this, 18)"></div>
                 <div class="tier-cell"><img id="17" class="tier-image" src="../artifact/威厳の鰐_5.png" onclick="changeImageClass(this, 17)"></div>
                 <div class="tier-cell"><img id="16" class="tier-image" src="../artifact/覇絆の花_5.png" onclick="changeImageClass(this, 16)"></div>
@@ -493,6 +502,7 @@
                 </tr>
               </thead>
               <tbody>
+                <!--
                 <tr id="hp_form">
                   <td><label for="af_hp">HP</label></td>
                   <td>
@@ -549,6 +559,31 @@
                     </div>
                   </td>
                 </tr>
+                -->
+                <tr id="initial_score_form">
+                    <td><label for="initial_af_score">聖遺物スコア</label></td>
+                    <td>
+                      <div>
+                        <input type="number" id="initial_af_score" required min="0" name="initial_af_score" placeholder="聖遺物スコア">
+                      </div>
+                    </td>
+                  </tr>
+                <tr id="final_score_form">
+                <td><label for="final_af_score">終了スコア</label></td>
+                <td>
+                    <div>
+                    <input type="number" id="final_af_score" required min="0" name="final_af_score" placeholder="終了スコア">
+                    </div>
+                </td>
+                </tr>
+                <tr id="dlt_score_form">
+                    <td><label for="dlt_af_score">スコア間隔</label></td>
+                    <td>
+                        <div>
+                        <input type="number" id="dlt_af_score" required min="0" name="dlt_af_score" placeholder="スコア間隔">
+                        </div>
+                    </td>
+                    </tr>
               </tbody>
             </table>
           </form>
@@ -560,9 +595,9 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th>静的バフ</th>
+                  <th>固定値バフ</th>
                   <th></th>
-                  <th>動的バフ</th>
+                  <th>変動バフ</th>
                 </tr>
               </thead>
               <tbody>
@@ -944,99 +979,6 @@
           </div>
         </div>
         <br>
-        <div class = "tablestyle1">
-          <table  class="status_table" style="table-layout: fixed">
-            <colgroup>
-              <col style="width: 25%;">
-              <col style="width: 22%;">
-              <col style="width: 14%;">
-              <col style="width: 17%;">
-            </colgroup>
-            <thead>
-              <tr>
-                <th></th>
-                <th>基礎ステータス</th>
-                <th>バフ</th>
-                <th>聖遺物バフ</th>
-                <th>最終ステータス</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th style="text-align: left;">
-                  <span>HP</span>
-                </th>
-                <td id = table_base_hp>-</td>
-                <td id = table_buff_hp>-</td>
-                <td id = table_af_hp>-</td>
-                <td id = table_final_hp>-</td>
-              </tr>
-              <tr>
-                <th style="text-align: left;">
-                  <span>攻撃力</span>
-                </th>
-                <td id = table_base_attck>-</td>
-                <td id = table_buff_attck>-</td>
-                <td id = table_af_attck>-</td>
-                <td id = table_final_attck>-</td>
-              </tr>
-              <tr>
-                <th style="text-align: left;">
-                  <span>防御力</span>
-                </th>
-                <td id = table_base_deff>-</td>
-                <td id = table_buff_deff>-</td>
-                <td id = table_af_deff>-</td>
-                <td id = table_final_deff>-</td>
-              </tr>
-              <tr>
-                <th style="text-align: left;">
-                  <span>元素熟知</span>
-                </th>
-                <td id = table_base_elm>-</td>
-                <td id = table_buff_elm>-</td>
-                <td id = table_af_elm>-</td>
-                <td id = table_final_elm>-</td>
-              </tr>
-              <tr>
-                <th style="text-align: left;">
-                  <span>元素チャージ効率</span>
-                </th>
-                <td id = table_base_elm_charge>-</td>
-                <td id = table_buff_elm_charge>-</td>
-                <td id = table_af_elm_charge>-</td>
-                <td id = table_final_elm_charge>-</td>
-              </tr>
-              <tr>
-                <th style="text-align: left;">
-                  <span>会心率</span>
-                </th>
-                <td id = table_base_cr>-</td>
-                <td id = table_buff_cr>-</td>
-                <td id = table_af_cr>-</td>
-                <td id = table_final_cr>-</td>
-              </tr>
-              <tr>
-                <th style="text-align: left;">
-                  <span>会心ダメージ</span>
-                </th>
-                <td id = table_base_cd>-</td>
-                <td id = table_buff_cd>-</td>
-                <td id = table_af_cd>-</td>
-                <td id = table_final_cd>-</td>
-              </tr>
-              <tr>
-                <th style="text-align: left;">
-                  <span>ダメージバフ</span>
-                </th>
-                <td id = table_base_dmg_buff>-</td>
-                <td id = table_buff_dmg_buff>-</td>
-                <td id = table_af_dmg_buff>-</td>
-                <td id = table_final_dmg_buff>-</td>
-              </tr>
-            </tbody>
-          </table> 
-        </div>
       </div>
     </div>
     <br>
@@ -1059,13 +1001,12 @@
           <!-- 表1の内容 -->
         <table  class="status_table" style="table-layout: fixed">
           <colgroup>
-            <col style="width: 30%;">
+            <col style="width: 35%;">
             <col style="width: 35%;">
           </colgroup>
           <thead>
             <tr>
               <th></th>
-              <th>自己ステータス</th>
               <th>最適化ステータス</th>
             </tr>
           </thead>
@@ -1074,56 +1015,48 @@
               <th rowspan="1" style="text-align: left;">
                 <span>HP</span>
               </th>
-              <td id = my_result_hp>-</td>
               <td id = appro_result_hp>-</td>
             </tr>
             <tr>
               <th rowspan="1" style="text-align: left;">
                 <span>攻撃力</span>
               </th>
-              <td id = my_result_attck>-</td>
               <td id = appro_result_attck>-</td>
             </tr>
             <tr>
               <th rowspan="1" style="text-align: left;">
                 <span>防御力</span>
               </th>
-              <td id = my_result_deff>-</td>
               <td id = appro_result_deff>-</td>
             </tr>
             <tr>
               <th rowspan="1" style="text-align: left;">
                 <span>元素熟知</span>
               </th>
-              <td id = my_result_elm>-</td>
               <td id = appro_result_elm>-</td>
             </tr>
             <tr>
               <th rowspan="1" style="text-align: left;">
                 <span>元素チャージ効率</span>
               </th>
-              <td id = my_result_elm_charge>-</td>
               <td id = appro_result_elm_charge>-</td>
             </tr>
             <tr>
               <th rowspan="1" style="text-align: left;">
                 <span>会心率</span>
               </th>
-              <td id = my_result_cr>-</td>
               <td id = appro_result_cr>-</td>
             </tr>
             <tr>
               <th rowspan="1" style="text-align: left;">
                 <span>会心ダメージ</span>
               </th>
-              <td id = my_result_cd>-</td>
               <td id = appro_result_cd>-</td>
             </tr>
             <tr>
               <th rowspan="1" style="text-align: left;">
                 <span>ダメージバフ</span>
               </th>
-              <td id = my_result_dmg_buff>-</td>
               <td id = appro_result_dmg_buff>-</td>
             </tr>
           </tbody>
@@ -1134,17 +1067,14 @@
           <!-- 表2の内容 -->
         <table  class="status_table" style="table-layout: fixed">
         <colgroup>
-          <col style="width: 21%;">
-          <col style="width: 19%;">
-          <col style="width: 19%;">
-          <col style="width: 19%;">
+          <col style="width: 18%;">
+          <col style="width: 25%;">
+          <col style="width: 25%;">
         </colgroup>
         <thead>
           <tr>
             <th></th>
-            <th>自己スコア分布</th>
             <th>最適スコア分布</th>
-            <th>聖遺物スコア差</th>
             <th>サブステ伸び回数</th>
           </tr>
         </thead>
@@ -1153,72 +1083,56 @@
             <th rowspan="1" style="text-align: left;">
               <span>聖遺物スコア</span>
             </th>
-            <td id = my_af_score>-</td>
             <td id = appro_af_score>-</td>
-            <td id = dlt_af_score>-</td>
             <td id = count_af_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>HP</span>
             </th>
-            <td id = my_hp_score>-</td>
             <td id = appro_hp_score>-</td>
-            <td id = dlt_hp_score>-</td>
             <td id = count_hp_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>攻撃力</span>
             </th>
-            <td id = my_attck_score>-</td>
             <td id = appro_attck_score>-</td>
-            <td id = dlt_attck_score>-</td>
             <td id = count_attck_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>防御力</span>
             </th>
-            <td id = my_deff_score>-</td>
             <td id = appro_deff_score>-</td>
-            <td id = dlt_deff_score>-</td>
             <td id = count_deff_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>元素熟知</span>
             </th>
-            <td id = my_elm_score>-</td>
             <td id = appro_elm_score>-</td>
-            <td id = dlt_elm_score>-</td>
             <td id = count_elm_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>元素チャージ効率</span>
             </th>
-            <td id = my_elm_charge_score>-</td>
             <td id = appro_elm_charge_score>-</td>
-            <td id = dlt_elm_charge_score>-</td>
             <td id = count_elm_charge_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>会心率</span>
             </th>
-            <td id = my_cr_score>-</td>
             <td id = appro_cr_score>-</td>
-            <td id = dlt_cr_score>-</td>
             <td id = count_cr_score>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>会心ダメージ</span>
             </th>
-            <td id = my_cd_score>-</td>
             <td id = appro_cd_score>-</td>
-            <td id = dlt_cd_score>-</td>
             <td id = count_cd_score>-</td>
           </tr>
         </tbody>
@@ -1231,14 +1145,11 @@
           <col style="width: 18%;">
           <col style="width: 23%;">
           <col style="width: 23%;">
-          <col style="width: 18%;">
         </colgroup>
         <thead>
           <tr>
             <th></th>
-            <th>自己サブステータス分布</th>
             <th>最適サブステータス分布</th>
-            <th>サブステータス差</th>
             <th>サブステ伸び回数</th>
           </tr>
         </thead>
@@ -1247,72 +1158,56 @@
             <th rowspan="1" style="text-align: left;">
               <span>聖遺物スコア</span>
             </th>
-            <td id = my_af_score3>-</td>
             <td id = appro_af_score3>-</td>
-            <td id = dlt_af_score3>-</td>
             <td id = count_af_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>HP</span>
             </th>
-            <td id = my_af_hp>-</td>
             <td id = appro_af_hp>-</td>
-            <td id = dlt_af_hp>-</td>
             <td id = count_hp_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>攻撃力</span>
             </th>
-            <td id = my_af_attck>-</td>
             <td id = appro_af_attck>-</td>
-            <td id = dlt_af_attck>-</td>
             <td id = count_attck_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>防御力</span>
             </th>
-            <td id = my_af_deff>-</td>
             <td id = appro_af_deff>-</td>
-            <td id = dlt_af_deff>-</td>
             <td id = count_deff_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>元素熟知</span>
             </th>
-            <td id = my_af_elm>-</td>
             <td id = appro_af_elm>-</td>
-            <td id = dlt_af_elm>-</td>
             <td id = count_elm_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>元素チャージ効率</span>
             </th>
-            <td id = my_af_elm_charge>-</td>
             <td id = appro_af_elm_charge>-</td>
-            <td id = dlt_af_elm_charge>-</td>
             <td id = count_elm_charge_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>会心率</span>
             </th>
-            <td id = my_af_cr>-</td>
             <td id = appro_af_cr>-</td>
-            <td id = dlt_af_cr>-</td>
             <td id = count_cr_score3>-</td>
           </tr>
           <tr>
             <th rowspan="1" style="text-align: left;">
               <span>会心ダメージ</span>
             </th>
-            <td id = my_af_cd>-</td>
             <td id = appro_af_cd>-</td>
-            <td id = dlt_af_cd>-</td>
             <td id = count_cd_score3>-</td>
           </tr>
         </tbody>
@@ -1336,7 +1231,7 @@
   let afpopupImages;
   let weaponPopupImage;
   let char_propaty = [5,0];
-  let selectedImageIds = [21, 21];
+  let selectedImageIds = [22, 22];
   let selectedCharId = "56";
   let selectedWeaponId = "127";
   let weapon_type_index = 4;
@@ -1363,13 +1258,17 @@
   "追憶のしめ縄",
   "絶縁の旗印",
   "華館夢醒形骸記",
+  "辰砂往生録",
   "来歆の余響",
   "金メッキの夢",
   "深林の記憶",
   "砂上の楼閣の史話",
   "楽園の絶花",
   "水仙の夢",
-  "花海甘露の光"
+  "花海甘露の光",
+  "黄金の劇団",
+  "ファントムハンター",
+  "残響の森で囁かれる夜話"
 ];
 
   window.addEventListener("DOMContentLoaded", function() {
@@ -1379,18 +1278,7 @@
     showOption("option1", "parameterbutton1");
     toggleweapontype(4);
   });
-  document.getElementById('status_setting').addEventListener('input', calculate_table_status);
-  document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
-  document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
-  document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
-  document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
-  document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
-  document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
-  document.getElementById('char_talent').addEventListener('change', calculate_table_status);
-  document.getElementById('option2').addEventListener('change', calculate_table_status);
-  document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
-  document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
 
 
   function showTable(tableId, buttonId)
@@ -1459,7 +1347,6 @@
       image.classList.add("tier-image2");
       clickedImages.push(image);
     }
-    elementalcharge_reaction_add();
   }
 
   async function handleImageSelection(images, indexDisplay)
@@ -1594,7 +1481,6 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     await char_afweapon_setting();
     await calculate_depend_status();
     show_weapon_statsform();
-    calculate_table_status();
     toggleweapontype(weapon_type_index);
     indexDisplay1.textContent = DisplayCharName[selectedCharId];
     indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
@@ -1628,7 +1514,6 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
       checkbox.checked = false;
       await calculate_depend_status()
       show_weapon_statsform();
-      calculate_table_status();
     }
     for (let i = 0; i < images.length; i++)
     {
@@ -1696,7 +1581,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   handleImageSelection(af_overlayImages, indexDisplay);
   
   // 最初の2つの画像を選択済みにする処理
-  const initialImage = af_overlayImages[4];
+  const initialImage = af_overlayImages[7];
   changeImageClass(initialImage);
   changeImageClass(initialImage);
   
