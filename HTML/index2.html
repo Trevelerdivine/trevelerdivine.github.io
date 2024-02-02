@@ -493,10 +493,12 @@
     <div class="wrapper">
       <div>
         <div id="status_setting">
-          <form class="af-buff-form">
+          <form class="af-buff-form" onsubmit="return false;">
             <table>
               <thead>
                 <tr>
+                  <th></th>
+                  <th>スコア入力</th>
                 </tr>
               </thead>
               <tbody>
@@ -1279,7 +1281,11 @@
     toggleweapontype(4);
   });
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
-
+  document.getElementById('myForm').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+    }
+  });
 
   function showTable(tableId, buttonId)
   {
