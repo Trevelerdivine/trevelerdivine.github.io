@@ -59,7 +59,7 @@ async function show_char_statsform()
         createLabel("maxMasteryLabel", "ナヒーダを除くチーム内最大熟知"),
         document.createElement("br"),
         createLabel("element-mastery-label", "　元素熟知："),
-        createInputWithUnit("text", "element-mastery", "800",""),
+        createInputWithUnit("text", "element-mastery", "200",""),
         document.createElement("br")
       ];
     

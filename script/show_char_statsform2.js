@@ -56,16 +56,10 @@ async function show_char_statsform()
         createTextNode("　炎元素キャラ数："),
         createSelectList("nahida_Qpyro",0, 2, "", "人", 0),
         document.createElement("br"),
-        createLabel("maxMasteryLabel", "チーム内最大熟知キャラ"),
-        document.createElement("br"),
-        createRadio("char_type", "nahida", true, "nahida-label", "ナヒーダ"),
-        createLabel("nahida-label", "ナヒーダ"),
-        document.createElement("br"),
-        createRadio("char_type", "other", false, "other-label", "その他"),
-        createLabel("other-label", "その他"),
+        createLabel("maxMasteryLabel", "ナヒーダを除くチーム内最大熟知"),
         document.createElement("br"),
         createLabel("element-mastery-label", "　元素熟知："),
-        createInputWithUnit("text", "element-mastery", "800",""),
+        createInputWithUnit("text", "element-mastery", "200",""),
         document.createElement("br")
       ];
     
