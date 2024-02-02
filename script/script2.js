@@ -1739,10 +1739,6 @@ async function monte_carlo_calculate()
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    if (af_score > final_af_score)
-    {
-      break;
-    }
     for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
