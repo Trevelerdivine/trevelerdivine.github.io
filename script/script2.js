@@ -1677,7 +1677,6 @@ async function monte_carlo_calculate()
     document.getElementById("response").innerHTML = response;
     return response;
   }
-  af_score -= dlt_af_score;
   const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
@@ -1740,7 +1739,6 @@ async function monte_carlo_calculate()
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    af_score += dlt_af_score
     if (af_score > final_af_score)
     {
       break;
@@ -1948,6 +1946,7 @@ async function monte_carlo_calculate()
     //let result = "<br>" + "最適化聖遺物スコア： "+ af_score + "," + output_exp_dmg;
     let result = "," + output_exp_dmg;
     document.getElementById("result").innerHTML += result;
+    break;
   }
 
   calculationMessage.style.visibility = "hidden";
