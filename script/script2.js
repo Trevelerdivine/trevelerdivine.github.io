@@ -1668,9 +1668,9 @@ async function monte_carlo_calculate()
   //let my_exp_dmg = my_result_status[8];
   //let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let af_score = parseFloat(document.getElementById("initial_af_score").value);
-  let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
-  let final_af_score = parseFloat(document.getElementById("final_af_score").value);
-  if (af_score > final_af_score || af_score < 0 || dlt_af_score < 0 || final_af_score < 0 || !Number.isFinite(af_score))
+  //let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
+  //let final_af_score = parseFloat(document.getElementById("final_af_score").value);
+  if ( af_score < 0  || af_score >350 || !Number.isFinite(af_score))
   {
     calculationMessage.style.visibility = "hidden";
     response = "スコアを正しく入力してください。"
