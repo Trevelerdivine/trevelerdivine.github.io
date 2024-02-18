@@ -2,6 +2,9 @@
   margin-left: 30px;
 }
 
+body {
+  padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
+}
 
 .tablestyle {
   display: none;
@@ -882,6 +885,5 @@ text-align: center;
     height: 320px;
     margin: 30px auto 0; /* 上側に20pxの空白を追加して左右中央に配置 */
     text-align: center; /* 中央揃え */
-}
-
+  }
 }
