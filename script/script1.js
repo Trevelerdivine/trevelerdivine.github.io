@@ -2278,6 +2278,93 @@ async function monte_carlo_calculate()
   document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
+  create_radarchart(depend_status, my_af_score_distribution, old_score_distribution);
   console.log(n_count);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+}
+
+function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
+  let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
+  let itemList = [];
+  let myData = [];
+  let TheoreticalData = [];
+
+  for (let i = 0; i < 7; i++) {
+      if (depend_index[i] == 1) {
+          itemList.push(statusList[i]);
+          myData.push(1 + (myStatus[i] - TheoreticalStatus[i]) / 100);
+          TheoreticalData.push(1);
+      }
+  }
+
+  let maxElement = Math.max(...myData);
+  let maxborder = 0;
+  if (maxElement < 1.4)
+  {
+    maxborder = 1.4;
+  }
+  else
+  {
+    maxborder = 2;
+  }
+
+  let ctx = document.getElementById("myChart");
+
+  // 既存のチャートを削除する
+  if (window.myChart instanceof Chart) {
+      window.myChart.destroy();
+  }
+
+  // 新しいチャートを作成する
+  window.myChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+          labels: itemList,
+          datasets: [
+              {
+                  label: "ステータスバランス",
+                  backgroundColor: "rgba(51,255,51,0.5)",
+                  borderColor: "rgba(51,255,51,1)",
+                  pointBackgroundColor: "rgba(51,255,51,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(51,255,51,1)",
+                  hitRadius: 5,
+                  data: myData
+              },
+              {
+                  label: "理論値",
+                  backgroundColor: "rgba(255,51,51,0.5)",
+                  borderColor: "rgba(255,51,51,1)",
+                  pointBackgroundColor: "rgba(255,51,51,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(255,51,51,1)",
+                  hitRadius: 5,
+                  data: TheoreticalData
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scale: {
+              ticks: {
+                  beginAtZero: true,
+                  min: 0,
+                  stepSize: 0.2,
+                  max: maxborder,
+              },
+              pointLabels: {
+                  fontSize: 10
+              }
+          },
+          legend: {
+              fontSize: 10,
+              labels: {
+                  fontSize: 14,
+              }
+          }
+      }
+  });
 }
