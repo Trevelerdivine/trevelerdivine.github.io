@@ -2288,11 +2288,20 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
   let itemList = [];
   let myData = [];
   let TheoreticalData = [];
+  let dltScore = 0
 
   for (let i = 0; i < 7; i++) {
       if (depend_index[i] == 1) {
           itemList.push(statusList[i]);
-          myData.push(1 + (myStatus[i] - TheoreticalStatus[i]) / 100);
+          dltScore =  1 + (myStatus[i] - TheoreticalStatus[i]) / 100;
+          if (dltScore > 0 )
+          {
+            myData.push(dltScore);
+          }
+          else
+          {
+            myData.push(0);
+          }
           TheoreticalData.push(1);
       }
   }
