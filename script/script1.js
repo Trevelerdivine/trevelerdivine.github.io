@@ -2288,13 +2288,13 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
   let itemList = [];
   let myData = [];
   let TheoreticalData = [];
-  let dltScore = 0
+  let dltScore = 0;
 
   for (let i = 0; i < 7; i++) {
       if (depend_index[i] == 1) {
           itemList.push(statusList[i]);
-          dltScore =  1 + (myStatus[i] - TheoreticalStatus[i]) / 100;
-          if (dltScore > 0 )
+          dltScore =  100 + (myStatus[i] - TheoreticalStatus[i]);
+          if (dltScore > 0)
           {
             myData.push(dltScore);
           }
@@ -2302,19 +2302,19 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
           {
             myData.push(0);
           }
-          TheoreticalData.push(1);
+          TheoreticalData.push(100);
       }
   }
 
   let maxElement = Math.max(...myData);
   let maxborder = 0;
-  if (maxElement < 1.4)
+  if (maxElement < 140)
   {
-    maxborder = 1.4;
+    maxborder = 140;
   }
   else
   {
-    maxborder = 2;
+    maxborder = 200;
   }
 
   let ctx = document.getElementById("myChart");
@@ -2361,7 +2361,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
               ticks: {
                   beginAtZero: true,
                   min: 0,
-                  stepSize: 0.2,
+                  stepSize: 20,
                   max: maxborder,
               },
               pointLabels: {
