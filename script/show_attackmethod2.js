@@ -592,6 +592,81 @@ async function show_attack_method()
       });
     }
   }
+  else if (selectedCharId == "76")
+  {
+    if (attack_method == 1)
+    {
+      options = [
+        { text: "１段目", value: "0", checked: true },
+        { text: "２段目", value: "1" },
+        { text: "３段目", value: "2" },
+        { text: "４段目", value: "3" },
+      ];
+    }
+    else if (attack_method == 6)
+    {
+      elementsToAddToCharTalent = [
+        createLabel("gaming_count1", "　連続重撃ヒット回数："),
+        createSelectList("gaming_count1", 0, 20, "", "回", 10),
+        document.createElement("br"),
+        createLabel("gaming_count2", "　重撃フィニッシュヒット回数："),
+        createSelectList("gaming_count2", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsToAddToCharTalent.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+    }
+    else if (attack_method == 11)
+    {
+      gaming_talent = [
+        createCheckbox("gaming_talent2", true),
+        createLabel("gaming_talent2", "固有天賦2：HP50%以上"),
+        document.createElement("br"),
+      ];
+      gaming_talent.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
+      traits = [
+        createLabel("gaming_attack_count", "　落下攻撃・踏雲献瑞ヒット回数："),
+        createSelectList("gaming_attack_count", 0, 5, "", "回", 5),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("gaming_react_count", "　落下攻撃・踏雲献瑞反応回数："),
+        createSelectList("gaming_react_count", 0, 5, "", "回", 5),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("gaming_attack_count", "　燦炎金猊の舞ヒット回数："),
+        createSelectList("gaming_attack_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      traits = [
+        createLabel("gaming_react_count", "　燦炎金猊の舞反応回数："),
+        createSelectList("gaming_react_count", 0, 1, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+  }
   else if (selectedCharId == "6")
   {
     const yanfei_text = createTextNode("　丹火の印：")

@@ -16,7 +16,7 @@ const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディル
                             "北斗","レザー","リサ","雷旅人","放浪者","楓原万葉 ","魈","ウェンティ","ジン","ファルザン",
                             "鹿野院平蔵","早柚","スクロース","風旅人","白朮","アルハイゼン","ナヒーダ","ティナリ","綺良々","カーヴェ",
                             "ヨォーヨ","コレイ","草旅人","荒瀧一斗","アルベド","鍾離","雲菫","ゴロー","ノエル","凝光",
-                            "岩旅人", "リネ", "ヌヴィレット", "リオセスリ", "フリーナ", "ナヴィア"
+                            "岩旅人", "リネ", "ヌヴィレット", "リオセスリ", "フリーナ", "ナヴィア", "嘉明", "閑雲"
 ];
 const DisplayWeaponName = [ "萃光の裁葉", "聖顕の鍵", "波乱月白経津", "霧切の廻光", "蒼古なる自由への誓い", "磐岩結緑", "斬山の刃", "天空の刃", "風鷹剣", "船渠剣",
                             "狼牙", "サーンドルの渡し守", "海淵のフィナーレ", "東花坊時雨", "サイフォスの月明かり", "原木刀", "籠釣瓶一心", "シナバースピンドル", "天目影打", "ダークアレイの閃光",
@@ -42,7 +42,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "beidou","razor","lisa","travelarelectro","wanderer","kazuhakaedehara","xiao","venti","jean","faruzan",
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo",
-                   "Lyney", "Neuvillette", "Wriothesley", "Furina", "Navia"
+                   "Lyney", "Neuvillette", "Wriothesley", "Furina", "Navia", "gaming", "Xianyun"
                   ];
 const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
                       "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
@@ -383,6 +383,9 @@ async function create_char_instance(base_status, parameter) {
       break;
     case "4":
       char_instance = new diluc(base_status, parameter);
+      break;
+    case "76":
+      char_instance = new gaming(base_status, parameter);
       break;
     case "6":
       char_instance = new yanfei(base_status, parameter);
