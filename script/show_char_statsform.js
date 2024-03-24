@@ -355,6 +355,42 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "76")
+    {
+      traits = [
+        { id: "traitCheckbox2", label: "第2重：攻撃力+20%" },
+        { id: "traitCheckbox6", label: "第6重：瑞獣登楼の落下攻撃・踏雲献瑞の会心率+20%、会心ダメージ+40%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃（1ループ）", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "スキル（瑞獣登楼）", value: "11" },
+        { text: "元素爆発（燦炎金猊の舞）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
     else if (selectedCharId == "6")
     {
       traits = [
