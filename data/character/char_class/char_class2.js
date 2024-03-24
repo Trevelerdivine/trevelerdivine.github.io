@@ -1402,7 +1402,7 @@ class Lyney {
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/gaming.json");
+      const response = await fetch("../data/character/char_data/gaming.json");
       const data = await response.json();
   
       if (this.char_constellations > 1)
