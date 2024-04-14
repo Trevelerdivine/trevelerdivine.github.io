@@ -1635,176 +1635,12 @@ async function import_char_parameter()
   return parameter;
 }
 
-async function DefineMainStatus(DependStatusList) {
-  let MainStatusList = [];
-  let ClockMainStatus = [];
-  let GobletMainStatus = [];
-  let CircletMainStatus = [];
-
-  if (DependStatusList[0] == 1) {
-    ClockMainStatus.push(0);
-    GobletMainStatus.push(0);
-    CircletMainStatus.push(0);
-  } 
-  if (DependStatusList[1] == 1) {
-    ClockMainStatus.push(1);
-    GobletMainStatus.push(1);
-    CircletMainStatus.push(1); 
-  }
-  if (DependStatusList[2] == 1) {
-    ClockMainStatus.push(2);
-    GobletMainStatus.push(2);
-    CircletMainStatus.push(2); 
-  }
-  if (DependStatusList[4] == 1) {
-    ClockMainStatus.push(4);
-    GobletMainStatus.push(4);
-    CircletMainStatus.push(4); 
-  }
-  if (DependStatusList[5] == 1) {
-    CircletMainStatus.push(5); 
-  }
-  if (DependStatusList[6] == 1) {
-    CircletMainStatus.push(6); 
-  }
-  const ClockMainStatusIndex = parseInt(document.getElementById("clock_mainstatus").value);
-  if (ClockMainStatusIndex == 3)
-  {
-    ClockMainStatus = [3]
-  }
-  if(char_propaty[0] !=7)
-  {
-    GobletMainStatus.push(7);
-  }
-  else
-  {
-    GobletMainStatus.push(8);
-  }
-  MainStatusList = [ClockMainStatus, GobletMainStatus, CircletMainStatus];
-  return MainStatusList;
-}
-
-async function CalculateIdealAfMainStatusBuff(status_array)
-{
-  const af_main_status = [0.466, 0.583, 187, 51.8, 0.466, 31.1, 62.2, 0.466, 0.583];
-  let set_main_status = [0,0,0,0,0,0,0,0,0];
-  let af_main_status_buff = [0,0,0,0,0,0,0,0,0];
-  set_main_status[status_array[0]] += 1;
-  set_main_status[status_array[1]] += 1;
-  set_main_status[status_array[2]] += 1;
-  for (let i = 0; i < 7; i++)
-  {
-    af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
-  }
-  if(char_propaty[0] !=7)
-  {
-    af_main_status_buff[7] = af_main_status[7] *  set_main_status[7];
-  }
-  else
-  {
-    af_main_status_buff[7] = af_main_status[8] *  set_main_status[8];
-  }
-  return af_main_status_buff;
-}
-
-async function CalculateExpDmg(
-                               score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
-                               result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
-                               char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
-                              )
-{
-  for (let g = 0; g < depend_status_index.length; g++)
-  {
-    fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
-    result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]];
-  }
-  fixed_status[7] = base_parameter[7] + fixed_buff[7];
-  result_status[7] = fixed_status[7] + team_dynamic_buff[7];
-
-  if (depend_status[0] == 1)
-  {
-    result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
-  }
-
-  if (depend_status[1] == 1)
-  {
-    result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
-  }
-
-  if (depend_status[2] == 1)
-  {
-    result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
-  }
-
-  if (depend_status[3] == 1)
-  {
-    result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
-  }
-
-  if (depend_status[4] == 1)
-  {
-    result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
-  }
-  if (depend_status[5] == 1)
-  {
-    result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
-    if (result_status[5] > 1)
-    {
-      result_status[5] = 1;
-    }
-  }
-
-  if (depend_status[6] == 1)
-  {
-    result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
-  }
-  
-  if(zetsuen_check == 1)
-  {
-    let zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-    result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
-  }
-  else
-  {
-    result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
-  }
-
-  let basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-  let exp_dmg;
-  if (depend_status[2] == 1) {
-    exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-            * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-  } else {
-    exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-            * (1 + result_status[7]) * correct_coeff[8];
-  }
-  return exp_dmg
-}
-
-async function calculateAndStoreResult(resultList) {
-  let list = []; // 初期化
-  resultList.forEach(pair => {
-      const num = pair[0]; // 数値を取得
-      for (let i = 0; i < list.length; i++) {
-          if (num > list[i][0]) {
-              list.splice(i, 0, pair);
-              list = list.slice(0, 5); // 上位5つのみを残す
-              break;
-          }
-      }
-      if (list.length < 5) { // listが5未満の場合、末尾に追加
-          list.push(pair);
-      }
-  });
-  return list;
-}
-
-
 async function monte_carlo_calculate()
 {
   const calculationMessage = document.getElementById("calculationMessage")
   calculationMessage.style.visibility = "visible";
-  console.time('myTimer'); 
+  console.time('myTimer'); // タイマーを開始
+  //入力チェック
   const input_check = identify_condition();
   if (input_check ==1)
   {
@@ -1834,7 +1670,7 @@ async function monte_carlo_calculate()
   let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let af_score = my_af_score_distribution[7];
   const my_af_score = my_af_score_distribution[7];
-  let dlt_score;
+  const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;
   let excess_crscore;
@@ -1863,11 +1699,6 @@ async function monte_carlo_calculate()
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
   let result_status = [0,0,0,0,0,0,0,0];
-  let save_status = [0,0,0,0,0,0,0,0];
-  let save_score_distribute = [0,0,0,0,0,0,0,0];
-  let save_af_score;
-  let optimaize_af_score;
-  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"]
   let random_1;
   let random_2;
   let output_exp_dmg;
@@ -1916,15 +1747,77 @@ async function monte_carlo_calculate()
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    for (let i = 0; i < 8000; i++)
+
+    for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
-      exp_dmg = await CalculateExpDmg(
-                                        score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
-                                        result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
-                                        char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
-                                      );
+      
+      for (let g = 0; g < depend_status_index.length; g++)
+      {
+        fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
+        result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]];
+      }
+      fixed_status[7] = base_parameter[7] + fixed_buff[7];
+      result_status[7] = fixed_status[7] + team_dynamic_buff[7];
+
+      if (depend_status[0] == 1)
+      {
+        result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
+
+      }
+
+      if (depend_status[1] == 1)
+      {
+        result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
+      }
+
+      if (depend_status[2] == 1)
+      {
+        result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
+      }
+
+      if (depend_status[3] == 1)
+      {
+        result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
+      }
+
+      if (depend_status[4] == 1)
+      {
+        result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
+      }
+      if (depend_status[5] == 1)
+      {
+        result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
+        if (result_status[5] > 1)
+        {
+          result_status[5] = 1;
+        }
+      }
+
+      if (depend_status[6] == 1)
+      {
+        result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
+      }
+      
+      if(zetsuen_check == 1)
+      {
+        zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
+      }
+      else
+      {
+        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
+      }
+
+      basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
+      if (depend_status[2] == 1) {
+        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
+                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+      } else {
+        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
+                * (1 + result_status[7]) * correct_coeff[8];
+      }
 
       if (temp_exp_dmg < exp_dmg)
       {
@@ -1941,18 +1834,6 @@ async function monte_carlo_calculate()
     {
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
-      if (k < 1000)
-      {
-        dlt_score = 0.1;
-      }
-      else if (k < 4000)
-      {
-        dlt_score = 0.01;
-      }
-      else
-      {
-        dlt_score = 0.001;
-      }
 
       if (random_1 == random_2)
       {
@@ -2080,363 +1961,11 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  save_status = temp_status.slice();
-  save_score_distribute = old_score_distribution.slice();
-  save_af_score = af_score;
-  const MainStatusIndexList = await DefineMainStatus(depend_status);
-  let ExpDmgList = [];
-  let AllPatternResult;
-  let MainStatusList;
-  let MainStatusBuff;
-  for (let x = 0; x < MainStatusIndexList[0].length; x++)
-  {
-    for (let y = 0; y < MainStatusIndexList[1].length; y++)
-    {
-      for (let z = 0; z < MainStatusIndexList[2].length; z++)
-      {
-        exp_dmg = 0;
-        temp_exp_dmg = 0;
-        MainStatusList = [MainStatusIndexList[0][x],MainStatusIndexList[1][y], MainStatusIndexList[2][z]];
-        MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
-        for (let i = 0; i < 10000; i++)
-        {
-          score_distribute = await calculate_score_distribute(af_score,depend_status);
-          base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
-          exp_dmg = await CalculateExpDmg(
-                                            score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
-                                            result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
-                                            char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
-                                          );
-
-          if (temp_exp_dmg < exp_dmg)
-          {
-            temp_score_distribute = score_distribute;
-            temp_status = result_status.slice();
-            temp_exp_dmg = exp_dmg;
-          }
-        }
-        old_score_distribution = temp_score_distribute.slice();
-        new_score_distribution = temp_score_distribute.slice();
-
-        for (let k = 0; k < 5000; k++)
-        {
-          random_1 = Math.floor(depend_status_index.length * Math.random());
-          random_2 = Math.floor(depend_status_index.length * Math.random());
-          if (k < 1000)
-          {
-            dlt_score = 0.1;
-          }
-          else if (k < 4000)
-          {
-            dlt_score = 0.01;
-          }
-          else
-          {
-            dlt_score = 0.001;
-          }
-
-          if (random_1 == random_2)
-          {
-            random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
-          }
-
-          if (new_score_distribution[depend_status_index[random_1]] == 0 || new_score_distribution[depend_status_index[random_2]] == 0)
-          {
-            continue;
-          }
-
-          new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] + dlt_score;
-          new_score_distribution[depend_status_index[random_2]] =  new_score_distribution[depend_status_index[random_2]] - dlt_score;
-
-          if (new_score_distribution[depend_status_index[random_2]] < 0)
-          {
-            new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] +  new_score_distribution[depend_status_index[random_2]];
-            new_score_distribution[depend_status_index[random_2]] = 0;
-          }
-
-          base_parameter = await calculate_fixed_status(new_score_distribution,base_status,MainStatusBuff,depend_status);
-          for (g = 0; g < depend_status_index.length; g++)
-          {
-            fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
-            result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]]
-          }
-          fixed_status[7] = base_parameter[7] + fixed_buff[7];
-          result_status[7] = fixed_status[7] + team_dynamic_buff[7]
-
-          if (depend_status[0] == 1)
-          {
-            result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
-          }
-
-          if (depend_status[1] == 1)
-          {
-            result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
-          }
-
-          if (depend_status[2] == 1)
-          {
-            result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
-          }
-
-          if (depend_status[3] == 1)
-          {
-            result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
-          }
-
-          if (depend_status[4] == 1)
-          {
-            result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
-          }
-
-          if (depend_status[5] == 1)
-          {
-            result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
-          }
-
-          if (depend_status[6] == 1)
-          {
-            result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
-          }
-
-          if(zetsuen_check == 1)
-          {
-            zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-            result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
-          }
-          else
-          {
-            result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
-          }
-
-          if (result_status[5] > 1)
-          {
-            excess_crscore = (result_status[5] - 1) * 200;
-            new_score_distribution[5] -= excess_crscore;
-            if (new_score_distribution[5] > 0)
-            {
-              new_score_distribution[6] += excess_crscore;
-              result_status[6] += excess_crscore / 100;
-            }
-            else
-            {
-              new_score_distribution[5] = 0;
-            }
-            result_status[5] = 1;
-          }
-
-          basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-          if (depend_status[2] == 1) {
-            exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                    * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-          } else {
-            exp_dmg = basic_dmg * (1 + result_status[5] * result_status[6])
-                    * (1 + result_status[7]) * correct_coeff[8];
-          }
-          
-          if (temp_exp_dmg < exp_dmg)
-          {
-            temp_exp_dmg = exp_dmg;
-            temp_status = result_status.slice();
-            old_score_distribution = new_score_distribution.slice();
-            temp_critical_dmg = critical_dmg;
-          }
-          else
-          {
-            new_score_distribution = old_score_distribution.slice();
-          }
-        }
-        AllPatternResult = [temp_exp_dmg,MainStatusList]
-        ExpDmgList.push(AllPatternResult);
-      }
-    }
-  }
-  ExpDmgList = await calculateAndStoreResult(ExpDmgList);
-
-  n_count = 0;
-  af_score_upper_limit = af_score;
-  af_score_lower_limit = 0;
-  af_score = save_af_score / 2;
-  MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], ExpDmgList[0][1][2]];
-  MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
-
-  while (n_count < 20)
-  {
-    let exp_dmg = 0;
-    let temp_exp_dmg = 0;
-    n_count = n_count + 1;
-    for (let i = 0; i < 10000; i++)
-    {
-      score_distribute = await calculate_score_distribute(af_score,depend_status);
-      base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
-      exp_dmg = await CalculateExpDmg(
-                                        score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
-                                        result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
-                                        char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
-                                      );
-
-      if (temp_exp_dmg < exp_dmg)
-      {
-        temp_score_distribute = score_distribute;
-        temp_status = result_status.slice();
-        temp_exp_dmg = exp_dmg;
-      }
-    }
-
-    old_score_distribution = temp_score_distribute.slice();
-    new_score_distribution = temp_score_distribute.slice();
-
-    for (let k = 0; k < 5000; k++)
-    {
-      random_1 = Math.floor(depend_status_index.length * Math.random());
-      random_2 = Math.floor(depend_status_index.length * Math.random());
-      if (k < 1000)
-      {
-        dlt_score = 0.1;
-      }
-      else if (k < 4000)
-      {
-        dlt_score = 0.01;
-      }
-      else
-      {
-        dlt_score = 0.001;
-      }
-      
-      if (random_1 == random_2)
-      {
-        random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
-      }
-
-      if (new_score_distribution[depend_status_index[random_1]] == 0 || new_score_distribution[depend_status_index[random_2]] == 0)
-      {
-        continue;
-      }
-
-      new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] + dlt_score;
-      new_score_distribution[depend_status_index[random_2]] =  new_score_distribution[depend_status_index[random_2]] - dlt_score;
-
-      if (new_score_distribution[depend_status_index[random_2]] < 0)
-      {
-        new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] +  new_score_distribution[depend_status_index[random_2]];
-        new_score_distribution[depend_status_index[random_2]] = 0;
-      }
-
-      base_parameter = await calculate_fixed_status(new_score_distribution,base_status,MainStatusBuff,depend_status);
-      for (g = 0; g < depend_status_index.length; g++)
-      {
-        fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
-        result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]]
-      }
-      fixed_status[7] = base_parameter[7] + fixed_buff[7];
-      result_status[7] = fixed_status[7] + team_dynamic_buff[7]
-
-      if (depend_status[0] == 1)
-      {
-        result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
-      }
-
-      if (depend_status[1] == 1)
-      {
-        result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
-      }
-
-      if (depend_status[2] == 1)
-      {
-        result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
-      }
-
-      if (depend_status[3] == 1)
-      {
-        result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
-      }
-
-      if (depend_status[4] == 1)
-      {
-        result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
-      }
-
-      if (depend_status[5] == 1)
-      {
-        result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
-      }
-
-      if (depend_status[6] == 1)
-      {
-        result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
-      }
-
-      if(zetsuen_check == 1)
-      {
-        zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
-      }
-      else
-      {
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
-      }
-
-      if (result_status[5] > 1)
-      {
-        excess_crscore = (result_status[5] - 1) * 200;
-        new_score_distribution[5] -= excess_crscore;
-        if (new_score_distribution[5] > 0)
-        {
-          new_score_distribution[6] += excess_crscore;
-          result_status[6] += excess_crscore / 100;
-        }
-        else
-        {
-          new_score_distribution[5] = 0;
-        }
-        result_status[5] = 1;
-      }
-
-      basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-      if (depend_status[2] == 1) {
-        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-      } else {
-        exp_dmg = basic_dmg * (1 + result_status[5] * result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8];
-      }
-      
-      if (temp_exp_dmg < exp_dmg)
-      {
-        temp_exp_dmg = exp_dmg;
-        temp_status = result_status.slice();
-        old_score_distribution = new_score_distribution.slice();
-        temp_critical_dmg = critical_dmg;
-      }
-      else
-      {
-        new_score_distribution = old_score_distribution.slice();
-      }
-    }
-    output_exp_dmg = temp_exp_dmg;
-    dmg_error = my_exp_dmg - output_exp_dmg;
-    abs_dmg_error = Math.abs(dmg_error);
-    if (abs_dmg_error < 1 ) break;
-
-    if (dmg_error < 0)
-    {
-      af_score_upper_limit = af_score;
-      af_score = (af_score_upper_limit + af_score_lower_limit)/2;
-    }
-    else
-    {
-      af_score_lower_limit = af_score;
-      af_score = (af_score_upper_limit + af_score_lower_limit)/2;
-    }
-  }
-  console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
-  optimaize_af_score = af_score;
-  af_score = save_af_score;
-  old_score_distribution = save_score_distribute;
 
 
   calculationMessage.style.visibility = "hidden";
-  let result = "最適化聖遺物スコア： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
+  let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
   let dlthpScore = document.getElementById("dlt_hp_score");
@@ -2743,6 +2272,7 @@ async function monte_carlo_calculate()
     document.getElementById("dlt_af_cd").innerHTML = "-";
     document.getElementById("count_cd_score3").innerHTML = "-";
   }
+
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";
   document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
@@ -2751,23 +2281,8 @@ async function monte_carlo_calculate()
   document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
-
-  for (let i = 1; i <= 5; i++) {
-    const ClockId = "clock" + i;
-    const GobletId = "goblet" + i;
-    const CircletId = "circlet" + i;
-    const DmgrateId = "dmgrate" + i;
-
-    document.getElementById(ClockId).innerHTML = main_status_name[ExpDmgList[i-1][1][0]];
-    document.getElementById(GobletId).innerHTML = main_status_name[ExpDmgList[i-1][1][1]];
-    document.getElementById(CircletId).innerHTML = main_status_name[ExpDmgList[i-1][1][2]];
-    document.getElementById(DmgrateId).innerHTML = (ExpDmgList[i-1][0] * 100/ExpDmgList[0][0]).toFixed(1) + "％";
-
-}
-
-
+  create_radarchart(depend_status, my_af_score_distribution, old_score_distribution);
   console.log(n_count);
-  create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

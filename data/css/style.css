@@ -310,45 +310,6 @@ text-align: center;
   font-size: .8em;
 }
 
-.main_combination_table {
-  border-collapse: collapse;
-  margin: 0 left;
-  padding: 0;
-  width: 600px;
-}
-
-.main_combination_table tr {
-  background-color: #fff;
-  border-bottom: 2px solid #fff;
-}
-
-.main_combination_table td,
-.main_combination_table th{
-text-align: center;
-}
-
-.main_combination_table tr:nth-child(even){
-  background-color: #eee;
-}
-
-.main_combination_table th,
-.main_combination_table td {
-  padding: 6px 4px;
-}
-
-.main_combination_table thead th {
-  font-size: .85em;
-}
-
-.main_combination_table thead tr{
-  background-color: #ffe4b5;
-  color:#ffa500;
-}
-
-.main_combination_table tbody th {
-  font-size: .8em;
-}
-
 .hidden {
   display: none;
 }
