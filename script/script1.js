@@ -1880,6 +1880,10 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let basic_dmg;
   let n_count = 0;
+  const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
+  const goblet_mainstatus = parseInt(document.getElementById("goblet_mainstatus").value);
+  const circlet_mainstatus = parseInt(document.getElementById("circlet_mainstatus").value);
+  let MyAfMainList = [clock_mainstatus, goblet_mainstatus, circlet_mainstatus];
 
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);
@@ -2459,10 +2463,6 @@ async function monte_carlo_calculate()
   let dltAfcr = document.getElementById("dlt_af_cr");
   let dltcdScore = document.getElementById("dlt_cd_score");
   let dltAfcd = document.getElementById("dlt_af_cd");
-  const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
-  const goblet_mainstatus = parseInt(document.getElementById("goblet_mainstatus").value);
-  const circlet_mainstatus = parseInt(document.getElementById("circlet_mainstatus").value);
-  let MyAfMainList = [clock_mainstatus, goblet_mainstatus, circlet_mainstatus];
   dlthpScore.style.color = "black";
   dltAfhp.style.color = "black";
   dltdeffScore.style.color = "black";
