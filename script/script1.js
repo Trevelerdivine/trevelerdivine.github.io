@@ -2089,6 +2089,7 @@ async function monte_carlo_calculate()
   save_score_distribute = old_score_distribution.slice();
   save_af_score = af_score;
   const MainStatusIndexList = await DefineMainStatus(depend_status);
+  console.log(MainStatusIndexList);
   let ExpDmgList = [];
   let AllPatternResult;
   let MainStatusList;
