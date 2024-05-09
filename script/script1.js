@@ -1784,10 +1784,8 @@ async function CalculateExpDmg(
 async function calculateAndStoreResult(resultList) {
   // 降順にソート
   resultList.sort((a, b) => b[0] - a[0]);
-
   // 上位5つのみを取得
   const topFive = resultList.slice(0, 5);
-
   return topFive;
 }
 
