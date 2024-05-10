@@ -1,0 +1,249 @@
+{
+    "CharMap": {
+        "2": {
+            "名前": "神里綾華",
+            "url": "../character/kamisatoayaka.webp",
+            "id":"21"
+        },
+        "6": {
+            "名前": "リサ",
+            "url": "../character/lisa.jpg",
+            "id":"42"
+        },
+        "15": {
+            "名前": "ガイア",
+            "url": "../character/kaeya.jpg",
+            "id":"31"
+        },
+        "16": {
+            "名前": "ディルック",
+            "url": "../character/diluc.jpg",
+            "id":"4"
+        },
+        "20": {
+            "名前": "レザー",
+            "url": "../character/razor.jpg",
+            "id":"41"
+        },
+        "21": {
+            "名前": "アンバー",
+            "url": "../character/amber.jpg",
+            "id":"10"
+        },
+        "23": {
+            "名前": "香菱",
+            "url": "../character/xiangling.webp",
+            "id":"9"
+        },
+        "24": {
+            "名前": "北斗",
+            "url": "../character/beidou.webp",
+            "id":"40"
+        },
+        "25": {
+            "名前": "行秋",
+            "url": "../character/xingqiu.webp",
+            "id":"19"
+        },
+        "26": {
+            "名前": "魈",
+            "url": "../character/xiao.webp",
+            "id":"46"
+        },
+        "27": {
+            "名前": "凝光",
+            "url": "../character/ningguang.webp",
+            "id":"69"
+        },
+        "29": {
+            "名前": "クレー",
+            "url": "../character/klee.webp",
+            "id":"3"
+        },
+        "30": {
+            "名前": "鍾離",
+            "url": "../character/zhongli.webp",
+            "id":"65"
+        },
+        "31": {
+            "名前": "フィッシュル",
+            "url": "../character/fischl.webp",
+            "id":"39"
+        },
+        "32": {
+            "名前": "ベネット",
+            "url": "../character/bennett.webp",
+            "id":"8"
+        },
+        "33": {
+            "名前": "タルタリヤ",
+            "url": "../character/tartaglia.webp",
+            "id":"15"
+        },
+        "34": {
+            "名前": "ノエル",
+            "url": "../character/noelle.jpg",
+            "id":"68"
+        },
+        "36": {
+            "名前": "重雲",
+            "url": "../character/chongyun.webp",
+            "id":"30"
+        },
+        "37": {
+            "名前": "甘雨",
+            "url": "../character/ganyu.webp",
+            "id":"23"
+        },
+        "38": {
+            "名前": "アルベド",
+            "url": "../character/albedo.jpg",
+            "id":"64"
+        },
+        "42": {
+            "名前": "刻晴",
+            "url": "../character/keqing.jpg",
+            "id":"35"
+        },
+        "44": {
+            "名前": "辛炎",
+            "url": "../character/xinyan.webp",
+            "id":"7"
+        },
+        "45": {
+            "名前": "ロサリア",
+            "url": "../character/rosaria.webp",
+            "id":"28"
+        },
+        "46": {
+            "名前": "胡桃",
+            "url": "../character/hutao.jpg",
+            "id":"2"
+        },
+        "48": {
+            "名前": "煙緋",
+            "url": "../character/yanfei.webp",
+            "id":"6"
+        },
+        "49": {
+            "名前": "宵宮",
+            "url": "../character/yoimiya.webp",
+            "id":"1"
+        },
+        "51": {
+            "名前": "エウルア",
+            "url": "../character/eula.webp",
+            "id":"22"
+        },
+        "52": {
+            "名前": "雷電将軍",
+            "url": "../character/raidenshougun.jpg",
+            "id":"34"
+        },
+        "56": {
+            "名前": "九条裟羅",
+            "url": "../character/kujousara.jpg",
+            "id":"38"
+        },
+        "57": {
+            "名前": "荒瀧一斗",
+            "url": "../character/aratakiitto.webp",
+            "id":"63"
+        },
+        "58": {
+            "名前": "八重神子",
+            "url": "../character/yaemiko.webp",
+            "id":"33"
+        },
+        "59": {
+            "名前": "鹿野院平蔵",
+            "url": "../character/shikanoinheizou.webp",
+            "id":"50"
+        },
+        "60": {
+            "名前": "夜蘭",
+            "url": "../character/yelan.webp",
+            "id":"12"
+        },
+        "61": {
+            "名前": "綺良々",
+            "url": "./character/kirara.webp",
+            "id":"58"
+        },
+        "66": {
+            "名前": "神里綾人",
+            "url": "../character/kamisatoayato.jpg",
+            "id":"13"
+        },
+        "69": {
+            "名前": "ティナリ",
+            "url": "../character/tighnari.webp",
+            "id":"57"
+        },
+        "70": {
+            "名前": "ニィロウ",
+            "url": "../character/nirou.webp",
+            "id":"11"
+        },
+        "71": {
+            "名前": "セノ",
+            "url": "../character/cyno.jpg",
+            "id":"32"
+        },
+        "73": {
+            "名前": "ナヒーダ",
+            "url": "../character/nahida.webp",
+            "id":"56"
+        },
+        "75": {
+            "名前": "放浪者",
+            "url": "../character/wanderer.webp",
+            "id":"44"
+        },
+        "76": {
+            "名前": "ファルザン",
+            "url": "../character/faruzan.webp",
+            "id":"49"
+        },
+        "78": {
+            "名前": "アルハイゼン",
+            "url": "../character/alhaitham.webp",
+            "id":"55"
+        },
+        "79": {
+            "名前": "ディシア",
+            "url": "../character/dehya.webp",
+            "id":"0"
+        },
+        "84": {
+            "名前": "リネ",
+            "url": "../character/Lyney.webp",
+            "id":"71"
+        },
+        "86": {
+            "名前": "リオセスリ",
+            "url": "../character/Wriothesley.webp",
+            "id":"73"
+        },
+        "87": {
+            "名前": "ヌヴィレット",
+            "url": "../character/Neuvillette.webp",
+            "id":"72"
+        },
+        "89": {
+            "名前": "フリーナ",
+            "url": "../character/Furina.webp",
+            "id":"74"
+        },
+        "91": {
+            "名前": "ナヴィア",
+            "url": "../character/Navia.webp",
+            "id":"75"
+        },
+        "92": {
+            "名前": "嘉明",
+            "url": "../character/gaming.webp",
+            "id":"76"
+        }
+    }
+}
