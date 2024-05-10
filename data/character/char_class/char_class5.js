@@ -3538,7 +3538,7 @@ class Lyney {
       const buff_check = document.getElementById("kamisatoayato_Q");
       if (buff_check.checked)
       {
-        this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][ayato_burst_level]);
+        this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
       }
     
       if (attack_method == 1) {
