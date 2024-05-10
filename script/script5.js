@@ -133,10 +133,10 @@ async function calculate_base_status() {
   const CharDmgBuffType = parseInt(CharData.ステータス.基礎ダメージバフ.元素);
   const WeaponDmgBuffType = parseInt(WeaponData.ステータス.基礎ダメージバフ.元素);
   let base_dmg_buff = 0;
-  if (CharDmgBuffType === char_propaty[0]) {
+  if (CharDmgBuffType == char_propaty[0]) {
       base_dmg_buff += parseFloat(CharData.ステータス.基礎ダメージバフ.数値[(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
   }
-  if (WeaponDmgBuffType === char_propaty[0]) {
+  if (WeaponDmgBuffType == char_propaty[0]) {
       base_dmg_buff += parseFloat(WeaponData.ステータス.基礎ダメージバフ.数値[weapon_level]);
   }
 
