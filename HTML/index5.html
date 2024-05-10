@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>原神最適化スコア計算機</title>
+    <title>Fetch API Example</title>
     <link rel="stylesheet" href="../data/css/style5.css">
-    <script src="../script/script5.js"></script>
+    <script src="../script5.js"></script>
     <script src="../data/character/char_class/char_class5.js"></script>
     <script src="../data/weapon/weapon_class/weapon_class5.js"></script>
     <script src="../data/artifact/af_class.js"></script>
-    <script src="../script/show_char_statsform5.js"></script>
-    <script src="../script/show_weapon_statsform5.js"></script>
-    <script src="../script/show_artifact.js"></script>
-    <script src="../script/show_attackmethod5.js"></script>
+    <script src="../show_char_statsform5.js"></script>
+    <script src="../show_weapon_statsform.js"></script>
+    <script src="../show_artifact.js"></script>
+    <script src="../show_attackmethod5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
-    crossorigin="anonymous"></script>
     <style>
         #uidInput {
             padding: 10px;
@@ -113,6 +111,7 @@
                         以下の場合にはキャラクターが表示されません。<br>
                         &nbsp;&nbsp;1. キャラクターの突破段階が4未満(レベル60突破無し)<br>
                         &nbsp;&nbsp;2. キャラクター、武器、聖遺物のいずれかが当計算機で計算可能な状態でない。<br>
+                        &nbsp;&nbsp;3. 聖遺物が2セット効果×2,もしくは4セット効果を持っていない。<br>
                     </p>
                 </details>
             </div>
@@ -1169,7 +1168,6 @@
     // fetchData() 関数を定義
     async function fetchData() {
         fetchButton.disabled = true;
-        
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
@@ -1527,12 +1525,16 @@
         let AfJsonList = UserData.data.avatarInfoList[index].equipList;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
+        let AfLevelList = [];
         let ExecuteFlag = 0;
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
             // オブジェクトから "itemId" の要素を取り出して配列に追加
             if (status.hasOwnProperty("itemId")) {
                 AfIdList.push(status["itemId"]);
+                //if (status.hasOwnProperty("reliquary")) {
+                //AfLevelList .push(status.reliquary.level);
+                //}
             }
         });
         let WeapomListIndex = AfIdList.length;
@@ -1557,16 +1559,32 @@
         // ソートされたキーの配列を使って、数値とその個数のペアを作成
         const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
         let SelectedAfId = [];
+        let AfSpecialEffect = 0;
         for (let i = 0; i < result.length; i++) {
             if (result[i][1] > 1 && result[i][1] < 4)
             {
                 SelectedAfId.push(result[i][0]);
+                AfSpecialEffect += 1
             }
             else if (result[i][1] > 3 && result[i][1] < 6)
             {
                 SelectedAfId.push(result[i][0]);
                 SelectedAfId.push(result[i][0]);
+                AfSpecialEffect +=2
             }
+        }
+
+        //for (let i = 0; i < AfLevelList.length; i++) {
+            //if (AfLevelList[i] < 21)
+            //{
+                //ExecuteFlag = 1;
+                //return ExecuteFlag;
+            //}
+        //}
+        
+        if(AfSpecialEffect < 2)
+        {
+            ExecuteFlag = 1;
         }
 
         let AfSerch;
@@ -1575,6 +1593,7 @@
             if (AfSerch == 0)
             {
                 ExecuteFlag = 1;
+                return ExecuteFlag;
             }
         }
         CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].ival;
@@ -1582,6 +1601,7 @@
         if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
         {
             ExecuteFlag = 1;
+            return ExecuteFlag;
         }
 
         let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
@@ -1601,6 +1621,7 @@
         if(selectedWeaponId == -1)
         {
             ExecuteFlag = 1;
+            return ExecuteFlag;
         }
         return ExecuteFlag;
     }
@@ -1711,6 +1732,7 @@
 
     // ページの読み込みが完了したら、カウントダウンを再開
     window.onload = async function() {
+        fetchButton.disabled = true;
         showTable("table1","tablebutton1");
         showOption("option1", "parameterbutton1");
         const DataResponse = await fetch("../data/JsonData/CharacterData.json");
@@ -1728,6 +1750,10 @@
             const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
             // 再度カウントダウンを開始
             startCountdown();
+        }
+        else
+        {
+            fetchButton.disabled = false;
         };
         UserData = JSON.parse(sessionStorage.getItem("UserData"));
         const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
