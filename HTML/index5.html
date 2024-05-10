@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch API Example</title>
+    <title>原神最適化スコア計算機</title>
     <link rel="stylesheet" href="../data/css/style5.css">
-    <script src="../script5.js"></script>
+    <script src="../script/script5.js"></script>
     <script src="../data/character/char_class/char_class5.js"></script>
     <script src="../data/weapon/weapon_class/weapon_class5.js"></script>
     <script src="../data/artifact/af_class.js"></script>
-    <script src="../show_char_statsform5.js"></script>
-    <script src="../show_weapon_statsform.js"></script>
-    <script src="../show_artifact.js"></script>
-    <script src="../show_attackmethod5.js"></script>
+    <script src="../script/show_char_statsform5.js"></script>
+    <script src="../script/show_weapon_statsform5.js"></script>
+    <script src="../script/show_artifact.js"></script>
+    <script src="../script/show_attackmethod5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
+    crossorigin="anonymous"></script>
     <style>
         #uidInput {
             padding: 10px;
@@ -1168,6 +1170,7 @@
     // fetchData() 関数を定義
     async function fetchData() {
         fetchButton.disabled = true;
+        
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
@@ -1521,7 +1524,7 @@
         charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
 }
 
-    async function CharExecution(index, charId){
+async function CharExecution(index, charId){
         let AfJsonList = UserData.data.avatarInfoList[index].equipList;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
@@ -1625,7 +1628,7 @@
         }
         return ExecuteFlag;
     }
-    
+
     function ResetParameter(){
         for (let i = 1; i <= 5; i++) {
             ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
@@ -1732,7 +1735,6 @@
 
     // ページの読み込みが完了したら、カウントダウンを再開
     window.onload = async function() {
-        fetchButton.disabled = true;
         showTable("table1","tablebutton1");
         showOption("option1", "parameterbutton1");
         const DataResponse = await fetch("../data/JsonData/CharacterData.json");
@@ -1750,10 +1752,6 @@
             const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
             // 再度カウントダウンを開始
             startCountdown();
-        }
-        else
-        {
-            fetchButton.disabled = false;
         };
         UserData = JSON.parse(sessionStorage.getItem("UserData"));
         const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
