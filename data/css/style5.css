@@ -1,0 +1,973 @@
+.body {
+    margin-left: 30px;
+  }
+  
+  
+  .tablestyle {
+    display: none;
+    width: 100%; /* デバイスの横幅に合わせる */
+    overflow-x: auto; /* 横スクロールを有効にする */
+  }
+  
+  .tablestyle1 {
+    width: 100%; /* デバイスの横幅に合わせる */
+    overflow-x: auto; /* 横スクロールを有効にする */
+  }
+  
+  .option-field{
+    display: none;
+    overflow-x: auto; /* 横スクロールを有効にする */
+  }
+  
+  .active {
+    display: block;
+  }
+  
+  .centered-container {
+    text-align: center;
+    max-width: 600px;
+  }
+  
+  .centered-div {
+  display: inline-block;
+  }
+  
+  table.calc_result {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table.calc_result th,
+  table.calc_result td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: right;
+  }
+  
+  table.calc_result th {
+    background-color: #f2f2f2;
+  }
+  
+  .flex-container1 {
+    display: flex;
+    flex-wrap: wrap; /* 折り返し設定 */
+    align-items: center; /* 要素を中央に揃える */
+    justify-content: center; /* 要素を中央に配置 */
+  }
+  
+  .flex-container1 > div {
+    padding-top: 5px; 
+    padding-left: 10px; 
+    padding-right: 10px;
+    box-sizing: border-box; /* パディングを要素内に含めるため */
+    width: 10%; /* PCでは10枚、スマートフォンでは14.28% */
+  }
+  
+  .table-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f5f2df;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: scroll;
+  }
+  
+  .table-container1 {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f5f2df;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* キャラクター選択テーブルのスタイル */
+  .char_select {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  
+  /* キャラクター選択テーブルのヘッダセルとデータセルのスタイル */
+  .char_select th, 
+  .char_select td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  /* キャラクター選択テーブルのヘッダセルのスタイル */
+  .char_select th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  
+  /* キャラクター選択テーブルのデータセルのスタイル */
+  .char_select td {
+    font-size: 14px;
+  }
+  
+  /* キャラクターティアのスタイル */
+  .tier1 {
+    background-color: #f5f2df;
+  }
+  
+  .tierPyro {
+    background-color: #FF6F6340;
+  }
+  
+  .tierHydro {
+    background-color: #4C92EA40;
+  }
+  
+  .tierAnemo {
+    background-color: #4CD9C840;
+  }
+  
+  .tierElectro {
+    background-color: #C773FF40;
+  }
+  
+  .tierDendro {
+    background-color: #7AD84C40;
+  }
+  
+  .tierCyro {
+    background-color: #73CCFF40;
+  }
+  
+  .tierGeo {
+    background-color: #E6B32240;
+  }
+  
+  /* ティア画像のスタイル */
+  .tier-image,
+  .tier-image2,
+  .tier-image3 {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .weapon-image{
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .tier-image {
+    border: 2.5px solid black;
+  }
+  
+  .tier-image2 {
+    border: 2.5px solid #2196f3;
+  }
+  
+  .tier-image3 {
+    width: 35px;
+    height: 35px;
+    border: 1.7px solid black;
+  }
+  
+  /* ティア画像のホバースタイル */
+  .tier-image:hover {
+    transform: scale(1.1);
+  }
+  .tier-image3:hover {
+    transform: scale(1.1);
+  }
+  
+  .weapon-image:hover {
+    transform: scale(1.1);
+  }
+  /* .open クラスの要素のスタイル */
+  .open {
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+  }
+  
+  .open_char {
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+  }
+  
+  .open_weapon {
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+  }
+  
+  /* #pop-up 要素のスタイル */
+  #pop-up {
+    display: none; /* label でコントロールするので input は非表示に */
+  }
+  
+  #pop-up_char {
+  display: none; /* label でコントロールするので input は非表示に */
+  }
+  
+  #pop-up_weapon {
+    display: none; /* label でコントロールするので input は非表示に */
+    }
+  
+  /* .overlay クラスの要素のスタイル */
+  .overlay {
+    display: none; /* input にチェックが入るまでは非表示に */
+  }
+  
+  .overlay_char {
+    display: none; /* input にチェックが入るまでは非表示に */
+  }
+  
+  .overlay_weapon {
+    display: none; /* input にチェックが入るまでは非表示に */
+  }
+  
+  /* #pop-up:checked に連動する .overlay クラスの要素のスタイル */
+  #pop-up:checked + .overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-color: #00000070;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  
+  #pop-up_char:checked + .overlay_char {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-color: #00000070;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  
+  
+  #pop-up_weapon:checked + .overlay_weapon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-color: #00000070;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  
+  .table-buttons button {
+    display: inline-block; /* ボタンを横に並べる */
+    margin-right: 7.5%; /* ボタンの間に余白を設定 */
+  }
+  
+  .status_table {
+    border-collapse: collapse;
+    margin: 0 left;
+    padding: 0;
+    width: 600px;
+  }
+  
+  .status_table tr {
+    background-color: #fff;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .status_table td,
+  .status_table th{
+  text-align: center;
+  }
+  
+  .status_table tr:nth-child(even){
+    background-color: #eee;
+  }
+  
+  .status_table th,
+  .status_table td {
+    padding: 6px 4px;
+  }
+  
+  .status_table thead th {
+    font-size: .85em;
+  }
+  
+  .status_table thead tr{
+    background-color: #fd6767;
+    color:#fff;
+  }
+  
+  .status_table tbody th {
+    font-size: .8em;
+  }
+  
+  .main_combination_table {
+    border-collapse: collapse;
+    margin: 0 left;
+    padding: 0;
+    width: 600px;
+  }
+  
+  .main_combination_table tr {
+    background-color: #fff;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .main_combination_table td,
+  .main_combination_table th{
+  text-align: center;
+  }
+  
+  .main_combination_table tr:nth-child(even){
+    background-color: #eee;
+  }
+  
+  .main_combination_table th,
+  .main_combination_table td {
+    padding: 6px 4px;
+  }
+  
+  .main_combination_table thead th {
+    font-size: .85em;
+  }
+  
+  .main_combination_table thead tr{
+    background-color: #ffe4b5;
+    color:#ffa500;
+  }
+  
+  .main_combination_table tbody th {
+    font-size: .8em;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .element-image {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-right: 25px;
+    margin-left: 25px;
+  }
+  
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /* solid004 */
+  .button_solid004 {
+    display: inline-block;
+    padding: 10px 25px;
+    color: #FFF;
+    transition: 0.1s ease-in-out;
+    font-weight: 600;
+    background: #6bb6ff;
+    border-radius: 8px;
+    border-bottom: solid 5px #1d7fde;
+    cursor: pointer; /* カーソルをポインターに変更 */
+  }
+  .button_solid004:active { /* クリック時にもホバー効果を持続させる */
+    border-bottom: solid 2px #1d7fde;
+  }
+  
+  .button-1 {
+    display: inline-block;
+    width: auto;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 0.5em;
+    padding: 0.2em 0.5em;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    box-shadow: 0 0 0 3px #3ea2ea;
+    background-color: #3ea2ea;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.1s, box-shadow 0.1s, border-color 0.1s;
+  }
+  
+  .button-2 {
+    display: inline-block;
+    width: auto;
+    margin: 10px;
+    padding: 0.2em 0.5em;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    box-shadow: 0 0 0 3px #3ea2ea;
+    background-color: #3ea2ea;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.1s, box-shadow 0.1s, border-color 0.1s;
+  }
+  
+  .button-active {
+    background-color: orange;
+    box-shadow: 0 0 0 3px orange;
+  }
+  
+  
+  .team-buff-form {
+    max-width: 500px;
+    margin: 0;
+    background-color: #E6E6FA;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-buff-form th,
+  .team-buff-form td {
+    padding: 7px;
+    text-align: center;
+  }
+  
+  .team-buff-form th {
+    background-color: #E6E6FA;
+    color: #444;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .team-buff-form input,
+  .team-buff-form select {
+    width: 100%;
+    padding: 1px;
+    font-size: 14px;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    transition: border-color 0.3s;
+  }
+  
+  .team-buff-form input:focus,
+  .team-buff-form select:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+    box-shadow: 0 1px 0 0 #007bff;
+  }
+  
+  .team-buff-form label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    width: 100px;
+  }
+  
+  .team-buff-form .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* アンダーバーの修正 */
+  .team-buff-form input {
+    padding-bottom: 3px;
+  }
+  
+  /* 各列の input 要素のセンタリング */
+  .team-buff-form td div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  /* 固定バフと変動バフの間隔を調整 */
+  .team-buff-form td:nth-child(3) {
+    width: 1%;
+  }
+  
+  .af-buff-form {
+    max-width: 500px;
+    width: 100%;
+    margin: 0;
+    background-color: #FEDCBD;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .af-buff-form th, .af-buff-form td {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .af-buff-form th {
+    background-color: #FEDCBD;
+    color: #444;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .af-buff-form input, .af-buff-form select {
+    width: 100%;
+    padding: 1px;
+    font-size: 14px;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    transition: border-color 0.3s;
+  }
+  
+  .af-buff-form input:focus, .af-buff-form select:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+    box-shadow: 0 1px 0 0 #007bff;
+  }
+  
+  .af-buff-form label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    width: 100px;
+  }
+  
+  .af-buff-form .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* アンダーバーの修正 */
+  .af-buff-form input {
+    padding-bottom: 3px;
+  }
+  
+  /* 各列の input 要素のセンタリング */
+  .af-buff-form td div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .enemy-form {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    background-color: #DDFFDD;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .enemy-form th,
+  .enemy-form td {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+  }
+  
+  .enemy-form th {
+    background-color: #DDFFDD;
+    color: #444;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .enemy-form input,
+  .enemy-form select {
+    width: 100%;
+    padding: 1px;
+    font-size: 14px;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    transition: border-color 0.3s;
+  }
+  
+  .chart-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto; /* 左右中央に配置 */
+    text-align: center; /* 中央揃え */
+  }
+
+  .AttentionDetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-details {
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+details summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px;
+    color: #242323;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+
+  details summary::before {
+    content: '\25B6';
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+    color: #666;
+  }
+
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  details[open] summary::before {
+    content: '\25BC';
+    transform: none; /* 回転をリセット */
+  }
+
+  details p {
+    margin: 0;
+    padding: 20px;
+  }
+
+
+
+  
+  
+  
+  
+  
+      /* CSSスタイル */
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+        margin: 0;
+        -webkit-text-size-adjust: none;
+      }
+  
+      html, body {
+        height: 100%;
+        overflow: hidden;
+      }
+  
+      #drawer-toggle {
+        position: absolute;
+        opacity: 0;
+      }
+  
+      #drawer-toggle-label {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        left: 0px;
+        height: 50px;
+        width: 50px;
+        display: block;
+        position: fixed;
+        background: rgba(255, 255, 255, .0);
+        z-index: 1;
+      }
+  
+      #drawer-toggle-label:before {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 24px;
+        background: #8d8d8d;
+        left: 13px;
+        top: 18px;
+        box-shadow: 0 6px 0 #8d8d8d, 0 12px 0 #8d8d8d;
+      }
+  
+      header {
+        width: 100%;
+        position: fixed;
+        left: 0px;
+        background: #efefef;
+        padding: 10px 10px 10px 50px;
+        font-size: 30px;
+        line-height: 30px;
+        z-index: 0;
+      }
+  
+      header a {
+        color: black; /* リンクの色を黒に指定 */
+        text-decoration: none; /* 下線を削除 */
+      }
+  
+      header a:hover {
+        text-decoration: underline; /* マウスオーバー時の下線を表示 */
+      }
+  
+      #drawer {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        height: 100%;
+        width: 300px;
+        background: #2f2f2f;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding: 20px;
+        -webkit-overflow-scrolling: touch;
+      }
+  
+      #page-content {
+        margin-left: 0px;
+        margin-top: 50px;
+        width: 100%;
+        height: calc(100% - 50px);
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px;
+      }
+  
+      /* 以下はcheckedスタイル */
+      #drawer-toggle:checked ~ #drawer-toggle-label {
+        height: 100%;
+        width: calc(100% - 300px);
+        background: rgba(255, 255, 255, .8);
+      }
+  
+      #drawer-toggle:checked ~ #drawer-toggle-label,
+      #drawer-toggle:checked ~ header {
+        left: 300px;
+      }
+  
+      #drawer-toggle:checked ~ #drawer {
+        left: 0px;
+      }
+  
+      #drawer-toggle:checked ~ #page-content {
+        margin-left: 300px;
+      }
+  
+      /* Menu item styles */
+      #drawer ul {
+        padding-inline-start: 10px;
+        list-style-type: none;
+      }
+  
+      #drawer ul a {
+        display: block;
+        padding: 10px;
+        color: #c7c7c7;
+        text-decoration: none;
+      }
+  
+      #drawer ul a:hover {
+        color: white;
+      }
+  
+      /* Responsive MQ */
+      @media all and (max-width: 350px) {
+        #drawer-toggle:checked ~ #drawer-toggle-label {
+          height: 100%;
+          width: 50px;
+        }
+  
+        #drawer-toggle:checked ~ #drawer-toggle-label,
+        #drawer-toggle:checked ~ header {
+          left: calc(100% - 50px);
+        }
+  
+        #drawer-toggle:checked ~ #drawer {
+          width: calc(100% - 50px);
+          padding: 20px;
+        }
+  
+        #drawer-toggle:checked ~ #page-content {
+          margin-left: calc(100% - 80px);
+        }
+      }
+  
+  .enemy-form input:focus,
+  .enemy-form select:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+    box-shadow: 0 1px 0 0 #007bff;
+  }
+  
+  .enemy-form label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    width: 120px;
+  }
+  
+  .enemy-form .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* アンダーバーの修正 */
+  .enemy-form input {
+    padding-bottom: 3px;
+  }
+  
+  /* 各列の input 要素のセンタリング */
+  .enemy-form td div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .rayout {
+    display: flex; /* 要素をフレックスコンテナとして表示 */
+  }
+  
+  .item {
+    flex: 1; /* 2つの要素を均等に横並びにするため、フレックスアイテムの伸縮比率を1に設定 */
+    box-sizing: border-box; /* paddingとborderを要素の幅に含める */
+    padding: 0px; /* オプション：要素の内側の余白を追加 */
+  }
+  
+  .flex-container {
+    display: flex; /* div要素をフレックスコンテナとして表示 */
+    height: auto; /* ビューポートの高さいっぱいに表示 */
+  }
+  
+  .property::before {
+    content: "\25C6"; /* ダイヤモンド（◆）のUnicode文字コード */
+    margin-right: 5px;
+    color: lightgreen; /* ライトグリーンに変更する */
+  }
+  /* スマートフォンの場合のスタイル */
+  @media only screen and (max-width: 1124px) {
+    /* レイアウトのスタイル */
+    .rayout {
+      flex-direction: column;
+    }
+  
+    /* アイテムのスタイル */
+    .item {
+      flex: none;
+      width: 100%;
+    }
+  
+    /* フォームのスタイル */
+    .team-buff-form,
+    .af-buff-form {
+      width: 100%;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 2px 5px;
+    }
+  
+    /* キャラクター選択のスタイル */
+    .char_select {
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    .flex-container1 > div {
+      width: 20%;
+    }
+  
+    /* テーブルコンテナのスタイル */
+    .table-container1,
+    .table-container {
+      width: 300px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      max-height: 80vh;
+      overflow-y: scroll;
+      overflow: auto;
+    }
+  
+    /* スクロールバーのスタイル */
+  /* スクロールバーの幅と色を指定 */
+  .table-container1::-webkit-scrollbar,
+  .table-container::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  /* スクロールバーの色 */
+  .table-container1::-webkit-scrollbar-thumb,
+  .table-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* スクロールバーの色を指定 */
+  }
+  
+  /* スクロールバーのトラックの色 */
+  .table-container1::-webkit-scrollbar-track,
+  .table-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* スクロールバーのトラックの色を指定 */
+  }
+  
+  /* スクロールバーを常に表示 */
+  .table-container1,
+  .table-container {
+    scrollbar-width: thin; /* スクロールバーの幅を指定 */
+    scrollbar-color: #888 #f1f1f1; /* スクロールバーの色を指定 */
+  }
+    /* 要素画像のスタイル */
+    .element-image {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      padding-left: 0px;
+      padding-right: 0px;
+      margin: 4px;
+    }
+  
+    /* グリッドレイアウトのスタイル */
+    .wrapper {
+      display: block;
+      justify-items: center; /* 水平方向に中央に配置 */
+    }
+  
+    .button-1 {
+      margin-left: 0.4em;
+      margin-bottom: 0.5em;
+      margin-top: 1em;
+      font-size: 0.8em;
+    }
+  
+    .button-2 {
+      margin: 0.5em;
+      font-size: 0.8em;
+    }
+  
+    .enemy-form th,
+  .enemy-form td {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+    .enemy-form label {
+      font-size: 14px;
+    }
+  
+    .body {
+      margin-left: 0px;
+    }
+  
+    .chart-container {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      margin: 30px auto 0; /* 上側に20pxの空白を追加して左右中央に配置 */
+      text-align: center; /* 中央揃え */
+  }
+  
+  }
+  
