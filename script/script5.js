@@ -148,11 +148,11 @@ async function calculate_base_status() {
 async function calculate_af_main_status_buff() 
 {
     const DmgBuffName = ["FIGHT_PROP_FIRE_ADD_HURT", "FIGHT_PROP_WATER_ADD_HURT", "FIGHT_PROP_ICE_ADD_HURT", "FIGHT_PROP_ELEC_ADD_HURT", "FIGHT_PROP_WIND_ADD_HURT", "FIGHT_PROP_GRASS_ADD_HURT", "FIGHT_PROP_ROCK_ADD_HURT", "FIGHT_PROP_PHYSICAL_ADD_HURT"];
-    const EachBuffName = ["FIGHT_PROP_HP_PERCENT", "FIGHT_PROP_DEFENSE_PERCENT", "FIGHT_PROP_ELEMENT_MASTERY", "FIGHT_PROP_CHARGE_EFFICIENCY", "FIGHT_PROP_ATTACK_PERCENT", "FIGHT_PROP_CRITICAL", "FIGHT_PROP_CRITICAL_HURT", DmgBuffName[char_propaty[0]], DmgBuffName[7],];
-    let AfMainStatusBuff = [0,0,0,0,0,0,0,0,0];
+    const EachBuffName = ["FIGHT_PROP_HP_PERCENT", "FIGHT_PROP_DEFENSE_PERCENT", "FIGHT_PROP_ELEMENT_MASTERY", "FIGHT_PROP_CHARGE_EFFICIENCY", "FIGHT_PROP_ATTACK_PERCENT", "FIGHT_PROP_CRITICAL", "FIGHT_PROP_CRITICAL_HURT", DmgBuffName[char_propaty[0]]];
+    let AfMainStatusBuff = [0,0,0,0,0,0,0,0];
     let CharEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList;
     let EachBuff;
-    for (let i = 0; i < 9; i++)
+    for (let i = 0; i < 8; i++)
     {
         EachBuff = 0;
         CharEquipData.forEach(item => {
@@ -177,7 +177,7 @@ async function calculate_af_main_status_buff()
   AfMainStatusBuff[0] *= 0.01;
   AfMainStatusBuff[1] *= 0.01;
   AfMainStatusBuff[4] *= 0.01;
-  AfMainStatusBuff[7] = (AfMainStatusBuff[7] + AfMainStatusBuff[8]) / 100;
+  AfMainStatusBuff[7] *= 0.01;
   return AfMainStatusBuff
 }
 

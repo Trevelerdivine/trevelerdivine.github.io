@@ -1735,6 +1735,7 @@ async function CharExecution(index, charId){
 
     // ページの読み込みが完了したら、カウントダウンを再開
     window.onload = async function() {
+        fetchButton.disabled = true;
         showTable("table1","tablebutton1");
         showOption("option1", "parameterbutton1");
         const DataResponse = await fetch("../data/JsonData/CharacterData.json");
@@ -1752,6 +1753,10 @@ async function CharExecution(index, charId){
             const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
             // 再度カウントダウンを開始
             startCountdown();
+        }
+        else
+        {
+            fetchButton.disabled = false;
         };
         UserData = JSON.parse(sessionStorage.getItem("UserData"));
         const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
