@@ -1249,11 +1249,7 @@
                     const imageUrl = this.src;
                     const CharId = this.id;
                     SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
-                    // 画像を表示するdiv要素を取得
-                    const digits = String(CharId); // 数値を文字列に変換
-                    const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                    console.log(upperDigits);
-                    selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
+                    selectedCharId = CharDataJson["CharMap"][Math.floor(CharId / 10)]["id"]; // 文字列を数値に変換
                     console.log(selectedCharId);
                     console.log(SelectId);
                     const imageContainer = document.getElementById("CharImage");
@@ -1809,10 +1805,7 @@ async function CharExecution(index, charId){
                     const imageUrl = this.src;
                     const CharId = this.id;
                     SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
-                    // 画像を表示するdiv要素を取得
-                    const digits = String(CharId); // 数値を文字列に変換
-                    const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                    selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
+                    selectedCharId = CharDataJson["CharMap"][Math.floor(CharId / 10)]["id"]; // 文字列を数値に変換
                     console.log(selectedCharId);
                     const imageContainer = document.getElementById("CharImage");
                     await DisplayCharStatus(SelectId);
