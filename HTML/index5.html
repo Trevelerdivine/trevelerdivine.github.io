@@ -1319,6 +1319,14 @@
             const NormalTalent = document.getElementById('NormalTalentLevel');
             const SkillTalent = document.getElementById('SkillTalentLevel');
             const BurstTalent = document.getElementById('BurstTalentLevel');
+            if (CharConstellationsIndex > 2)
+            {
+                CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder]]["3重"]] +=3;
+                if(CharConstellationsIndex > 4)
+                {
+                    CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder]]["5重"]] +=3;
+                }
+            };
             charIndexDisplay.innerHTML = char_names[SortOrder]
             LevelDisplay.innerHTML = "Lv." + CharLevel;
             ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
