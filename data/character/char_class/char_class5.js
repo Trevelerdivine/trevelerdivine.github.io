@@ -7509,7 +7509,7 @@ class Lyney {
     }
   
     calculate_basic_dmg(dmg_rate, status) {
-      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+      const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
       return attckRate;
     }
   
