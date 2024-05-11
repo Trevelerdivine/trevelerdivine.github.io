@@ -1540,6 +1540,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
   const reaction_check = document.getElementById("reactionoff_flag");
+  console.log(dmg_rate);
 
   if (depend_status[0] == 1)
   {
