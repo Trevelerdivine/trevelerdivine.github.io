@@ -8678,8 +8678,8 @@ class Navia {
     let dmg_attck_rate = 0;
     if (attack_method == 1) {
       this.talent1_buff = 0.4;
-      this.attack_hit_count = 6;
-      for (let i = 0; i < 6; i++) {
+      this.attack_hit_count = 4;
+      for (let i = 0; i < 4; i++) {
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
