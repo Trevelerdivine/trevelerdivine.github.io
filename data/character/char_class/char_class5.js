@@ -1916,7 +1916,7 @@ class Lyney {
   
     calculate_char_result_attck(fixstatus,status) {
       let attack_buff = 0;
-      if (CharConstellations == 4)
+      if (CharConstellations == 4 && attack_method == 6)
       {
         attack_buff = status[1] * this.sixth_conste_buff
       }

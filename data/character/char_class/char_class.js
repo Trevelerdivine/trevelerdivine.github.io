@@ -1937,7 +1937,7 @@ class xinyan {
 
   calculate_char_result_attck(fixstatus,status) {
     let attack_buff = 0;
-    if (this.char_constellations == 4)
+    if (this.char_constellations == 4 && attack_method == 6)
     {
       attack_buff = status[1] * this.sixth_conste_buff
     }
