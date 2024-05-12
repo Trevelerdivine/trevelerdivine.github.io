@@ -1881,7 +1881,7 @@ async function monte_carlo_calculate()
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
     calculationMessage.style.visibility = "hidden";
-    response ="ダメージ期待値が異常値を示しています。再入力してください。"
+    response ="ダメージ期待値が異常値を示しています。再入力をするかリロードをしてください。"
     document.getElementById("response").innerHTML = response;
     return response;
   }
