@@ -1698,6 +1698,9 @@ async function DefineMainStatus(DependStatusList, AfMainStatus) {
     GobletMainStatus.push(2);
     CircletMainStatus.push(2); 
   }
+  if (DependStatusList[3] == 1) {
+    ClockMainStatus.push(3); 
+  }
   if (DependStatusList[4] == 1) {
     ClockMainStatus.push(4);
     GobletMainStatus.push(4);
