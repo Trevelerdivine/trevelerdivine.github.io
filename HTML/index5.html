@@ -1320,6 +1320,19 @@
             const NormalTalent = document.getElementById('NormalTalentLevel');
             const SkillTalent = document.getElementById('SkillTalentLevel');
             const BurstTalent = document.getElementById('BurstTalentLevel');
+
+            if(APICharIndex == 33)
+            {
+                CharTalentLevelList[0] += 1;
+            }
+            else if(APICharIndex == 21)
+            {
+                let NormalTalentLevel = CharTalentLevelList[2];
+                let BurstTalentLevel = CharTalentLevelList[0];
+                CharTalentLevelList[0] =  NormalTalentLevel;
+                CharTalentLevelList[2] =  BurstTalentLevel;
+            }
+
             if (CharConstellationsIndex > 2)
             {
                 CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["3重"]] +=3;
@@ -1328,6 +1341,7 @@
                     CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["5重"]] +=3;
                 }
             };
+            
             charIndexDisplay.innerHTML = char_names[SortOrder]
             LevelDisplay.innerHTML = "Lv." + CharLevel;
             ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
