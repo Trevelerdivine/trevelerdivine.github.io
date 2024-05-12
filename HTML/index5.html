@@ -1178,6 +1178,7 @@
 
         // uidが空白の場合はメッセージを表示して処理を中断
         if (uid === '') {
+            fetchButton.disabled = false;
             const nicknameElement = document.getElementById('nickname');
             nicknameElement.textContent = "UIDを入力してください";
             return;
