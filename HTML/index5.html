@@ -95,7 +95,7 @@
         <input type="text" id="uidInput" placeholder="UIDを入力してください" style="width: 150px;">
         <br>
         <br>
-        <button id="fetchButton">データを取得する</button>
+        <button id="fetchButton" disabled>データを取得する</button>
         <div id="countdown"></div>
         <br>
         <div id="nickname">
@@ -1174,6 +1174,8 @@
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
+        let div = document.getElementById("WholeDisplay");
+        div.style.display = "none"; // または必要に応じて適切なdisplay値を使用します
         const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
 
         // uidが空白の場合はメッセージを表示して処理を中断
@@ -1877,6 +1879,7 @@ async function CharExecution(index, charId){
                 imageGrid.appendChild(imgElement);
             });
         }
+        fetchButton.disabled = false;
     }
 
     document.getElementById('attack_method').addEventListener('change', show_attack_method);
