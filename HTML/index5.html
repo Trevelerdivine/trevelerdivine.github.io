@@ -1246,6 +1246,7 @@
                 imgElement.src = image.src;
                 imgElement.alt = image.alt;
                 imgElement.id = image.id; // 画像にID属性を設定
+                imgElement.style.cursor = "pointer"; 
                 imgElement.addEventListener("click", async function() {
                     ResetParameter();
                     // クリックされた画像のsrc属性を取得

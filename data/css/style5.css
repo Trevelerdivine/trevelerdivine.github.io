@@ -641,6 +641,19 @@ details summary {
     padding: 20px;
   }
 
+  details summary {
+    list-style: none;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary {
+    cursor: pointer;
+  }
+
+
 
 
   
