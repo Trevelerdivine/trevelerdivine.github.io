@@ -1778,22 +1778,6 @@ async function CharExecution(index, charId){
         let char_ids = [];
         CharDataJson = await DataResponse.json();
         console.log(CharDataJson);
-        // ローカルストレージからカウントダウン終了時刻を取得
-        const endTime = sessionStorage.getItem(SessionStorageKey);
-        // 現在時刻を取得
-        const currentTime = new Date().getTime();
-
-        // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
-        if (endTime && parseInt(endTime) > currentTime) {
-            // APIのttlを計算
-            const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
-            // 再度カウントダウンを開始
-            startCountdown();
-        }
-        else
-        {
-            fetchButton.disabled = false;
-        };
         UserData = JSON.parse(sessionStorage.getItem("UserData"));
         const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
         Weapondata = await Weaponresponse.json();
@@ -1839,6 +1823,7 @@ async function CharExecution(index, charId){
                 imgElement.src = image.src;
                 imgElement.alt = image.alt;
                 imgElement.id = image.id; // 画像にID属性を設定
+                imgElement.style.cursor = "pointer"; 
                 imgElement.addEventListener("click", async function() {
                     ResetParameter();
                     // クリックされた画像のsrc属性を取得
@@ -1880,7 +1865,22 @@ async function CharExecution(index, charId){
                 imageGrid.appendChild(imgElement);
             });
         }
-        fetchButton.disabled = false;
+        // ローカルストレージからカウントダウン終了時刻を取得
+        const endTime = sessionStorage.getItem(SessionStorageKey);
+        // 現在時刻を取得
+        const currentTime = new Date().getTime();
+
+        // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
+        if (endTime && parseInt(endTime) > currentTime) {
+            // APIのttlを計算
+            const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+            // 再度カウントダウンを開始
+            startCountdown();
+        }
+        else
+        {
+            fetchButton.disabled = false;
+        };
     }
 
     document.getElementById('attack_method').addEventListener('change', show_attack_method);
