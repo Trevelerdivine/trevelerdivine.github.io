@@ -1925,6 +1925,34 @@
             });
         }
         fetchButton.disabled = false;
+
+        const checkboxIds = ["pyro_reso", "hydro_reso", "cyro_reso", "dendro_reso", "geo_reso"];
+        checkboxIds.forEach(function(id) {
+            document.getElementById(id).checked = false;
+        });
+
+        (function() {
+            const checkboxes = document.querySelectorAll('.custom-checkbox');
+            const maxSelected = 2;
+            const selectedCheckboxes = [];
+
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    selectedCheckboxes.push(checkbox);
+                    if (selectedCheckboxes.length > maxSelected) {
+                    const oldestSelected = selectedCheckboxes.shift();
+                    oldestSelected.checked = false;
+                    }
+                } else {
+                    const indexToRemove = selectedCheckboxes.indexOf(checkbox);
+                    if (indexToRemove !== -1) {
+                    selectedCheckboxes.splice(indexToRemove, 1);
+                    }
+                }
+                });
+            });
+            })();
     }
 
     document.getElementById('attack_method').addEventListener('change', show_attack_method);
