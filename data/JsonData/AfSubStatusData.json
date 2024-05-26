@@ -1,0 +1,97 @@
+{
+    "FIGHT_PROP_HP_PERCENT":{
+        "名前":"HP%",
+        "id":0,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_ATTACK_PERCENT":{
+        "名前":"攻撃力%",
+        "id":4,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_DEFENSE_PERCENT":{
+        "名前":"防御力%",
+        "id":1,
+        "基礎数値":0.729
+    },
+    "FIGHT_PROP_ELEMENT_MASTERY":{
+        "名前":"元素熟知",
+        "id":2,
+        "基礎数値":2.331
+    },
+    "FIGHT_PROP_CHARGE_EFFICIENCY":{
+        "名前":"チャージ効率",
+        "id":3,
+        "基礎数値":0.648
+    },
+    "FIGHT_PROP_CRITICAL":{
+        "名前":"会心率",
+        "id":5,
+        "基礎数値":0.389
+    },
+    "FIGHT_PROP_CRITICAL_HURT":{
+        "名前":"会心ダメージ",
+        "id":6,
+        "基礎数値":0.777
+    },
+    "FIGHT_PROP_HP":{
+        "名前":"HP固定値",
+        "id":7,
+        "基礎数値":29.875
+    },
+    "FIGHT_PROP_ATTACK":{
+        "名前":"攻撃力固定値",
+        "id":8,
+        "基礎数値":1.945
+    },
+    "FIGHT_PROP_DEFENSE":{
+        "名前":"防御力固定値",
+        "id":9,
+        "基礎数値":2.315
+    },
+    "FIGHT_PROP_HEAL_ADD":{
+        "名前":"与える治癒効果",
+        "id":18,
+        "基礎数値":1
+    },
+    "FIGHT_PROP_PHYSICAL_ADD_HURT": {
+        "名前":"物理ダメージバフ",
+        "id":17,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_FIRE_ADD_HURT": {
+        "名前":"炎ダメージバフ",
+        "id":10,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_ELEC_ADD_HURT": {
+        "名前":"雷ダメージバフ",
+        "id":13,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_WATER_ADD_HURT": {
+        "名前":"水ダメージバフ",
+        "id":11,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_WIND_ADD_HURT": {
+        "名前":"風ダメージバフ",
+        "id":14,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_ICE_ADD_HURT": {
+        "名前":"氷ダメージバフ",
+        "id":12,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_ROCK_ADD_HURT": {
+        "名前":"岩ダメージバフ",
+        "id":16,
+        "基礎数値":0.583
+    },
+    "FIGHT_PROP_GRASS_ADD_HURT": {
+        "名前":"草ダメージバフ",
+        "id":15,
+        "基礎数値":0.583
+    }
+}
