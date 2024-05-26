@@ -1881,6 +1881,11 @@ async function CharExecution(index, charId){
         {
             fetchButton.disabled = false;
         };
+        
+        const checkboxIds = ["pyro_reso", "hydro_reso", "cyro_reso", "dendro_reso", "geo_reso"];
+        checkboxIds.forEach(function(id) {
+            document.getElementById(id).checked = false;
+        });
     }
 
     document.getElementById('attack_method').addEventListener('change', show_attack_method);
