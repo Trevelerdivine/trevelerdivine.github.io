@@ -1522,29 +1522,6 @@
     document.getElementById(buttonId).classList.add("button-active");
   }
 
-  (function() {
-      const checkboxes = document.querySelectorAll('.custom-checkbox');
-      const maxSelected = 2;
-      const selectedCheckboxes = [];
-
-      checkboxes.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', () => {
-          if (checkbox.checked) {
-            selectedCheckboxes.push(checkbox);
-            if (selectedCheckboxes.length > maxSelected) {
-              const oldestSelected = selectedCheckboxes.shift();
-              oldestSelected.checked = false;
-            }
-          } else {
-            const indexToRemove = selectedCheckboxes.indexOf(checkbox);
-            if (indexToRemove !== -1) {
-              selectedCheckboxes.splice(indexToRemove, 1);
-            }
-          }
-        });
-      });
-    })();
-
   function changeImageClass(image) 
   {
     if (clickedImages.length >= 2)
@@ -1843,9 +1820,39 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     }
   });
 
-  const initial_index = [0,0,0,0,1,1,1];
-  const myStatus = [0,0,0,0,0,0,0];
-  const TheoreticalStatus = [0,0,0,0,100,100,100];
-  create_radarchart(initial_index, myStatus, TheoreticalStatus);
+  window.onload = async function() {
+    const initial_index = [0,0,0,0,1,1,1];
+    const myStatus = [0,0,0,0,0,0,0];
+    const TheoreticalStatus = [0,0,0,0,100,100,100];
+    create_radarchart(initial_index, myStatus, TheoreticalStatus);
+
+    const checkboxIds = ["pyro_reso", "hydro_reso", "cyro_reso", "dendro_reso", "geo_reso"];
+    checkboxIds.forEach(function(id) {
+        document.getElementById(id).checked = false;
+    });
+
+    (function() {
+        const checkboxes = document.querySelectorAll('.custom-checkbox');
+        const maxSelected = 2;
+        const selectedCheckboxes = [];
+
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                selectedCheckboxes.push(checkbox);
+                if (selectedCheckboxes.length > maxSelected) {
+                const oldestSelected = selectedCheckboxes.shift();
+                oldestSelected.checked = false;
+                }
+            } else {
+                const indexToRemove = selectedCheckboxes.indexOf(checkbox);
+                if (indexToRemove !== -1) {
+                selectedCheckboxes.splice(indexToRemove, 1);
+                }
+            }
+            });
+        });
+        })();
+  }
 });
 </script>
