@@ -2,6 +2,9 @@
     margin-left: 30px;
   }
   
+  body {
+    padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
+  }
   
   .tablestyle {
     display: none;
