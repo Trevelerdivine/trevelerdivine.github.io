@@ -1976,7 +1976,6 @@ async function monte_carlo_calculate()
     let MyAfStatus;
     let RandomAfIndex;
     let StrongestAf;
-    let nCount = 0;
     let DependSubStatusIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     document.getElementById("response").innerHTML = response;
@@ -1998,7 +1997,6 @@ async function monte_carlo_calculate()
 
     let base_parameter;
     let exp_dmg;
-    let MaxDmg = 0;
     let fixed_status = [0,0,0,0,0,0,0,0];
     let result_status = [0,0,0,0,0,0,0,0];
     let AfPartsNum = [0,0,0,0,0];
@@ -2129,22 +2127,12 @@ async function monte_carlo_calculate()
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];
         }
-        nCount += 1;
         if (exp_dmg > my_exp_dmg)
         {
             AfPartsNum[RandomAfIndex] += 1;
-            if (MaxDmg < exp_dmg)
-                {
-                    MaxDmg = exp_dmg;
-                    StrongestAf = [RandomAfIndex, afInfo];
-                }
         }   
     }
-    console.log(my_exp_dmg);
-    console.log(exp_dmg)
-    console.log(MaxDmg);
-    console.log(StrongestAf);
-    console.log(nCount);
+
     calculationMessage.style.visibility = "hidden";
     const ConsumeNum = parseInt(document.getElementById("UseItemNum").value);
     let SpendDays = AfPartsNum.map(num => num / TryCount)
@@ -2246,24 +2234,25 @@ async function monte_carlo_calculate()
     document.getElementById("goblet4").innerHTML = DaysNumResult[3];
     document.getElementById("goblet5").innerHTML = DaysNumResult[4];
     document.getElementById("goblet6").innerHTML = DaysNumResult[5];
-    document.getElementById("circlet1").innerHTML = RankList[0];
     circlet1.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
     document.getElementById("circlet1").classList.add(RankClassList[0]);
-    document.getElementById("circlet2").innerHTML = RankList[1];
     circlet2.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
     document.getElementById("circlet2").classList.add(RankClassList[1]);
-    document.getElementById("circlet3").innerHTML = RankList[2];
     circlet3.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
     document.getElementById("circlet3").classList.add(RankClassList[2]);
-    document.getElementById("circlet4").innerHTML = RankList[3];
     circlet4.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
     document.getElementById("circlet4").classList.add(RankClassList[3]);
-    document.getElementById("circlet5").innerHTML = RankList[4];
     circlet5.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
     document.getElementById("circlet5").classList.add(RankClassList[4]);
-    document.getElementById("circlet6").innerHTML = RankList[5];
     circlet6.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
     document.getElementById("circlet6").classList.add(RankClassList[5]);
+    document.getElementById("circlet1").innerHTML = RankList[0];
+    document.getElementById("circlet2").innerHTML = RankList[1];
+    document.getElementById("circlet3").innerHTML = RankList[2];
+    document.getElementById("circlet4").innerHTML = RankList[3];
+    document.getElementById("circlet5").innerHTML = RankList[4];
+    document.getElementById("circlet6").innerHTML = RankList[5];
+    
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
