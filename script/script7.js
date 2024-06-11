@@ -1844,7 +1844,7 @@ async function createAf(partsIndex, depend_index) {
 
     const value = mainBuffList[0];
 
-    if (value < 7) {
+    if (value < 10) {
         const lists = [fixBuffList, rateList, criticalList];
     
         for (const list of lists) {
