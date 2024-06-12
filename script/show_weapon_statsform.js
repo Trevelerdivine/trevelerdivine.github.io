@@ -94,6 +94,19 @@ async function show_weapon_statsform() {
       return selectList;
     }
   }
+
+  else if (selectedWeaponId == "158")
+  {
+    buff_group = [
+      createweaponCheckbox("UrakuMisugiri_effect", true),
+      createweaponLabel("UrakuMisugiri_effect", "有楽御簾切：バフ効果アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   
   else if (selectedWeaponId == "155") {
     buff_group = [
