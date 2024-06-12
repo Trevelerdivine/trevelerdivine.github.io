@@ -1132,21 +1132,6 @@
     // ボタン要素
     const fetchButton = document.getElementById("fetchButton");
 
-    const characters = [
-        "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
-        "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
-        "ディルック", "該当なし", "該当なし", "該当なし", "レザー", "アンバー", "ウェンティ", "香菱",
-        "北斗", "行秋", "魈", "凝光", "該当なし", "クレー", "鍾離", "フィッシュル",
-        "ベネット", "タルタリヤ", "ノエル", "七七", "重雲", "甘雨", "アルベド", "ディオナ",
-        "該当なし", "モナ", "刻晴", "スクロース", "辛炎", "ロサリア", "胡桃", "楓原万葉",
-        "煙緋",  "宵宮", "トーマ", "エウルア", "雷電将軍", "早袖", "珊瑚宮心海", "ゴロー",
-        "九条裟羅", "荒瀧一斗", "八重神子", "鹿野院平蔵", "夜蘭", "綺良々", "アーロイ", "申鶴",
-        "雲菫", "忍", "神里綾人", "コレイ", "ドリー", "ティナリ", "ニィロウ", "セノ",
-        "キャンディス", "ナヒーダ", "レイラ", "放浪者", "ファルザン", "ヨォーヨ", "アルハイゼン", "ディシア",
-        "ミカ", "カーヴェ", "白朮", "リネット", "リネ", "フレミネ", "リオセスリ", "ヌヴィレット",
-        "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
-    ];
-
     function showTable(tableId, buttonId)
     {
         // すべての表コンテナを非表示にする
@@ -1229,7 +1214,7 @@
                 let PossibleFlag = await CharExecution(i, charId);
                 if(PossibleFlag == 0)
                 {
-                    char_names.push(characters[charId]);
+                    char_names.push(CharDataJson["CharMap"][charId.toString()]["名前"]);
                     char_ids.push(charId);
                     CharIndexList.push(i);
                 }
@@ -1858,7 +1843,7 @@
                 let PossibleFlag = await CharExecution(i, charId);
                 if(PossibleFlag == 0)
                 {
-                    char_names.push(characters[charId]);
+                    char_names.push(CharDataJson["CharMap"][charId.toString()]["名前"]);
                     char_ids.push(charId);
                     CharIndexList.push(i);
                 }
