@@ -629,6 +629,11 @@
                 "名前": "静水流転の輝き",
                 "url": "../weapon_img/Sword/SplendorOfTranquilWaters.webp",
                 "id":"155"
+            },
+            "14": {
+                "名前": "有楽御簾切",
+                "url": "../weapon_img/Sword/UrakuMisugiri.webp",
+                "id":"158"
             }
         },
         "両手剣":{

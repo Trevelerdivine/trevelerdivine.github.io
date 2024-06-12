@@ -5,32 +5,7 @@ let attack_method_index = 0;
 let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値]
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
-const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディルック","トーマ","煙緋","辛炎","ベネット","香菱",
-                            "アンバー","ニィロウ","夜蘭","神里綾人","珊瑚宮心海","タルタリヤ","モナ","キャンディス","バーバラ","行秋",
-                            "申鶴","神里綾華","エウルア","甘雨","七七","アーロイ","ミカ","レイラ","ロサリア","ディオナ",
-                            "重雲","ガイア","セノ","八重神子","雷電将軍","刻晴","ドリー","久岐忍","九条裟羅","フィッシュル",
-                            "北斗","レザー","リサ","雷旅人","放浪者","楓原万葉 ","魈","ウェンティ","ジン","ファルザン",
-                            "鹿野院平蔵","早柚","スクロース","風旅人","白朮","アルハイゼン","ナヒーダ","ティナリ","綺良々","カーヴェ",
-                            "ヨォーヨ","コレイ","草旅人","荒瀧一斗","アルベド","鍾離","雲菫","ゴロー","ノエル","凝光",
-                            "岩旅人", "リネ", "ヌヴィレット", "リオセスリ", "フリーナ", "ナヴィア", "嘉明", "閑雲"
-];
-const DisplayWeaponName = [ "萃光の裁葉", "聖顕の鍵", "波乱月白経津", "霧切の廻光", "蒼古なる自由への誓い", "磐岩結緑", "斬山の刃", "天空の刃", "風鷹剣", "船渠剣",
-                            "狼牙", "サーンドルの渡し守", "海淵のフィナーレ", "東花坊時雨", "サイフォスの月明かり", "原木刀", "籠釣瓶一心", "シナバースピンドル", "天目影打", "ダークアレイの閃光",
-                            "腐植の剣", "黒剣", "黒岩の長剣", "鉄蜂の刺し", "斬岩·試作", "匣中龍吟", "旧貴族長剣", "祭礼の剣", "笛の剣", "西風剣",
-                            "飛天御剣", "チ虎魚の刀", "旅道の剣", "黎明の神剣", "冷刃", "葦海の標", "赤角石塵滅砕", "松韻の響く頃", "無工の剣", "狼の末路",
-                            "天空の傲", "携帯型チェーンソー", "話死合い棒", "タイダル・シャドー", "鉄彩の花", "マカイラの水色", "森林のレガリア", "惡王丸", "銜玉の海皇", "桂木斬長正",
-                            "千岩古剣", "雪葬の星銀", "螭龍の剣", "黒岩の斬刀", "白影の剣", "古華·試作", "旧貴族大剣", "雨裁", "祭礼の大剣", "鐘の剣",
-                            "西風大剣", "飛天大御剣", "理屈責め", "白鉄の大剣", "龍血を浴びた剣", "鉄影段平", "赤砂の杖", "息災", "草薙の稲光", "護摩の杖",
-                            "破天の槍", "天空の脊", "和璞鳶", "フィヨルドの歌	", "正義の報酬", "風信の矛", "ムーンピアサー", "斬波のひれ長", "「漁獲」", "喜多院十文字槍",
-                            "千岩長槍", "ドラゴンスピア", "旧貴族猟槍", "西風長槍", "死闘の槍", "黒岩の突槍", "流月の針", "星鎌·試作", "匣中滅龍", "黒纓槍",
-                            "白纓槍", "始まりの大魔術", "狩人の道", "若水", "冬極の白星", "飛雷の鳴弦", "終焉を嘆く詩", "アモスの弓", "天空の翼", "烈日の後嗣",
-                            "静寂の唄", "トキの嘴", "王の近侍", "竭沢", "落霞", "曚雲の月", "破魔の弓", "幽夜のワルツ", "風花の頌歌", "ダークアレイの狩人",
-                            "蒼翠の狩猟弓", "黒岩の戦弓", "リングボウ", "澹月·試作", "弓蔵", "旧貴族長弓", "祭礼の弓", "絶弦", "西風猟弓", "文使い",
-                            "弾弓", "リカーブボウ", "シャープシューターの誓い", "鴉羽の弓", "久遠流転の大典", "碧落の瓏", "トゥライトゥーラの記憶", "千夜に浮かぶ夢", "神楽の真意", "不滅の月華",
-                            "浮世の錠", "四風原典", "天空の巻", "果てなき紺碧の唄", "古祠の瓏", "純水流華", "彷徨える星", "満悦の実", "誓いの明瞳", "白辰の輪",
-                            "ドドコの物語", "ダークアレイの酒と詩", "冬忍びの実", "昭心", "黒岩の緋玉", "万国諸海の図譜", "金珀·試作", "匣中日月", "旧貴族秘法録", "祭礼の断片",
-                            "流浪楽章", "西風秘典", "龍殺しの英傑譚", "魔導緒論", "凛流の監視者", "静水流転の輝き", "裁断", "スーパーアルティメット覇王魔剣"
-];
+
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
                    "shenhe","kamisatoayaka","eula","ganyu","qiqi","aloy","mika","layla","rosaria","diona",
@@ -38,7 +13,7 @@ const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xi
                    "beidou","razor","lisa","travelarelectro","wanderer","kazuhakaedehara","xiao","venti","jean","faruzan",
                    "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
                    "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo",
-                   "Lyney", "Neuvillette", "Wriothesley", "Furina", "Navia", "gaming", "Xianyun"
+                   "Lyney", "Neuvillette", "Wriothesley", "Furina", "Navia", "gaming", "chiori"
                   ];
 const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
                       "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
@@ -55,7 +30,7 @@ const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFu
                       "Slingshot", "RecurveBow", "SharpshootersOath", "RavenBow", "TomeoftheEternalFlow", "JadefallsSplendor", "TulaytullahsRemembrance", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
                       "MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladOfTheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
                       "DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
-                      "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters", "Verdict", "UltimateTyrantSuperDevilSword"
+                      "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters", "Verdict", "UltimateTyrantSuperDevilSword", "UrakuMisugiri"
                     ]
 
 
@@ -564,6 +539,9 @@ async function create_char_instance(base_status, parameter) {
     case "62":
       char_instance = new travelardendro(base_status, parameter);
       break;
+    case "77":
+      char_instance = new chiori(base_status, parameter);
+      break;
     case "75":
       char_instance = new Navia(base_status, parameter);
       break;
@@ -1057,6 +1035,9 @@ async function create_weapon_instance(base_status) {
       break;
     case "155":
       weapon_instance = new SplendorOfTranquilWaters(base_status);
+      break;
+    case "158":
+      weapon_instance = new UrakuMisugiri(base_status);
       break;
     default:
       // 未知の武器IDに対する処理を追加することもできます
