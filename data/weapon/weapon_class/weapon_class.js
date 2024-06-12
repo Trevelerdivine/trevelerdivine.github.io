@@ -12473,147 +12473,93 @@ class CashflowSupervision {
   }
 }
 
-class chiori {
-  constructor(base_status_array, parameter) {
+class UrakuMisugiri {
+  constructor(base_status_array) {
     this.base_status_array = base_status_array;
-    this.dmg_rateCache = null;
-    this.parameter = parameter;
-    this.talent2_buff = 0;
-    this.sixth_conste_buff = 0;
-    this.skill_buff = 0;
-    this.char_constellations = 0;
-    this.attack_hit_count = 0;
     this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
-    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
-    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
   }
-  
-  async dmg_rate_data() {
-    this.char_constellations = document.getElementById("char_constellations").value;
-    const talent2_check =  document.getElementById("chiori_talent2");
-    if(talent2_check.checked)
+
+  calculate_weapon_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_deff(fixstatus,status) {
+    return this.base_status_array[1] * 0.05 * (this.weapon_rank + 3);
+  }
+
+  calculate_weapon_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = 0
+    let buff_check = document.getElementById("UrakuMisugiri_effect");
+    let buff_effect = 1;
+    if (buff_check.checked)
     {
-      this.talent2_buff = 0.2;
+      buff_effect = 2
     }
-
-    // JSON データを取得
-    const response = await fetch("./data/character/char_data/chiori.json");
-    const data = await response.json();
-  
-    // 攻撃方法に応じてダメージ率を計算
-    let dmg_rate;
-    let dmg_attck_rate = 0;
-    let dmg_deff_rate = 0;
-    if (attack_method == 1) {
-      this.attack_hit_count = 5;
-      for (let i = 0; i < 5; i++) {
-        dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-      }
-      if(this.char_constellations == 4)
-      {
-        dmg_deff_rate = 2.35 * 5
-      }
-      dmg_rate = [0, dmg_deff_rate, 0, 0, dmg_attck_rate, 0, 0];
-    } 
-    else if (attack_method == 16) {
-      this.attack_hit_count = 1;
-      const attack_count1 = parseInt(document.getElementById("chiori_hitcount1").value) + parseInt(document.getElementById("chiori_hitcount3").value);
-      const attack_count2 = parseInt(document.getElementById("chiori_hitcount2").value);
-      let attack_count3 = 0;
-      if (this.char_constellations > 1)
-      {
-        attack_count3 = parseInt(document.getElementById("chiori_hitcount4").value);
-      }
-      this.attack_hit_count = attack_count1 + attack_count2 + attack_count3;
-      dmg_attck_rate = parseFloat(data["元素スキル"]["斬り上げ"]["攻撃力"][this.parameter[3]]) * attack_count1
-                     + parseFloat(data["元素スキル"]["たもと"]["攻撃力"][this.parameter[3]]) * (attack_count2 + 1.7 * attack_count3);
-      dmg_deff_rate = parseFloat(data["元素スキル"]["斬り上げ"]["防御力"][this.parameter[3]]) * attack_count1
-                     + parseFloat(data["元素スキル"]["たもと"]["防御力"][this.parameter[3]]) * (attack_count2 + 1.7 * attack_count3);
-      dmg_rate = [0, dmg_deff_rate, 0, 0, dmg_attck_rate, 0, 0];
-    } 
-    else if (attack_method == 21) {
-      this.attack_hit_count = 1;
-      dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["攻撃力"][this.parameter[3]]);
-      dmg_deff_rate = parseFloat(data["元素爆発"]["詳細"][0]["防御力"][this.parameter[3]]);
-
-      dmg_rate = [0, dmg_deff_rate, 0, 0, dmg_attck_rate, 0, 0];
-    } 
-    return dmg_rate;
-  }
-  
-  calculate_char_fixed_hp(fixstatus,status) {
-    return 0;
+    if (attack_method_index == 0)
+    {
+      dmg_buff = 0.04 * (this.weapon_rank + 3) * buff_effect;
+    }
+    else if (attack_method_index == 3)
+    {
+      dmg_buff = 0.06 * (this.weapon_rank + 3) * buff_effect;
+    }
+    return dmg_buff;
   }
 
-  calculate_char_result_hp(fixstatus,status) {
-    return 0;
+  calculate_weapon_result_dmg_buff(fixstatus,status) {
+    return 0
   }
 
-  calculate_char_fixed_attck(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_attck(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_deff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_deff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_elm(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_elm(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_elm_charge(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_elm_charge(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_cr(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_cr(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_result_cd(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return this.talent2_buff ;
-  }
-
-  calculate_char_result_dmg_buff(fixstatus,status) {
-    return 0;
-  }
-
-  calculate_basic_dmg(dmg_rate, status) {
-    let basicDmg;
-    basicDmg = dmg_rate[4] * status[4] + dmg_rate[1] * status[1] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-    return basicDmg;
-  }
-
-  calculate_char_debuff() {
-    let char_debuff = [0,0,0];
-    return char_debuff;
+  calculate_weapon_debuff() {
+    const weapon_debuff = [0,0];
+    return weapon_debuff
   }
 }
