@@ -1,0 +1,640 @@
+{
+    "CharMap": {
+        "0": {
+            "名前": "萃光の裁葉",
+            "name": "LightofFoliarIncision"
+        },
+        "1": {
+            "名前": "聖顕の鍵",
+            "name": "KeyofKhajNisut"
+        },
+        "2": {
+            "名前": "波乱月白経津",
+            "name": "HaranGeppakuFutsu"
+        },
+        "3": {
+            "名前": "霧切の廻光",
+            "name": "MistsplitterReforged"
+        },
+        "4": {
+            "名前": "蒼古なる自由への誓い",
+            "name": "FreedomSworn"
+        },
+        "5": {
+            "名前": "磐岩結緑",
+            "name": "PrimordialJadeCutter"
+        },
+        "6": {
+            "名前": "斬山の刃",
+            "name": "SummitShaper"
+        },
+        "7": {
+            "名前": "天空の刃",
+            "name": "SkywardBlade"
+        },
+        "8": {
+            "名前": "風鷹剣",
+            "name": "AquilaFavonia"
+        },
+        "9": {
+            "名前": "船渠剣",
+            "name": "TheDockhandsAssistant"
+        },
+        "10": {
+            "名前": "狼牙",
+            "name": "WolfFang"
+        },
+        "11": {
+            "名前": "サーンドルの渡し守",
+            "name": "FleuveCendreFerryman"
+        },
+        "12": {
+            "名前": "海淵のフィナーレ",
+            "name": "FinaleoftheDeep"
+        },
+        "13": {
+            "名前": "東花坊時雨",
+            "name": "ToukabouShigure"
+        },
+        "14": {
+            "名前": "サイフォスの月明かり",
+            "name": "XiphosMoonlight"
+        },
+        "15": {
+            "名前": "原木刀",
+            "name": "SapwoodBlade"
+        },
+        "16": {
+            "名前": "籠釣瓶一心",
+            "name": "KagotsurubeIsshin"
+        },
+        "17": {
+            "名前": "シナバースピンドル",
+            "name": "CinnabarSpindle"
+        },
+        "18": {
+            "名前": "天目影打",
+            "name": "AmenomaKageuchi"
+        },
+        "19": {
+            "名前": "ダークアレイの閃光",
+            "name": "TheAlleyFlash"
+        },
+        "20": {
+            "名前": "腐植の剣",
+            "name": "FesteringDesire"
+        },
+        "21": {
+            "名前": "黒剣",
+            "name": "TheBlackSword"
+        },
+        "22": {
+            "名前": "黒岩の長剣",
+            "name": "BlackcliffLongsword"
+        },
+        "23": {
+            "名前": "鉄蜂の刺し",
+            "name": "IronSting"
+        },
+        "24": {
+            "名前": "斬岩·試作",
+            "name": "PrototypeRancour"
+        },
+        "25": {
+            "名前": "匣中龍吟",
+            "name": "LionsRoar"
+        },
+        "26": {
+            "名前": "旧貴族長剣",
+            "name": "RoyalLongsword"
+        },
+        "27": {
+            "名前": "祭礼の剣",
+            "name": "SacrificialSword"
+        },
+        "28": {
+            "名前": "笛の剣",
+            "name": "TheFlute"
+        },
+        "29": {
+            "名前": "西風剣",
+            "name": "FavoniusSword"
+        },
+        "30": {
+            "名前": "飛天御剣",
+            "name": "SkyriderSword"
+        },
+        "31": {
+            "名前": "チ虎魚の刀",
+            "name": "FilletBlade"
+        },
+        "32": {
+            "名前": "旅道の剣",
+            "name": "TravelersHandySword"
+        },
+        "33": {
+            "名前": "黎明の神剣",
+            "name": "HarbingerofDawn"
+        },
+        "34": {
+            "名前": "冷刃",
+            "name": "CoolSteel"
+        },
+        "35": {
+            "名前": "葦海の標",
+            "name": "BeaconoftheReedSea"
+        },
+        "36": {
+            "名前": "赤角石塵滅砕",
+            "name": "RedhornStonethresher"
+        },
+        "37": {
+            "名前": "松韻の響く頃",
+            "name": "SongofBrokenPines"
+        },
+        "38": {
+            "名前": "無工の剣",
+            "name": "TheUnforged"
+        },
+        "39": {
+            "名前": "狼の末路",
+            "name": "WolfsGravestone"
+        },
+        "40": {
+            "名前": "天空の傲",
+            "name": "SkywardPride"
+        },
+        "41": {
+            "名前": "携帯型チェーンソー",
+            "name": "PortablePowerSaw"
+        },
+        "42": {
+            "名前": "話死合い棒",
+            "name": "TalkingStick"
+        },
+        "43": {
+            "名前": "タイダル・シャドー",
+            "name": "TidalShadow"
+        },
+        "44": {
+            "名前": "鉄彩の花",
+            "name": "MailedFlower"
+        },
+        "45": {
+            "名前": "マカイラの水色",
+            "name": "MakhairaAquamarine"
+        },
+        "46": {
+            "名前": "森林のレガリア",
+            "name": "ForestRegalia"
+        },
+        "47": {
+            "名前": "惡王丸",
+            "name": "Akuoumaru"
+        },
+        "48": {
+            "名前": "銜玉の海皇",
+            "name": "LuxuriousSeaLoad"
+        },
+        "49": {
+            "名前": "桂木斬長正",
+            "name": "KatsuragikiriNagamasa"
+        },
+        "50": {
+            "名前": "千岩古剣",
+            "name": "LithicBlade"
+        },
+        "51": {
+            "名前": "雪葬の星銀",
+            "name": "SnowTombedStarsilver"
+        },
+        "52": {
+            "名前": "螭龍の剣",
+            "name": "SerpentSpine"
+        },
+        "53": {
+            "名前": "黒岩の斬刀",
+            "name": "BlackcliffSlasher"
+        },
+        "54": {
+            "名前": "白影の剣",
+            "name": "Whiteblind"
+        },
+        "55": {
+            "名前": "古華·試作",
+            "name": "PrototypeArchaic"
+        },
+        "56": {
+            "名前": "旧貴族大剣",
+            "name": "RoyalGreatsword"
+        },
+        "57": {
+            "名前": "雨裁",
+            "name": "Rainslasher"
+        },
+        "58": {
+            "名前": "祭礼の大剣",
+            "name": "SacrificialGreatsword"
+        },
+        "59": {
+            "名前": "鐘の剣",
+            "name": "TheBell"
+        },
+        "60": {
+            "名前": "西風大剣",
+            "name": "FavoniusGreatsword"
+        },
+        "61": {
+            "名前": "飛天大御剣",
+            "name": "SkyriderGreatsword"
+        },
+        "62": {
+            "名前": "理屈責め",
+            "name": "DebateClub"
+        },
+        "63": {
+            "名前": "白鉄の大剣",
+            "name": "WhiteIronGreatsword"
+        },
+        "64": {
+            "名前": "龍血を浴びた剣",
+            "name": "BloodtaintedGreatsword"
+        },
+        "65": {
+            "名前": "鉄影段平",
+            "name": "FerrousShadow"
+        },
+        "66": {
+            "名前": "赤砂の杖",
+            "name": "StaffoftheScarletSands"
+        },
+        "67": {
+            "名前": "息災",
+            "name": "CalamityQueller"
+        },
+        "68": {
+            "名前": "草薙の稲光",
+            "name": "EngulfingLightning"
+        },
+        "69": {
+            "名前": "護摩の杖",
+            "name": "StaffofHoma"
+        },
+        "70": {
+            "名前": "破天の槍",
+            "name": "VortexVanguisher"
+        },
+        "71": {
+            "名前": "天空の脊",
+            "name": "SkywardSpine"
+        },
+        "72": {
+            "名前": "和璞鳶",
+            "name": "PrimordialJadeWingedSpear"
+        },
+        "73": {
+            "名前": "フィヨルドの歌",
+            "name": "BalladoftheFjords"
+        },
+        "74": {
+            "名前": "正義の報酬",
+            "name": "RightfulReward"
+        },
+        "75": {
+            "名前": "風信の矛",
+            "name": "MissiveWindspear"
+        },
+        "76": {
+            "名前": "ムーンピアサー",
+            "name": "Moonpiercer"
+        },
+        "77": {
+            "名前": "斬波のひれ長",
+            "name": "WavebreakersFin"
+        },
+        "78": {
+            "名前": "「漁獲」",
+            "name": "TheCatch"
+        },
+        "79": {
+            "名前": "喜多院十文字槍",
+            "name": "KitainCrossSpear"
+        },
+        "80": {
+            "名前": "千岩長槍",
+            "name": "LithicSpear"
+        },
+        "81": {
+            "名前": "ドラゴンスピア",
+            "name": "DragonspineSpear"
+        },
+        "82": {
+            "名前": "旧貴族猟槍",
+            "name": "RoyalSpear"
+        },
+        "83": {
+            "名前": "西風長槍",
+            "name": "FavoniusLance"
+        },
+        "84": {
+            "名前": "死闘の槍",
+            "name": "Deathmatch"
+        },
+        "85": {
+            "名前": "黒岩の突槍",
+            "name": "BlackcliffPole"
+        },
+        "86": {
+            "名前": "流月の針",
+            "name": "CrescentPike"
+        },
+        "87": {
+            "名前": "星鎌·試作",
+            "name": "PrototypeStarglitter"
+        },
+        "88": {
+            "名前": "匣中滅龍",
+            "name": "DragonsBane"
+        },
+        "89": {
+            "名前": "黒纓槍",
+            "name": "BlackTassel"
+        },
+        "90": {
+            "名前": "白纓槍",
+            "name": "WhiteTassel"
+        },
+        "91": {
+            "名前": "始まりの大魔術",
+            "name": "TheFirstGreatMagic"
+        },
+        "92": {
+            "名前": "狩人の道",
+            "name": "HuntersPath"
+        },
+        "93": {
+            "名前": "若水",
+            "name": "AquaSimulacra"
+        },
+        "94": {
+            "名前": "冬極の白星",
+            "name": "PolarStar"
+        },
+        "95": {
+            "名前": "飛雷の鳴弦",
+            "name": "ThunderingPulse"
+        },
+        "96": {
+            "名前": "終焉を嘆く詩",
+            "name": "ElegyfortheEnd"
+        },
+        "97": {
+            "名前": "アモスの弓",
+            "name": "AmosBow"
+        },
+        "98": {
+            "名前": "天空の翼",
+            "name": "SkywardHarp"
+        },
+        "99": {
+            "名前": "烈日の後嗣",
+            "name": "ScionoftheBlazingSun"
+        },
+        "100": {
+            "名前": "静寂の唄",
+            "name": "SongofStillness"
+        },
+        "101": {
+            "名前": "トキの嘴",
+            "name": "IbisPiercer"
+        },
+        "102": {
+            "名前": "王の近侍",
+            "name": "KingsSquire"
+        },
+        "103": {
+            "名前": "竭沢",
+            "name": "EndoftheLine"
+        },
+        "104": {
+            "名前": "落霞",
+            "name": "FadingTwilight"
+        },
+        "105": {
+            "名前": "曚雲の月",
+            "name": "MouunsMoon"
+        },
+        "106": {
+            "名前": "破魔の弓",
+            "name": "Hamayumi"
+        },
+        "107": {
+            "名前": "幽夜のワルツ",
+            "name": "MitternachtsWaltz"
+        },
+        "108": {
+            "名前": "風花の頌歌",
+            "name": "WindblumeOde"
+        },
+        "109": {
+            "名前": "ダークアレイの狩人",
+            "name": "AlleyHunter"
+        },
+        "110": {
+            "名前": "蒼翠の狩猟弓",
+            "name": "TheViridescentHunt"
+        },
+        "111": {
+            "名前": "黒岩の戦弓",
+            "name": "BlackcliffWarbow"
+        },
+        "112": {
+            "名前": "リングボウ",
+            "name": "CompoundBow"
+        },
+        "113": {
+            "名前": "澹月·試作",
+            "name": "PrototypeCrescent"
+        },
+        "114": {
+            "名前": "弓蔵",
+            "name": "Rust"
+        },
+        "115": {
+            "名前": "旧貴族長弓",
+            "name": "RoyalBow"
+        },
+        "116": {
+            "名前": "祭礼の弓",
+            "name": "SacrificialBow"
+        },
+        "117": {
+            "名前": "絶弦",
+            "name": "TheStringless"
+        },
+        "118": {
+            "名前": "西風猟弓",
+            "name": "FavoniusWarbow"
+        },
+        "119": {
+            "名前": "文使い",
+            "name": "Messenger"
+        },
+        "120": {
+            "名前": "弾弓",
+            "name": "Slingshot"
+        },
+        "121": {
+            "名前": "リカーブボウ",
+            "name": "RecurveBow"
+        },
+        "122": {
+            "名前": "シャープシューターの誓い",
+            "name": "SharpshootersOath"
+        },
+        "123": {
+            "名前": "鴉羽の弓",
+            "name": "RavenBow"
+        },
+        "124": {
+            "名前": "久遠流転の大典",
+            "name": "TomeoftheEternalFlow"
+        },
+        "125": {
+            "名前": "碧落の瓏",
+            "name": "JadefallsSplendor"
+        },
+        "126": {
+            "名前": "トゥライトゥーラの記憶",
+            "name": "TulaytullahsRemembrance"
+        },
+        "127": {
+            "名前": "千夜に浮かぶ夢",
+            "name": "AThousandFloatingDreams"
+        },
+        "128": {
+            "名前": "神楽の真意",
+            "name": "KagurasVerity"
+        },
+        "129": {
+            "名前": "不滅の月華",
+            "name": "EverlastingMoonglow"
+        },
+        "130": {
+            "名前": "浮世の錠",
+            "name": "MemoryofDust"
+        },
+        "131": {
+            "名前": "四風原典",
+            "name": "LostPrayertotheSacredWinds"
+        },
+        "132": {
+            "名前": "天空の巻",
+            "name": "SkywardAtlas"
+        },
+        "133": {
+            "名前": "果てなき紺碧の唄",
+            "name": "BalladOfTheBoundlessBlue"
+        },
+        "134": {
+            "名前": "古祠の瓏",
+            "name": "SacrificialJade"
+        },
+        "135": {
+            "名前": "純水流華",
+            "name": "FlowingPurity"
+        },
+        "136": {
+            "名前": "彷徨える星",
+            "name": "WanderingEvenstar"
+        },
+        "137": {
+            "名前": "満悦の実",
+            "name": "FruitofFulfillment"
+        },
+        "138": {
+            "名前": "誓いの明瞳",
+            "name": "OathswornEye"
+        },
+        "139": {
+            "名前": "白辰の輪",
+            "name": "HakushinRing"
+        },
+        "140": {
+            "名前": "ドドコの物語",
+            "name": "DodocoTales"
+        },
+        "141": {
+            "名前": "ダークアレイの酒と詩",
+            "name": "WineandSong"
+        },
+        "142": {
+            "名前": "冬忍びの実",
+            "name": "Frostbearer"
+        },
+        "143": {
+            "名前": "昭心",
+            "name": "EyeofPerception"
+        },
+        "144": {
+            "名前": "黒岩の緋玉",
+            "name": "BlackcliffAgate"
+        },
+        "145": {
+            "名前": "万国諸海の図譜",
+            "name": "MappaMare"
+        },
+        "146": {
+            "名前": "金珀·試作",
+            "name": "PrototypeAmber"
+        },
+        "147": {
+            "名前": "匣中日月",
+            "name": "SolarPearl"
+        },
+        "148": {
+            "名前": "旧貴族秘法録",
+            "name": "RoyalGrimoire"
+        },
+        "149": {
+            "名前": "祭礼の断片",
+            "name": "SacrificialFragments"
+        },
+        "150": {
+            "名前": "流浪楽章",
+            "name": "TheWidsith"
+        },
+        "151": {
+            "名前": "西風秘典",
+            "name": "FavoniusCodex"
+        },
+        "152": {
+            "名前": "龍殺しの英傑譚",
+            "name": "ThrillingTalesofDragonSlayers"
+        },
+        "153": {
+            "名前": "魔導緒論",
+            "name": "MagicGuide"
+        },
+        "154": {
+            "名前": "凛流の監視者",
+            "name": "CashflowSupervision"
+        },
+        "155": {
+            "名前": "静水流転の輝き",
+            "name": "SplendorOfTranquilWaters"
+        },
+        "156": {
+            "名前": "裁断",
+            "name": "Verdict"
+        },
+        "157": {
+            "名前": "スーパーアルティメット覇王魔剣",
+            "name": "UltimateTyrantSuperDevilSword"
+        },
+        "158": {
+            "名前": "有楽御簾切",
+            "name": "UrakuMisugiri"
+        }
+    }
+}
