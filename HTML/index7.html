@@ -1123,6 +1123,8 @@
     let afdata;
     let AfNameList
     let SelectId;
+    let CharJsonData;
+    let WeaponJsonData;
     let CharIndexList = [];
     let EquipNumber;
     // ローカルストレージに保存するキー
@@ -1800,6 +1802,11 @@
 
     // ページの読み込みが完了したら、カウントダウンを再開
     window.onload = async function() {
+        fetchButton.disabled = true;
+        const JsonData1 = await fetch("../data/JsonData/DisplayCharData.json");
+        CharJsonData = await JsonData1.json();
+        const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
+        WeaponJsonData = await JsonData2.json();
         showTable("table1","tablebutton1");
         showOption("option1", "parameterbutton1");
         const DataResponse = await fetch("../data/JsonData/CharacterData.json");
