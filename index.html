@@ -1771,12 +1771,10 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   af_overlayImages = document.querySelectorAll('.overlay img');
   const indexDisplay = document.getElementById('index-display');
   afpopupImages = document.querySelectorAll('.open img');
-  console.log(af_overlayImages);
   const JsonData1 = await fetch("./data/JsonData/DisplayCharData.json");
   CharJsonData = await JsonData1.json();
   const JsonData2 = await fetch("./data/JsonData/DisplayWeaponData.json");
   WeaponJsonData = await JsonData2.json();
-  console.log(CharJsonData);
   
   // イメージの選択処理を実行
   handleImageSelection(af_overlayImages, indexDisplay);

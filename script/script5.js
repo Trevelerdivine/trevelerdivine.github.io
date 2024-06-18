@@ -6,15 +6,6 @@ let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値]
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
 
-const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
-                   "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
-                   "shenhe","kamisatoayaka","eula","ganyu","qiqi","aloy","mika","layla","rosaria","diona",
-                   "chongyun","kaeya","cyno","yaemiko","raidenshougun","keqing","dori","kukishinobu","kujousara","fischl",
-                   "beidou","razor","lisa","travelarelectro","wanderer","kazuhakaedehara","xiao","venti","jean","faruzan",
-                   "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
-                   "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo",
-                   "Lyney", "Neuvillette", "Wriothesley", "Furina", "Navia", "gaming", "chiori"
-                  ];
 const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
                       "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
                       "FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "LionsRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
@@ -70,9 +61,9 @@ async function calculate_base_status() {
   let WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
 
   // キャラクターと武器のデータを取得
-  const CharResponse = await fetch(`../data/character/char_data/${char_name[selectedCharId]}.json`);
+  const CharResponse = await fetch("../data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
   const CharData = await CharResponse.json();
-  const WeaponResponse = await fetch(`../data/weapon/weapon_data/${weapon_name[selectedWeaponId]}.json`);
+  const WeaponResponse = await fetch("../data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedWeaponId.toString()]["name"] + ".json");
   const WeaponData = await WeaponResponse.json();
 
   // 基礎ステータスを取得し、小数点以下を四捨五入
@@ -302,13 +293,13 @@ async function calculate_depend_status()
     }
     }
     depend_status = [0,0,0,0,0,0,0];
-    const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
+    const char_response = await fetch("../data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
     const char_data = await char_response.json();
     if (attack_method != 0)
     {
         char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
         const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
-        const weapon_response = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
+        const weapon_response = await fetch("../data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedWeaponId.toString()]["name"] + ".json");
         const weapon_data = await weapon_response.json();
         const weapon_depend_status = weapon_data.ステータス.依存ステータス;
         const button = document.getElementById("reactionoff_flag");
@@ -1068,7 +1059,7 @@ async function calculate_team_fix_buff(base_status)
   const dendroCheckbox = document.getElementById("dendro_reso");
   const geoCheckbox = document.getElementById("geo_reso");
 
-  const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const char_response = await fetch("../data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
   const char_data = await char_response.json();
   const char_base_hpper = parseFloat(char_data["ステータス"]["基礎HP％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
   const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
