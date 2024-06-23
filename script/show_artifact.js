@@ -1173,6 +1173,44 @@ async function show_artifact()
                 artifact_checkbox.appendChild(element);
               });
         }
+        else if (selectedImageIds[i] == "30") 
+        {
+            buff_group = [
+                createAfCheckbox("af30_2", true),
+                createAfLabel("af30_2", "諧律奇想の断章2"),
+                ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af30_4", true),
+                    createAfLabel("af30_4", "諧律奇想の断章4 セット効果　"),
+                    createAfSelectList("af30-4List", 0, 3, "", "層", 3),
+                    document.createElement("br"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+                });
+        }
+        else if (selectedImageIds[i] == "31") 
+        {
+            buff_group = [
+                createAfCheckbox("af31_2", true),
+                createAfLabel("af31_2", "遂げられなかった想い2"),
+                ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af31_4", true),
+                    createAfLabel("af31_4", "遂げられなかった想い4 与えるダメージ　"),
+                    createanyAfSelectList("af31_4List", 0, 5, "+", "%", 5, 10),
+                    document.createElement("br"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+            });
+        }
 
         if (i === 0)
         {
