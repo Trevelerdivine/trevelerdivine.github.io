@@ -94,7 +94,17 @@ async function show_weapon_statsform() {
       return selectList;
     }
   }
-
+  else if (selectedWeaponId == "159") {
+    buff_group = [
+      createweaponLabel("dmg_buff_count", "赦罪：ダメージバフ　"),
+      createweaponSelectList("dmg_buff_count", 0, 3, "", "層", 3),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }  
   else if (selectedWeaponId == "158")
   {
     buff_group = [
@@ -107,7 +117,6 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
-  
   else if (selectedWeaponId == "155") {
     buff_group = [
       createweaponTextNode("湖光の朝夕"),

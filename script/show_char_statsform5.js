@@ -969,6 +969,43 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
+    else if (selectedCharId == "79")
+    {
+      traits = [
+        createLabel("ClorindeTalent1", "固有天賦1：夜を裂く紫焔　"),
+        createanySelectList("ClorindeTalent1", 0, 3, "", "層", 3, 1),
+        document.createElement("br"),
+        createTextNode("固有天賦2：会心率　"),
+        createanySelectList("ClorindeTalent2", 0, 2, "+", "%", 2, 10),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      traits = [
+        { id: "traitCheckbox4", label: "第4重：雷元素ダメージ+20%" },
+        { id: "traitCheckbox6", label: "第6重：クロリンデの会心率+10%、会心ダメージ+70%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃（夜巡り）", value: "1" },
+        { text: "元素爆発（消えゆく残光）", value: "21" }
+      ];
+    
+      createchar_attackmethod(options);
+
+      if (CharConstellations > 3)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
     else if (selectedCharId == "32")
     {
       traits = [

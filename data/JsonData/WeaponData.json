@@ -634,6 +634,11 @@
                 "名前": "有楽御簾切",
                 "url": "../weapon_img/Sword/UrakuMisugiri.webp",
                 "id":"158"
+            },
+            "15": {
+                "名前": "赦罪",
+                "url": "../weapon_img/Sword/Absolution.webp",
+                "id":"159"
             }
         },
         "両手剣":{

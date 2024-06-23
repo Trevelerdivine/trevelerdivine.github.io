@@ -457,6 +457,9 @@ async function create_char_instance(base_status, parameter) {
     case "31":
       char_instance = new kaeya(base_status, parameter);
       break;
+    case "79":
+      char_instance = new clorinde(base_status, parameter);
+      break;
     case "32":
       char_instance = new cyno(base_status, parameter);
       break;
@@ -1010,6 +1013,9 @@ async function create_weapon_instance(base_status) {
       break;
     case "158":
       weapon_instance = new UrakuMisugiri(base_status);
+      break;
+    case "159":
+    weapon_instance = new Absolution(base_status);
       break;
     default:
       // 未知の武器IDに対する処理を追加することもできます
