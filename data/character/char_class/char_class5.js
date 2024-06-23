@@ -5541,11 +5541,11 @@ class Lyney {
         const attack_count3 = parseInt(document.getElementById("ClorindeAttackCount3").value);
         const attack_count4 = parseInt(document.getElementById("ClorindeAttackCount4").value);
         const attack_count5 = parseInt(document.getElementById("ClorindeAttackCount5").value);
-        const dmg_rate1 = parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]]);
-        const dmg_rate2 = parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]]);
-        const dmg_rate3 = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
-        const dmg_rate4 = parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
-        const dmg_rate5 = parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
+        const dmg_rate1 = parseFloat(data["通常攻撃"]["詳細"][0]["数値"][CharTalentLevel[3]]);
+        const dmg_rate2 = parseFloat(data["通常攻撃"]["詳細"][1]["数値"][CharTalentLevel[3]]);
+        const dmg_rate3 = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][CharTalentLevel[3]]);
+        const dmg_rate4 = parseFloat(data["通常攻撃"]["詳細"][3]["数値"][CharTalentLevel[3]]);
+        const dmg_rate5 = parseFloat(data["通常攻撃"]["詳細"][4]["数値"][CharTalentLevel[3]]);
         this.attack_hit_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 + attack_count5 * 3;
         dmg_attck_rate = attack_count1 * dmg_rate1
                        + attack_count2 * dmg_rate2
