@@ -82,7 +82,9 @@ async function show_weapon_statsform() {
     else if (selectedWeaponId == "159")
     {
       buff_group = [
-        createweaponLabel("dmg_buff_count", "赦罪：ダメージバフ　"),
+        createweaponTextNode("赦罪"),
+        document.createElement("br"),
+        createweaponLabel("dmg_buff_count", "　死の契約 与えるダメージアップ：　"),
         createweaponSelectList("dmg_buff_count", 0, 3, "", "層", 3),
         document.createElement("br"),
       ];
