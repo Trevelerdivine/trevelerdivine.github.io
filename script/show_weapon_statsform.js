@@ -98,7 +98,7 @@ async function show_weapon_statsform() {
     buff_group = [
       createweaponTextNode("赦罪"),
       document.createElement("br"),
-      createweaponLabel("dmg_buff_count", "　死の契約 与えるダメージアップ：　"),
+      createweaponLabel("dmg_buff_count", "　死の契約 与えるダメージアップ："),
       createweaponSelectList("dmg_buff_count", 0, 3, "", "層", 3),
       document.createElement("br"),
     ];
