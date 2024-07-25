@@ -1387,6 +1387,66 @@ async function show_attack_method()
       createCheckboxList_br(options);
     }
   }
+  else if (selectedCharId == "18")
+  {
+    if (attack_method == 1)
+    {
+      traits = [
+        createLabel("barbara_attack1_count", "　通常1段ヒット回数："),
+        createSelectList("barbara_attack1_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+        createLabel("barbara_attack2_count", "　通常2段ヒット回数："),
+        createSelectList("barbara_attack2_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+        createLabel("barbara_attack3_count", "　通常3段ヒット回数："),
+        createSelectList("barbara_attack3_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+        createLabel("barbara_attack4_count", "　通常4段ヒット回数："),
+        createSelectList("barbara_attack4_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+  
+      traits = [
+        createLabel("barbara_react1_count", "　通常1段反応回数："),
+        createSelectList("barbara_react1_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+        createLabel("barbara_react2_count", "　通常2段反応回数："),
+        createSelectList("barbara_react2_count", 0, 10, "", "回", 0),
+        document.createElement("br"),
+        createLabel("barbara_react3_count", "　通常3段反応回数："),
+        createSelectList("barbara_react3_count", 0, 10, "", "回", 0),
+        document.createElement("br"),
+        createLabel("barbara_react4_count", "　通常4段反応回数："),
+        createSelectList("barbara_react4_count", 0, 10, "", "回", 1),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if (attack_method == 6) 
+    {
+      traits = [
+        createLabel("barbara_attack1_count", "　重撃ヒット回数："),
+        createSelectList("barbara_attack1_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+  
+      traits = [
+        createLabel("barbara_react1_count", "　重撃反応回数："),
+        createSelectList("barbara_react1_count", 0, 10, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+  }
   else if (selectedCharId == "19")
   {
     if (attack_method == 16)
