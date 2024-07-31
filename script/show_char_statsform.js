@@ -1885,6 +1885,11 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
     showFormElements();
+    const AfMainIndex = CharJsonData["CharMap"][selectedCharId.toString()]["Artifact"];
+    console.log(AfMainIndex);
+    selectOptionByValue("clock_mainstatus", AfMainIndex[0]);
+    selectOptionByValue("goblet_mainstatus", AfMainIndex[1]);
+    selectOptionByValue("circlet_mainstatus", AfMainIndex[2]);
   }
 
 function createchar_attackmethod(options)
@@ -2156,4 +2161,21 @@ function createInputWithUnit(type, id, value, unit)
 
   // div 要素を返す
   return inputContainer;
+}
+
+function selectOptionByValue(selectId, value) {
+  const selectElement = document.getElementById(selectId);
+
+  // すべての<option>要素のselected属性を解除
+  for (let option of selectElement.options) {
+      option.selected = false;
+  }
+
+  // 指定されたvalueを持つ<option>要素を選択状態にする
+  for (let option of selectElement.options) {
+      if (option.value == value) {
+          option.selected = true;
+          break;
+      }
+  }
 }

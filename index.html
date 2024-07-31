@@ -382,12 +382,16 @@
             <legend>攻撃方法の設定</legend>
             <table>
               <td>
+                <span>攻撃方法</span>
+                <br>
                 <div id="attack_method">
                 </div>
               </td>
               <td>
+                <span>天賦レベル</span>
+                <br>
                 <select id="talent-level">
-                    <option disabled selected>天賦レベル</option>
+                    <option disabled>天賦レベル</option>
                     <option value="1">Lv.1</option>
                     <option value="2">Lv.2</option>
                     <option value="3">Lv.3</option>
@@ -395,7 +399,7 @@
                     <option value="5">Lv.5</option>
                     <option value="6">Lv.6</option>
                     <option value="7">Lv.7</option>
-                    <option value="8">Lv.8</option>
+                    <option value="8" selected>Lv.8</option>
                     <option value="9">Lv.9</option>
                     <option value="10">Lv.10</option>
                     <option value="11">Lv.11</option>
@@ -423,32 +427,46 @@
             </label>
           </div>
           <br>
-          <select id="clock_mainstatus">
-            <option disabled selected >時計メインステ</option>
-            <option value="0">HP％</option>
-            <option value="4">攻撃力％</option>
-            <option value="1">防御力％</option>
-            <option value="2">元素熟知</option>
-            <option value="3">元素チャージ効率</option>
-          </select>
-          <select id="goblet_mainstatus">
-            <option disabled selected>杯メインステ</option>
-            <option value="0">HP％</option>
-            <option value="4">攻撃力％</option>
-            <option value="1">防御力％</option>
-            <option value="2">元素熟知</option>
-            <option value="7">元素ダメージバフ</option> 
-            <option value="8">物理ダメージバフ</option> 
-          </select>
-          <select id="circlet_mainstatus">
-            <option disabled selected>冠メインステ</option>
-            <option value="0">HP％</option>
-            <option value="4">攻撃力％</option>
-            <option value="1">防御力％</option>
-            <option value="2">元素熟知</option>
-            <option value="5">会心率</option>  
-            <option value="6">会心ダメージ</option>  
-          </select>
+          <table>
+            <td>
+              <span>時計</span>
+              <br>
+              <select id="clock_mainstatus">
+                <option disabled>時計メインステ</option>
+                <option value="0">HP％</option>
+                <option value="4">攻撃力％</option>
+                <option value="1">防御力％</option>
+                <option value="2" selected>元素熟知</option>
+                <option value="3">元素チャージ効率</option>
+              </select>
+            </td>
+            <td>
+              <span>杯</span>
+              <br>
+              <select id="goblet_mainstatus">
+                <option disabled>杯メインステ</option>
+                <option value="0">HP％</option>
+                <option value="4">攻撃力％</option>
+                <option value="1">防御力％</option>
+                <option value="2" selected>元素熟知</option>
+                <option value="7">元素ダメージバフ</option> 
+                <option value="8">物理ダメージバフ</option> 
+              </select>
+            </td>
+            <td>
+              <span>冠</span>
+              <br>
+              <select id="circlet_mainstatus">
+                <option disabled>冠メインステ</option>
+                <option value="0">HP％</option>
+                <option value="4">攻撃力％</option>
+                <option value="1">防御力％</option>
+                <option value="2" selected>元素熟知</option>
+                <option value="5">会心率</option>  
+                <option value="6">会心ダメージ</option>  
+              </select>
+            </td>
+          </table>
           <input type="checkbox" id="pop-up">
           <div class="overlay">
             <div class="window">

@@ -2,323 +2,403 @@
     "CharMap": {
         "0": {
             "名前": "ディシア",
-            "name": "dehya"
+            "name": "dehya",
+            "Artifact":[0,7,5]
         },
         "1": {
             "名前": "宵宮",
-            "name": "yoimiya"
+            "name": "yoimiya",
+            "Artifact":[4,7,5]
         },
         "2": {
             "名前": "胡桃",
-            "name": "hutao"
+            "name": "hutao",
+            "Artifact":[0,7,5]
         },
         "3": {
             "名前": "クレー",
-            "name": "klee"
+            "name": "klee",
+            "Artifact":[4,7,6]
         },
         "4": {
             "名前": "ディルック",
-            "name": "diluc"
+            "name": "diluc",
+            "Artifact":[4,7,6]
         },
         "5": {
             "名前": "トーマ",
-            "name": "thoma"
+            "name": "thoma",
+            "Artifact":[3,7,5]
         },
         "6": {
             "名前": "煙緋",
-            "name": "yanfei"
+            "name": "yanfei",
+            "Artifact":[4,7,6]
         },
         "7": {
             "名前": "辛炎",
-            "name": "xinyan"
+            "name": "xinyan",
+            "Artifact":[4,8,5]
         },
         "8": {
             "名前": "ベネット",
-            "name": "bennett"
+            "name": "bennett",
+            "Artifact":[4,7,5]
         },
         "9": {
             "名前": "香菱",
-            "name": "xiangling"
+            "name": "xiangling",
+            "Artifact":[3,7,5]
         },
         "10": {
             "名前": "アンバー",
-            "name": "amber"
+            "name": "amber",
+            "Artifact":[4,7,6]
         },
         "11": {
             "名前": "ニィロウ",
-            "name": "nirou"
+            "name": "nirou",
+            "Artifact":[0,7,6]
         },
         "12": {
             "名前": "夜蘭",
-            "name": "yelan"
+            "name": "yelan",
+            "Artifact":[3,7,5]
         },
         "13": {
             "名前": "神里綾人",
-            "name": "kamisatoayato"
+            "name": "kamisatoayato",
+            "Artifact":[4,7,6]
         },
         "14": {
             "名前": "珊瑚宮心海",
-            "name": "sangonomiyakokomi"
+            "name": "sangonomiyakokomi",
+            "Artifact":[0,7,0]
         },
         "15": {
             "名前": "タルタリヤ",
-            "name": "tartaglia"
+            "name": "tartaglia",
+            "Artifact":[4,7,6]
         },
         "16": {
             "名前": "モナ",
-            "name": "mona"
+            "name": "mona",
+            "Artifact":[3,7,5]
         },
         "17": {
             "名前": "キャンディス",
-            "name": "candace"
+            "name": "candace",
+            "Artifact":[0,7,5]
         },
         "18": {
             "名前": "バーバラ",
-            "name": "barbara"
+            "name": "barbara",
+            "Artifact":[4,7,5]
         },
         "19": {
             "名前": "行秋",
-            "name": "xingqiu"
+            "name": "xingqiu",
+            "Artifact":[3,7,5]
         },
         "20": {
             "名前": "申鶴",
-            "name": "shenhe"
+            "name": "shenhe",
+            "Artifact":[4,7,5]
         },
         "21": {
             "名前": "神里綾華",
-            "name": "kamisatoayaka"
+            "name": "kamisatoayaka",
+            "Artifact":[4,7,5]
         },
         "22": {
             "名前": "エウルア",
-            "name": "eula"
+            "name": "eula",
+            "Artifact":[4,7,5]
         },
         "23": {
             "名前": "甘雨",
-            "name": "ganyu"
+            "name": "ganyu",
+            "Artifact":[4,7,6]
         },
         "24": {
             "名前": "七七",
-            "name": "qiqi"
+            "name": "qiqi",
+            "Artifact":[4,7,5]
         },
         "25": {
             "名前": "アーロイ",
-            "name": "aloy"
+            "name": "aloy",
+            "Artifact":[4,7,5]
         },
         "26": {
             "名前": "ミカ",
-            "name": "mika"
+            "name": "mika",
+            "Artifact":[4,7,5]
         },
         "27": {
             "名前": "レイラ",
-            "name": "layla"
+            "name": "layla",
+            "Artifact":[4,7,5]
         },
         "28": {
             "名前": "ロサリア",
-            "name": "rosaria"
+            "name": "rosaria",
+            "Artifact":[4,7,5]
         },
         "29": {
             "名前": "ディオナ",
-            "name": "diona"
+            "name": "diona",
+            "Artifact":[4,7,5]
         },
         "30": {
             "名前": "重雲",
-            "name": "chongyun"
+            "name": "chongyun",
+            "Artifact":[4,7,5]
         },
         "31": {
             "名前": "ガイア",
-            "name": "kaeya"
+            "name": "kaeya",
+            "Artifact":[4,7,6]
         },
         "32": {
             "名前": "セノ",
-            "name": "cyno"
+            "name": "cyno",
+            "Artifact":[2,7,6]
         },
         "33": {
             "名前": "八重神子",
-            "name": "yaemiko"
+            "name": "yaemiko",
+            "Artifact":[4,7,5]
         },
         "34": {
             "名前": "雷電将軍",
-            "name": "raidenshougun"
+            "name": "raidenshougun",
+            "Artifact":[3,4,5]
         },
         "35": {
             "名前": "刻晴",
-            "name": "keqing"
+            "name": "keqing",
+            "Artifact":[4,7,5]
         },
         "36": {
             "名前": "ドリー",
-            "name": "dori"
+            "name": "dori",
+            "Artifact":[4,7,5]
         },
         "37": {
             "名前": "久岐忍",
-            "name": "kukishinobu"
+            "name": "kukishinobu",
+            "Artifact":[0,7,5]
         },
         "38": {
             "名前": "九条裟羅",
-            "name": "kujousara"
+            "name": "kujousara",
+            "Artifact":[4,7,6]
         },
         "39": {
             "名前": "フィッシュル",
-            "name": "fischl"
+            "name": "fischl",
+            "Artifact":[4,7,5]
         },
         "40": {
             "名前": "北斗",
-            "name": "beidou"
+            "name": "beidou",
+            "Artifact":[4,7,5]
         },
         "41": {
             "名前": "レザー",
-            "name": "razor"
+            "name": "razor",
+            "Artifact":[4,7,5]
         },
         "42": {
             "名前": "リサ",
-            "name": "lisa"
+            "name": "lisa",
+            "Artifact":[4,7,6]
         },
         "43": {
             "名前": "雷旅人",
-            "name": "travelarelectro"
+            "name": "travelarelectro",
+            "Artifact":[3,4,5]
         },
         "44": {
             "名前": "放浪者",
-            "name": "wanderer"
+            "name": "wanderer",
+            "Artifact":[4,7,6]
         },
         "45": {
             "名前": "楓原万葉",
-            "name": "kazuhakaedehara"
+            "name": "kazuhakaedehara",
+            "Artifact":[4,7,5]
         },
         "46": {
             "名前": "魈",
-            "name": "xiao"
+            "name": "xiao",
+            "Artifact":[4,7,6]
         },
         "47": {
             "名前": "ウェンティ",
-            "name": "venti"
+            "name": "venti",
+            "Artifact":[4,7,5]
         },
         "48": {
             "名前": "ジン",
-            "name": "jean"
+            "name": "jean",
+            "Artifact":[4,7,5]
         },
         "49": {
             "名前": "ファルザン",
-            "name": "faruzan"
+            "name": "faruzan",
+            "Artifact":[4,7,6]
         },
         "50": {
             "名前": "鹿野院平蔵",
-            "name": "shikanoinheizou"
+            "name": "shikanoinheizou",
+            "Artifact":[4,7,6]
         },
         "51": {
             "名前": "早柚",
-            "name": "sayu"
+            "name": "sayu",
+            "Artifact":[0,7,5]
         },
         "52": {
             "名前": "スクロース",
-            "name": "sucrose"
+            "name": "sucrose",
+            "Artifact":[4,7,5]
         },
         "53": {
             "名前": "風旅人",
-            "name": "traveraranemo"
+            "name": "traveraranemo",
+            "Artifact":[4,7,5]
         },
         "54": {
             "名前": "白朮",
-            "name": "baizhu"
+            "name": "baizhu",
+            "Artifact":[0,7,5]
         },
         "55": {
             "名前": "アルハイゼン",
-            "name": "alhaitham"
+            "name": "alhaitham",
+            "Artifact":[2,7,5]
         },
         "56": {
             "名前": "ナヒーダ",
-            "name": "nahida"
+            "name": "nahida",
+            "Artifact":[2,2,2]
         },
         "57": {
             "名前": "ティナリ",
-            "name": "tighnari"
+            "name": "tighnari",
+            "Artifact":[2,7,5]
         },
         "58": {
             "名前": "綺良々",
-            "name": "kirara"
+            "name": "kirara",
+            "Artifact":[0,7,6]
         },
         "59": {
             "名前": "カーヴェ",
-            "name": "kaveh"
+            "name": "kaveh",
+            "Artifact":[2,7,5]
         },
         "60": {
             "名前": "ヨォーヨ",
-            "name": "yaoyao"
+            "name": "yaoyao",
+            "Artifact":[0,7,5]
         },
         "61": {
             "名前": "コレイ",
-            "name": "collei"
+            "name": "collei",
+            "Artifact":[4,7,5]
         },
         "62": {
             "名前": "草旅人",
-            "name": "travelardendro"
+            "name": "travelardendro",
+            "Artifact":[2,2,2]
         },
         "63": {
             "名前": "荒瀧一斗",
-            "name": "aratakiitto"
+            "name": "aratakiitto",
+            "Artifact":[1,7,5]
         },
         "64": {
             "名前": "アルベド",
-            "name": "albedo"
+            "name": "albedo",
+            "Artifact":[1,1,5]
         },
         "65": {
             "名前": "鍾離",
-            "name": "zhongli"
+            "name": "zhongli",
+            "Artifact":[0,7,5]
         },
         "66": {
             "名前": "雲菫",
-            "name": "yunjin"
+            "name": "yunjin",
+            "Artifact":[1,7,5]
         },
         "67": {
             "名前": "ゴロー",
-            "name": "gorou"
+            "name": "gorou",
+            "Artifact":[1,7,5]
         },
         "68": {
             "名前": "ノエル",
-            "name": "noelle"
+            "name": "noelle",
+            "Artifact":[3,7,6]
         },
         "69": {
             "名前": "凝光",
-            "name": "ningguang"
+            "name": "ningguang",
+            "Artifact":[4,7,5]
         },
         "70": {
             "名前": "岩旅人",
-            "name": "travelergeo"
+            "name": "travelergeo",
+            "Artifact":[4,7,5]
         },
         "71": {
             "名前": "リネ",
-            "name": "Lyney"
+            "name": "Lyney",
+            "Artifact":[4,7,6]
         },
         "72": {
             "名前": "ヌヴィレット",
-            "name": "Neuvillette"
+            "name": "Neuvillette",
+            "Artifact":[0,7,6]
         },
         "73": {
             "名前": "リオセスリ",
-            "name": "Wriothesley"
+            "name": "Wriothesley",
+            "Artifact":[4,7,6]
         },
         "74": {
             "名前": "フリーナ",
-            "name": "Furina"
+            "name": "Furina",
+            "Artifact":[3,0,5]
         },
         "75": {
             "名前": "ナヴィア",
-            "name": "Navia"
+            "name": "Navia",
+            "Artifact":[4,7,6]
         },
         "76": {
             "名前": "嘉明",
-            "name": "gaming"
+            "name": "gaming",
+            "Artifact":[4,7,6]
         },
         "77": {
             "名前": "千織",
-            "name": "chiori"
+            "name": "chiori",
+            "Artifact":[1,7,5]
         },
         "78": {
             "名前": "アルレッキーノ",
-            "name": "Arlecchino"
+            "name": "Arlecchino",
+            "Artifact":[4,7,6]
         },
         "79": {
             "名前": "クロリンデ",
-            "name": "Clorinde"
+            "name": "Clorinde",
+            "Artifact":[4,7,6]
         }
     }
 }
