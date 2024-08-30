@@ -1291,6 +1291,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "160") {
+    buff_group = [
+      createweaponLabel("SurfsUp_count", "盛夏：通常攻撃ダメージアップ "),
+      createweaponSelectList("SurfsUp_count", 0, 4, "", "層", 4),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "154") {
     buff_group = [
       createweaponLabel("CashflowSupervision_count", "凛流の監視者：通常攻撃＆重撃ダメージアップ "),

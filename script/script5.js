@@ -1018,7 +1018,10 @@ async function create_weapon_instance(base_status) {
       weapon_instance = new UrakuMisugiri(base_status);
       break;
     case "159":
-    weapon_instance = new Absolution(base_status);
+      weapon_instance = new Absolution(base_status);
+      break;
+    case "160":
+      weapon_instance = new SurfsUp(base_status);
       break;
     default:
       // 未知の武器IDに対する処理を追加することもできます

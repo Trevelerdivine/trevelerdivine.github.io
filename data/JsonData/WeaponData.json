@@ -765,6 +765,11 @@
                 "名前": "久遠流転の大典",
                 "url": "../weapon_img/Catalyst/TomeoftheEternalFlow.webp",
                 "id":"124"
+            },
+            "15": {
+                "名前": "サーフィンタイム",
+                "url": "../weapon_img/Catalyst/SurfsUp.webp",
+                "id":"160"
             }
         },
         "弓":{
