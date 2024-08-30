@@ -1211,6 +1211,61 @@ async function show_artifact()
                 artifact_checkbox.appendChild(element);
             });
         }
+        else if (selectedImageIds[i] == "32") 
+        {
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af32_4", true),
+                    createAfLabel("af32_4", "灰燼の都に立つ英雄の絵巻4"),
+                ];
+                buff_group.forEach(element => {
+                    artifact_checkbox.appendChild(element);
+                });
+
+                const af32_4text = document.createTextNode("　ダメージバフ：");
+                const selectList = document.createElement("select");
+                let option;
+                let dmg_buff;
+                selectList.id = "af32_4select";
+            
+                for (let j = 0; j < 3; j++) {
+                    const option = document.createElement("option");
+                    option.value = j;
+                    const dmg_buff = 8 * j ** 2 + 4 * j;
+                    option.text = `+${dmg_buff}%`;
+                    
+                    if (j === 2) {
+                        option.selected = true; // jが2のときにselected属性を付与
+                    }
+                    
+                    selectList.appendChild(option);
+                }
+                
+
+                artifact_checkbox.appendChild(af32_4text);
+                artifact_checkbox.appendChild(selectList);
+
+            }
+        }
+        else if (selectedImageIds[i] == "33") 
+        {
+            buff_group = [
+                createAfCheckbox("af33_2", true),
+                createAfLabel("af33_2", "黒曜の秘典2 与えるダメージ+15%"),
+                ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af33_4", true),
+                    createAfLabel("af33_4", "黒曜の秘典4 会心率+40%"),
+                    document.createElement("br"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+            });
+        }
 
         if (i === 0)
         {
