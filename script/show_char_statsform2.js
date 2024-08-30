@@ -579,6 +579,39 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "80")
+    {
+      elementsToAddToCharTalent = [
+        createTextNode("ウェーブチェイサーの心得："),
+        createSelectList("mualani_talent2_buff", 0, 3, "", "重", 3),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃", value: "6" },
+        { text: "元素スキル（サメサメバイト）", value: "2" },
+        { text: "元素爆発（爆瀑ロケット）", value: "21" }
+      ];
+      createchar_attackmethod(options);
+
+      traits = [
+        { id: "traitCheckbox4", label: "第4重：爆瀑ロケットの与えるダメージ+75%" },
+      ];
+
+      if (char_constellations > 2)
+        {
+          traitCheckbox = createCheckbox(traits[0].id, true);
+          traitLabel = createLabel(traits[0].id, traits[0].label);
+      
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          characterInfo.appendChild(document.createElement("br"));
+        }
+    }
     else if (selectedCharId == "74")
     {
       elementsToAddToCharTalent = [

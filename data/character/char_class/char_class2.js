@@ -2537,6 +2537,220 @@
       return char_debuff;
     }
   }
+
+  class mualani {
+    constructor(base_status_array, parameter) 
+    {
+      this.base_status_array = base_status_array;
+      this.parameter = parameter;
+      this.char_constellations = 0;
+      this.talent2_buff = 0;
+      this.fourth_conste_buff = 0;
+      this.reaction_coeff = 0;
+      this.react_attack_count = 0;
+      this.nonreact_attack_count = 0;
+      this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+      this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
+    }
+  
+    async dmg_rate_data() {
+      this.char_constellations = document.getElementById("char_constellations").value;
+      const reaction_flag = document.getElementById("reactionon_flag");
+      const Vaporize_hydro = document.getElementById("Vaporize-hydro");
+      if (Vaporize_hydro.checked && reaction_flag.checked)
+      {
+        this.reaction_coeff = 2;
+      }
+    
+      if (this.char_constellations > 2  && attack_method == 21)
+      {
+        const fourth_conste_check = document.getElementById("traitCheckbox4");
+        if (fourth_conste_check.checked)
+        {
+          this.fourth_conste_buff = 0.75;
+        }
+      }
+  
+      const response = await fetch("../data/character/char_data/mualani.json");
+      const data = await response.json();
+    
+      let dmg_rate;
+      let elm_react_dmgrate = 0;
+      let elm_nonreact_dmgrate = 0;
+    
+      if (attack_method == 2) {
+        const attack_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
+        const attack_count2 = parseInt(document.getElementById("mualani_attack2_count").value);
+        const attack_count3 = parseInt(document.getElementById("mualani_attack3_count").value);
+        let attack_count4 = 0;
+        const react_count1 = parseInt(document.getElementById("mualani_react1_count").value);
+        const react_count2 = parseInt(document.getElementById("mualani_react2_count").value);
+        const react_count3 = parseInt(document.getElementById("mualani_react3_count").value);
+        let react_count4 = 0;
+  
+        if (this.char_constellations > 0)
+        {
+          attack_count4 = parseInt(document.getElementById("mualani_attack4_count").value);
+          react_count4 = parseInt(document.getElementById("mualani_react4_count").value);
+        }
+  
+  
+        this.react_attack_count = react_count1 + react_count2 + react_count3 + react_count4;
+        this.nonreact_attack_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 - this.react_attack_count;
+  
+        const mualani_react_buff_count = react_count1 + react_count2 * 2;
+        const mualani_nonreact_buff_count =(attack_count1 - react_count1) + (attack_count2 - react_count2) * 2;
+  
+        elm_react_dmgrate = this.react_attack_count * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                          + mualani_react_buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+                          + (react_count3 + react_count4) * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+                          + 0.66 * react_count4;
+                          
+  
+        elm_nonreact_dmgrate = this.nonreact_attack_count * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                              + mualani_nonreact_buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+                              + (attack_count3 + attack_count4 - react_count3 - react_count4) * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+                              + 0.66 * (attack_count4 - react_count4);
+                          
+  
+        dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+      }
+      else if (attack_method == 6) {
+        const attack_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
+        const react_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
+  
+        this.react_attack_count = react_count1;
+        this.nonreact_attack_count = attack_count1 - this.react_attack_count;
+  
+        elm_react_dmgrate = react_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate = (attack_count1 - react_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      }
+      else if (attack_method == 21)
+      {
+        const mualani_talent2_count = parseInt(document.getElementById("mualani_talent2_buff").value);
+        const talent2_buff = 0.15 * mualani_talent2_count;
+  
+        const attack_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
+        const react_count1 = parseInt(document.getElementById("mualani_react1_count").value);
+  
+        this.react_attack_count = react_count1;
+        this.nonreact_attack_count = attack_count1 - this.react_attack_count;
+  
+        elm_react_dmgrate = react_count1 * (talent2_buff + parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]));
+        elm_nonreact_dmgrate = (attack_count1 - react_count1) * (talent2_buff + parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]));
+  
+        dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
+      }
+      return dmg_rate;
+    }
+  
+    calculate_char_fixed_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_dmg_buff(fixstatus,status) {
+      return this.fourth_conste_buff;
+    }
+  
+    calculate_char_result_dmg_buff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_basic_dmg(dmg_rate, status) {
+      let basicDmg;
+      let attckRate;
+      if (this.reaction_coeff > 0)
+      {
+        if (attack_method == 2 || attack_method == 21)
+        {
+          attckRate = status[0] * dmg_rate[0][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+          basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
+                    + (status[0] * dmg_rate[0][1]) + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+        }
+        else
+        {
+          attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+          basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
+                    + (status[4] * dmg_rate[4][1]) + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+        }
+      }
+      else
+      {
+        if (attack_method == 2 || attack_method == 21)
+        {
+          basicDmg = status[0] * (dmg_rate[0][0] + dmg_rate[0][1])
+                   + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+        }
+        else
+        {
+          basicDmg = status[4] * (dmg_rate[4][0] + dmg_rate[4][1])
+                   + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+        }
+      }
+      return basicDmg;
+    }
+  
+    calculate_char_debuff() {
+      let char_debuff = [0,0,0];
+      return char_debuff;
+    }
+  }
   
   class Furina {
     constructor(base_status_array, parameter) 
