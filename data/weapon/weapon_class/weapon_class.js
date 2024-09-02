@@ -13094,7 +13094,7 @@ class ChainBreaker {
     let elm_buff = 0;
     const buff_num1 = parseInt(document.getElementById("ChainBreaker_effect1").value);
     const buff_num2 = parseInt(document.getElementById("ChainBreaker_effect2").value);
-    if (buff_num1 + buff_num1 > 2)
+    if (buff_num1 + buff_num2 > 2)
     {
       elm_buff = 6 * (this.weapon_rank + 3);
     }
