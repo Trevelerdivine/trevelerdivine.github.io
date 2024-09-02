@@ -210,7 +210,7 @@
             },
             "31": {
                 "名前": "エズピツァルの笛",
-                "url": "../weapon_img/Sword/FluteOfEzpitzal.webp",
+                "url": "../weapon_img/Sword/FluteOfEzpitzal.jpg",
                 "id":"161"
             }
         },
@@ -316,8 +316,8 @@
                 "id":"41"
             },
             "31": {
-                "名前": "エズピツァルの笛",
-                "url": "../weapon_img/Sword/FluteOfEzpitzal.webp",
+                "名前": "アースシェイカー",
+                "url": "../weapon_img/Claymore/EarthShaker.jpg",
                 "id":"162"
             }
         },
@@ -399,7 +399,7 @@
             },
             "31": {
                 "名前": "虹の行方",
-                "url": "../weapon_img/Polearm/FootprintoftheRainbow.webp",
+                "url": "../weapon_img/Polearm/FootprintoftheRainbow.jpg",
                 "id":"163"
             }
         },
