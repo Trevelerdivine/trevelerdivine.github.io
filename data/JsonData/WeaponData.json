@@ -207,6 +207,11 @@
                 "名前": "船渠剣",
                 "url": "../weapon_img/Sword/TheDockhandsAssistant.webp",
                 "id":"9"
+            },
+            "31": {
+                "名前": "船渠剣",
+                "url": "../weapon_img/Sword/FluteOfEzpitzal.webp",
+                "id":"161"
             }
         },
         "両手剣":{

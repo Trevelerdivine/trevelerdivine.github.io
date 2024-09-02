@@ -230,6 +230,18 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "161") {
+    buff_group = [
+      createweaponCheckbox("FluteOfEzpitzal_effect", true),
+      createweaponLabel("FluteOfEzpitzal_effect", "エズピツァルの笛：防御力アップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "9") {
     buff_group = [
       createweaponLabel("TheDockhandsAssistant", "船渠剣：消費強靭マーク "),

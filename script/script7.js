@@ -582,6 +582,9 @@ async function create_weapon_instance(base_status) {
     case "8":
       weapon_instance = new AquilaFavonia(base_status);
       break;
+    case "161":
+      char_instance = new FluteOfEzpitzal(base_status);
+      break;
     case "9":
       weapon_instance = new TheDockhandsAssistant(base_status);
       break;
