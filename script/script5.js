@@ -1816,7 +1816,12 @@ async function calculateAndStoreResult(resultList) {
   // 降順にソート
   resultList.sort((a, b) => b[0] - a[0]);
   // 上位5つのみを取得
-  const topFive = resultList.slice(0, 5);
+  let leave_num = 10
+  if (leave_num > resultList.length)
+  {
+    leave_num = resultList.length
+  }
+  const topFive = resultList.slice(0, leave_num);
   return topFive;
 }
 
@@ -2726,20 +2731,22 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
 
-  for (let i = 1; i <= 5; i++) {
-    const ClockId = "clock" + i;
-    const GobletId = "goblet" + i;
-    const CircletId = "circlet" + i;
-    const DmgrateId = "dmgrate" + i;
+  for (let i = 1; i <= 10; i++) {
+    // 要素の ID を配列で管理
+    const ids = ["clock" + i, "goblet" + i, "circlet" + i, "dmgrate" + i];
 
-    document.getElementById(ClockId).innerHTML = main_status_name[ExpDmgList[i-1][1][0]];
-    document.getElementById(GobletId).innerHTML = main_status_name[ExpDmgList[i-1][1][1]];
-    document.getElementById(CircletId).innerHTML = main_status_name[ExpDmgList[i-1][1][2]];
-    document.getElementById(DmgrateId).innerHTML = (ExpDmgList[i-1][0] * 100/ExpDmgList[0][0]).toFixed(1) + "％";
+    // 全ての要素を "-" で初期化
+    ids.forEach(id => document.getElementById(id).innerHTML = "-");
 
-}
-
-
+    // ExpDmgList 内のデータで上書き
+    if (i <= ExpDmgList.length) {
+        document.getElementById(ids[0]).innerHTML = main_status_name[ExpDmgList[i - 1][1][0]];
+        document.getElementById(ids[1]).innerHTML = main_status_name[ExpDmgList[i - 1][1][1]];
+        document.getElementById(ids[2]).innerHTML = main_status_name[ExpDmgList[i - 1][1][2]];
+        document.getElementById(ids[3]).innerHTML = (ExpDmgList[i - 1][0] * 100 / ExpDmgList[0][0]).toFixed(1) + "％";
+    }
+  }
+  
   console.log(n_count);
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示

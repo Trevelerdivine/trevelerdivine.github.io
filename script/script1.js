@@ -2762,7 +2762,7 @@ async function monte_carlo_calculate()
         document.getElementById(ids[2]).innerHTML = main_status_name[ExpDmgList[i - 1][1][2]];
         document.getElementById(ids[3]).innerHTML = (ExpDmgList[i - 1][0] * 100 / ExpDmgList[0][0]).toFixed(1) + "％";
     }
-}
+  }
 
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
