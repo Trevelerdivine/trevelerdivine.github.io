@@ -1074,6 +1074,23 @@ async function show_weapon_statsform() {
         weaponInfo.appendChild(element);
       });
     }
+
+    else if (selectedWeaponId == "165") {
+      buff_group = [
+        createweaponLabel("ChainBreaker", "チェーンブレイカー"),
+        document.createElement("br"),
+        createweaponLabel("ChainBreaker_effect1", "　ナタ出身のキャラクター数 "),
+        createweaponSelectList("ChainBreaker_effect1", 0, 4, "", "人", 0),
+        document.createElement("br"),
+        createweaponLabel("ChainBreaker_effect2", "　装備者と元素タイプが異なるキャラクター数 "),
+        createweaponSelectList("ChainBreaker_effect2", 0, 3, "", "人", 0),
+        document.createElement("br"),
+      ];
+    
+      buff_group.forEach(element => {
+        weaponInfo.appendChild(element);
+      });
+    }
   
     else if (selectedWeaponId == "99") {
       buff_group = [

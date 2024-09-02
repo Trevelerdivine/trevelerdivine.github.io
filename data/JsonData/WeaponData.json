@@ -595,6 +595,11 @@
                 "名前": "静寂の唄",
                 "url": "../weapon_img/Bow/SongofStillness.webp",
                 "id":"100"
+            },
+            "27": {
+                "名前": "チェーンブレイカー",
+                "url": "../weapon_img/Bow/ChainBreaker.jpg",
+                "id":"165"
             }
         }
     },

@@ -12893,3 +12893,88 @@ class AThousandFloatingDreams {
       return weapon_debuff
     }
   }
+
+  class ChainBreaker {
+    constructor(base_status_array) {
+      this.base_status_array = base_status_array;
+    }
+  
+    calculate_weapon_fixed_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_attck(fixstatus,status) {
+      const buff_num1 = parseInt(document.getElementById("ChainBreaker_effect1").value);
+      const buff_num2 = parseInt(document.getElementById("ChainBreaker_effect2").value);
+      const atk_buff = this.base_status_array[4] * 0.012 * (WeaponConstellations + 3) * (buff_num1 + buff_num2);
+      return atk_buff;
+    }
+  
+    calculate_weapon_result_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_elm(fixstatus,status) {
+      let elm_buff = 0;
+      const buff_num1 = parseInt(document.getElementById("ChainBreaker_effect1").value);
+      const buff_num2 = parseInt(document.getElementById("ChainBreaker_effect2").value);
+      if (buff_num1 + buff_num1 > 2)
+      {
+        elm_buff = 6 * (WeaponConstellations + 3);
+      }
+      return elm_buff;
+    }
+  
+    calculate_weapon_result_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_dmg_buff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_debuff() {
+      const weapon_debuff = [0,0];
+      return weapon_debuff
+    }
+  }

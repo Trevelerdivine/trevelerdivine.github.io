@@ -1038,6 +1038,9 @@ async function create_weapon_instance(base_status) {
     case "164":
       weapon_instance = new RingofYaxche(base_status);
       break;
+    case "165":
+      weapon_instance = new ChainBreaker(base_status);
+      break;
     default:
       // 未知の武器IDに対する処理を追加することもできます
       break;
