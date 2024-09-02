@@ -209,7 +209,7 @@
                 "id":"9"
             },
             "31": {
-                "名前": "船渠剣",
+                "名前": "エズピツァルの笛",
                 "url": "../weapon_img/Sword/FluteOfEzpitzal.webp",
                 "id":"161"
             }
@@ -314,6 +314,11 @@
                 "名前": "携帯型チェーンソー",
                 "url": "../weapon_img/Claymore/PortablePowerSaw.webp",
                 "id":"41"
+            },
+            "31": {
+                "名前": "エズピツァルの笛",
+                "url": "../weapon_img/Sword/FluteOfEzpitzal.webp",
+                "id":"162"
             }
         },
         "長柄":{

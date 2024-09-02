@@ -514,6 +514,18 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(traitLabel);
       weaponInfo.appendChild(document.createElement("br"));
     }
+
+    else if (selectedWeaponId == "161") {
+      buff_group = [
+        createweaponCheckbox("EarthShaker_effect", true),
+        createweaponLabel("EarthShaker_effect", "アースシェイカー：元素スキルダメージアップ "),
+        document.createElement("br"),
+      ];
+    
+      buff_group.forEach(element => {
+        weaponInfo.appendChild(element);
+      });
+    }
   
     else if (selectedWeaponId == "41") {
       buff_group = [

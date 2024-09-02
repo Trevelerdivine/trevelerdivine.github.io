@@ -516,9 +516,6 @@ async function create_weapon_instance(base_status) {
     case "8":
       weapon_instance = new AquilaFavonia(base_status);
       break;
-    case "161":
-      char_instance = new FluteOfEzpitzal(base_status);
-      break;
     case "9":
       weapon_instance = new TheDockhandsAssistant(base_status);
       break;
@@ -962,6 +959,12 @@ async function create_weapon_instance(base_status) {
       break;
     case "160":
       weapon_instance = new SurfsUp(base_status);
+      break;
+    case "161":
+      weapon_instance = new FluteOfEzpitzal(base_status);
+      break;
+    case "162":
+      weapon_instance = new EarthShaker(base_status);
       break;
     default:
       // 未知の武器IDに対する処理を追加することもできます
