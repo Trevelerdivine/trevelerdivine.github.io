@@ -1437,6 +1437,18 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(traitLabel);
       weaponInfo.appendChild(selectlist);
     }
+
+    else if (selectedWeaponId == "164") {
+      buff_group = [
+        createweaponCheckbox("RingofYaxche_effect", true),
+        createweaponLabel("RingofYaxche_effect", "ヤシュチェの環：通常攻撃ダメージアップ "),
+        document.createElement("br"),
+      ];
+    
+      buff_group.forEach(element => {
+        weaponInfo.appendChild(element);
+      });
+    }
   
     else if (selectedWeaponId == "133") {
       buff_group = [

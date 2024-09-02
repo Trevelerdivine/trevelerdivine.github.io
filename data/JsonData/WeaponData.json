@@ -493,6 +493,11 @@
                 "名前": "果てなき紺碧の唄",
                 "url": "../weapon_img/Catalyst/BalladOfTheBoundlessBlue.webp",
                 "id":"133"
+            },
+            "31": {
+                "名前": "ヤシュチェの環",
+                "url": "../weapon_img/Catalyst/RingofYaxche.jpg",
+                "id":"164"
             }
         },
         "弓":{

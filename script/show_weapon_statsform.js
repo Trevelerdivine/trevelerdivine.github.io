@@ -1451,6 +1451,18 @@ async function show_weapon_statsform() {
     weaponInfo.appendChild(selectlist);
   }
 
+  else if (selectedWeaponId == "164") {
+    buff_group = [
+      createweaponCheckbox("RingofYaxche_effect", true),
+      createweaponLabel("RingofYaxche_effect", "ヤシュチェの環：通常攻撃ダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "133") {
     buff_group = [
       createweaponLabel("BalladOfTheBoundlessBlue_effect", "果てなき紺碧の唄：通常攻撃＆重撃ダメージアップ "),
