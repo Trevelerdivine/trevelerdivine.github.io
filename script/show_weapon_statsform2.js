@@ -515,7 +515,7 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(document.createElement("br"));
     }
 
-    else if (selectedWeaponId == "161") {
+    else if (selectedWeaponId == "162") {
       buff_group = [
         createweaponCheckbox("EarthShaker_effect", true),
         createweaponLabel("EarthShaker_effect", "アースシェイカー：元素スキルダメージアップ "),
@@ -792,6 +792,18 @@ async function show_weapon_statsform() {
       buff_group = [
         createweaponLabel("PrimordialJadeWingedSpear_count", "和璞鳶：攻撃力アップ "),
         createweaponSelectList("PrimordialJadeWingedSpear_count", 0, 7, "", "層", 7),
+        document.createElement("br"),
+      ];
+    
+      buff_group.forEach(element => {
+        weaponInfo.appendChild(element);
+      });
+    }
+
+    else if (selectedWeaponId == "163") {
+      buff_group = [
+        createweaponCheckbox("FootprintoftheRainbow_effect", true),
+        createweaponLabel("FootprintoftheRainbow_effect", "虹の行方：防御力アップ "),
         document.createElement("br"),
       ];
     

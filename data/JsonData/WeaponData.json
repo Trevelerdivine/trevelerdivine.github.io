@@ -392,10 +392,15 @@
                 "url": "../weapon_img/Polearm/BalladoftheFjords.webp",
                 "id":"73"
             },
-            "": {
+            "25": {
                 "名前": "正義の報酬",
                 "url": "../weapon_img/Polearm/RightfulReward.webp",
                 "id":"74"
+            },
+            "31": {
+                "名前": "虹の行方",
+                "url": "../weapon_img/Polearm/FootprintoftheRainbow.webp",
+                "id":"163"
             }
         },
         "法器":{
