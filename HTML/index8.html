@@ -1640,19 +1640,31 @@
         {
             suboptions1[j].selected = false;
             suboptions2[j].selected = false;
+            suboptions1[j].disabled = false;
+            suboptions2[j].disabled = false;
         }
     }
 
     // valueに一致するoptionを選択
+    let selectedIndex = -1;
     for (let j = 0; j < mainoptions.length; j++) {
         if (mainoptions[j].value == id) {
-            mainoptions[j].selected = true;
-            if (suboptions1[j])
-            {
-                suboptions1[j].disabled = true;
-                suboptions2[j].disabled = true;
-            }
+            selectedIndex = j;
             break; // 一致するものが見つかったら終了
+        }
+    }
+
+    // mainoptions と suboptions1 の両方で選択を適用する
+    if (selectedIndex !== -1) {
+        // mainoptions の該当するオプションを選択状態にする
+        mainoptions[selectedIndex].selected = true;
+
+        // suboptions1 からも選択を適用
+        for (let i = 0; i < suboptions1.length; i++) {
+            if (suboptions1[i].value === id) {
+                suboptions1[i].selected = true;
+                break; // 一致するものが見つかったら終了
+            }
         }
     }
 }
