@@ -1,27 +1,35 @@
 {
     "FIGHT_PROP_HP_PERCENT":{
-        "名前":"HP%"
+        "名前":"HP%",
+        "id":0
     },
     "FIGHT_PROP_ATTACK_PERCENT":{
-        "名前":"攻撃力%"
+        "名前":"攻撃力%",
+        "id":4
     },
     "FIGHT_PROP_DEFENSE_PERCENT":{
-        "名前":"防御力%"
+        "名前":"防御力%",
+        "id":1
     },
     "FIGHT_PROP_ELEMENT_MASTERY":{
-        "名前":"元素熟知"
+        "名前":"元素熟知",
+        "id":2
     },
     "FIGHT_PROP_CHARGE_EFFICIENCY":{
-        "名前":"チャージ効率"
+        "名前":"チャージ効率",
+        "id":3
     },
     "FIGHT_PROP_CRITICAL":{
-        "名前":"会心率"
+        "名前":"会心率",
+        "id":5
     },
     "FIGHT_PROP_CRITICAL_HURT":{
-        "名前":"会心ダメージ"
+        "名前":"会心ダメージ",
+        "id":6
     },
     "FIGHT_PROP_HEAL_ADD":{
-        "名前":"与える治癒効果"
+        "名前":"与える治癒効果",
+        "id":18
     },
     "FIGHT_PROP_PHYSICAL_ADD_HURT": {
         "名前":"物理ダメージバフ",
