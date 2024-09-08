@@ -310,7 +310,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select name="clock_sub1" style="width: 100px; height: 25px;">
+                                    <select id="clock_sub1" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -321,7 +321,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select name="clock_sub2" style="width: 100px; height: 25px;">
+                                    <select id="clock_sub2" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -354,7 +354,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select name="goblet_sub1" style="width: 100px; height: 25px;">
+                                    <select id="goblet_sub1" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -365,7 +365,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select name="goblet_sub2" style="width: 100px; height: 25px;">
+                                    <select id="goblet_sub2" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -393,7 +393,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select name="circlet_sub1" style="width: 100px; height: 25px;">
+                                    <select id="circlet_sub1" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -404,7 +404,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select name="circlet_sub2" style="width: 100px; height: 25px;">
+                                    <select id="circlet_sub2" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -1628,6 +1628,35 @@
         return result;
     }
 
+    async function selectOptionByValue(id, main_select, substatus1, substatus2) {
+    // select要素を取得
+    const mainoptions = main_select.options;
+    const suboptions1 = substatus1.options;
+    const suboptions2 = substatus2.options;
+
+    for (let j = 0; j < mainoptions.length; j++) {
+        mainoptions[j].selected = false;
+        if (suboptions1[j])
+        {
+            suboptions1[j].selected = false;
+            suboptions2[j].selected = false;
+        }
+    }
+
+    // valueに一致するoptionを選択
+    for (let j = 0; j < mainoptions.length; j++) {
+        if (mainoptions[j].value == id) {
+            mainoptions[j].selected = true;
+            if (suboptions1[j])
+            {
+                suboptions1[j].disabled = true;
+                suboptions2[j].disabled = true;
+            }
+            break; // 一致するものが見つかったら終了
+        }
+    }
+}
+
     async function SetMainStatus(SortOrder){
         const Afresponse = await fetch("../data/JsonData/AfSubStatusData.json");
         SubstatusData = await Afresponse.json();
@@ -1671,33 +1700,9 @@
 
                 const clock_main_select = document.getElementById("clock_main");
                 const substatus1 = document.getElementById("clock_sub1");
-                const substatus2 = document.getElementById("clock_sub1");
+                const substatus2 = document.getElementById("clock_sub2");
                 
-                const mainoptions = clock_main_select.options;
-                const suboptions1 = substatus1.options;
-                const suboptions2 = substatus2.options;
-
-                for (let j = 0; j < mainoptions.length; j++) {
-                    mainoptions[j].selected = false;
-                    if (suboptions1[j])
-                    {
-                        suboptions1[j].selected = false;
-                        suboptions2[j].selected = false;
-                    }
-                }
-
-                // valueに一致するoptionを選択
-                for (let j = 0; j < mainoptions.length; j++) {
-                    if (mainoptions[j].value == clock_id) {
-                        mainoptions[j].selected = true;
-                        if (suboptions1[j])
-                        {
-                            suboptions1[j].disabled = true;
-                            suboptions2[j].disabled = true;
-                        }
-                        break; // 一致するものが見つかったら終了
-                    }
-                }
+                await selectOptionByValue(clock_id, clock_main_select, substatus1, substatus2);
             }
             else if (fourthDigits[i] == 1)
             {
@@ -1707,33 +1712,9 @@
 
                 const goblet_main_select = document.getElementById("goblet_main");
                 const substatus1 = document.getElementById("goblet_sub1");
-                const substatus2 = document.getElementById("goblet_sub1");
+                const substatus2 = document.getElementById("goblet_sub2");
                 
-                const mainoptions = goblet_main_select.options;
-                const suboptions1 = substatus1.options;
-                const suboptions2 = substatus2.options;
-
-                for (let j = 0; j < mainoptions.length; j++) {
-                    mainoptions[j].selected = false;
-                    if (suboptions1[j])
-                    {
-                        suboptions1[j].selected = false;
-                        suboptions2[j].selected = false;
-                    }
-                }
-
-                // valueに一致するoptionを選択
-                for (let j = 0; j < mainoptions.length; j++) {
-                    if (mainoptions[j].value == goblet_id) {
-                        mainoptions[j].selected = true;
-                        if (suboptions1[j])
-                        {
-                            suboptions1[j].disabled = true;
-                            suboptions2[j].disabled = true;
-                        }
-                        break; // 一致するものが見つかったら終了
-                    }
-                }
+                await selectOptionByValue(goblet_id, goblet_main_select, substatus1, substatus2);
             }
             else if (fourthDigits[i] == 3)
             {
@@ -1745,31 +1726,7 @@
                 const substatus1 = document.getElementById("circlet_sub1");
                 const substatus2 = document.getElementById("circlet_sub2");
                 
-                const mainoptions = circlet_main_select.options;
-                const suboptions1 = substatus1.options;
-                const suboptions2 = substatus2.options;
-
-                for (let j = 0; j < mainoptions.length; j++) {
-                    mainoptions[j].selected = false;
-                    if (suboptions1[j])
-                    {
-                        suboptions1[j].selected = false;
-                        suboptions2[j].selected = false;
-                    }
-                }
-
-                // valueに一致するoptionを選択
-                for (let j = 0; j < mainoptions.length; j++) {
-                    if (mainoptions[j].value == circlet_id) {
-                        mainoptions[j].selected = true;
-                        if (suboptions1[j])
-                        {
-                            suboptions1[j].disabled = true;
-                            suboptions2[j].disabled = true;
-                        }
-                        break; // 一致するものが見つかったら終了
-                    }
-                }
+                await selectOptionByValue(circlet_id, circlet_main_select, substatus1, substatus2);
             }
         }
 
