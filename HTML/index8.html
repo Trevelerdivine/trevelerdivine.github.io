@@ -1628,14 +1628,17 @@
         return result;
     }
 
-    async function selectOptionByValue(id, main_select, substatus1, substatus2) {
+    async function selectOptionByValue(id, main_select, substatus1, substatus2, clock_id) {
     // select要素を取得
     const mainoptions = main_select.options;
     const suboptions1 = substatus1.options;
     const suboptions2 = substatus2.options;
 
-    for (let j = 0; j < mainoptions.length; j++) {
-        mainoptions[j].selected = false;
+    for (let j = 0; j < 12; j++) {
+        if (mainoptions[j])
+        {
+            mainoptions[j].selected = false;
+        }
         if (suboptions1[j])
         {
             suboptions1[j].selected = false;
@@ -1645,26 +1648,63 @@
         }
     }
 
-    // valueに一致するoptionを選択
-    for (let j = 0; j < mainoptions.length; j++) {
-        if (mainoptions[j].value == id)
-        {
-            mainoptions[j].selected = true;
-            for (let i = 0; i < suboptions1.length; i++)
+    if (id != 5 && id != 6)
+    {
+        // valueに一致するoptionを選択
+        for (let j = 0; j < mainoptions.length; j++) {
+            if (mainoptions[j].value == id)
             {
-                if (suboptions1[i].value == id) 
+                mainoptions[j].selected = true;
+                for (let i = 0; i < suboptions1.length; i++)
                 {
-                    suboptions1[i].disabled = true;
-                    suboptions2[i].disabled = true;
-                    break; // 一致するものが見つかったら終了
+                    if (suboptions1[i].value == id) 
+                    {
+                        suboptions1[i].disabled = true;
+                        suboptions2[i].disabled = true;
+                        break; // 一致するものが見つかったら終了
+                    }
                 }
             }
         }
+        suboptions1[5].selected = true;
+        suboptions2[6].selected = true;
+        suboptions1[6].disabled = true;
+        suboptions2[5].disabled = true;
     }
-    suboptions1[5].selected = true;
-    suboptions2[6].selected = true;
-    suboptions1[6].disabled = true;
-    suboptions2[5].disabled = true;
+    else if(id == 5)
+    {
+        mainoptions[4].selected = true;
+        suboptions1[6].selected = true;
+        suboptions1[5].disabled = true;
+        suboptions2[5].disabled = true;
+        suboptions2[6].disabled = true;
+        for (let i = 0; i < suboptions2.length; i++)
+        {
+            if (suboptions2[i].value == clock_id) 
+            {
+                suboptions1[i].disabled = true;
+                suboptions2[i].selected = true;
+                break; // 一致するものが見つかったら終了
+            }
+        }
+    }
+    else
+    {
+        mainoptions[5].selected = true;
+        suboptions1[5].selected = true;
+        suboptions1[6].disabled = true;
+        suboptions2[5].disabled = true;
+        suboptions2[6].disabled = true;
+        for (let i = 0; i < suboptions2.length; i++)
+        {
+            if (suboptions2[i].value == clock_id) 
+            {
+                suboptions1[i].disabled = true;
+                suboptions2[i].selected = true;
+                break; // 一致するものが見つかったら終了
+            }
+        }
+    }
 }
 
     async function SetMainStatus(SortOrder){
@@ -1701,18 +1741,18 @@
             return parseInt(fourthDigit); // 文字列から数値に変換して返す
         });
 
+        PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+        ClockMainStatus = AfNameList[PropName]["名前"];
+        let clock_id = SubstatusData[PropName]["id"];
+
         for (let i = 0; i <fourthDigits.length; i++) {
             if (fourthDigits[i] == 5)
             {
-                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
-                ClockMainStatus = AfNameList[PropName]["名前"];
-                let clock_id = SubstatusData[PropName]["id"];
-
                 const clock_main_select = document.getElementById("clock_main");
                 const substatus1 = document.getElementById("clock_sub1");
                 const substatus2 = document.getElementById("clock_sub2");
                 
-                await selectOptionByValue(clock_id, clock_main_select, substatus1, substatus2);
+                await selectOptionByValue(clock_id, clock_main_select, substatus1, substatus2, clock_id);
             }
             else if (fourthDigits[i] == 1)
             {
@@ -1724,7 +1764,7 @@
                 const substatus1 = document.getElementById("goblet_sub1");
                 const substatus2 = document.getElementById("goblet_sub2");
                 
-                await selectOptionByValue(goblet_id, goblet_main_select, substatus1, substatus2);
+                await selectOptionByValue(goblet_id, goblet_main_select, substatus1, substatus2, clock_id);
             }
             else if (fourthDigits[i] == 3)
             {
@@ -1736,7 +1776,7 @@
                 const substatus1 = document.getElementById("circlet_sub1");
                 const substatus2 = document.getElementById("circlet_sub2");
                 
-                await selectOptionByValue(circlet_id, circlet_main_select, substatus1, substatus2);
+                await selectOptionByValue(circlet_id, circlet_main_select, substatus1, substatus2, clock_id);
             }
         }
 
