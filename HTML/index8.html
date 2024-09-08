@@ -1670,15 +1670,31 @@
                 let clock_id = SubstatusData[PropName]["id"];
 
                 const clock_main_select = document.getElementById("clock_main");
-                const options = clock_main_select.options;
-                for (let j = 0; j < options.length; j++) {
-                    options[j].selected = false;
+                const substatus1 = document.getElementById("clock_sub1");
+                const substatus2 = document.getElementById("clock_sub1");
+                
+                const mainoptions = clock_main_select.options;
+                const suboptions1 = substatus1.options;
+                const suboptions2 = substatus2.options;
+
+                for (let j = 0; j < mainoptions.length; j++) {
+                    mainoptions[j].selected = false;
+                    if (suboptions1[j])
+                    {
+                        suboptions1[j].selected = false;
+                        suboptions2[j].selected = false;
+                    }
                 }
 
                 // valueに一致するoptionを選択
-                for (let j = 0; j < options.length; j++) {
-                    if (options[j].value == clock_id) {
-                        options[j].selected = true;
+                for (let j = 0; j < mainoptions.length; j++) {
+                    if (mainoptions[j].value == clock_id) {
+                        mainoptions[j].selected = true;
+                        if (suboptions1[j])
+                        {
+                            suboptions1[j].disabled = true;
+                            suboptions2[j].disabled = true;
+                        }
                         break; // 一致するものが見つかったら終了
                     }
                 }
@@ -1690,15 +1706,31 @@
                 let goblet_id = SubstatusData[PropName]["id"];
 
                 const goblet_main_select = document.getElementById("goblet_main");
-                const options = goblet_main_select.options;
-                for (let j = 0; j < options.length; j++) {
-                    options[j].selected = false;
+                const substatus1 = document.getElementById("goblet_sub1");
+                const substatus2 = document.getElementById("goblet_sub1");
+                
+                const mainoptions = goblet_main_select.options;
+                const suboptions1 = substatus1.options;
+                const suboptions2 = substatus2.options;
+
+                for (let j = 0; j < mainoptions.length; j++) {
+                    mainoptions[j].selected = false;
+                    if (suboptions1[j])
+                    {
+                        suboptions1[j].selected = false;
+                        suboptions2[j].selected = false;
+                    }
                 }
 
                 // valueに一致するoptionを選択
-                for (let j = 0; j < options.length; j++) {
-                    if (options[j].value == goblet_id) {
-                        options[j].selected = true;
+                for (let j = 0; j < mainoptions.length; j++) {
+                    if (mainoptions[j].value == goblet_id) {
+                        mainoptions[j].selected = true;
+                        if (suboptions1[j])
+                        {
+                            suboptions1[j].disabled = true;
+                            suboptions2[j].disabled = true;
+                        }
                         break; // 一致するものが見つかったら終了
                     }
                 }
@@ -1710,15 +1742,31 @@
                 let circlet_id = SubstatusData[PropName]["id"];
 
                 const circlet_main_select = document.getElementById("circlet_main");
-                const options = circlet_main_select.options;
-                for (let j = 0; j < options.length; j++) {
-                    options[j].selected = false;
+                const substatus1 = document.getElementById("circlet_sub1");
+                const substatus2 = document.getElementById("circlet_sub2");
+                
+                const mainoptions = circlet_main_select.options;
+                const suboptions1 = substatus1.options;
+                const suboptions2 = substatus2.options;
+
+                for (let j = 0; j < mainoptions.length; j++) {
+                    mainoptions[j].selected = false;
+                    if (suboptions1[j])
+                    {
+                        suboptions1[j].selected = false;
+                        suboptions2[j].selected = false;
+                    }
                 }
 
                 // valueに一致するoptionを選択
-                for (let j = 0; j < options.length; j++) {
-                    if (options[j].value == circlet_id) {
-                        options[j].selected = true;
+                for (let j = 0; j < mainoptions.length; j++) {
+                    if (mainoptions[j].value == circlet_id) {
+                        mainoptions[j].selected = true;
+                        if (suboptions1[j])
+                        {
+                            suboptions1[j].disabled = true;
+                            suboptions2[j].disabled = true;
+                        }
                         break; // 一致するものが見つかったら終了
                     }
                 }
