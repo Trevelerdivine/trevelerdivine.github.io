@@ -236,7 +236,9 @@
                         <div style="display: flex; justify-content: center; max-width: 476px; margin-left: 1em;">
                             <span style="width: 30%;">
                                 <div>花</div>
+                                <div>メイン</div>
                                 <div>HP実数値</div>
+                                <div>サブ</div>
                                 <div>
                                     <form>
                                         <label><input type="radio" name="flower" value="0">HP%</label><br>
@@ -251,7 +253,9 @@
                             </span>
                             <span style="width: 35%;">
                                 <div>羽</div>
+                                <div>メイン</div>
                                 <div>攻撃力実数値</div>
+                                <div>サブ</div>
                                 <div>
                                     <form>
                                         <label><input type="radio" name="feather" value="0">HP%</label><br>
@@ -269,6 +273,7 @@
                         <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
                             <span style="width: 30%;">
                                 <div>時の砂</div>
+                                <div>メイン</div>
                                 <div>
                                     <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
@@ -278,20 +283,22 @@
                                         <option value="3">元素チャージ効率</option>
                                     </select>
                                 </div>
+                                <div>サブ</div>
                                 <div>
-                                    <form>
-                                        <label><input type="radio" name="clock" value="0">HP%</label><br>
-                                        <label><input type="radio" name="clock" value="4">攻撃力%</label><br>
-                                        <label><input type="radio" name="clock" value="1">防御力%</label><br>
-                                        <label><input type="radio" name="clock" value="2">元素熟知</label><br>
-                                        <label><input type="radio" name="clock" value="3">元素チャージ</label><br>
-                                        <label><input type="radio" name="clock" value="5">会心率</label><br>
-                                        <label><input type="radio" name="clock" value="6">会心ダメージ</label><br>
-                                    </form>
+                                    <select name="clock_sub" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
                                 </div>
                             </span>
                             <span style="width: 35%;">
                                 <div>空の杯</div>
+                                <div>メイン</div>
                                 <div>
                                     <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
@@ -308,20 +315,22 @@
                                         <option value="17">物理ダメバフ</option>
                                     </select>
                                 </div>
+                                <div>サブ</div>
                                 <div>
-                                    <form>
-                                        <label><input type="radio" name="goblet" value="0">HP%</label><br>
-                                        <label><input type="radio" name="goblet" value="4">攻撃力%</label><br>
-                                        <label><input type="radio" name="goblet" value="1">防御力%</label><br>
-                                        <label><input type="radio" name="goblet" value="2">元素熟知</label><br>
-                                        <label><input type="radio" name="goblet" value="3">元素チャージ</label><br>
-                                        <label><input type="radio" name="goblet" value="5">会心率</label><br>
-                                        <label><input type="radio" name="goblet" value="6">会心ダメージ</label><br>
-                                    </form>
+                                    <select name="goblet_sub" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
                                 </div>
                             </span>
                             <span style="width: 30%;">
                                 <div>理の冠</div>
+                                <div>メイン</div>
                                 <div>
                                     <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
@@ -333,19 +342,20 @@
                                         <option value="18">治療効果バフ</option>
                                     </select>
                                 </div>
+                                <div>サブ</div>
                                 <div>
-                                    <form>
-                                        <label><input type="radio" name="circlet" value="0">HP%</label><br>
-                                        <label><input type="radio" name="circlet" value="4">攻撃力%</label><br>
-                                        <label><input type="radio" name="circlet" value="1">防御力%</label><br>
-                                        <label><input type="radio" name="circlet" value="2">元素熟知</label><br>
-                                        <label><input type="radio" name="circlet" value="3">元素チャージ</label><br>
-                                        <label><input type="radio" name="circlet" value="5">会心率</label><br>
-                                        <label><input type="radio" name="circlet" value="6">会心ダメージ</label><br>
-                                    </form>
+                                    <select name="circlet_sub" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
                                 </div>
                             </span>
-                        </div> 
+                        </div>                        
                     </fieldset>
                 </div>
             </div>
