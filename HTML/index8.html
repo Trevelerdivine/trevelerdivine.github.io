@@ -1741,13 +1741,14 @@
             return parseInt(fourthDigit); // 文字列から数値に変換して返す
         });
 
-        PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
-        ClockMainStatus = AfNameList[PropName]["名前"];
-        let clock_id = SubstatusData[PropName]["id"];
-
+        let clock_id
         for (let i = 0; i <fourthDigits.length; i++) {
             if (fourthDigits[i] == 5)
             {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                ClockMainStatus = AfNameList[PropName]["名前"];
+                clock_id = SubstatusData[PropName]["id"];
+
                 const clock_main_select = document.getElementById("clock_main");
                 const substatus1 = document.getElementById("clock_sub1");
                 const substatus2 = document.getElementById("clock_sub2");
