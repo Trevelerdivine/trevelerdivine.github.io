@@ -322,27 +322,29 @@
                             </span>
                             <span style="width: 30%;">
                                 <div>理の冠</div>
-                                <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
-                                    <option value="0">HP%</option>
-                                    <option value="4">攻撃力%</option>
-                                    <option value="1">防御力%</option>
-                                    <option value="2">元素熟知</option>
-                                    <option value="5">会心率</option>
-                                    <option value="6">会心ダメージ</option>
-                                    <option value="18">治療効果バフ</option>
-                                </select>
+                                <div>
+                                    <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                        <option value="18">治療効果バフ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <form>
+                                        <label><input type="radio" name="circlet" value="0">HP%</label><br>
+                                        <label><input type="radio" name="circlet" value="4">攻撃力%</label><br>
+                                        <label><input type="radio" name="circlet" value="1">防御力%</label><br>
+                                        <label><input type="radio" name="circlet" value="2">元素熟知</label><br>
+                                        <label><input type="radio" name="circlet" value="3">元素チャージ</label><br>
+                                        <label><input type="radio" name="circlet" value="5">会心率</label><br>
+                                        <label><input type="radio" name="circlet" value="6">会心ダメージ</label><br>
+                                    </form>
+                                </div>
                             </span>
-                            <div>
-                                <form>
-                                    <label><input type="radio" name="circlet" value="0">HP%</label><br>
-                                    <label><input type="radio" name="circlet" value="4">攻撃力%</label><br>
-                                    <label><input type="radio" name="circlet" value="1">防御力%</label><br>
-                                    <label><input type="radio" name="circlet" value="2">元素熟知</label><br>
-                                    <label><input type="radio" name="circlet" value="3">元素チャージ</label><br>
-                                    <label><input type="radio" name="circlet" value="5">会心率</label><br>
-                                    <label><input type="radio" name="circlet" value="6">会心ダメージ</label><br>
-                                </form>
-                            </div>
                         </div> 
                     </fieldset>
                 </div>
