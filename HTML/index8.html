@@ -232,12 +232,13 @@
                     <br>          
                     <div id="index-display"></div>
                     <fieldset id="artifactInfo" style="max-width: 476px;">
-                        <legend>聖遺物設定</legend>
+                        <legend>作成する聖遺物設定</legend>
                         <div style="display: flex; justify-content: center; max-width: 476px; margin-left: 1em;">
                             <span style="width: 30%;">
                                 <div>花</div>
                                 <div>メイン</div>
-                                <div>HP実数値</div>
+                                <div> HP実数値</div>
+                                <br>
                                 <div>サブ</div>
                                 <div>
                                     <select name="flower_sub1" style="width: 100px; height: 25px;">
@@ -265,7 +266,8 @@
                             <span style="width: 35%;">
                                 <div>羽</div>
                                 <div>メイン</div>
-                                <div>攻撃力実数値</div>
+                                <div> 攻撃力実数値</div>
+                                <br>
                                 <div>サブ</div>
                                 <div>
                                     <select name="feather_sub1" style="width: 100px; height: 25px;">
@@ -297,7 +299,7 @@
                                 <div>時計</div>
                                 <div>メイン</div>
                                 <div>
-                                    <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                                    <select id="clock_main" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -305,6 +307,7 @@
                                         <option value="3">元素チャージ効率</option>
                                     </select>
                                 </div>
+                                <br>
                                 <div>サブ</div>
                                 <div>
                                     <select name="clock_sub1" style="width: 100px; height: 25px;">
@@ -333,7 +336,7 @@
                                 <div>杯</div>
                                 <div>メイン</div>
                                 <div>
-                                    <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                                    <select id="goblet_main" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -348,6 +351,7 @@
                                         <option value="17">物理ダメバフ</option>
                                     </select>
                                 </div>
+                                <br>
                                 <div>サブ</div>
                                 <div>
                                     <select name="goblet_sub1" style="width: 100px; height: 25px;">
@@ -376,7 +380,7 @@
                                 <div>冠</div>
                                 <div>メイン</div>
                                 <div>
-                                    <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                                    <select id="circlet_main" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -386,6 +390,7 @@
                                         <option value="18">治療効果バフ</option>
                                     </select>
                                 </div>
+                                <br>
                                 <div>サブ</div>
                                 <div>
                                     <select name="circlet_sub1" style="width: 100px; height: 25px;">
@@ -1660,16 +1665,61 @@
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 ClockMainStatus = AfNameList[PropName]["名前"];
+                let clock_id = AfNameList[PropName]["id"];
+
+                const clock_main_select = document.getElementById(clock_main);
+                const options = clock_main_select.options;
+                for (let j = 0; j < options.length; j++) {
+                    options[j].selected = false;
+                }
+
+                // valueに一致するoptionを選択
+                for (let j = 0; j < options.length; j++) {
+                    if (options[j].value == clock_id) {
+                        options[j].selected = true;
+                        break; // 一致するものが見つかったら終了
+                    }
+                }
             }
             else if (fourthDigits[i] == 1)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 GobletMainStatus = AfNameList[PropName]["名前"];
+                let goblet_id = AfNameList[PropName]["id"];
+
+                const goblet_main_select = document.getElementById(goblet_id);
+                const options = goblet_main_select.options;
+                for (let j = 0; j < options.length; j++) {
+                    options[j].selected = false;
+                }
+
+                // valueに一致するoptionを選択
+                for (let j = 0; j < options.length; j++) {
+                    if (options[j].value == goblet_id) {
+                        options[j].selected = true;
+                        break; // 一致するものが見つかったら終了
+                    }
+                }
             }
             else if (fourthDigits[i] == 3)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 CircletMainStatus = AfNameList[PropName]["名前"];
+                let circlet_id = AfNameList[PropName]["id"];
+
+                const circlet_main_select = document.getElementById(circlet_id);
+                const options = circlet_main_select.options;
+                for (let j = 0; j < options.length; j++) {
+                    options[j].selected = false;
+                }
+
+                // valueに一致するoptionを選択
+                for (let j = 0; j < options.length; j++) {
+                    if (options[j].value == circlet_id) {
+                        options[j].selected = true;
+                        break; // 一致するものが見つかったら終了
+                    }
+                }
             }
         }
 
