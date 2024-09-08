@@ -1742,6 +1742,22 @@
         });
 
         let clock_id
+        const flower_substatus1 = document.getElementById("flower_sub1");
+        const flower_substatus2 = document.getElementById("flower_sub2");
+        const feather_sub2_substatus1 = document.getElementById("feather_sub2_sub1");
+        const feather_sub2_substatus2 = document.getElementById("feather_sub2_sub2");
+        const flower_suboptions1 = flower_substatus1.options;
+        const flower_suboptions2 = flower_substatus2.options;
+        const feather_suboptions1 = flower_substatus1.options;
+        const feather_suboptions2 = flower_substatus2.options;
+        flower_suboptions1[5].selected = true;
+        flower_suboptions2[6].selected = true;
+        flower_suboptions1[6].disabled = true;
+        flower_suboptions2[5].disabled = true;
+        feather_suboptions1[5].selected = true;
+        feather_suboptions2[6].selected = true;
+        feather_suboptions1[6].disabled = true;
+        feather_suboptions2[5].disabled = true;
         for (let i = 0; i <fourthDigits.length; i++) {
             if (fourthDigits[i] == 5)
             {
