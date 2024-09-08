@@ -240,15 +240,26 @@
                                 <div>HP実数値</div>
                                 <div>サブ</div>
                                 <div>
-                                    <form>
-                                        <label><input type="radio" name="flower" value="0">HP%</label><br>
-                                        <label><input type="radio" name="flower" value="4">攻撃力%</label><br>
-                                        <label><input type="radio" name="flower" value="1">防御力%</label><br>
-                                        <label><input type="radio" name="flower" value="2">元素熟知</label><br>
-                                        <label><input type="radio" name="flower" value="3">元素チャージ</label><br>
-                                        <label><input type="radio" name="flower" value="5">会心率</label><br>
-                                        <label><input type="radio" name="flower" value="6">会心ダメージ</label><br>
-                                    </form>
+                                    <select name="flower_sub1" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select name="flower_sub2" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
                                 </div>
                             </span>
                             <span style="width: 35%;">
@@ -257,22 +268,33 @@
                                 <div>攻撃力実数値</div>
                                 <div>サブ</div>
                                 <div>
-                                    <form>
-                                        <label><input type="radio" name="feather" value="0">HP%</label><br>
-                                        <label><input type="radio" name="feather" value="4">攻撃力%</label><br>
-                                        <label><input type="radio" name="feather" value="1">防御力%</label><br>
-                                        <label><input type="radio" name="feather" value="2">元素熟知</label><br>
-                                        <label><input type="radio" name="feather" value="3">元素チャージ</label><br>
-                                        <label><input type="radio" name="feather" value="5">会心率</label><br>
-                                        <label><input type="radio" name="feather" value="6">会心ダメージ</label><br>
-                                    </form>
+                                    <select name="feather_sub1" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select name="feather_sub2" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
                                 </div>
                             </span>
                         </div> 
                         <br>
                         <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
                             <span style="width: 30%;">
-                                <div>時の砂</div>
+                                <div>時計</div>
                                 <div>メイン</div>
                                 <div>
                                     <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
@@ -285,7 +307,18 @@
                                 </div>
                                 <div>サブ</div>
                                 <div>
-                                    <select name="clock_sub" style="width: 100px; height: 25px;">
+                                    <select name="clock_sub1" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select name="clock_sub2" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -297,7 +330,7 @@
                                 </div>
                             </span>
                             <span style="width: 35%;">
-                                <div>空の杯</div>
+                                <div>杯</div>
                                 <div>メイン</div>
                                 <div>
                                     <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
@@ -317,7 +350,18 @@
                                 </div>
                                 <div>サブ</div>
                                 <div>
-                                    <select name="goblet_sub" style="width: 100px; height: 25px;">
+                                    <select name="goblet_sub1" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select name="goblet_sub2" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -329,7 +373,7 @@
                                 </div>
                             </span>
                             <span style="width: 30%;">
-                                <div>理の冠</div>
+                                <div>冠</div>
                                 <div>メイン</div>
                                 <div>
                                     <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
@@ -344,7 +388,18 @@
                                 </div>
                                 <div>サブ</div>
                                 <div>
-                                    <select name="circlet_sub" style="width: 100px; height: 25px;">
+                                    <select name="circlet_sub1" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select name="circlet_sub2" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
