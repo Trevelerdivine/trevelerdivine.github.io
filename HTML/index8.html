@@ -1709,11 +1709,34 @@
 
     function changeMainSelectedValue(id) {
         let main_index;
-        if (id== 2 || id == 3)
+        if (id== 2)
         {
             const mainElement = document.getElementById('clock_main');
             const sub1Element = document.getElementById('clock_sub1');
             const sub2Element = document.getElementById('clock_sub2');
+            main_index = mainElement.value;
+            for (let j = 0; j < 7; j++) {
+                if (sub1Element[j].value == main_index)
+                {
+                    sub1Element[j].disabled = true;
+                    sub2Element[j].disabled = true;
+                }
+                else
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+            }
+            sub1Element.value = 5;
+            sub2Element.value = 6;
+            sub1Element[6].disabled = true;
+            sub2Element[5].disabled = true;
+        }
+        else if (id == 3)
+        {
+            const mainElement = document.getElementById('goblet_main');
+            const sub1Element = document.getElementById('goblet_sub1');
+            const sub2Element = document.getElementById('goblet_sub2');
             main_index = mainElement.value;
             for (let j = 0; j < 7; j++) {
                 if (sub1Element[j].value == main_index)
@@ -1785,7 +1808,26 @@
             }
             else
             {
-
+                const mainElement = document.getElementById('circlet_main');
+                const sub1Element = document.getElementById('circlet_sub1');
+                const sub2Element = document.getElementById('circlet_sub2');
+                main_index = mainElement.value;
+                for (let j = 0; j < 7; j++) {
+                    if (sub1Element[j].value == main_index)
+                    {
+                        sub1Element[j].disabled = true;
+                        sub2Element[j].disabled = true;
+                    }
+                    else
+                    {
+                        sub1Element[j].disabled = false;
+                        sub2Element[j].disabled = false;
+                    }
+                }
+                sub1Element.value = 5;
+                sub2Element.value = 6;
+                sub1Element[6].disabled = true;
+                sub2Element[5].disabled = true;
             }
         }
     }
