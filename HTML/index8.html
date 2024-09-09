@@ -299,7 +299,7 @@
                                 <div>時計</div>
                                 <div>メイン</div>
                                 <div>
-                                    <select id="clock_main" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                                    <select id="clock_main" onchange="changeMainSelectedValue(2)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -1630,82 +1630,119 @@
 
     async function selectOptionByValue(id, main_select, substatus1, substatus2, clock_id) {
     // select要素を取得
-    const mainoptions = main_select.options;
-    const suboptions1 = substatus1.options;
-    const suboptions2 = substatus2.options;
+        const mainoptions = main_select.options;
+        const suboptions1 = substatus1.options;
+        const suboptions2 = substatus2.options;
 
-    for (let j = 0; j < 12; j++) {
-        if (mainoptions[j])
-        {
-            mainoptions[j].selected = false;
-        }
-        if (suboptions1[j])
-        {
-            suboptions1[j].selected = false;
-            suboptions2[j].selected = false;
-            suboptions1[j].disabled = false;
-            suboptions2[j].disabled = false;
-        }
-    }
-
-    if (id != 5 && id != 6)
-    {
-        // valueに一致するoptionを選択
-        for (let j = 0; j < mainoptions.length; j++) {
-            if (mainoptions[j].value == id)
+        for (let j = 0; j < 12; j++) {
+            if (mainoptions[j])
             {
-                mainoptions[j].selected = true;
-                for (let i = 0; i < suboptions1.length; i++)
+                mainoptions[j].selected = false;
+            }
+            if (suboptions1[j])
+            {
+                suboptions1[j].selected = false;
+                suboptions2[j].selected = false;
+                suboptions1[j].disabled = false;
+                suboptions2[j].disabled = false;
+            }
+        }
+
+        if (id != 5 && id != 6)
+        {
+            // valueに一致するoptionを選択
+            for (let j = 0; j < mainoptions.length; j++) {
+                if (mainoptions[j].value == id)
                 {
-                    if (suboptions1[i].value == id) 
+                    mainoptions[j].selected = true;
+                    for (let i = 0; i < suboptions1.length; i++)
                     {
-                        suboptions1[i].disabled = true;
-                        suboptions2[i].disabled = true;
-                        break; // 一致するものが見つかったら終了
+                        if (suboptions1[i].value == id) 
+                        {
+                            suboptions1[i].disabled = true;
+                            suboptions2[i].disabled = true;
+                            break; // 一致するものが見つかったら終了
+                        }
                     }
                 }
             }
+            suboptions1[5].selected = true;
+            suboptions2[6].selected = true;
+            suboptions1[6].disabled = true;
+            suboptions2[5].disabled = true;
         }
-        suboptions1[5].selected = true;
-        suboptions2[6].selected = true;
-        suboptions1[6].disabled = true;
-        suboptions2[5].disabled = true;
-    }
-    else if(id == 5)
-    {
-        mainoptions[4].selected = true;
-        suboptions1[6].selected = true;
-        suboptions1[5].disabled = true;
-        suboptions2[5].disabled = true;
-        suboptions2[6].disabled = true;
-        for (let i = 0; i < suboptions2.length; i++)
+        else if(id == 5)
         {
-            if (suboptions2[i].value == clock_id) 
+            mainoptions[4].selected = true;
+            suboptions1[6].selected = true;
+            suboptions1[5].disabled = true;
+            suboptions2[5].disabled = true;
+            suboptions2[6].disabled = true;
+            for (let i = 0; i < suboptions2.length; i++)
             {
-                suboptions1[i].disabled = true;
-                suboptions2[i].selected = true;
-                break; // 一致するものが見つかったら終了
+                if (suboptions2[i].value == clock_id) 
+                {
+                    suboptions1[i].disabled = true;
+                    suboptions2[i].selected = true;
+                    break; // 一致するものが見つかったら終了
+                }
+            }
+        }
+        else
+        {
+            mainoptions[5].selected = true;
+            suboptions1[5].selected = true;
+            suboptions1[6].disabled = true;
+            suboptions2[5].disabled = true;
+            suboptions2[6].disabled = true;
+            for (let i = 0; i < suboptions2.length; i++)
+            {
+                if (suboptions2[i].value == clock_id) 
+                {
+                    suboptions1[i].disabled = true;
+                    suboptions2[i].selected = true;
+                    break; // 一致するものが見つかったら終了
+                }
             }
         }
     }
-    else
-    {
-        mainoptions[5].selected = true;
-        suboptions1[5].selected = true;
-        suboptions1[6].disabled = true;
-        suboptions2[5].disabled = true;
-        suboptions2[6].disabled = true;
-        for (let i = 0; i < suboptions2.length; i++)
+
+    function changeMainSelectedValue(id) {
+        let main_index;
+        if (id== 2)
         {
-            if (suboptions2[i].value == clock_id) 
-            {
-                suboptions1[i].disabled = true;
-                suboptions2[i].selected = true;
-                break; // 一致するものが見つかったら終了
+            const mainElement = document.getElementById('clock_main');
+            const sub1Element = document.getElementById('clock_sub1');
+            const sub2Element = document.getElementById('clock_sub2');
+            main_index = mainElement.value;
+            for (let j = 0; j < 7; j++) {
+                if (suboptions1[j] == main_index)
+                {
+                    suboptions1[j].disabled = true;
+                    suboptions2[j].disabled = true;
+                }
+                else
+                {
+                    suboptions1[j].disabled = false;
+                    suboptions2[j].disabled = false;
+                }
+                sub1Element.value = 5;
+                sub2Element.value = 6;
+                suboptions1[6].disabled = true;
+                suboptions2[5].disabled = true;
             }
         }
+        else if (id == 1)
+        {
+            const sub1Element = document.getElementById('feather_sub1');
+            const sub2Element = document.getElementById('feather_sub2');
+            sub1Element.value = 5;
+            sub2Element.value = 6;
+            suboptions1[6].disabled = true;
+            suboptions2[5].disabled = true;
+        }
     }
-}
+
 
     async function SetMainStatus(SortOrder){
         const Afresponse = await fetch("../data/JsonData/AfSubStatusData.json");
