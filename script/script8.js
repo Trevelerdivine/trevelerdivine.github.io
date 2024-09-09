@@ -2015,7 +2015,8 @@ async function monte_carlo_calculate()
     fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
     fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
-    const AfParamsList = SetAfParams();
+    const AfParamsList = await SetAfParams();
+    console.log(AfParamsList);
     for (let j= 0; j < TryCount * 5; j++)
     {
         let AfPartIndex;
