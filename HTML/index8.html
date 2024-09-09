@@ -1835,33 +1835,35 @@
 
     function changeSubSelectedValue(id) {
         let main_index = 100;
+        let sub1Element;
+        let sub2Element;
         if (id == 0)
         {
-            const sub1Element = document.getElementById('flower_sub1');
-            const sub2Element = document.getElementById('flower_sub2');
+            sub1Element = document.getElementById('flower_sub1');
+            sub2Element = document.getElementById('flower_sub2');
         }
         else if (id == 1)
         {
-            const sub1Element = document.getElementById('feather_sub1');
-            const sub2Element = document.getElementById('feather_sub2');
+            sub1Element = document.getElementById('feather_sub1');
+            sub2Element = document.getElementById('feather_sub2');
         }
         else if (id == 2)
         {
             main_index = document.getElementById('clock_main');
-            const sub1Element = document.getElementById('clock_sub1');
-            const sub2Element = document.getElementById('clock_sub2');
+            sub1Element = document.getElementById('clock_sub1');
+            sub2Element = document.getElementById('clock_sub2');
         }
         else if (id == 3)
         {
             main_index = document.getElementById('goblet_main');
-            const sub1Element = document.getElementById('goblet_sub1');
-            const sub2Element = document.getElementById('goblet_sub2');
+            sub1Element = document.getElementById('goblet_sub1');
+            sub2Element = document.getElementById('goblet_sub2');
         }
         else if (id == 4)
         {
             main_index = document.getElementById('circlet_main');
-            const sub1Element = document.getElementById('circlet_sub1');
-            const sub2Element = document.getElementById('circlet_sub2');
+            sub1Element = document.getElementById('circlet_sub1');
+            sub2Element = document.getElementById('circlet_sub2');
         }
 
         for (let j = 0; j < 7; j++) {
