@@ -241,7 +241,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select id="flower_sub1" style="width: 100px; height: 25px;">
+                                    <select id="flower_sub1" onchange="changeSubSelectedValue(0)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -252,7 +252,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select id="flower_sub2" style="width: 100px; height: 25px;">
+                                    <select id="flower_sub2" onchange="changeSubSelectedValue(0)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -1828,6 +1828,31 @@
                 sub2Element.value = 6;
                 sub1Element[6].disabled = true;
                 sub2Element[5].disabled = true;
+            }
+        }
+    }
+
+
+    function changeSubSelectedValue(id) {
+        let main_index;
+        if (id == 0)
+        {
+            const sub1Element = document.getElementById('flower_sub1');
+            const sub2Element = document.getElementById('flower_sub2');
+            for (let j = 0; j < 7; j++) {
+                if (sub1Element[j].value == sub2Element.value)
+                {
+                    sub1Element[j].disabled = true;
+                }
+                if (sub2Element[j].value == sub1Element.value)
+                {
+                    sub2Element[j].disabled = true;
+                }
+                else
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
             }
         }
     }
