@@ -1840,6 +1840,8 @@
             const sub1Element = document.getElementById('flower_sub1');
             const sub2Element = document.getElementById('flower_sub2');
             for (let j = 0; j < 7; j++) {
+                sub1Element[j].disabled = false;
+                sub2Element[j].disabled = false;
                 if (sub1Element[j].value == sub2Element.value)
                 {
                     sub1Element[j].disabled = true;
@@ -1847,11 +1849,6 @@
                 if (sub2Element[j].value == sub1Element.value)
                 {
                     sub2Element[j].disabled = true;
-                }
-                else
-                {
-                    sub1Element[j].disabled = false;
-                    sub2Element[j].disabled = false;
                 }
             }
         }
