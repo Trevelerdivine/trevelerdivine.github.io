@@ -1960,7 +1960,7 @@ async function monte_carlo_calculate()
     const depend_status = await calculate_depend_status();
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-    const TryCount = 1;
+    const TryCount = 1000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let MyAfStatusSave = await SetMyAfStatus();
@@ -1973,6 +1973,7 @@ async function monte_carlo_calculate()
     let fixed_status = [0,0,0,0,0,0,0,0];
     let result_status = [0,0,0,0,0,0,0,0];
     let AfPartsNum = [0,0,0,0,0];
+    let AfPartsRate = [0,0,0,0,0];
 
     const char_instance = await create_char_instance(base_status, char_parameter);
     const weapon_instance = await create_weapon_instance(base_status);
@@ -2016,7 +2017,6 @@ async function monte_carlo_calculate()
     fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
     const AfParamsList = await SetAfParams();
-    console.log(AfParamsList);
     for (let j= 0; j < TryCount * 5; j++)
     {
         let AfPartIndex;
@@ -2042,7 +2042,6 @@ async function monte_carlo_calculate()
         }
         MyAfStatus = MyAfStatusSave.slice();
         afInfo = await createAf(AfParamsList[AfPartIndex]);
-        console.log(afInfo);
         MyAfStatus[AfPartIndex] = afInfo;
         afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
@@ -2122,6 +2121,7 @@ async function monte_carlo_calculate()
         if (exp_dmg > my_exp_dmg)
         {
             AfPartsNum[AfPartIndex] += 1;
+            AfPartsRate[AfPartIndex] += exp_dmg / my_exp_dmg;
         }   
     }
 
@@ -2133,117 +2133,18 @@ async function monte_carlo_calculate()
     let RankClassList = [];
     let RankList = [];
 
-    for (let a = 0; a < 5; a++)
-    {
-      const possib = 1 / SpendDays[a];
-      if (possib > 100000 -1 )
-      {
-        ItemNumResult.push("測定不能！");
-        DaysNumResult.push("測定不能！");
-      }
-      else
-      {
-        ItemNumResult.push(possib.toFixed() + "個");
-        DaysNumResult.push((possib / ConsumeNum).toFixed() + "日");
-      }
+   
 
-      let AfScore = 4 * Math.log(possib / 5) + 16
-      if (AfScore > 50)
-      {
-        RankList.push("SS");
-        RankClassList.push("rankSS");
-      }
-      else if (AfScore > 45)
-      {
-        RankList.push("S");
-        RankClassList.push("rankS");
-      }
-      else if (AfScore > 40)
-      {
-        RankList.push("A");
-        RankClassList.push("rankA");
-      }
-      else if (AfScore > 35)
-      {
-        RankList.push("B");
-        RankClassList.push("rankB");
-      }
-      else
-      {
-        RankList.push("C");
-        RankClassList.push("rankC");
-      }
-    }
-    const SumPossib = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]);
-    if (SumPossib > 100000 -1 )
-    {
-      ItemNumResult.push("測定不能！");
-      DaysNumResult.push("測定不能！");
-    }
-    else
-    {
-      ItemNumResult.push(SumPossib.toFixed() + "個");
-      DaysNumResult.push((SumPossib / ConsumeNum).toFixed() + "日");
-    }
-    
-    let AlbodyAfScore = 22 * Math.log(SumPossib / 5) + 105;
-
-    if (AlbodyAfScore > 220)
-    {
-      RankList.push("SS");
-      RankClassList.push("rankSS");
-    }
-    else if (AlbodyAfScore > 200)
-    {
-      RankList.push("S");
-      RankClassList.push("rankS");
-    }
-    else if (AlbodyAfScore > 180)
-    {
-      RankList.push("A");
-      RankClassList.push("rankA");
-    }
-    else if (AlbodyAfScore > 160)
-    {
-      RankList.push("B");
-      RankClassList.push("rankB");
-    }
-    else
-    {
-      RankList.push("C");
-      RankClassList.push("rankC");
-    }
-
-    document.getElementById("clock1").innerHTML = ItemNumResult[0];
-    document.getElementById("clock2").innerHTML = ItemNumResult[1];
-    document.getElementById("clock3").innerHTML = ItemNumResult[2];
-    document.getElementById("clock4").innerHTML = ItemNumResult[3];
-    document.getElementById("clock5").innerHTML = ItemNumResult[4];
-    document.getElementById("clock6").innerHTML = ItemNumResult[5];
-    document.getElementById("goblet1").innerHTML = DaysNumResult[0];
-    document.getElementById("goblet2").innerHTML = DaysNumResult[1];
-    document.getElementById("goblet3").innerHTML = DaysNumResult[2];
-    document.getElementById("goblet4").innerHTML = DaysNumResult[3];
-    document.getElementById("goblet5").innerHTML = DaysNumResult[4];
-    document.getElementById("goblet6").innerHTML = DaysNumResult[5];
-    circlet1.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
-    document.getElementById("circlet1").classList.add(RankClassList[0]);
-    circlet2.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
-    document.getElementById("circlet2").classList.add(RankClassList[1]);
-    circlet3.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
-    document.getElementById("circlet3").classList.add(RankClassList[2]);
-    circlet4.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
-    document.getElementById("circlet4").classList.add(RankClassList[3]);
-    circlet5.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
-    document.getElementById("circlet5").classList.add(RankClassList[4]);
-    circlet6.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
-    document.getElementById("circlet6").classList.add(RankClassList[5]);
-    document.getElementById("circlet1").innerHTML = RankList[0];
-    document.getElementById("circlet2").innerHTML = RankList[1];
-    document.getElementById("circlet3").innerHTML = RankList[2];
-    document.getElementById("circlet4").innerHTML = RankList[3];
-    document.getElementById("circlet5").innerHTML = RankList[4];
-    document.getElementById("circlet6").innerHTML = RankList[5];
+    document.getElementById("clock1").innerHTML = AfPartsNum[0] * 100 / TryCount + "％";
+    document.getElementById("clock2").innerHTML = AfPartsNum[1] * 100 / TryCount + "％";
+    document.getElementById("clock3").innerHTML = AfPartsNum[2] * 100 / TryCount + "％";
+    document.getElementById("clock4").innerHTML = AfPartsNum[3] * 100 / TryCount + "％";
+    document.getElementById("clock5").innerHTML = AfPartsNum[4] * 100 / TryCount + "％";
+    document.getElementById("goblet1").innerHTML = AfPartsRate[0] * 100 + "％";
+    document.getElementById("goblet2").innerHTML = AfPartsRate[1] * 100 + "％";
+    document.getElementById("goblet3").innerHTML = AfPartsRate[2] * 100 + "％";
+    document.getElementById("goblet4").innerHTML = AfPartsRate[3] * 100 + "％";
+    document.getElementById("goblet5").innerHTML = AfPartsRate[4] * 100 + "％";
     
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
