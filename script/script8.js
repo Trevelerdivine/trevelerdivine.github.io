@@ -1987,10 +1987,7 @@ async function monte_carlo_calculate()
     console.log(correct_coeff);
     let zetsuen_check = 0;
     let afStatusList;
-    let RequwireElmCharge = parseInt(document.getElementById("RequwireElmCharge").value * 10) / 1000;
-    if (RequwireElmCharge > 1) {
-      depend_status[3] = 1;
-    }
+    
     const depend_status_index = await calculate_depend_status_index(depend_status);
     for (let d= 0; d < depend_status_index.length; d++)
       {
