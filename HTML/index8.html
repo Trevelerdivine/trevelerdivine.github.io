@@ -1956,30 +1956,6 @@
             }
         }
 
-        let targetDiv = document.getElementById('AfConditon');
-        let newSpan = document.createElement('span');
-        newSpan.classList.add('property');
-        newSpan.textContent = '厳選条件';
-        targetDiv.appendChild(newSpan);document
-        targetDiv.appendChild(document.createElement("br"));
-
-        const inputContainer = document.createElement("span");
-        const input = document.createElement("input");
-        input.type = "text";
-        input.id = "RequwireElmCharge";
-        input.value = 100;
-        
-        // input要素のwidthを50pxに設定
-        input.style.width = '50px';
-
-        // 単位を表示するための span 要素を作成
-        const unitSpan = document.createElement("span");
-        unitSpan.textContent = "（％）";
-
-        // フォーム要素と単位要素を div 要素に追加
-        inputContainer.appendChild(input);
-        inputContainer.appendChild(unitSpan);
-
         document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
         document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
         document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
