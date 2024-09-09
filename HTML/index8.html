@@ -270,7 +270,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select id="feather_sub1" style="width: 100px; height: 25px;">
+                                    <select id="feather_sub1" onchange="changeSubSelectedValue(1)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -281,7 +281,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select id="feather_sub2" style="width: 100px; height: 25px;">
+                                    <select id="feather_sub2" onchange="changeSubSelectedValue(1)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -310,7 +310,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select id="clock_sub1" style="width: 100px; height: 25px;">
+                                    <select id="clock_sub1" onchange="changeSubSelectedValue(2)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -321,7 +321,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select id="clock_sub2" style="width: 100px; height: 25px;">
+                                    <select id="clock_sub2" onchange="changeSubSelectedValue(2)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -354,7 +354,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select id="goblet_sub1" style="width: 100px; height: 25px;">
+                                    <select id="goblet_sub1" onchange="changeSubSelectedValue(3)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -365,7 +365,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select id="goblet_sub2" style="width: 100px; height: 25px;">
+                                    <select id="goblet_sub2" onchange="changeSubSelectedValue(3)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -393,7 +393,7 @@
                                 <br>
                                 <div>サブ</div>
                                 <div>
-                                    <select id="circlet_sub1" style="width: 100px; height: 25px;">
+                                    <select id="circlet_sub1" onchange="changeSubSelectedValue(4)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -404,7 +404,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <select id="circlet_sub2" style="width: 100px; height: 25px;">
+                                    <select id="circlet_sub2" onchange="changeSubSelectedValue(4)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -1834,22 +1834,46 @@
 
 
     function changeSubSelectedValue(id) {
-        let main_index;
+        let main_index = 100;
         if (id == 0)
         {
             const sub1Element = document.getElementById('flower_sub1');
             const sub2Element = document.getElementById('flower_sub2');
-            for (let j = 0; j < 7; j++) {
-                sub1Element[j].disabled = false;
-                sub2Element[j].disabled = false;
-                if (sub1Element[j].value == sub2Element.value)
-                {
-                    sub1Element[j].disabled = true;
-                }
-                if (sub2Element[j].value == sub1Element.value)
-                {
-                    sub2Element[j].disabled = true;
-                }
+        }
+        else if (id == 1)
+        {
+            const sub1Element = document.getElementById('feather_sub1');
+            const sub2Element = document.getElementById('feather_sub2');
+        }
+        else if (id == 2)
+        {
+            main_index = document.getElementById('clock_main');
+            const sub1Element = document.getElementById('clock_sub1');
+            const sub2Element = document.getElementById('clock_sub2');
+        }
+        else if (id == 3)
+        {
+            main_index = document.getElementById('goblet_main');
+            const sub1Element = document.getElementById('goblet_sub1');
+            const sub2Element = document.getElementById('goblet_sub2');
+        }
+        else if (id == 4)
+        {
+            main_index = document.getElementById('circlet_main');
+            const sub1Element = document.getElementById('circlet_sub1');
+            const sub2Element = document.getElementById('circlet_sub2');
+        }
+
+        for (let j = 0; j < 7; j++) {
+            sub1Element[j].disabled = false;
+            sub2Element[j].disabled = false;
+            if (sub1Element[j].value == sub2Element.value || sub1Element[j].value == main_index)
+            {
+                sub1Element[j].disabled = true;
+            }
+            if (sub2Element[j].value == sub1Element.value || sub1Element[j].value == main_index)
+            {
+                sub2Element[j].disabled = true;
             }
         }
     }
