@@ -1986,24 +1986,6 @@
         // フォーム要素と単位要素を div 要素に追加
         inputContainer.appendChild(input);
         inputContainer.appendChild(unitSpan);
-        
-        let StrictDiv = document.getElementById('ElmChargeStrict');
-        let label = document.createElement('label');
-        let text = document.createTextNode('必要元素チャージ効率：');
-        let label2 = document.createElement('label');
-        let text2 = document.createTextNode('１日の消費濃縮樹脂数：');
-        const selectList = createSelectList("UseItemNum", 1, 20, "", "個", 5);
-        label.appendChild(text);
-        label.style.paddingLeft = '2em';
-        label2.appendChild(text2);
-        label2.style.paddingLeft = '2em';
-        StrictDiv.appendChild(label);
-        StrictDiv.appendChild(inputContainer);
-        StrictDiv.appendChild(document.createElement("br"));
-        StrictDiv.appendChild(label2);
-        StrictDiv.appendChild(selectList);
-        StrictDiv.appendChild(document.createElement("br"));
-        StrictDiv.appendChild(document.createElement("br"));
 
         document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
         document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
