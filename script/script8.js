@@ -1987,7 +1987,7 @@ async function monte_carlo_calculate()
     console.log(correct_coeff);
     let zetsuen_check = 0;
     let afStatusList;
-    
+
     const depend_status_index = await calculate_depend_status_index(depend_status);
     for (let d= 0; d < depend_status_index.length; d++)
       {
@@ -2123,15 +2123,7 @@ async function monte_carlo_calculate()
     }
 
     calculationMessage.style.visibility = "hidden";
-    const ConsumeNum = parseInt(document.getElementById("UseItemNum").value);
-    let SpendDays = AfPartsNum.map(num => num / TryCount)
-    let ItemNumResult = [];
-    let DaysNumResult = [];
-    let RankClassList = [];
-    let RankList = [];
-
-   
-
+    
     document.getElementById("clock1").innerHTML = (AfPartsNum[0] * 100 / TryCount).toFixed(1) + "％";
     document.getElementById("clock2").innerHTML = (AfPartsNum[1] * 100 / TryCount).toFixed(1) + "％";
     document.getElementById("clock3").innerHTML = (AfPartsNum[2] * 100 / TryCount).toFixed(1) + "％";
