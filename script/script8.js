@@ -2074,10 +2074,6 @@ async function monte_carlo_calculate()
         if (depend_status[3] == 1)
         {
             result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
-            if (result_status[3] < RequwireElmCharge)
-            {
-              continue;
-            }
         }
         
         if (depend_status[4] == 1)
@@ -2123,7 +2119,7 @@ async function monte_carlo_calculate()
     }
 
     calculationMessage.style.visibility = "hidden";
-    
+
     document.getElementById("clock1").innerHTML = (AfPartsNum[0] * 100 / TryCount).toFixed(1) + "％";
     document.getElementById("clock2").innerHTML = (AfPartsNum[1] * 100 / TryCount).toFixed(1) + "％";
     document.getElementById("clock3").innerHTML = (AfPartsNum[2] * 100 / TryCount).toFixed(1) + "％";
