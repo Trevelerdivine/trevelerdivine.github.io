@@ -1716,20 +1716,20 @@
             const sub2Element = document.getElementById('clock_sub2');
             main_index = mainElement.value;
             for (let j = 0; j < 7; j++) {
-                if (suboptions1[j] == main_index)
+                if (sub1Element[j] == main_index)
                 {
-                    suboptions1[j].disabled = true;
-                    suboptions2[j].disabled = true;
+                    sub1Element[j].disabled = true;
+                    sub2Element[j].disabled = true;
                 }
                 else
                 {
-                    suboptions1[j].disabled = false;
-                    suboptions2[j].disabled = false;
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
                 }
                 sub1Element.value = 5;
                 sub2Element.value = 6;
-                suboptions1[6].disabled = true;
-                suboptions2[5].disabled = true;
+                sub1Element[6].disabled = true;
+                sub2Element[5].disabled = true;
             }
         }
         else if (id == 1)
