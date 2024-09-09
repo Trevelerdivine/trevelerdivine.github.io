@@ -336,7 +336,7 @@
                                 <div>杯</div>
                                 <div>メイン</div>
                                 <div>
-                                    <select id="goblet_main" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                                    <select id="goblet_main" onchange="changeMainSelectedValue(3)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -380,7 +380,7 @@
                                 <div>冠</div>
                                 <div>メイン</div>
                                 <div>
-                                    <select id="circlet_main" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                                    <select id="circlet_main" onchange="changeMainSelectedValue(4)" style="width: 100px; height: 25px;">
                                         <option value="0">HP%</option>
                                         <option value="4">攻撃力%</option>
                                         <option value="1">防御力%</option>
@@ -1782,6 +1782,10 @@
                         break; // 一致するものが見つかったら終了
                     }
                 }
+            }
+            else
+            {
+
             }
         }
     }
