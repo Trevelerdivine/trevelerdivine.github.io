@@ -1749,7 +1749,7 @@ async function calculateAndStoreResult(resultList) {
   return topFive;
 }
 
-async function createAf(partsIndex, depend_index) {
+async function createAf(paramList) {
     let fixBuffList = [7, 8, 9];
     let rateList = [0, 1, 2, 3, 4];
     let criticalList = [5, 6];
@@ -1757,90 +1757,84 @@ async function createAf(partsIndex, depend_index) {
     let mainBuffList = [];
     const subStatusBaseIndex = [0.583, 0.729, 2.331, 0.648, 0.583, 0.389, 0.777, 29.875, 1.945, 2.315];
 
-    const random_number_float = Math.random();
-
-    if (partsIndex === 0) {
-        mainBuffList = [7, 160 * subStatusBaseIndex[7]];
-    } else if (partsIndex === 1) {
-        mainBuffList = [8, 160 * subStatusBaseIndex[8]];
-    } else if (partsIndex === 2) {
-        if (random_number_float < 0.26666666) {
-            mainBuffList = [0, 80 * subStatusBaseIndex[0]];
-        } else if (random_number_float < 0.53333333) {
-            mainBuffList = [1, 80 * subStatusBaseIndex[1]];
-        } else if (random_number_float < 0.8) {
-            mainBuffList = [4, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.9) {
-            mainBuffList = [2, 80 * subStatusBaseIndex[2]];
-        } else {
-            mainBuffList = [3, 80 * subStatusBaseIndex[3]];
-        }
-    } else if (partsIndex === 3) {
-        if (random_number_float < 0.19166666) {
-            mainBuffList = [0, 80 * subStatusBaseIndex[0]];
-        } else if (random_number_float < 0.38333333) {
-            mainBuffList = [1, 80 * subStatusBaseIndex[1]];
-        } else if (random_number_float < 0.575) {
-            mainBuffList = [4, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.6) {
-            mainBuffList = [2, 80 * subStatusBaseIndex[2]];
-        } else if (random_number_float < 0.65) {
-            mainBuffList = [10, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.7) {
-            mainBuffList = [11, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.75) {
-            mainBuffList = [12, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.8) {
-            mainBuffList = [13, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.85) {
-            mainBuffList = [14, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.9) {
-            mainBuffList = [15, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.95) {
-            mainBuffList = [16, 80 * subStatusBaseIndex[4]];
-        } else {
-            mainBuffList = [17, 100 * subStatusBaseIndex[4]];
-        }
-    } else if (partsIndex === 4) {
-        if (random_number_float < 0.22) {
-            mainBuffList = [0, 80 * subStatusBaseIndex[0]];
-        } else if (random_number_float < 0.44) {
-            mainBuffList = [1, 80 * subStatusBaseIndex[1]];
-        } else if (random_number_float < 0.66) {
-            mainBuffList = [4, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.7) {
-            mainBuffList = [2, 80 * subStatusBaseIndex[2]];
-        } else if (random_number_float < 0.8) {
-            mainBuffList = [5, 80 * subStatusBaseIndex[5]];
-        } else if (random_number_float < 0.9) {
-            mainBuffList = [6, 80 * subStatusBaseIndex[6]];
-        } else {
-            mainBuffList = [18, 0];
-        }
+    if (paramList[0] == 0) {
+      mainBuffList = [0, 80 * subStatusBaseIndex[0]];
+    }
+    else if (paramList[0] == 1) {
+      mainBuffList = [1, 80 * subStatusBaseIndex[1]];
+    }
+    else if (paramList[0] == 2) {
+      mainBuffList = [2, 80 * subStatusBaseIndex[2]];
+    }
+    else if (paramList[0] == 3) {
+      mainBuffList = [3, 80 * subStatusBaseIndex[3]];
+    }
+    else if (paramList[0] == 4) {
+      mainBuffList = [4, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 5) {
+      mainBuffList = [5, 80 * subStatusBaseIndex[5]];
+    }
+    else if (paramList[0] == 6) {
+      mainBuffList = [6, 80 * subStatusBaseIndex[6]];
+    }
+    else if (paramList[0] == 7) {
+      mainBuffList = [7, 160 * subStatusBaseIndex[7]];
+    }
+    else if (paramList[0] == 8) {
+      mainBuffList = [8, 160 * subStatusBaseIndex[8]];
+    }
+    else if (paramList[0] == 10) {
+      mainBuffList = [10, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 11) {
+      mainBuffList = [11, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 12) {
+      mainBuffList = [12, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 13) {
+      mainBuffList = [13, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 14) {
+      mainBuffList = [14, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 15) {
+      mainBuffList = [15, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 16) {
+      mainBuffList = [16, 80 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 16) {
+      mainBuffList = [17, 100 * subStatusBaseIndex[4]];
+    }
+    else if (paramList[0] == 16) {
+      mainBuffList = [18, 0];
     }
 
-    if (partsIndex > 1 && depend_index[mainBuffList[0]] == 0)
+    for (let i = 0; i < 3; i++)
     {
-        return 1;
-    } 
-    
+      if (paramList[i] < 10) {
+          const lists = [fixBuffList, rateList, criticalList];
 
-    const value = mainBuffList[0];
-
-    if (value < 10) {
-        const lists = [fixBuffList, rateList, criticalList];
-    
-        for (const list of lists) {
-            const index = list.indexOf(value);
-            if (index !== -1) {
-                list.splice(index, 1);
-                break;
-            }
-        }
+          for (const list of lists) {
+              const index = list.indexOf(paramList[i]);
+              if (index !== -1) {
+                  list.splice(index, 1);
+                  break;
+              }
+          }
+      }
     }
-    
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 2; i++)
+    {
+        const randomBuffInt = 10 - Math.floor(Math.random() * 4);
+        const selectedList = [paramList[i + 1], randomBuffInt];
+        subStatusList.push(selectedList);
+    }
+
+    for (let i = 0; i < 2; i++) {
         const baseNum = 6 * fixBuffList.length + 4 * rateList.length + 3 * criticalList.length;
         const randomTypeIndex = Math.floor(Math.random() * baseNum);
 
@@ -1931,6 +1925,21 @@ async function SetMyAfStatus(){
     return AfSutatusList;
 }
 
+async function SetAfParams()
+{
+  const AfMainParams = ["clock_main", "goblet_main", "circlet_main"];
+  const AfSubParams1 = ["clock_sub1", "goblet_sub1", "circlet_sub1"];
+  const AfSubParams2 = ["clock_sub2", "goblet_sub2", "circlet_sub2"];
+  let AfList = [0,0,0,0,0];
+  AfList[0] = [7, parseInt(document.getElementById("flower_sub1").value), parseInt(document.getElementById("flower_sub2").value)];
+  AfList[1] = [8, parseInt(document.getElementById("feather_sub1").value), parseInt(document.getElementById("feather_sub2").value)];
+  for (let i = 0; i < 3; i++)
+  {
+      AfList[i + 2] = [parseInt(document.getElementById(AfMainParams[i]).value), parseInt(document.getElementById(AfSubParams1[i]).value), parseInt(document.getElementById(AfSubParams2[i]).value)];
+  }
+
+  return AfList
+}
 
 async function monte_carlo_calculate()
 {
@@ -1951,32 +1960,13 @@ async function monte_carlo_calculate()
     const depend_status = await calculate_depend_status();
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-    const TryCount = 2000000;
+    const TryCount = 1;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
-    let response = "";
     let MyAfStatusSave = await SetMyAfStatus();
     let MyAfStatus;
     let RandomAfIndex;
-    let StrongestAf;
     let DependSubStatusIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-    document.getElementById("response").innerHTML = response;
-    if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
-    {
-        calculationMessage.style.visibility = "hidden";
-        response ="ダメージ期待値が異常値を示しています。再入力してください。"
-        document.getElementById("response").innerHTML = response;
-        return response;
-    }
-    
-    if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
-    {
-        calculationMessage.style.visibility = "hidden";
-        response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
-        document.getElementById("response").innerHTML = response;
-        return response;
-    }
 
     let base_parameter;
     let exp_dmg;
@@ -2025,16 +2015,34 @@ async function monte_carlo_calculate()
     fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
     fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
-    for (let j= 0; j < TryCount; j++)
+    const AfParamsList = SetAfParams();
+    for (let j= 0; j < TryCount * 5; j++)
     {
-        RandomAfIndex = Math.floor(Math.random() * 5);
-        MyAfStatus = MyAfStatusSave.slice();
-        afInfo = await createAf(RandomAfIndex, DependSubStatusIndex);
-        if (afInfo === 1)
+        let AfPartIndex;
+        if (j < TryCount)
         {
-          continue
+          AfPartIndex = 0;
         }
-        MyAfStatus[RandomAfIndex] = afInfo;
+        else if (j < TryCount * 2)
+        {
+          AfPartIndex = 1;
+        }
+        else if (j < TryCount * 3)
+        {
+          AfPartIndex = 2;
+        }
+        else if (j < TryCount * 4)
+        {
+          AfPartIndex = 3;
+        }
+        else if (j < TryCount * 5)
+        {
+          AfPartIndex = 4;
+        }
+        MyAfStatus = MyAfStatusSave.slice();
+        afInfo = await createAf(AfParamsList[AfPartIndex]);
+        console.log(afInfo);
+        MyAfStatus[AfPartIndex] = afInfo;
         afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
             afStatusList[MyAfStatus[i][0][0]] += MyAfStatus[i][0][1];
@@ -2112,7 +2120,7 @@ async function monte_carlo_calculate()
         }
         if (exp_dmg > my_exp_dmg)
         {
-            AfPartsNum[RandomAfIndex] += 1;
+            AfPartsNum[AfPartIndex] += 1;
         }   
     }
 
