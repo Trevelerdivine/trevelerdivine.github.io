@@ -1859,7 +1859,7 @@ async function createAf(paramList) {
         }
     }
 
-    const optionNum = Math.random() < 0.2 ? 5 : 4;
+    const optionNum = Math.random() < 1/3 ? 5 : 4;
 
     for (let i = 0; i < optionNum; i++) {
         const randomBuffIndex1 = Math.floor(Math.random() * 4);
