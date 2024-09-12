@@ -2130,7 +2130,7 @@ async function monte_carlo_calculate()
     document.getElementById("goblet3").innerHTML = (AfPartsNum[2] !== 0 ? (AfPartsRate[2] * 100 / AfPartsNum[2]).toFixed(1) : "100") + "％";
     document.getElementById("goblet4").innerHTML = (AfPartsNum[3] !== 0 ? (AfPartsRate[3] * 100 / AfPartsNum[3]).toFixed(1) : "100") + "％";
     document.getElementById("goblet5").innerHTML = (AfPartsNum[4] !== 0 ? (AfPartsRate[4] * 100 / AfPartsNum[4]).toFixed(1) : "100") + "％";
-    document.getElementById("circlet1").innerHTML = ((1 - (1 -AfPartsNum[0] / TryCount) ** 12) * 100).toFixed(1) + "個";
+    document.getElementById("circlet1").innerHTML = ((1 - (1 -AfPartsNum[0] / TryCount) ** 12) * 100).toFixed(1) + "％";
     document.getElementById("circlet2").innerHTML = ((1 - (1 -AfPartsNum[1] / TryCount) ** 12) * 100).toFixed(1) + "％";
     document.getElementById("circlet3").innerHTML = ((1 - (1 -AfPartsNum[2] / TryCount) ** 6) * 100).toFixed(1) + "％";
     document.getElementById("circlet4").innerHTML = ((1 - (1 -AfPartsNum[3] / TryCount) ** 3) * 100).toFixed(1) + "％";
