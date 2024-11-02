@@ -1324,6 +1324,13 @@
                     }
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+
+                            // 画面を少し下にスクロールする
+                    window.scrollBy({
+                        top: 100, // スクロールする距離（ピクセル）
+                        left: 0,
+                        behavior: 'smooth' // スクロールをスムーズにする
+                    });
                 });
                 imageGrid.appendChild(imgElement);
             });
