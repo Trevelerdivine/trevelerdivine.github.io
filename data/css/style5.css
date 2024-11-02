@@ -714,7 +714,6 @@ details summary {
   
       html, body {
         height: 100%;
-        overflow: hidden;
       }
   
       #drawer-toggle {
@@ -752,7 +751,6 @@ details summary {
   
       header {
         width: 100%;
-        position: fixed;
         left: 0px;
         background: #efefef;
         padding: 10px 10px 10px 50px;
