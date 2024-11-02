@@ -1740,7 +1740,6 @@ async function CalculateIdealAfMainStatusBuff(status_array)
   return af_main_status_buff;
 }
 
-
 async function calculateAndStoreResult(resultList) {
   // 降順にソート
   resultList.sort((a, b) => b[0] - a[0]);
@@ -1941,15 +1940,24 @@ async function SetAfParams()
   return AfList
 }
 
+function showLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "visible"; // スピナーを可視化
+}
+
+// スピナー非表示
+function hideLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "hidden"; // スピナーを非表示にする
+}
+
 async function monte_carlo_calculate()
 {
-    const calculationMessage = document.getElementById("calculationMessage")
-    calculationMessage.style.visibility = "visible";
     console.time('myTimer'); 
     const input_check = identify_condition();
     if (input_check ==1)
     {
-        calculationMessage.style.visibility = "hidden";
+        hideLoadingSpinner();
         return;
     }
 
@@ -2117,7 +2125,7 @@ async function monte_carlo_calculate()
         }   
     }
 
-    calculationMessage.style.visibility = "hidden";
+    hideLoadingSpinner();
 
 
     document.getElementById("clock1").innerHTML = (AfPartsNum[0] * 100 / TryCount).toFixed(1) + "％";
@@ -2140,10 +2148,9 @@ async function monte_carlo_calculate()
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
-function DisplayCharacter()
-{
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
+async function DoCalculate(){
+  showLoadingSpinner()
+  setTimeout(monte_carlo_calculate, 50)
 }
 
 
