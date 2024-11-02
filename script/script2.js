@@ -1621,17 +1621,25 @@ async function import_char_parameter()
   return parameter;
 }
 
+function showLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "visible"; // スピナーを可視化
+}
+
+// スピナー非表示
+function hideLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "hidden"; // スピナーを非表示にする
+}
+
 async function monte_carlo_calculate()
 {
-  document.getElementById("result").innerHTML = "";
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
   console.time('myTimer'); // タイマーを開始
   //入力チェック
   const input_check = identify_condition();
   if (input_check ==1)
   {
-    calculationMessage.style.visibility = "hidden";
+    hideLoadingSpinner();
     return;
   }
 
@@ -1661,7 +1669,7 @@ async function monte_carlo_calculate()
   //let final_af_score = parseFloat(document.getElementById("final_af_score").value);
   if ( af_score < 0  || af_score >350 || !Number.isFinite(af_score))
   {
-    calculationMessage.style.visibility = "hidden";
+    hideLoadingSpinner();
     response = "スコアを正しく入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -1934,7 +1942,7 @@ async function monte_carlo_calculate()
     break;
   }
 
-  calculationMessage.style.visibility = "hidden";
+  hideLoadingSpinner();
 
   if (depend_status[0] == 1)
   {
@@ -2125,4 +2133,9 @@ async function monte_carlo_calculate()
   //document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+}
+
+async function DoCalculate(){
+  showLoadingSpinner()
+  setTimeout(monte_carlo_calculate, 50)
 }
