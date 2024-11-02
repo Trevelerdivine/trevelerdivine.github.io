@@ -1914,8 +1914,9 @@ async function CharExecution(index, charId){
                     }
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
-                    window.scrollBy({
-                        top: 100, // スクロールする距離（ピクセル）
+                    window.scrollTo({
+                        top: window.scrollY + 100, // 現在のスクロール位置から100ピクセル下に移動
+                        behavior: 'smooth'
                     });
                 });
                 imageGrid.appendChild(imgElement);
