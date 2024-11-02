@@ -1783,6 +1783,16 @@ async function calculateAndStoreResult(resultList) {
   return topFive;
 }
 
+function showLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "visible"; // スピナーを可視化
+}
+
+// スピナー非表示
+function hideLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "hidden"; // スピナーを非表示にする
+}
 
 async function monte_carlo_calculate()
 {
@@ -2766,6 +2776,11 @@ async function monte_carlo_calculate()
 
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+}
+
+async function DoCalculate(){
+  showLoadingSpinner()
+  setTimeout(monte_carlo_calculate, 50)
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
