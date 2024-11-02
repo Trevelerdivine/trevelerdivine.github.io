@@ -724,11 +724,18 @@
             </div>
             <br>
             <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
-                <div class="button_solid004" onclick="monte_carlo_calculate()">
+                <div class="button_solid004" onclick="DoCalculate()">
                     スコア計算開始
                 </div>
             </div>
-            <p id="calculationMessage" style="visibility: hidden;">計算中...</p>
+            <div id="spinner" class="hidden">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
             <div id="response"></div>
             <div id="result"></div>
             <br>

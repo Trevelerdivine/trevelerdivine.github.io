@@ -1825,15 +1825,24 @@ async function calculateAndStoreResult(resultList) {
   return topFive;
 }
 
+function showLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "visible"; // スピナーを可視化
+}
+
+// スピナー非表示
+function hideLoadingSpinner() {
+  const spinner = document.getElementById('spinner');
+  spinner.style.visibility = "hidden"; // スピナーを非表示にする
+}
+
 async function monte_carlo_calculate()
 {
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
   console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)
   {
-    calculationMessage.style.visibility = "hidden";
+    hideLoadingSpinner();
     return;
   }
 
@@ -1868,7 +1877,7 @@ async function monte_carlo_calculate()
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
-    calculationMessage.style.visibility = "hidden";
+    hideLoadingSpinner();
     response ="ダメージ期待値が異常値を示しています。再入力をするかリロードをしてください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -1876,7 +1885,7 @@ async function monte_carlo_calculate()
   
   if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
-    calculationMessage.style.visibility = "hidden";
+    hideLoadingSpinner();
     response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
     document.getElementById("response").innerHTML = response;
     return response;
@@ -2462,7 +2471,7 @@ async function monte_carlo_calculate()
   old_score_distribution = save_score_distribute;
 
 
-  calculationMessage.style.visibility = "hidden";
+  hideLoadingSpinner();
   let result = "最適化聖遺物スコア (メインステータス考慮)： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
@@ -2752,12 +2761,10 @@ async function monte_carlo_calculate()
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
-function DisplayCharacter()
-{
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
+async function DoCalculate(){
+  showLoadingSpinner()
+  setTimeout(monte_carlo_calculate, 50)
 }
-
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
   let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];

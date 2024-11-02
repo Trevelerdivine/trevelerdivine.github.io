@@ -1634,6 +1634,7 @@ function hideLoadingSpinner() {
 
 async function monte_carlo_calculate()
 {
+  document.getElementById("result").innerHTML = "";
   console.time('myTimer'); // タイマーを開始
   //入力チェック
   const input_check = identify_condition();

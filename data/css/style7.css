@@ -703,6 +703,43 @@ details summary {
     -webkit-background-clip: text; /* WebKit用プロパティ */
   }
 
+  /* スピナーのコンテナ */
+  #spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px; /* スピナーの幅を40pxに変更 */
+    height: 40px; /* スピナーの高さを40pxに変更 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin 1s linear infinite; /* 回転速度を遅く */
+    visibility: hidden; /* 初期状態で非表示 */
+  }
+
+  /* 各水玉のスタイル */
+  .dot {
+      width: 8px; /* 水玉の幅を8pxに変更 */
+      height: 8px; /* 水玉の高さを8pxに変更 */
+      border-radius: 50%;
+      position: absolute;
+  }
+
+  /* 各水玉を円形に配置し、グラデーションのように色を設定 */
+  .dot:nth-child(1) { background-color: #555555; transform: rotate(0deg) translate(15px); }
+  .dot:nth-child(2) { background-color: #777777; transform: rotate(60deg) translate(15px); }
+  .dot:nth-child(3) { background-color: #999999; transform: rotate(120deg) translate(15px); }
+  .dot:nth-child(4) { background-color: #bbbbbb; transform: rotate(180deg) translate(15px); }
+  .dot:nth-child(5) { background-color: #dddddd; transform: rotate(240deg) translate(15px); }
+  .dot:nth-child(6) { background-color: #f0f0f0; transform: rotate(300deg) translate(15px); }
+
+  /* スピナー全体の回転アニメーション */
+  @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
   
 
   
