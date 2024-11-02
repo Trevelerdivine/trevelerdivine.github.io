@@ -2138,5 +2138,5 @@ async function monte_carlo_calculate()
 
 async function DoCalculate(){
   showLoadingSpinner()
-  setTimeout(monte_carlo_calculate, 50)
+  setTimeout(monte_carlo_calculate, 100)
 }
