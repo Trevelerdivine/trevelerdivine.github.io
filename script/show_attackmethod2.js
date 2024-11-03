@@ -3033,6 +3033,25 @@ async function show_attack_method()
       attack_method_prop.appendChild(document.createElement("br"));
     }
   }
+  else if (selectedCharId == "81")
+  {
+    if (attack_method == 16)
+    {
+      traits = [
+        createLabel("", "　ぐるぐるコマちゃん"),
+        document.createElement("br"),
+        createLabel("kachina_skill_count1", "　　ライドヒット回数："),
+        createSelectList("kachina_skill_count1", 0, 20, "", "回", 10),
+        document.createElement("br"),
+        createLabel("kachina_skill_count2", "　　単独ヒット回数："),
+        createSelectList("kachina_skill_count2", 0, 20, "", "回", 0),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+    }
+  }
   else if (selectedCharId == "69")
   {
     if (attack_method == 1)
