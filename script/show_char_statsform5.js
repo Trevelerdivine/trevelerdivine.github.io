@@ -1816,7 +1816,7 @@ async function show_char_statsform()
         { text: "元素爆発(さあ、本気出すよ！)", value: "21" },
       ];
 
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
