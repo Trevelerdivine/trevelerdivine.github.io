@@ -469,6 +469,9 @@ async function create_char_instance(base_status, parameter) {
     case "65":
       char_instance = new zhongli(base_status, parameter);
       break;
+    case "81":
+      char_instance = new kachina(base_status, parameter);
+      break;
     case "68":
       char_instance = new noelle(base_status, parameter);
       break;

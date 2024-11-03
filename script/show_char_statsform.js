@@ -1825,6 +1825,48 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId == "81")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("Kachina_talent1", true),
+        createLabel("Kachina_talent1", "固有天賦1：岩元素ダメージ+20％"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      
+      traits = [
+        {
+          id: "traitCheckbox2",
+          label: "第4重：スーパードリル領域にいる敵の数 "
+        },
+      ];
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素スキル(いけ、ぐるぐるコマちゃん！)", value: "16" },
+        { text: "元素爆発(さあ、本気出すよ！)", value: "21" },
+      ];
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        const four_conste_selectList = createSelectList("four_conste", 1, 3,"", "体", 1);
+        const four_conste_option = document.createElement("option");
+        four_conste_option.value = 4;
+        four_conste_option.text = "4体以上";
+        four_conste_selectList.appendChild(four_conste_option);
+        characterInfo.appendChild(four_conste_selectList);
+      }
+
+      createchar_attackmethod(options)  
+    }
     else if (selectedCharId == "68")
     {
       elementsToAddToCharTalent = [
