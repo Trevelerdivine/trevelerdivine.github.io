@@ -13037,7 +13037,7 @@ class AThousandFloatingDreams {
       {
         cr_buff = 0.07 * (WeaponConstellations + 3);
       }
-      if (cr_buff != 4)
+      else
       {
         cr_buff = 0;
       }
