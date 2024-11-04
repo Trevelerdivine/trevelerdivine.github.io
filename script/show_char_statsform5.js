@@ -623,7 +623,7 @@ async function show_char_statsform()
         { id: "traitCheckbox4", label: "第2重：水元素耐性-35%" },
       ];
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
         {
           traitCheckbox = createCheckbox(traits[0].id, true);
           traitLabel = createLabel(traits[0].id, traits[0].label);
