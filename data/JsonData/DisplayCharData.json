@@ -409,6 +409,11 @@
             "名前": "カチーナ",
             "name": "Kachina",
             "Artifact":[1,7,5]
+        },
+        "82": {
+            "名前": "シグウィン",
+            "name": "Sigewinne",
+            "Artifact":[0,7,6]
         }
     }
 }
