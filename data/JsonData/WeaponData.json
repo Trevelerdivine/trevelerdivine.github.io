@@ -837,6 +837,11 @@
                 "名前": "始まりの大魔術",
                 "url": "../weapon_img/Bow/TheFirstGreatMagic.webp",
                 "id":"91"
+            },
+            "13": {
+                "名前": "白雨心弦",
+                "url": "../weapon_img/Bow/SilvershowerHeartstrings.webp",
+                "id":"166"
             }
         }
     }

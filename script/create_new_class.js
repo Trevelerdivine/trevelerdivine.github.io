@@ -41,6 +41,9 @@ async function create_char_instance(base_status, parameter) {
       case "80":
         char_instance = new mualani(base_status, parameter);
         break;
+      case "82":
+        char_instance = new sigewinne(base_status, parameter);
+        break;
       case "74":
         char_instance = new Furina(base_status, parameter);
         break;
@@ -666,6 +669,9 @@ async function create_char_instance(base_status, parameter) {
         break;
       case "165":
         weapon_instance = new ChainBreaker(base_status);
+        break;
+      case "166":
+        weapon_instance = new SilvershowerHeartstrings(base_status);
         break;
       default:
         // 未知の武器IDに対する処理を追加することもできます
