@@ -674,6 +674,7 @@ details summary {
       height: 16px; /* 水玉の高さを8pxに変更 */
       border-radius: 50%;
       position: absolute;
+      z-index: 1000;        /* z-index を高い値に設定して最前面に */
   }
 
   /* 各水玉を円形に配置し、グラデーションのように色を設定 */
