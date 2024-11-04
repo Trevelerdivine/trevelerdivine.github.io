@@ -1002,7 +1002,7 @@ async function show_attack_method()
     }
     else if (attack_method == 21)
     {
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
         {
           traits = [
             createLabel("", "　まごころお注射ヒット回数："),
@@ -1023,7 +1023,7 @@ async function show_attack_method()
           attack_method_prop.appendChild(element);
         });
   
-        if (char_constellations > 2)
+        if (CharConstellations > 2)
         {
           traits = [
             createLabel("sigwinne_react_count1", "　まごころお注射反応回数："),
