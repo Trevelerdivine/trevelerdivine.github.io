@@ -612,6 +612,38 @@ async function show_char_statsform()
           characterInfo.appendChild(document.createElement("br"));
         }
     }
+    else if (selectedCharId == "82")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("sigwinne_effect", true),
+        createLabel("sigwinne_effect", "固有天賦１：水元素ダメージ+8％"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素スキル（ぴょんぴょんハイドロセラピー）", value: "16" },
+        { text: "元素爆発（過飽和まごころお注射）", value: "21" }
+      ];
+      createchar_attackmethod(options);
+
+      traits = [
+        { id: "traitCheckbox4", label: "第2重：水元素耐性-35%" },
+      ];
+
+      if (char_constellations > 1)
+        {
+          traitCheckbox = createCheckbox(traits[0].id, true);
+          traitLabel = createLabel(traits[0].id, traits[0].label);
+      
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          characterInfo.appendChild(document.createElement("br"));
+        }
+    }
     else if (selectedCharId == "74")
     {
       elementsToAddToCharTalent = [

@@ -1092,6 +1092,18 @@ async function show_weapon_statsform() {
       });
     }
 
+    else if (selectedWeaponId == "166") {
+      buff_group = [
+        createweaponLabel("SilvershowerHeartstrings_count", "白雨心弦：療護効果 "),
+        createweaponSelectList("SilvershowerHeartstrings_count", 0, 3, "", "重", 3),
+        document.createElement("br"),
+      ];
+    
+      buff_group.forEach(element => {
+        weaponInfo.appendChild(element);
+      });
+    }
+
     else if (selectedWeaponId == "99") {
       buff_group = [
         createweaponCheckbox("ScionoftheBlazingSun_effect", true),

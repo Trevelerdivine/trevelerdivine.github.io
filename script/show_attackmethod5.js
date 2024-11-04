@@ -922,6 +922,129 @@ async function show_attack_method()
       });
     }
   }
+  else if (selectedCharId == "82")
+  {
+    if (attack_method == 16)
+    {
+      if (CharConstellations > 0)
+      {
+        traits = [
+          createLabel("", "　ヒーリングバブルヒット回数"),
+          document.createElement("br"),
+          createLabel("sigwinne_skill_count1", "　　０段階："),
+          createSelectList("sigwinne_skill_count1", 0, 10, "", "回", 3),
+          document.createElement("br"),
+          createLabel("sigwinne_skill_count2", "　　１段階："),
+          createSelectList("sigwinne_skill_count2", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("sigwinne_skill_count3", "　　２段階："),
+          createSelectList("sigwinne_skill_count3", 0, 10, "", "回", 4),
+          document.createElement("br"),
+        ];
+      }
+      else
+      {
+        traits = [
+          createLabel("", "　ヒーリングバブルヒット回数"),
+          document.createElement("br"),
+          createLabel("sigwinne_skill_count1", "　　０段階："),
+          createSelectList("sigwinne_skill_count1", 0, 10, "", "回", 3),
+          document.createElement("br"),
+          createLabel("sigwinne_skill_count2", "　　１段階："),
+          createSelectList("sigwinne_skill_count2", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("sigwinne_skill_count3", "　　２段階："),
+          createSelectList("sigwinne_skill_count3", 0, 10, "", "回", 1),
+          document.createElement("br"),
+        ];
+      }
+      
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+
+      if (CharConstellations > 1)
+      {
+        traits = [
+          createLabel("", "　ヒーリングバブル反応回数"),
+          document.createElement("br"),
+          createLabel("sigwinne_react_count1", "　　０段階："),
+          createSelectList("sigwinne_react_count1", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("sigwinne_react_count2", "　　１段階："),
+          createSelectList("sigwinne_react_count2", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("sigwinne_react_count3", "　　２段階："),
+          createSelectList("sigwinne_react_count3", 0, 10, "", "回", 2),
+          document.createElement("br"),
+        ];
+      }
+      else
+      {
+        traits = [
+          createLabel("", "　ヒーリングバブル反応回数"),
+          document.createElement("br"),
+          createLabel("sigwinne_react_count1", "　　０段階："),
+          createSelectList("sigwinne_react_count1", 0, 10, "", "回", 2),
+          document.createElement("br"),
+          createLabel("sigwinne_react_count2", "　　１段階："),
+          createSelectList("sigwinne_react_count2", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("sigwinne_react_count3", "　　２段階："),
+          createSelectList("sigwinne_react_count3", 0, 10, "", "回", 1),
+          document.createElement("br"),
+        ];
+      }
+      
+      traits.forEach(element => {
+        select_reaction_method.appendChild(element);
+      });
+    }
+    else if (attack_method == 21)
+    {
+      if (char_constellations > 2)
+        {
+          traits = [
+            createLabel("", "　まごころお注射ヒット回数："),
+            createSelectList("sigwinne_skill_count1", 0, 15, "", "回", 13),
+            document.createElement("br"),
+          ];
+        }
+        else
+        {
+          traits = [
+            createLabel("", "　まごころお注射ヒット回数："),
+            createSelectList("sigwinne_skill_count1", 0, 15, "", "回", 6),
+            document.createElement("br"),
+          ];
+        }
+        
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+  
+        if (char_constellations > 2)
+        {
+          traits = [
+            createLabel("sigwinne_react_count1", "　まごころお注射反応回数："),
+            createSelectList("sigwinne_react_count1", 0, 15, "", "回", 3),
+            document.createElement("br"),
+          ];
+        }
+        else
+        {
+          traits = [
+            createLabel("sigwinne_react_count1", "　まごころお注射反応回数："),
+            createSelectList("sigwinne_react_count1", 0, 15, "", "回", 2),
+            document.createElement("br"),
+          ];
+        }
+        
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
+    }
+  }
   else if (selectedCharId == "74")
   {
     if (CharConstellations == 0)
