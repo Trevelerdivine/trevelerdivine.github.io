@@ -13202,7 +13202,7 @@ class SilvershowerHeartstrings {
     {
       cr_buff = 0.07 * (this.weapon_rank + 3);
     }
-    if (cr_buff != 4)
+    else
     {
       cr_buff = 0;
     }
