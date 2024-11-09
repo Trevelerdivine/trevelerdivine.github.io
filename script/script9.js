@@ -2218,6 +2218,8 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
 
     // `generate`関数で画像を生成し、`output`に表示します
     const canvas = await generate(sampleData);
+    canvas.style.width = "500px";  // 幅を500pxに設定（任意の値に変更可能）
+    canvas.style.height = "auto";  // 高さを自動で設定（アスペクト比を維持）
     document.getElementById("output").innerHTML = ""; // 以前の画像をクリア
     document.getElementById("output").appendChild(canvas);
 }
@@ -2392,6 +2394,14 @@ async function generate(data) {
     ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     ctx.fillStyle = 'white';
     ctx.fillText(ScoreValue, 1565, 600);
+
+    window.myChart.canvas.toBlob((blob) => {
+      radarImg.src = URL.createObjectURL(blob);
+
+      radarImg.onload = () => {
+          mainCanvas.drawImage(ctx, 100, 100, 300, 300); // 描画位置とサイズを調整
+      };
+  });
 
 
     // Drawing helper functions
