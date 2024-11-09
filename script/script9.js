@@ -2270,7 +2270,7 @@ async function generate(data) {
     ctx.drawImage(baseImage, 0, 0);
 
     // Shadow image
-    const shadowImage = await loadImage('../ArtifacterImageGen-master/Assets/shadow.png');
+    const shadowImage = await loadImage('../ArtifacterImageGen-master/Assets/Shadow.png');
     ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
 
     // Weapon
