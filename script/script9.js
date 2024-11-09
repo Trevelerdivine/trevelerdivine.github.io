@@ -2335,8 +2335,8 @@ async function generate(data) {
     ctx.globalAlpha = 0.7; 
     const AfPartsName = ['flower',"wing","clock","cup","crown"];
     for (let i = 0; i < 5; i++) {
-        //const AfImage = await loadImage(`../BuildCardData/Artifact/深林の記憶/${AfPartsName[i]}.png`);
-        //ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
+        const AfImage = await loadImage(`../BuildCardData/Artifact/深林の記憶/${AfPartsName[i]}.png`);
+        ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
     }
     ctx.globalAlpha = 1; 
 
