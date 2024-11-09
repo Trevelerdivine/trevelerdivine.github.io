@@ -2084,14 +2084,14 @@ async function monte_carlo_calculate()
   }
   
   console.log(n_count);
-  create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
+  const created_chart = create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
+  displayImage(created_chart);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
 async function DoCalculate(){
   showLoadingSpinner()
   setTimeout(monte_carlo_calculate, 100)
-  displayImage();
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
@@ -2173,9 +2173,10 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
             }
         }
     });
+    return ctx;
   }
 
-  async function displayImage() {
+  async function displayImage(chart) {
     // サンプルデータを定義します
     const sampleData = {
         "元素": "草",
@@ -2217,7 +2218,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
     };
 
     // `generate`関数で画像を生成し、`output`に表示します
-    const canvas = await generate(sampleData);
+    const canvas = await generate(sampleData, chart);
     canvas.style.width = "500px";  // 幅を500pxに設定（任意の値に変更可能）
     canvas.style.height = "auto";  // 高さを自動で設定（アスペクト比を維持）
     document.getElementById("output").innerHTML = ""; // 以前の画像をクリア
@@ -2225,7 +2226,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
 }
 
 // 先ほどのgenerate関数をここに貼り付けてください
-async function generate(data) {
+async function generate(data,chart) {
     const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
     await font.load();
     document.fonts.add(font);
@@ -2399,7 +2400,7 @@ async function generate(data) {
     // レーダーチャートが描画されるまで待機（必要なら）
     await new Promise(resolve => setTimeout(resolve, 500));
     // ctxのcanvasにmyChartのcanvasを合成
-    ctx.drawImage(chartCanvas, 2100, 40, 380, 380); // 位置とサイズを調整
+    ctx.drawImage(chartCanvas, 1500, 30, 280, 280); // 位置とサイズを調整
 
 
     // Drawing helper functions
