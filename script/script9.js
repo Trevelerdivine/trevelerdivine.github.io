@@ -2091,6 +2091,7 @@ async function monte_carlo_calculate()
 async function DoCalculate(){
   showLoadingSpinner()
   setTimeout(monte_carlo_calculate, 100)
+  displayImage();
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
@@ -2173,4 +2174,252 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
         }
     });
   }
-  
+
+  async function displayImage() {
+    // サンプルデータを定義します
+    const sampleData = {
+        "元素": "草",
+        "Character": {
+            "Name": "ナヒーダ",
+            "Const": 3,
+            "Level": 80,
+            "Love": 10,
+            "Status": {},
+            "Base": {},
+            "Talent": {
+                "通常": 8,
+                "スキル": 10,
+                "爆発": 11
+            },
+            "Costume": null
+        },
+        "Weapon": {
+            "name": "千夜に浮かぶ夢",
+            "Level": 90,
+            "totu": 5,
+            "rarelity": 5,
+            "BaseATK": 608,
+            "Sub": {
+                "name": "攻撃力",
+                "value": "49.6%"
+            }
+        },
+        "Score": {
+            "State": "CV",
+            "flower": 50.3,
+            "wing": 52.1,
+            "clock": 47.6,
+            "cup": 46.9,
+            "crown": 49.8,
+            "total": 246.7
+        },
+        "Artifacts": {}
+    };
+
+    // `generate`関数で画像を生成し、`output`に表示します
+    const canvas = await generate(sampleData);
+    document.getElementById("output").innerHTML = ""; // 以前の画像をクリア
+    document.getElementById("output").appendChild(canvas);
+}
+
+// 先ほどのgenerate関数をここに貼り付けてください
+async function generate(data) {
+    const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
+    await font.load();
+    document.fonts.add(font);
+
+    const element = data['元素'];
+
+    const characterData = data['Character'];
+    const characterName = characterData['Name'];
+    const characterConstellations = characterData['Const'];
+    const characterLevel = characterData['Level'];
+    const friendship = characterData['Love'];
+    const characterStatus = characterData['Status'];
+    const characterBase = characterData['Base'];
+    const characterTalent = characterData['Talent'];
+
+    const weapon = data['Weapon'];
+    const weaponName = weapon['name'];
+    const weaponLevel = weapon['Level'];
+    const weaponRank = weapon['totu'];
+    const weaponRarity = weapon['rarelity'];
+    const weaponBaseATK = weapon['BaseATK'];
+    const weaponSubOP = weapon['Sub'];
+    const weaponSubOPKey = weaponSubOP['name'];
+    const weaponSubOPValue = weaponSubOP['value'];
+
+    const scoreData = data['Score'];
+    const scoreCVBasis = scoreData['State'];
+    const scoreFlower = scoreData['flower'];
+    const scoreWing = scoreData['wing'];
+    const scoreClock = scoreData['clock'];
+    const scoreCup = scoreData['cup'];
+    const scoreCrown = scoreData['crown'];
+    const scoreTotal = scoreData['total'];
+
+    const artifactsData = data['Artifacts'];
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Base background
+    const baseImage = await loadImage(`../BuildCardData/character/ナヒーダ/avatar.png`);
+    canvas.width = baseImage.width;
+    canvas.height = baseImage.height;
+    ctx.drawImage(baseImage, 0, 0);
+
+    // Shadow image
+    const shadowImage = await loadImage('../ArtifacterImageGen-master/Assets/shadow.png');
+    ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
+
+    // Weapon
+    //const weaponImage = await loadImage(`../BuildCardData/weapon/${weaponName}.png`);
+    //ctx.drawImage(weaponImage, 809, 20, 64, 64);
+
+    // Weapon rarity
+    const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/${weaponRarity}.png`);
+    ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
+
+    // Character talents
+    const talentBaseImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
+    const scaledTalentBase = resizeImage(talentBaseImage, talentBaseImage.width / 1.5, talentBaseImage.height / 1.5);
+
+    const talentTypes = ['通常', 'スキル', '爆発'];
+    const talentBackImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
+    for (let i = 0; i < talentTypes.length; i++) {
+        const talentImage = await loadImage(`../BuildCardData/character/${characterName}/${talentTypes[i]}.png`);
+        ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
+        ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
+    }
+
+    // Character name and level
+    ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
+    ctx.fillRect(121, 77, 67, 27);  // (50, 50) の位置に幅200、高さ100の長方形を描画
+    const LoveImage = await loadImage(`../BuildCardData/Assets/Love.png`);
+    ctx.drawImage(LoveImage, 122, 78, 30, 24);
+
+    ctx.font = '48px customFont';
+    ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+    ctx.fillText(characterName, 30, 65);
+
+    ctx.font = 'lighter 28px customFont';
+    ctx.fillText(`Lv.${characterLevel}`, 35, 100);
+    ctx.fillText(friendship, 73 + ctx.measureText(`Lv.${characterLevel}`).width, 100);
+
+    // Character talent levels
+    const talentLevels = {
+        '通常': characterTalent['通常'],
+        'スキル': characterTalent['スキル'],
+        '爆発': characterTalent['爆発']
+    };
+    const talentColors = ['aqua', 'aqua', 'aqua'];
+    for (let i = 0; i < talentTypes.length; i++) {
+        ctx.font = 'lighter 19px customFont';
+        ctx.fillStyle = talentLevels[talentTypes[i]] >= 10 ? talentColors[i] : 'white';
+        ctx.fillText(`Lv.${talentLevels[talentTypes[i]]}`, 57, 402 + i * 105);
+    }
+
+    //凸
+    const Cbase = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+    const Clock = await loadImage(`../BuildCardData/命の星座/${element}LOCK.png`);
+    
+    for (let i = 1; i < 7; i++) {
+        const CImage = await loadImage(`../BuildCardData/character/${characterName}//${i}.png`);
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
+        ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
+    }
+
+    //聖遺物
+    ctx.globalAlpha = 0.7; 
+    const AfPartsName = ['flower',"wing","clock","cup","crown"];
+    for (let i = 0; i < 5; i++) {
+        //const AfImage = await loadImage(`../BuildCardData/Artifact/深林の記憶/${AfPartsName[i]}.png`);
+        //ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
+    }
+    ctx.globalAlpha = 1; 
+
+    // 計算結果
+    ctx.font = 'lighter 28px customFont';
+    ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+    for (let i = 0; i < 8; i++) {
+        const value = 1000
+        const formattedValue = value.toLocaleString(); // カンマ区切りに変換
+        ctx.fillText(formattedValue, 1200, 159.5 + 63.5 * i);
+    }
+
+    for (let i = 0; i < 8; i++) {
+        const a = 100;
+        const b = 200;
+        const c = 300 * i;
+
+        // フォントと基本の位置を設定
+        ctx.font = 'lighter 14px customFont';
+        const baseX = 1230; // X座標の開始位置
+        const baseY = 180 +63.5  * i; // Y座標の位置
+        let offsetX = baseX; // 各要素のX位置を調整するための変数
+
+        // aの値を表示
+        ctx.fillStyle = 'white';
+        ctx.fillText(a.toLocaleString(), offsetX, baseY);
+        offsetX += ctx.measureText(a.toLocaleString()).width; // aの幅を加えて次の位置を設定
+
+        // '+'を表示
+        ctx.fillStyle = '#a4f74f'; // '+'の色（任意）
+        ctx.fillText('+', offsetX, baseY);
+        offsetX += ctx.measureText('+').width; // '+'の幅を加えて次の位置を設定
+
+        // bの値を表示
+        ctx.fillStyle ='#a4f74f';
+        ctx.fillText(b.toLocaleString(), offsetX, baseY);
+        offsetX += ctx.measureText(b.toLocaleString()).width;
+
+        // '+'を表示
+        ctx.fillStyle = '#00ccff';
+        ctx.fillText('+', offsetX, baseY);
+        offsetX += ctx.measureText('+').width;
+
+        // cの値を表示
+        ctx.fillStyle = '#00ccff';
+        ctx.fillText(c.toLocaleString(), offsetX, baseY);
+    }
+
+    //スコア
+    const ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
+    const ScoreValue = "200.0";
+    ctx.font = 'normal 60px customFont';
+    ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
+    ctx.fillStyle = 'white';
+    ctx.fillText(ScoreValue, 1565, 600);
+
+
+    // Drawing helper functions
+    async function loadImage(src) {
+        const img = new Image();
+        img.src = src;
+        return new Promise((resolve) => {
+            img.onload = () => resolve(img);
+        });
+    }
+
+    function cropAndResize(image, scale, x, y, width, height) {
+        const croppedCanvas = document.createElement('canvas');
+        const croppedCtx = croppedCanvas.getContext('2d');
+        croppedCanvas.width = width * scale;
+        croppedCanvas.height = height * scale;
+        croppedCtx.drawImage(image, x, y, width, height, 0, 0, croppedCanvas.width, croppedCanvas.height);
+        return croppedCanvas;
+    }
+
+    function resizeImage(image, width, height) {
+        const resizedCanvas = document.createElement('canvas');
+        resizedCanvas.width = width;
+        resizedCanvas.height = height;
+        const resizedCtx = resizedCanvas.getContext('2d');
+        resizedCtx.drawImage(image, 0, 0, width, height);
+        return resizedCanvas;
+    }
+
+    return canvas;
+}
