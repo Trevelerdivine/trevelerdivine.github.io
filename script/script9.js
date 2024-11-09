@@ -2264,7 +2264,7 @@ async function generate(data) {
     const ctx = canvas.getContext('2d');
     
     // Base background
-    const baseImage = await loadImage(`../BuildCardData/character/ナヒーダ/avatar.png`);
+    const baseImage = await loadImage(`../BuildCardData/Character/ナヒーダ/avatar.png`);
     canvas.width = baseImage.width;
     canvas.height = baseImage.height;
     ctx.drawImage(baseImage, 0, 0);
