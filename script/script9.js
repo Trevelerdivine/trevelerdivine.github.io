@@ -2288,7 +2288,7 @@ async function generate(data) {
     const talentTypes = ['通常', 'スキル', '爆発'];
     const talentBackImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
     for (let i = 0; i < talentTypes.length; i++) {
-        const talentImage = await loadImage(`../BuildCardData/character/${characterName}/${talentTypes[i]}.png`);
+        const talentImage = await loadImage(`../BuildCardData/Character/${characterName}/${talentTypes[i]}.png`);
         ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
         ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
     }
