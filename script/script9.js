@@ -2325,7 +2325,7 @@ async function generate(data) {
     const Clock = await loadImage(`../BuildCardData/命の星座/${element}LOCK.png`);
     
     for (let i = 1; i < 7; i++) {
-        const CImage = await loadImage(`../BuildCardData/artifact/${characterName}/${i}.png`);
+        const CImage = await loadImage(`../BuildCardData/Character/${characterName}/${i}.png`);
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
@@ -2335,7 +2335,7 @@ async function generate(data) {
     ctx.globalAlpha = 0.7; 
     const AfPartsName = ['flower',"wing","clock","cup","crown"];
     for (let i = 0; i < 5; i++) {
-        const AfImage = await loadImage(`../BuildCardData/Artifact/深林の記憶/${AfPartsName[i]}.png`);
+        const AfImage = await loadImage(`../BuildCardData/artifact/深林の記憶/${AfPartsName[i]}.png`);
         ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
     }
     ctx.globalAlpha = 1; 
