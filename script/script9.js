@@ -2166,7 +2166,8 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
                 },
                 pointLabels: {
                     fontSize: 10
-                }
+                },
+                backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
             },
             legend: {
                 display: false // 凡例を非表示にする
@@ -2396,11 +2397,7 @@ async function generate(data,chart) {
     ctx.fillStyle = 'white';
     ctx.fillText(ScoreValue, 1565, 600);
 
-    const chartCanvas = document.getElementById("myChart");
-    // レーダーチャートが描画されるまで待機（必要なら）
-    await new Promise(resolve => setTimeout(resolve, 500));
-    // ctxのcanvasにmyChartのcanvasを合成
-    ctx.drawImage(chartCanvas, 1500, 30, 280, 280); // 位置とサイズを調整
+    ctx.drawImage(chart, 1500, 30, 280, 280); // 位置とサイズを調整
 
 
     // Drawing helper functions
