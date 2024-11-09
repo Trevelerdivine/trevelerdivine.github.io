@@ -2167,10 +2167,8 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
                     fontSize: 10
                 }
             },
-            plugins: {
-                legend: {
-                    display: false // 凡例を非表示にする
-                }
+            legend: {
+                display: false // 凡例を非表示にする
             }
         }
     });
