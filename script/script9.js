@@ -2399,7 +2399,7 @@ async function generate(data) {
     // レーダーチャートが描画されるまで待機（必要なら）
     await new Promise(resolve => setTimeout(resolve, 500));
     // ctxのcanvasにmyChartのcanvasを合成
-    ctx.drawImage(chartCanvas, 50, 50, 300, 300); // 位置とサイズを調整
+    ctx.drawImage(chartCanvas, 70, 70, 2600, 270); // 位置とサイズを調整
 
 
     // Drawing helper functions
