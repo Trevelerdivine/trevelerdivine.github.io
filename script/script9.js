@@ -2144,7 +2144,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
                 {
                     label: "理論値",
                     backgroundColor: "rgba(0,100,0,0.5)", // 濃い緑
-                    borderColor: "rgba(0,100,0,1)", // 濃い緑
+                    borderColor: "rgba(0,100,0,0.8)", // 濃い緑
                     pointBackgroundColor: "rgba(0,100,0,1)",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
@@ -2400,7 +2400,7 @@ async function generate(data) {
       radarImg.src = URL.createObjectURL(blob);
 
       radarImg.onload = () => {
-          mainCanvas.drawImage(radarImg, 100, 100, 300, 300); // 描画位置とサイズを調整
+          ctx.drawImage(radarImg, 100, 100, 300, 300); // 描画位置とサイズを調整
       };
   });
 
