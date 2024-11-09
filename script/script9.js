@@ -2395,14 +2395,11 @@ async function generate(data) {
     ctx.fillStyle = 'white';
     ctx.fillText(ScoreValue, 1565, 600);
 
-    window.myChart.canvas.toBlob((blob) => {
-      const radarImg = new Image();
-      radarImg.src = URL.createObjectURL(blob);
-
-      radarImg.onload = () => {
-          ctx.drawImage(radarImg, 100, 100, 300, 300); // 描画位置とサイズを調整
-      };
-  });
+    const chartCanvas = document.getElementById("myChart");
+    // レーダーチャートが描画されるまで待機（必要なら）
+    await new Promise(resolve => setTimeout(resolve, 500));
+    // ctxのcanvasにmyChartのcanvasを合成
+    ctx.drawImage(chartCanvas, 50, 50, 300, 300); // 位置とサイズを調整
 
 
     // Drawing helper functions
