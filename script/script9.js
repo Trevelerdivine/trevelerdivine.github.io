@@ -2084,6 +2084,7 @@ async function monte_carlo_calculate()
   }
   
   console.log(n_count);
+  created_chart = create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   displayImage();
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
