@@ -2220,7 +2220,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
     };
 
     // `generate`関数で画像を生成し、`output`に表示します
-    const canvas = await generate(sampleData, chart);
+    const canvas = await generate(sampleData);
     canvas.style.width = "500px";  // 幅を500pxに設定（任意の値に変更可能）
     canvas.style.height = "auto";  // 高さを自動で設定（アスペクト比を維持）
     document.getElementById("output").innerHTML = ""; // 以前の画像をクリア
