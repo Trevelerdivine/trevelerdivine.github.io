@@ -2115,7 +2115,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
     }
   
     let maxElement = Math.max(...myData);
-    let maxborder = Math.ceil(maxElement / 10) * 10;
+    let maxborder = Math.ceil(maxElement /20) * 20;
   
     let ctx = document.getElementById("myChart");
   
@@ -2133,7 +2133,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
                 {
                     label: "ステータスバランス",
                     backgroundColor: "rgba(144,238,144,0.5)", // 薄い緑
-                    borderColor: "rgba(144,238,144,1)", // 薄い緑
+                    borderColor: "rgba(144,238,144,1)", 
                     pointBackgroundColor: "rgba(144,238,144,1)",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
@@ -2165,11 +2165,22 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
                     beginAtZero: true,
                     min: 0,
                     stepSize: 20,
+                    fontSize: 16,
                     max: maxborder,
+                    fontColor: "black",  // 目盛り数字の色
                     backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
                 },
                 pointLabels: {
-                    fontSize: 25
+                    fontSize: 18,
+                    fontColor: "black"    // 文字の色
+                },
+                angleLines: {        // 軸（放射軸）
+                    display: true,
+                    color: "black"
+                },
+                gridLines: {         // 補助線（目盛の線）
+                    display: true,
+                    color: "black"
                 }
             },
             legend: {
@@ -2406,7 +2417,7 @@ async function generate(data) {
 
     // 画像が読み込まれたらメインの canvas に描画
     chartImage.onload = () => {
-        ctx.drawImage(chartImage, 1500, 30, 280, 280); // 必要な位置とサイズで描画
+        ctx.drawImage(chartImage, 1505, 36, 290, 290); // 必要な位置とサイズで描画
     };
 
 
