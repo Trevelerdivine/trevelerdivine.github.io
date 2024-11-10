@@ -2084,8 +2084,7 @@ async function monte_carlo_calculate()
   }
   
   console.log(n_count);
-  const created_chart = create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
-  displayImage(created_chart);
+  displayImage();
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
@@ -2157,27 +2156,29 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            animation: {
+              duration: 0, // アニメーションの時間
+            },
             scale: {
                 ticks: {
                     beginAtZero: true,
                     min: 0,
                     stepSize: 20,
                     max: maxborder,
+                    backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
                 },
                 pointLabels: {
-                    fontSize: 10
-                },
-                backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
+                    fontSize: 25
+                }
             },
             legend: {
                 display: false // 凡例を非表示にする
             }
         }
     });
-    return ctx;
   }
 
-  async function displayImage(chart) {
+  async function displayImage() {
     // サンプルデータを定義します
     const sampleData = {
         "元素": "草",
@@ -2227,7 +2228,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
 }
 
 // 先ほどのgenerate関数をここに貼り付けてください
-async function generate(data,chart) {
+async function generate(data) {
     const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
     await font.load();
     document.fonts.add(font);
@@ -2397,7 +2398,15 @@ async function generate(data,chart) {
     ctx.fillStyle = 'white';
     ctx.fillText(ScoreValue, 1565, 600);
 
-    ctx.drawImage(chart, 1500, 30, 280, 280); // 位置とサイズを調整
+
+    const chartImageData = window.myChart.toBase64Image(); // チャートを画像データに変換
+    const chartImage = new Image();
+    chartImage.src = chartImageData;
+
+    // 画像が読み込まれたらメインの canvas に描画
+    chartImage.onload = () => {
+        ctx.drawImage(chartImage, 1500, 30, 280, 280); // 必要な位置とサイズで描画
+    };
 
 
     // Drawing helper functions
