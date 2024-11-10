@@ -2114,7 +2114,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
     }
   
     let maxElement = Math.max(...myData);
-    let maxborder = maxElement < 140 ? 140 : 200;
+    let maxborder = Math.ceil(maxElement / 10) * 10;
   
     let ctx = document.getElementById("myChart");
   
