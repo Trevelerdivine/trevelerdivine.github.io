@@ -2291,8 +2291,8 @@ async function generate(data) {
     ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
 
     // Weapon
-    //const weaponImage = await loadImage(`../BuildCardData/weapon/${weaponName}.png`);
-    //ctx.drawImage(weaponImage, 809, 20, 64, 64);
+    const weaponImage = await loadImage(`../BuildCardData/Weapon/${weaponName}.png`);
+    ctx.drawImage(weaponImage, 809, 20, 64, 64);
 
     // Weapon rarity
     const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/${weaponRarity}.png`);
@@ -2410,7 +2410,7 @@ async function generate(data) {
     ctx.fillStyle = 'white';
     ctx.fillText(ScoreValue, 1565, 600);
 
-
+    //チャート
     const chartImageData = window.myChart.toBase64Image(); // チャートを画像データに変換
     const chartImage = new Image();
     chartImage.src = chartImageData;
@@ -2419,6 +2419,43 @@ async function generate(data) {
     chartImage.onload = () => {
         ctx.drawImage(chartImage, 1505, 36, 290, 290); // 必要な位置とサイズで描画
     };
+
+    //最適メインステータス
+    const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
+    const ClockMainStatus = "元素チャージ効率";
+    const AfGobletImage = await loadImage(`../BuildCardData/Assets/Goblet.png`);
+    const GobletMainStatus = "炎元素ダメージバフ";
+    const AfCircletImage = await loadImage(`../BuildCardData/Assets/Circlet.png`);
+    const CircletMainStatus = "会心ダメージ";
+
+    // 時計のイメージを描画
+    ctx.font = 'normal 18px customFont';
+    ctx.drawImage(AfClockImage, 1471, 360, 50, 50);
+    // テキストの中央揃え
+    ctx.fillStyle = 'white';
+    let textWidth = ctx.measureText(ClockMainStatus).width; // 文字列の幅を取得
+    let textX = 1474 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
+    ctx.fillText(ClockMainStatus, textX, 440);
+    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
+    ctx.fillRect(1579, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
+
+    ctx.fillStyle = 'white';
+    ctx.font = 'normal 18px customFont';
+    ctx.drawImage(AfGobletImage, 1647, 360, 50, 50);
+    // テキストの中央揃え
+    textWidth = ctx.measureText(GobletMainStatus).width; // 文字列の幅を取得
+    textX = 1649 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
+    ctx.fillText(GobletMainStatus, textX, 440);
+    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
+    ctx.fillRect(1767, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
+
+    ctx.fillStyle = 'white';
+    ctx.font = 'normal 18px customFont';
+    ctx.drawImage(AfCircletImage, 1810, 360, 50, 50);
+    // テキストの中央揃え
+    textWidth = ctx.measureText(CircletMainStatus).width; // 文字列の幅を取得
+    textX = 1812 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
+    ctx.fillText(CircletMainStatus, textX, 440);
 
 
     // Drawing helper functions
