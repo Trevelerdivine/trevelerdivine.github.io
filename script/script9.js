@@ -2249,7 +2249,7 @@ async function generate(data) {
 
 
     const base_status = await calculate_base_status();
-
+    
     const element = data['元素'];
 
     const characterData = data['Character'];
@@ -2372,7 +2372,7 @@ async function generate(data) {
     }
 
     for (let i = 0; i < 8; i++) {
-        const a = 100;
+        const a = base_status[i];
         const b = 200;
         const c = 300 * i;
 
@@ -2384,7 +2384,7 @@ async function generate(data) {
 
         // aの値を表示
         ctx.fillStyle = 'white';
-        ctx.fillText(base_status[i].toLocaleString(), offsetX, baseY);
+        ctx.fillText(a.toLocaleString(), offsetX, baseY);
         offsetX += ctx.measureText(a.toLocaleString()).width; // aの幅を加えて次の位置を設定
 
         // '+'を表示
