@@ -2457,6 +2457,12 @@ async function generate(data) {
     textX = 1812 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
     ctx.fillText(CircletMainStatus, textX, 440);
 
+    const AfMainName = ["HP", "攻撃力", "元素熟知", "元素熟知", "会心ダメージ"];
+    const AfMAinValueList = [4780, 311, 187, 187,62.2];
+    for (let i = 0; i < 5; i++) {
+      AfMAinDisp(AfMainName[i], AfMAinValueList[i], 370 + 380 * i,20);
+    }
+
 
     // Drawing helper functions
     async function loadImage(src) {
@@ -2486,4 +2492,40 @@ async function generate(data) {
     }
 
     return canvas;
+}
+
+async function AfMAinDisp(StatusName, MainStatus, Xcord, level)
+{
+  //聖遺物ステータス
+  const IconImage = await loadImage(`../BuildCardData/emotes/${StatusName}.png`); // アイコン画像をロード
+  const MainStatusValue = MainStatus.toLocaleString(); // カンマ区切りに変換;
+
+  // テキストの右揃え
+  ctx.fillStyle = 'white';
+  ctx.font = 'normal 28px customFont';
+  const NamesWidth = ctx.measureText(StatusName).width;
+  const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
+  const Y = 680; // テキストのY座標
+  ctx.fillText(StatusName, X, Y);
+
+  ctx.font = 'normal 50px customFont';
+  const ValueWidth = ctx.measureText(MainStatusValue).width;
+  const XValue = Xcord - ValueWidth; // 時計の画像の右端にテキストを右揃え
+  ctx.fillText(MainStatusValue, XValue, Y + 48);
+
+  // アイコンをテキストの左側に描画
+  const iconSize = 35; 
+  const iconX = X - iconSize + 1;
+  const iconY = Y - 10 - iconSize / 2;
+
+  ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
+
+  //レベル
+  ctx.font = 'normal 25px customFont';
+  const levelx = Xcord - 56;
+  const Leveltext = "+" + level.toString();
+  ctx.fillStyle = 'black';
+  ctx.fillRect(levelx, 745, 56, 28);
+  ctx.fillStyle = 'white';
+  ctx.fillText(Leveltext, levelx + 1, 768);
 }
