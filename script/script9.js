@@ -1799,8 +1799,10 @@ async function monte_carlo_calculate()
 
 
   hideLoadingSpinner();
-  let result = "最適化聖遺物スコア (メインステータス考慮)： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
+  OptimizedScore = optimaize_af_score.toFixed(1);
+  let result = "最適化聖遺物スコア (メインステータス考慮)： " + OptimizedScore +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
+ 
 
   let dlthpScore = document.getElementById("dlt_hp_score");
   let dltAfhp = document.getElementById("dlt_af_hp");
@@ -2245,6 +2247,9 @@ async function generate(data) {
     await font.load();
     document.fonts.add(font);
 
+
+    const base_status = await calculate_base_status();
+
     const element = data['元素'];
 
     const characterData = data['Character'];
@@ -2379,7 +2384,7 @@ async function generate(data) {
 
         // aの値を表示
         ctx.fillStyle = 'white';
-        ctx.fillText(a.toLocaleString(), offsetX, baseY);
+        ctx.fillText(base_status[i].toLocaleString(), offsetX, baseY);
         offsetX += ctx.measureText(a.toLocaleString()).width; // aの幅を加えて次の位置を設定
 
         // '+'を表示
@@ -2404,7 +2409,7 @@ async function generate(data) {
 
     //スコア
     const ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
-    const ScoreValue = "200.0";
+    const ScoreValue = OptimizedScore
     ctx.font = 'normal 60px customFont';
     ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     ctx.fillStyle = 'white';
@@ -2460,7 +2465,7 @@ async function generate(data) {
     const AfMainName = ["HP", "攻撃力", "元素熟知", "元素熟知", "会心ダメージ"];
     const AfMAinValueList = [4780, 311, 187, 187,62.2];
     for (let i = 0; i < 5; i++) {
-      AfMAinDisp(AfMainName[i], AfMAinValueList[i], 370 + 380 * i,20);
+      AfMainDisp(AfMainName[i], AfMAinValueList[i], 370 + 380 * i,20);
     }
 
 
@@ -2473,7 +2478,7 @@ async function generate(data) {
         });
     }
 
-    async function AfMAinDisp(StatusName, MainStatus, Xcord, level)
+    async function AfMainDisp(StatusName, MainStatus, Xcord, level)
     {
       //聖遺物ステータス
       const IconImage = await loadImage(`../BuildCardData/emotes/${StatusName}.png`); // アイコン画像をロード
@@ -2490,7 +2495,7 @@ async function generate(data) {
       ctx.font = 'normal 50px customFont';
       const ValueWidth = ctx.measureText(MainStatusValue).width;
       const XValue = Xcord - ValueWidth; // 時計の画像の右端にテキストを右揃え
-      ctx.fillText(MainStatusValue, XValue, Y + 48);
+      ctx.fillText(MainStatusValue, XValue, Y + 50);
 
       // アイコンをテキストの左側に描画
       const iconSize = 35; 
@@ -2528,40 +2533,4 @@ async function generate(data) {
     }
 
     return canvas;
-}
-
-async function AfMAinDisp(StatusName, MainStatus, Xcord, level)
-{
-  //聖遺物ステータス
-  const IconImage = await loadImage(`../BuildCardData/emotes/${StatusName}.png`); // アイコン画像をロード
-  const MainStatusValue = MainStatus.toLocaleString(); // カンマ区切りに変換;
-
-  // テキストの右揃え
-  ctx.fillStyle = 'white';
-  ctx.font = 'normal 28px customFont';
-  const NamesWidth = ctx.measureText(StatusName).width;
-  const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
-  const Y = 680; // テキストのY座標
-  ctx.fillText(StatusName, X, Y);
-
-  ctx.font = 'normal 50px customFont';
-  const ValueWidth = ctx.measureText(MainStatusValue).width;
-  const XValue = Xcord - ValueWidth; // 時計の画像の右端にテキストを右揃え
-  ctx.fillText(MainStatusValue, XValue, Y + 48);
-
-  // アイコンをテキストの左側に描画
-  const iconSize = 35; 
-  const iconX = X - iconSize + 1;
-  const iconY = Y - 10 - iconSize / 2;
-
-  ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
-
-  //レベル
-  ctx.font = 'normal 25px customFont';
-  const levelx = Xcord - 56;
-  const Leveltext = "+" + level.toString();
-  ctx.fillStyle = 'black';
-  ctx.fillRect(levelx, 745, 56, 28);
-  ctx.fillStyle = 'white';
-  ctx.fillText(Leveltext, levelx + 1, 768);
 }
