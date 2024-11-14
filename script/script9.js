@@ -2329,17 +2329,14 @@ async function generate(data) {
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
     ctx.fillText(characterName, 30, 65);
 
-    ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
-    const friendshipText = `${CharFriendshipLevel}`;
-    const friendshipTextWidth = ctx.measureText(friendshipText).width;    
-    ctx.fillText(friendshipText, 168 - friendshipTextWidth / 2, 100);
+    drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
 
     // Character talent levels
     const talentLevels = {
         '通常': CharTalentLevel[0],
         'スキル': CharTalentLevel[3],
-        '爆発': characterTalent[CharTalentLevel]
+        '爆発': characterTalent[4]
     };
     const talentColors = ['aqua', 'aqua', 'aqua'];
     for (let i = 0; i < talentTypes.length; i++) {
@@ -2473,10 +2470,7 @@ async function generate(data) {
     {
       ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/SS.png`);
     }
-    ctx.font = 'normal 60px customFont';
-    ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
-    ctx.fillStyle = 'white';
-    ctx.fillText(ScoreValue, 1565, 600);
+    drawCenteredText(ctx, 'normal 60px ScoreValue', 1663, 600, 'normal 60px customFont', color = 'white');
 
     //チャート
     const chartImageData = window.myChart.toBase64Image(); // チャートを画像データに変換
@@ -2697,4 +2691,16 @@ async function calculate_teambuff(base_status)
   team_buff[6] = fix_cd_buff + dynamic_cd_buff;
   team_buff[7] = fix_dmg_buff + dynamic_dmg_buff + 0.15 * checkboxStates.geo_reso;
   return team_buff
+}
+
+function drawCenteredText(ctx, text, centerX, y, font, color = 'white') {
+  // フォントと色を設定
+  ctx.font = font;
+  ctx.fillStyle = color;
+
+  // テキストの幅を計算
+  const textWidth = ctx.measureText(text).width;
+
+  // テキストを中央揃えで描画
+  ctx.fillText(text, centerX - textWidth / 2, y);
 }
