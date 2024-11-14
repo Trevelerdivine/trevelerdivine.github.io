@@ -2351,7 +2351,7 @@ async function generate(data) {
     const Clock = await loadImage(`../BuildCardData/命の星座/${element}LOCK.png`);
     
     for (let i = 1; i < 7; i++) {
-      if (i < characterConstellations)
+      if (i < CharConstellationsIndex + 1)
       {
         const CImage = await loadImage(`../BuildCardData/Character/${characterName}/${i}.png`);
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
