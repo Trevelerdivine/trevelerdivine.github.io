@@ -377,17 +377,17 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 async function calculate_team_fix_buff(base_status)
 {
-  const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value) || 0; // 聖遺物HP上昇量
-  const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
-  const fix_attack_buff = parseInt(document.getElementById("fix_attack_buff").value) || 0; // 聖遺物攻撃力上昇量
-  const fix_attackrate_buff = parseFloat(document.getElementById("fix_attack%_buff").value) / 100 || 0; // 聖遺物攻撃力上昇量
-  const fix_deff_buff = parseInt(document.getElementById("fix_deff_buff").value) || 0; // 聖遺物防御力上昇量
-  const fix_deffrate_buff = parseFloat(document.getElementById("fix_deff%_buff").value) / 100 || 0; // 聖遺物防御力上昇量
-  const fix_elm_buff = parseInt(document.getElementById("fix_elm_buff").value) || 0; // 聖遺物元素熟知上昇量
-  const fix_elm_charge_buff = parseFloat(document.getElementById("fix_elm_charge_buff").value) / 100 || 0; // 聖遺物元素チャージ効率上昇量
-  const fix_cr_buff = parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
-  const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
-  const fix_dmg_buff = parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
+  const fix_hp_buff = Math.max(parseInt(document.getElementById("fix_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const fix_hprate_buff = Math.max(parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const fix_attack_buff = Math.max(parseInt(document.getElementById("fix_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_attackrate_buff = Math.max(parseFloat(document.getElementById("fix_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_deff_buff = Math.max(parseInt(document.getElementById("fix_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const fix_deffrate_buff = Math.max(parseFloat(document.getElementById("fix_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const fix_elm_buff = Math.max(parseInt(document.getElementById("fix_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const fix_elm_charge_buff = Math.max(parseFloat(document.getElementById("fix_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const fix_cr_buff = Math.max(parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const fix_cd_buff = Math.max(parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const fix_dmg_buff = Math.max(parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
   const af_setbuff = await create_afset_instance();
   let team_buff = [0,0,0,0,0,0,0,0];
 
@@ -444,23 +444,22 @@ async function calculate_team_fix_buff(base_status)
   team_buff[5] = fix_cr_buff + af_setbuff[5] + 0.15 * checkboxStates.cyro_reso;
   team_buff[6] = fix_cd_buff + af_setbuff[6];
   team_buff[7] = fix_dmg_buff + af_setbuff[7] + 0.15 * checkboxStates.geo_reso;
-
   return team_buff
 }
 
 async function calculate_team_dynamic_buff(base_status)
 {
-  const dynamic_hp_buff = parseInt(document.getElementById("dynamic_hp_buff").value) || 0; // 聖遺物HP上昇量
-  const dynamic_hprate_buff = parseFloat(document.getElementById("dynamic_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
-  const dynamic_attack_buff = parseInt(document.getElementById("dynamic_attack_buff").value) || 0; // 聖遺物攻撃力上昇量
-  const dynamic_attackrate_buff = parseFloat(document.getElementById("dynamic_attack%_buff").value) / 100 || 0; // 聖遺物攻撃力上昇量
-  const dynamic_deff_buff = parseInt(document.getElementById("dynamic_deff_buff").value) || 0; // 聖遺物防御力上昇量
-  const dynamic_deffrate_buff = parseFloat(document.getElementById("dynamic_deff%_buff").value) / 100 || 0; // 聖遺物防御力上昇量
-  const dynamic_elm_buff = parseInt(document.getElementById("dynamic_elm_buff").value) || 0; // 聖遺物元素熟知上昇量
-  const dynamic_elm_charge_buff = parseFloat(document.getElementById("dynamic_elm_charge_buff").value) / 100 || 0; // 聖遺物元素チャージ効率上昇量
-  const dynamic_cr_buff = parseFloat(document.getElementById("dynamic_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
-  const dynamic_cd_buff = parseFloat(document.getElementById("dynamic_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
-  const dynamic_dmg_buff = parseFloat(document.getElementById("dynamic_dmg_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
+  const dynamic_hp_buff = Math.max(parseInt(document.getElementById("dynamic_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const dynamic_hprate_buff = Math.max(parseFloat(document.getElementById("dynamic_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const dynamic_attack_buff = Math.max(parseInt(document.getElementById("dynamic_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_attackrate_buff = Math.max(parseFloat(document.getElementById("dynamic_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_deff_buff = Math.max(parseInt(document.getElementById("dynamic_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_deffrate_buff = Math.max(parseFloat(document.getElementById("dynamic_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_elm_buff = Math.max(parseInt(document.getElementById("dynamic_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const dynamic_elm_charge_buff = Math.max(parseFloat(document.getElementById("dynamic_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const dynamic_cr_buff = Math.max(parseFloat(document.getElementById("dynamic_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const dynamic_cd_buff = Math.max(parseFloat(document.getElementById("dynamic_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const dynamic_dmg_buff = Math.max(parseFloat(document.getElementById("dynamic_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
   let team_buff = [0,0,0,0,0,0,0,0];
 
   team_buff[0] = dynamic_hp_buff + dynamic_hprate_buff * base_status[0];
@@ -2192,7 +2191,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
     });
   }
 
-  async function displayImage() {
+async function displayImage() {
     // サンプルデータを定義します
     const sampleData = {
         "元素": "草",
@@ -2249,6 +2248,11 @@ async function generate(data) {
 
 
     const base_status = await calculate_base_status();
+    const relocatedIndex = [0,4,1,2,5,6,3,7];
+    const depend_status = [1,1,1,1,1,1,1,1]
+    const af_main_status_buff = await calculate_af_main_status_buff();
+    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
+    let team_buff = await calculate_teambuff(base_status);
     
     const element = data['元素'];
 
@@ -2365,16 +2369,16 @@ async function generate(data) {
     // 計算結果
     ctx.font = 'lighter 28px customFont';
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
-    const relocatedIndex = [0,4,1,2,5,6,3,7];
-    const depend_status = [1,1,1,1,1,1,1,1]
-    const af_main_status_buff = await calculate_af_main_status_buff();
-    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
-
+    
     for (let i = 0; i < 8; i++) {
       let value = my_result_status[relocatedIndex[i]];
       if (i > 3)
       {
         value = (value * 100).toFixed(1) + "%";
+      }
+      else
+      {
+        value = value.toFixed(0);
       }
       const formattedValue = value.toLocaleString(); // カンマ区切りに変換
       ctx.fillText(formattedValue, 1200, 159.5 + 63.5 * i);
@@ -2385,13 +2389,24 @@ async function generate(data) {
     {
 
       let a = base_status[relocatedIndex[i]];
-      let b = 200;
-      let c = 300 * i;
+      let c = team_buff[relocatedIndex[i]];
+      let b = my_result_status - a - c;
 
       if (i > 3)
       {
         a = (a * 100).toFixed(1) + "%";
+        b = (b * 100).toFixed(1) + "%";
+        c = (c * 100).toFixed(1) + "%";
       }
+      else
+      {
+        a = a.toFixed(0);
+        b = b.toFixed(0);
+        c = c.toFixed(0);
+      }
+      a = a.toLocaleString();
+      b = b.toLocaleString();
+      c = c.toLocaleString();
 
       // フォントと基本の位置を設定
       ctx.font = 'lighter 14px customFont';
@@ -2555,4 +2570,86 @@ async function generate(data) {
 async function Calculate_result_status()
 {
 
+}
+
+async function calculate_teambuff(base_status)
+{
+  const fix_hp_buff = Math.max(parseInt(document.getElementById("fix_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const fix_hprate_buff = Math.max(parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const fix_attack_buff = Math.max(parseInt(document.getElementById("fix_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_attackrate_buff = Math.max(parseFloat(document.getElementById("fix_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_deff_buff = Math.max(parseInt(document.getElementById("fix_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const fix_deffrate_buff = Math.max(parseFloat(document.getElementById("fix_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const fix_elm_buff = Math.max(parseInt(document.getElementById("fix_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const fix_elm_charge_buff = Math.max(parseFloat(document.getElementById("fix_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const fix_cr_buff = Math.max(parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const fix_cd_buff = Math.max(parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const fix_dmg_buff = Math.max(parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
+  const dynamic_hp_buff = Math.max(parseInt(document.getElementById("dynamic_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const dynamic_hprate_buff = Math.max(parseFloat(document.getElementById("dynamic_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const dynamic_attack_buff = Math.max(parseInt(document.getElementById("dynamic_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_attackrate_buff = Math.max(parseFloat(document.getElementById("dynamic_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_deff_buff = Math.max(parseInt(document.getElementById("dynamic_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_deffrate_buff = Math.max(parseFloat(document.getElementById("dynamic_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_elm_buff = Math.max(parseInt(document.getElementById("dynamic_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const dynamic_elm_charge_buff = Math.max(parseFloat(document.getElementById("dynamic_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const dynamic_cr_buff = Math.max(parseFloat(document.getElementById("dynamic_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const dynamic_cd_buff = Math.max(parseFloat(document.getElementById("dynamic_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const dynamic_dmg_buff = Math.max(parseFloat(document.getElementById("dynamic_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
+  let team_buff = [0,0,0,0,0,0,0,0];
+
+  const pyroCheckbox = document.getElementById("pyro_reso");
+  const hydroCheckbox = document.getElementById("hydro_reso");
+  const cyroCheckbox = document.getElementById("cyro_reso");
+  const dendroCheckbox = document.getElementById("dendro_reso");
+  const geoCheckbox = document.getElementById("geo_reso");
+
+  const char_response = await fetch("../data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
+  const char_data = await char_response.json();
+  const char_base_hpper = parseFloat(char_data["ステータス"]["基礎HP％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+  const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+  const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+
+  const WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
+  let weapon_base_hpper = 0;
+  let weapon_base_attackper = 0;
+  let weapon_base_deffper = 0;
+
+  if (WeaponEquipData.appendPropId === "FIGHT_PROP_HP_PERCENT") {
+    weapon_base_hpper = WeaponEquipData.statValue / 100;
+  }
+  else if (WeaponEquipData.appendPropId === "FIGHT_PROP_ATTACK_PERCENT") {
+    weapon_base_attackper = WeaponEquipData.statValue / 100;
+  }
+  else if (WeaponEquipData.appendPropId === "FIGHT_PROP_DEFENSE_PERCENT") {
+    weapon_base_deffper = WeaponEquipData.statValue / 100;
+  }
+
+  // チェックボックスの情報をまとめた配列を作成
+  const checkboxStates = {
+    pyro_reso: pyroCheckbox.checked ? 1 : 0,
+    hydro_reso: hydroCheckbox.checked ? 1 : 0,
+    cyro_reso: cyroCheckbox.checked ? 1 : 0,
+    dendro_reso: dendroCheckbox.checked ? 1 : 0,
+    geo_reso: geoCheckbox.checked ? 1 : 0
+  };
+
+  team_buff[0] = fix_hp_buff + dynamic_hp_buff +(fix_hprate_buff + dynamic_hprate_buff + 0.25 * checkboxStates.hydro_reso + char_base_hpper + weapon_base_hpper) * base_status[0];
+  team_buff[1] = fix_deff_buff + dynamic_deff_buff + (fix_deffrate_buff + dynamic_deffrate_buff + char_base_deffper + weapon_base_deffper) * base_status[1];
+  if (checkboxStates.dendro_reso == 1)
+  {
+    const dendro_reso_select = document.getElementById("dendro_reso_select");
+    const dendro_elm = parseInt(dendro_reso_select.value);
+    team_buff[2] = fix_elm_buff + ddynamic_elm_buff + endro_elm;
+  }
+  else
+  {
+    team_buff[2] = fix_elm_buff + dynamic_elm_buff;
+  }
+  team_buff[3] = fix_elm_charge_buff + dynamic_elm_charge_buff;
+  team_buff[4] = fix_attack_buff + dynamic_attack_buff + (fix_attackrate_buff + dynamic_attackrate_buff + 0.25 * checkboxStates.pyro_reso + char_base_attackper + weapon_base_attackper) * base_status[4];
+  team_buff[5] = fix_cr_buff + dynamic_cr_buff + 0.15 * checkboxStates.cyro_reso;
+  team_buff[6] = fix_cd_buff + dynamic_cd_buff;
+  team_buff[7] = fix_dmg_buff + dynamic_dmg_buff + 0.15 * checkboxStates.geo_reso;
+  return team_buff
 }
