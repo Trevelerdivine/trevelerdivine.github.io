@@ -1,66 +1,82 @@
 {
     "FIGHT_PROP_HP_PERCENT":{
         "名前":"HP%",
+        "name":"HP%",
         "id":0
     },
     "FIGHT_PROP_ATTACK_PERCENT":{
         "名前":"攻撃力%",
+        "name":"攻撃力%",
         "id":4
     },
     "FIGHT_PROP_DEFENSE_PERCENT":{
         "名前":"防御力%",
+        "name":"防御力%",
         "id":1
     },
     "FIGHT_PROP_ELEMENT_MASTERY":{
         "名前":"元素熟知",
+        "name":"元素熟知",
         "id":2
     },
     "FIGHT_PROP_CHARGE_EFFICIENCY":{
         "名前":"チャージ効率",
+        "name":"元素チャージ効率",
         "id":3
     },
     "FIGHT_PROP_CRITICAL":{
         "名前":"会心率",
+        "name":"会心率",
         "id":5
     },
     "FIGHT_PROP_CRITICAL_HURT":{
         "名前":"会心ダメージ",
+        "name":"会心ダメージ",
         "id":6
     },
     "FIGHT_PROP_HEAL_ADD":{
         "名前":"与える治癒効果",
+        "name":"与える治癒効果",
         "id":18
     },
     "FIGHT_PROP_PHYSICAL_ADD_HURT": {
         "名前":"物理ダメージバフ",
+        "name":"物理ダメージバフ",
         "id":7
     },
     "FIGHT_PROP_FIRE_ADD_HURT": {
         "名前":"炎ダメージバフ",
+        "name":"炎元素ダメージバフ",
         "id":0
     },
     "FIGHT_PROP_ELEC_ADD_HURT": {
         "名前":"雷ダメージバフ",
+        "name":"雷元素ダメージバフ",
         "id":3
     },
     "FIGHT_PROP_WATER_ADD_HURT": {
         "名前":"水ダメージバフ",
+        "name":"水元素ダメージバフ",
         "id":1
     },
     "FIGHT_PROP_WIND_ADD_HURT": {
         "名前":"風ダメージバフ",
+        "name":"風元素ダメージバフ",
         "id":4
     },
     "FIGHT_PROP_ICE_ADD_HURT": {
         "名前":"氷ダメージバフ",
+        "name":"氷元素ダメージバフ",
         "id":2
     },
     "FIGHT_PROP_ROCK_ADD_HURT": {
         "名前":"岩ダメージバフ",
+        "name":"岩元素ダメージバフ",
         "id":6
     },
     "FIGHT_PROP_GRASS_ADD_HURT": {
         "名前":"草ダメージバフ",
+        "name":"草元素ダメージバフ",
         "id":5
     }
 }
