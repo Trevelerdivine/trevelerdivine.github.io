@@ -1575,13 +1575,13 @@
             else if (fourthDigits[i] == 4)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
-                BuildMainStatus[0][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[0][0] = "HP"
                 BuildMainStatus[0][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             else if (fourthDigits[i] == 2)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
-                BuildMainStatus[1][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[1][0] = "攻撃力"
                 BuildMainStatus[1][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
         }
