@@ -1155,6 +1155,7 @@
     let CharFriendshipLevel;
     let CharAdvanceRank;
     let CharConstellations;
+    let CharConstellationsIndex;
     let CharTalentLevel = [0,0,0,0,0];
     let WeaponLevel;
     let WeaponAdvanceRank;
@@ -1367,7 +1368,7 @@
             CharFriendshipLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].fetterInfo.expLevel;
             CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
             // talentIdList が存在するかどうかを確認し、その長さを取得
-            const CharConstellationsIndex = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
+            CharConstellationsIndex = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
             CharConstellations = CharConstellationsChange[CharConstellationsIndex];
             const CharTalentLevelList = Object.values(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
             const LevelDisplay = document.getElementById("CharLevel");
