@@ -2260,7 +2260,6 @@ async function generate(data) {
     const characterData = data['Character'];
     const characterName = characterData['Name'];
     const characterConstellations = characterData['Const'];
-    const characterLevel = characterData['Level'];
     const friendship = characterData['Love'];
     const characterStatus = characterData['Status'];
     const characterBase = characterData['Base'];
@@ -2331,8 +2330,8 @@ async function generate(data) {
     ctx.fillText(characterName, 30, 65);
 
     ctx.font = 'lighter 28px customFont';
-    ctx.fillText(`Lv.${characterLevel}`, 35, 100);
-    ctx.fillText(friendship, 73 + ctx.measureText(`Lv.${characterLevel}`).width, 100);
+    ctx.fillText(`Lv.${CharLevel}`, 35, 100);
+    ctx.fillText(friendship, 73 + ctx.measureText(`Lv.${CharFriendshipLevel}`).width, 100);
 
     // Character talent levels
     const talentLevels = {
