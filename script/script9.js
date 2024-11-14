@@ -2378,75 +2378,69 @@ async function generate(data) {
           value = value.toFixed(0);
       }
       const formattedValue = value.toLocaleString(); // カンマ区切りに変換
-
+  
       // テキストの幅を取得して右揃え位置を計算
       const textWidth = ctx.measureText(formattedValue).width;
-      const xPos = 1200 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
-
+      const xPos = 1300 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
+  
       ctx.fillText(formattedValue, xPos, 159.5 + 63.5 * i);
     }
   
 
     //ステータス表示
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i++) 
+    {
+
       let a = base_status[relocatedIndex[i]];
       let c = team_buff[relocatedIndex[i]];
       let b = my_result_status[relocatedIndex[i]] - a - c;
-  
-      if (i > 3) {
-          a = (a * 100).toFixed(1) + "%";
-          b = (b * 100).toFixed(1) + "%";
-          c = (c * 100).toFixed(1) + "%";
-      } else {
-          a = a.toFixed(0);
-          b = b.toFixed(0);
-          c = c.toFixed(0);
+
+      if (i > 3)
+      {
+        a = (a * 100).toFixed(1) + "%";
+        b = (b * 100).toFixed(1) + "%";
+        c = (c * 100).toFixed(1) + "%";
       }
-  
+      else
+      {
+        a = a.toFixed(0);
+        b = b.toFixed(0);
+        c = c.toFixed(0);
+      }
       a = a.toLocaleString();
       b = b.toLocaleString();
       c = c.toLocaleString();
-  
+
       // フォントと基本の位置を設定
       ctx.font = 'lighter 14px customFont';
-      const baseX = 1230; // 基本の右端X座標
-      const baseY = 180 + 63.5 * i; // Y座標の位置
-  
-      // 各要素の幅を計算
-      const aWidth = ctx.measureText(a).width;
-      const plusWidth = ctx.measureText('+').width;
-      const bWidth = ctx.measureText(b).width;
-      const cWidth = ctx.measureText(c).width;
-  
-      // 全体の幅を計算して、右揃えの起点位置を調整
-      const totalWidth = aWidth + plusWidth + bWidth + plusWidth + cWidth;
-      let offsetX = baseX - totalWidth;
-  
+      const baseX = 1230; // X座標の開始位置
+      const baseY = 180 +63.5  * i; // Y座標の位置
+      let offsetX = baseX; // 各要素のX位置を調整するための変数
+
       // aの値を表示
       ctx.fillStyle = 'white';
-      ctx.fillText(a, offsetX, baseY);
-      offsetX += aWidth;
-  
+      ctx.fillText(a.toLocaleString(), offsetX, baseY);
+      offsetX += ctx.measureText(a.toLocaleString()).width; // aの幅を加えて次の位置を設定
+
       // '+'を表示
-      ctx.fillStyle = '#a4f74f';
+      ctx.fillStyle = '#a4f74f'; // '+'の色（任意）
       ctx.fillText('+', offsetX, baseY);
-      offsetX += plusWidth;
-  
+      offsetX += ctx.measureText('+').width; // '+'の幅を加えて次の位置を設定
+
       // bの値を表示
-      ctx.fillStyle = '#a4f74f';
-      ctx.fillText(b, offsetX, baseY);
-      offsetX += bWidth;
-  
+      ctx.fillStyle ='#a4f74f';
+      ctx.fillText(b.toLocaleString(), offsetX, baseY);
+      offsetX += ctx.measureText(b.toLocaleString()).width;
+
       // '+'を表示
       ctx.fillStyle = '#00ccff';
       ctx.fillText('+', offsetX, baseY);
-      offsetX += plusWidth;
-  
+      offsetX += ctx.measureText('+').width;
+
       // cの値を表示
       ctx.fillStyle = '#00ccff';
-      ctx.fillText(c, offsetX, baseY);
-  }
-  
+      ctx.fillText(c.toLocaleString(), offsetX, baseY);
+    }
 
     //スコア
     const ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
