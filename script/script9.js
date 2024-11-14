@@ -2331,9 +2331,9 @@ async function generate(data) {
 
     ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
-    const friendshipText = `Lv.${CharFriendshipLevel}`;
+    const friendshipText = `${CharFriendshipLevel}`;
     const friendshipTextWidth = ctx.measureText(friendshipText).width;    
-    ctx.fillText(friendshipText, 73 - friendshipTextWidth / 2, 100);
+    ctx.fillText(friendshipText, 168 - friendshipTextWidth / 2, 100);
 
     // Character talent levels
     const talentLevels = {
@@ -2360,9 +2360,12 @@ async function generate(data) {
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
       }
+      else
+      {
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
-        ctx.drawImage(Clock, 690, -0 + i * 93, 56, 56);
+        ctx.drawImage(Clock, 692, -0 + i * 93, 56, 56);
+      }
     }
 
     //聖遺物
