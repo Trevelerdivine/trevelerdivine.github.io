@@ -1228,7 +1228,7 @@ async function monte_carlo_calculate()
   let save_score_distribute = [0,0,0,0,0,0,0,0];
   let save_af_score;
   let optimaize_af_score;
-  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"]
+  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"];
   let random_1;
   let random_2;
   let output_exp_dmg;
@@ -1618,6 +1618,7 @@ async function monte_carlo_calculate()
   af_score_lower_limit = 0;
   af_score = save_af_score / 2;
   MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], ExpDmgList[0][1][2]];
+  OptimizedStatus = MainStatusList;
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
 
   while (n_count < 30)
@@ -2462,12 +2463,21 @@ async function generate(data) {
     };
 
     //最適メインステータス
+    let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
     const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
-    const ClockMainStatus = "元素チャージ効率";
+    const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
+    let GobletMainStatus = "炎元素ダメージバフ";
+    if (OptimizedStatus[1] == 7)
+    {
+      GobletMainStatus = element[char_propaty[0]] + main_status_name[7];
+    }
+    else
+    {
+      GobletMainStatus = main_status_name[OptimizedStatus[1]];
+    }
     const AfGobletImage = await loadImage(`../BuildCardData/Assets/Goblet.png`);
-    const GobletMainStatus = "炎元素ダメージバフ";
     const AfCircletImage = await loadImage(`../BuildCardData/Assets/Circlet.png`);
-    const CircletMainStatus = "会心ダメージ";
+    const CircletMainStatus = main_status_name[OptimizedStatus[2]];
 
     // 時計のイメージを描画
     ctx.font = 'normal 18px customFont';
