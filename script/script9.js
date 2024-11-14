@@ -2338,7 +2338,7 @@ async function generate(data) {
     const talentLevels = {
         '通常': CharTalentLevel[0],
         'スキル': CharTalentLevel[3],
-        '爆発': characterTalent[4]
+        '爆発': CharTalentLevel[4]
     };
     const talentColors = ['aqua', 'aqua', 'aqua'];
     for (let i = 0; i < talentTypes.length; i++) {
@@ -2472,7 +2472,7 @@ async function generate(data) {
     {
       ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/SS.png`);
     }
-    drawCenteredText(ctx, 'normal 60px ScoreValue', 1663, 600, 'normal 60px customFont', color = 'white');
+    drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
     //チャート
     const chartImageData = window.myChart.toBase64Image(); // チャートを画像データに変換
