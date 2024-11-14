@@ -2373,7 +2373,7 @@ async function generate(data) {
     for (let i = 0; i < 8; i++) {
       let value = my_result_status[relocatedIndex[i]];
       if (i > 3) {
-          value = Number((value * 100).toFixed(1)).toLocaleString() + "%";
+          value = Number((value * 100).toLocaleString()).toFixed(1) + "%";
       } else {
           value = Number(value.toFixed(0)).toLocaleString();
       }
@@ -2393,9 +2393,9 @@ async function generate(data) {
       let b = my_result_status[relocatedIndex[i]] - a - c;
   
       if (i > 3) {
-          a = Number((a * 100).toFixed(1)).toLocaleString() + "%";
-          b = Number((b * 100).toFixed(1)).toLocaleString() + "%";
-          c = Number((c * 100).toFixed(1)).toLocaleString() + "%";
+          a = Number((a * 100).toLocaleString()).toFixed(1) + "%";
+          b = Number((b * 100).toLocaleString()).toFixed(1) + "%";
+          c = Number((c * 100).toLocaleString()).toFixed(1) + "%";
       } else {
           a = Number(a.toFixed(0)).toLocaleString();
           b = Number(b.toFixed(0)).toLocaleString();
