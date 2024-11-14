@@ -2371,8 +2371,10 @@ async function generate(data) {
         ctx.fillText(formattedValue, 1200, 159.5 + 63.5 * i);
     }
 
+    //ステータス表示
+    let relocatedIndex = [0,2,3,6,1,4,5,7];
     for (let i = 0; i < 8; i++) {
-        const a = base_status[i];
+        const a = base_status[relocatedIndex[i]];
         const b = 200;
         const c = 300 * i;
 
