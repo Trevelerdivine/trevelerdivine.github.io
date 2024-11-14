@@ -2352,10 +2352,16 @@ async function generate(data) {
     const Clock = await loadImage(`../BuildCardData/命の星座/${element}LOCK.png`);
     
     for (let i = 1; i < 7; i++) {
+      if (i < characterConstellations)
+      {
         const CImage = await loadImage(`../BuildCardData/Character/${characterName}/${i}.png`);
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
+      }
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
+        ctx.drawImage(Clock, 690, -0 + i * 93, 56, 56);
     }
 
     //聖遺物
@@ -2466,7 +2472,7 @@ async function generate(data) {
     let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
     const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
     const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
-    let GobletMainStatus = "炎元素ダメージバフ";
+    let GobletMainStatus;
     if (OptimizedStatus[1] == 7)
     {
       GobletMainStatus = element[char_propaty[0]] + main_status_name[7];
