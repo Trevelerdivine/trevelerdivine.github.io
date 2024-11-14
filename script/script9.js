@@ -2372,11 +2372,16 @@ async function generate(data) {
     }
 
     //ステータス表示
-    let relocatedIndex = [0,2,3,6,1,4,5,7];
+    let relocatedIndex = [0,4,1,2,5,6,3,7];
     for (let i = 0; i < 8; i++) {
-        const a = base_status[relocatedIndex[i]];
-        const b = 200;
-        const c = 300 * i;
+        let a = base_status[relocatedIndex[i]];
+        let b = 200;
+        let c = 300 * i;
+
+        if (i > 3)
+        {
+          a = (a * 100).toString() + "%";
+        }
 
         // フォントと基本の位置を設定
         ctx.font = 'lighter 14px customFont';
