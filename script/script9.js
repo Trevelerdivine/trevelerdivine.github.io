@@ -2329,7 +2329,9 @@ async function generate(data) {
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
     ctx.fillText(characterName, 30, 65);
 
+    ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
+    const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
 
     // Character talent levels
