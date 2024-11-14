@@ -2380,7 +2380,7 @@ async function generate(data) {
 
         if (i > 3)
         {
-          a = (a * 100).toString() + "%";
+          a = (a * 100).toFixed(1) + "%";
         }
 
         // フォントと基本の位置を設定
