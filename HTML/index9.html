@@ -1157,6 +1157,7 @@
     let CharConstellations;
     let CharConstellationsIndex;
     let CharTalentLevel = [0,0,0,0,0];
+    let CharConsteLevelflag = [0,0,0];
     let WeaponLevel;
     let WeaponAdvanceRank;
     let WeaponConstellations;
@@ -1390,13 +1391,15 @@
                 CharTalentLevelList[2] =  BurstTalentLevel;
             }
             
-
+            CharConsteLevelflag = [0,0,0];
             if (CharConstellationsIndex > 2)
             {
                 CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["3重"]] +=3;
+                CharConsteLevelflag[CharDataJson["CharMap"][APICharIndex.toString()]["3重"]] = 1
                 if(CharConstellationsIndex > 4)
                 {
                     CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["5重"]] +=3;
+                    CharConsteLevelflag[CharDataJson["CharMap"][APICharIndex.toString()]["5重"]] = 1
                 }
             };
             

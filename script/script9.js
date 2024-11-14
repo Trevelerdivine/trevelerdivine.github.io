@@ -2337,14 +2337,14 @@ async function generate(data) {
 
     // Character talent levels
     const talentLevels = {
-        '通常': characterTalent['通常'],
-        'スキル': characterTalent['スキル'],
-        '爆発': characterTalent['爆発']
+        '通常': CharTalentLevel[0],
+        'スキル': CharTalentLevel[3],
+        '爆発': characterTalent[CharTalentLevel]
     };
     const talentColors = ['aqua', 'aqua', 'aqua'];
     for (let i = 0; i < talentTypes.length; i++) {
         ctx.font = 'lighter 19px customFont';
-        ctx.fillStyle = talentLevels[talentTypes[i]] >= 10 ? talentColors[i] : 'white';
+        ctx.fillStyle = CharConsteLevelflag[i] > 0 ? talentColors[i] : 'white';
         ctx.fillText(`Lv.${talentLevels[talentTypes[i]]}`, 57, 402 + i * 105);
     }
 
@@ -2364,7 +2364,7 @@ async function generate(data) {
       {
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
-        ctx.drawImage(Clock, 692, -0 + i * 93, 56, 56);
+        ctx.drawImage(Clock, 681, -11 + i * 93, 80, 80);
       }
     }
 
@@ -2455,8 +2455,24 @@ async function generate(data) {
   
 
     //スコア
-    const ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
     const ScoreValue = OptimizedScore
+    let ScoreRankImage;
+    if(ScoreValue < 180)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/B.png`);
+    }
+    else if(ScoreValue < 200)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/A.png`);
+    }
+    else if(ScoreValue < 220)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
+    }
+    else
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/SS.png`);
+    }
     ctx.font = 'normal 60px customFont';
     ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     ctx.fillStyle = 'white';
