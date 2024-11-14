@@ -2505,7 +2505,7 @@ async function generate(data) {
       }
       else
       {
-        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString + "%", 370 + 380 * i,20);
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
       }
     }
 
