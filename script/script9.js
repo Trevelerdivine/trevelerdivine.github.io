@@ -2390,7 +2390,7 @@ async function generate(data) {
 
       let a = base_status[relocatedIndex[i]];
       let c = team_buff[relocatedIndex[i]];
-      let b = my_result_status - a - c;
+      let b = my_result_status[relocatedIndex[i]] - a - c;
 
       if (i > 3)
       {
