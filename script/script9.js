@@ -2382,7 +2382,7 @@ async function generate(data) {
       const textWidth = ctx.measureText(value).width;
       const xPos = 1290 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
   
-      ctx.fillText(value, xPos, 157.5 + 63.5 * i);
+      ctx.fillText(value, xPos, 157.5 + 64.5 * i);
     }
   
 
@@ -2404,8 +2404,8 @@ async function generate(data) {
 
       // フォントと基本の位置を設定
       ctx.font = 'lighter 14px customFont';
-      const baseX = 1220; // 基本の右端X座標
-      const baseY = 178 + 63.5 * i; // Y座標の位置
+      const baseX = 1340; // 基本の右端X座標
+      const baseY = 178 + 64.5 * i; // Y座標の位置
   
       // 各要素の幅を計算
       const aWidth = ctx.measureText(a).width;
