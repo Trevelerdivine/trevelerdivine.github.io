@@ -2331,7 +2331,9 @@ async function generate(data) {
 
     ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
-    ctx.fillText(friendship, 73 + ctx.measureText(`Lv.${CharFriendshipLevel}`).width, 100);
+    const friendshipText = `Lv.${CharFriendshipLevel}`;
+    const friendshipTextWidth = ctx.measureText(friendshipText).width;    
+    ctx.fillText(friendshipText, 73 - friendshipTextWidth / 2, 100);
 
     // Character talent levels
     const talentLevels = {
