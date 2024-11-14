@@ -2365,53 +2365,63 @@ async function generate(data) {
     // 計算結果
     ctx.font = 'lighter 28px customFont';
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+    const relocatedIndex = [0,4,1,2,5,6,3,7];
+    const depend_status = [1,1,1,1,1,1,1,1]
+    const af_main_status_buff = await calculate_af_main_status_buff();
+    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
+
     for (let i = 0; i < 8; i++) {
-        const value = 1000
-        const formattedValue = value.toLocaleString(); // カンマ区切りに変換
-        ctx.fillText(formattedValue, 1200, 159.5 + 63.5 * i);
+      let value = my_result_status[relocatedIndex[i]];
+      if (i > 3)
+      {
+        value = (value * 100).toFixed(1) + "%";
+      }
+      const formattedValue = value.toLocaleString(); // カンマ区切りに変換
+      ctx.fillText(formattedValue, 1200, 159.5 + 63.5 * i);
     }
 
     //ステータス表示
-    let relocatedIndex = [0,4,1,2,5,6,3,7];
-    for (let i = 0; i < 8; i++) {
-        let a = base_status[relocatedIndex[i]];
-        let b = 200;
-        let c = 300 * i;
+    for (let i = 0; i < 8; i++) 
+    {
 
-        if (i > 3)
-        {
-          a = (a * 100).toFixed(1) + "%";
-        }
+      let a = base_status[relocatedIndex[i]];
+      let b = 200;
+      let c = 300 * i;
 
-        // フォントと基本の位置を設定
-        ctx.font = 'lighter 14px customFont';
-        const baseX = 1230; // X座標の開始位置
-        const baseY = 180 +63.5  * i; // Y座標の位置
-        let offsetX = baseX; // 各要素のX位置を調整するための変数
+      if (i > 3)
+      {
+        a = (a * 100).toFixed(1) + "%";
+      }
 
-        // aの値を表示
-        ctx.fillStyle = 'white';
-        ctx.fillText(a.toLocaleString(), offsetX, baseY);
-        offsetX += ctx.measureText(a.toLocaleString()).width; // aの幅を加えて次の位置を設定
+      // フォントと基本の位置を設定
+      ctx.font = 'lighter 14px customFont';
+      const baseX = 1230; // X座標の開始位置
+      const baseY = 180 +63.5  * i; // Y座標の位置
+      let offsetX = baseX; // 各要素のX位置を調整するための変数
 
-        // '+'を表示
-        ctx.fillStyle = '#a4f74f'; // '+'の色（任意）
-        ctx.fillText('+', offsetX, baseY);
-        offsetX += ctx.measureText('+').width; // '+'の幅を加えて次の位置を設定
+      // aの値を表示
+      ctx.fillStyle = 'white';
+      ctx.fillText(a.toLocaleString(), offsetX, baseY);
+      offsetX += ctx.measureText(a.toLocaleString()).width; // aの幅を加えて次の位置を設定
 
-        // bの値を表示
-        ctx.fillStyle ='#a4f74f';
-        ctx.fillText(b.toLocaleString(), offsetX, baseY);
-        offsetX += ctx.measureText(b.toLocaleString()).width;
+      // '+'を表示
+      ctx.fillStyle = '#a4f74f'; // '+'の色（任意）
+      ctx.fillText('+', offsetX, baseY);
+      offsetX += ctx.measureText('+').width; // '+'の幅を加えて次の位置を設定
 
-        // '+'を表示
-        ctx.fillStyle = '#00ccff';
-        ctx.fillText('+', offsetX, baseY);
-        offsetX += ctx.measureText('+').width;
+      // bの値を表示
+      ctx.fillStyle ='#a4f74f';
+      ctx.fillText(b.toLocaleString(), offsetX, baseY);
+      offsetX += ctx.measureText(b.toLocaleString()).width;
 
-        // cの値を表示
-        ctx.fillStyle = '#00ccff';
-        ctx.fillText(c.toLocaleString(), offsetX, baseY);
+      // '+'を表示
+      ctx.fillStyle = '#00ccff';
+      ctx.fillText('+', offsetX, baseY);
+      offsetX += ctx.measureText('+').width;
+
+      // cの値を表示
+      ctx.fillStyle = '#00ccff';
+      ctx.fillText(c.toLocaleString(), offsetX, baseY);
     }
 
     //スコア
@@ -2540,4 +2550,9 @@ async function generate(data) {
     }
 
     return canvas;
+}
+
+async function Calculate_result_status()
+{
+
 }
