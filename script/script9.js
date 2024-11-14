@@ -2373,17 +2373,16 @@ async function generate(data) {
     for (let i = 0; i < 8; i++) {
       let value = my_result_status[relocatedIndex[i]];
       if (i > 3) {
-          value = (value * 100).toFixed(1) + "%";
+          value = Number((value * 100).toFixed(1)).toLocaleString() + "%";
       } else {
-          value = value.toFixed(0);
+          value = Number(value.toFixed(0)).toLocaleString();
       }
-      const formattedValue = Number(value).toLocaleString(); // カンマ区切りに変換
   
       // テキストの幅を取得して右揃え位置を計算
-      const textWidth = ctx.measureText(formattedValue).width;
+      const textWidth = ctx.measureText(value).width;
       const xPos = 1290 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
   
-      ctx.fillText(formattedValue, xPos, 157.5 + 63.5 * i);
+      ctx.fillText(value, xPos, 157.5 + 63.5 * i);
     }
   
 
@@ -2394,19 +2393,15 @@ async function generate(data) {
       let b = my_result_status[relocatedIndex[i]] - a - c;
   
       if (i > 3) {
-          a = (a * 100).toFixed(1) + "%";
-          b = (b * 100).toFixed(1) + "%";
-          c = (c * 100).toFixed(1) + "%";
+          a = Number((a * 100).toFixed(1)).toLocaleString() + "%";
+          b = Number((b * 100).toFixed(1)).toLocaleString() + "%";
+          c = Number((c * 100).toFixed(1)).toLocaleString() + "%";
       } else {
-          a = a.toFixed(0);
-          b = b.toFixed(0);
-          c = c.toFixed(0);
+          a = Number(a.toFixed(0)).toLocaleString();
+          b = Number(b.toFixed(0)).toLocaleString();
+          c = Number(c.toFixed(0)).toLocaleString();
       }
-  
-      a = a.toLocaleString();
-      b = b.toLocaleString();
-      c = c.toLocaleString();
-  
+
       // フォントと基本の位置を設定
       ctx.font = 'lighter 14px customFont';
       const baseX = 1220; // 基本の右端X座標
