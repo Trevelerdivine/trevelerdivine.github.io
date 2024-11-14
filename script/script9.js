@@ -2498,10 +2498,15 @@ async function generate(data) {
     textX = 1812 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
     ctx.fillText(CircletMainStatus, textX, 440);
 
-    const AfMainName = ["HP", "攻撃力", "元素熟知", "元素熟知", "会心ダメージ"];
-    const AfMAinValueList = [4780, 311, 187, 187,62.2];
     for (let i = 0; i < 5; i++) {
-      AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+      }
+      else
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString + "%", 370 + 380 * i,20);
+      }
     }
 
 
