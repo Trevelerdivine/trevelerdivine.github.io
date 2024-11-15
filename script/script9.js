@@ -2322,18 +2322,22 @@ async function generate(data) {
         ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
     }
 
-    // Character name and level
+    // Character name, weapon name and level
     ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
-    ctx.fillRect(121, 77, 67, 27);  // (50, 50) の位置に幅200、高さ100の長方形を描画
+    ctx.fillRect(121, 77, 67, 27);  //長方形を描画
+    ctx.fillRect(1200, 150, 67, 27);
     const LoveImage = await loadImage(`../BuildCardData/Assets/Love.png`);
     ctx.drawImage(LoveImage, 122, 78, 30, 24);
 
-    ctx.font = '48px customFont';
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+    ctx.font = '48px customFont';
     ctx.fillText(BuildCardCharName, 30, 65);
+    ctx.font = '30px customFont';
+    ctx.fillText(BuildCardCWeaponName, 700, 65);
 
     ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
+    ctx.fillText(`Lv.${WeaponLevel}`, 1350, 100);
     const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
 
