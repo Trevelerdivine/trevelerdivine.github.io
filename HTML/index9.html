@@ -1620,7 +1620,7 @@
         existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
         existingImage.alt = "Clicked Image";
         const charIndexDisplay = document.getElementById('Weaponindex-display');
-        BuildCardCWeaponName = charIndexDisplay;
+        BuildCardCWeaponName = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
         charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
 }
 
