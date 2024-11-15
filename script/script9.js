@@ -411,7 +411,7 @@ async function calculate_team_fix_buff(base_status)
   BuildCardWeaponStats[1][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1].statValue;
   if (BuildCardWeaponStats[1][0] != "元素熟知")
   {
-    BuildCardWeaponStats[1][1] *= 0.01;
+    BuildCardWeaponStats[1][1] = BuildCardWeaponStats[1][1].toString() + "%"
   }
 
   let weapon_base_hpper = 0;
@@ -2347,10 +2347,13 @@ async function generate(data) {
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
     ctx.font = 'lighter 20px customFont';
     ctx.fillText(`Lv.${WeaponLevel}`, 902, 80);
-    ctx.fillText(BuildCardWeaponStats[0][0], 972, 80);
-    ctx.fillText(BuildCardWeaponStats[0][1], 1082, 80);
-    ctx.fillText(BuildCardWeaponStats[1][0], 1132, 80);
-    ctx.fillText(BuildCardWeaponStats[1][1], 1212, 80);
+    ctx.fillText(BuildCardWeaponStats[0][0], 982, 80);
+    ctx.fillText(BuildCardWeaponStats[0][1], 1092, 80);
+    ctx.fillText(BuildCardWeaponStats[1][0], 1182, 80);
+    const firstTextWidth = ctx.measureText(BuildCardWeaponStats[1][0]).width;
+    // BuildCardWeaponStats[1][1] を、最初のテキストの右隣に描画
+    ctx.fillText(BuildCardWeaponStats[1][1], 1182 + firstTextWidth + 10, 80);
+
     const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
 
