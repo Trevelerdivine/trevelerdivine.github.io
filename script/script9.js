@@ -2330,7 +2330,7 @@ async function generate(data) {
 
     ctx.font = '48px customFont';
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
-    ctx.fillText(characterName, 30, 65);
+    ctx.fillText(BuildCardCharName, 30, 65);
 
     ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);

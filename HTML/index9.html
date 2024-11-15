@@ -1165,6 +1165,8 @@
     let char_propaty = [5,0];
     let selectedImageIds = [0,0];
     let char_names = [];
+    let BuildCardCharName;
+    let BuildCardCWeaponName;
     let CharDataJson;
     let UserData;
     let afdata;
@@ -1403,7 +1405,8 @@
                 }
             };
             
-            charIndexDisplay.innerHTML = char_names[SortOrder]
+            charIndexDisplay.innerHTML = char_names[SortOrder];
+            BuildCardCharName = char_names[SortOrder];
             LevelDisplay.innerHTML = "Lv." + CharLevel;
             ConsteDisplay.innerHTML = "命の星座" + CharConstellationsIndex + "重";
             NormalTalent.innerHTML = "Lv." + CharTalentLevelList[0];
@@ -1617,6 +1620,7 @@
         existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
         existingImage.alt = "Clicked Image";
         const charIndexDisplay = document.getElementById('Weaponindex-display');
+        BuildCardCWeaponName = charIndexDisplay;
         charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
 }
 
