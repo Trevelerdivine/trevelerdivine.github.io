@@ -407,7 +407,7 @@ async function calculate_team_fix_buff(base_status)
 
   const WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
   BuildCardWeaponStats[0][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[0].statValue;
-  BuildCardWeaponStats[1][0] = AfNameList[WeaponEquipData].name;
+  BuildCardWeaponStats[1][0] = AfNameList[WeaponEquipData.appendPropId].name;
   BuildCardWeaponStats[1][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1].statValue;
   if (BuildCardWeaponStats[1][0] != "元素熟知")
   {
@@ -2347,10 +2347,10 @@ async function generate(data) {
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
     ctx.font = 'lighter 20px customFont';
     ctx.fillText(`Lv.${WeaponLevel}`, 902, 80);
-    ctx.fillText(BuildCardWeaponStats[0][0], 922, 80);
-    ctx.fillText(BuildCardWeaponStats[0][1], 932, 80);
-    ctx.fillText(BuildCardWeaponStats[1][0], 982, 80);
-    ctx.fillText(BuildCardWeaponStats[1][1], 1012, 80);
+    ctx.fillText(BuildCardWeaponStats[0][0], 972, 80);
+    ctx.fillText(BuildCardWeaponStats[0][1], 1082, 80);
+    ctx.fillText(BuildCardWeaponStats[1][0], 1132, 80);
+    ctx.fillText(BuildCardWeaponStats[1][1], 1212, 80);
     const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
 
