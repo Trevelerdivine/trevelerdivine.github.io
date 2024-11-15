@@ -411,7 +411,7 @@ async function calculate_team_fix_buff(base_status)
   BuildCardWeaponStats[1][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1].statValue;
   if (BuildCardWeaponStats[1][0] != "元素熟知")
   {
-    BuildCardWeaponStats[1][1] = BuildCardWeaponStats[1][1].toString() + "%"
+    BuildCardWeaponStats[1][1] = BuildCardWeaponStats[1][1].toString() + "%";
   }
 
   let weapon_base_hpper = 0;
