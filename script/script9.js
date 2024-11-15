@@ -2,7 +2,9 @@ let depend_status = [0,0,1,0,1,1,1];
 let af_score = 0;
 let attack_method = 0;
 let attack_method_index = 0;
-let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値]
+let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値] 
+let MyAfScoreDist;
+let OptimizedScoreDist;
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
 
@@ -2085,6 +2087,8 @@ async function monte_carlo_calculate()
     }
   }
   
+  MyAfScoreDist = my_af_score_distribution.slice();
+  OptimizedScoreDist = save_score_distribute.slice();
   console.log(n_count);
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   displayImage();
@@ -2097,100 +2101,99 @@ async function DoCalculate(){
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
-    let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
-    let itemList = [];
-    let myData = [];
-    let TheoreticalData = [];
-    let dltScore = 0;
-  
-    for (let i = 0; i < 7; i++) {
-        if (depend_index[i] == 1) {
-            itemList.push(statusList[i]);
-            dltScore =  100 + (myStatus[i] - TheoreticalStatus[i]);
-            if (dltScore > 0) {
-              myData.push(dltScore);
-            } else {
-              myData.push(0);
-            }
-            TheoreticalData.push(100);
-        }
-    }
-  
-    let maxElement = Math.max(...myData);
-    let maxborder = Math.ceil(maxElement /20) * 20;
-  
-    let ctx = document.getElementById("myChart");
-  
-    // 既存のチャートを削除する
-    if (window.myChart instanceof Chart) {
-        window.myChart.destroy();
-    }
-  
-    // 新しいチャートを作成する
-    window.myChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: itemList,
-            datasets: [
-                {
-                    label: "ステータスバランス",
-                    backgroundColor: "rgba(144,238,144,0.5)", // 薄い緑
-                    borderColor: "rgba(144,238,144,1)", 
-                    pointBackgroundColor: "rgba(144,238,144,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(144,238,144,1)",
-                    hitRadius: 5,
-                    data: myData
-                },
-                {
-                    label: "理論値",
-                    backgroundColor: "rgba(0,100,0,0.5)", // 濃い緑
-                    borderColor: "rgba(0,100,0,0.8)", // 濃い緑
-                    pointBackgroundColor: "rgba(0,100,0,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(0,100,0,1)",
-                    hitRadius: 5,
-                    data: TheoreticalData
-                }
-            ]
-        },
-        options: {
-            responsive: false,
-            maintainAspectRatio: false,
-            animation: {
-              duration: 0, // アニメーションの時間
-            },
-            scale: {
-                ticks: {
-                    beginAtZero: true,
-                    min: 0,
-                    stepSize: 20,
-                    fontSize: 16,
-                    max: maxborder,
-                    fontColor: "black",  // 目盛り数字の色
-                    backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
-                },
-                pointLabels: {
-                    fontSize: 18,
-                    fontColor: "black"    // 文字の色
-                },
-                angleLines: {        // 軸（放射軸）
-                    display: true,
-                    color: "black"
-                },
-                gridLines: {         // 補助線（目盛の線）
-                    display: true,
-                    color: "black"
-                }
-            },
-            legend: {
-                display: false // 凡例を非表示にする
-            }
-        }
-    });
+  let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
+  let itemList = [];
+  let myData = [];
+  let TheoreticalData = [];
+  let dltScore = 0;
+
+  for (let i = 0; i < 7; i++) {
+      if (depend_index[i] == 1) {
+          itemList.push(statusList[i]);
+          dltScore =  100 + (myStatus[i] - TheoreticalStatus[i]);
+          if (dltScore > 0)
+          {
+            myData.push(dltScore);
+          }
+          else
+          {
+            myData.push(0);
+          }
+          TheoreticalData.push(100);
+      }
   }
+
+  let maxElement = Math.max(...myData);
+  let maxborder = 0;
+  if (maxElement < 140)
+  {
+    maxborder = 140;
+  }
+  else
+  {
+    maxborder = 200;
+  }
+
+  let ctx = document.getElementById("myChart");
+
+  // 既存のチャートを削除する
+  if (window.myChart instanceof Chart) {
+      window.myChart.destroy();
+  }
+
+  // 新しいチャートを作成する
+  window.myChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+          labels: itemList,
+          datasets: [
+              {
+                  label: "ステータスバランス",
+                  backgroundColor: "rgba(51,255,51,0.5)",
+                  borderColor: "rgba(51,255,51,1)",
+                  pointBackgroundColor: "rgba(51,255,51,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(51,255,51,1)",
+                  hitRadius: 5,
+                  data: myData
+              },
+              {
+                  label: "理論値",
+                  backgroundColor: "rgba(255,51,51,0.5)",
+                  borderColor: "rgba(255,51,51,1)",
+                  pointBackgroundColor: "rgba(255,51,51,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(255,51,51,1)",
+                  hitRadius: 5,
+                  data: TheoreticalData
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scale: {
+              ticks: {
+                  beginAtZero: true,
+                  min: 0,
+                  stepSize: 20,
+                  max: maxborder,
+              },
+              pointLabels: {
+                  fontSize: 10
+              }
+          },
+          legend: {
+              fontSize: 10,
+              labels: {
+                  fontSize: 14,
+              }
+          }
+      }
+  });
+}
 
 async function displayImage() {
     // サンプルデータを定義します
@@ -2541,6 +2544,100 @@ async function generate(data) {
         AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
       }
     }
+
+    //レーダーチャートを作成
+
+    let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
+    let itemList = [];
+    let myData = [];
+    let TheoreticalData = [];
+    let dltScore = 0;
+  
+    for (let i = 0; i < 7; i++) {
+        if (depend_status[i] == 1) {
+            itemList.push(statusList[i]);
+            dltScore =  100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
+            if (dltScore > 0) {
+              myData.push(dltScore);
+            } else {
+              myData.push(0);
+            }
+            TheoreticalData.push(100);
+        }
+    }
+  
+    const radarCanvas = document.createElement('canvas');
+    radarCanvas.width = 500;  // サイズを指定
+    radarCanvas.height = 500; // サイズを指定
+    let maxElement = Math.max(...myData);
+    let maxborder = Math.ceil(maxElement /20) * 20;
+
+    const BuildradarChart = new Chart(radarCanvas, {
+        type: 'radar',
+        data: {
+            labels: itemList,
+            datasets: [
+                {
+                    label: "ステータスバランス",
+                    backgroundColor: "rgba(144,238,144,0.5)", // 薄い緑
+                    borderColor: "rgba(144,238,144,1)", 
+                    pointBackgroundColor: "rgba(144,238,144,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(144,238,144,1)",
+                    hitRadius: 5,
+                    data: myData
+                },
+                {
+                    label: "理論値",
+                    backgroundColor: "rgba(0,100,0,0.5)", // 濃い緑
+                    borderColor: "rgba(0,100,0,0.8)", // 濃い緑
+                    pointBackgroundColor: "rgba(0,100,0,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0,100,0,1)",
+                    hitRadius: 5,
+                    data: TheoreticalData
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: false,
+            animation: {
+              duration: 0, // アニメーションの時間
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    stepSize: 20,
+                    fontSize: 16,
+                    max: maxborder,
+                    fontColor: "black",  // 目盛り数字の色
+                    backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
+                },
+                pointLabels: {
+                    fontSize: 18,
+                    fontColor: "black"    // 文字の色
+                },
+                angleLines: {        // 軸（放射軸）
+                    display: true,
+                    color: "black"
+                },
+                gridLines: {         // 補助線（目盛の線）
+                    display: true,
+                    color: "black"
+                }
+            },
+            legend: {
+                display: false // 凡例を非表示にする
+            }
+        }
+    });
+
+    radarChart.update();  // チャートの更新
+    ctx.drawImage(radarCanvas, 100, 100, radarCanvas.width, radarCanvas.height);
 
 
     // Drawing helper functions
