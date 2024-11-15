@@ -2478,16 +2478,6 @@ async function generate(data) {
     ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
-    //チャート
-    const chartImageData = window.myChart.toBase64Image(); // チャートを画像データに変換
-    const chartImage = new Image();
-    chartImage.src = chartImageData;
-
-    // 画像が読み込まれたらメインの canvas に描画
-    chartImage.onload = () => {
-        ctx.drawImage(chartImage, 1505, 36, 290, 290); // 必要な位置とサイズで描画
-    };
-
     //最適メインステータス
     let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
     const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
@@ -2567,8 +2557,8 @@ async function generate(data) {
     }
   
     const radarCanvas = document.createElement('canvas');
-    radarCanvas.width = 500;  // サイズを指定
-    radarCanvas.height = 500; // サイズを指定
+    radarCanvas.width = 198;  // サイズを指定
+    radarCanvas.height = 198; // サイズを指定
     let maxElement = Math.max(...myData);
     let maxborder = Math.ceil(maxElement /20) * 20;
 
@@ -2612,13 +2602,13 @@ async function generate(data) {
                     beginAtZero: true,
                     min: 0,
                     stepSize: 20,
-                    fontSize: 16,
+                    fontSize: 6,
                     max: maxborder,
                     fontColor: "black",  // 目盛り数字の色
                     backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
                 },
                 pointLabels: {
-                    fontSize: 18,
+                    fontSize: 7,
                     fontColor: "black"    // 文字の色
                 },
                 angleLines: {        // 軸（放射軸）
@@ -2636,8 +2626,8 @@ async function generate(data) {
         }
     });
 
-    radarChart.update();  // チャートの更新
-    ctx.drawImage(radarCanvas, 100, 100, radarCanvas.width, radarCanvas.height);
+    BuildradarChart.update();  // チャートの更新
+    ctx.drawImage(radarCanvas, 1510, 30, radarCanvas.width, radarCanvas.height);
 
 
     // Drawing helper functions
