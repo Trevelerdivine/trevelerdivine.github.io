@@ -406,6 +406,14 @@ async function calculate_team_fix_buff(base_status)
   const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
 
   const WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
+  BuildCardWeaponStats[0][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[0].statValue;
+  BuildCardWeaponStats[1][0] = AfNameList[WeaponEquipData].name;
+  BuildCardWeaponStats[1][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1].statValue;
+  if (BuildCardWeaponStats[1][0] != "元素熟知")
+  {
+    BuildCardWeaponStats[1][1] *= 0.01;
+  }
+
   let weapon_base_hpper = 0;
   let weapon_base_attackper = 0;
   let weapon_base_deffper = 0;
@@ -2321,7 +2329,7 @@ async function generate(data) {
         ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
         ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
     }
-
+    BuildCardWeaponStats
     // Character name, weapon name and level
     ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
     ctx.fillRect(121, 77, 67, 27);  //長方形を描画
@@ -2333,14 +2341,20 @@ async function generate(data) {
     ctx.font = '48px customFont';
     ctx.fillText(BuildCardCharName, 30, 65);
     ctx.font = '30px customFont';
-    ctx.fillText(BuildCardCWeaponName, 700, 65);
+    ctx.fillText(BuildCardCWeaponName, 898, 48);
 
     ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
     ctx.font = 'lighter 20px customFont';
-    ctx.fillText(`Lv.${WeaponLevel}`, 900, 80);
+    ctx.fillText(`Lv.${WeaponLevel}`, 902, 80);
+    ctx.fillText(BuildCardWeaponStats[0][0], 922, 80);
+    ctx.fillText(BuildCardWeaponStats[0][1], 932, 80);
+    ctx.fillText(BuildCardWeaponStats[1][0], 982, 80);
+    ctx.fillText(BuildCardWeaponStats[1][1], 1012, 80);
     const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
+
+
 
     // Character talent levels
     const talentLevels = {
