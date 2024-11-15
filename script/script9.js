@@ -2157,7 +2157,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
             ]
         },
         options: {
-            responsive: true,
+            responsive: false,
             maintainAspectRatio: false,
             animation: {
               duration: 0, // アニメーションの時間
@@ -2472,6 +2472,7 @@ async function generate(data) {
     {
       ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/SS.png`);
     }
+    ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
     //チャート
