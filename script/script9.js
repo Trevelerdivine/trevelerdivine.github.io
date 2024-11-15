@@ -2253,9 +2253,9 @@ async function generate(data) {
 
     const base_status = await calculate_base_status();
     const relocatedIndex = [0,4,1,2,5,6,3,7];
-    const depend_status = [1,1,1,1,1,1,1,1]
+    const display_status = [1,1,1,1,1,1,1,1]
     const af_main_status_buff = await calculate_af_main_status_buff();
-    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
+    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
     let team_buff = await calculate_teambuff(base_status);
     
     const element = data['元素'];
