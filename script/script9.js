@@ -2204,48 +2204,8 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
 }
 
 async function displayImage() {
-    // サンプルデータを定義します
-    const sampleData = {
-        "元素": "草",
-        "Character": {
-            "Name": "ナヒーダ",
-            "Const": 3,
-            "Level": 80,
-            "Love": 10,
-            "Status": {},
-            "Base": {},
-            "Talent": {
-                "通常": 8,
-                "スキル": 10,
-                "爆発": 11
-            },
-            "Costume": null
-        },
-        "Weapon": {
-            "name": "千夜に浮かぶ夢",
-            "Level": 90,
-            "totu": 5,
-            "rarelity": 5,
-            "BaseATK": 608,
-            "Sub": {
-                "name": "攻撃力",
-                "value": "49.6%"
-            }
-        },
-        "Score": {
-            "State": "CV",
-            "flower": 50.3,
-            "wing": 52.1,
-            "clock": 47.6,
-            "cup": 46.9,
-            "crown": 49.8,
-            "total": 246.7
-        },
-        "Artifacts": {}
-    };
-
     // `generate`関数で画像を生成し、`output`に表示します
-    const canvas = await generate(sampleData);
+    const canvas = await generate();
     canvas.style.width = "500px";  // 幅を500pxに設定（任意の値に変更可能）
     canvas.style.height = "auto";  // 高さを自動で設定（アスペクト比を維持）
     document.getElementById("output").innerHTML = ""; // 以前の画像をクリア
@@ -2253,7 +2213,7 @@ async function displayImage() {
 }
 
 // 先ほどのgenerate関数をここに貼り付けてください
-async function generate(data) {
+async function generate() {
     const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
     await font.load();
     document.fonts.add(font);
@@ -2261,7 +2221,9 @@ async function generate(data) {
 
     const base_status = await calculate_base_status();
     const relocatedIndex = [0,4,1,2,5,6,3,7];
-    const display_status = [1,1,1,1,1,1,1,1]
+    const display_status = [1,1,1,1,1,1,1,1];
+    const ElementType = ["炎", "水", "氷", "雷", "風", "草", "岩"];
+    const charElementType = ElementType[Number(char_propaty[0])]
     const af_main_status_buff = await calculate_af_main_status_buff();
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
     let team_buff = await calculate_teambuff(base_status);
@@ -2344,20 +2306,20 @@ async function generate(data) {
     }
 
     //凸
-    const Cbase = await loadImage(`../BuildCardData/命の星座/${element}.png`);
-    const Clock = await loadImage(`../BuildCardData/命の星座/${element}LOCK.png`);
+    const Cbase = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
+    const Clock = await loadImage(`../BuildCardData/命の星座/${charElementType}LOCK.png`);
     
     for (let i = 1; i < 7; i++) {
       if (i < CharConstellationsIndex + 1)
       {
         const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
-        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
       }
       else
       {
-        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(Clock, 681, -11 + i * 93, 80, 80);
       }
