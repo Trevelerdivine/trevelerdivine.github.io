@@ -2582,7 +2582,7 @@ async function generate(data) {
 
     const radarCanvas = document.createElement('canvas');
     const canvasSize = 330; // サイズを固定
-    const scaleFactor = window.devicePixelRatio || 1; // デバイスのピクセル密度
+    const scaleFactor = 1.5;
 
     // Canvasの解像度とスタイルを調整
     radarCanvas.width = canvasSize * scaleFactor; // 実際の解像度を設定
@@ -2641,12 +2641,10 @@ async function generate(data) {
                     max: maxborder,
                     fontColor: "black",  // 目盛り数字の色
                     backdropColor: 'rgba(0, 0, 0, 0)', // 数値ラベルの背景を透明に
-                    fontFamily: 'CustomFont', // フォントを統一
                 },
                 pointLabels: {
                     fontSize: 22,
                     fontColor: "black",    // 文字の色
-                    fontFamily: 'CustomFont', // フォントを統一
                 },
                 angleLines: {        // 軸（放射軸）
                     display: true,
