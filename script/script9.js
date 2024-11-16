@@ -2228,8 +2228,6 @@ async function generate() {
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
     let team_buff = await calculate_teambuff(base_status);
     
-    const element = data['元素'];
-
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
@@ -2483,11 +2481,11 @@ async function generate() {
     for (let i = 0; i < 5; i++) {
       if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
       {
-        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 300,40 + 20 * i);
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
       }
       else
       {
-        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 300, 40 + 20 * i);
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
       }
     }
 
@@ -2496,18 +2494,19 @@ async function generate() {
     //聖遺物サブステータス表示
     for (let i = 0; i < 4; i++)
     {
-      const paramsName = AfSubStatusData[AfSubStatsList[0][i].appendPropId].name;
+      const paramsName = AfSubStatusData[AfSubStatsList[0][i].appendPropId].name
+      const urlName = AfSubStatusData[AfSubStatsList[0][i].appendPropId].url;
       const buffValue =  AfSubStatsList[0][i].statValue;
       if (paramsName)
       {
         if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "元素熟知")
-          {
-            AfMainDisp(paramsName, buffValue, 370 + 380 * i,40);
-          }
-          else
-          {
-            AfMainDisp(paramsName, buffValue.toString() + "%", 370 + 380 * i,40);
-          }
+        {
+          AfSubDisp(urlName, paramsName, buffValue, 100, 40 + 20 * i);
+        }
+        else
+        {
+          AfSubDisp(urlName, paramsName, buffValue, 100, 40 + 20 * i);
+        }
       }
   
     }
@@ -2673,6 +2672,27 @@ async function generate() {
       ctx.fillRect(levelx, 745, 56, 28);
       ctx.fillStyle = 'white';
       ctx.fillText(Leveltext, levelx + 1, 768);
+    }
+
+    async function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord)
+    {
+      //聖遺物ステータス
+      const IconImage = await loadImage(`../BuildCardData/emotes/${urlName}.png`); // アイコン画像をロード
+
+      // テキストの右揃え
+      ctx.fillStyle = 'white';
+      ctx.font = 'normal 20px customFont';
+      const NamesWidth = ctx.measureText(StatusName).width;
+      const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
+      
+      ctx.fillText(SubStatus, X, Ycord);
+      ctx.fillText(StatusName, Xcord - 150, Ycord);
+
+      // アイコンをテキストの左側に描画
+      const iconSize = 35; 
+      const iconX = Xcord - 150 - iconSize + 1;
+      const iconY = Y - 10 - iconSize / 2;
+      ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
     }
 
     function cropAndResize(image, scale, x, y, width, height) {
