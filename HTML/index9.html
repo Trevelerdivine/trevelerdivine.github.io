@@ -1174,6 +1174,7 @@
     let afdata;
     let AfSubStatsList = ["", "", "", "", ""];
     let AfNameList
+    let AfNumList;
     let SelectId;
     let CharJsonData;
     let WeaponJsonData;
@@ -1464,11 +1465,20 @@
                 AfIdList.push(status["itemId"]);
             }
         });
+        
+        AfIdList.pop();
+        AfNumList = new Array(5).fill([]);
+        AfIdList.forEach(item => {
+            // 4桁目を取得（IDを文字列に変換してインデックス3を参照）
+            const fourthDigit = parseInt(item.toString().charAt(3));
 
-        // 各リスト内の文字列の上2文字を取り出して数字に変換する
-        let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
+            // 上2桁を取得
+            const firstTwoDigits = parseInt(item.toString().substring(0, 2));
 
-        // 数値の出現回数を記録するオブジェクトを作成
+            // 該当インデックスに上2桁を格納
+            AfNumList[fourthDigit - 1] = firstTwoDigits;
+        });
+         // 数値の出現回数を記録するオブジェクトを作成
         const countMap = {};
         AfNumList.forEach(num => {
             if (countMap[num]) {
