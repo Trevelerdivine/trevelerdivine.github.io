@@ -1457,7 +1457,7 @@
         let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
-
+        const AfIndexReplace = [3, 1, 4, 0, 2];
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
             // オブジェクトから "itemId" の要素を取り出して配列に追加
@@ -1476,9 +1476,9 @@
             const firstTwoDigits = parseInt(item.toString().substring(0, 2));
 
             // 該当インデックスに上2桁を格納
-            AfNumList[fourthDigit - 1] = firstTwoDigits;
+            AfNumList[AfIndexReplace[fourthDigit - 1]] = firstTwoDigits;
         });
-        console.log(AfNumList);
+        
          // 数値の出現回数を記録するオブジェクトを作成
         const countMap = {};
         AfNumList.forEach(num => {

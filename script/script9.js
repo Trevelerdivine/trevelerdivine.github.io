@@ -2326,6 +2326,7 @@ async function generate() {
     //聖遺物
     ctx.globalAlpha = 0.7; 
     const AfPartsName = ['flower',"wing","clock","cup","crown"];
+    AfNumList[3] = 21;
     for (let i = 0; i < 5; i++) {
         const AfImage = await loadImage(`../BuildCardData/artifact/${afdata["AfMap"][AfNumList[i].toString()]["名前"]}/${AfPartsName[i]}.png`);
         ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
