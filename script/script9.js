@@ -2491,16 +2491,25 @@ async function generate() {
       }
     }
 
+    const AfSubStatusJsonData = await fetch("../data/JsonData/AfSubStatusData.json");
+    const AfSubStatusData = await AfSubStatusJsonData.json();
     //聖遺物サブステータス表示
-    for (let i = 0; i < 5; i++) {
-      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
+    for (let i = 0; i < 4; i++)
+    {
+      const paramsName = AfSubStatusData[AfSubStatsList[0][i].appendPropId].name;
+      const buffValue =  AfSubStatsList[0][i].statValue;
+      if (paramsName)
       {
-        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+        if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "元素熟知")
+          {
+            AfMainDisp(paramsName, buffValue, 370 + 380 * i,40);
+          }
+          else
+          {
+            AfMainDisp(paramsName, buffValue.toString() + "%", 370 + 380 * i,40);
+          }
       }
-      else
-      {
-        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
-      }
+  
     }
 
 
