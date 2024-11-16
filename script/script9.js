@@ -2254,474 +2254,475 @@ async function displayImage() {
 
 // 先ほどのgenerate関数をここに貼り付けてください
 async function generate(data) {
-  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
-  let ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
-  let CharElementType = ElementTypeList[Number(char_propaty[0])];
-  const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
-  await font.load();
-  document.fonts.add(font);
+    const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
+    await font.load();
+    document.fonts.add(font);
 
 
-  const base_status = await calculate_base_status();
-  const relocatedIndex = [0,4,1,2,5,6,3,7];
-  const display_status = [1,1,1,1,1,1,1,1]
-  const af_main_status_buff = await calculate_af_main_status_buff();
-  let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
-  let team_buff = await calculate_teambuff(base_status);
+    const base_status = await calculate_base_status();
+    const relocatedIndex = [0,4,1,2,5,6,3,7];
+    const display_status = [1,1,1,1,1,1,1,1]
+    const af_main_status_buff = await calculate_af_main_status_buff();
+    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
+    let team_buff = await calculate_teambuff(base_status);
+    
+    const element = data['元素'];
 
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  
-  // Base background
-  const baseImage = await loadImage(`../BuildCardData/Character/ナヒーダ/avatar.png`);
-  canvas.width = baseImage.width;
-  canvas.height = baseImage.height;
-  ctx.drawImage(baseImage, 0, 0);
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Base background
+    const baseImage = await loadImage(`../BuildCardData/Character/ナヒーダ/avatar.png`);
+    canvas.width = baseImage.width;
+    canvas.height = baseImage.height;
+    ctx.drawImage(baseImage, 0, 0);
 
-  // Shadow image
-  const shadowImage = await loadImage('../BuildCardData/Assets/Shadow.png');
-  ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
+    // Shadow image
+    const shadowImage = await loadImage('../BuildCardData/Assets/Shadow.png');
+    ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
 
-  // Weapon
-  const weaponImage = await loadImage(`../BuildCardData/Weapon/${BuildCardCWeaponName}.png`);
-  ctx.drawImage(weaponImage, 809, 20, 64, 64);
+    // Weapon
+    const weaponImage = await loadImage(`../BuildCardData/Weapon/${BuildCardCWeaponName}.png`);
+    ctx.drawImage(weaponImage, 809, 20, 64, 64);
 
-  // Weapon rarity
-  const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/${WeapopnRarelity}.png`);
-  ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
+    // Weapon rarity
+    const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/${WeapopnRarelity}.png`);
+    ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
 
-  // Character talents
-  const talentBaseImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
-  const scaledTalentBase = resizeImage(talentBaseImage, talentBaseImage.width / 1.5, talentBaseImage.height / 1.5);
+    // Character talents
+    const talentBaseImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
+    const scaledTalentBase = resizeImage(talentBaseImage, talentBaseImage.width / 1.5, talentBaseImage.height / 1.5);
 
-  const talentTypes = ['通常', 'スキル', '爆発'];
-  const talentBackImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
-  for (let i = 0; i < talentTypes.length; i++) {
-      const talentImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${talentTypes[i]}.png`);
-      ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
-      ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
-  }
-  BuildCardWeaponStats
-  // Character name, weapon name and level
-  ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
-  ctx.fillRect(121, 77, 67, 27);  //長方形を描画
-  ctx.fillRect(897, 60, 67, 27);
-  const LoveImage = await loadImage(`../BuildCardData/Assets/Love.png`);
-  ctx.drawImage(LoveImage, 122, 78, 30, 24);
-
-  ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
-  ctx.font = '48px customFont';
-  ctx.fillText(BuildCardCharName, 30, 65);
-  ctx.font = '30px customFont';
-  ctx.fillText(BuildCardCWeaponName, 898, 48);
-
-  ctx.font = 'lighter 28px customFont';
-  ctx.fillText(`Lv.${CharLevel}`, 35, 100);
-  ctx.font = 'lighter 20px customFont';
-  ctx.fillText(`Lv.${WeaponLevel}`, 902, 80);
-  ctx.fillText(BuildCardWeaponStats[0][0], 982, 80);
-  ctx.fillText(BuildCardWeaponStats[0][1], 1092, 80);
-  ctx.fillText(BuildCardWeaponStats[1][0], 1182, 80);
-  const firstTextWidth = ctx.measureText(BuildCardWeaponStats[1][0]).width;
-  // BuildCardWeaponStats[1][1] を、最初のテキストの右隣に描画
-  ctx.fillText(BuildCardWeaponStats[1][1], 1182 + firstTextWidth + 10, 80);
-
-  const friendshipText = `${CharFriendshipLevel}`;
-  drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
-
-
-
-  // Character talent levels
-  const talentLevels = {
-      '通常': CharTalentLevel[0],
-      'スキル': CharTalentLevel[3],
-      '爆発': CharTalentLevel[4]
-  };
-  const talentColors = ['aqua', 'aqua', 'aqua'];
-  for (let i = 0; i < talentTypes.length; i++) {
-      ctx.font = 'lighter 19px customFont';
-      ctx.fillStyle = CharConsteLevelflag[i] > 0 ? talentColors[i] : 'white';
-      ctx.fillText(`Lv.${talentLevels[talentTypes[i]]}`, 57, 402 + i * 105);
-  }
-
-  //凸
-  const Cbase = await loadImage(`../BuildCardData/命の星座/${CharElementType}.png`);
-  const Clock = await loadImage(`../BuildCardData/命の星座/${CharElementType}LOCK.png`);
-  
-  for (let i = 1; i < 7; i++) {
-    if (i < CharConstellationsIndex + 1)
-    {
-      const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
-      const CImageEffect = await loadImage(`../BuildCardData/命の星座/${CharElementType}.png`);
-      ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
-      ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
+    const talentTypes = ['通常', 'スキル', '爆発'];
+    const talentBackImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
+    for (let i = 0; i < talentTypes.length; i++) {
+        const talentImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${talentTypes[i]}.png`);
+        ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
+        ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
     }
-    else
-    {
-      const CImageEffect = await loadImage(`../BuildCardData/命の星座/${CharElementType}.png`);
-      ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
-      ctx.drawImage(Clock, 681, -11 + i * 93, 80, 80);
-    }
-  }
+    BuildCardWeaponStats
+    // Character name, weapon name and level
+    ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
+    ctx.fillRect(121, 77, 67, 27);  //長方形を描画
+    ctx.fillRect(897, 60, 67, 27);
+    const LoveImage = await loadImage(`../BuildCardData/Assets/Love.png`);
+    ctx.drawImage(LoveImage, 122, 78, 30, 24);
 
-  //聖遺物
-  ctx.globalAlpha = 0.7; 
-  const AfPartsName = ['flower',"wing","clock","cup","crown"];
-  for (let i = 0; i < 5; i++) {
-      const AfImage = await loadImage(`../BuildCardData/artifact/深林の記憶/${AfPartsName[i]}.png`);
-      ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
-  }
-  ctx.globalAlpha = 1; 
+    ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+    ctx.font = '48px customFont';
+    ctx.fillText(BuildCardCharName, 30, 65);
+    ctx.font = '30px customFont';
+    ctx.fillText(BuildCardCWeaponName, 898, 48);
 
-  // 計算結果
-  ctx.font = 'lighter 28px customFont';
-  ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
-  
-  for (let i = 0; i < 8; i++) {
-    let value = my_result_status[relocatedIndex[i]];
-    if (i > 3) {
-        value = Number((value * 100).toLocaleString()).toFixed(1) + "%";
-    } else {
-        value = Number(value.toFixed(0)).toLocaleString();
+    ctx.font = 'lighter 28px customFont';
+    ctx.fillText(`Lv.${CharLevel}`, 35, 100);
+    ctx.font = 'lighter 20px customFont';
+    ctx.fillText(`Lv.${WeaponLevel}`, 902, 80);
+    ctx.fillText(BuildCardWeaponStats[0][0], 982, 80);
+    ctx.fillText(BuildCardWeaponStats[0][1], 1092, 80);
+    ctx.fillText(BuildCardWeaponStats[1][0], 1182, 80);
+    const firstTextWidth = ctx.measureText(BuildCardWeaponStats[1][0]).width;
+    // BuildCardWeaponStats[1][1] を、最初のテキストの右隣に描画
+    ctx.fillText(BuildCardWeaponStats[1][1], 1182 + firstTextWidth + 10, 80);
+
+    const friendshipText = `${CharFriendshipLevel}`;
+    drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
+
+
+
+    // Character talent levels
+    const talentLevels = {
+        '通常': CharTalentLevel[0],
+        'スキル': CharTalentLevel[3],
+        '爆発': CharTalentLevel[4]
+    };
+    const talentColors = ['aqua', 'aqua', 'aqua'];
+    for (let i = 0; i < talentTypes.length; i++) {
+        ctx.font = 'lighter 19px customFont';
+        ctx.fillStyle = CharConsteLevelflag[i] > 0 ? talentColors[i] : 'white';
+        ctx.fillText(`Lv.${talentLevels[talentTypes[i]]}`, 57, 402 + i * 105);
     }
 
-    // テキストの幅を取得して右揃え位置を計算
-    const textWidth = ctx.measureText(value).width;
-    const xPos = 1290 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
-
-    ctx.fillText(value, xPos, 157.5 + 64.5 * i);
-  }
-
-
-  //ステータス表示
-  for (let i = 0; i < 8; i++) {
-    let a = base_status[relocatedIndex[i]];
-    let c = team_buff[relocatedIndex[i]];
-    let b = my_result_status[relocatedIndex[i]] - a - c;
-
-    if (i > 3) {
-        a = Number((a * 100).toLocaleString()).toFixed(1) + "%";
-        b = Number((b * 100).toLocaleString()).toFixed(1) + "%";
-        c = Number((c * 100).toLocaleString()).toFixed(1) + "%";
-    } else {
-        a = Number(a.toFixed(0)).toLocaleString();
-        b = Number(b.toFixed(0)).toLocaleString();
-        c = Number(c.toFixed(0)).toLocaleString();
-    }
-
-    // フォントと基本の位置を設定
-    ctx.font = 'lighter 14px customFont';
-    const baseX = 1340; // 基本の右端X座標
-    const baseY = 178 + 64.5 * i; // Y座標の位置
-
-    // 各要素の幅を計算
-    const aWidth = ctx.measureText(a).width;
-    const plusWidth = ctx.measureText('+').width;
-    const bWidth = ctx.measureText(b).width;
-    const cWidth = ctx.measureText(c).width;
-
-    // 全体の幅を計算して、右揃えの起点位置を調整
-    const totalWidth = aWidth + plusWidth + bWidth + plusWidth + cWidth;
-    let offsetX = baseX - totalWidth;
-
-    // aの値を表示
-    ctx.fillStyle = 'white';
-    ctx.fillText(a, offsetX, baseY);
-    offsetX += aWidth;
-
-    // '+'を表示
-    ctx.fillStyle = '#a4f74f';
-    ctx.fillText('+', offsetX, baseY);
-    offsetX += plusWidth;
-
-    // bの値を表示
-    ctx.fillStyle = '#a4f74f';
-    ctx.fillText(b, offsetX, baseY);
-    offsetX += bWidth;
-
-    // '+'を表示
-    ctx.fillStyle = '#00ccff';
-    ctx.fillText('+', offsetX, baseY);
-    offsetX += plusWidth;
-
-    // cの値を表示
-    ctx.fillStyle = '#00ccff';
-    ctx.fillText(c, offsetX, baseY);
-  }
-
-
-  //スコア
-  const ScoreValue = OptimizedScore
-  let ScoreRankImage;
-  if(ScoreValue < 180)
-  {
-    ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/B.png`);
-  }
-  else if(ScoreValue < 200)
-  {
-    ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/A.png`);
-  }
-  else if(ScoreValue < 220)
-  {
-    ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
-  }
-  else
-  {
-    ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/SS.png`);
-  }
-  ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
-  drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
-
-  //最適メインステータス
-  const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
-  const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
-  let GobletMainStatus;
-  if (OptimizedStatus[1] == 7)
-  {
-    GobletMainStatus = CharElementType + main_status_name[7];
-  }
-  else
-  {
-    GobletMainStatus = main_status_name[OptimizedStatus[1]];
-  }
-  const AfGobletImage = await loadImage(`../BuildCardData/Assets/Goblet.png`);
-  const AfCircletImage = await loadImage(`../BuildCardData/Assets/Circlet.png`);
-  const CircletMainStatus = main_status_name[OptimizedStatus[2]];
-
-  // 時計のイメージを描画
-  ctx.font = 'normal 18px customFont';
-  ctx.drawImage(AfClockImage, 1471, 360, 50, 50);
-  // テキストの中央揃え
-  ctx.fillStyle = 'white';
-  let textWidth = ctx.measureText(ClockMainStatus).width; // 文字列の幅を取得
-  let textX = 1474 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-  ctx.fillText(ClockMainStatus, textX, 440);
-  ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
-  ctx.fillRect(1579, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
-
-  ctx.fillStyle = 'white';
-  ctx.font = 'normal 18px customFont';
-  ctx.drawImage(AfGobletImage, 1647, 360, 50, 50);
-  // テキストの中央揃え
-  textWidth = ctx.measureText(GobletMainStatus).width; // 文字列の幅を取得
-  textX = 1649 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-  ctx.fillText(GobletMainStatus, textX, 440);
-  ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
-  ctx.fillRect(1767, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
-
-  ctx.fillStyle = 'white';
-  ctx.font = 'normal 18px customFont';
-  ctx.drawImage(AfCircletImage, 1810, 360, 50, 50);
-  // テキストの中央揃え
-  textWidth = ctx.measureText(CircletMainStatus).width; // 文字列の幅を取得
-  textX = 1812 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-  ctx.fillText(CircletMainStatus, textX, 440);
-
-  for (let i = 0; i < 5; i++) {
-    if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
-    {
-      AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
-    }
-    else
-    {
-      AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
-    }
-  }
-
-  //聖遺物サブステータス表示
-  for (let i = 0; i < 5; i++) {
-    if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
-    {
-      AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
-    }
-    else
-    {
-      AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
-    }
-  }
-
-
-  // レーダーチャートを作成
-
-  let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
-  let itemList = [];
-  let myData = [];
-  let TheoreticalData = [];
-  let dltScore = 0;
-  let indexCount = 0;
-
-  for (let i = 0; i < 7; i++) {
-      if (depend_status[i] === 1) {
-          indexCount += 1;
-          itemList.push(statusList[i]);
-          dltScore = 100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
-          if (dltScore > 0) {
-              myData.push(dltScore);
-          } else {
-              myData.push(0);
-          }
-          TheoreticalData.push(100);
+    //凸
+    const Cbase = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+    const Clock = await loadImage(`../BuildCardData/命の星座/${element}LOCK.png`);
+    
+    for (let i = 1; i < 7; i++) {
+      if (i < CharConstellationsIndex + 1)
+      {
+        const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
+        ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
       }
-  }
-
-  const radarCanvas = document.createElement('canvas');
-  const canvasSize = 330; // サイズを固定
-  const scaleFactor = 1.5;
-
-  // Canvasの解像度とスタイルを調整
-  radarCanvas.width = canvasSize * scaleFactor; // 実際の解像度を設定
-  radarCanvas.height = canvasSize * scaleFactor; // 実際の解像度を設定
-  radarCanvas.style.width = `${canvasSize}px`; // スタイルでのサイズを指定
-  radarCanvas.style.height = `${canvasSize}px`; // スタイルでのサイズを指定
-
-  const radarContext = radarCanvas.getContext('2d');
-  // スケールを設定して解像度を調整
-  radarContext.scale(scaleFactor, scaleFactor);
-
-  let maxElement = Math.max(...myData);
-  let maxborder = Math.ceil(maxElement / 20) * 20;
-
-  const BuildradarChart = new Chart(radarContext, {
-      type: 'radar',
-      data: {
-          labels: itemList,
-          datasets: [
-              {
-                  label: "ステータスバランス",
-                  backgroundColor: "rgba(144,238,144,0.5)", // 薄い緑
-                  borderColor: "rgba(144,238,144,1)", 
-                  pointBackgroundColor: "rgba(144,238,144,1)",
-                  pointBorderColor: "#fff",
-                  pointHoverBackgroundColor: "#fff",
-                  pointHoverBorderColor: "rgba(144,238,144,1)",
-                  hitRadius: 5,
-                  data: myData
-              },
-              {
-                  label: "理論値",
-                  backgroundColor: "rgba(0,100,0,0.5)", // 濃い緑
-                  borderColor: "rgba(0,100,0,0.8)", // 濃い緑
-                  pointBackgroundColor: "rgba(0,100,0,1)",
-                  pointBorderColor: "#fff",
-                  pointHoverBackgroundColor: "#fff",
-                  pointHoverBorderColor: "rgba(0,100,0,1)",
-                  hitRadius: 5,
-                  data: TheoreticalData
-              }
-          ]
-      },
-      options: {
-          responsive: false,
-          maintainAspectRatio: true,
-          animation: {
-              duration: 0, // アニメーションの時間
-          },
-          scale: {
-              ticks: {
-                  beginAtZero: true,
-                  min: 0,
-                  stepSize: 20,
-                  fontSize: 6,
-                  max: maxborder,
-                  fontColor: "black",  // 目盛り数字の色
-                  backdropColor: 'rgba(0, 0, 0, 0)', // 数値ラベルの背景を透明に
-              },
-              pointLabels: {
-                  fontSize: 22,
-                  fontColor: "black",    // 文字の色
-              },
-              angleLines: {        // 軸（放射軸）
-                  display: true,
-                  color: "black"
-              },
-              gridLines: {         // 補助線（目盛の線）
-                  display: true,
-                  color: "black"
-              }
-          },
-          legend: {
-              display: false // 凡例を非表示にする
-          }
+      else
+      {
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
+        ctx.drawImage(Clock, 681, -11 + i * 93, 80, 80);
       }
-  });
+    }
 
-  BuildradarChart.update(); // チャートの更新
-  if (indexCount == 3)
-  {
-    ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
-  }
-  else if (indexCount == 4)
-  {
-    ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
-  }
+    //聖遺物
+    ctx.globalAlpha = 0.7; 
+    const AfPartsName = ['flower',"wing","clock","cup","crown"];
+    for (let i = 0; i < 5; i++) {
+        const AfImage = await loadImage(`../BuildCardData/artifact/深林の記憶/${AfPartsName[i]}.png`);
+        ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
+    }
+    ctx.globalAlpha = 1; 
+
+    // 計算結果
+    ctx.font = 'lighter 28px customFont';
+    ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+    
+    for (let i = 0; i < 8; i++) {
+      let value = my_result_status[relocatedIndex[i]];
+      if (i > 3) {
+          value = Number((value * 100).toLocaleString()).toFixed(1) + "%";
+      } else {
+          value = Number(value.toFixed(0)).toLocaleString();
+      }
+  
+      // テキストの幅を取得して右揃え位置を計算
+      const textWidth = ctx.measureText(value).width;
+      const xPos = 1290 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
+  
+      ctx.fillText(value, xPos, 157.5 + 64.5 * i);
+    }
   
 
+    //ステータス表示
+    for (let i = 0; i < 8; i++) {
+      let a = base_status[relocatedIndex[i]];
+      let c = team_buff[relocatedIndex[i]];
+      let b = my_result_status[relocatedIndex[i]] - a - c;
+  
+      if (i > 3) {
+          a = Number((a * 100).toLocaleString()).toFixed(1) + "%";
+          b = Number((b * 100).toLocaleString()).toFixed(1) + "%";
+          c = Number((c * 100).toLocaleString()).toFixed(1) + "%";
+      } else {
+          a = Number(a.toFixed(0)).toLocaleString();
+          b = Number(b.toFixed(0)).toLocaleString();
+          c = Number(c.toFixed(0)).toLocaleString();
+      }
 
+      // フォントと基本の位置を設定
+      ctx.font = 'lighter 14px customFont';
+      const baseX = 1340; // 基本の右端X座標
+      const baseY = 178 + 64.5 * i; // Y座標の位置
+  
+      // 各要素の幅を計算
+      const aWidth = ctx.measureText(a).width;
+      const plusWidth = ctx.measureText('+').width;
+      const bWidth = ctx.measureText(b).width;
+      const cWidth = ctx.measureText(c).width;
+  
+      // 全体の幅を計算して、右揃えの起点位置を調整
+      const totalWidth = aWidth + plusWidth + bWidth + plusWidth + cWidth;
+      let offsetX = baseX - totalWidth;
+  
+      // aの値を表示
+      ctx.fillStyle = 'white';
+      ctx.fillText(a, offsetX, baseY);
+      offsetX += aWidth;
+  
+      // '+'を表示
+      ctx.fillStyle = '#a4f74f';
+      ctx.fillText('+', offsetX, baseY);
+      offsetX += plusWidth;
+  
+      // bの値を表示
+      ctx.fillStyle = '#a4f74f';
+      ctx.fillText(b, offsetX, baseY);
+      offsetX += bWidth;
+  
+      // '+'を表示
+      ctx.fillStyle = '#00ccff';
+      ctx.fillText('+', offsetX, baseY);
+      offsetX += plusWidth;
+  
+      // cの値を表示
+      ctx.fillStyle = '#00ccff';
+      ctx.fillText(c, offsetX, baseY);
+    }
+  
 
-  // Drawing helper functions
-  async function loadImage(src) {
-      const img = new Image();
-      img.src = src;
-      return new Promise((resolve) => {
-          img.onload = () => resolve(img);
-      });
-  }
+    //スコア
+    const ScoreValue = OptimizedScore
+    let ScoreRankImage;
+    if(ScoreValue < 180)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/B.png`);
+    }
+    else if(ScoreValue < 200)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/A.png`);
+    }
+    else if(ScoreValue < 220)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
+    }
+    else
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/SS.png`);
+    }
+    ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
+    drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
-  async function AfMainDisp(StatusName, MainStatus, Xcord, level)
-  {
-    //聖遺物ステータス
-    const IconImage = await loadImage(`../BuildCardData/emotes/${StatusName}.png`); // アイコン画像をロード
-    const MainStatusValue = MainStatus.toLocaleString(); // カンマ区切りに変換;
+    //最適メインステータス
+    let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
+    let ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
+    const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
+    const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
+    let GobletMainStatus;
+    if (OptimizedStatus[1] == 7)
+    {
+      GobletMainStatus = ElementTypeList[Number(char_propaty[0])] + main_status_name[7];
+    }
+    else
+    {
+      GobletMainStatus = main_status_name[OptimizedStatus[1]];
+    }
+    const AfGobletImage = await loadImage(`../BuildCardData/Assets/Goblet.png`);
+    const AfCircletImage = await loadImage(`../BuildCardData/Assets/Circlet.png`);
+    const CircletMainStatus = main_status_name[OptimizedStatus[2]];
 
-    // テキストの右揃え
+    // 時計のイメージを描画
+    ctx.font = 'normal 18px customFont';
+    ctx.drawImage(AfClockImage, 1471, 360, 50, 50);
+    // テキストの中央揃え
     ctx.fillStyle = 'white';
-    ctx.font = 'normal 28px customFont';
-    const NamesWidth = ctx.measureText(StatusName).width;
-    const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
-    const Y = 680; // テキストのY座標
-    ctx.fillText(StatusName, X, Y);
+    let textWidth = ctx.measureText(ClockMainStatus).width; // 文字列の幅を取得
+    let textX = 1474 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
+    ctx.fillText(ClockMainStatus, textX, 440);
+    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
+    ctx.fillRect(1579, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
 
-    ctx.font = 'normal 50px customFont';
-    const ValueWidth = ctx.measureText(MainStatusValue).width;
-    const XValue = Xcord - ValueWidth; // 時計の画像の右端にテキストを右揃え
-    ctx.fillText(MainStatusValue, XValue, Y + 50);
-
-    // アイコンをテキストの左側に描画
-    const iconSize = 35; 
-    const iconX = X - iconSize + 1;
-    const iconY = Y - 10 - iconSize / 2;
-
-    ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
-
-    //レベル
-    ctx.font = 'normal 25px customFont';
-    const levelx = Xcord - 56;
-    const Leveltext = "+" + level.toString();
-    ctx.fillStyle = 'black';
-    ctx.fillRect(levelx, 745, 56, 28);
     ctx.fillStyle = 'white';
-    ctx.fillText(Leveltext, levelx + 1, 768);
-  }
+    ctx.font = 'normal 18px customFont';
+    ctx.drawImage(AfGobletImage, 1647, 360, 50, 50);
+    // テキストの中央揃え
+    textWidth = ctx.measureText(GobletMainStatus).width; // 文字列の幅を取得
+    textX = 1649 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
+    ctx.fillText(GobletMainStatus, textX, 440);
+    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
+    ctx.fillRect(1767, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
 
-  function cropAndResize(image, scale, x, y, width, height) {
-      const croppedCanvas = document.createElement('canvas');
-      const croppedCtx = croppedCanvas.getContext('2d');
-      croppedCanvas.width = width * scale;
-      croppedCanvas.height = height * scale;
-      croppedCtx.drawImage(image, x, y, width, height, 0, 0, croppedCanvas.width, croppedCanvas.height);
-      return croppedCanvas;
-  }
+    ctx.fillStyle = 'white';
+    ctx.font = 'normal 18px customFont';
+    ctx.drawImage(AfCircletImage, 1810, 360, 50, 50);
+    // テキストの中央揃え
+    textWidth = ctx.measureText(CircletMainStatus).width; // 文字列の幅を取得
+    textX = 1812 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
+    ctx.fillText(CircletMainStatus, textX, 440);
 
-  function resizeImage(image, width, height) {
-      const resizedCanvas = document.createElement('canvas');
-      resizedCanvas.width = width;
-      resizedCanvas.height = height;
-      const resizedCtx = resizedCanvas.getContext('2d');
-      resizedCtx.drawImage(image, 0, 0, width, height);
-      return resizedCanvas;
-  }
+    for (let i = 0; i < 5; i++) {
+      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+      }
+      else
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
+      }
+    }
 
-  return canvas;
+    //聖遺物サブステータス表示
+    for (let i = 0; i < 5; i++) {
+      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+      }
+      else
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
+      }
+    }
+
+
+    // レーダーチャートを作成
+
+    let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
+    let itemList = [];
+    let myData = [];
+    let TheoreticalData = [];
+    let dltScore = 0;
+    let indexCount = 0;
+
+    for (let i = 0; i < 7; i++) {
+        if (depend_status[i] === 1) {
+            indexCount += 1;
+            itemList.push(statusList[i]);
+            dltScore = 100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
+            if (dltScore > 0) {
+                myData.push(dltScore);
+            } else {
+                myData.push(0);
+            }
+            TheoreticalData.push(100);
+        }
+    }
+
+    const radarCanvas = document.createElement('canvas');
+    const canvasSize = 330; // サイズを固定
+    const scaleFactor = 1.5;
+
+    // Canvasの解像度とスタイルを調整
+    radarCanvas.width = canvasSize * scaleFactor; // 実際の解像度を設定
+    radarCanvas.height = canvasSize * scaleFactor; // 実際の解像度を設定
+    radarCanvas.style.width = `${canvasSize}px`; // スタイルでのサイズを指定
+    radarCanvas.style.height = `${canvasSize}px`; // スタイルでのサイズを指定
+
+    const radarContext = radarCanvas.getContext('2d');
+    // スケールを設定して解像度を調整
+    radarContext.scale(scaleFactor, scaleFactor);
+
+    let maxElement = Math.max(...myData);
+    let maxborder = Math.ceil(maxElement / 20) * 20;
+
+    const BuildradarChart = new Chart(radarContext, {
+        type: 'radar',
+        data: {
+            labels: itemList,
+            datasets: [
+                {
+                    label: "ステータスバランス",
+                    backgroundColor: "rgba(144,238,144,0.5)", // 薄い緑
+                    borderColor: "rgba(144,238,144,1)", 
+                    pointBackgroundColor: "rgba(144,238,144,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(144,238,144,1)",
+                    hitRadius: 5,
+                    data: myData
+                },
+                {
+                    label: "理論値",
+                    backgroundColor: "rgba(0,100,0,0.5)", // 濃い緑
+                    borderColor: "rgba(0,100,0,0.8)", // 濃い緑
+                    pointBackgroundColor: "rgba(0,100,0,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0,100,0,1)",
+                    hitRadius: 5,
+                    data: TheoreticalData
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: true,
+            animation: {
+                duration: 0, // アニメーションの時間
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    stepSize: 20,
+                    fontSize: 6,
+                    max: maxborder,
+                    fontColor: "black",  // 目盛り数字の色
+                    backdropColor: 'rgba(0, 0, 0, 0)', // 数値ラベルの背景を透明に
+                },
+                pointLabels: {
+                    fontSize: 22,
+                    fontColor: "black",    // 文字の色
+                },
+                angleLines: {        // 軸（放射軸）
+                    display: true,
+                    color: "black"
+                },
+                gridLines: {         // 補助線（目盛の線）
+                    display: true,
+                    color: "black"
+                }
+            },
+            legend: {
+                display: false // 凡例を非表示にする
+            }
+        }
+    });
+
+    BuildradarChart.update(); // チャートの更新
+    if (indexCount == 3)
+    {
+      ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
+    }
+    else if (indexCount == 4)
+    {
+      ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
+    }
+    
+
+
+
+    // Drawing helper functions
+    async function loadImage(src) {
+        const img = new Image();
+        img.src = src;
+        return new Promise((resolve) => {
+            img.onload = () => resolve(img);
+        });
+    }
+
+    async function AfMainDisp(StatusName, MainStatus, Xcord, level)
+    {
+      //聖遺物ステータス
+      const IconImage = await loadImage(`../BuildCardData/emotes/${StatusName}.png`); // アイコン画像をロード
+      const MainStatusValue = MainStatus.toLocaleString(); // カンマ区切りに変換;
+
+      // テキストの右揃え
+      ctx.fillStyle = 'white';
+      ctx.font = 'normal 28px customFont';
+      const NamesWidth = ctx.measureText(StatusName).width;
+      const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
+      const Y = 680; // テキストのY座標
+      ctx.fillText(StatusName, X, Y);
+
+      ctx.font = 'normal 50px customFont';
+      const ValueWidth = ctx.measureText(MainStatusValue).width;
+      const XValue = Xcord - ValueWidth; // 時計の画像の右端にテキストを右揃え
+      ctx.fillText(MainStatusValue, XValue, Y + 50);
+
+      // アイコンをテキストの左側に描画
+      const iconSize = 35; 
+      const iconX = X - iconSize + 1;
+      const iconY = Y - 10 - iconSize / 2;
+
+      ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
+
+      //レベル
+      ctx.font = 'normal 25px customFont';
+      const levelx = Xcord - 56;
+      const Leveltext = "+" + level.toString();
+      ctx.fillStyle = 'black';
+      ctx.fillRect(levelx, 745, 56, 28);
+      ctx.fillStyle = 'white';
+      ctx.fillText(Leveltext, levelx + 1, 768);
+    }
+
+    function cropAndResize(image, scale, x, y, width, height) {
+        const croppedCanvas = document.createElement('canvas');
+        const croppedCtx = croppedCanvas.getContext('2d');
+        croppedCanvas.width = width * scale;
+        croppedCanvas.height = height * scale;
+        croppedCtx.drawImage(image, x, y, width, height, 0, 0, croppedCanvas.width, croppedCanvas.height);
+        return croppedCanvas;
+    }
+
+    function resizeImage(image, width, height) {
+        const resizedCanvas = document.createElement('canvas');
+        resizedCanvas.width = width;
+        resizedCanvas.height = height;
+        const resizedCtx = resizedCanvas.getContext('2d');
+        resizedCtx.drawImage(image, 0, 0, width, height);
+        return resizedCanvas;
+    }
+
+    return canvas;
 }
 
 async function Calculate_result_status()
