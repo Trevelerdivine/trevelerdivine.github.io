@@ -2557,34 +2557,45 @@ async function generate(data) {
       }
     }
 
-    //レーダーチャートを作成
+    // レーダーチャートを作成
 
     let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
     let itemList = [];
     let myData = [];
     let TheoreticalData = [];
     let dltScore = 0;
-  
+
     for (let i = 0; i < 7; i++) {
-        if (depend_status[i] == 1) {
+        if (depend_status[i] === 1) {
             itemList.push(statusList[i]);
-            dltScore =  100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
+            dltScore = 100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
             if (dltScore > 0) {
-              myData.push(dltScore);
+                myData.push(dltScore);
             } else {
-              myData.push(0);
+                myData.push(0);
             }
             TheoreticalData.push(100);
         }
     }
-  
-    const radarCanvas = document.createElement('canvas');
-    radarCanvas.width = 198;  // サイズを指定
-    radarCanvas.height = 198; // サイズを指定
-    let maxElement = Math.max(...myData);
-    let maxborder = Math.ceil(maxElement /20) * 20;
 
-    const BuildradarChart = new Chart(radarCanvas, {
+    const radarCanvas = document.createElement('canvas');
+    const canvasSize = 198; // サイズを固定
+    const scaleFactor = window.devicePixelRatio || 1; // デバイスのピクセル密度
+
+    // Canvasの解像度とスタイルを調整
+    radarCanvas.width = canvasSize * scaleFactor; // 実際の解像度を設定
+    radarCanvas.height = canvasSize * scaleFactor; // 実際の解像度を設定
+    radarCanvas.style.width = `${canvasSize}px`; // スタイルでのサイズを指定
+    radarCanvas.style.height = `${canvasSize}px`; // スタイルでのサイズを指定
+
+    const radarContext = radarCanvas.getContext('2d');
+    // スケールを設定して解像度を調整
+    radarContext.scale(scaleFactor, scaleFactor);
+
+    let maxElement = Math.max(...myData);
+    let maxborder = Math.ceil(maxElement / 20) * 20;
+
+    const BuildradarChart = new Chart(radarContext, {
         type: 'radar',
         data: {
             labels: itemList,
@@ -2617,7 +2628,7 @@ async function generate(data) {
             responsive: false,
             maintainAspectRatio: false,
             animation: {
-              duration: 0, // アニメーションの時間
+                duration: 0, // アニメーションの時間
             },
             scale: {
                 ticks: {
@@ -2648,8 +2659,9 @@ async function generate(data) {
         }
     });
 
-    BuildradarChart.update();  // チャートの更新
-    ctx.drawImage(radarCanvas, 1510, 30, radarCanvas.width, radarCanvas.height);
+    BuildradarChart.update(); // チャートの更新
+    ctx.drawImage(radarCanvas, 1510, 30, canvasSize, canvasSize);
+
 
 
     // Drawing helper functions
