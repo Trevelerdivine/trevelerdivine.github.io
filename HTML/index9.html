@@ -1171,6 +1171,7 @@
     let CharDataJson;
     let UserData;
     let afdata;
+    let AfSubStatsList = ["", "", "", "", ""];
     let AfNameList
     let SelectId;
     let CharJsonData;
@@ -1542,6 +1543,7 @@
         let PropName;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
+        AfSubStatsList = ["", "", "", "", ""];
 
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
@@ -1595,10 +1597,12 @@
                 BuildMainStatus[1][0] = "攻撃力"
                 BuildMainStatus[1][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
+            AfSubStatsList[i] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquarySubstats;
         }
         document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
         document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
         document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
+        console.log(AfSubStatsList);
     }
 
     async function DisplayWeaponImg(Id){

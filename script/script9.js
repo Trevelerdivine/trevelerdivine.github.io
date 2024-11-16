@@ -2502,12 +2502,13 @@ async function generate(data) {
 
     //最適メインステータス
     let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
+    let ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
     const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
     const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
     let GobletMainStatus;
     if (OptimizedStatus[1] == 7)
     {
-      GobletMainStatus = element[Number(char_propaty[0])] + main_status_name[7];
+      GobletMainStatus = ElementTypeList[Number(char_propaty[0])] + main_status_name[7];
     }
     else
     {
