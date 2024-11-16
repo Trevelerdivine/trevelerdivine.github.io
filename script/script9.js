@@ -2491,7 +2491,8 @@ async function generate() {
 
     const AfSubStatusJsonData = await fetch("../data/JsonData/AfSubStatusData.json");
     const AfSubStatusData = await AfSubStatusJsonData.json();
-    //聖遺物サブステータス表示
+    
+  //聖遺物サブステータス表示
     for (let i = 0; i < 4; i++)
     {
       const paramsName = AfSubStatusData[AfSubStatsList[0][i].appendPropId].name
@@ -2501,11 +2502,11 @@ async function generate() {
       {
         if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "元素熟知")
         {
-          AfSubDisp(urlName, paramsName, buffValue, 100, 40 + 20 * i);
+          AfSubDisp(urlName, paramsName, buffValue, 370, 890 + 53 * i);
         }
         else
         {
-          AfSubDisp(urlName, paramsName, buffValue, 100, 40 + 20 * i);
+          AfSubDisp(urlName, paramsName, buffValue, 370, 890 + 53 * i);
         }
       }
   
@@ -2681,17 +2682,17 @@ async function generate() {
 
       // テキストの右揃え
       ctx.fillStyle = 'white';
-      ctx.font = 'normal 20px customFont';
-      const NamesWidth = ctx.measureText(StatusName).width;
+      ctx.font = 'normal 26px customFont';
+      const NamesWidth = ctx.measureText(SubStatus).width;
       const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
       
       ctx.fillText(SubStatus, X, Ycord);
-      ctx.fillText(StatusName, Xcord - 150, Ycord);
+      ctx.fillText(StatusName, Xcord - 320, Ycord);
 
       // アイコンをテキストの左側に描画
       const iconSize = 35; 
-      const iconX = Xcord - 150 - iconSize + 1;
-      const iconY = Y - 10 - iconSize / 2;
+      const iconX = Xcord - 320 - iconSize + 1;
+      const iconY = Ycord - 10 - iconSize / 2;
       ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
     }
 
