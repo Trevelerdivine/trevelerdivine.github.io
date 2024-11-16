@@ -2266,37 +2266,6 @@ async function generate(data) {
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
     let team_buff = await calculate_teambuff(base_status);
     
-    const element = data['元素'];
-
-    const characterData = data['Character'];
-    const characterName = characterData['Name'];
-    const characterConstellations = characterData['Const'];
-    const friendship = characterData['Love'];
-    const characterStatus = characterData['Status'];
-    const characterBase = characterData['Base'];
-    const characterTalent = characterData['Talent'];
-
-    const weapon = data['Weapon'];
-    const weaponName = weapon['name'];
-    const weaponLevel = weapon['Level'];
-    const weaponRank = weapon['totu'];
-    const weaponRarity = weapon['rarelity'];
-    const weaponBaseATK = weapon['BaseATK'];
-    const weaponSubOP = weapon['Sub'];
-    const weaponSubOPKey = weaponSubOP['name'];
-    const weaponSubOPValue = weaponSubOP['value'];
-
-    const scoreData = data['Score'];
-    const scoreCVBasis = scoreData['State'];
-    const scoreFlower = scoreData['flower'];
-    const scoreWing = scoreData['wing'];
-    const scoreClock = scoreData['clock'];
-    const scoreCup = scoreData['cup'];
-    const scoreCrown = scoreData['crown'];
-    const scoreTotal = scoreData['total'];
-
-    const artifactsData = data['Artifacts'];
-
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
@@ -2311,11 +2280,11 @@ async function generate(data) {
     ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
 
     // Weapon
-    const weaponImage = await loadImage(`../BuildCardData/Weapon/${weaponName}.png`);
+    const weaponImage = await loadImage(`../BuildCardData/Weapon/${BuildCardCWeaponName}.png`);
     ctx.drawImage(weaponImage, 809, 20, 64, 64);
 
     // Weapon rarity
-    const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/${weaponRarity}.png`);
+    const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/WeapopnRarelity.png`);
     ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
 
     // Character talents
@@ -2325,7 +2294,7 @@ async function generate(data) {
     const talentTypes = ['通常', 'スキル', '爆発'];
     const talentBackImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
     for (let i = 0; i < talentTypes.length; i++) {
-        const talentImage = await loadImage(`../BuildCardData/Character/${characterName}/${talentTypes[i]}.png`);
+        const talentImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${talentTypes[i]}.png`);
         ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
         ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
     }
@@ -2379,7 +2348,7 @@ async function generate(data) {
     for (let i = 1; i < 7; i++) {
       if (i < CharConstellationsIndex + 1)
       {
-        const CImage = await loadImage(`../BuildCardData/Character/${characterName}/${i}.png`);
+        const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
@@ -2557,6 +2526,19 @@ async function generate(data) {
         AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
       }
     }
+
+    //聖遺物サブステータス表示
+    for (let i = 0; i < 5; i++) {
+      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+      }
+      else
+      {
+        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
+      }
+    }
+
 
     // レーダーチャートを作成
 

@@ -1162,6 +1162,7 @@
     let WeaponAdvanceRank;
     let WeaponConstellations;
     let Weapondata;
+    let WeapopnRarelity;
     let char_propaty = [5,0];
     let selectedImageIds = [0,0];
     let char_names = [];
@@ -1554,6 +1555,7 @@
         });
         EquipNumber = AfIdList.length;
         let WeaponPopId = AfIdList.pop();
+        WeapopnRarelity =  WeaponPopId.toString().charAt(2);
         await DisplayWeaponStatus(EquipNumber, SortOrder, WeaponPopId);
         await DisplayWeaponImg(WeaponPopId);
 
@@ -1602,7 +1604,6 @@
         document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
         document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
         document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
-        console.log(AfSubStatsList);
     }
 
     async function DisplayWeaponImg(Id){
