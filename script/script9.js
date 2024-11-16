@@ -2479,7 +2479,7 @@ async function generate() {
     ctx.fillText(CircletMainStatus, textX, 440);
 
     for (let i = 0; i < 5; i++) {
-      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "防御力" || BuildMainStatus[i][0] == "元素熟知")
+      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
       {
         AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
       }
@@ -2502,7 +2502,7 @@ async function generate() {
       const buffValue =  AfSubStatsList[j][i].statValue;
       if (paramsName)
       {
-        if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "元素熟知")
+        if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "防御力" || paramsName == "元素熟知")
         {
           AfSubDisp(urlName, paramsName.toLocaleString(), buffValue, 370 + 381 * j, 890 + 53 * i);
         }
