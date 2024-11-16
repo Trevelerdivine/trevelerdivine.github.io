@@ -2640,11 +2640,13 @@ async function generate(data) {
                     fontSize: 6,
                     max: maxborder,
                     fontColor: "black",  // 目盛り数字の色
-                    backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
+                    backdropColor: 'rgba(0, 0, 0, 0)', // 数値ラベルの背景を透明に
+                    fontFamily: 'CustomFont', // フォントを統一
                 },
                 pointLabels: {
                     fontSize: 22,
-                    fontColor: "black"    // 文字の色
+                    fontColor: "black",    // 文字の色
+                    fontFamily: 'CustomFont', // フォントを統一
                 },
                 angleLines: {        // 軸（放射軸）
                     display: true,
