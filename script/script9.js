@@ -2564,9 +2564,11 @@ async function generate(data) {
     let myData = [];
     let TheoreticalData = [];
     let dltScore = 0;
+    let indexCount = 0;
 
     for (let i = 0; i < 7; i++) {
         if (depend_status[i] === 1) {
+            indexCount += 1;
             itemList.push(statusList[i]);
             dltScore = 100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
             if (dltScore > 0) {
@@ -2626,7 +2628,7 @@ async function generate(data) {
         },
         options: {
             responsive: false,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             animation: {
                 duration: 0, // アニメーションの時間
             },
@@ -2660,7 +2662,15 @@ async function generate(data) {
     });
 
     BuildradarChart.update(); // チャートの更新
-    ctx.drawImage(radarCanvas, 1480, 15, canvasSize, canvasSize);
+    if (indexCount == 3)
+    {
+      ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
+    }
+    else if (indexCount == 4)
+    {
+      ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
+    }
+    
 
 
 
