@@ -1465,7 +1465,7 @@
                 AfIdList.push(status["itemId"]);
             }
         });
-        
+
         AfIdList.pop();
         AfNumList = new Array(5).fill([]);
         AfIdList.forEach(item => {
@@ -1478,6 +1478,7 @@
             // 該当インデックスに上2桁を格納
             AfNumList[fourthDigit - 1] = firstTwoDigits;
         });
+        console.log(AfNumList);
          // 数値の出現回数を記録するオブジェクトを作成
         const countMap = {};
         AfNumList.forEach(num => {
