@@ -6,7 +6,7 @@ let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値]
 let MyAfScoreDist;
 let OptimizedScoreDist;
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
-const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
+const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
 
 const elm_reaction_obj = [
   {
@@ -2507,7 +2507,7 @@ async function generate(data) {
     let GobletMainStatus;
     if (OptimizedStatus[1] == 7)
     {
-      GobletMainStatus = element[char_propaty[0]] + main_status_name[7];
+      GobletMainStatus = element[Number(char_propaty[0])] + main_status_name[7];
     }
     else
     {
@@ -2579,7 +2579,7 @@ async function generate(data) {
     }
 
     const radarCanvas = document.createElement('canvas');
-    const canvasSize = 198; // サイズを固定
+    const canvasSize = 330; // サイズを固定
     const scaleFactor = window.devicePixelRatio || 1; // デバイスのピクセル密度
 
     // Canvasの解像度とスタイルを調整
@@ -2641,7 +2641,7 @@ async function generate(data) {
                     backdropColor: 'rgba(0, 0, 0, 0)' // 数値ラベルの背景を透明に
                 },
                 pointLabels: {
-                    fontSize: 7,
+                    fontSize: 22,
                     fontColor: "black"    // 文字の色
                 },
                 angleLines: {        // 軸（放射軸）
@@ -2660,7 +2660,7 @@ async function generate(data) {
     });
 
     BuildradarChart.update(); // チャートの更新
-    ctx.drawImage(radarCanvas, 1510, 30, canvasSize, canvasSize);
+    ctx.drawImage(radarCanvas, 1480, 15, canvasSize, canvasSize);
 
 
 
