@@ -2254,6 +2254,8 @@ async function displayImage() {
 
 // 先ほどのgenerate関数をここに貼り付けてください
 async function generate(data) {
+    let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
+    let ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
     const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
     await font.load();
     document.fonts.add(font);
@@ -2284,7 +2286,7 @@ async function generate(data) {
     ctx.drawImage(weaponImage, 809, 20, 64, 64);
 
     // Weapon rarity
-    const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/WeapopnRarelity.png`);
+    const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/${WeapopnRarelity}.png`);
     ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
 
     // Character talents
@@ -2349,13 +2351,13 @@ async function generate(data) {
       if (i < CharConstellationsIndex + 1)
       {
         const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
-        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${ElementTypeList[Number(char_propaty[0])]}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
       }
       else
       {
-        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${element}.png`);
+        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${ElementTypeList[Number(char_propaty[0])]}.png`);
         ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
         ctx.drawImage(Clock, 681, -11 + i * 93, 80, 80);
       }
@@ -2470,8 +2472,6 @@ async function generate(data) {
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
     //最適メインステータス
-    let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
-    let ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
     const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
     const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
     let GobletMainStatus;
