@@ -2493,7 +2493,7 @@ async function generate() {
     const AfSubStatusData = await AfSubStatusJsonData.json();
     
   //聖遺物サブステータス表示
-  for (let j = 0; i < 5; j++)
+  for (let j = 0; j < 5; j++)
   {
     for (let i = 0; i < 4; i++)
     {
@@ -2504,11 +2504,11 @@ async function generate() {
       {
         if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "元素熟知")
         {
-          AfSubDisp(urlName, paramsName, buffValue, 370 + 380 * j, 890 + 53 * i);
+          AfSubDisp(urlName, paramsName.toLocaleString(), buffValue, 370 + 381 * j, 890 + 53 * i);
         }
         else
         {
-          AfSubDisp(urlName, paramsName, buffValue, 370 + 380 * j, 890 + 53 * i);
+          AfSubDisp(urlName, paramsName, buffValue.toString() +"%", 370 + 381 * j, 890 + 53 * i);
         }
       }
     }
