@@ -2493,24 +2493,26 @@ async function generate() {
     const AfSubStatusData = await AfSubStatusJsonData.json();
     
   //聖遺物サブステータス表示
+  for (let j = 0; i < 5; j++)
+  {
     for (let i = 0; i < 4; i++)
     {
-      const paramsName = AfSubStatusData[AfSubStatsList[0][i].appendPropId].name
-      const urlName = AfSubStatusData[AfSubStatsList[0][i].appendPropId].url;
-      const buffValue =  AfSubStatsList[0][i].statValue;
+      const paramsName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].name
+      const urlName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].url;
+      const buffValue =  AfSubStatsList[j][i].statValue;
       if (paramsName)
       {
         if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "元素熟知")
         {
-          AfSubDisp(urlName, paramsName, buffValue, 370, 890 + 53 * i);
+          AfSubDisp(urlName, paramsName, buffValue, 370 + 380 * j, 890 + 53 * i);
         }
         else
         {
-          AfSubDisp(urlName, paramsName, buffValue, 370, 890 + 53 * i);
+          AfSubDisp(urlName, paramsName, buffValue, 370 + 380 * j, 890 + 53 * i);
         }
       }
-  
     }
+  }
 
 
     // レーダーチャートを作成
