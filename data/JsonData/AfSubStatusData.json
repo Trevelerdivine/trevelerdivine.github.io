@@ -2,60 +2,70 @@
     "FIGHT_PROP_HP_PERCENT":{
         "名前":"HP%",
         "name":"HP%",
+        "url":"HPパーセンテージ",
         "id":0,
         "基礎数値":0.583
     },
     "FIGHT_PROP_ATTACK_PERCENT":{
         "名前":"攻撃力%",
         "name":"攻撃力%",
+        "url":"攻撃パーセンテージ",
         "id":4,
         "基礎数値":0.583
     },
     "FIGHT_PROP_DEFENSE_PERCENT":{
         "名前":"防御力%",
         "name":"防御力%",
+        "url":"防御パーセンテージ",
         "id":1,
         "基礎数値":0.729
     },
     "FIGHT_PROP_ELEMENT_MASTERY":{
         "名前":"元素熟知",
         "name":"元素熟知",
+        "url":"元素熟知",
         "id":2,
         "基礎数値":2.331
     },
     "FIGHT_PROP_CHARGE_EFFICIENCY":{
         "名前":"チャージ効率",
         "name":"元素チャージ効率",
+        "url":"元素チャージ効率",        
         "id":3,
         "基礎数値":0.648
     },
     "FIGHT_PROP_CRITICAL":{
         "名前":"会心率",
         "name":"会心率",
+        "url":"会心率",
         "id":5,
         "基礎数値":0.389
     },
     "FIGHT_PROP_CRITICAL_HURT":{
         "名前":"会心ダメージ",
         "name":"会心ダメージ",
+        "url":"会心ダメージ",
         "id":6,
         "基礎数値":0.777
     },
     "FIGHT_PROP_HP":{
         "名前":"HP固定値",
         "name":"HP",
+        "url":"HP",
         "id":7,
         "基礎数値":29.875
     },
     "FIGHT_PROP_ATTACK":{
         "名前":"攻撃力固定値",
         "name":"攻撃力",
+        "url":"攻撃力",
         "id":8,
         "基礎数値":1.945
     },
     "FIGHT_PROP_DEFENSE":{
         "名前":"防御力固定値",
         "name":"防御力",
+        "url":"防御力",
         "id":9,
         "基礎数値":2.315
     },
