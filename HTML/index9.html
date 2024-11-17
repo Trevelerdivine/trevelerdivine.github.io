@@ -1180,7 +1180,7 @@
     let WeaponJsonData;
     let CharIndexList = [];
     let EquipNumber;
-    let BuildMainStatus = [[0,0],[0,0],[0,0],[0,0],[0,0]];
+    let BuildMainStatus = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
     let OptimizedScore = 0;
     let OptimizedStatus;
     // ローカルストレージに保存するキー
@@ -1556,7 +1556,7 @@
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
         AfSubStatsList = ["", "", "", "", ""];
-
+        BuildMainStatus = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
             // オブジェクトから "itemId" の要素を取り出して配列に追加
@@ -1582,6 +1582,7 @@
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 ClockMainStatus = AfNameList[PropName]["名前"];
                 BuildMainStatus[2][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[2][2] = AfNameList[PropName]["url"];
                 BuildMainStatus[2][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             else if (fourthDigits[i] == 1)
@@ -1589,6 +1590,7 @@
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 GobletMainStatus = AfNameList[PropName]["名前"];
                 BuildMainStatus[3][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[3][2] = AfNameList[PropName]["url"];
                 BuildMainStatus[3][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             else if (fourthDigits[i] == 3)
@@ -1596,18 +1598,21 @@
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 CircletMainStatus = AfNameList[PropName]["名前"];
                 BuildMainStatus[4][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[4][2] = AfNameList[PropName]["url"];
                 BuildMainStatus[4][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             else if (fourthDigits[i] == 4)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 BuildMainStatus[0][0] = "HP"
+                BuildMainStatus[0][2] = BuildMainStatus[0][0];
                 BuildMainStatus[0][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             else if (fourthDigits[i] == 2)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 BuildMainStatus[1][0] = "攻撃力"
+                BuildMainStatus[1][2] = BuildMainStatus[1][0];
                 BuildMainStatus[1][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             AfSubStatsList[i] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquarySubstats;

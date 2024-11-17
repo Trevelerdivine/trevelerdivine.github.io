@@ -2480,13 +2480,14 @@ async function generate() {
     ctx.fillText(CircletMainStatus, textX, 440);
 
     for (let i = 0; i < 5; i++) {
+      const urlName = AfNameList[PropName]["name"]
       if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
       {
-        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+        AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
       }
       else
       {
-        AfMainDisp(BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
+        AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
       }
     }
 
@@ -2642,10 +2643,10 @@ async function generate() {
         });
     }
 
-    async function AfMainDisp(StatusName, MainStatus, Xcord, level)
+    async function AfMainDisp(urlName, StatusName, MainStatus, Xcord, level)
     {
       //聖遺物ステータス
-      const IconImage = await loadImage(`../BuildCardData/emotes/${StatusName}.png`); // アイコン画像をロード
+      const IconImage = await loadImage(`../BuildCardData/emotes/${urlName}.png`); // アイコン画像をロード
       const MainStatusValue = MainStatus.toLocaleString(); // カンマ区切りに変換;
 
       // テキストの右揃え
@@ -2718,11 +2719,6 @@ async function generate() {
     }
 
     return canvas;
-}
-
-async function Calculate_result_status()
-{
-
 }
 
 async function calculate_teambuff(base_status)
