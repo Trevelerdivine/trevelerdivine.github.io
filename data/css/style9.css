@@ -3,8 +3,6 @@
   }
   
   body {
-    margin: 0; /* ページ全体の余白をゼロに */
-    padding: 0;
     background-image: url('../BackImg.png'); /* 背景画像のパス */
     background-repeat: repeat; /* 画像を繰り返し */
     background-size: auto; /* デフォルトサイズを使用 */
@@ -691,6 +689,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: fixed; /* 常に画面基準で固定 */
       animation: spin 1s linear infinite; /* 回転速度を遅く */
       visibility: hidden; /* 初期状態で非表示 */
     }
