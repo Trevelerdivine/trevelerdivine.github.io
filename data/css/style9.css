@@ -728,6 +728,7 @@
           left: 0px;
           height: 50px;
           width: 50px;
+          margin-top: -50px;
           display: block;
           position: fixed;
           background: rgba(255, 255, 255, .0);
@@ -751,7 +752,8 @@
           position: fixed;
           left: 0px;
           background: #efefef;
-          padding: 10px 10px 10px 0px;
+          padding: 10px 10px 10px 50px;
+          margin-top: -50px;
           font-size: 30px;
           line-height: 30px;
           z-index: 0;
