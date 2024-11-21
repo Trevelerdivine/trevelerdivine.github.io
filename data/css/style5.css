@@ -790,11 +790,10 @@ details summary {
         width: 100%;
         height: calc(100% - 50px);
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         padding: 5px;
-        background: transparent; /* 背景は透明に */
-    }
+      }
   
       /* 以下はcheckedスタイル */
       #drawer-toggle:checked ~ #drawer-toggle-label {
