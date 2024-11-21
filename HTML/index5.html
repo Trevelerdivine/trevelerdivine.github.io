@@ -49,12 +49,9 @@
                     width: 100%; /* 画像の幅を100%に設定 */
                     height: auto; /* アスペクト比を維持したまま高さを自動調整 */
             }
-            body {
-                background-size: 100%; /* スマートフォンでは画像を縮小して繰り返し */
-            }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .image-grid {
                 margin: 0 auto; /* 左右の余白を自動的に均等に設定 */
                 display: grid;
@@ -62,9 +59,12 @@
                 grid-template-rows: repeat(2, 1fr); /* 2行のグリッド */
                 gap: 10px; /* 画像の間隔 */
             }
-        .image-grid img {
+            .image-grid img {
                 width: 100%; /* 画像の幅を100%に設定 */
                 height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+            }
+            body {
+                background-size: 100%; /* スマートフォンでは画像を縮小して繰り返し */
             }
         }
 
