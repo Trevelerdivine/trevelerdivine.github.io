@@ -5,6 +5,16 @@
   body {
     padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
   }
+
+  #page-content {
+    margin-left: 0px;
+    margin-top: 50px;
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 5px;
+}
   
   .tablestyle {
     display: none;
@@ -714,6 +724,7 @@ details summary {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed; /* 常に画面基準で固定 */
     animation: spin 1s linear infinite; /* 回転速度を遅く */
     visibility: hidden; /* 初期状態で非表示 */
   }
@@ -832,17 +843,6 @@ details summary {
         overflow-y: scroll;
         padding: 20px;
         -webkit-overflow-scrolling: touch;
-      }
-  
-      #page-content {
-        margin-left: 0px;
-        margin-top: 50px;
-        width: 100%;
-        height: calc(100% - 50px);
-        overflow-x: hidden;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px;
       }
   
       /* 以下はcheckedスタイル */
