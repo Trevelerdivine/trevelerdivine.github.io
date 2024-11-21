@@ -18,19 +18,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
     crossorigin="anonymous"></script>
     <style>
-        body {
-            margin: 0; /* ページ全体の余白をゼロに */
-            padding: 0;
-            background-image: url('../data/BackImg.png'); /* 背景画像のパス */
-            background-repeat: repeat; /* 画像を繰り返し */
-            background-size: auto; /* デフォルトサイズを使用 */
-            background-attachment: scroll; /* 背景を固定 */
-            overflow-y: scroll;
-            background-size: 50%;
-            height: auto;
-            padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
-        }
-
         #uidInput {
             padding: 10px;
             font-size: 16px;
@@ -1475,7 +1462,7 @@
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 
-                    const scrollableContainer = document.documentElement;
+                    const scrollableContainer = document.getElementById("page-content");
                     scrollableContainer.scrollBy({
                         top: 400, // スクロールする距離（ピクセル）
                         behavior: 'smooth' // スクロールをスムーズにする
@@ -2345,7 +2332,7 @@
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 
-                    const scrollableContainer = document.documentElement;
+                    const scrollableContainer = document.getElementById("page-content");
                     scrollableContainer.scrollBy({
                         top: 400, // スクロールする距離（ピクセル）
                         behavior: 'smooth' // スクロールをスムーズにする
