@@ -6,11 +6,16 @@
     <title>計算サイトの使い方</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
-            background-color: #f8f8f8;
-            color: #333;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          line-height: 1.6;
+          background-image: url('../data/BackImg.png'); /* 背景画像のパス */
+          background-repeat: repeat; /* 画像を繰り返し */
+          background-size: auto; /* デフォルトサイズを使用 */
+          background-attachment: scroll; /* 背景を固定 */
+          overflow-y: scroll;
+          background-size: 50%;
+          height: auto;
+          padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
         }
 
         .container {
@@ -87,11 +92,6 @@
       -webkit-text-size-adjust: none;
     }
 
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
-
     #drawer-toggle {
       position: absolute;
       opacity: 0;
@@ -107,6 +107,7 @@
       left: 0px;
       height: 50px;
       width: 50px;
+      margin-top: -50px;
       display: block;
       position: fixed;
       background: rgba(255, 255, 255, .0);
@@ -131,6 +132,7 @@
       left: 0px;
       background: #efefef;
       padding: 10px 10px 10px 50px;
+      margin-top: -50px;
       font-size: 30px;
       line-height: 30px;
       z-index: 0;
