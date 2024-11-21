@@ -74,6 +74,18 @@
         footer p {
             font-size: 10px; /* または適切なサイズに調整 */
         }
+
+        #page-content {
+        margin-left: 0px;
+        margin-top: 50px;
+        width: 100%;
+        height: calc(100% - 50px);
+        overflow-x: hidden;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px;
+      }
+
                 /* 全体の背景画像設定 */
         body {
             margin: 0; /* ページ全体の余白をゼロに */
@@ -82,19 +94,14 @@
             background-repeat: repeat; /* 画像を繰り返し */
             background-size: auto; /* デフォルトサイズを使用 */
             background-attachment: scroll; /* 背景を固定 */
+            overflow-y: scroll;
+            background-size: 50%;
         }
 
         /* スマートフォンサイズの設定 */
         @media (max-width: 768px) {
             body {
-                background-size: 50%; /* スマートフォンでは画像を縮小して繰り返し */
-            }
-        }
-
-        /* 高解像度や大型画面の設定 */
-        @media (min-width: 1920px) {
-            body {
-                background-size: 30%; /* 大型画面では画像を拡大して繰り返し */
+                background-size: 30%; /* スマートフォンでは画像を縮小して繰り返し */
             }
         }
     </style>
@@ -1360,7 +1367,7 @@
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 
-                    const scrollableContainer = document.getElementById("page-content");
+                    const scrollableContainer = document.getElementById("body");
                     scrollableContainer.scrollBy({
                         top: 400, // スクロールする距離（ピクセル）
                         behavior: 'smooth' // スクロールをスムーズにする
@@ -1839,7 +1846,6 @@
         document.getElementById("result").innerHTML = "";
     }
     
-
     function startCountdown() {
 
         // ローカルストレージからカウントダウン終了時刻を取得
