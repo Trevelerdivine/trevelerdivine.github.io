@@ -2480,7 +2480,6 @@ async function generate() {
     ctx.fillText(CircletMainStatus, textX, 440);
 
     for (let i = 0; i < 5; i++) {
-      const urlName = AfNameList[PropName]["name"]
       if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
       {
         AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
