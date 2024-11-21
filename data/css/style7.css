@@ -782,11 +782,6 @@ details summary {
         -webkit-text-size-adjust: none;
       }
   
-      html, body {
-        height: 100%;
-        overflow: hidden;
-      }
-  
       #drawer-toggle {
         position: absolute;
         opacity: 0;
@@ -851,17 +846,6 @@ details summary {
         overflow-y: scroll;
         padding: 20px;
         -webkit-overflow-scrolling: touch;
-      }
-  
-      #page-content {
-        margin-left: 0px;
-        margin-top: 50px;
-        width: 100%;
-        height: calc(100% - 50px);
-        overflow-x: hidden;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px;
       }
   
       /* 以下はcheckedスタイル */
