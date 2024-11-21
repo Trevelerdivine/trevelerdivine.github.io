@@ -75,12 +75,14 @@
             font-size: 10px; /* または適切なサイズに調整 */
         }
         /* 全体の背景画像設定 */
-        page-content {
+        body {
+            margin: 0; /* ページ全体の余白をゼロに */
+            padding: 0;
             background-image: url('../backSample.png'); /* 背景画像のパス */
             background-repeat: repeat; /* 画像を繰り返し */
             background-size: auto; /* デフォルトサイズで繰り返し */
             background-attachment: scroll; /* 背景画像がスクロールに追随 */
-            background-size: 100%; /* 大型画面では画像を拡大して繰り返し */
+            background-size: 100%;
         }
     </style>
 </head>

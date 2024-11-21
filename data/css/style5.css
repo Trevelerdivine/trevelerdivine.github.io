@@ -792,6 +792,7 @@ details summary {
         overflow-x: hidden;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
+        background-attachment: scroll; /* 背景画像がスクロールに追随 */
         padding: 5px;
       }
   
