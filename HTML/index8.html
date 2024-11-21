@@ -1462,7 +1462,7 @@
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 
-                    const scrollableContainer = document.getElementById("page-content");
+                    const scrollableContainer = document.documentElement;
                     scrollableContainer.scrollBy({
                         top: 400, // スクロールする距離（ピクセル）
                         behavior: 'smooth' // スクロールをスムーズにする
@@ -2332,7 +2332,7 @@
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 
-                    const scrollableContainer = document.getElementById("page-content");
+                    const scrollableContainer = document.documentElement;
                     scrollableContainer.scrollBy({
                         top: 400, // スクロールする距離（ピクセル）
                         behavior: 'smooth' // スクロールをスムーズにする

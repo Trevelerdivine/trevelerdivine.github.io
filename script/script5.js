@@ -2173,6 +2173,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
                   min: 0,
                   stepSize: 20,
                   max: maxborder,
+                  backdropColor: 'rgba(0, 0, 0, 0)', // 数値ラベルの背景を透明に
               },
               pointLabels: {
                   fontSize: 10
