@@ -790,7 +790,7 @@ details summary {
         width: 100%;
         height: calc(100% - 50px);
         overflow-x: hidden;
-        overflow-y: hidden;
+        overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
         padding: 5px;
       }
