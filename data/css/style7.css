@@ -774,11 +774,6 @@ details summary {
         -webkit-text-size-adjust: none;
       }
   
-      html, body {
-        height: 100%;
-        overflow: hidden;
-      }
-  
       #drawer-toggle {
         position: absolute;
         opacity: 0;
