@@ -17,6 +17,21 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
     crossorigin="anonymous"></script>
     <style>
+      body {
+        background-image: url('../data/BackImg.png'); /* 背景画像のパス */
+        background-repeat: repeat; /* 画像を繰り返し */
+        background-size: auto; /* デフォルトサイズを使用 */
+        background-attachment: scroll; /* 背景を固定 */
+        overflow-y: scroll;
+        background-size: 50%;
+        height: auto;
+        padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
+      }
+      @media (max-width: 768px) {
+        body {
+            background-size: 100%; /* スマートフォンでは画像を縮小して繰り返し */
+        }
+      }
       footer {
         padding: 5px;
         text-align: center;
