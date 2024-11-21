@@ -76,15 +76,15 @@
         }
 
         #page-content {
-        margin-left: 0px;
-        margin-top: 50px;
-        width: 100%;
-        height: calc(100% - 50px);
-        overflow-x: hidden;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px;
-      }
+            margin-left: 0px;
+            margin-top: 50px;
+            width: 100%;
+            height: calc(100% - 50px);
+            overflow-x: hidden;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            padding: 5px;
+        }
 
                 /* 全体の背景画像設定 */
         body {
@@ -96,6 +96,7 @@
             background-attachment: scroll; /* 背景を固定 */
             overflow-y: scroll;
             background-size: 50%;
+            height: auto;
         }
 
         /* スマートフォンサイズの設定 */
@@ -1367,7 +1368,7 @@
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 
-                    const scrollableContainer = document.getElementById("body");
+                    const scrollableContainer = document.body
                     scrollableContainer.scrollBy({
                         top: 400, // スクロールする距離（ピクセル）
                         behavior: 'smooth' // スクロールをスムーズにする
@@ -1992,7 +1993,7 @@
                     let div = document.getElementById("WholeDisplay");
                     div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 
-                    const scrollableContainer = document.getElementById("page-content");
+                    const scrollableContainer = document.body
                     scrollableContainer.scrollBy({
                         top: 400, // スクロールする距離（ピクセル）
                         behavior: 'smooth' // スクロールをスムーズにする
