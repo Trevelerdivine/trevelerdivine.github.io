@@ -12,6 +12,7 @@
     overflow-y: scroll;
     background-size: 50%;
     height: auto;
+    position: relative;
     padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
   }
 
