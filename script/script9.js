@@ -2449,6 +2449,10 @@ async function generate() {
     const AfGobletImage = await loadImage(`../BuildCardData/Assets/Goblet.png`);
     const AfCircletImage = await loadImage(`../BuildCardData/Assets/Circlet.png`);
     const CircletMainStatus = main_status_name[OptimizedStatus[2]];
+    if (CircletMainStatus == "会心率" || CircletMainStatus == "会心ダメージ")
+    {
+      CircletMainStatus = "会心系";
+    }
 
     // 時計のイメージを描画
     ctx.font = 'normal 18px customFont';
