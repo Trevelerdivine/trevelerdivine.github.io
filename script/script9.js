@@ -2232,7 +2232,7 @@ async function generate() {
     const ctx = canvas.getContext('2d');
     
     // Base background
-    const baseImage = await loadImage(`../BuildCardData/Character/ナヒーダ/avatar.png`);
+    const baseImage = await loadImage(`../BuildCardData/Character/綺良々/avatar.png`);
     canvas.width = baseImage.width;
     canvas.height = baseImage.height;
     ctx.drawImage(baseImage, 0, 0);
@@ -2448,7 +2448,7 @@ async function generate() {
     }
     const AfGobletImage = await loadImage(`../BuildCardData/Assets/Goblet.png`);
     const AfCircletImage = await loadImage(`../BuildCardData/Assets/Circlet.png`);
-    const CircletMainStatus = main_status_name[OptimizedStatus[2]];
+    let CircletMainStatus = main_status_name[OptimizedStatus[2]];
     if (CircletMainStatus == "会心率" || CircletMainStatus == "会心ダメージ")
     {
       CircletMainStatus = "会心系";
