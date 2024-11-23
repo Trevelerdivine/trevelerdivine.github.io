@@ -94,6 +94,9 @@
     </ul>
     </nav>
     <div id="page-content">
+        <div id="drawer-toggle-label-alt" style="color: #00aaff;">
+            他のコンテンツはこちらから
+        </div>
         <input type="text" id="uidInput" placeholder="UIDを入力してください" style="width: 200px;">
         <br>
         <br>
@@ -1869,6 +1872,11 @@
     // ページの読み込みが完了したら、カウントダウンを再開
     window.onload = async function() {
         fetchButton.disabled = true;
+        document.getElementById('drawer-toggle-label-alt').addEventListener('click', function() {
+            const drawerToggle = document.getElementById('drawer-toggle');
+            drawerToggle.checked = !drawerToggle.checked; // チェック状態を切り替える
+        });
+
         const JsonData1 = await fetch("../data/JsonData/DisplayCharData.json");
         CharJsonData = await JsonData1.json();
         const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
