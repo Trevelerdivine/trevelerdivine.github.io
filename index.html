@@ -60,8 +60,8 @@
     </nav>
     <div id="page-content">
       <br>
-      <div style="text-align: left; padding-left: 20px; color: black;">
-        <li><a href="./HTML/UidScoreCalc.html" style="cursor: pointer; color: inherit;">uidから入力する場合はこちらから</a></li>
+      <div id="drawer-toggle-label-alt" style="color: #00aaff;">
+          他のコンテンツはこちらから
       </div>  
       <br> 
       <div class="wrapper">
@@ -1882,6 +1882,11 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   CharJsonData = await JsonData1.json();
   const JsonData2 = await fetch("./data/JsonData/DisplayWeaponData.json");
   WeaponJsonData = await JsonData2.json();
+
+  document.getElementById('drawer-toggle-label-alt').addEventListener('click', function() {
+      const drawerToggle = document.getElementById('drawer-toggle');
+      drawerToggle.checked = !drawerToggle.checked; // チェック状態を切り替える
+  });
   
   // イメージの選択処理を実行
   handleImageSelection(af_overlayImages, indexDisplay);

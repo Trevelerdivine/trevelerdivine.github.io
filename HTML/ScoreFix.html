@@ -57,6 +57,10 @@
     </ul>
   </nav>
   <div id="page-content">
+    <br>
+    <div id="drawer-toggle-label-alt" style="color: #00aaff;">
+        他のコンテンツはこちらから
+    </div>
     <div class="wrapper">
       <div>
         <div>
@@ -1636,6 +1640,11 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   CharJsonData = await JsonData1.json();
   const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
   WeaponJsonData = await JsonData2.json();
+
+  document.getElementById('drawer-toggle-label-alt').addEventListener('click', function() {
+      const drawerToggle = document.getElementById('drawer-toggle');
+      drawerToggle.checked = !drawerToggle.checked; // チェック状態を切り替える
+  });
   
   // イメージの選択処理を実行
   handleImageSelection(af_overlayImages, indexDisplay);
