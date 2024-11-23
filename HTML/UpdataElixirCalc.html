@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>必要厳選日数シミュレーター</title>
     <link rel="stylesheet" href="../data/css/style7.css">
-    <script src="../script/script7.js"></script>
+    <script src="../script/script8.js"></script>
     <script src="../script/create_new_class.js"></script>
     <script src="../data/character/char_class/char_class5.js"></script>
     <script src="../data/weapon/weapon_class/weapon_class5.js"></script>
@@ -28,7 +28,7 @@
             height: auto;
             padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
         }
-        
+
         #uidInput {
             padding: 10px;
             font-size: 16px;
@@ -99,13 +99,13 @@
     <nav id="drawer">
     <ul>
         <li><a href="../index.html">・最適化スコア計算機</a></li>
-        <li><a href="./index5.html">・UIDから入力</a></li>
-        <li><a href="./index2.html">・最適ステータス計算機</a></li>
-        <li><a href="./index7.html">・必要厳選日数計算機</a></li>
-        <li><a href="./index8.html">・エリクシル更新確率計算機</a></li>
-        <li><a href="./index3.html">・使い方</a></li>
+        <li><a href="./UidScoreCalc.html">・UIDから入力</a></li>
+        <li><a href="./ScoreFix.html">・最適ステータス計算機</a></li>
+        <li><a href="./UpdataDaysCalc.html">・必要厳選日数計算機</a></li>
+        <li><a href="./UpdataElixirCalc.html">・エリクシル更新確率計算機</a></li>
+        <li><a href="./HowToUse.html">・使い方</a></li>
         <li><a href="./policy.html">・プライバシーポリシー</a></li>
-        <li><a href="./index4.html">・お問い合わせ</a></li>
+        <li><a href="./Contact.html">・お問い合わせ</a></li>
     </ul>
     </nav>
     <div id="page-content">
@@ -249,9 +249,190 @@
                     <br>          
                     <div id="index-display"></div>
                     <fieldset id="artifactInfo" style="max-width: 476px;">
-                        <legend>聖遺物情報</legend>
-                        <p id="set_eff1">セット効果1: </p>
-                        <p id="set_eff2">セット効果2: </p>
+                        <legend>作成する聖遺物設定</legend>
+                        <div style="display: flex; justify-content: center; max-width: 476px;">
+                            <span style="width: 30%; margin-right: 20px;"> <!-- ここで余白を追加 -->
+                                <div>花</div>
+                                <div>メイン</div>
+                                <div>HP実数値</div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="flower_sub1" onchange="changeSubSelectedValue(0)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="flower_sub2" onchange="changeSubSelectedValue(0)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span style="width: 35%;"> <!-- ここで余白を追加 -->
+                                <div>羽</div>
+                                <div>メイン</div>
+                                <div>攻撃力実数値</div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="feather_sub1" onchange="changeSubSelectedValue(1)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="feather_sub2" onchange="changeSubSelectedValue(1)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                        </div>                        
+                        <br>
+                        <div style="display: flex; justify-content: space-between; max-width: 476px;">
+                            <span style="width: 30%;">
+                                <div>時計</div>
+                                <div>メイン</div>
+                                <div>
+                                    <select id="clock_main" onchange="changeMainSelectedValue(2)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ効率</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="clock_sub1" onchange="changeSubSelectedValue(2)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="clock_sub2" onchange="changeSubSelectedValue(2)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span style="width: 35%; margin-left: auto;">
+                                <div>杯</div>
+                                <div>メイン</div>
+                                <div>
+                                    <select id="goblet_main" onchange="changeMainSelectedValue(3)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="10">炎元素ダメバフ</option>
+                                        <option value="11">水元素ダメバフ</option>
+                                        <option value="12">氷元素ダメバフ</option>
+                                        <option value="13">雷元素ダメバフ</option>
+                                        <option value="14">風元素ダメバフ</option>
+                                        <option value="15">草元素ダメバフ</option>
+                                        <option value="16">岩元素ダメバフ</option>
+                                        <option value="17">物理ダメバフ</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="goblet_sub1" onchange="changeSubSelectedValue(3)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="goblet_sub2" onchange="changeSubSelectedValue(3)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span style="width: 30%;">
+                                <div>冠</div>
+                                <div>メイン</div>
+                                <div>
+                                    <select id="circlet_main" onchange="changeMainSelectedValue(4)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                        <option value="18">治療効果バフ</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="circlet_sub1" onchange="changeSubSelectedValue(4)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="circlet_sub2" onchange="changeSubSelectedValue(4)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                        </div>                        
                     </fieldset>
                 </div>
             </div>
@@ -767,17 +948,17 @@
                         <div id="table4" class="tablestyle1">
                             <table  class="main_combination_table" style="table-layout: fixed">
                             <colgroup>
-                                <col style="width: 10%;">
+                                <col style="width: 6.5%;">
                                 <col style="width: 20%;">
-                                <col style="width: 20%;">
-                                <col style="width: 10%;">
+                                <col style="width: 18%;">
+                                <col style="width: 22.3%;">
                             </colgroup>
                             <thead>
                                 <tr>
                                 <th></th>
-                                <th>必要濃縮樹脂数</th>
-                                <th>必要厳選日数</th>
-                                <th>ランク</th>
+                                <th>聖遺物更新確率</th>
+                                <th>ダメージ上昇割合</th>
+                                <th>エリクシル12個当たりの更新確率</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -821,18 +1002,10 @@
                                 <td id = goblet5>-</td>
                                 <td id = circlet5>-</td>
                                 </tr>
-                                <tr>
-                                <th rowspan="1" style="text-align: left;">
-                                    <span>総合</span>
-                                </th>
-                                <td id = clock6>-</td>
-                                <td id = goblet6>-</td>
-                                <td id = circlet6>-</td>
-                                </tr>
                             </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div>             
                 </div>
                 <div>
                 </div>
@@ -1466,27 +1639,6 @@
             SelectedAfId.push(-1);
         }
 
-        let set_eff1;
-        let set_eff2;
-        let AfName1;
-        let AfName2
-        
-        if (SelectedAfId[0] === SelectedAfId[1]) {
-            set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
-            set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["4セット効果"];
-            AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
-            AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
-            document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
-            document.getElementById("set_eff2").innerHTML = `${AfName2}：4セット効果<br>${set_eff2}`;
-        } else {
-            set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
-            set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["2セット効果"];
-            AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
-            AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
-            document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
-            document.getElementById("set_eff2").innerHTML = `${AfName1}：2セット効果<br>${set_eff2}`;
-        }
-
         // 選択された聖遺物の画像設定
         const selectedImageSrc1 = afdata["AfMap"][SelectedAfId[0].toString()]["url"] || '';
         const selectedImageSrc2 = afdata["AfMap"][SelectedAfId[1].toString()]["url"] || '';
@@ -1498,7 +1650,262 @@
         return result;
     }
 
+    async function selectOptionByValue(id, main_select, substatus1, substatus2, clock_id) {
+    // select要素を取得
+        const mainoptions = main_select.options;
+        const suboptions1 = substatus1.options;
+        const suboptions2 = substatus2.options;
+
+        for (let j = 0; j < 12; j++) {
+            if (mainoptions[j])
+            {
+                mainoptions[j].selected = false;
+            }
+            if (suboptions1[j])
+            {
+                suboptions1[j].selected = false;
+                suboptions2[j].selected = false;
+                suboptions1[j].disabled = false;
+                suboptions2[j].disabled = false;
+            }
+        }
+
+        if (id != 5 && id != 6)
+        {
+            // valueに一致するoptionを選択
+            for (let j = 0; j < mainoptions.length; j++) {
+                if (mainoptions[j].value == id)
+                {
+                    mainoptions[j].selected = true;
+                    for (let i = 0; i < suboptions1.length; i++)
+                    {
+                        if (suboptions1[i].value == id) 
+                        {
+                            suboptions1[i].disabled = true;
+                            suboptions2[i].disabled = true;
+                            break; // 一致するものが見つかったら終了
+                        }
+                    }
+                }
+            }
+            suboptions1[5].selected = true;
+            suboptions2[6].selected = true;
+            suboptions1[6].disabled = true;
+            suboptions2[5].disabled = true;
+        }
+        else if(id == 5)
+        {
+            mainoptions[4].selected = true;
+            suboptions1[6].selected = true;
+            suboptions1[5].disabled = true;
+            suboptions2[5].disabled = true;
+            suboptions2[6].disabled = true;
+            for (let i = 0; i < suboptions2.length; i++)
+            {
+                if (suboptions2[i].value == clock_id) 
+                {
+                    suboptions1[i].disabled = true;
+                    suboptions2[i].selected = true;
+                    break; // 一致するものが見つかったら終了
+                }
+            }
+        }
+        else
+        {
+            mainoptions[5].selected = true;
+            suboptions1[5].selected = true;
+            suboptions1[6].disabled = true;
+            suboptions2[5].disabled = true;
+            suboptions2[6].disabled = true;
+            for (let i = 0; i < suboptions2.length; i++)
+            {
+                if (suboptions2[i].value == clock_id) 
+                {
+                    suboptions1[i].disabled = true;
+                    suboptions2[i].selected = true;
+                    break; // 一致するものが見つかったら終了
+                }
+            }
+        }
+    }
+
+    function changeMainSelectedValue(id) {
+        let main_index;
+        if (id== 2)
+        {
+            const mainElement = document.getElementById('clock_main');
+            const sub1Element = document.getElementById('clock_sub1');
+            const sub2Element = document.getElementById('clock_sub2');
+            main_index = mainElement.value;
+            for (let j = 0; j < 7; j++) {
+                if (sub1Element[j].value == main_index)
+                {
+                    sub1Element[j].disabled = true;
+                    sub2Element[j].disabled = true;
+                }
+                else
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+            }
+            sub1Element.value = 5;
+            sub2Element.value = 6;
+            sub1Element[6].disabled = true;
+            sub2Element[5].disabled = true;
+        }
+        else if (id == 3)
+        {
+            const mainElement = document.getElementById('goblet_main');
+            const sub1Element = document.getElementById('goblet_sub1');
+            const sub2Element = document.getElementById('goblet_sub2');
+            main_index = mainElement.value;
+            for (let j = 0; j < 7; j++) {
+                if (sub1Element[j].value == main_index)
+                {
+                    sub1Element[j].disabled = true;
+                    sub2Element[j].disabled = true;
+                }
+                else
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+            }
+            sub1Element.value = 5;
+            sub2Element.value = 6;
+            sub1Element[6].disabled = true;
+            sub2Element[5].disabled = true;
+        }
+        else if (id == 4)
+        {
+            let clock_id =  document.getElementById('clock_main').value;
+            const mainElement = document.getElementById('circlet_main');
+            const sub1Element = document.getElementById('circlet_sub1');
+            const sub2Element = document.getElementById('circlet_sub2');
+            main_index = mainElement.value;
+            if (main_index == 5)
+            {
+                for (let j = 0; j < 7; j++)
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+                sub1Element.value = 6;          
+                sub1Element[5].disabled = true;
+                sub2Element[5].disabled = true;
+                sub2Element[6].disabled = true;
+
+                for (let i = 0; i < sub2Element.length; i++)
+                {
+                    if (sub2Element[i].value == clock_id) 
+                    {
+                        sub1Element[i].disabled = true;
+                        sub2Element.value = clock_id; 
+                        break; // 一致するものが見つかったら終了
+                    }
+                }
+            }
+            else if (main_index == 6)
+            {
+                for (let j = 0; j < 7; j++)
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+                sub1Element.value = 5;               
+                sub1Element[6].disabled = true;
+                sub2Element[6].disabled = true;
+                sub2Element[5].disabled = true;
+
+                for (let i = 0; i < sub2Element.length; i++)
+                {
+                    if (sub2Element[i].value == clock_id) 
+                    {
+                        sub1Element[i].disabled = true;
+                        sub2Element.value = clock_id; 
+                        break; // 一致するものが見つかったら終了
+                    }
+                }
+            }
+            else
+            {
+                const mainElement = document.getElementById('circlet_main');
+                const sub1Element = document.getElementById('circlet_sub1');
+                const sub2Element = document.getElementById('circlet_sub2');
+                main_index = mainElement.value;
+                for (let j = 0; j < 7; j++) {
+                    if (sub1Element[j].value == main_index)
+                    {
+                        sub1Element[j].disabled = true;
+                        sub2Element[j].disabled = true;
+                    }
+                    else
+                    {
+                        sub1Element[j].disabled = false;
+                        sub2Element[j].disabled = false;
+                    }
+                }
+                sub1Element.value = 5;
+                sub2Element.value = 6;
+                sub1Element[6].disabled = true;
+                sub2Element[5].disabled = true;
+            }
+        }
+    }
+
+
+    function changeSubSelectedValue(id) {
+        let main_index = 100;
+        let sub1Element;
+        let sub2Element;
+        if (id == 0)
+        {
+            sub1Element = document.getElementById('flower_sub1');
+            sub2Element = document.getElementById('flower_sub2');
+        }
+        else if (id == 1)
+        {
+            sub1Element = document.getElementById('feather_sub1');
+            sub2Element = document.getElementById('feather_sub2');
+        }
+        else if (id == 2)
+        {
+            main_index = document.getElementById('clock_main').value;
+            sub1Element = document.getElementById('clock_sub1');
+            sub2Element = document.getElementById('clock_sub2');
+        }
+        else if (id == 3)
+        {
+            main_index = document.getElementById('goblet_main').value;
+            sub1Element = document.getElementById('goblet_sub1');
+            sub2Element = document.getElementById('goblet_sub2');
+        }
+        else if (id == 4)
+        {
+            main_index = document.getElementById('circlet_main').value;
+            sub1Element = document.getElementById('circlet_sub1');
+            sub2Element = document.getElementById('circlet_sub2');
+        }
+
+        for (let j = 0; j < 7; j++) {
+            sub1Element[j].disabled = false;
+            sub2Element[j].disabled = false;
+            if (sub1Element[j].value == sub2Element.value || sub1Element[j].value == main_index)
+            {
+                sub1Element[j].disabled = true;
+            }
+            if (sub2Element[j].value == sub1Element.value || sub1Element[j].value == main_index)
+            {
+                sub2Element[j].disabled = true;
+            }
+        }
+    }
+
+
     async function SetMainStatus(SortOrder){
+        const Afresponse = await fetch("../data/JsonData/AfSubStatusData.json");
+        SubstatusData = await Afresponse.json();
         let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
         let ClockMainStatus = "装備無し";
         let GobletMainStatus = "装備無し";
@@ -1530,65 +1937,61 @@
             return parseInt(fourthDigit); // 文字列から数値に変換して返す
         });
 
+        let clock_id
+        const flower_substatus1 = document.getElementById("flower_sub1");
+        const flower_substatus2 = document.getElementById("flower_sub2");
+        const feather_sub2_substatus1 = document.getElementById("feather_sub1");
+        const feather_sub2_substatus2 = document.getElementById("feather_sub2");
+        const flower_suboptions1 = flower_substatus1.options;
+        const flower_suboptions2 = flower_substatus2.options;
+        const feather_suboptions1 = feather_sub2_substatus1.options;
+        const feather_suboptions2 = feather_sub2_substatus2.options;
+        flower_suboptions1[5].selected = true;
+        flower_suboptions2[6].selected = true;
+        flower_suboptions1[6].disabled = true;
+        flower_suboptions2[5].disabled = true;
+        feather_suboptions1[5].selected = true;
+        feather_suboptions2[6].selected = true;
+        feather_suboptions1[6].disabled = true;
+        feather_suboptions2[5].disabled = true;
         for (let i = 0; i <fourthDigits.length; i++) {
             if (fourthDigits[i] == 5)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 ClockMainStatus = AfNameList[PropName]["名前"];
+                clock_id = SubstatusData[PropName]["id"];
+
+                const clock_main_select = document.getElementById("clock_main");
+                const substatus1 = document.getElementById("clock_sub1");
+                const substatus2 = document.getElementById("clock_sub2");
+                
+                await selectOptionByValue(clock_id, clock_main_select, substatus1, substatus2, clock_id);
             }
             else if (fourthDigits[i] == 1)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 GobletMainStatus = AfNameList[PropName]["名前"];
+                let goblet_id = SubstatusData[PropName]["id"];
+
+                const goblet_main_select = document.getElementById("goblet_main");
+                const substatus1 = document.getElementById("goblet_sub1");
+                const substatus2 = document.getElementById("goblet_sub2");
+                
+                await selectOptionByValue(goblet_id, goblet_main_select, substatus1, substatus2, clock_id);
             }
             else if (fourthDigits[i] == 3)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 CircletMainStatus = AfNameList[PropName]["名前"];
+                let circlet_id = SubstatusData[PropName]["id"];
+
+                const circlet_main_select = document.getElementById("circlet_main");
+                const substatus1 = document.getElementById("circlet_sub1");
+                const substatus2 = document.getElementById("circlet_sub2");
+                
+                await selectOptionByValue(circlet_id, circlet_main_select, substatus1, substatus2, clock_id);
             }
         }
-
-        let targetDiv = document.getElementById('AfConditon');
-        let newSpan = document.createElement('span');
-        newSpan.classList.add('property');
-        newSpan.textContent = '厳選条件';
-        targetDiv.appendChild(newSpan);document
-        targetDiv.appendChild(document.createElement("br"));
-
-        const inputContainer = document.createElement("span");
-        const input = document.createElement("input");
-        input.type = "text";
-        input.id = "RequwireElmCharge";
-        input.value = 100;
-        
-        // input要素のwidthを50pxに設定
-        input.style.width = '50px';
-
-        // 単位を表示するための span 要素を作成
-        const unitSpan = document.createElement("span");
-        unitSpan.textContent = "（％）";
-
-        // フォーム要素と単位要素を div 要素に追加
-        inputContainer.appendChild(input);
-        inputContainer.appendChild(unitSpan);
-        
-        let StrictDiv = document.getElementById('ElmChargeStrict');
-        let label = document.createElement('label');
-        let text = document.createTextNode('必要元素チャージ効率：');
-        let label2 = document.createElement('label');
-        let text2 = document.createTextNode('１日の消費濃縮樹脂数：');
-        const selectList = createSelectList("UseItemNum", 1, 20, "", "個", 5);
-        label.appendChild(text);
-        label.style.paddingLeft = '2em';
-        label2.appendChild(text2);
-        label2.style.paddingLeft = '2em';
-        StrictDiv.appendChild(label);
-        StrictDiv.appendChild(inputContainer);
-        StrictDiv.appendChild(document.createElement("br"));
-        StrictDiv.appendChild(label2);
-        StrictDiv.appendChild(selectList);
-        StrictDiv.appendChild(document.createElement("br"));
-        StrictDiv.appendChild(document.createElement("br"));
 
         document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
         document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;

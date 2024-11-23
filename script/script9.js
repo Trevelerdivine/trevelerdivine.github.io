@@ -2259,7 +2259,7 @@ async function generate() {
     for (let i = 0; i < talentTypes.length; i++) {
         const talentImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${talentTypes[i]}.png`);
         ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
-        ctx.drawImage(talentImage, 50, 325 + i * 105, 60, 60);
+        ctx.drawImage(talentImage, 52, 325 + i * 105, 60, 60);
     }
     BuildCardWeaponStats
     // Character name, weapon name and level
