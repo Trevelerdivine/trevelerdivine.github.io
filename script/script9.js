@@ -2522,9 +2522,9 @@ async function generate() {
 
     // レーダーチャートを作成
       const ChartOptions = [
-        { size: 330, fontSize: 22, X_value: 1485 , y_value: 40 }, // 3変数
+        { size: 380, fontSize: 30, X_value: 1445 , y_value: 7 }, // 3変数
         { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
-        { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
+        { size: 462, fontSize: 30, X_value: 1450 , y_value: -55 }, // 5変数
         { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
     ];
   
