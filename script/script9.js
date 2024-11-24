@@ -2313,14 +2313,14 @@ async function generate() {
       {
         const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
-        ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
-        ctx.drawImage(CImage, 690, -0 + i * 93, 56, 56);
+        ctx.drawImage(CImageEffect, 665, -17 + i * 93, 92, 92);
+        ctx.drawImage(CImage, 680, -0 + i * 93, 56, 56);
       }
       else
       {
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
-        ctx.drawImage(CImageEffect, 675, -17 + i * 93, 92, 92);
-        ctx.drawImage(Clock, 681, -11 + i * 93, 80, 80);
+        ctx.drawImage(CImageEffect, 665, -17 + i * 93, 92, 92);
+        ctx.drawImage(Clock, 671, -11 + i * 93, 80, 80);
       }
     }
 
@@ -2433,7 +2433,7 @@ async function generate() {
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
     //最適メインステータス
-    let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
+    let main_status_name = ["HP%","防御力%","元素熟知","元素チャージ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
     let ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
     const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
     const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
