@@ -2327,7 +2327,6 @@ async function generate() {
     //聖遺物
     ctx.globalAlpha = 0.7; 
     const AfPartsName = ['flower',"wing","clock","cup","crown"];
-    AfNumList[3] = 21;
     for (let i = 0; i < 5; i++) {
         const AfImage = await loadImage(`../BuildCardData/artifact/${afdata["AfMap"][AfNumList[i].toString()]["名前"]}/${AfPartsName[i]}.png`);
         ctx.drawImage(AfImage, -20 + 388 * i, 630, 300, 300);
@@ -2522,7 +2521,13 @@ async function generate() {
 
 
     // レーダーチャートを作成
-
+      const ChartOptions = [
+        { size: 330, fontSize: 22, X_value: 1485 , y_value: 40 }, // 3変数
+        { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
+        { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
+        { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
+    ];
+  
     let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
     let itemList = [];
     let myData = [];
@@ -2543,9 +2548,10 @@ async function generate() {
             TheoreticalData.push(100);
         }
     }
+    const OptionData = ChartOptions[indexCount];
 
     const radarCanvas = document.createElement('canvas');
-    const canvasSize = 330; // サイズを固定
+    const canvasSize = OptionData.size; // サイズを固定
     const scaleFactor = 1.5;
 
     // Canvasの解像度とスタイルを調整
@@ -2607,7 +2613,7 @@ async function generate() {
                     backdropColor: 'rgba(0, 0, 0, 0)', // 数値ラベルの背景を透明に
                 },
                 pointLabels: {
-                    fontSize: 22,
+                    fontSize: OptionData.fontSize,
                     fontColor: "black",    // 文字の色
                 },
                 angleLines: {        // 軸（放射軸）
@@ -2626,15 +2632,7 @@ async function generate() {
     });
 
     BuildradarChart.update(); // チャートの更新
-    if (indexCount == 3)
-    {
-      ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
-    }
-    else if (indexCount == 4)
-    {
-      ctx.drawImage(radarCanvas, 1485, 15, canvasSize, canvasSize);
-    }
-    
+    ctx.drawImage(radarCanvas, OptionData.X_value, OptionData.y_value, canvasSize, canvasSize);
 
 
 
@@ -2702,15 +2700,6 @@ async function generate() {
       const iconX = Xcord - 320 - iconSize + 1;
       const iconY = Ycord - 10 - iconSize / 2;
       ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
-    }
-
-    function cropAndResize(image, scale, x, y, width, height) {
-        const croppedCanvas = document.createElement('canvas');
-        const croppedCtx = croppedCanvas.getContext('2d');
-        croppedCanvas.width = width * scale;
-        croppedCanvas.height = height * scale;
-        croppedCtx.drawImage(image, x, y, width, height, 0, 0, croppedCanvas.width, croppedCanvas.height);
-        return croppedCanvas;
     }
 
     function resizeImage(image, width, height) {
