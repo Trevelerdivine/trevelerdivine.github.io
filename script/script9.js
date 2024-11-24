@@ -2261,7 +2261,7 @@ async function generate() {
         ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
         ctx.drawImage(talentImage, 52, 325 + i * 105, 60, 60);
     }
-    BuildCardWeaponStats
+
     // Character name, weapon name and level
     ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
     ctx.fillRect(121, 77, 67, 27);  //長方形を描画
@@ -2281,10 +2281,10 @@ async function generate() {
     ctx.fillText(`Lv.${WeaponLevel}`, 902, 80);
     ctx.fillText(BuildCardWeaponStats[0][0], 982, 80);
     ctx.fillText(BuildCardWeaponStats[0][1], 1092, 80);
-    ctx.fillText(BuildCardWeaponStats[1][0], 1182, 80);
+    ctx.fillText(BuildCardWeaponStats[1][0], 1160, 80);
     const firstTextWidth = ctx.measureText(BuildCardWeaponStats[1][0]).width;
     // BuildCardWeaponStats[1][1] を、最初のテキストの右隣に描画
-    ctx.fillText(BuildCardWeaponStats[1][1], 1182 + firstTextWidth + 10, 80);
+    ctx.fillText(BuildCardWeaponStats[1][1], 1160 + firstTextWidth + 10, 80);
 
     const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
@@ -2548,7 +2548,7 @@ async function generate() {
             TheoreticalData.push(100);
         }
     }
-    const OptionData = ChartOptions[indexCount];
+    const OptionData = ChartOptions[indexCount - 3];
 
     const radarCanvas = document.createElement('canvas');
     const canvasSize = OptionData.size; // サイズを固定
