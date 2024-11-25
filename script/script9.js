@@ -2313,14 +2313,14 @@ async function generate() {
       {
         const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
-        ctx.drawImage(CImageEffect, 665, -17 + i * 93, 92, 92);
-        ctx.drawImage(CImage, 680, -0 + i * 93, 56, 56);
+        ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
+        ctx.drawImage(CImage, 668, -18 + i * 93, 56, 56);
       }
       else
       {
         const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
-        ctx.drawImage(CImageEffect, 665, -17 + i * 93, 92, 92);
-        ctx.drawImage(Clock, 671, -11 + i * 93, 80, 80);
+        ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
+        ctx.drawImage(Clock, 659, -29 + i * 93, 80, 80);
       }
     }
 
