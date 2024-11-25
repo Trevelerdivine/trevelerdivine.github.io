@@ -2498,36 +2498,48 @@ async function generate() {
     const AfSubStatusData = await AfSubStatusJsonData.json();
     
   //聖遺物サブステータス表示
-  for (let j = 0; j < 5; j++)
-  {
-    for (let i = 0; i < 4; i++)
+    for (let j = 0; j < 5; j++)
     {
-      const paramsName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].name
-      const urlName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].url;
-      const buffValue =  AfSubStatsList[j][i].statValue;
-      if (paramsName)
+      for (let i = 0; i < 4; i++)
       {
-        if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "防御力" || paramsName == "元素熟知")
+        const paramsName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].name
+        const urlName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].url;
+        const buffValue =  AfSubStatsList[j][i].statValue;
+        if (paramsName)
         {
-          AfSubDisp(urlName, paramsName.toLocaleString(), buffValue, 370 + 381 * j, 890 + 53 * i);
-        }
-        else
-        {
-          AfSubDisp(urlName, paramsName, buffValue.toString() +"%", 370 + 381 * j, 890 + 53 * i);
+          if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "防御力" || paramsName == "元素熟知")
+          {
+            AfSubDisp(urlName, paramsName.toLocaleString(), buffValue, 370 + 381 * j, 890 + 53 * i);
+          }
+          else
+          {
+            AfSubDisp(urlName, paramsName, buffValue.toString() +"%", 370 + 381 * j, 890 + 53 * i);
+          }
         }
       }
     }
-  }
 
 
     // レーダーチャートを作成
-      const ChartOptions = [
-        { size: 380, fontSize: 30, X_value: 1445 , y_value: 7 }, // 3変数
-        { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
-        { size: 462, fontSize: 30, X_value: 1450 , y_value: -55 }, // 5変数
-        { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
+    const ChartOptions = [
+      { size: 380, fontSize: 30, X_value: 1445 , y_value: 7 }, // 3変数
+      { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
+      { size: 462, fontSize: 30, X_value: 1450 , y_value: -55 }, // 5変数
+      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
     ];
-  
+
+    const ChartColor = [
+      { bgTheory: "rgba(139,0,0,0.5)", borderTheory: "rgba(139,0,0,0.8)", bgOwn: "rgba(255,99,132,0.5)", borderOwn: "rgba(255,99,132,1)" },       // 火: 赤
+      { bgTheory: "rgba(0,0,139,0.5)", borderTheory: "rgba(0,0,139,0.8)", bgOwn: "rgba(173,216,230,0.5)", borderOwn: "rgba(173,216,230,1)" },         // 水: 青
+      { bgTheory: "rgba(0,191,255,0.5)", borderTheory: "rgba(0,191,255,0.8)", bgOwn: "rgba(135,206,250,0.5)", borderOwn: "rgba(135,206,250,1)" }, // 氷: 水色
+      { bgTheory: "rgba(128,0,128,0.5)", borderTheory: "rgba(128,0,128,0.8)", bgOwn: "rgba(216,191,216,0.5)", borderOwn: "rgba(216,191,216,1)" },     // 雷: 紫
+      { bgTheory: "rgba(32,178,170,0.5)", borderTheory: "rgba(32,178,170,0.8)", bgOwn: "rgba(189,252,201,0.5)", borderOwn: "rgba(189,252,201,1)" }, // 風: ライトグリーン
+      { bgTheory: "rgba(0,100,0,0.5)", borderTheory: "rgba(0,100,0,0.8)", bgOwn: "rgba(144,238,144,0.5)", borderOwn: "rgba(144,238,144,1)" },         // 草: 緑
+      { bgTheory: "rgba(255,204,0,0.5)", borderTheory: "rgba(255,204,0,0.8)", bgOwn: "rgba(255,255,153,0.5)", borderOwn: "rgba(255,255,153,1)" }      // 岩: 黄色
+    ];
+
+    const colorData = ChartColor[char_propaty[0]];
+    
     let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
     let itemList = [];
     let myData = [];
@@ -2572,28 +2584,28 @@ async function generate() {
         data: {
             labels: itemList,
             datasets: [
-                {
-                    label: "ステータスバランス",
-                    backgroundColor: "rgba(144,238,144,0.5)", // 薄い緑
-                    borderColor: "rgba(144,238,144,1)", 
-                    pointBackgroundColor: "rgba(144,238,144,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(144,238,144,1)",
-                    hitRadius: 5,
-                    data: myData
-                },
-                {
-                    label: "理論値",
-                    backgroundColor: "rgba(0,100,0,0.5)", // 濃い緑
-                    borderColor: "rgba(0,100,0,0.8)", // 濃い緑
-                    pointBackgroundColor: "rgba(0,100,0,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(0,100,0,1)",
-                    hitRadius: 5,
-                    data: TheoreticalData
-                }
+              {
+                  label: "ステータスバランス",
+                  backgroundColor: colorData.bgOwn, // 薄い緑
+                  borderColor: colorData.borderOwn,// 薄い緑
+                  pointBackgroundColor: "rgba(144,238,144,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(144,238,144,1)",
+                  hitRadius: 5,
+                  data: myData
+              },
+              {
+                  label: "理論値",
+                  backgroundColor: colorData.bgTheory, // 濃い緑
+                  borderColor: colorData.borderTheory, // 濃い緑
+                  pointBackgroundColor: "rgba(0,100,0,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(0,100,0,1)",
+                  hitRadius: 5,
+                  data: TheoreticalData
+              }
             ]
         },
         options: {
