@@ -2586,8 +2586,8 @@ async function generate() {
             datasets: [
               {
                   label: "ステータスバランス",
-                  backgroundColor: colorData.bgOwn, // 薄い緑
-                  borderColor: colorData.borderOwn,// 薄い緑
+                  backgroundColor: colorData.bgOwn,
+                  borderColor: colorData.borderOwn,
                   pointBackgroundColor: "rgba(144,238,144,1)",
                   pointBorderColor: "#fff",
                   pointHoverBackgroundColor: "#fff",
@@ -2597,8 +2597,8 @@ async function generate() {
               },
               {
                   label: "理論値",
-                  backgroundColor: colorData.bgTheory, // 濃い緑
-                  borderColor: colorData.borderTheory, // 濃い緑
+                  backgroundColor: colorData.bgTheory,
+                  borderColor: colorData.borderTheory,
                   pointBackgroundColor: "rgba(0,100,0,1)",
                   pointBorderColor: "#fff",
                   pointHoverBackgroundColor: "#fff",
