@@ -2224,12 +2224,46 @@ async function displayImage() {
 
 // 先ほどのgenerate関数をここに貼り付けてください
 async function generate() {
-    const [base_status, af_main_status_buff, team_buff] = await Promise.all([
-      calculate_base_status(),
-      calculate_af_main_status_buff(),
-      calculate_teambuff(base_status)
-  ]);
+    const relocatedIndex = [0,4,1,2,5,6,3,7];
+    const display_status = [1,1,1,1,1,1,1,1];
+    const ElementType = ["炎", "水", "氷", "雷", "風", "草", "岩"];
+    const main_status_name = ["HP%","防御力%","元素熟知","元素チャージ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
+    const ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
+    let itemList = [];
+    let myData = [];
+    let TheoreticalData = [];
+    let dltScore = 0;
+    let indexCount = 0;
+    const ChartOptions = [
+      { size: 380, fontSize: 30, X_value: 1445 , y_value: 7 }, // 3変数
+      { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
+      { size: 462, fontSize: 30, X_value: 1450 , y_value: -55 }, // 5変数
+      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
+    ];
 
+    const ChartColor = [
+      { bgTheory: "rgba(139,0,0,0.5)", borderTheory: "rgba(139,0,0,0.8)", bgOwn: "rgba(255,99,132,0.5)", borderOwn: "rgba(255,99,132,1)" },       // 火: 赤
+      { bgTheory: "rgba(0,0,139,0.5)", borderTheory: "rgba(0,0,139,0.8)", bgOwn: "rgba(173,216,230,0.5)", borderOwn: "rgba(173,216,230,1)" },         // 水: 青
+      { bgTheory: "rgba(0,191,255,0.5)", borderTheory: "rgba(0,191,255,0.8)", bgOwn: "rgba(135,206,250,0.5)", borderOwn: "rgba(135,206,250,1)" }, // 氷: 水色
+      { bgTheory: "rgba(128,0,128,0.5)", borderTheory: "rgba(128,0,128,0.8)", bgOwn: "rgba(216,191,216,0.5)", borderOwn: "rgba(216,191,216,1)" },     // 雷: 紫
+      { bgTheory: "rgba(32,178,170,0.5)", borderTheory: "rgba(32,178,170,0.8)", bgOwn: "rgba(189,252,201,0.5)", borderOwn: "rgba(189,252,201,1)" }, // 風: ライトグリーン
+      { bgTheory: "rgba(0,100,0,0.5)", borderTheory: "rgba(0,100,0,0.8)", bgOwn: "rgba(144,238,144,0.5)", borderOwn: "rgba(144,238,144,1)" },         // 草: 緑
+      { bgTheory: "rgba(255,204,0,0.5)", borderTheory: "rgba(255,204,0,0.8)", bgOwn: "rgba(255,255,153,0.5)", borderOwn: "rgba(255,255,153,1)" }      // 岩: 黄色
+    ];
+
+    const colorData = ChartColor[char_propaty[0]];
+    const charElementType = ElementType[Number(char_propaty[0])]
+    const [base_status, af_main_status_buff] = await Promise.all([
+        calculate_base_status(),
+        calculate_af_main_status_buff(),
+    ])  
+    const [my_result_status, team_buff] = await Promise.all([
+      calculate_my_exp_dmg(base_status,af_main_status_buff,display_status),
+      calculate_teambuff(base_status),
+  ])  
+    const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
+    let GobletMainStatus;
+    
     const imagePaths = [
       `../BuildCardData/Character/${BuildCardCharName}/avatar.png`,
       '../BuildCardData/Assets/Shadow.png',
@@ -2237,23 +2271,16 @@ async function generate() {
       `../BuildCardData/Assets/Rarelity/${WeapopnRarelity}.png`,
       `../BuildCardData/Assets/TalentBack.png`,
       `../BuildCardData/Assets/Love.png`,
+      `../BuildCardData/命の星座/${charElementType}LOCK.png`,
+      `../BuildCardData/Assets/Clock.png`,
       ...['通常', 'スキル', '爆発'].map(type => `../BuildCardData/Character/${BuildCardCharName}/${type}.png`)
-  ];
-
-  const images = await Promise.all(imagePaths.map(loadImage));
-
-  const [
-      baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, ...talentImages
-  ] = images;
+    ];
+    const images = await Promise.all(imagePaths.map(loadImage));
+    const [
+        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, AfClockImage, ...talentImages
+    ] = images;
 
 
-    const relocatedIndex = [0,4,1,2,5,6,3,7];
-    const display_status = [1,1,1,1,1,1,1,1];
-    const ElementType = ["炎", "水", "氷", "雷", "風", "草", "岩"];
-    const charElementType = ElementType[Number(char_propaty[0])]
-    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
-  
-    
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
@@ -2309,9 +2336,6 @@ async function generate() {
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
 
     //凸
-    const Cbase = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
-    const Clock = await loadImage(`../BuildCardData/命の星座/${charElementType}LOCK.png`);
-    
     for (let i = 1; i < 7; i++) {
       if (i < CharConstellationsIndex + 1)
       {
@@ -2437,11 +2461,6 @@ async function generate() {
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
     //最適メインステータス
-    let main_status_name = ["HP%","防御力%","元素熟知","元素チャージ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
-    let ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
-    const AfClockImage = await loadImage(`../BuildCardData/Assets/Clock.png`);
-    const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
-    let GobletMainStatus;
     if (OptimizedStatus[1] == 7)
     {
       GobletMainStatus = ElementTypeList[Number(char_propaty[0])] + main_status_name[7];
@@ -2525,36 +2544,10 @@ async function generate() {
 
 
     // レーダーチャートを作成
-    const ChartOptions = [
-      { size: 380, fontSize: 30, X_value: 1445 , y_value: 7 }, // 3変数
-      { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
-      { size: 462, fontSize: 30, X_value: 1450 , y_value: -55 }, // 5変数
-      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
-    ];
-
-    const ChartColor = [
-      { bgTheory: "rgba(139,0,0,0.5)", borderTheory: "rgba(139,0,0,0.8)", bgOwn: "rgba(255,99,132,0.5)", borderOwn: "rgba(255,99,132,1)" },       // 火: 赤
-      { bgTheory: "rgba(0,0,139,0.5)", borderTheory: "rgba(0,0,139,0.8)", bgOwn: "rgba(173,216,230,0.5)", borderOwn: "rgba(173,216,230,1)" },         // 水: 青
-      { bgTheory: "rgba(0,191,255,0.5)", borderTheory: "rgba(0,191,255,0.8)", bgOwn: "rgba(135,206,250,0.5)", borderOwn: "rgba(135,206,250,1)" }, // 氷: 水色
-      { bgTheory: "rgba(128,0,128,0.5)", borderTheory: "rgba(128,0,128,0.8)", bgOwn: "rgba(216,191,216,0.5)", borderOwn: "rgba(216,191,216,1)" },     // 雷: 紫
-      { bgTheory: "rgba(32,178,170,0.5)", borderTheory: "rgba(32,178,170,0.8)", bgOwn: "rgba(189,252,201,0.5)", borderOwn: "rgba(189,252,201,1)" }, // 風: ライトグリーン
-      { bgTheory: "rgba(0,100,0,0.5)", borderTheory: "rgba(0,100,0,0.8)", bgOwn: "rgba(144,238,144,0.5)", borderOwn: "rgba(144,238,144,1)" },         // 草: 緑
-      { bgTheory: "rgba(255,204,0,0.5)", borderTheory: "rgba(255,204,0,0.8)", bgOwn: "rgba(255,255,153,0.5)", borderOwn: "rgba(255,255,153,1)" }      // 岩: 黄色
-    ];
-
-    const colorData = ChartColor[char_propaty[0]];
-    
-    let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
-    let itemList = [];
-    let myData = [];
-    let TheoreticalData = [];
-    let dltScore = 0;
-    let indexCount = 0;
-
     for (let i = 0; i < 7; i++) {
         if (depend_status[i] === 1) {
             indexCount += 1;
-            itemList.push(statusList[i]);
+            itemList.push(main_status_name[i]);
             dltScore = 100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
             if (dltScore > 0) {
                 myData.push(dltScore);
