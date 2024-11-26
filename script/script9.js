@@ -2520,11 +2520,11 @@ async function generate() {
         {
           if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "防御力" || paramsName == "元素熟知")
           {
-            AfSubDisp(urlName, paramsName.toLocaleString(), buffValue, 370 + 381 * j, 890 + 53 * i);
+            await AfSubDisp(urlName, paramsName.toLocaleString(), buffValue, 370 + 381 * j, 890 + 53 * i);
           }
           else
           {
-            AfSubDisp(urlName, paramsName, buffValue.toString() +"%", 370 + 381 * j, 890 + 53 * i);
+            await AfSubDisp(urlName, paramsName, buffValue.toString() +"%", 370 + 381 * j, 890 + 53 * i);
           }
         }
       }
@@ -2704,7 +2704,7 @@ async function generate() {
       ctx.fillText(Leveltext, levelx + 1, 768);
     }
 
-    function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord)
+    async function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord)
     {
       //聖遺物ステータス
       const IconImage = await loadImage(`../BuildCardData/emotes/${urlName}.png`); // アイコン画像をロード
