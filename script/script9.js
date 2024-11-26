@@ -2704,7 +2704,7 @@ async function generate() {
       ctx.fillText(Leveltext, levelx + 1, 768);
     }
 
-    async function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord)
+    function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord)
     {
       //聖遺物ステータス
       const IconImage = await loadImage(`../BuildCardData/emotes/${urlName}.png`); // アイコン画像をロード
