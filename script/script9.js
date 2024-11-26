@@ -2205,13 +2205,24 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
 }
 
 async function displayImage() {
-    // `generate`関数で画像を生成し、`output`に表示します
-    const canvas = await generate();
-    canvas.style.width = "500px";  // 幅を500pxに設定（任意の値に変更可能）
-    canvas.style.height = "auto";  // 高さを自動で設定（アスペクト比を維持）
-    document.getElementById("output").innerHTML = ""; // 以前の画像をクリア
-    document.getElementById("output").appendChild(canvas);
+  // `generate`関数で画像を生成
+  const canvas = await generate();
+  
+  // `canvas`を画像URLに変換
+  const imageUrl = canvas.toDataURL("image/png");
+
+  // `<img>` 要素を作成
+  const imgElement = document.createElement("img");
+  imgElement.src = imageUrl;
+  imgElement.style.width = "500px";  // 幅を500pxに設定（任意の値に変更可能）
+  imgElement.style.height = "auto";  // 高さを自動で設定（アスペクト比を維持）
+
+  // 以前の画像をクリアして新しい画像を表示
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = ""; 
+  outputElement.appendChild(imgElement);
 }
+
 
 // 先ほどのgenerate関数をここに貼り付けてください
 async function generate() {
