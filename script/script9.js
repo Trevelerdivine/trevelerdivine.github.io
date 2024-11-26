@@ -2302,14 +2302,13 @@ async function generate() {
     ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
 
     // Character talents
+    ctx.font = 'lighter 19px customFont';
     const talentTypes = ['通常', 'スキル', '爆発'];
     talentTypes.forEach((type, i) => {
         ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
         ctx.drawImage(talentImages[i], 52, 325 + i * 105, 60, 60);
-
-        ctx.font = 'lighter 19px customFont';
         ctx.fillStyle = CharConsteLevelflag[i] > 0 ? 'aqua' : 'white';
-        ctx.fillText(`Lv.${CharTalentLevel[i]}`, 57, 402 + i * 105);
+        ctx.fillText(`Lv.${CharTalentLevel[i + 2]}`, 57, 402 + i * 105);
     });
 
     // Character name, weapon name and level
