@@ -2353,9 +2353,7 @@ async function generate() {
         ctx.drawImage(Clock, 659, -29 + i * 93, 80, 80);
       }
     }
-
-    //ここから処理が重い
-    
+  
     //聖遺物
     ctx.globalAlpha = 0.7; 
     const AfPartsName = ['flower',"wing","clock","cup","crown"];
@@ -2384,62 +2382,70 @@ async function generate() {
       ctx.fillText(value, xPos, 157.5 + 64.5 * i);
     }
   
+    //ここから処理が重い
 
     //ステータス表示
-    for (let i = 0; i < 8; i++) {
-      let a = base_status[relocatedIndex[i]];
-      let c = team_buff[relocatedIndex[i]];
-      let b = my_result_status[relocatedIndex[i]] - a - c;
-  
+    // 描画用データを事前に生成
+    const formattedData = relocatedIndex.map((index, i) => {
+      let a = base_status[index];
+      let c = team_buff[index];
+      let b = my_result_status[index] - a - c;
+
       if (i > 3) {
-          a = Number((a * 100).toLocaleString()).toFixed(1) + "%";
-          b = Number((b * 100).toLocaleString()).toFixed(1) + "%";
-          c = Number((c * 100).toLocaleString()).toFixed(1) + "%";
+          a = (a * 100).toFixed(1) + "%";
+          b = (b * 100).toFixed(1) + "%";
+          c = (c * 100).toFixed(1) + "%";
       } else {
-          a = Number(a.toFixed(0)).toLocaleString();
-          b = Number(b.toFixed(0)).toLocaleString();
-          c = Number(c.toFixed(0)).toLocaleString();
+          a = Math.round(a).toLocaleString();
+          b = Math.round(b).toLocaleString();
+          c = Math.round(c).toLocaleString();
       }
 
-      // フォントと基本の位置を設定
-      ctx.font = 'lighter 14px customFont';
+      return { a, b, c };
+    });
+
+    // '+' の幅を事前計算
+    const plusWidth = ctx.measureText('+').width;
+
+    // 描画ループ
+    ctx.font = 'lighter 14px customFont'; // フォント設定を一度だけ
+    formattedData.forEach(({ a, b, c }, i) => {
       const baseX = 1340; // 基本の右端X座標
       const baseY = 178 + 64.5 * i; // Y座標の位置
-  
+
       // 各要素の幅を計算
       const aWidth = ctx.measureText(a).width;
-      const plusWidth = ctx.measureText('+').width;
       const bWidth = ctx.measureText(b).width;
       const cWidth = ctx.measureText(c).width;
-  
+
       // 全体の幅を計算して、右揃えの起点位置を調整
       const totalWidth = aWidth + plusWidth + bWidth + plusWidth + cWidth;
       let offsetX = baseX - totalWidth;
-  
+
       // aの値を表示
       ctx.fillStyle = 'white';
       ctx.fillText(a, offsetX, baseY);
       offsetX += aWidth;
-  
-      // '+'を表示
+
+      // '+' を表示
       ctx.fillStyle = '#a4f74f';
       ctx.fillText('+', offsetX, baseY);
       offsetX += plusWidth;
-  
+
       // bの値を表示
       ctx.fillStyle = '#a4f74f';
       ctx.fillText(b, offsetX, baseY);
       offsetX += bWidth;
-  
-      // '+'を表示
+
+      // '+' を表示
       ctx.fillStyle = '#00ccff';
       ctx.fillText('+', offsetX, baseY);
       offsetX += plusWidth;
-  
+
       // cの値を表示
       ctx.fillStyle = '#00ccff';
       ctx.fillText(c, offsetX, baseY);
-    }
+    });
   
 
     //スコア
