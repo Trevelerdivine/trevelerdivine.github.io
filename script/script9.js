@@ -2262,8 +2262,6 @@ async function generate() {
       calculate_my_exp_dmg(base_status,af_main_status_buff,display_status),
       calculate_teambuff(base_status),
   ])  
-    const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
-    let GobletMainStatus;
     
     const imagePaths = [
       `../BuildCardData/Character/${BuildCardCharName}/avatar.png`,
@@ -2274,11 +2272,13 @@ async function generate() {
       `../BuildCardData/Assets/Love.png`,
       `../BuildCardData/命の星座/${charElementType}LOCK.png`,
       `../BuildCardData/Assets/Clock.png`,
+      `../BuildCardData/Assets/Goblet.png`,
+      `../BuildCardData/Assets/Circlet.png`,
       ...['通常', 'スキル', '爆発'].map(type => `../BuildCardData/Character/${BuildCardCharName}/${type}.png`)
     ];
     const images = await Promise.all(imagePaths.map(loadImage));
     const [
-        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, AfClockImage, ...talentImages
+        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, AfClockImage, AfGobletImage, AfCircletImage, ...talentImages
     ] = images;
 
 
@@ -2471,6 +2471,8 @@ async function generate() {
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
     //最適メインステータス
+    const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
+    let GobletMainStatus;
     if (OptimizedStatus[1] == 7)
     {
       GobletMainStatus = ElementTypeList[Number(char_propaty[0])] + main_status_name[7];
@@ -2479,42 +2481,43 @@ async function generate() {
     {
       GobletMainStatus = main_status_name[OptimizedStatus[1]];
     }
-    const AfGobletImage = await loadImage(`../BuildCardData/Assets/Goblet.png`);
-    const AfCircletImage = await loadImage(`../BuildCardData/Assets/Circlet.png`);
+ 
     let CircletMainStatus = main_status_name[OptimizedStatus[2]];
     if (CircletMainStatus == "会心率" || CircletMainStatus == "会心ダメージ")
     {
       CircletMainStatus = "会心系";
     }
 
-    // 時計のイメージを描画
+    // フォント設定とデフォルトの描画色
     ctx.font = 'normal 18px customFont';
-    ctx.drawImage(AfClockImage, 1471, 360, 50, 50);
-    // テキストの中央揃え
     ctx.fillStyle = 'white';
-    let textWidth = ctx.measureText(ClockMainStatus).width; // 文字列の幅を取得
-    let textX = 1474 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-    ctx.fillText(ClockMainStatus, textX, 440);
-    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
-    ctx.fillRect(1579, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
 
-    ctx.fillStyle = 'white';
-    ctx.font = 'normal 18px customFont';
-    ctx.drawImage(AfGobletImage, 1647, 360, 50, 50);
-    // テキストの中央揃え
-    textWidth = ctx.measureText(GobletMainStatus).width; // 文字列の幅を取得
-    textX = 1649 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-    ctx.fillText(GobletMainStatus, textX, 440);
-    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
-    ctx.fillRect(1767, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
+    // 描画対象のデータをまとめる
+    const items = [
+        { image: AfClockImage, x: 1471, text: ClockMainStatus, textBoxX: 1579 },
+        { image: AfGobletImage, x: 1647, text: GobletMainStatus, textBoxX: 1767 },
+        { image: AfCircletImage, x: 1810, text: CircletMainStatus, textBoxX: null }, // textBoxXが不要ならnull
+    ];
 
-    ctx.fillStyle = 'white';
-    ctx.font = 'normal 18px customFont';
-    ctx.drawImage(AfCircletImage, 1810, 360, 50, 50);
-    // テキストの中央揃え
-    textWidth = ctx.measureText(CircletMainStatus).width; // 文字列の幅を取得
-    textX = 1812 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-    ctx.fillText(CircletMainStatus, textX, 440);
+    // テキスト幅を事前にキャッシュ
+    const textWidths = items.map(({ text }) => ctx.measureText(text).width);
+
+    // イメージ描画とテキスト配置を一括で処理
+    items.forEach(({ image, x, text, textBoxX }, i) => {
+        // イメージ描画
+        ctx.drawImage(image, x, 360, 50, 50);
+
+        // テキストを中央揃えで配置
+        const textX = x + 25 - textWidths[i] / 2; // イメージの中心に配置
+        ctx.fillText(text, textX, 440);
+
+        // 長方形を描画（必要な場合のみ）
+        if (textBoxX !== null) {
+            ctx.fillStyle = '#dcdcdc';
+            ctx.fillRect(textBoxX, 359, 2, 94);
+            ctx.fillStyle = 'white'; // 次の描画用に色をリセット
+        }
+    });
 
     for (let i = 0; i < 5; i++) {
       if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
