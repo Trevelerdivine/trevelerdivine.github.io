@@ -1883,6 +1883,11 @@
             drawerToggle.checked = !drawerToggle.checked; // チェック状態を切り替える
         });
 
+        //フォントをロード
+        const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
+        await font.load();
+        document.fonts.add(font);
+        
         const JsonData1 = await fetch("../data/JsonData/DisplayCharData.json");
         CharJsonData = await JsonData1.json();
         const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");

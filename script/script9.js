@@ -2224,58 +2224,68 @@ async function displayImage() {
 
 // 先ほどのgenerate関数をここに貼り付けてください
 async function generate() {
-    const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
-    await font.load();
-    document.fonts.add(font);
+    const [base_status, af_main_status_buff, team_buff] = await Promise.all([
+      calculate_base_status(),
+      calculate_af_main_status_buff(),
+      calculate_teambuff(base_status)
+  ]);
+
+    const imagePaths = [
+      `../BuildCardData/Character/${BuildCardCharName}/avatar.png`,
+      '../BuildCardData/Assets/Shadow.png',
+      `../BuildCardData/Weapon/${BuildCardCWeaponName}.png`,
+      `../BuildCardData/Assets/Rarelity/${WeapopnRarelity}.png`,
+      `../BuildCardData/Assets/TalentBack.png`,
+      `../BuildCardData/Assets/Love.png`,
+      ...['通常', 'スキル', '爆発'].map(type => `../BuildCardData/Character/${BuildCardCharName}/${type}.png`)
+  ];
+
+  const images = await Promise.all(imagePaths.map(loadImage));
+
+  const [
+      baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, ...talentImages
+  ] = images;
 
 
-    const base_status = await calculate_base_status();
     const relocatedIndex = [0,4,1,2,5,6,3,7];
     const display_status = [1,1,1,1,1,1,1,1];
     const ElementType = ["炎", "水", "氷", "雷", "風", "草", "岩"];
     const charElementType = ElementType[Number(char_propaty[0])]
-    const af_main_status_buff = await calculate_af_main_status_buff();
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,display_status);
-    let team_buff = await calculate_teambuff(base_status);
+  
     
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
     // Base background
-    const baseImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/avatar.png`);
     canvas.width = baseImage.width;
     canvas.height = baseImage.height;
     ctx.drawImage(baseImage, 0, 0);
 
     // Shadow image
-    const shadowImage = await loadImage('../BuildCardData/Assets/Shadow.png');
     ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
 
     // Weapon
-    const weaponImage = await loadImage(`../BuildCardData/Weapon/${BuildCardCWeaponName}.png`);
     ctx.drawImage(weaponImage, 809, 20, 64, 64);
 
     // Weapon rarity
-    const weaponRarityImage = await loadImage(`../BuildCardData/Assets/Rarelity/${WeapopnRarelity}.png`);
     ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
 
     // Character talents
-    const talentBaseImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
-    const scaledTalentBase = resizeImage(talentBaseImage, talentBaseImage.width / 1.5, talentBaseImage.height / 1.5);
-
     const talentTypes = ['通常', 'スキル', '爆発'];
-    const talentBackImage = await loadImage(`../BuildCardData/Assets/TalentBack.png`);
-    for (let i = 0; i < talentTypes.length; i++) {
-        const talentImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${talentTypes[i]}.png`);
+    talentTypes.forEach((type, i) => {
         ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
-        ctx.drawImage(talentImage, 52, 325 + i * 105, 60, 60);
-    }
+        ctx.drawImage(talentImages[i], 52, 325 + i * 105, 60, 60);
+
+        ctx.font = 'lighter 19px customFont';
+        ctx.fillStyle = CharConsteLevelflag[i] > 0 ? 'aqua' : 'white';
+        ctx.fillText(`Lv.${CharTalentLevel[i]}`, 57, 402 + i * 105);
+    });
 
     // Character name, weapon name and level
     ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
     ctx.fillRect(121, 77, 67, 27);  //長方形を描画
     ctx.fillRect(897, 60, 67, 27);
-    const LoveImage = await loadImage(`../BuildCardData/Assets/Love.png`);
     ctx.drawImage(LoveImage, 122, 78, 30, 24);
 
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
@@ -2297,21 +2307,6 @@ async function generate() {
 
     const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
-
-
-
-    // Character talent levels
-    const talentLevels = {
-        '通常': CharTalentLevel[0],
-        'スキル': CharTalentLevel[3],
-        '爆発': CharTalentLevel[4]
-    };
-    const talentColors = ['aqua', 'aqua', 'aqua'];
-    for (let i = 0; i < talentTypes.length; i++) {
-        ctx.font = 'lighter 19px customFont';
-        ctx.fillStyle = CharConsteLevelflag[i] > 0 ? talentColors[i] : 'white';
-        ctx.fillText(`Lv.${talentLevels[talentTypes[i]]}`, 57, 402 + i * 105);
-    }
 
     //凸
     const Cbase = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
