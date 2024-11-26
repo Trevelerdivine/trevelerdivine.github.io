@@ -2383,7 +2383,7 @@ async function generate() {
     }
   
     //ここから処理が重い
-
+    console.time('myTimer');
     //ステータス表示
     // 描画用データを事前に生成
     const formattedData = relocatedIndex.map((index, i) => {
@@ -2447,6 +2447,8 @@ async function generate() {
       ctx.fillText(c, offsetX, baseY);
     });
   
+    console.timeEnd('myTimer'); 
+    console.time('myTimer');
 
     //スコア
     const ScoreValue = OptimizedScore
@@ -2469,6 +2471,9 @@ async function generate() {
     }
     ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
+
+    console.timeEnd('myTimer'); 
+    console.time('myTimer'); 
 
     //最適メインステータス
     if (OptimizedStatus[1] == 7)
@@ -2550,6 +2555,8 @@ async function generate() {
       }
     }
 
+    console.timeEnd('myTimer'); 
+    console.time('myTimer');
 
     // レーダーチャートを作成
     for (let i = 0; i < 7; i++) {
@@ -2718,6 +2725,7 @@ async function generate() {
       const iconY = Ycord - 10 - iconSize / 2;
       ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
     }
+    console.timeEnd('myTimer'); 
     return canvas;
 }
 
