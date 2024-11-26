@@ -2476,84 +2476,64 @@ async function generate() {
     console.time('myTimer'); 
 
     //最適メインステータス
-    if (OptimizedStatus[1] == 7)
-    {
-      GobletMainStatus = ElementTypeList[Number(char_propaty[0])] + main_status_name[7];
-    }
-    else
-    {
-      GobletMainStatus = main_status_name[OptimizedStatus[1]];
-    }
+    // ゴブレットのメインステータス設定
+    GobletMainStatus = OptimizedStatus[1] === 7 
+    ? ElementTypeList[Number(char_propaty[0])] + main_status_name[7] 
+    : main_status_name[OptimizedStatus[1]];
+
+    // サークレットのメインステータス設定
     let CircletMainStatus = main_status_name[OptimizedStatus[2]];
-    if (CircletMainStatus == "会心率" || CircletMainStatus == "会心ダメージ")
-    {
-      CircletMainStatus = "会心系";
+    if (CircletMainStatus === "会心率" || CircletMainStatus === "会心ダメージ") {
+    CircletMainStatus = "会心系";
     }
 
-    // 時計のイメージを描画
-    ctx.font = 'normal 18px customFont';
-    ctx.drawImage(AfClockImage, 1471, 360, 50, 50);
-    // テキストの中央揃え
-    ctx.fillStyle = 'white';
-    let textWidth = ctx.measureText(ClockMainStatus).width; // 文字列の幅を取得
-    let textX = 1474 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-    ctx.fillText(ClockMainStatus, textX, 440);
-    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
-    ctx.fillRect(1579, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
+    // 時計、ゴブレット、サークレットの描画
+    const artifacts = [
+    { image: AfClockImage, x: 1471, y: 360, status: ClockMainStatus },
+    { image: AfGobletImage, x: 1647, y: 360, status: GobletMainStatus },
+    { image: AfCircletImage, x: 1810, y: 360, status: CircletMainStatus }
+    ];
+
+    ctx.font = 'normal 18px customFont'; // 共通フォント設定
+    artifacts.forEach(({ image, x, y, status }) => {
+    ctx.drawImage(image, x, y, 50, 50);
+
+    const textWidth = ctx.measureText(status).width;
+    const textX = x + 25 - textWidth / 2;
 
     ctx.fillStyle = 'white';
-    ctx.font = 'normal 18px customFont';
-    ctx.drawImage(AfGobletImage, 1647, 360, 50, 50);
-    // テキストの中央揃え
-    textWidth = ctx.measureText(GobletMainStatus).width; // 文字列の幅を取得
-    textX = 1649 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-    ctx.fillText(GobletMainStatus, textX, 440);
-    ctx.fillStyle = '#dcdcdc';  // 塗りつぶしの色を黒に設定
-    ctx.fillRect(1767, 359, 2, 94);  // (50, 50) の位置に幅200、高さ100の長方形を描画
+    ctx.fillText(status, textX, y + 80);
+    ctx.fillStyle = '#dcdcdc';
+    ctx.fillRect(x + 108, y - 1, 2, 94);
+    });
 
-    ctx.fillStyle = 'white';
-    ctx.font = 'normal 18px customFont';
-    ctx.drawImage(AfCircletImage, 1810, 360, 50, 50);
-    // テキストの中央揃え
-    textWidth = ctx.measureText(CircletMainStatus).width; // 文字列の幅を取得
-    textX = 1812 + 25 - textWidth / 2; // AfClockImageの中心に文字を配置
-    ctx.fillText(CircletMainStatus, textX, 440);
+    // メインステータス描画
+    await Promise.all(BuildMainStatus.map((status, i) => {
+    const x = 370 + 380 * i;
+    const value = status[0] === "HP" || status[0] === "攻撃力" || status[0] === "元素熟知"
+        ? status[1]
+        : status[1].toString() + "%";
+    return AfMainDisp(status[2], status[0], value, x, 20);
+    }));
 
-    for (let i = 0; i < 5; i++) {
-      if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
-      {
-        await AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
-      }
-      else
-      {
-        await AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
-      }
-    }
+    // サブステータス用JSONデータを一度だけ取得
+    const AfSubStatusData = await fetch("../data/JsonData/AfSubStatusData.json").then(res => res.json());
 
-    const AfSubStatusJsonData = await fetch("../data/JsonData/AfSubStatusData.json");
-    const AfSubStatusData = await AfSubStatusJsonData.json();
-    
-  //聖遺物サブステータス表示
-    for (let j = 0; j < 5; j++)
-    {
-      for (let i = 0; i < 4; i++)
-      {
-        const paramsName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].name
-        const urlName = AfSubStatusData[AfSubStatsList[j][i].appendPropId].url;
-        const buffValue =  AfSubStatsList[j][i].statValue;
-        if (paramsName)
-        {
-          if (paramsName == "HP" || paramsName == "攻撃力" || paramsName == "防御力" || paramsName == "元素熟知")
-          {
-            await AfSubDisp(urlName, paramsName.toLocaleString(), buffValue, 370 + 381 * j, 890 + 53 * i);
-          }
-          else
-          {
-            await AfSubDisp(urlName, paramsName, buffValue.toString() +"%", 370 + 381 * j, 890 + 53 * i);
-          }
+    // サブステータス描画
+    await Promise.all(AfSubStatsList.flatMap((stats, j) => 
+    stats.map((stat, i) => {
+        const paramsName = AfSubStatusData[stat.appendPropId]?.name;
+        const urlName = AfSubStatusData[stat.appendPropId]?.url;
+        const buffValue = stat.statValue;
+
+        if (paramsName) {
+            const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
+                ? paramsName.toLocaleString()
+                : `${paramsName}%`;
+            return AfSubDisp(urlName, value, buffValue, 370 + 381 * j, 890 + 53 * i);
         }
-      }
-    }
+    }).filter(Boolean)
+    ));
 
     console.timeEnd('myTimer'); 
     console.time('myTimer');
