@@ -2099,7 +2099,6 @@ async function monte_carlo_calculate()
   OptimizedScoreDist = save_score_distribute.slice();
   console.log(n_count);
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
-  displayImage();
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
@@ -2222,7 +2221,6 @@ async function displayImage() {
   outputElement.innerHTML = ""; 
   outputElement.appendChild(imgElement);
 }
-
 
 // 先ほどのgenerate関数をここに貼り付けてください
 async function generate() {
@@ -2497,11 +2495,11 @@ async function generate() {
     for (let i = 0; i < 5; i++) {
       if (BuildMainStatus[i][0] == "HP" || BuildMainStatus[i][0] == "攻撃力" || BuildMainStatus[i][0] == "元素熟知")
       {
-        AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
+        await AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1], 370 + 380 * i,20);
       }
       else
       {
-        AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
+        await AfMainDisp(BuildMainStatus[i][2], BuildMainStatus[i][0], BuildMainStatus[i][1].toString() + "%", 370 + 380 * i,20);
       }
     }
 
