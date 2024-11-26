@@ -2238,7 +2238,8 @@ async function generate() {
       { size: 380, fontSize: 30, X_value: 1445 , y_value: 7 }, // 3変数
       { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
       { size: 462, fontSize: 30, X_value: 1450 , y_value: -55 }, // 5変数
-      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 5変数
+      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 6変数
+      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 7変数
     ];
 
     const ChartColor = [
@@ -2352,6 +2353,8 @@ async function generate() {
       }
     }
 
+    //ここから処理が重い
+    
     //聖遺物
     ctx.globalAlpha = 0.7; 
     const AfPartsName = ['flower',"wing","clock","cup","crown"];
@@ -2365,20 +2368,27 @@ async function generate() {
     ctx.font = 'lighter 28px customFont';
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
     
-    for (let i = 0; i < 8; i++) {
-      let value = my_result_status[relocatedIndex[i]];
-      if (i > 3) {
-          value = Number((value * 100).toLocaleString()).toFixed(1) + "%";
-      } else {
-          value = Number(value.toFixed(0)).toLocaleString();
-      }
+    const statuses = Array.from({ length: 8 }, (_, i) => {
+      const value = my_result_status[relocatedIndex[i]];
+      const isPercentage = i > 3;
+
+      const formattedValue = isPercentage
+          ? `${(value * 100).toFixed(1)}%`
+          : value.toFixed(0).toLocaleString();
+
+      return {
+          text: formattedValue,
+          width: ctx.measureText(formattedValue).width,
+          yPos: 157.5 + 64.5 * i,
+      };
+    });
+
+    // 描画ループ
+    statuses.forEach(({ text, width, yPos }) => {
+        const xPos = 1290 - width; // 右揃え位置を計算
+        ctx.fillText(text, xPos, yPos);
+    });
   
-      // テキストの幅を取得して右揃え位置を計算
-      const textWidth = ctx.measureText(value).width;
-      const xPos = 1290 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
-  
-      ctx.fillText(value, xPos, 157.5 + 64.5 * i);
-    }
   
 
     //ステータス表示
@@ -2710,16 +2720,6 @@ async function generate() {
       const iconY = Ycord - 10 - iconSize / 2;
       ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
     }
-
-    function resizeImage(image, width, height) {
-        const resizedCanvas = document.createElement('canvas');
-        resizedCanvas.width = width;
-        resizedCanvas.height = height;
-        const resizedCtx = resizedCanvas.getContext('2d');
-        resizedCtx.drawImage(image, 0, 0, width, height);
-        return resizedCanvas;
-    }
-
     return canvas;
 }
 
