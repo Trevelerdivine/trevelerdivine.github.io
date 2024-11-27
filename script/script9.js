@@ -892,6 +892,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status)
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
+  let Cr_value;
   let zetsuen_dmgbuff = 0;
   for (let i = 0; i < 7; i++)
   {
@@ -943,13 +944,14 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   {
     fixed_status[5] += await (char_instance.calculate_char_fixed_cr(fixed_status) + weapon_instance.calculate_weapon_fixed_cr(fixed_status));
     result_status[5] = team_dynamic_buff[5] + fixed_status[5] + await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
+    Cr_value = result_status[5];
     if (fixed_status[5] > 1)
     {
       fixed_status[5] = 1;
     }
     if (result_status[5] > 1)
     {
-      result_status[5] = 1;
+      Cr_value = 1;
     }
   }
 
@@ -972,10 +974,10 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
   if (depend_status[2] == 1) {
-    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
+    exp_dmg = basic_dmg*(1 + Cr_value * result_status[6])
     *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
   } else {
-    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
+    exp_dmg = basic_dmg*(1 + Cr_value * result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
   }
   result_status.push(exp_dmg);
@@ -2403,10 +2405,11 @@ async function generate() {
     });
 
     // '+' の幅を事前計算
-    const plusWidth = ctx.measureText('+').width;
+    const plusWidth = 18.031997680664062;
+    
 
     // 描画ループ
-    ctx.font = 'lighter 14px customFont'; // フォント設定を一度だけ
+    ctx.font = 'lighter 14px customFont';
     formattedData.forEach(({ a, b, c }, i) => {
       const baseX = 1340; // 基本の右端X座標
       const baseY = 178 + 64.5 * i; // Y座標の位置
@@ -2417,28 +2420,28 @@ async function generate() {
       const cWidth = ctx.measureText(c).width;
 
       // 全体の幅を計算して、右揃えの起点位置を調整
-      const totalWidth = aWidth + bWidth + cWidth + plusWidth * 4;
+      const totalWidth = aWidth + bWidth + cWidth + plusWidth;
       let offsetX = baseX - totalWidth;
 
       // aの値を表示
       ctx.fillStyle = 'white';
       ctx.fillText(a, offsetX, baseY);
-      offsetX += aWidth + plusWidth;
+      offsetX += aWidth;
 
       // '+' を表示
       ctx.fillStyle = '#a4f74f';
       ctx.fillText('+', offsetX, baseY);
-      offsetX += plusWidth;
+      offsetX += plusWidth / 2;
 
       // bの値を表示
       ctx.fillStyle = '#a4f74f';
       ctx.fillText(b, offsetX, baseY);
-      offsetX += bWidth + plusWidth;
+      offsetX += bWidth;
 
       // '+' を表示
       ctx.fillStyle = '#00ccff';
       ctx.fillText('+', offsetX, baseY);
-      offsetX += plusWidth;
+      offsetX += plusWidth / 2;
 
       // cの値を表示
       ctx.fillStyle = '#00ccff';
@@ -2508,7 +2511,6 @@ async function generate() {
     return AfMainDisp(status[2], status[0], value, x, 20);
     }));
 
-    // サブステータス用JSONデータを一度だけ取得
     const AfSubStatusData = await fetch("../data/JsonData/AfSubStatusData.json").then(res => res.json());
 
     // サブステータス描画
