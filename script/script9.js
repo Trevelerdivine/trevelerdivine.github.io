@@ -2530,13 +2530,12 @@ async function generate() {
         const paramsName = AfSubStatusData[stat.appendPropId]?.name;
         const urlName = AfSubStatusData[stat.appendPropId]?.url;
         const buffValue = stat.statValue;
-        const SubtextWidth = AfSubStatusData[stat.appendPropId]?.width;
 
         if (paramsName) {
             const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
                 ? buffValue
                 : `${buffValue}%`;
-            return AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 890 + 53 * i, SubtextWidth);
+            return AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 890 + 53 * i);
         }
     }).filter(Boolean)
     ));
@@ -2688,7 +2687,7 @@ async function generate() {
       ctx.fillText(Leveltext, levelx + 1, 768);
     }
 
-    async function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord, SubtextWidth)
+    async function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord)
     {
       //聖遺物ステータス
       const IconImage = await loadImage(`../BuildCardData/emotes/${urlName}.png`); // アイコン画像をロード
@@ -2696,7 +2695,8 @@ async function generate() {
       // テキストの右揃え
       ctx.fillStyle = 'white';
       ctx.font = 'normal 26px customFont';
-      const X = Xcord - 10 - SubtextWidth; // 時計の画像の右端にテキストを右揃え
+      const NamesWidth = ctx.measureText(SubStatus).width;
+      const X = Xcord - 10 - NamesWidth; // 時計の画像の右端にテキストを右揃え
       
       ctx.fillText(SubStatus, X, Ycord);
       ctx.fillText(StatusName, Xcord - 320, Ycord);
