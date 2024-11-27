@@ -2199,10 +2199,19 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
   });
 }
 
-async function CreateBuildCard(){
+async function CreateBuildCard() {
   showLoadingSpinner();
-  setTimeout(displayImage, 100);
+  setTimeout(async () => {
+      try {
+          await displayImage(); // displayImage が非同期関数の場合
+      } catch (error) {
+          console.error("Error in displayImage:", error);
+      } finally {
+          hideLoadingSpinner();
+      }
+  }, 100);
 }
+
 
 async function displayImage() {
   // `generate`関数で画像を生成
@@ -2426,22 +2435,22 @@ async function generate() {
       // aの値を表示
       ctx.fillStyle = 'white';
       ctx.fillText(a, offsetX, baseY);
-      offsetX += aWidth;
+      offsetX += aWidth + 1;
 
       // '+' を表示
       ctx.fillStyle = '#a4f74f';
       ctx.fillText('+', offsetX, baseY);
-      offsetX += plusWidth / 2;
+      offsetX += plusWidth / 2 + 1;
 
       // bの値を表示
       ctx.fillStyle = '#a4f74f';
       ctx.fillText(b, offsetX, baseY);
-      offsetX += bWidth;
+      offsetX += bWidth + 1;
 
       // '+' を表示
       ctx.fillStyle = '#00ccff';
       ctx.fillText('+', offsetX, baseY);
-      offsetX += plusWidth / 2;
+      offsetX += plusWidth / 2 + 1;
 
       // cの値を表示
       ctx.fillStyle = '#00ccff';
