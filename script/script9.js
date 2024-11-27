@@ -2097,8 +2097,8 @@ async function monte_carlo_calculate()
 }
 
 async function DoCalculate(){
-  showLoadingSpinner()
-  setTimeout(monte_carlo_calculate, 100)
+  showLoadingSpinner();
+  setTimeout(monte_carlo_calculate, 100);
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
@@ -2197,6 +2197,11 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
   });
 }
 
+async function CreateBuildCard(){
+  showLoadingSpinner();
+  setTimeout(displayImage, 100);
+}
+
 async function displayImage() {
   // `generate`関数で画像を生成
   const canvas = await generate();
@@ -2214,6 +2219,7 @@ async function displayImage() {
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = ""; 
   outputElement.appendChild(imgElement);
+  hideLoadingSpinner();
 }
 
 // 先ほどのgenerate関数をここに貼り付けてください
@@ -2375,9 +2381,7 @@ async function generate() {
   
       ctx.fillText(value, xPos, 157.5 + 64.5 * i);
     }
-  
-    //ここから処理が重い
-    console.time('myTimer');
+
     //ステータス表示
     // 描画用データを事前に生成
     const formattedData = relocatedIndex.map((index, i) => {
@@ -2440,9 +2444,6 @@ async function generate() {
       ctx.fillStyle = '#00ccff';
       ctx.fillText(c, offsetX, baseY);
     });
-  
-    console.timeEnd('myTimer'); 
-    console.time('myTimer');
 
     //スコア
     const ScoreValue = OptimizedScore
@@ -2465,9 +2466,6 @@ async function generate() {
     }
     ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
-
-    console.timeEnd('myTimer'); 
-    console.time('myTimer'); 
 
     //最適メインステータス
     // ゴブレットのメインステータス設定
@@ -2528,9 +2526,6 @@ async function generate() {
         }
     }).filter(Boolean)
     ));
-
-    console.timeEnd('myTimer'); 
-    console.time('myTimer');
 
     // レーダーチャートを作成
     for (let i = 0; i < 7; i++) {
@@ -2699,7 +2694,6 @@ async function generate() {
       const iconY = Ycord - 10 - iconSize / 2;
       ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
     }
-    console.timeEnd('myTimer'); 
     return canvas;
 }
 

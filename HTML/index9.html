@@ -733,7 +733,7 @@
                 </div>
             </div>
             <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
-                <div class="button_solid004" onclick="displayImage()">
+                <div class="button_solid004" onclick="CreateBuildCard()">
                     ビルドカード生成
                 </div>
             </div>
@@ -1887,7 +1887,7 @@
         const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
         await font.load();
         document.fonts.add(font);
-        
+
         const JsonData1 = await fetch("../data/JsonData/DisplayCharData.json");
         CharJsonData = await JsonData1.json();
         const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
