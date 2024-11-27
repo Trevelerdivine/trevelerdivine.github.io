@@ -2522,7 +2522,7 @@ async function generate() {
             const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
                 ? buffValue
                 : `${buffValue}%`;
-            return AfSubDisp(urlName, paramsName, value, 370 + 381 * j, 890 + 53 * i);
+            return AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 890 + 53 * i);
         }
     }).filter(Boolean)
     ));
@@ -2683,14 +2683,14 @@ async function generate() {
       ctx.fillStyle = 'white';
       ctx.font = 'normal 26px customFont';
       const NamesWidth = ctx.measureText(SubStatus).width;
-      const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
+      const X = Xcord - 10 - NamesWidth; // 時計の画像の右端にテキストを右揃え
       
       ctx.fillText(SubStatus, X, Ycord);
       ctx.fillText(StatusName, Xcord - 320, Ycord);
 
       // アイコンをテキストの左側に描画
       const iconSize = 35; 
-      const iconX = Xcord - 320 - iconSize + 1;
+      const iconX = Xcord - 330 - iconSize + 1;
       const iconY = Ycord - 10 - iconSize / 2;
       ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
     }
