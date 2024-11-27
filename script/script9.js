@@ -2499,16 +2499,18 @@ async function generate() {
     ];
 
     ctx.font = 'normal 18px customFont'; // 共通フォント設定
-    artifacts.forEach(({ image, x, y, status }) => {
-    ctx.drawImage(image, x, y, 50, 50);
+    artifacts.forEach(({ image, x, y, status }, index) => {
 
-    const textWidth = ctx.measureText(status).width;
-    const textX = x + 25 - textWidth / 2;
+        ctx.drawImage(image, x, y, 50, 50);
 
-    ctx.fillStyle = 'white';
-    ctx.fillText(status, textX, y + 80);
-    ctx.fillStyle = '#dcdcdc';
-    ctx.fillRect(x + 108, y - 1, 2, 94);
+        const textWidth = ctx.measureText(status).width;
+        const textX = x + 25 - textWidth / 2;
+
+        ctx.fillStyle = 'white';
+        ctx.fillText(status, textX, y + 80);
+        if (index === 2) return; // 3個目（インデックス2）はスキップ
+        ctx.fillStyle = '#dcdcdc';
+        ctx.fillRect(x + 108, y - 1, 2, 94);
     });
 
     // メインステータス描画
