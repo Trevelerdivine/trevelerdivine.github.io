@@ -892,7 +892,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status)
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
-  let Cr_value;
   let zetsuen_dmgbuff = 0;
   for (let i = 0; i < 7; i++)
   {
@@ -950,7 +949,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     }
     if (result_status[5] > 1)
     {
-      Cr_value = 1;
+      result_status[5] = 1;
     }
   }
 
@@ -973,10 +972,10 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
   if (depend_status[2] == 1) {
-    exp_dmg = basic_dmg*(1 + Cr_value * result_status[6])
+    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
   } else {
-    exp_dmg = basic_dmg*(1 + Cr_value * result_status[6])
+    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
   }
   result_status.push(exp_dmg);
@@ -2418,13 +2417,13 @@ async function generate() {
       const cWidth = ctx.measureText(c).width;
 
       // 全体の幅を計算して、右揃えの起点位置を調整
-      const totalWidth = aWidth + plusWidth + bWidth + plusWidth + cWidth;
+      const totalWidth = aWidth + bWidth + cWidth + plusWidth * 4;
       let offsetX = baseX - totalWidth;
 
       // aの値を表示
       ctx.fillStyle = 'white';
       ctx.fillText(a, offsetX, baseY);
-      offsetX += aWidth;
+      offsetX += aWidth + plusWidth;
 
       // '+' を表示
       ctx.fillStyle = '#a4f74f';
@@ -2434,7 +2433,7 @@ async function generate() {
       // bの値を表示
       ctx.fillStyle = '#a4f74f';
       ctx.fillText(b, offsetX, baseY);
-      offsetX += bWidth;
+      offsetX += bWidth + plusWidth;
 
       // '+' を表示
       ctx.fillStyle = '#00ccff';
