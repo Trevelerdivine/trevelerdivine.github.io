@@ -2501,31 +2501,33 @@ async function generate() {
     ctx.fillRect(x + 108, y - 1, 2, 94);
     });
 
-    const mainStatusPromise = Promise.all(BuildMainStatus.map((status, i) => {
-      const x = 370 + 380 * i;
-      const value = ["HP", "攻撃力", "元素熟知"].includes(status[0])
-          ? status[1]
-          : status[1].toString() + "%";
-      return AfMainDisp(status[2], status[0], value, x, 20);
+    // メインステータス描画
+    await Promise.all(BuildMainStatus.map((status, i) => {
+    const x = 370 + 380 * i;
+    const value = status[0] === "HP" || status[0] === "攻撃力" || status[0] === "元素熟知"
+        ? status[1]
+        : status[1].toString() + "%";
+    return AfMainDisp(status[2], status[0], value, x, 20);
     }));
-    
-    const subStatusPromise = AfSubStatsList.flatMap((stats, j) =>
-        stats.map((stat, i) => {
-            const paramsName = AfSubStatusData[stat.appendPropId]?.name;
-            const urlName = AfSubStatusData[stat.appendPropId]?.url;
-            const buffValue = stat.statValue;
-    
-            if (paramsName) {
-                const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
-                    ? buffValue.toLocaleString()
-                    : `${buffValue}%`;
-                return AfSubDisp(urlName, paramsName, value, 370 + 381 * j, 890 + 53 * i);
-            }
-        }).filter(Boolean)
-    );
-    
-    await Promise.all([mainStatusPromise, subStatusPromise]);
-  
+
+    // サブステータス用JSONデータを一度だけ取得
+    const AfSubStatusData = await fetch("../data/JsonData/AfSubStatusData.json").then(res => res.json());
+
+    // サブステータス描画
+    await Promise.all(AfSubStatsList.flatMap((stats, j) => 
+    stats.map((stat, i) => {
+        const paramsName = AfSubStatusData[stat.appendPropId]?.name;
+        const urlName = AfSubStatusData[stat.appendPropId]?.url;
+        const buffValue = stat.statValue;
+
+        if (paramsName) {
+            const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
+                ? buffValue
+                : `${buffValue}%`;
+            return AfSubDisp(urlName, paramsName, value, 370 + 381 * j, 890 + 53 * i);
+        }
+    }).filter(Boolean)
+    ));
 
     console.timeEnd('myTimer'); 
     console.time('myTimer');
