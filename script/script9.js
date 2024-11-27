@@ -845,7 +845,6 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
 
   // 防御補正計算
   const deffCorrection = (CharcterLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharcterLevel + 100);
-  console.log(deffCorrection);
 
   // 補正係数の計算
   let element_resistCorrection = [0, 0, 0, 0, 0, 0, 0, 0, 0];// [炎補正, 水補正, 氷補正, 雷補正, 風補正, 草補正, 岩補正, 物理補正, 攻撃元素補正]
@@ -1174,7 +1173,6 @@ function hideLoadingSpinner() {
 
 async function monte_carlo_calculate()
 {
-  console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)
   {
@@ -1260,7 +1258,6 @@ async function monte_carlo_calculate()
   const reaction_check = document.getElementById("reactionoff_flag");
   const reaction_count_list = create_reactioncount_list();
   const reaction_bonus_list = create_reactionbonus_list();
-  console.log(correct_coeff);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
@@ -1456,7 +1453,6 @@ async function monte_carlo_calculate()
   save_af_score = af_score;
   const MainStatusIndexList = await DefineMainStatus(depend_status, af_main_status_buff);
   let ExpDmgList = [];
-  console.log(MainStatusIndexList);
   let AllPatternResult;
   let MainStatusList;
   let MainStatusBuff;
@@ -1800,7 +1796,6 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
   optimaize_af_score = af_score;
   af_score = save_af_score;
@@ -2099,7 +2094,6 @@ async function monte_carlo_calculate()
   OptimizedScoreDist = save_score_distribute.slice();
   console.log(n_count);
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
-  console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
 async function DoCalculate(){
@@ -2507,33 +2501,31 @@ async function generate() {
     ctx.fillRect(x + 108, y - 1, 2, 94);
     });
 
-    // メインステータス描画
-    await Promise.all(BuildMainStatus.map((status, i) => {
-    const x = 370 + 380 * i;
-    const value = status[0] === "HP" || status[0] === "攻撃力" || status[0] === "元素熟知"
-        ? status[1]
-        : status[1].toString() + "%";
-    return AfMainDisp(status[2], status[0], value, x, 20);
+    const mainStatusPromise = Promise.all(BuildMainStatus.map((status, i) => {
+      const x = 370 + 380 * i;
+      const value = ["HP", "攻撃力", "元素熟知"].includes(status[0])
+          ? status[1]
+          : status[1].toString() + "%";
+      return AfMainDisp(status[2], status[0], value, x, 20);
     }));
-
-    // サブステータス用JSONデータを一度だけ取得
-    const AfSubStatusData = await fetch("../data/JsonData/AfSubStatusData.json").then(res => res.json());
-
-    // サブステータス描画
-    await Promise.all(AfSubStatsList.flatMap((stats, j) => 
-    stats.map((stat, i) => {
-        const paramsName = AfSubStatusData[stat.appendPropId]?.name;
-        const urlName = AfSubStatusData[stat.appendPropId]?.url;
-        const buffValue = stat.statValue;
-
-        if (paramsName) {
-            const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
-                ? paramsName.toLocaleString()
-                : `${paramsName}%`;
-            return AfSubDisp(urlName, value, buffValue, 370 + 381 * j, 890 + 53 * i);
-        }
-    }).filter(Boolean)
-    ));
+    
+    const subStatusPromise = AfSubStatsList.flatMap((stats, j) =>
+        stats.map((stat, i) => {
+            const paramsName = AfSubStatusData[stat.appendPropId]?.name;
+            const urlName = AfSubStatusData[stat.appendPropId]?.url;
+            const buffValue = stat.statValue;
+    
+            if (paramsName) {
+                const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
+                    ? buffValue.toLocaleString()
+                    : `${buffValue}%`;
+                return AfSubDisp(urlName, paramsName, value, 370 + 381 * j, 890 + 53 * i);
+            }
+        }).filter(Boolean)
+    );
+    
+    await Promise.all([mainStatusPromise, subStatusPromise]);
+  
 
     console.timeEnd('myTimer'); 
     console.time('myTimer');
