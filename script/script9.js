@@ -2284,14 +2284,11 @@ async function generate() {
       `../BuildCardData/Assets/TalentBack.png`,
       `../BuildCardData/Assets/Love.png`,
       `../BuildCardData/命の星座/${charElementType}LOCK.png`,
-      `../BuildCardData/Assets/Clock.png`,
-      `../BuildCardData/Assets/Goblet.png`,
-      `../BuildCardData/Assets/Circlet.png`,
       ...['通常', 'スキル', '爆発'].map(type => `../BuildCardData/Character/${BuildCardCharName}/${type}.png`)
     ];
     const images = await Promise.all(imagePaths.map(loadImage));
     const [
-        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, AfClockImage, AfGobletImage, AfCircletImage, ...talentImages
+        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, ...talentImages
     ] = images;
 
 
@@ -2493,16 +2490,13 @@ async function generate() {
 
     // 時計、ゴブレット、サークレットの描画
     const artifacts = [
-    { image: AfClockImage, x: 1471, y: 360, status: ClockMainStatus },
-    { image: AfGobletImage, x: 1647, y: 360, status: GobletMainStatus },
-    { image: AfCircletImage, x: 1810, y: 360, status: CircletMainStatus }
+    {x: 1471, y: 360, status: ClockMainStatus },
+    {x: 1647, y: 360, status: GobletMainStatus },
+    {x: 1810, y: 360, status: CircletMainStatus }
     ];
 
     ctx.font = 'normal 18px customFont'; // 共通フォント設定
-    artifacts.forEach(({ image, x, y, status }, index) => {
-
-        ctx.drawImage(image, x, y, 50, 50);
-
+    artifacts.forEach(({x, y, status }, index) => {
         const textWidth = ctx.measureText(status).width;
         const textX = x + 25 - textWidth / 2;
 
