@@ -2233,7 +2233,7 @@ async function displayImage() {
       const binaryString = atob(base64.split(",")[1]); // データ部分のみデコード
       return Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
     };
-
+    
     const toBlob = (base64, mimeType = "image/png") => {
         try {
             const uintArray = base64ToUint8Array(base64);
@@ -2243,16 +2243,31 @@ async function displayImage() {
             return null;
         }
     };
-
+    
+    const imageUrl = "data:image/png;base64, ..."; // Base64データを指定してください
     const blob = toBlob(imageUrl);
     const imageFile = new File([blob], "image.png", { type: "image/png" });
+    
     const btn = document.getElementById("downloadLink");
     btn.addEventListener("click", async () => {
-      try {
-        await navigator.share(imageFile);
-      } catch (err) {
-      }
-    });
+        if (!navigator.share) {
+            return;
+        }
+    
+        try {
+            // 共有データを構築
+            const shareData = {
+                files: [imageFile], // Fileオブジェクトを配列で指定
+                title: "imageShare",
+                text: "画像を保存",
+            };
+    
+            // シェアを実行
+            await navigator.share(shareData);
+        } catch (err) {
+            console.error("共有に失敗しました:", err);
+        }
+    });  
   }
 
   // `<img>` 要素を作成
