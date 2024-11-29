@@ -2224,32 +2224,10 @@ async function displayImage() {
   // `canvas`を画像URLに変換
   const imageUrl = canvas.toDataURL("image/png");
 
-  const toBlob = (base64) => {
-    const decodedData = atob(base64.replace(/^.*,/, ""));
-    const buffers = new Uint8Array(decodedData.length);
-    for (let i = 0; i < decodedData.length; i++) {
-      buffers[i] = decodedData.charCodeAt(i);
-    }
-    try {
-      const blob = new Blob([buffers.buffer], {
-        type: "image/png",
-      });
-      return blob;
-    } catch (e) {
-      return null;
-    }
-  };
-
-  const blob = toBlob(imageUrl);
-
-  const imageFile = new File([blob], "image.png", {
-    type: "image/png",
-  });
-
   const btn = document.getElementById("button_dl");
   btn.addEventListener("click", async () => {
     try {
-      await navigator.share(imageFile);
+      await navigator.share(imageUrl);
     } catch (err) {
     }
   });
