@@ -416,11 +416,11 @@ body {
     font-weight: 600;
     background: #f4b218;
     border-radius: 8px;
-    border-bottom: solid 5px #8c5604;
+    border-bottom: solid 5px #a37711;
     cursor: pointer; /* カーソルをポインターに変更 */
   }
   .button_solid005:active { /* クリック時にもホバー効果を持続させる */
-    border-bottom: solid 2px #8c5604;
+    border-bottom: solid 2px #a37711;
   }
 
     /* solid006 */
@@ -432,11 +432,11 @@ body {
       font-weight: 600;
       background: #95e35d;
       border-radius: 8px;
-      border-bottom: solid 5px #365321;
+      border-bottom: solid 5px #5d9137;
       cursor: pointer; /* カーソルをポインターに変更 */
     }
     .button_solid005:active { /* クリック時にもホバー効果を持続させる */
-      border-bottom: solid 2px #365321;
+      border-bottom: solid 2px #5d9137;
     }
   
   .button-1 {

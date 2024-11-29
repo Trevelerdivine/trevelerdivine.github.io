@@ -2101,6 +2101,10 @@ async function monte_carlo_calculate()
 async function DoCalculate(){
   showLoadingSpinner();
   setTimeout(monte_carlo_calculate, 100);
+  let div2 = document.getElementById("button_create");
+  div2.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+  let div3 = document.getElementById("button_dl");
+  div3.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
