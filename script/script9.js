@@ -2224,10 +2224,27 @@ async function displayImage() {
   // `canvas`を画像URLに変換
   const imageUrl = canvas.toDataURL("image/png");
 
+  const base64ToUint8Array = (base64) => {
+    const binaryString = atob(base64.split(",")[1]); // データ部分のみデコード
+    return Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
+  };
+
+  const toBlob = (base64, mimeType = "image/png") => {
+      try {
+          const uintArray = base64ToUint8Array(base64);
+          return new Blob([uintArray.buffer], { type: mimeType });
+      } catch (e) {
+          console.error("Blob生成エラー:", e);
+          return null;
+      }
+  };
+
+  const blob = toBlob(imageUrl);
+  const imageFile = new File([blob], "image.png", { type: "image/png" });
   const btn = document.getElementById("button_dl");
   btn.addEventListener("click", async () => {
     try {
-      await navigator.share(imageUrl);
+      await navigator.share(imageFile);
     } catch (err) {
     }
   });
