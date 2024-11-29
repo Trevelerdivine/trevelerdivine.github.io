@@ -2246,7 +2246,7 @@ async function displayImage() {
     type: "image/png",
   });
 
-  const btn = document.querySelector("downloadLink");
+  const btn = document.getElementById("button_dl");
   btn.addEventListener("click", async () => {
     try {
       await navigator.share(imageFile);
