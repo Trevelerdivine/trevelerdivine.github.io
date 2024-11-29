@@ -2260,8 +2260,6 @@ async function displayImage() {
             // 共有データを構築
             const shareData = {
                 files: [imageFile], // Fileオブジェクトを配列で指定
-                title: "imageShare",
-                text: "画像を保存",
             };
     
             // シェアを実行
