@@ -2102,9 +2102,9 @@ async function DoCalculate(){
   showLoadingSpinner();
   setTimeout(monte_carlo_calculate, 100);
   let div2 = document.getElementById("button_create");
-  div2.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+  div2.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
   let div3 = document.getElementById("button_dl");
-  div3.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+  div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
@@ -2231,6 +2231,9 @@ async function displayImage() {
   imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
   imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
 
+  //ダウンロード用のリンク設定
+  const downloadLink = document.getElementById("downloadLink");
+  downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
 
   // 以前の画像をクリアして新しい画像を表示
   const outputElement = document.getElementById("output");
