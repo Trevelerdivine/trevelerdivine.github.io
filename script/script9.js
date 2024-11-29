@@ -2222,53 +2222,7 @@ async function displayImage() {
   const canvas = await generate();
   
   // `canvas`を画像URLに変換
-  const imageUrl = canvas.toDataURL("image/png", 0.5);
-
-  if (isPC() || !navigator.share) {
-      //ダウンロード用のリンク設定
-  const downloadLink = document.getElementById("downloadLink");
-  downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
-  }
-  else
-  {
-    const base64ToUint8Array = (base64) => {
-      const binaryString = atob(base64.split(",")[1]); // データ部分のみデコード
-      return Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
-    };
-    
-    const toBlob = (base64, mimeType = "image/png") => {
-        try {
-            const uintArray = base64ToUint8Array(base64);
-            return new Blob([uintArray.buffer], { type: mimeType });
-        } catch (e) {
-            console.error("Blob生成エラー:", e);
-            return null;
-        }
-    };
-    
-    const imageUrl = "data:image/png;base64, ..."; // Base64データを指定してください
-    const blob = toBlob(imageUrl);
-    const imageFile = new File([blob], "image.png", { type: "image/png" });
-    
-    const btn = document.getElementById("downloadLink");
-    btn.addEventListener("click", async () => {
-        if (!navigator.share) {
-            return;
-        }
-    
-        try {
-            // 共有データを構築
-            const shareData = {
-                files: [imageFile], // Fileオブジェクトを配列で指定
-            };
-    
-            // シェアを実行
-            await navigator.share(shareData);
-        } catch (err) {
-            console.error("共有に失敗しました:", err);
-        }
-    });  
-  }
+  const imageUrl = canvas.toDataURL("image/png");
 
   // `<img>` 要素を作成
   const imgElement = document.createElement("img");
@@ -2277,24 +2231,20 @@ async function displayImage() {
   imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
   imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
 
+  //ダウンロード用のリンク設定
+  const downloadLink = document.getElementById("downloadLink");
+  downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
+
   //ビルドカードダウンロード用のボタンを表示
   let div3 = document.getElementById("button_dl");
   div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
+  
 
   // 以前の画像をクリアして新しい画像を表示
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = ""; 
   outputElement.appendChild(imgElement);
   hideLoadingSpinner();
-}
-
-function isPC() {
-  let o = window.navigator.userAgent.toLowerCase()
-    , s = ["android", "iphone", "ipad", "ipod", "blackberry", "windows phone"];
-  for (let a = 0; a < s.length; a++)
-      if (o.indexOf(s[a]) > -1)
-          return !1;
-  return !0
 }
 
 async function generate() {
