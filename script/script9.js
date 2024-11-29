@@ -2223,8 +2223,10 @@ async function displayImage() {
   // `<img>` 要素を作成
   const imgElement = document.createElement("img");
   imgElement.src = imageUrl;
-  imgElement.style.width = "500px";  // 幅を500pxに設定（任意の値に変更可能）
-  imgElement.style.height = "auto";  // 高さを自動で設定（アスペクト比を維持）
+  imgElement.style.width = "90vw"; // 横幅を画面の90%に設定
+  imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
+  imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
+
 
   // 以前の画像をクリアして新しい画像を表示
   const outputElement = document.getElementById("output");
