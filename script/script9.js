@@ -2246,14 +2246,12 @@ async function displayImage() {
     type: "image/png",
   });
 
-  navigator.share({
-    text: "共有テスト",
-    url: "https://codepen.io/de_teiu_tkg/pen/dyWaaNP",
-    files: [imageFile],
-  }).then(() => {
-    console.log("共有成功.");
-  }).catch((error) => {
-    console.log(error);
+  const btn = document.querySelector("downloadLink");
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.share(imageFile);
+    } catch (err) {
+    }
   });
 
   // `<img>` 要素を作成
