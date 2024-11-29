@@ -2091,7 +2091,11 @@ async function monte_carlo_calculate()
         document.getElementById(ids[3]).innerHTML = (ExpDmgList[i - 1][0] * 100 / ExpDmgList[0][0]).toFixed(1) + "％";
     }
   }
-  
+
+  //ビルドカード生成ボタンを表示
+  let div2 = document.getElementById("button_create");
+  div2.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
+
   MyAfScoreDist = my_af_score_distribution.slice();
   OptimizedScoreDist = save_score_distribute.slice();
   console.log(n_count);
@@ -2101,10 +2105,6 @@ async function monte_carlo_calculate()
 async function DoCalculate(){
   showLoadingSpinner();
   setTimeout(monte_carlo_calculate, 100);
-  let div2 = document.getElementById("button_create");
-  div2.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
-  let div3 = document.getElementById("button_dl");
-  div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
@@ -2234,6 +2234,10 @@ async function displayImage() {
   //ダウンロード用のリンク設定
   const downloadLink = document.getElementById("downloadLink");
   downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
+
+  //ビルドカードダウンロード用のボタンを表示
+  let div3 = document.getElementById("button_dl");
+  div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
 
   // 以前の画像をクリアして新しい画像を表示
   const outputElement = document.getElementById("output");
