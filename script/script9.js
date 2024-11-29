@@ -2224,6 +2224,38 @@ async function displayImage() {
   // `canvas`を画像URLに変換
   const imageUrl = canvas.toDataURL("image/png");
 
+  const toBlob = (base64) => {
+    const decodedData = atob(base64.replace(/^.*,/, ""));
+    const buffers = new Uint8Array(decodedData.length);
+    for (let i = 0; i < decodedData.length; i++) {
+      buffers[i] = decodedData.charCodeAt(i);
+    }
+    try {
+      const blob = new Blob([buffers.buffer], {
+        type: "image/png",
+      });
+      return blob;
+    } catch (e) {
+      return null;
+    }
+  };
+
+  const blob = toBlob(imageUrl);
+
+  const imageFile = new File([blob], "image.png", {
+    type: "image/png",
+  });
+
+  navigator.share({
+    text: "共有テスト",
+    url: "https://codepen.io/de_teiu_tkg/pen/dyWaaNP",
+    files: [imageFile],
+  }).then(() => {
+    console.log("共有成功.");
+  }).catch((error) => {
+    console.log(error);
+  });
+
   // `<img>` 要素を作成
   const imgElement = document.createElement("img");
   imgElement.src = imageUrl;
@@ -2246,7 +2278,6 @@ async function displayImage() {
   hideLoadingSpinner();
 }
 
-// 先ほどのgenerate関数をここに貼り付けてください
 async function generate() {
     const relocatedIndex = [0,4,1,2,5,6,3,7];
     const display_status = [1,1,1,1,1,1,1,1];
