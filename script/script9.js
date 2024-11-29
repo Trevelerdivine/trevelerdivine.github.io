@@ -2225,45 +2225,19 @@ async function displayImage() {
   const imageUrl = canvas.toDataURL("image/png");
 
   if (isPC() || !navigator.share) {
-    
+    //ダウンロード用のリンク設定
+    const downloadLink = document.getElementById("downloadLink");
+    downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
   }
   else
   {
-    const base64ToUint8Array = (base64) => {
-      const binaryString = atob(base64.split(",")[1]); // データ部分のみデコード
-      return Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
-    };
-    
-    const toBlob = (base64, mimeType = "image/png") => {
-        try {
-            const uintArray = base64ToUint8Array(base64);
-            return new Blob([uintArray.buffer], { type: mimeType });
-        } catch (e) {
-            console.error("Blob生成エラー:", e);
-            return null;
-        }
-    };
-    
-    const imageUrl = "data:image/png;base64, ..."; // Base64データを指定してください
-    const blob = toBlob(imageUrl);
-    const imageFile = new File([blob], "image.png", { type: "image/png" });
-    
     const btn = document.getElementById("downloadLink");
     btn.addEventListener("click", async () => {
         if (!navigator.share) {
             return;
         }
-    
         try {
-            // 共有データを構築
-            const shareData = {
-                files: [imageFile], // Fileオブジェクトを配列で指定
-                title: "imageShare",
-                text: "画像を保存",
-            };
-    
-            // シェアを実行
-            await navigator.share(shareData);
+            await navigator.share(imageUrl);
         } catch (err) {
             console.error("共有に失敗しました:", err);
         }
@@ -2276,10 +2250,6 @@ async function displayImage() {
   imgElement.style.width = "90vw"; // 横幅を画面の90%に設定
   imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
   imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
-
-  //ダウンロード用のリンク設定
-  const downloadLink = document.getElementById("downloadLink");
-  downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
 
   //ビルドカードダウンロード用のボタンを表示
   let div3 = document.getElementById("button_dl");
