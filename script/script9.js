@@ -2224,26 +2224,6 @@ async function displayImage() {
   // `canvas`を画像URLに変換
   const imageUrl = canvas.toDataURL("image/png");
 
-  if (isPC() || !navigator.share) {
-    //ダウンロード用のリンク設定
-    const downloadLink = document.getElementById("downloadLink");
-    downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
-  }
-  else
-  {
-    const btn = document.getElementById("downloadLink");
-    btn.addEventListener("click", async () => {
-        if (!navigator.share) {
-            return;
-        }
-        try {
-            await navigator.share(imageUrl);
-        } catch (err) {
-            console.error("共有に失敗しました:", err);
-        }
-    });  
-  }
-
   // `<img>` 要素を作成
   const imgElement = document.createElement("img");
   imgElement.src = imageUrl;
@@ -2251,24 +2231,20 @@ async function displayImage() {
   imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
   imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
 
+  //ダウンロード用のリンク設定
+  const downloadLink = document.getElementById("downloadLink");
+  downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
+
   //ビルドカードダウンロード用のボタンを表示
   let div3 = document.getElementById("button_dl");
   div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
+  
 
   // 以前の画像をクリアして新しい画像を表示
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = ""; 
   outputElement.appendChild(imgElement);
   hideLoadingSpinner();
-}
-
-function isPC() {
-  let o = window.navigator.userAgent.toLowerCase()
-    , s = ["android", "iphone", "ipad", "ipod", "blackberry", "windows phone"];
-  for (let a = 0; a < s.length; a++)
-      if (o.indexOf(s[a]) > -1)
-          return !1;
-  return !0
 }
 
 async function generate() {

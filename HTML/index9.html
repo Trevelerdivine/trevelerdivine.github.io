@@ -733,13 +733,13 @@
                 </div>
             </div>
             <br>
-            <div id = "button_create"style="height: 50px; display: flex; justify-content: center; align-items: center; display: none;">
+            <div id = "button_create"style="height: 50px; display: flex; justify-content: center; align-items: center; display: hidden;">
                 <div class="button_solid005" onclick="CreateBuildCard()">
                     ビルドカード生成
                 </div>
             </div>
             <br>
-            <div id="button_dl" style="height: 50px; display: flex; justify-content: center; align-items: center; display: none;">
+            <div id="button_dl" style="height: 50px; display: flex; justify-content: center; align-items: center; display: hidden;">
                 <!-- ダウンロードボタン -->
                 <a id="downloadLink" href="#" download="downloaded_image.png" class="button_solid006">
                     画像をダウンロード
@@ -1785,9 +1785,9 @@
 
     function ResetParameter(){
         let div2 = document.getElementById("button_create");
-        div2.style.display = "none"; // または必要に応じて適切なdisplay値を使用します
+        div2.style.display = "hidden"; // または必要に応じて適切なdisplay値を使用します
         let div3 = document.getElementById("button_dl");
-        div3.style.display = "none"; // または必要に応じて適切なdisplay値を使用します
+        div3.style.display = "hidden"; // または必要に応じて適切なdisplay値を使用します
 
         for (let i = 1; i <= 10; i++) {
             ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
