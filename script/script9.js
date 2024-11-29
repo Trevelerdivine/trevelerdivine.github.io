@@ -2267,7 +2267,7 @@ async function displayImage() {
   downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
 
   //ビルドカードダウンロード用のボタンを表示
-  let div3 = document.getElementById("downloadLink");
+  let div3 = document.getElementById("button_dl");
   div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
 
   // 以前の画像をクリアして新しい画像を表示
