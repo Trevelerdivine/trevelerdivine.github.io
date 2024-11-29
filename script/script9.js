@@ -2224,30 +2224,36 @@ async function displayImage() {
   // `canvas`を画像URLに変換
   const imageUrl = canvas.toDataURL("image/png");
 
-  const base64ToUint8Array = (base64) => {
-    const binaryString = atob(base64.split(",")[1]); // データ部分のみデコード
-    return Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
-  };
+  if (isPC() || !navigator.share) {
+    
+  }
+  else
+  {
+    const base64ToUint8Array = (base64) => {
+      const binaryString = atob(base64.split(",")[1]); // データ部分のみデコード
+      return Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
+    };
 
-  const toBlob = (base64, mimeType = "image/png") => {
+    const toBlob = (base64, mimeType = "image/png") => {
+        try {
+            const uintArray = base64ToUint8Array(base64);
+            return new Blob([uintArray.buffer], { type: mimeType });
+        } catch (e) {
+            console.error("Blob生成エラー:", e);
+            return null;
+        }
+    };
+
+    const blob = toBlob(imageUrl);
+    const imageFile = new File([blob], "image.png", { type: "image/png" });
+    const btn = document.getElementById("downloadLink");
+    btn.addEventListener("click", async () => {
       try {
-          const uintArray = base64ToUint8Array(base64);
-          return new Blob([uintArray.buffer], { type: mimeType });
-      } catch (e) {
-          console.error("Blob生成エラー:", e);
-          return null;
+        await navigator.share(imageFile);
+      } catch (err) {
       }
-  };
-
-  const blob = toBlob(imageUrl);
-  const imageFile = new File([blob], "image.png", { type: "image/png" });
-  const btn = document.getElementById("button_dl");
-  btn.addEventListener("click", async () => {
-    try {
-      await navigator.share(imageFile);
-    } catch (err) {
-    }
-  });
+    });
+  }
 
   // `<img>` 要素を作成
   const imgElement = document.createElement("img");
@@ -2261,7 +2267,7 @@ async function displayImage() {
   downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
 
   //ビルドカードダウンロード用のボタンを表示
-  let div3 = document.getElementById("button_dl");
+  let div3 = document.getElementById("downloadLink");
   div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
 
   // 以前の画像をクリアして新しい画像を表示
@@ -2269,6 +2275,15 @@ async function displayImage() {
   outputElement.innerHTML = ""; 
   outputElement.appendChild(imgElement);
   hideLoadingSpinner();
+}
+
+function isPC() {
+  let o = window.navigator.userAgent.toLowerCase()
+    , s = ["android", "iphone", "ipad", "ipod", "blackberry", "windows phone"];
+  for (let a = 0; a < s.length; a++)
+      if (o.indexOf(s[a]) > -1)
+          return !1;
+  return !0
 }
 
 async function generate() {
