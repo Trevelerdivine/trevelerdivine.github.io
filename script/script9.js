@@ -2553,7 +2553,7 @@ async function generate() {
     // 時計、ゴブレット、サークレットの描画
     const artifacts = [
     {x: 1471, y: 360, status: ClockMainStatus },
-    {x: 1647, y: 360, status: GobletMainStatus },
+    {x: 1642, y: 360, status: GobletMainStatus },
     {x: 1810, y: 360, status: CircletMainStatus }
     ];
 
