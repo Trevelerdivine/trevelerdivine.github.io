@@ -2443,7 +2443,7 @@ async function generate() {
     for (let i = 0; i < 5; i++) {
       AfTypeimagePaths.push(`../BuildCardData/artifact/${afdata["AfMap"][AfNumList[i].toString()]["名前"]}/${AfPartsName[i]}.png`); 
     }
-    const Afimages = await Promise.all(ConsteimagePaths.map(loadImage));
+    const AfImages = await Promise.all(ConsteimagePaths.map(loadImage));
     for (let i = 0; i < 5; i++) {
       ctx.drawImage(AfImages[i], -20 + 388 * i, 630, 300, 300);
     }
