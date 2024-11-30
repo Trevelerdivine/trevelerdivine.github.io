@@ -2230,7 +2230,7 @@ async function displayImage() {
   const canvas = await generate();
   
   // `canvas`を画像URLに変換
-  const imageUrl = canvas.toDataURL("image/png", 0.5);
+  const imageUrl = canvas.toDataURL("image/jpeg", 0.5);
 
   // `<img>` 要素を作成
   const imgElement = document.createElement("img");
