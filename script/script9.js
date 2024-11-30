@@ -2246,7 +2246,7 @@ async function displayImage() {
     // PCまたは共有APIが利用できない場合：画像をダウンロード
     //ダウンロード用のリンク設定
     shareButton.href = imageUrl; // 画像のURLをダウンロードリンクに設定
-    shareButton.download = "image.png";
+    shareButton.download = "image.jpeg";
   } else {
     shareButton.addEventListener("click", async () => {
       try {
@@ -2260,12 +2260,12 @@ async function displayImage() {
                 reject(new Error("Blobの生成に失敗しました"));
               }
             },
-            "image/png" // PNG形式で出力
+            "image/jpeg" // jpeg
           );
         });
 
         // BlobをFileに変換
-        const file = new File([blob], "shared_image.png", { type: "image/png" });
+        const file = new File([blob], "shared_image.jpeg", { type: "image/jpeg" });
 
         // Navigator.shareを使用して共有
         if (navigator.share) {
