@@ -2231,9 +2231,43 @@ async function displayImage() {
   imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
   imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
 
-  //ダウンロード用のリンク設定
-  const downloadLink = document.getElementById("downloadLink");
-  downloadLink.href = imageUrl; // 画像のURLをダウンロードリンクに設定
+
+  // シェアボタンで共有
+  const shareButton = document.getElementById("downloadLink");
+  shareButton.addEventListener("click", async () => {
+    try {
+      // CanvasをBlobに変換
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error("Blobの生成に失敗しました"));
+            }
+          },
+          "image/png" // PNG形式で出力
+        );
+      });
+
+      // BlobをFileに変換
+      const file = new File([blob], "shared_image.png", { type: "image/png" });
+
+      // Navigator.shareを使用して共有
+      if (navigator.share) {
+        await navigator.share({
+          files: [file],
+          title: "Generated Image",
+          text: "Check out this image!",
+        });
+        console.log("共有に成功しました！");
+      } else {
+        console.error("Web Share APIがサポートされていません。");
+      }
+    } catch (error) {
+      console.error("共有中にエラーが発生しました:", error);
+    }
+  });
 
   //ビルドカードダウンロード用のボタンを表示
   let div3 = document.getElementById("button_dl");
