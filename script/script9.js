@@ -2230,7 +2230,7 @@ async function displayImage() {
   const canvas = await generate();
   
   // `canvas`を画像URLに変換
-  const imageUrl = canvas.toDataURL("image/jpeg", 0.5);
+  const imageUrl = canvas.toDataURL("image/jpeg", 0.7071067811865476);
 
   // `<img>` 要素を作成
   const imgElement = document.createElement("img");
@@ -2591,7 +2591,7 @@ async function generate() {
             const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
                 ? buffValue
                 : `${buffValue}%`;
-            return AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 890 + 53 * i);
+            return AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 900 + 53 * i);
         }
     }).filter(Boolean)
     ));
