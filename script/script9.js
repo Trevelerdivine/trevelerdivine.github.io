@@ -2347,11 +2347,12 @@ async function generate() {
       `../BuildCardData/Assets/TalentBack.png`,
       `../BuildCardData/Assets/Love.png`,
       `../BuildCardData/命の星座/${charElementType}LOCK.png`,
+      `../BuildCardData/命の星座/${charElementType}.png`,
       ...['通常', 'スキル', '爆発'].map(type => `../BuildCardData/Character/${BuildCardCharName}/${type}.png`)
     ];
     const images = await Promise.all(imagePaths.map(loadImage));
     const [
-        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, ...talentImages
+        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, CImageEffect, ...talentImages
     ] = images;
 
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
@@ -2414,20 +2415,25 @@ async function generate() {
     console.time('myTimer'); 
 
     //凸
-    for (let i = 1; i < 7; i++) {
-      if (i < CharConstellationsIndex + 1)
-      {
-        const CImage = await loadImage(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);
-        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
-        ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
-        ctx.drawImage(CImage, 668, -18 + i * 93, 56, 56);
-      }
-      else
-      {
-        const CImageEffect = await loadImage(`../BuildCardData/命の星座/${charElementType}.png`);
-        ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
-        ctx.drawImage(Clock, 659, -29 + i * 93, 80, 80);
-      }
+    const ConsteimagePaths = [];
+
+    for (let i = 1; i < CharConstellationsIndex + 1; i++)
+    {
+      ConsteimagePaths.push(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);        
+    }
+
+    const Consteimages = await Promise.all(ConsteimagePaths.map(loadImage));
+
+    for (let i = 1; i < CharConstellationsIndex + 1; i++) 
+    {
+      ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
+      ctx.drawImage(Consteimages[i - 1], 668, -18 + i * 93, 56, 56); 
+    }
+
+    for (let i = CharConstellationsIndex + 1; i < 7; i++)
+    {
+      ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
+      ctx.drawImage(Clock, 659, -29 + i * 93, 80, 80);
     }
   
     //聖遺物
