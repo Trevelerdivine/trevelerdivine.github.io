@@ -2246,6 +2246,7 @@ async function displayImage() {
     // PCまたは共有APIが利用できない場合：画像をダウンロード
     //ダウンロード用のリンク設定
     shareButton.href = imageUrl; // 画像のURLをダウンロードリンクに設定
+    shareButton.download = "image.png";
   } else {
     shareButton.addEventListener("click", async () => {
       try {
@@ -2270,7 +2271,7 @@ async function displayImage() {
         if (navigator.share) {
           await navigator.share({
             files: [file],
-            title: "Generated Image",
+            title: "ビルドカード",
             text: "Check out this image!",
           });
           console.log("共有に成功しました！");
