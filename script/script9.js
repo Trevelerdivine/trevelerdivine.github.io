@@ -2228,27 +2228,28 @@ function isPC() {
 async function displayImage() {
   // `generate`関数で画像を生成
   const canvas = await generate();
-  
+
   // `canvas`を画像URLに変換
   const imageUrl = canvas.toDataURL("image/jpeg");
 
-  // `<img>` 要素を作成
+  // `<img>` 要素を作成して表示
   const imgElement = document.createElement("img");
   imgElement.src = imageUrl;
   imgElement.style.width = "90vw"; // 横幅を画面の90%に設定
   imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
   imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
+  document.body.appendChild(imgElement); // 必要なら画像を画面に追加表示
 
-  // シェアボタンで共有
   const shareButton = document.getElementById("downloadLink");
 
   if (isPC() || !navigator.share) {
     // PCまたは共有APIが利用できない場合：画像をダウンロード
-    //ダウンロード用のリンク設定
-    shareButton.href = imageUrl; // 画像のURLをダウンロードリンクに設定
+    // ダウンロード用のリンクを毎回更新
+    shareButton.href = imageUrl; // 新しい画像のURLを設定
     shareButton.download = "image.jpeg";
   } else {
-    shareButton.addEventListener("click", async () => {
+    // `click`イベントリスナーを一度だけ登録
+    shareButton.onclick = async () => {
       try {
         // CanvasをBlobに変換
         const blob = await new Promise((resolve, reject) => {
@@ -2265,7 +2266,7 @@ async function displayImage() {
         });
 
         // BlobをFileに変換
-        const file = new File([blob], "shared_image.jpeg", { type: "image/jpeg" });
+        const file = new File([blob], "BuildCard.jpeg", { type: "image/jpeg" });
 
         // Navigator.shareを使用して共有
         if (navigator.share) {
@@ -2274,15 +2275,14 @@ async function displayImage() {
             title: "ビルドカード",
             text: "Check out this image!",
           });
-          console.log("共有に成功しました！");
         } else {
           console.error("Web Share APIがサポートされていません。");
         }
       } catch (error) {
         console.error("共有中にエラーが発生しました:", error);
       }
-    });
-  };
+    };
+  }
 
   //ビルドカードダウンロード用のボタンを表示
   let div3 = document.getElementById("button_dl");
