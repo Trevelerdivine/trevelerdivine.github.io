@@ -2309,9 +2309,9 @@ async function generate() {
     let dltScore = 0;
     let indexCount = 0;
     const ChartOptions = [
-      { size: 380, fontSize: 30, X_value: 1445 , y_value: 7 }, // 3変数
-      { size: 330, fontSize: 22, X_value: 1485 , y_value: 15 }, // 4変数
-      { size: 462, fontSize: 30, X_value: 1450 , y_value: -55 }, // 5変数
+      { size: 460, fontSize: 28, X_value: 1455 , y_value: -35 }, // 3変数
+      { size: 440, fontSize: 29, X_value: 1465 , y_value: -40 }, // 4変数
+      { size: 462, fontSize: 30, X_value: 1455 , y_value: -55 }, // 5変数
       { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 6変数
       { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 7変数
     ];
@@ -2703,6 +2703,18 @@ async function generate() {
                 pointLabels: {
                     fontSize: OptionData.fontSize,
                     fontColor: "black",    // 文字の色
+                    callback: function(label, index) {
+                    if (index === 1) { // 2番目のラベル（インデックス1）
+                        const targetLength = 8; // 全角文字数
+                        const currentLength = Array.from(label).length; // 現在の全角文字数
+                        if (currentLength < targetLength) {
+                            // 足りない分の全角スペースを追加
+                            return label + "　".repeat(targetLength - currentLength);
+                        }
+                        return label; // 既に8文字以上の場合はそのまま
+                    }
+                    return label; // 他のラベルはそのまま
+                  }
                 },
                 angleLines: {        // 軸（放射軸）
                     display: true,
