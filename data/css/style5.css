@@ -402,6 +402,7 @@ body {
     border-radius: 8px;
     border-bottom: solid 5px #1d7fde;
     cursor: pointer; /* カーソルをポインターに変更 */
+    text-decoration: underline;
   }
   .button_solid004:active { /* クリック時にもホバー効果を持続させる */
     border-bottom: solid 2px #1d7fde;
