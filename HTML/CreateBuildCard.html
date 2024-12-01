@@ -931,11 +931,7 @@
                     await SetMainStatus(SelectId);
                     await show_char_statsform();
                     await show_weapon_statsform();
-                    await show_artifact()
-                    const initial_index = [0,0,0,0,1,1,1];
-                    const myStatus = [0,0,0,0,0,0,0];
-                    const TheoreticalStatus = [0,0,0,0,100,100,100];
-                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
+                    await show_artifact();
 
                     // 画像を置き換える
                     const existingImage = imageContainer.querySelector("img");
@@ -1523,11 +1519,6 @@
                     await show_char_statsform();
                     await show_weapon_statsform();
                     await show_artifact();
-
-                    const initial_index = [0,0,0,0,1,1,1];
-                    const myStatus = [0,0,0,0,0,0,0];
-                    const TheoreticalStatus = [0,0,0,0,100,100,100];
-                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
 
                     // 画像を置き換える
                     const existingImage = imageContainer.querySelector("img");
