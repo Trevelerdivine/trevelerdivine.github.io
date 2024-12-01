@@ -2312,7 +2312,7 @@ async function generate() {
       { size: 460, fontSize: 28, X_value: 1455 , y_value: -35 }, // 3変数
       { size: 440, fontSize: 29, X_value: 1465 , y_value: -40 }, // 4変数
       { size: 440, fontSize: 28, X_value: 1465 , y_value: -42 }, // 5変数
-      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 6変数
+      { size: 420, fontSize: 29, X_value: 1480 , y_value: -32 }, // 6変数
       { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 7変数
     ];
 
