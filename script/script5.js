@@ -2294,8 +2294,7 @@ async function displayImage() {
   hideLoadingSpinner();
 }
 
-async function generate() {
-    console.time('myTimer'); 
+async function generate() { 
     const relocatedIndex = [0,4,1,2,5,6,3,7];
     const display_status = [1,1,1,1,1,1,1,1];
     const ElementType = ["炎", "水", "氷", "雷", "風", "草", "岩"];
@@ -2353,9 +2352,6 @@ async function generate() {
         baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, CImageEffect, ...talentImages
     ] = images;
 
-    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
-    console.time('myTimer'); 
-
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
@@ -2409,9 +2405,6 @@ async function generate() {
     const friendshipText = `${CharFriendshipLevel}`;
     drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
 
-    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
-    console.time('myTimer'); 
-
     //凸
     const ConsteimagePaths = [];
 
@@ -2451,9 +2444,6 @@ async function generate() {
     // 計算結果
     ctx.font = 'lighter 28px customFont';
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
-
-    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
-    console.time('myTimer'); 
     
     for (let i = 0; i < 8; i++) {
       let value = my_result_status[relocatedIndex[i]];
@@ -2556,9 +2546,6 @@ async function generate() {
     ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
     drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
 
-    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
-    console.time('myTimer'); 
-
     //最適メインステータス
     // ゴブレットのメインステータス設定
     GobletMainStatus = OptimizedStatus[1] === 7 
@@ -2616,9 +2603,6 @@ async function generate() {
         }
     }).filter(Boolean)
     ));
-
-    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
-    console.time('myTimer'); 
 
     // レーダーチャートを作成
     for (let i = 0; i < 7; i++) {
@@ -2799,7 +2783,6 @@ async function generate() {
       const iconY = Ycord - 10 - iconSize / 2;
       ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
     }
-    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
     return canvas;
 }
 
