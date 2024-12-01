@@ -1810,7 +1810,6 @@ async function monte_carlo_calculate()
   MyAfScoreDist = my_af_score_distribution.slice();
   OptimizedScoreDist = save_score_distribute.slice();
   console.log(n_count);
-  create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
 }
 
 async function DoCalculate(){
@@ -2076,7 +2075,7 @@ async function generate() {
     for (let i = 0; i < 8; i++) {
       let value = my_result_status[relocatedIndex[i]];
       if (i > 3) {
-          value = Number((value * 100).toLocaleString()).toFixed(1) + "%";
+        value = Number((value * 100).toFixed(1)).toLocaleString() + "%";
       } else {
           value = Number(value.toFixed(0)).toLocaleString();
       }
