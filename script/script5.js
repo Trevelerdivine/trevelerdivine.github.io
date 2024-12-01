@@ -2272,7 +2272,6 @@ async function displayImage() {
         if (navigator.share) {
           await navigator.share({
             files: [file],
-            title: "ビルドカード",
           });
         } else {
           console.error("Web Share APIがサポートされていません。");
