@@ -747,6 +747,21 @@
                     スコア計算開始
                 </div>
             </div>
+            <br>
+            <div id = "button_create"style="height: 50px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; display:none;">
+                <div class="button_solid005" onclick="CreateBuildCard()">
+                    ビルドカード生成
+                </div>
+            </div>
+            <div id="button_dl" style="height: 50px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; display: none;">
+                <!-- ダウンロードボタン -->
+                <a id="downloadLink" href="#" class="button_solid006">
+                    画像をダウンロード
+                </a>
+            </div>                   
+            <div id="output" style="display: flex; justify-content: center;"></div>
+            <br>
+            <br>
             <div id="spinner" class="hidden">
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -1171,25 +1186,37 @@
     let selectedCharId = "56";
     let selectedWeaponId = "127";
     let CharLevel;
+    let CharFriendshipLevel;
     let CharAdvanceRank;
     let CharConstellations;
+    let CharConstellationsIndex;
     let CharTalentLevel = [0,0,0,0,0];
+    let CharConsteLevelflag = [0,0,0];
     let WeaponLevel;
     let WeaponAdvanceRank;
     let WeaponConstellations;
     let Weapondata;
+    let WeapopnRarelity;
     let char_propaty = [5,0];
     let selectedImageIds = [0,0];
     let char_names = [];
+    let BuildCardCharName;
+    let BuildCardCWeaponName;
+    let BuildCardWeaponStats = [["基礎攻撃力", 0],[0,0]];
     let CharDataJson;
     let UserData;
     let afdata;
+    let AfSubStatsList = ["", "", "", "", ""];
     let AfNameList
+    let AfNumList;
     let SelectId;
     let CharJsonData;
     let WeaponJsonData;
     let CharIndexList = [];
     let EquipNumber;
+    let BuildMainStatus = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
+    let OptimizedScore = 0;
+    let OptimizedStatus;
     // ローカルストレージに保存するキー
     const SessionStorageKey = "countdownEndTime";
     // カウントダウンのインターバル（ミリ秒）
@@ -1379,9 +1406,10 @@
         {
             let CharConstellationsChange = [0, 1, 2, 2, 3, 3, 4];
             CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
+            CharFriendshipLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].fetterInfo.expLevel;
             CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
             // talentIdList が存在するかどうかを確認し、その長さを取得
-            const CharConstellationsIndex = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
+            CharConstellationsIndex = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
             CharConstellations = CharConstellationsChange[CharConstellationsIndex];
             const CharTalentLevelList = Object.values(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
             const LevelDisplay = document.getElementById("CharLevel");
@@ -1403,17 +1431,20 @@
                 CharTalentLevelList[2] =  BurstTalentLevel;
             }
             
-
+            CharConsteLevelflag = [0,0,0];
             if (CharConstellationsIndex > 2)
             {
                 CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["3重"]] +=3;
+                CharConsteLevelflag[CharDataJson["CharMap"][APICharIndex.toString()]["3重"]] = 1
                 if(CharConstellationsIndex > 4)
                 {
                     CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["5重"]] +=3;
+                    CharConsteLevelflag[CharDataJson["CharMap"][APICharIndex.toString()]["5重"]] = 1
                 }
             };
             
-            charIndexDisplay.innerHTML = char_names[SortOrder]
+            charIndexDisplay.innerHTML = char_names[SortOrder];
+            BuildCardCharName = char_names[SortOrder];
             LevelDisplay.innerHTML = "Lv." + CharLevel;
             ConsteDisplay.innerHTML = "命の星座" + CharConstellationsIndex + "重";
             NormalTalent.innerHTML = "Lv." + CharTalentLevelList[0];
@@ -1432,10 +1463,6 @@
         {
             console.error("Invalid SortOrder value");
         }
-    }
-    async function EquipWeaponList()
-    {
-        
     }
 
     async function DisplayWeaponStatus(index,SortOrder,id){
@@ -1464,7 +1491,7 @@
         let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
-
+        const AfIndexReplace = [3, 1, 4, 0, 2];
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
             // オブジェクトから "itemId" の要素を取り出して配列に追加
@@ -1473,10 +1500,20 @@
             }
         });
 
-        // 各リスト内の文字列の上2文字を取り出して数字に変換する
-        let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
+        AfIdList.pop();
+        AfNumList = new Array(5).fill([]);
+        AfIdList.forEach(item => {
+            // 4桁目を取得（IDを文字列に変換してインデックス3を参照）
+            const fourthDigit = parseInt(item.toString().charAt(3));
 
-        // 数値の出現回数を記録するオブジェクトを作成
+            // 上2桁を取得
+            const firstTwoDigits = parseInt(item.toString().substring(0, 2));
+
+            // 該当インデックスに上2桁を格納
+            AfNumList[AfIndexReplace[fourthDigit - 1]] = firstTwoDigits;
+        });
+        
+         // 数値の出現回数を記録するオブジェクトを作成
         const countMap = {};
         AfNumList.forEach(num => {
             if (countMap[num]) {
@@ -1552,7 +1589,8 @@
         let PropName;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
-
+        AfSubStatsList = ["", "", "", "", ""];
+        BuildMainStatus = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
             // オブジェクトから "itemId" の要素を取り出して配列に追加
@@ -1562,6 +1600,7 @@
         });
         EquipNumber = AfIdList.length;
         let WeaponPopId = AfIdList.pop();
+        WeapopnRarelity =  WeaponPopId.toString().charAt(2);
         await DisplayWeaponStatus(EquipNumber, SortOrder, WeaponPopId);
         await DisplayWeaponImg(WeaponPopId);
 
@@ -1576,17 +1615,41 @@
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 ClockMainStatus = AfNameList[PropName]["名前"];
+                BuildMainStatus[2][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[2][2] = AfNameList[PropName]["url"];
+                BuildMainStatus[2][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             else if (fourthDigits[i] == 1)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 GobletMainStatus = AfNameList[PropName]["名前"];
+                BuildMainStatus[3][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[3][2] = AfNameList[PropName]["url"];
+                BuildMainStatus[3][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
             else if (fourthDigits[i] == 3)
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 CircletMainStatus = AfNameList[PropName]["名前"];
+                BuildMainStatus[4][0] = AfNameList[PropName]["name"];
+                BuildMainStatus[4][2] = AfNameList[PropName]["url"];
+                BuildMainStatus[4][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
             }
+            else if (fourthDigits[i] == 4)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                BuildMainStatus[0][0] = "HP"
+                BuildMainStatus[0][2] = BuildMainStatus[0][0];
+                BuildMainStatus[0][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
+            }
+            else if (fourthDigits[i] == 2)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                BuildMainStatus[1][0] = "攻撃力"
+                BuildMainStatus[1][2] = BuildMainStatus[1][0];
+                BuildMainStatus[1][1] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.statValue;
+            }
+            AfSubStatsList[i] = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquarySubstats;
         }
         document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
         document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
@@ -1613,10 +1676,11 @@
         existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
         existingImage.alt = "Clicked Image";
         const charIndexDisplay = document.getElementById('Weaponindex-display');
+        BuildCardCWeaponName = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
         charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
 }
 
-async function CharExecution(index, charId){
+    async function CharExecution(index, charId){
         let AfJsonList = UserData.data.avatarInfoList[index].equipList;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
@@ -1733,7 +1797,12 @@ async function CharExecution(index, charId){
     }
 
     function ResetParameter(){
-        for (let i = 1; i <= 5; i++) {
+        let div2 = document.getElementById("button_create");
+        div2.style.display = "none "; // または必要に応じて適切なdisplay値を使用します
+        let div3 = document.getElementById("button_dl");
+        div3.style.display = "none"; // または必要に応じて適切なdisplay値を使用します
+
+        for (let i = 1; i <= 10; i++) {
             ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
                 document.getElementById(`${type}${i}`).innerHTML = "-";
             });
@@ -1782,11 +1851,11 @@ async function CharExecution(index, charId){
         let element = document.getElementById(id);
         element.style.color = "black";
         });
-
+        const outputElement = document.getElementById("output");
+        outputElement.innerHTML = ""; 
         document.getElementById("result").innerHTML = "";
     }
     
-
     function startCountdown() {
 
         // ローカルストレージからカウントダウン終了時刻を取得
@@ -1839,12 +1908,16 @@ async function CharExecution(index, charId){
     // ページの読み込みが完了したら、カウントダウンを再開
     window.onload = async function() {
         fetchButton.disabled = true;
-
         document.getElementById('drawer-toggle-label-alt').addEventListener('click', function() {
             const drawerToggle = document.getElementById('drawer-toggle');
             drawerToggle.checked = !drawerToggle.checked; // チェック状態を切り替える
         });
-        
+
+        //フォントをロード
+        const font = new FontFace('CustomFont', 'url(../BuildCardData/Assets/ja-jp.ttf)');
+        await font.load();
+        document.fonts.add(font);
+
         const JsonData1 = await fetch("../data/JsonData/DisplayCharData.json");
         CharJsonData = await JsonData1.json();
         const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
@@ -1936,8 +2009,9 @@ async function CharExecution(index, charId){
                         imageElement.alt = "Clicked Image";
                         imageContainer.appendChild(imageElement);
                     }
-                    let div = document.getElementById("WholeDisplay");
-                    div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+                    let div1 = document.getElementById("WholeDisplay");
+                    div1.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+
 
                     const scrollableContainer = document.documentElement;
                     scrollableContainer.scrollBy({

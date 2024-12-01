@@ -2,9 +2,11 @@ let depend_status = [0,0,1,0,1,1,1];
 let af_score = 0;
 let attack_method = 0;
 let attack_method_index = 0;
-let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値]
+let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値] 
+let MyAfScoreDist;
+let OptimizedScoreDist;
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
-const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
+const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
 
 const elm_reaction_obj = [
   {
@@ -377,17 +379,17 @@ async function calculate_fixed_status(sd,bs,amsb)
 
 async function calculate_team_fix_buff(base_status)
 {
-  const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value) || 0; // 聖遺物HP上昇量
-  const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
-  const fix_attack_buff = parseInt(document.getElementById("fix_attack_buff").value) || 0; // 聖遺物攻撃力上昇量
-  const fix_attackrate_buff = parseFloat(document.getElementById("fix_attack%_buff").value) / 100 || 0; // 聖遺物攻撃力上昇量
-  const fix_deff_buff = parseInt(document.getElementById("fix_deff_buff").value) || 0; // 聖遺物防御力上昇量
-  const fix_deffrate_buff = parseFloat(document.getElementById("fix_deff%_buff").value) / 100 || 0; // 聖遺物防御力上昇量
-  const fix_elm_buff = parseInt(document.getElementById("fix_elm_buff").value) || 0; // 聖遺物元素熟知上昇量
-  const fix_elm_charge_buff = parseFloat(document.getElementById("fix_elm_charge_buff").value) / 100 || 0; // 聖遺物元素チャージ効率上昇量
-  const fix_cr_buff = parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
-  const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
-  const fix_dmg_buff = parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
+  const fix_hp_buff = Math.max(parseInt(document.getElementById("fix_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const fix_hprate_buff = Math.max(parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const fix_attack_buff = Math.max(parseInt(document.getElementById("fix_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_attackrate_buff = Math.max(parseFloat(document.getElementById("fix_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_deff_buff = Math.max(parseInt(document.getElementById("fix_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const fix_deffrate_buff = Math.max(parseFloat(document.getElementById("fix_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const fix_elm_buff = Math.max(parseInt(document.getElementById("fix_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const fix_elm_charge_buff = Math.max(parseFloat(document.getElementById("fix_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const fix_cr_buff = Math.max(parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const fix_cd_buff = Math.max(parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const fix_dmg_buff = Math.max(parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
   const af_setbuff = await create_afset_instance();
   let team_buff = [0,0,0,0,0,0,0,0];
 
@@ -404,6 +406,14 @@ async function calculate_team_fix_buff(base_status)
   const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
 
   const WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
+  BuildCardWeaponStats[0][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[0].statValue;
+  BuildCardWeaponStats[1][0] = AfNameList[WeaponEquipData.appendPropId].name;
+  BuildCardWeaponStats[1][1] = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1].statValue;
+  if (BuildCardWeaponStats[1][0] != "元素熟知")
+  {
+    BuildCardWeaponStats[1][1] = BuildCardWeaponStats[1][1].toString() + "%";
+  }
+
   let weapon_base_hpper = 0;
   let weapon_base_attackper = 0;
   let weapon_base_deffper = 0;
@@ -444,23 +454,22 @@ async function calculate_team_fix_buff(base_status)
   team_buff[5] = fix_cr_buff + af_setbuff[5] + 0.15 * checkboxStates.cyro_reso;
   team_buff[6] = fix_cd_buff + af_setbuff[6];
   team_buff[7] = fix_dmg_buff + af_setbuff[7] + 0.15 * checkboxStates.geo_reso;
-
   return team_buff
 }
 
 async function calculate_team_dynamic_buff(base_status)
 {
-  const dynamic_hp_buff = parseInt(document.getElementById("dynamic_hp_buff").value) || 0; // 聖遺物HP上昇量
-  const dynamic_hprate_buff = parseFloat(document.getElementById("dynamic_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
-  const dynamic_attack_buff = parseInt(document.getElementById("dynamic_attack_buff").value) || 0; // 聖遺物攻撃力上昇量
-  const dynamic_attackrate_buff = parseFloat(document.getElementById("dynamic_attack%_buff").value) / 100 || 0; // 聖遺物攻撃力上昇量
-  const dynamic_deff_buff = parseInt(document.getElementById("dynamic_deff_buff").value) || 0; // 聖遺物防御力上昇量
-  const dynamic_deffrate_buff = parseFloat(document.getElementById("dynamic_deff%_buff").value) / 100 || 0; // 聖遺物防御力上昇量
-  const dynamic_elm_buff = parseInt(document.getElementById("dynamic_elm_buff").value) || 0; // 聖遺物元素熟知上昇量
-  const dynamic_elm_charge_buff = parseFloat(document.getElementById("dynamic_elm_charge_buff").value) / 100 || 0; // 聖遺物元素チャージ効率上昇量
-  const dynamic_cr_buff = parseFloat(document.getElementById("dynamic_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
-  const dynamic_cd_buff = parseFloat(document.getElementById("dynamic_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
-  const dynamic_dmg_buff = parseFloat(document.getElementById("dynamic_dmg_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
+  const dynamic_hp_buff = Math.max(parseInt(document.getElementById("dynamic_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const dynamic_hprate_buff = Math.max(parseFloat(document.getElementById("dynamic_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const dynamic_attack_buff = Math.max(parseInt(document.getElementById("dynamic_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_attackrate_buff = Math.max(parseFloat(document.getElementById("dynamic_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_deff_buff = Math.max(parseInt(document.getElementById("dynamic_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_deffrate_buff = Math.max(parseFloat(document.getElementById("dynamic_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_elm_buff = Math.max(parseInt(document.getElementById("dynamic_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const dynamic_elm_charge_buff = Math.max(parseFloat(document.getElementById("dynamic_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const dynamic_cr_buff = Math.max(parseFloat(document.getElementById("dynamic_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const dynamic_cd_buff = Math.max(parseFloat(document.getElementById("dynamic_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const dynamic_dmg_buff = Math.max(parseFloat(document.getElementById("dynamic_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
   let team_buff = [0,0,0,0,0,0,0,0];
 
   team_buff[0] = dynamic_hp_buff + dynamic_hprate_buff * base_status[0];
@@ -836,7 +845,6 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
 
   // 防御補正計算
   const deffCorrection = (CharcterLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharcterLevel + 100);
-  console.log(deffCorrection);
 
   // 補正係数の計算
   let element_resistCorrection = [0, 0, 0, 0, 0, 0, 0, 0, 0];// [炎補正, 水補正, 氷補正, 雷補正, 風補正, 草補正, 岩補正, 物理補正, 攻撃元素補正]
@@ -884,6 +892,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status)
   let fixed_status = [0,0,0,0,0,0,0];
   let result_status;
+  let Cr_value;
   let zetsuen_dmgbuff = 0;
   for (let i = 0; i < 7; i++)
   {
@@ -935,13 +944,14 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   {
     fixed_status[5] += await (char_instance.calculate_char_fixed_cr(fixed_status) + weapon_instance.calculate_weapon_fixed_cr(fixed_status));
     result_status[5] = team_dynamic_buff[5] + fixed_status[5] + await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
+    Cr_value = result_status[5];
     if (fixed_status[5] > 1)
     {
       fixed_status[5] = 1;
     }
     if (result_status[5] > 1)
     {
-      result_status[5] = 1;
+      Cr_value = 1;
     }
   }
 
@@ -964,10 +974,10 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
   if (depend_status[2] == 1) {
-    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
+    exp_dmg = basic_dmg*(1 + Cr_value * result_status[6])
     *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
   } else {
-    exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
+    exp_dmg = basic_dmg*(1 + Cr_value * result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
   }
   result_status.push(exp_dmg);
@@ -1165,7 +1175,6 @@ function hideLoadingSpinner() {
 
 async function monte_carlo_calculate()
 {
-  console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)
   {
@@ -1229,7 +1238,7 @@ async function monte_carlo_calculate()
   let save_score_distribute = [0,0,0,0,0,0,0,0];
   let save_af_score;
   let optimaize_af_score;
-  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"]
+  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"];
   let random_1;
   let random_2;
   let output_exp_dmg;
@@ -1251,7 +1260,6 @@ async function monte_carlo_calculate()
   const reaction_check = document.getElementById("reactionoff_flag");
   const reaction_count_list = create_reactioncount_list();
   const reaction_bonus_list = create_reactionbonus_list();
-  console.log(correct_coeff);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
@@ -1447,7 +1455,6 @@ async function monte_carlo_calculate()
   save_af_score = af_score;
   const MainStatusIndexList = await DefineMainStatus(depend_status, af_main_status_buff);
   let ExpDmgList = [];
-  console.log(MainStatusIndexList);
   let AllPatternResult;
   let MainStatusList;
   let MainStatusBuff;
@@ -1619,6 +1626,7 @@ async function monte_carlo_calculate()
   af_score_lower_limit = 0;
   af_score = save_af_score / 2;
   MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], ExpDmgList[0][1][2]];
+  OptimizedStatus = MainStatusList;
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
 
   while (n_count < 30)
@@ -1790,7 +1798,6 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
   optimaize_af_score = af_score;
   af_score = save_af_score;
@@ -1799,8 +1806,10 @@ async function monte_carlo_calculate()
 
 
   hideLoadingSpinner();
-  let result = "最適化聖遺物スコア (メインステータス考慮)： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
+  OptimizedScore = optimaize_af_score.toFixed(1);
+  let result = "最適化聖遺物スコア (メインステータス考慮)： " + OptimizedScore +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
+ 
 
   let dlthpScore = document.getElementById("dlt_hp_score");
   let dltAfhp = document.getElementById("dlt_af_hp");
@@ -2082,15 +2091,20 @@ async function monte_carlo_calculate()
         document.getElementById(ids[3]).innerHTML = (ExpDmgList[i - 1][0] * 100 / ExpDmgList[0][0]).toFixed(1) + "％";
     }
   }
-  
+
+  //ビルドカード生成ボタンを表示
+  let div2 = document.getElementById("button_create");
+  div2.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
+
+  MyAfScoreDist = my_af_score_distribution.slice();
+  OptimizedScoreDist = save_score_distribute.slice();
   console.log(n_count);
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
-  console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
 async function DoCalculate(){
-  showLoadingSpinner()
-  setTimeout(monte_carlo_calculate, 100)
+  showLoadingSpinner();
+  setTimeout(monte_carlo_calculate, 100);
 }
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
@@ -2187,4 +2201,700 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
           }
       }
   });
+}
+
+async function CreateBuildCard() {
+  showLoadingSpinner();
+  setTimeout(async () => {
+      try {
+          await displayImage(); // displayImage が非同期関数の場合
+      } catch (error) {
+          console.error("Error in displayImage:", error);
+      } finally {
+          hideLoadingSpinner();
+      }
+  }, 100);
+}
+
+function isPC() {
+  let o = window.navigator.userAgent.toLowerCase()
+    , s = ["android", "iphone", "ipad", "ipod", "blackberry", "windows phone"];
+  for (let a = 0; a < s.length; a++)
+      if (o.indexOf(s[a]) > -1)
+          return !1;
+  return !0
+}
+
+async function displayImage() {
+  // `generate`関数で画像を生成
+  const canvas = await generate();
+
+  // `canvas`を画像URLに変換
+  const imageUrl = canvas.toDataURL("image/jpeg");
+
+  // `<img>` 要素を作成して表示
+  const imgElement = document.createElement("img");
+  imgElement.src = imageUrl;
+  imgElement.style.width = "90vw"; // 横幅を画面の90%に設定
+  imgElement.style.maxWidth = "600px"; // 最大横幅を600pxに制限
+  imgElement.style.height = "auto"; // 高さを自動設定（アスペクト比を維持）
+  document.body.appendChild(imgElement); // 必要なら画像を画面に追加表示
+
+  const shareButton = document.getElementById("downloadLink");
+
+  if (isPC() || !navigator.share) {
+    // PCまたは共有APIが利用できない場合：画像をダウンロード
+    // ダウンロード用のリンクを毎回更新
+    shareButton.href = imageUrl; // 新しい画像のURLを設定
+    shareButton.download = "image.jpeg";
+  } else {
+    // `click`イベントリスナーを一度だけ登録
+    shareButton.onclick = async () => {
+      try {
+        // CanvasをBlobに変換
+        const blob = await new Promise((resolve, reject) => {
+          canvas.toBlob(
+            (blob) => {
+              if (blob) {
+                resolve(blob);
+              } else {
+                reject(new Error("Blobの生成に失敗しました"));
+              }
+            },
+            "image/jpeg" // jpeg
+          );
+        });
+
+        // BlobをFileに変換
+        const file = new File([blob], "BuildCard.jpeg", { type: "image/jpeg" });
+
+        // Navigator.shareを使用して共有
+        if (navigator.share) {
+          await navigator.share({
+            files: [file],
+            title: "ビルドカード",
+            text: "Check out this image!",
+          });
+        } else {
+          console.error("Web Share APIがサポートされていません。");
+        }
+      } catch (error) {
+        console.error("共有中にエラーが発生しました:", error);
+      }
+    };
+  }
+
+  //ビルドカードダウンロード用のボタンを表示
+  let div3 = document.getElementById("button_dl");
+  div3.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
+  
+
+  // 以前の画像をクリアして新しい画像を表示
+  const outputElement = document.getElementById("output");
+  outputElement.innerHTML = ""; 
+  outputElement.appendChild(imgElement);
+  hideLoadingSpinner();
+}
+
+async function generate() {
+    console.time('myTimer'); 
+    const relocatedIndex = [0,4,1,2,5,6,3,7];
+    const display_status = [1,1,1,1,1,1,1,1];
+    const ElementType = ["炎", "水", "氷", "雷", "風", "草", "岩"];
+    const main_status_name = ["HP%","防御力%","元素熟知","元素チャージ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
+    const ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
+    let itemList = [];
+    let myData = [];
+    let TheoreticalData = [];
+    let dltScore = 0;
+    let indexCount = 0;
+    const ChartOptions = [
+      { size: 460, fontSize: 28, X_value: 1455 , y_value: -35 }, // 3変数
+      { size: 440, fontSize: 29, X_value: 1465 , y_value: -40 }, // 4変数
+      { size: 440, fontSize: 28, X_value: 1465 , y_value: -42 }, // 5変数
+      { size: 420, fontSize: 29, X_value: 1480 , y_value: -32 }, // 6変数
+      { size: 462, fontSize: 22, X_value: 1450 , y_value: -55 }, // 7変数
+    ];
+
+    const ChartColor = [
+      { bgTheory: "rgba(139,0,0,0.5)", borderTheory: "rgba(139,0,0,0.8)", bgOwn: "rgba(255,99,132,0.5)", borderOwn: "rgba(255,99,132,1)" },       // 火: 赤
+      { bgTheory: "rgba(0,0,139,0.5)", borderTheory: "rgba(0,0,139,0.8)", bgOwn: "rgba(173,216,230,0.5)", borderOwn: "rgba(173,216,230,1)" },         // 水: 青
+      { bgTheory: "rgba(0,191,255,0.5)", borderTheory: "rgba(0,191,255,0.8)", bgOwn: "rgba(135,206,250,0.5)", borderOwn: "rgba(135,206,250,1)" }, // 氷: 水色
+      { bgTheory: "rgba(128,0,128,0.5)", borderTheory: "rgba(128,0,128,0.8)", bgOwn: "rgba(216,191,216,0.5)", borderOwn: "rgba(216,191,216,1)" },     // 雷: 紫
+      { bgTheory: "rgba(32,178,170,0.5)", borderTheory: "rgba(32,178,170,0.8)", bgOwn: "rgba(189,252,201,0.5)", borderOwn: "rgba(189,252,201,1)" }, // 風: ライトグリーン
+      { bgTheory: "rgba(0,100,0,0.5)", borderTheory: "rgba(0,100,0,0.8)", bgOwn: "rgba(144,238,144,0.5)", borderOwn: "rgba(144,238,144,1)" },         // 草: 緑
+      { bgTheory: "rgba(255,204,0,0.5)", borderTheory: "rgba(255,204,0,0.8)", bgOwn: "rgba(255,255,153,0.5)", borderOwn: "rgba(255,255,153,1)" }      // 岩: 黄色
+    ];
+
+    const colorData = ChartColor[char_propaty[0]];
+    const charElementType = ElementType[Number(char_propaty[0])]
+    const [base_status, af_main_status_buff] = await Promise.all([
+        calculate_base_status(),
+        calculate_af_main_status_buff(),
+    ])  
+    const [my_result_status, team_buff] = await Promise.all([
+      calculate_my_exp_dmg(base_status,af_main_status_buff,display_status),
+      calculate_teambuff(base_status),
+  ])  
+    const ClockMainStatus =  main_status_name[OptimizedStatus[0]];
+    let GobletMainStatus;
+
+    const imagePaths = [
+      `../BuildCardData/Character/${BuildCardCharName}/avatar.png`,
+      '../BuildCardData/Assets/Shadow.png',
+      `../BuildCardData/Weapon/${BuildCardCWeaponName}.png`,
+      `../BuildCardData/Assets/Rarelity/${WeapopnRarelity}.png`,
+      `../BuildCardData/Assets/TalentBack.png`,
+      `../BuildCardData/Assets/Love.png`,
+      `../BuildCardData/命の星座/${charElementType}LOCK.png`,
+      `../BuildCardData/命の星座/${charElementType}.png`,
+      ...['通常', 'スキル', '爆発'].map(type => `../BuildCardData/Character/${BuildCardCharName}/${type}.png`)
+    ];
+    const images = await Promise.all(imagePaths.map(loadImage));
+    const [
+        baseImage, shadowImage, weaponImage, weaponRarityImage, talentBackImage, LoveImage, Clock, CImageEffect, ...talentImages
+    ] = images;
+
+    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+    console.time('myTimer'); 
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Base background
+    canvas.width = baseImage.width;
+    canvas.height = baseImage.height;
+    ctx.drawImage(baseImage, 0, 0);
+
+    // Shadow image
+    ctx.drawImage(shadowImage, 0, 0, canvas.width, canvas.height); // Shadowをベースに重ねる
+
+    // Weapon
+    ctx.drawImage(weaponImage, 809, 20, 64, 64);
+
+    // Weapon rarity
+    ctx.drawImage(weaponRarityImage, 804,79, weaponRarityImage.width * 0.485, weaponRarityImage.height * 0.485);
+
+    // Character talents
+    ctx.font = 'lighter 19px customFont';
+    const talentTypes = ['通常', 'スキル', '爆発'];
+    talentTypes.forEach((type, i) => {
+        ctx.drawImage(talentBackImage, 32, 302 + i * 105, 100, 100);
+        ctx.drawImage(talentImages[i], 52, 325 + i * 105, 60, 60);
+        ctx.fillStyle = CharConsteLevelflag[i] > 0 ? 'aqua' : 'white';
+        ctx.fillText(`Lv.${CharTalentLevel[i + 2]}`, 57, 402 + i * 105);
+    });
+
+    // Character name, weapon name and level
+    ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
+    ctx.fillRect(121, 77, 67, 27);  //長方形を描画
+    ctx.fillRect(897, 60, 67, 27);
+    ctx.drawImage(LoveImage, 122, 78, 30, 24);
+
+    ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+    ctx.font = '48px customFont';
+    ctx.fillText(BuildCardCharName, 30, 65);
+    ctx.font = '30px customFont';
+    ctx.fillText(BuildCardCWeaponName, 898, 48);
+
+    ctx.font = 'lighter 28px customFont';
+    ctx.fillText(`Lv.${CharLevel}`, 35, 100);
+    ctx.font = 'lighter 20px customFont';
+    ctx.fillText(`Lv.${WeaponLevel}`, 902, 80);
+    ctx.fillText(BuildCardWeaponStats[0][0], 982, 80);
+    ctx.fillText(BuildCardWeaponStats[0][1], 1092, 80);
+    ctx.fillText(BuildCardWeaponStats[1][0], 1160, 80);
+    const firstTextWidth = ctx.measureText(BuildCardWeaponStats[1][0]).width;
+    // BuildCardWeaponStats[1][1] を、最初のテキストの右隣に描画
+    ctx.fillText(BuildCardWeaponStats[1][1], 1160 + firstTextWidth + 10, 80);
+
+    const friendshipText = `${CharFriendshipLevel}`;
+    drawCenteredText(ctx, friendshipText, 168, 100, 'lighter 28px customFont', color = 'white');
+
+    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+    console.time('myTimer'); 
+
+    //凸
+    const ConsteimagePaths = [];
+
+    for (let i = 1; i < CharConstellationsIndex + 1; i++)
+    {
+      ConsteimagePaths.push(`../BuildCardData/Character/${BuildCardCharName}/${i}.png`);        
+    }
+
+    const Consteimages = await Promise.all(ConsteimagePaths.map(loadImage));
+
+    for (let i = 1; i < CharConstellationsIndex + 1; i++) 
+    {
+      ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
+      ctx.drawImage(Consteimages[i - 1], 668, -18 + i * 93, 56, 56); 
+    }
+
+    for (let i = CharConstellationsIndex + 1; i < 7; i++)
+    {
+      ctx.drawImage(CImageEffect, 653, -35 + i * 93, 92, 92);
+      ctx.drawImage(Clock, 659, -29 + i * 93, 80, 80);
+    }
+  
+    //聖遺物
+    ctx.globalAlpha = 0.7; 
+    const AfTypeimagePaths = [];
+    const AfPartsName = ['flower',"wing","clock","cup","crown"];
+    for (let i = 0; i < 5; i++) {
+      AfTypeimagePaths.push(`../BuildCardData/artifact/${afdata["AfMap"][AfNumList[i].toString()]["名前"]}/${AfPartsName[i]}.png`); 
+    }
+    const AfImages = await Promise.all(AfTypeimagePaths.map(loadImage));
+    for (let i = 0; i < 5; i++) {
+      ctx.drawImage(AfImages[i], -20 + 388 * i, 630, 300, 300);
+    }
+    
+    ctx.globalAlpha = 1; 
+
+    // 計算結果
+    ctx.font = 'lighter 28px customFont';
+    ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
+
+    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+    console.time('myTimer'); 
+    
+    for (let i = 0; i < 8; i++) {
+      let value = my_result_status[relocatedIndex[i]];
+      if (i > 3) {
+          value = Number((value * 100).toLocaleString()).toFixed(1) + "%";
+      } else {
+          value = Number(value.toFixed(0)).toLocaleString();
+      }
+  
+      // テキストの幅を取得して右揃え位置を計算
+      const textWidth = ctx.measureText(value).width;
+      const xPos = 1290 - textWidth; // 右端のX座標からテキスト幅を引いて右揃えに
+  
+      ctx.fillText(value, xPos, 157.5 + 64.5 * i);
+    }
+
+    //ステータス表示
+    // 描画用データを事前に生成
+    const formattedData = relocatedIndex.map((index, i) => {
+      let a = base_status[index];
+      let c = team_buff[index];
+      let b = my_result_status[index] - a - c;
+
+      if (i > 3) {
+          a = (a * 100).toFixed(1) + "%";
+          b = (b * 100).toFixed(1) + "%";
+          c = (c * 100).toFixed(1) + "%";
+      } else {
+          a = Math.round(a).toLocaleString();
+          b = Math.round(b).toLocaleString();
+          c = Math.round(c).toLocaleString();
+      }
+
+      return { a, b, c };
+    });
+
+    // '+' の幅を事前計算
+    const plusWidth = 18.031997680664062;
+    
+
+    // 描画ループ
+    ctx.font = 'lighter 14px customFont';
+    formattedData.forEach(({ a, b, c }, i) => {
+      const baseX = 1340; // 基本の右端X座標
+      const baseY = 178 + 64.5 * i; // Y座標の位置
+
+      // 各要素の幅を計算
+      const aWidth = ctx.measureText(a).width;
+      const bWidth = ctx.measureText(b).width;
+      const cWidth = ctx.measureText(c).width;
+
+      // 全体の幅を計算して、右揃えの起点位置を調整
+      const totalWidth = aWidth + bWidth + cWidth + plusWidth;
+      let offsetX = baseX - totalWidth;
+
+      // aの値を表示
+      ctx.fillStyle = 'white';
+      ctx.fillText(a, offsetX, baseY);
+      offsetX += aWidth + 1;
+
+      // '+' を表示
+      ctx.fillStyle = '#a4f74f';
+      ctx.fillText('+', offsetX, baseY);
+      offsetX += plusWidth / 2 + 1;
+
+      // bの値を表示
+      ctx.fillStyle = '#a4f74f';
+      ctx.fillText(b, offsetX, baseY);
+      offsetX += bWidth + 1;
+
+      // '+' を表示
+      ctx.fillStyle = '#00ccff';
+      ctx.fillText('+', offsetX, baseY);
+      offsetX += plusWidth / 2 + 1;
+
+      // cの値を表示
+      ctx.fillStyle = '#00ccff';
+      ctx.fillText(c, offsetX, baseY);
+    });
+
+    //スコア
+    const ScoreValue = OptimizedScore
+    let ScoreRankImage;
+    if(ScoreValue < 180)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/B.png`);
+    }
+    else if(ScoreValue < 200)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/A.png`);
+    }
+    else if(ScoreValue < 220)
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/S.png`);
+    }
+    else
+    {
+      ScoreRankImage = await loadImage(`../BuildCardData/artifactGrades/SS.png`);
+    }
+    ctx.drawImage(ScoreRankImage, 1820, 470, 60, 60);
+    drawCenteredText(ctx, ScoreValue, 1663, 600, 'normal 60px customFont', color = 'white');
+
+    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+    console.time('myTimer'); 
+
+    //最適メインステータス
+    // ゴブレットのメインステータス設定
+    GobletMainStatus = OptimizedStatus[1] === 7 
+    ? ElementTypeList[Number(char_propaty[0])] + main_status_name[7] 
+    : main_status_name[OptimizedStatus[1]];
+
+    // サークレットのメインステータス設定
+    let CircletMainStatus = main_status_name[OptimizedStatus[2]];
+    if (CircletMainStatus === "会心率" || CircletMainStatus === "会心ダメージ") {
+    CircletMainStatus = "会心系";
+    }
+
+    // 時計、ゴブレット、サークレットの描画
+    const artifacts = [
+    {x: 1471, y: 360, status: ClockMainStatus },
+    {x: 1642, y: 360, status: GobletMainStatus },
+    {x: 1810, y: 360, status: CircletMainStatus }
+    ];
+
+    ctx.font = 'normal 18px customFont'; // 共通フォント設定
+    artifacts.forEach(({x, y, status }, index) => {
+        const textWidth = ctx.measureText(status).width;
+        const textX = x + 25 - textWidth / 2;
+
+        ctx.fillStyle = 'white';
+        ctx.fillText(status, textX, y + 80);
+        if (index === 2) return; // 3個目（インデックス2）はスキップ
+        ctx.fillStyle = '#dcdcdc';
+        ctx.fillRect(x + 108, y - 1, 2, 94);
+    });
+
+    // メインステータス描画
+    await Promise.all(BuildMainStatus.map((status, i) => {
+    const x = 370 + 380 * i;
+    const value = status[0] === "HP" || status[0] === "攻撃力" || status[0] === "元素熟知"
+        ? status[1]
+        : status[1].toString() + "%";
+    return AfMainDisp(status[2], status[0], value, x, 20);
+    }));
+
+    const AfSubStatusData = await fetch("../data/JsonData/AfSubStatusData.json").then(res => res.json());
+
+    // サブステータス描画
+    await Promise.all(AfSubStatsList.flatMap((stats, j) => 
+    stats.map((stat, i) => {
+        const paramsName = AfSubStatusData[stat.appendPropId]?.name;
+        const urlName = AfSubStatusData[stat.appendPropId]?.url;
+        const buffValue = stat.statValue;
+
+        if (paramsName) {
+            const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
+                ? buffValue
+                : `${buffValue}%`;
+            return AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 900 + 53 * i);
+        }
+    }).filter(Boolean)
+    ));
+
+    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+    console.time('myTimer'); 
+
+    // レーダーチャートを作成
+    for (let i = 0; i < 7; i++) {
+        if (depend_status[i] === 1) {
+            indexCount += 1;
+            itemList.push(main_status_name[i]);
+            dltScore = 100 + (MyAfScoreDist[i] - OptimizedScoreDist[i]);
+            if (dltScore > 0) {
+                myData.push(dltScore);
+            } else {
+                myData.push(0);
+            }
+            TheoreticalData.push(100);
+        }
+    }
+    const OptionData = ChartOptions[indexCount - 3];
+
+    const radarCanvas = document.createElement('canvas');
+    const canvasSize = OptionData.size; // サイズを固定
+    const scaleFactor = 1.5;
+
+    // Canvasの解像度とスタイルを調整
+    radarCanvas.width = canvasSize * scaleFactor; // 実際の解像度を設定
+    radarCanvas.height = canvasSize * scaleFactor; // 実際の解像度を設定
+    radarCanvas.style.width = `${canvasSize}px`; // スタイルでのサイズを指定
+    radarCanvas.style.height = `${canvasSize}px`; // スタイルでのサイズを指定
+
+    const radarContext = radarCanvas.getContext('2d');
+    // スケールを設定して解像度を調整
+    radarContext.scale(scaleFactor, scaleFactor);
+
+    let maxElement = Math.max(...myData);
+    let maxborder = Math.ceil(maxElement / 20) * 20;
+
+    const BuildradarChart = new Chart(radarContext, {
+        type: 'radar',
+        data: {
+            labels: itemList,
+            datasets: [
+              {
+                  label: "ステータスバランス",
+                  backgroundColor: colorData.bgOwn,
+                  borderColor: colorData.borderOwn,
+                  pointBackgroundColor: "rgba(144,238,144,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(144,238,144,1)",
+                  hitRadius: 5,
+                  data: myData
+              },
+              {
+                  label: "理論値",
+                  backgroundColor: colorData.bgTheory,
+                  borderColor: colorData.borderTheory,
+                  pointBackgroundColor: "rgba(0,100,0,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(0,100,0,1)",
+                  hitRadius: 5,
+                  data: TheoreticalData
+              }
+            ]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: true,
+            animation: {
+                duration: 0, // アニメーションの時間
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    stepSize: 20,
+                    fontSize: 6,
+                    max: maxborder,
+                    fontColor: "black",  // 目盛り数字の色
+                    backdropColor: 'rgba(0, 0, 0, 0)', // 数値ラベルの背景を透明に
+                },
+                pointLabels: {
+                    fontSize: OptionData.fontSize,
+                    fontColor: "black",    // 文字の色
+                    callback: function(label, index) {
+                    if (index === 1) { // 2番目のラベル（インデックス1）
+                        const targetLength = 8; // 全角文字数
+                        const currentLength = Array.from(label).length; // 現在の全角文字数
+                        if (currentLength < targetLength) {
+                            // 足りない分の全角スペースを追加
+                            return label + "　".repeat(targetLength - currentLength);
+                        }
+                        return label; // 既に8文字以上の場合はそのまま
+                    }
+                    return label; // 他のラベルはそのまま
+                  }
+                },
+                angleLines: {        // 軸（放射軸）
+                    display: true,
+                    color: "black"
+                },
+                gridLines: {         // 補助線（目盛の線）
+                    display: true,
+                    color: "black"
+                }
+            },
+            legend: {
+                display: false // 凡例を非表示にする
+            }
+        }
+    });
+
+    BuildradarChart.update(); // チャートの更新
+    ctx.drawImage(radarCanvas, OptionData.X_value, OptionData.y_value, canvasSize, canvasSize);
+
+
+
+    // Drawing helper functions
+    async function loadImage(src) {
+        const img = new Image();
+        img.src = src;
+        return new Promise((resolve) => {
+            img.onload = () => resolve(img);
+        });
+    }
+
+    async function AfMainDisp(urlName, StatusName, MainStatus, Xcord, level)
+    {
+      //聖遺物ステータス
+      const IconImage = await loadImage(`../BuildCardData/emotes/${urlName}.png`); // アイコン画像をロード
+      const MainStatusValue = MainStatus.toLocaleString(); // カンマ区切りに変換;
+
+      // テキストの右揃え
+      ctx.fillStyle = 'white';
+      ctx.font = 'normal 28px customFont';
+      const NamesWidth = ctx.measureText(StatusName).width;
+      const X = Xcord - NamesWidth; // 時計の画像の右端にテキストを右揃え
+      const Y = 680; // テキストのY座標
+      ctx.fillText(StatusName, X, Y);
+
+      ctx.font = 'normal 50px customFont';
+      const ValueWidth = ctx.measureText(MainStatusValue).width;
+      const XValue = Xcord - ValueWidth; // 時計の画像の右端にテキストを右揃え
+      ctx.fillText(MainStatusValue, XValue, Y + 50);
+
+      // アイコンをテキストの左側に描画
+      const iconSize = 35; 
+      const iconX = X - iconSize + 1;
+      const iconY = Y - 10 - iconSize / 2;
+
+      ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
+
+      //レベル
+      ctx.font = 'normal 25px customFont';
+      const levelx = Xcord - 56;
+      const Leveltext = "+" + level.toString();
+      ctx.fillStyle = 'black';
+      ctx.fillRect(levelx, 745, 56, 28);
+      ctx.fillStyle = 'white';
+      ctx.fillText(Leveltext, levelx + 1, 768);
+    }
+
+    async function AfSubDisp(urlName, StatusName, SubStatus, Xcord, Ycord)
+    {
+      //聖遺物ステータス
+      const IconImage = await loadImage(`../BuildCardData/emotes/${urlName}.png`); // アイコン画像をロード
+
+      // テキストの右揃え
+      ctx.fillStyle = 'white';
+      ctx.font = 'normal 26px customFont';
+      const NamesWidth = ctx.measureText(SubStatus).width;
+      const X = Xcord - 10 - NamesWidth; // 時計の画像の右端にテキストを右揃え
+      
+      ctx.fillText(SubStatus, X, Ycord);
+      ctx.fillText(StatusName, Xcord - 320, Ycord);
+
+      // アイコンをテキストの左側に描画
+      const iconSize = 35; 
+      const iconX = Xcord - 330 - iconSize + 1;
+      const iconY = Ycord - 10 - iconSize / 2;
+      ctx.drawImage(IconImage, iconX, iconY, iconSize, iconSize);
+    }
+    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+    return canvas;
+}
+
+async function calculate_teambuff(base_status)
+{
+  const fix_hp_buff = Math.max(parseInt(document.getElementById("fix_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const fix_hprate_buff = Math.max(parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const fix_attack_buff = Math.max(parseInt(document.getElementById("fix_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_attackrate_buff = Math.max(parseFloat(document.getElementById("fix_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const fix_deff_buff = Math.max(parseInt(document.getElementById("fix_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const fix_deffrate_buff = Math.max(parseFloat(document.getElementById("fix_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const fix_elm_buff = Math.max(parseInt(document.getElementById("fix_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const fix_elm_charge_buff = Math.max(parseFloat(document.getElementById("fix_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const fix_cr_buff = Math.max(parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const fix_cd_buff = Math.max(parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const fix_dmg_buff = Math.max(parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
+  const dynamic_hp_buff = Math.max(parseInt(document.getElementById("dynamic_hp_buff").value) || 0, 0); // 聖遺物HP上昇量
+  const dynamic_hprate_buff = Math.max(parseFloat(document.getElementById("dynamic_hp%_buff").value) / 100 || 0, 0); // 聖遺物HP上昇量
+  const dynamic_attack_buff = Math.max(parseInt(document.getElementById("dynamic_attack_buff").value) || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_attackrate_buff = Math.max(parseFloat(document.getElementById("dynamic_attack%_buff").value) / 100 || 0, 0); // 聖遺物攻撃力上昇量
+  const dynamic_deff_buff = Math.max(parseInt(document.getElementById("dynamic_deff_buff").value) || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_deffrate_buff = Math.max(parseFloat(document.getElementById("dynamic_deff%_buff").value) / 100 || 0, 0); // 聖遺物防御力上昇量
+  const dynamic_elm_buff = Math.max(parseInt(document.getElementById("dynamic_elm_buff").value) || 0, 0); // 聖遺物元素熟知上昇量
+  const dynamic_elm_charge_buff = Math.max(parseFloat(document.getElementById("dynamic_elm_charge_buff").value) / 100 || 0, 0); // 聖遺物元素チャージ効率上昇量
+  const dynamic_cr_buff = Math.max(parseFloat(document.getElementById("dynamic_cr_buff").value) / 100 || 0, 0); // 聖遺物会心率上昇量
+  const dynamic_cd_buff = Math.max(parseFloat(document.getElementById("dynamic_cd_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量
+  const dynamic_dmg_buff = Math.max(parseFloat(document.getElementById("dynamic_dmg_buff").value) / 100 || 0, 0); // 聖遺物会心ダメージ上昇量  
+  let team_buff = [0,0,0,0,0,0,0,0];
+
+  const pyroCheckbox = document.getElementById("pyro_reso");
+  const hydroCheckbox = document.getElementById("hydro_reso");
+  const cyroCheckbox = document.getElementById("cyro_reso");
+  const dendroCheckbox = document.getElementById("dendro_reso");
+  const geoCheckbox = document.getElementById("geo_reso");
+
+  const char_response = await fetch("../data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
+  const char_data = await char_response.json();
+  const char_base_hpper = parseFloat(char_data["ステータス"]["基礎HP％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+  const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+  const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+
+  const WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
+  let weapon_base_hpper = 0;
+  let weapon_base_attackper = 0;
+  let weapon_base_deffper = 0;
+
+  if (WeaponEquipData.appendPropId === "FIGHT_PROP_HP_PERCENT") {
+    weapon_base_hpper = WeaponEquipData.statValue / 100;
+  }
+  else if (WeaponEquipData.appendPropId === "FIGHT_PROP_ATTACK_PERCENT") {
+    weapon_base_attackper = WeaponEquipData.statValue / 100;
+  }
+  else if (WeaponEquipData.appendPropId === "FIGHT_PROP_DEFENSE_PERCENT") {
+    weapon_base_deffper = WeaponEquipData.statValue / 100;
+  }
+
+  // チェックボックスの情報をまとめた配列を作成
+  const checkboxStates = {
+    pyro_reso: pyroCheckbox.checked ? 1 : 0,
+    hydro_reso: hydroCheckbox.checked ? 1 : 0,
+    cyro_reso: cyroCheckbox.checked ? 1 : 0,
+    dendro_reso: dendroCheckbox.checked ? 1 : 0,
+    geo_reso: geoCheckbox.checked ? 1 : 0
+  };
+
+  team_buff[0] = fix_hp_buff + dynamic_hp_buff +(fix_hprate_buff + dynamic_hprate_buff + 0.25 * checkboxStates.hydro_reso + char_base_hpper + weapon_base_hpper) * base_status[0];
+  team_buff[1] = fix_deff_buff + dynamic_deff_buff + (fix_deffrate_buff + dynamic_deffrate_buff + char_base_deffper + weapon_base_deffper) * base_status[1];
+  if (checkboxStates.dendro_reso == 1)
+  {
+    const dendro_reso_select = document.getElementById("dendro_reso_select");
+    const dendro_elm = parseInt(dendro_reso_select.value);
+    team_buff[2] = fix_elm_buff + ddynamic_elm_buff + endro_elm;
+  }
+  else
+  {
+    team_buff[2] = fix_elm_buff + dynamic_elm_buff;
+  }
+  team_buff[3] = fix_elm_charge_buff + dynamic_elm_charge_buff;
+  team_buff[4] = fix_attack_buff + dynamic_attack_buff + (fix_attackrate_buff + dynamic_attackrate_buff + 0.25 * checkboxStates.pyro_reso + char_base_attackper + weapon_base_attackper) * base_status[4];
+  team_buff[5] = fix_cr_buff + dynamic_cr_buff + 0.15 * checkboxStates.cyro_reso;
+  team_buff[6] = fix_cd_buff + dynamic_cd_buff;
+  team_buff[7] = fix_dmg_buff + dynamic_dmg_buff + 0.15 * checkboxStates.geo_reso;
+  return team_buff
+}
+
+function drawCenteredText(ctx, text, centerX, y, font, color = 'white') {
+  // フォントと色を設定
+  ctx.font = font;
+  ctx.fillStyle = color;
+
+  // テキストの幅を計算
+  const textWidth = ctx.measureText(text).width;
+
+  // テキストを中央揃えで描画
+  ctx.fillText(text, centerX - textWidth / 2, y);
 }
