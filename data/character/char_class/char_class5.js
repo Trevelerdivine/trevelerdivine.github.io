@@ -9,8 +9,8 @@
       this.skill_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -252,8 +252,8 @@
       this.skill_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -421,8 +421,8 @@
       this.skill_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -619,8 +619,8 @@
       this.skill_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -834,8 +834,8 @@
       this.talent1_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -1070,8 +1070,8 @@
       this.react_attack_unique_count = 0;
       this.nonreact_attack_count = 0;
       this.nonreact_attack_unique_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -1371,8 +1371,8 @@
       this.talent2_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -1576,8 +1576,8 @@
       this.react_list = 0;
       this.nonreact_list = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -1827,8 +1827,8 @@
       this.sixth_conste_buff = 0;
       this.talent2_buff = 0;
       this.attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -1988,8 +1988,8 @@
       this.bennett_Q_buff = 0
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -2182,8 +2182,8 @@
       this.reaction_count = 0;
       this.attack_count = 0;
       this.talent2 = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -2339,8 +2339,8 @@
       this.sixth_conste_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -2509,8 +2509,8 @@
       this.reaction_coeff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -2721,8 +2721,8 @@
       this.talent1_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -2938,8 +2938,8 @@
       this.first_nonreact_count = 0
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -3251,8 +3251,8 @@
       this.nonreact_attack_count = 0;
       this.sixth_react_count = 0;
       this.sixth_nonreact_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -3476,8 +3476,8 @@
       this.nonreact_attack_count = 0;
       this.react_suigetsu_count = 0;
       this.nonreact_suigetsu_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -3707,8 +3707,8 @@
       this.burst_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -3911,8 +3911,8 @@
       this.burst_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -4090,8 +4090,8 @@
       this.reaction_coeff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -4316,8 +4316,8 @@
       this.reaction_coeff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -4487,8 +4487,8 @@
       this.skill_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -4661,8 +4661,8 @@
       this.talent2_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -4882,8 +4882,8 @@
       this.talent2_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -5123,8 +5123,8 @@
       this.trueCount = 0;
       this.debuff = 0;
       this.attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -5269,8 +5269,8 @@
       this.react_second_count = 0;
       this.nonreact_second_count = 0;
       this.unique_dmg_buff = [0, 0];
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
       if (selectedWeaponId == 120)
@@ -5491,8 +5491,8 @@
       this.sixth_conste_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -5707,8 +5707,8 @@
       this.sixth_conste_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -5878,8 +5878,8 @@
       this.first_conste_buff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -6062,8 +6062,8 @@
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -6267,8 +6267,8 @@
       this.skill_buff = 0;
       this.attack_hit_count1 = 0;
       this.attack_hit_count2 = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -6459,8 +6459,8 @@
       this.talent2effect = 0;
       this.four_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -6628,8 +6628,8 @@
       this.reaction_coeff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -6799,8 +6799,8 @@
       this.reaction_coeff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -6956,8 +6956,8 @@
       this.reaction_coeff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -7103,8 +7103,8 @@
       this.reaction_coeff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -7248,8 +7248,8 @@
       this.aggcount = 0;
       this.reaction_coeff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -7393,8 +7393,8 @@
       this.talent2_buff = 0;
       this.reaction_coeff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -7584,8 +7584,8 @@
       this.reaction_coeff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
     }
@@ -7734,8 +7734,8 @@
       this.talent2_buff = 0;
       this.burst_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
   
@@ -7886,8 +7886,8 @@
       this.talent2_buff = 0;
       this.burst_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
   
@@ -8020,8 +8020,8 @@
       this.talent2_buff = 0;
       this.burst_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
   
@@ -8160,8 +8160,8 @@
       this.sixth_conste_crbuff = 0;
       this.sixth_conste_cdbuff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
   
@@ -8291,8 +8291,8 @@
       this.sixth_conste_buff = 0;
       this.attack_count = 0;
       this.unique_attack_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
   
@@ -8504,8 +8504,8 @@
       this.q_pyrobuff = 0;
       this.four_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
   
@@ -8744,8 +8744,8 @@
       this.attack_hit_count1 = 0;
       this.attack_hit_count2 = 0;
       this.unique_dmg_buff = [0, 0];
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
       if (selectedWeaponId == 120)
       {
@@ -8971,8 +8971,8 @@
       this.sixth_conste_buff = 0;
       this.nyan_dmgrate = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -9155,8 +9155,8 @@
       this.reaction_coeff = 0;
       this.sixth_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -9299,8 +9299,8 @@
       this.sixth_conste_buff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -9444,8 +9444,8 @@
       this.sixth_conste_buff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -9593,8 +9593,8 @@
       this.sixth_conste_buff = 0;
       this.attack_count;
       this.burst_buff_rate = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -9750,8 +9750,8 @@
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.attack_count;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -9902,8 +9902,8 @@
       this.parameter = parameter;
       this.sixth_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -10021,8 +10021,8 @@
       this.parameter = parameter;
       this.sixth_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -10134,8 +10134,8 @@
       this.parameter = parameter;
       this.talent2_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -10264,8 +10264,8 @@
       this.parameter = parameter;
       this.first_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
@@ -10386,8 +10386,8 @@
       this.talent2_buff = 0;
       this.fourth_conste_buff = 0;
       this.attack_hit_count = 0;
-      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
-      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      const fix_basedmg_buff = Math.max(parseFloat(document.getElementById("fix_basedmg_buff").value) || 0, 0);
+      const dynamic_basedmg_buff = Math.max(parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0, 0);
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
     }
     
