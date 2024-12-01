@@ -820,21 +820,6 @@
     // ボタン要素
     const fetchButton = document.getElementById("fetchButton");
 
-    function showTable(tableId, buttonId)
-    {
-        // すべての表コンテナを非表示にする
-        let tableContainers = document.getElementsByClassName("tablestyle");
-        let buttonstyle = document.getElementsByClassName("button-2");
-        for (var i = 0; i < tableContainers.length; i++) 
-        {
-        tableContainers[i].classList.remove("active");
-        buttonstyle[i].classList.remove("button-active");
-        }
-        // 選択された表コンテナを表示する
-        document.getElementById(tableId).classList.add("active");
-        document.getElementById(buttonId).classList.add("button-active");
-    }
-
     function showOption(tableId, buttonId)
     {
         // すべての表コンテナを非表示にする
@@ -1470,7 +1455,6 @@
         CharJsonData = await JsonData1.json();
         const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
         WeaponJsonData = await JsonData2.json();
-        showTable("table1","tablebutton1");
         showOption("option1", "parameterbutton1");
         const DataResponse = await fetch("../data/JsonData/CharacterData.json");
         let char_ids = [];
