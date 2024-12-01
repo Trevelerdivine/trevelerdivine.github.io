@@ -2273,7 +2273,6 @@ async function displayImage() {
           await navigator.share({
             files: [file],
             title: "ビルドカード",
-            text: "Check out this image!",
           });
         } else {
           console.error("Web Share APIがサポートされていません。");
