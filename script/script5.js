@@ -778,28 +778,28 @@ function calculate_elmreaction_constdmg(reaction_coeff, status_array, resist, re
   let reaction_dmg = 0;
   if (char_propaty[0] == 0)
   {
-    reaction_dmg = reaction_list[0] * 2 * resist[0] * (1 + reaction_bonus_list[0] + reaction_elm_bunus) 
+    reaction_dmg = reaction_list[0] * 2.75 * resist[0] * (1 + reaction_bonus_list[0] + reaction_elm_bunus) 
                  + reaction_list[1] * 3 * resist[5] * (1 + reaction_bonus_list[1] + reaction_elm_bunus);
   }
   else if (char_propaty[0] == 1)
   {
     if (selectedCharId != 11)
     {
-      reaction_dmg = reaction_list[2] * 1.2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
+      reaction_dmg = reaction_list[2] * 2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
                    + reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
                    + reaction_list[4] * 2 * resist[5] * (1 + reaction_bonus_list[4] + reaction_elm_bunus);
     }
     else
     {
-      reaction_dmg = reaction_list[2] * 1.2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
+      reaction_dmg = reaction_list[2] * 2 * resist[3] * (1 + reaction_bonus_list[2] + reaction_elm_bunus)
                    + reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
                    + reaction_list[4] * 2 * resist[5] * (1 + Math.min(Math.max(status_array[0] - 30000, 0) * 0.00009, 4) + reaction_elm_bunus);
     }
   }
   else if (char_propaty[0] == 3)
   {
-    reaction_dmg = reaction_list[5] * 2 * resist[0] * (1 + reaction_bonus_list[5] + reaction_elm_bunus)
-                 + reaction_list[6] * 1.2 * resist[3] * (1 + reaction_bonus_list[5] + reaction_elm_bunus)
+    reaction_dmg = reaction_list[5] * 2.75 * resist[0] * (1 + reaction_bonus_list[5] + reaction_elm_bunus)
+                 + reaction_list[6] * 2 * resist[3] * (1 + reaction_bonus_list[5] + reaction_elm_bunus)
                  + reaction_list[7] * 3 * resist[5] * (1 + reaction_bonus_list[7] + reaction_elm_bunus);
   }
   else if (char_propaty[0] == 5)
