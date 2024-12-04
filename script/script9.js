@@ -2208,30 +2208,29 @@ async function generate() {
     const AfSubStatusData = await fetch("../data/JsonData/AfSubStatusData.json").then(res => res.json());
 
     // サブステータス描画
-    await Promise.all(AfSubStatsList.flatMap((stats, j) => 
-    stats.map((stat, i) => {
-        const paramsName = AfSubStatusData[stat.appendPropId]?.name;
-        const urlName = AfSubStatusData[stat.appendPropId]?.url;
-        const buffValue = stat.statValue;
-        const SubStatusIndex = AfSubStatusData[stat.appendPropId]?.id
-        if (depend_status[SubStatusId[SubStatusIndex]] === 1)
-        {
-          ctx.fillStyle = '#ffc925';
-        }
-        else
-        {
-          ctx.fillStyle = 'white';
-        }
-        
-
-        if (paramsName) {
-            const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
-                ? buffValue
-                : `${buffValue}%`;
-            return AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 900 + 53 * i);
-        }
-    }).filter(Boolean)
-    ));
+    AfSubStatsList.flatMap((stats, j) => 
+      stats.map((stat, i) => {
+          const paramsName = AfSubStatusData[stat.appendPropId]?.name;
+          const urlName = AfSubStatusData[stat.appendPropId]?.url;
+          const buffValue = stat.statValue;
+          const SubStatusIndex = AfSubStatusData[stat.appendPropId]?.id;
+  
+          // 色の設定
+          if (depend_status[SubStatusId[SubStatusIndex]] === 1) {
+              ctx.fillStyle = '#ffc925'; // 黄色
+          } else {
+              ctx.fillStyle = 'white'; // 白
+          }
+  
+          // 描画処理
+          if (paramsName) {
+              const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
+                  ? buffValue
+                  : `${buffValue}%`;
+              AfSubDisp(urlName, paramsName, value, 380 + 381 * j, 900 + 53 * i);
+          }
+      }).filter(Boolean)
+    );
 
 
     // レーダーチャートを作成
