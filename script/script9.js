@@ -1914,6 +1914,7 @@ async function displayImage() {
 async function generate() {
     const relocatedIndex = [0,4,1,2,5,6,3,7];
     const display_status = [1,1,1,1,1,1,1,1];
+    const SubStatusId = [0,1,2,3,4,5,6,0,4,1];
     const ElementType = ["炎", "水", "氷", "雷", "風", "草", "岩"];
     const main_status_name = ["HP%","防御力%","元素熟知","元素チャージ効率","攻撃力%","会心率","会心ダメージ","ダメージバフ","物理ダメージバフ"];
     const ElementTypeList = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"];
@@ -2212,6 +2213,16 @@ async function generate() {
         const paramsName = AfSubStatusData[stat.appendPropId]?.name;
         const urlName = AfSubStatusData[stat.appendPropId]?.url;
         const buffValue = stat.statValue;
+        const SubStatusIndex = AfSubStatusData[stat.appendPropId]?.id
+        if (depend_status[SubStatusId[SubStatusIndex]] === 1)
+        {
+          ctx.fillStyle = '#ffc925';
+        }
+        else
+        {
+          ctx.fillStyle = 'white';
+        }
+        
 
         if (paramsName) {
             const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
