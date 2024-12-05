@@ -2393,7 +2393,7 @@ async function generate() {
       // テキストの右揃え
       if (flag === 1)
       {
-        ctx.fillStyle = '#ffc925';
+        ctx.fillStyle = '#fcdd7e';
       }
       else
       {
