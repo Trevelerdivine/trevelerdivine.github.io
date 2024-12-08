@@ -414,6 +414,11 @@
             "名前": "シグウィン",
             "name": "Sigewinne",
             "Artifact":[0,7,5]
+        },
+        "83": {
+            "名前": "セトス",
+            "name": "sethos",
+            "Artifact":[2,7,5]
         }
     }
 }
