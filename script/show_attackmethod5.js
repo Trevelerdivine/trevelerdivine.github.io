@@ -2464,7 +2464,7 @@ async function show_attack_method()
     }
     else if (attack_method == 7)
     {
-      if (char_constellations < 4)
+      if (CharConstellations < 4)
       {
         traits = [
           document.createElement("br"),
