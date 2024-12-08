@@ -6991,7 +6991,7 @@
       } 
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/sethos.json");
+      const response = await fetch("../data/character/char_data/sethos.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
