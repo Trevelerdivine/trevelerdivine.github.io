@@ -2452,6 +2452,73 @@ async function show_attack_method()
   elemental_reaction.appendChild(keqing_agg_countlist); // ラベルを select_reaction_method に追加
   elemental_reaction.appendChild(document.createElement("br"));
   }
+  else if (selectedCharId == "83")
+  {
+    let sethos_agg_countlist;
+
+    if (attack_method == 6)
+    {
+      traits = [
+        document.createElement("br"),
+        createLabel("", "　瞑弦の矢ヒット回数"),
+        document.createElement("br"),
+        createLabel("sethos_attack_count1", "　　１段目："),
+        createSelectList("sethos_attack_count1", 0, 20, "", "回", 1),
+        document.createElement("br"),
+        createLabel("sethos_attack_count2", "　　２段目："),
+        createSelectList("sethos_attack_count2", 0, 20, "", "回", 1),
+        document.createElement("br"),
+        createLabel("sethos_attack_count3", "　　３段目："),
+        createSelectList("sethos_attack_count3", 0, 20, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      sethos_agg_countlist = createSelectList("sethos_agg_count", 0, 30, "", "回", 2);
+    }
+    else if (attack_method == 7)
+    {
+      if (char_constellations < 4)
+      {
+        traits = [
+          document.createElement("br"),
+          createLabel("", "　重撃２段チャージヒット回数"),
+          document.createElement("br"),
+          createLabel("sethos_attack_count1", "　　熱砂の眩影効果あり："),
+          createSelectList("sethos_attack_count1", 0, 20, "", "回", 4),
+          document.createElement("br"),
+          createLabel("sethos_attack_count2", "　　熱砂の眩影効果なし："),
+          createSelectList("sethos_attack_count2", 0, 20, "", "回", 0),
+          document.createElement("br"),
+        ];
+
+        sethos_agg_countlist = createSelectList("sethos_agg_count", 0, 30, "", "回", 4);
+      }
+      else
+      {
+        traits = [
+          document.createElement("br"),
+          createLabel("", "　重撃２段チャージヒット回数"),
+          document.createElement("br"),
+          createLabel("sethos_attack_count1", "　　熱砂の眩影効果あり："),
+          createSelectList("sethos_attack_count1", 0, 20, "", "回", 4),
+          document.createElement("br"),
+          createLabel("sethos_attack_count2", "　　熱砂の眩影効果なし："),
+          createSelectList("sethos_attack_count2", 0, 20, "", "回", 1),
+          document.createElement("br"),
+        ];
+
+        sethos_agg_countlist = createSelectList("sethos_agg_count", 0, 30, "", "回", 5);
+      }
+    }
+    
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+
+    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(sethos_agg_countlist); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
   else if (selectedCharId == "38")
   {
     let kujousara_selectlist;

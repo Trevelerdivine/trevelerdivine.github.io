@@ -104,6 +104,9 @@ async function create_char_instance(base_status, parameter) {
       case "35":
         char_instance = new keqing(base_status, parameter);
         break;
+      case "83":
+        char_instance = new sethos(base_status, parameter);
+        break;
       case "38":
         char_instance = new kujousara(base_status, parameter);
         break;
