@@ -1253,6 +1253,52 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId == "83")
+    {
+      traits = [
+        { id: "traitCheckbox1", label: "第1重： シュラインの謁霊歌 貫影の矢の会心率+15%" },
+        { id: "traitCheckbox2", label: "第2重： 寂秘のパピルス 雷元素ダメージ" },
+        { id: "traitCheckbox4", label: "第4重： 真実のプリュマージュ 元素熟知+80" }
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "重撃（瞑弦の矢）", value: "6" },
+        { text: "重撃（２段チャージ）", value: "7" },
+      ];
+    
+      createchar_attackmethod(options);
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    
+      if (char_constellations > 1)
+      {
+        traitCheckbox = createCheckbox(traits[1].id, true);
+        traitLabel = createLabel(traits[1].id, traits[1].label);
+
+        const second_conste_selectList = createanySelectList("sethos_conste2", 0, 2, "+", "%", 2, 15);
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(second_conste_selectList);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[2].id, true);
+        traitLabel = createLabel(traits[2].id, traits[2].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
     else if (selectedCharId == "38")
     {
       elementsToAddToCharTalent = [
