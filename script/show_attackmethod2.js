@@ -2454,49 +2454,70 @@ async function show_attack_method()
   }
   else if (selectedCharId == "83")
   {
-    traits = [
-      { id: "traitCheckbox1", label: "第1重： シュラインの謁霊歌 貫影の矢の会心率+15%" },
-      { id: "traitCheckbox2", label: "第2重： 寂秘のパピルス 雷元素ダメージ" },
-      { id: "traitCheckbox4", label: "第4重： 真実のプリュマージュ 元素熟知+80" }
-    ];
+    let sethos_agg_countlist;
 
-    options = [
-      { text: "攻撃方法", value: "0", disabled: true, selected: true },
-      { text: "重撃（瞑弦の矢）", value: "6" },
-      { text: "重撃（２段チャージ）", value: "7" },
-    ];
-  
-    createchar_attackmethod(options);
-    if (char_constellations > 0)
+    if (attack_method == 6)
     {
-      traitCheckbox = createCheckbox(traits[0].id, true);
-      traitLabel = createLabel(traits[0].id, traits[0].label);
-  
-      characterInfo.appendChild(traitCheckbox);
-      characterInfo.appendChild(traitLabel);
-      characterInfo.appendChild(document.createElement("br"));
-    }
-  
-    if (char_constellations > 1)
-    {
-      traitCheckbox = createCheckbox(traits[1].id, true);
-      traitLabel = createLabel(traits[1].id, traits[1].label);
+      traits = [
+        document.createElement("br"),
+        createLabel("", "　瞑弦の矢ヒット回数"),
+        document.createElement("br"),
+        createLabel("sethos_attack_count1", "　　１段目："),
+        createSelectList("sethos_attack_count1", 0, 20, "", "回", 1),
+        document.createElement("br"),
+        createLabel("sethos_attack_count2", "　　２段目："),
+        createSelectList("sethos_attack_count2", 0, 20, "", "回", 1),
+        document.createElement("br"),
+        createLabel("sethos_attack_count3", "　　３段目："),
+        createSelectList("sethos_attack_count3", 0, 20, "", "回", 1),
+        document.createElement("br"),
+      ];
 
-      const second_conste_selectList = createanySelectList("sethos_conste2", 0, 2, "+", "%", 2, 15);
-      characterInfo.appendChild(traitCheckbox);
-      characterInfo.appendChild(traitLabel);
-      characterInfo.appendChild(second_conste_selectList);
-      characterInfo.appendChild(document.createElement("br"));
+      sethos_agg_countlist = createSelectList("sethos_agg_count", 0, 30, "", "回", 2);
     }
-    if (char_constellations > 2)
+    else if (attack_method == 7)
     {
-      traitCheckbox = createCheckbox(traits[2].id, true);
-      traitLabel = createLabel(traits[2].id, traits[2].label);
-  
-      characterInfo.appendChild(traitCheckbox);
-      characterInfo.appendChild(traitLabel);
-      characterInfo.appendChild(document.createElement("br"));
+      if (char_constellations < 4)
+      {
+        traits = [
+          document.createElement("br"),
+          createLabel("", "　重撃２段チャージヒット回数"),
+          document.createElement("br"),
+          createLabel("sethos_attack_count1", "　　熱砂の眩影効果あり："),
+          createSelectList("sethos_attack_count1", 0, 20, "", "回", 4),
+          document.createElement("br"),
+          createLabel("sethos_attack_count2", "　　熱砂の眩影効果なし："),
+          createSelectList("sethos_attack_count2", 0, 20, "", "回", 0),
+          document.createElement("br"),
+        ];
+
+        sethos_agg_countlist = createSelectList("sethos_agg_count", 0, 30, "", "回", 4);
+      }
+      else
+      {
+        traits = [
+          document.createElement("br"),
+          createLabel("", "　重撃２段チャージヒット回数"),
+          document.createElement("br"),
+          createLabel("sethos_attack_count1", "　　熱砂の眩影効果あり："),
+          createSelectList("sethos_attack_count1", 0, 20, "", "回", 4),
+          document.createElement("br"),
+          createLabel("sethos_attack_count2", "　　熱砂の眩影効果なし："),
+          createSelectList("sethos_attack_count2", 0, 20, "", "回", 1),
+          document.createElement("br"),
+        ];
+
+        sethos_agg_countlist = createSelectList("sethos_agg_count", 0, 30, "", "回", 5);
+      }
     }
+    
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+
+    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(sethos_agg_countlist); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
   }
   else if (selectedCharId == "38")
   {
