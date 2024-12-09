@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>原神最適化スコア計算機</title>
+    <title>原神　ビルドカード作成ツール</title>
     <link rel="stylesheet" href="../data/css/style5.css">
     <script src="../script/script9.js"></script>
     <script src="../script/create_new_class.js"></script>
@@ -15,7 +15,20 @@
     <script src="../script/show_artifact.js"></script>
     <script src="../script/show_attackmethod5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997
+    crossorigin="anonymous"></script>"-->
     <style>
+        body {
+            background-image: url('../data/BackImg.png'); /* 背景画像のパス */
+            background-repeat: repeat; /* 画像を繰り返し */
+            background-size: auto; /* デフォルトサイズを使用 */
+            background-attachment: scroll; /* 背景を固定 */
+            overflow-y: scroll;
+            background-size: 50%;
+            height: auto;
+            padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
+        }
+
         #uidInput {
             padding: 10px;
             font-size: 16px;
@@ -32,13 +45,13 @@
                 grid-template-rows: repeat(2, 1fr); /* 2行のグリッド */
                 gap: 20px; /* 画像の間隔 */
             }
-        .image-grid img {
-                width: 100%; /* 画像の幅を100%に設定 */
-                height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+            .image-grid img {
+                    width: 100%; /* 画像の幅を100%に設定 */
+                    height: auto; /* アスペクト比を維持したまま高さを自動調整 */
             }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .image-grid {
                 margin: 0 auto; /* 左右の余白を自動的に均等に設定 */
                 display: grid;
@@ -46,9 +59,12 @@
                 grid-template-rows: repeat(2, 1fr); /* 2行のグリッド */
                 gap: 10px; /* 画像の間隔 */
             }
-        .image-grid img {
+            .image-grid img {
                 width: 100%; /* 画像の幅を100%に設定 */
                 height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+            }
+            body {
+                background-size: 100%; /* スマートフォンでは画像を縮小して繰り返し */
             }
         }
 
@@ -74,13 +90,12 @@
         footer p {
             font-size: 10px; /* または適切なサイズに調整 */
         }
-
     </style>
 </head>
 <body>
     <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
     <label for="drawer-toggle" id="drawer-toggle-label"></label>
-    <header style="font-size: 24px;"><a href="../index.html">聖遺物最適化スコア計算機</a></header>
+    <header style="font-size: 24px;">ビルドカード作成ツール</header>
     <nav id="drawer">
     <ul>
         <li><a href="../index.html">・最適化スコア計算機</a></li>
@@ -88,6 +103,7 @@
         <li><a href="./ScoreFix.html">・最適ステータス計算機</a></li>
         <li><a href="./UpdataDaysCalc.html">・必要厳選日数計算機</a></li>
         <li><a href="./UpdataElixirCalc.html">・エリクシル更新確率計算機</a></li>
+        <li><a href="./CreateBuildCard.html">・ビルドカード作成ツール</a></li>
         <li><a href="./HowToUse.html">・使い方</a></li>
         <li><a href="./policy.html">・プライバシーポリシー</a></li>
         <li><a href="./Contact.html">・お問い合わせ</a></li>
@@ -728,24 +744,18 @@
             </div>
             <br>
             <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
-                <div class="button_solid004" onclick="DoCalculate()">
-                    スコア計算開始
+                <div class="button_solid005" onclick="DoCalculate()">
+                    ビルドカード作成
                 </div>
-            </div>
+            </div>   
             <br>
-            <div id = "button_create"style="height: 50px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; display:none;">
-                <div class="button_solid005" onclick="CreateBuildCard()">
-                    ビルドカード生成
-                </div>
-            </div>
             <div id="button_dl" style="height: 50px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; display: none;">
                 <!-- ダウンロードボタン -->
                 <a id="downloadLink" href="#" class="button_solid006">
                     画像をダウンロード
                 </a>
             </div>                   
-            <div id="output" style="display: flex; justify-content: center;"></div>
-            <br>
+            <div id="output" style="display: flex; justify-content: center;"></div>          
             <br>
             <div id="spinner" class="hidden">
                 <div class="dot"></div>
@@ -758,405 +768,6 @@
             <div id="response"></div>
             <div id="result"></div>
             <br>
-            <div class="wrapper">
-                <div>
-                    <div class = "centered-container">
-                    <div class = "centered-div">
-                        <button id = "tablebutton1" class="button-2" onclick="showTable('table1', 'tablebutton1')">各ステータス</button>
-                        <button id = "tablebutton2" class="button-2" onclick="showTable('table2', 'tablebutton2')">スコア分布</button>
-                        <button id = "tablebutton3" class="button-2" onclick="showTable('table3', 'tablebutton3')">サブステータス分布</button>
-                    </div>
-                    <div id="table1" class="tablestyle">
-                        <!-- 表1の内容 -->
-                        <table  class="status_table" style="table-layout: fixed">
-                        <colgroup>
-                            <col style="width: 30%;">
-                            <col style="width: 35%;">
-                        </colgroup>
-                        <thead>
-                            <tr>
-                            <th></th>
-                            <th>自己ステータス</th>
-                            <th>最適化ステータス</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>HP</span>
-                            </th>
-                            <td id = my_result_hp>-</td>
-                            <td id = appro_result_hp>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>攻撃力</span>
-                            </th>
-                            <td id = my_result_attck>-</td>
-                            <td id = appro_result_attck>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>防御力</span>
-                            </th>
-                            <td id = my_result_deff>-</td>
-                            <td id = appro_result_deff>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>元素熟知</span>
-                            </th>
-                            <td id = my_result_elm>-</td>
-                            <td id = appro_result_elm>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>元素チャージ効率</span>
-                            </th>
-                            <td id = my_result_elm_charge>-</td>
-                            <td id = appro_result_elm_charge>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>会心率</span>
-                            </th>
-                            <td id = my_result_cr>-</td>
-                            <td id = appro_result_cr>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>会心ダメージ</span>
-                            </th>
-                            <td id = my_result_cd>-</td>
-                            <td id = appro_result_cd>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>ダメージバフ</span>
-                            </th>
-                            <td id = my_result_dmg_buff>-</td>
-                            <td id = appro_result_dmg_buff>-</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    <div id="table2" class="tablestyle">
-                        <!-- 表2の内容 -->
-                    <table  class="status_table" style="table-layout: fixed">
-                    <colgroup>
-                        <col style="width: 21%;">
-                        <col style="width: 19%;">
-                        <col style="width: 19%;">
-                        <col style="width: 19%;">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                        <th></th>
-                        <th>自己スコア分布</th>
-                        <th>最適スコア分布</th>
-                        <th>聖遺物スコア差</th>
-                        <th>サブステ伸び回数</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>聖遺物スコア</span>
-                        </th>
-                        <td id = my_af_score>-</td>
-                        <td id = appro_af_score>-</td>
-                        <td id = dlt_af_score>-</td>
-                        <td id = count_af_score>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>HP</span>
-                        </th>
-                        <td id = my_hp_score>-</td>
-                        <td id = appro_hp_score>-</td>
-                        <td id = dlt_hp_score>-</td>
-                        <td id = count_hp_score>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>攻撃力</span>
-                        </th>
-                        <td id = my_attck_score>-</td>
-                        <td id = appro_attck_score>-</td>
-                        <td id = dlt_attck_score>-</td>
-                        <td id = count_attck_score>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>防御力</span>
-                        </th>
-                        <td id = my_deff_score>-</td>
-                        <td id = appro_deff_score>-</td>
-                        <td id = dlt_deff_score>-</td>
-                        <td id = count_deff_score>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>元素熟知</span>
-                        </th>
-                        <td id = my_elm_score>-</td>
-                        <td id = appro_elm_score>-</td>
-                        <td id = dlt_elm_score>-</td>
-                        <td id = count_elm_score>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>元素チャージ効率</span>
-                        </th>
-                        <td id = my_elm_charge_score>-</td>
-                        <td id = appro_elm_charge_score>-</td>
-                        <td id = dlt_elm_charge_score>-</td>
-                        <td id = count_elm_charge_score>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>会心率</span>
-                        </th>
-                        <td id = my_cr_score>-</td>
-                        <td id = appro_cr_score>-</td>
-                        <td id = dlt_cr_score>-</td>
-                        <td id = count_cr_score>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>会心ダメージ</span>
-                        </th>
-                        <td id = my_cd_score>-</td>
-                        <td id = appro_cd_score>-</td>
-                        <td id = dlt_cd_score>-</td>
-                        <td id = count_cd_score>-</td>
-                        </tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    <div id="table3" class="tablestyle">
-                        <!-- 表3の内容 -->
-                        <table  class="status_table" style="table-layout: fixed">
-                        <colgroup>
-                            <col style="width: 18%;">
-                            <col style="width: 23%;">
-                            <col style="width: 23%;">
-                            <col style="width: 18%;">
-                        </colgroup>
-                        <thead>
-                            <tr>
-                            <th></th>
-                            <th>自己サブステータス分布</th>
-                            <th>最適サブステータス分布</th>
-                            <th>サブステータス差</th>
-                            <th>サブステ伸び回数</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>聖遺物スコア</span>
-                            </th>
-                            <td id = my_af_score3>-</td>
-                            <td id = appro_af_score3>-</td>
-                            <td id = dlt_af_score3>-</td>
-                            <td id = count_af_score3>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>HP</span>
-                            </th>
-                            <td id = my_af_hp>-</td>
-                            <td id = appro_af_hp>-</td>
-                            <td id = dlt_af_hp>-</td>
-                            <td id = count_hp_score3>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>攻撃力</span>
-                            </th>
-                            <td id = my_af_attck>-</td>
-                            <td id = appro_af_attck>-</td>
-                            <td id = dlt_af_attck>-</td>
-                            <td id = count_attck_score3>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>防御力</span>
-                            </th>
-                            <td id = my_af_deff>-</td>
-                            <td id = appro_af_deff>-</td>
-                            <td id = dlt_af_deff>-</td>
-                            <td id = count_deff_score3>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>元素熟知</span>
-                            </th>
-                            <td id = my_af_elm>-</td>
-                            <td id = appro_af_elm>-</td>
-                            <td id = dlt_af_elm>-</td>
-                            <td id = count_elm_score3>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>元素チャージ効率</span>
-                            </th>
-                            <td id = my_af_elm_charge>-</td>
-                            <td id = appro_af_elm_charge>-</td>
-                            <td id = dlt_af_elm_charge>-</td>
-                            <td id = count_elm_charge_score3>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>会心率</span>
-                            </th>
-                            <td id = my_af_cr>-</td>
-                            <td id = appro_af_cr>-</td>
-                            <td id = dlt_af_cr>-</td>
-                            <td id = count_cr_score3>-</td>
-                            </tr>
-                            <tr>
-                            <th rowspan="1" style="text-align: left;">
-                                <span>会心ダメージ</span>
-                            </th>
-                            <td id = my_af_cd>-</td>
-                            <td id = appro_af_cd>-</td>
-                            <td id = dlt_af_cd>-</td>
-                            <td id = count_cd_score3>-</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="chart-container">
-                    <canvas id="myChart"></canvas>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="wrapper">
-                <div>
-                    <div class = "centered-container">
-                        <div id="table4" class="tablestyle1">
-                            <table  class="main_combination_table" style="table-layout: fixed">
-                            <colgroup>
-                                <col style="width: 5%;">
-                                <col style="width: 25%;">
-                                <col style="width: 25%;">
-                                <col style="width: 25%;">
-                                <col style="width: 25%;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                <th></th>
-                                <th>時計</th>
-                                <th>杯</th>
-                                <th>冠</th>
-                                <th>ダメージ割合</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                        <span>1.</span>
-                                    </th>
-                                    <td id = clock1>-</td>
-                                    <td id = goblet1>-</td>
-                                    <td id = circlet1>-</td>
-                                    <td id = dmgrate1>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                        <span>2.</span>
-                                    </th>
-                                    <td id = clock2>-</td>
-                                    <td id = goblet2>-</td>
-                                    <td id = circlet2>-</td>
-                                    <td id = dmgrate2>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                        <span>3.</span>
-                                    </th>
-                                    <td id = clock3>-</td>
-                                    <td id = goblet3>-</td>
-                                    <td id = circlet3>-</td>
-                                    <td id = dmgrate3>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                        <span>4.</span>
-                                    </th>
-                                    <td id = clock4>-</td>
-                                    <td id = goblet4>-</td>
-                                    <td id = circlet4>-</td>
-                                    <td id = dmgrate4>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                        <span>5.</span>
-                                    </th>
-                                    <td id = clock5>-</td>
-                                    <td id = goblet5>-</td>
-                                    <td id = circlet5>-</td>
-                                    <td id = dmgrate5>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                      <span>6.</span>
-                                    </th>
-                                    <td id = clock6>-</td>
-                                    <td id = goblet6>-</td>
-                                    <td id = circlet6>-</td>
-                                    <td id = dmgrate6>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                      <span>7.</span>
-                                    </th>
-                                    <td id = clock7>-</td>
-                                    <td id = goblet7>-</td>
-                                    <td id = circlet7>-</td>
-                                    <td id = dmgrate7>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                      <span>8.</span>
-                                    </th>
-                                    <td id = clock8>-</td>
-                                    <td id = goblet8>-</td>
-                                    <td id = circlet8>-</td>
-                                    <td id = dmgrate8>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                      <span>9.</span>
-                                    </th>
-                                    <td id = clock9>-</td>
-                                    <td id = goblet9>-</td>
-                                    <td id = circlet9>-</td>
-                                    <td id = dmgrate9>-</td>
-                                </tr>
-                                <tr>
-                                    <th rowspan="1" style="text-align: left;">
-                                      <span>10.</span>
-                                    </th>
-                                    <td id = clock10>-</td>
-                                    <td id = goblet10>-</td>
-                                    <td id = circlet10>-</td>
-                                    <td id = dmgrate10>-</td>
-                                </tr>
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                </div>
-            </div>
         </div>
         <br>
         <br>
@@ -1192,8 +803,9 @@
     let UserData;
     let afdata;
     let AfSubStatsList = ["", "", "", "", ""];
-    let AfNameList;
+    let AfNameList
     let AfNumList;
+    let AfLevelList;
     let SelectId;
     let CharJsonData;
     let WeaponJsonData;
@@ -1208,21 +820,6 @@
     const countdownInterval = 1000;
     // ボタン要素
     const fetchButton = document.getElementById("fetchButton");
-
-    function showTable(tableId, buttonId)
-    {
-        // すべての表コンテナを非表示にする
-        let tableContainers = document.getElementsByClassName("tablestyle");
-        let buttonstyle = document.getElementsByClassName("button-2");
-        for (var i = 0; i < tableContainers.length; i++) 
-        {
-        tableContainers[i].classList.remove("active");
-        buttonstyle[i].classList.remove("button-active");
-        }
-        // 選択された表コンテナを表示する
-        document.getElementById(tableId).classList.add("active");
-        document.getElementById(buttonId).classList.add("button-active");
-    }
 
     function showOption(tableId, buttonId)
     {
@@ -1335,11 +932,7 @@
                     await SetMainStatus(SelectId);
                     await show_char_statsform();
                     await show_weapon_statsform();
-                    await show_artifact()
-                    const initial_index = [0,0,0,0,1,1,1];
-                    const myStatus = [0,0,0,0,0,0,0];
-                    const TheoreticalStatus = [0,0,0,0,100,100,100];
-                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
+                    await show_artifact();
 
                     // 画像を置き換える
                     const existingImage = imageContainer.querySelector("img");
@@ -1476,18 +1069,20 @@
         let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
+        let AfLevelSetList = [];
         const AfIndexReplace = [3, 1, 4, 0, 2];
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
             // オブジェクトから "itemId" の要素を取り出して配列に追加
-            if (status.hasOwnProperty("itemId")) {
+            if (status.hasOwnProperty("reliquary")) {
                 AfIdList.push(status["itemId"]);
+                AfLevelSetList.push(status["reliquary"]["level"]);
             }
         });
 
-        AfIdList.pop();
         AfNumList = new Array(5).fill([]);
-        AfIdList.forEach(item => {
+        AfLevelList = new Array(5).fill([0]);
+        AfIdList.forEach((item, i) => { // `i` を第2引数として受け取る
             // 4桁目を取得（IDを文字列に変換してインデックス3を参照）
             const fourthDigit = parseInt(item.toString().charAt(3));
 
@@ -1496,7 +1091,9 @@
 
             // 該当インデックスに上2桁を格納
             AfNumList[AfIndexReplace[fourthDigit - 1]] = firstTwoDigits;
+            AfLevelList[AfIndexReplace[fourthDigit - 1]] = AfLevelSetList[i]; // `i` を使用して対応する値を取得
         });
+
         
          // 数値の出現回数を記録するオブジェクトを作成
         const countMap = {};
@@ -1782,41 +1379,6 @@
     }
 
     function ResetParameter(){
-        let div2 = document.getElementById("button_create");
-        div2.style.display = "none "; // または必要に応じて適切なdisplay値を使用します
-        let div3 = document.getElementById("button_dl");
-        div3.style.display = "none"; // または必要に応じて適切なdisplay値を使用します
-
-        for (let i = 1; i <= 10; i++) {
-            ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
-                document.getElementById(`${type}${i}`).innerHTML = "-";
-            });
-        }
-        ["my_result_hp", "appro_result_hp", "my_hp_score", "appro_hp_score", "dlt_hp_score", "count_hp_score", "my_af_hp", "appro_af_hp", "dlt_af_hp", "count_hp_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-        ["my_result_deff", "appro_result_deff", "my_deff_score", "appro_deff_score", "dlt_deff_score", "count_deff_score", "my_af_deff", "appro_af_deff", "dlt_af_deff", "count_deff_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-        ["my_result_elm", "appro_result_elm", "my_elm_score", "appro_elm_score", "dlt_elm_score", "count_elm_score", "my_af_elm", "appro_af_elm", "dlt_af_elm", "count_elm_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-        ["my_result_elm_charge", "appro_result_elm_charge", "my_elm_charge_score", "appro_elm_charge_score", "dlt_elm_charge_score", "count_elm_charge_score", "my_af_elm_charge", "appro_af_elm_charge", "dlt_af_elm_charge", "count_elm_charge_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-        ["my_result_attck", "appro_result_attck", "my_attck_score", "appro_attck_score", "dlt_attck_score", "count_attck_score", "my_af_attck", "appro_af_attck", "dlt_af_attck", "count_attck_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-        ["my_result_cr", "appro_result_cr", "my_cr_score", "appro_cr_score", "dlt_cr_score", "count_cr_score", "my_af_cr", "appro_af_cr", "dlt_af_cr", "count_cr_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-        ["my_result_cd", "appro_result_cd", "my_cd_score", "appro_cd_score", "dlt_cd_score", "count_cd_score", "my_af_cd", "appro_af_cd", "dlt_af_cd", "count_cd_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-        ["my_result_dmg_buff", "appro_result_dmg_buff", "my_af_score", "appro_af_score", "dlt_af_score", "my_af_score3", "appro_af_score3", "dlt_af_score3"].forEach(id => {
-            document.getElementById(id).innerHTML = "-";
-        });
-
         ["hp", "deff", "elm", "elm_charge", "attck", "cr", "cd", "dmg_buff"].forEach(id => {
             document.getElementById(`table_base_${id}`).innerHTML = "-";
             document.getElementById(`table_buff_${id}`).innerHTML = "-";
@@ -1824,21 +1386,10 @@
             document.getElementById(`table_final_${id}`).innerHTML = "-";
         });
 
-        [
-            "dlt_hp_score", "dlt_af_hp",
-            "dlt_deff_score", "dlt_af_deff",
-            "dlt_elm_score", "dlt_af_elm",
-            "dlt_elm_charge_score", "dlt_af_elm_charge",
-            "dlt_attck_score", "dlt_af_attck",
-            "dlt_cr_score", "dlt_af_cr",
-            "dlt_cd_score", "dlt_af_cd"
-        ].forEach(id => {
-        let element = document.getElementById(id);
-        element.style.color = "black";
-        });
         const outputElement = document.getElementById("output");
         outputElement.innerHTML = ""; 
-        document.getElementById("result").innerHTML = "";
+        let div3 = document.getElementById("button_dl");
+        div3.style.display = "none"; // または必要に応じて適切なdisplay値を使用します
     }
     
     function startCountdown() {
@@ -1907,7 +1458,6 @@
         CharJsonData = await JsonData1.json();
         const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
         WeaponJsonData = await JsonData2.json();
-        showTable("table1","tablebutton1");
         showOption("option1", "parameterbutton1");
         const DataResponse = await fetch("../data/JsonData/CharacterData.json");
         let char_ids = [];
@@ -1976,11 +1526,6 @@
                     await show_char_statsform();
                     await show_weapon_statsform();
                     await show_artifact();
-
-                    const initial_index = [0,0,0,0,1,1,1];
-                    const myStatus = [0,0,0,0,0,0,0];
-                    const TheoreticalStatus = [0,0,0,0,100,100,100];
-                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
 
                     // 画像を置き換える
                     const existingImage = imageContainer.querySelector("img");

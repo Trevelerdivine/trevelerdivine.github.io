@@ -1803,9 +1803,7 @@ async function monte_carlo_calculate()
   af_score = save_af_score;
   temp_status = save_status.slice();
   old_score_distribution = save_score_distribute;
-
-
-  hideLoadingSpinner();
+  
   OptimizedScore = optimaize_af_score.toFixed(1);
   MyAfScoreDist = my_af_score_distribution.slice();
   OptimizedScoreDist = save_score_distribute.slice();
