@@ -2202,7 +2202,7 @@ async function generate() {
     const value = status[0] === "HP" || status[0] === "攻撃力" || status[0] === "元素熟知"
         ? status[1]
         : status[1].toString() + "%";
-    return AfMainDisp(status[2], status[0], value, x, 20);
+    return AfMainDisp(status[2], status[0], value, x, AfLevelList[i]);
     }));
 
     const AfSubStatusData = await fetch("../data/JsonData/AfSubStatusData.json").then(res => res.json());
