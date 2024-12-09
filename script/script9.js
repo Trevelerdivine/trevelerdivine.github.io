@@ -1803,7 +1803,7 @@ async function monte_carlo_calculate()
   af_score = save_af_score;
   temp_status = save_status.slice();
   old_score_distribution = save_score_distribute;
-  
+
   OptimizedScore = optimaize_af_score.toFixed(1);
   MyAfScoreDist = my_af_score_distribution.slice();
   OptimizedScoreDist = save_score_distribute.slice();
@@ -1815,7 +1815,6 @@ async function DoCalculate(){
   setTimeout(monte_carlo_calculate, 100);
   CreateBuildCard();
 }
-
 
 async function CreateBuildCard() {
   setTimeout(async () => {
@@ -1906,7 +1905,6 @@ async function displayImage() {
   const outputElement = document.getElementById("output");
   outputElement.innerHTML = ""; 
   outputElement.appendChild(imgElement);
-  hideLoadingSpinner();
 }
 
 async function generate() {
