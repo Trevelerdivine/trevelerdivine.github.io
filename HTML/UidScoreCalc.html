@@ -1209,6 +1209,7 @@
     let AfSubStatsList = ["", "", "", "", ""];
     let AfNameList
     let AfNumList;
+    let AfLevelList;
     let SelectId;
     let CharJsonData;
     let WeaponJsonData;
@@ -1491,18 +1492,20 @@
         let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
         // "itemId" の値を格納するための配列を初期化
         let AfIdList = [];
+        let AfLevelSetList = [];
         const AfIndexReplace = [3, 1, 4, 0, 2];
         // JSON配列の各要素を走査して、"itemId" の要素を取り出す
         AfJsonList.forEach(status => {
             // オブジェクトから "itemId" の要素を取り出して配列に追加
-            if (status.hasOwnProperty("itemId")) {
+            if (status.hasOwnProperty("reliquary")) {
                 AfIdList.push(status["itemId"]);
+                AfLevelSetList.push(status["reliquary"]["level"]);
             }
         });
 
-        AfIdList.pop();
         AfNumList = new Array(5).fill([]);
-        AfIdList.forEach(item => {
+        AfLevelList = new Array(5).fill([1]);
+        AfIdList.forEach((item, i) => { // `i` を第2引数として受け取る
             // 4桁目を取得（IDを文字列に変換してインデックス3を参照）
             const fourthDigit = parseInt(item.toString().charAt(3));
 
@@ -1511,6 +1514,7 @@
 
             // 該当インデックスに上2桁を格納
             AfNumList[AfIndexReplace[fourthDigit - 1]] = firstTwoDigits;
+            AfLevelList[AfIndexReplace[fourthDigit - 1]] = AfLevelSetList[i]; // `i` を使用して対応する値を取得
         });
         
          // 数値の出現回数を記録するオブジェクトを作成
