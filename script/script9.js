@@ -2001,6 +2001,7 @@ async function generate() {
     ctx.fillStyle = 'black';  // 塗りつぶしの色を黒に設定
     ctx.fillRect(121, 77, 67, 27);  //長方形を描画
     ctx.fillRect(897, 60, 67, 27);
+    ctx.fillRect(802, 14, 30, 20);
     ctx.drawImage(LoveImage, 122, 78, 30, 24);
 
     ctx.fillStyle = 'white'; // デフォルトの文字色を白に設定
@@ -2008,6 +2009,9 @@ async function generate() {
     ctx.fillText(BuildCardCharName, 30, 65);
     ctx.font = '30px customFont';
     ctx.fillText(BuildCardCWeaponName, 898, 48);
+
+    ctx.font = 'lighter 16px customFont';
+    ctx.fillText(`R${WeaponConstellations}`, 807, 30);
 
     ctx.font = 'lighter 28px customFont';
     ctx.fillText(`Lv.${CharLevel}`, 35, 100);
