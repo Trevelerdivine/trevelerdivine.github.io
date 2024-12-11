@@ -1486,6 +1486,7 @@
         {
             const nicknameElement = document.getElementById('nickname');
             const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+            const energyTypeIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.energyType);
             console.log(avatarIds);
             nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
                             "<br>";
