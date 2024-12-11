@@ -1919,6 +1919,12 @@ async function generate() {
     let TheoreticalData = [];
     let dltScore = 0;
     let indexCount = 0;
+    let ElementTypeId = char_propaty[0];
+    const elementIndexList = ["",0,1,5,3,2,"",4,6]
+    if (ElementTypeId[0] = 7)
+    {
+      ElementTypeId = elementIndexList[energyType];
+    }
     const ChartOptions = [
       { size: 460, fontSize: 28, X_value: 1455 , y_value: -35 }, // 3変数
       { size: 440, fontSize: 29, X_value: 1465 , y_value: -40 }, // 4変数
