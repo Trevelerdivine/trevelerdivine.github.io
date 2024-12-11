@@ -808,11 +808,9 @@
     let AfNumList;
     let AfLevelList;
     let SelectId;
-    let energyType;
     let CharJsonData;
     let WeaponJsonData;
     let CharIndexList = [];
-    let energyTypeList = [];
     let EquipNumber;
     let BuildMainStatus = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
     let OptimizedScore = 0;
@@ -870,7 +868,6 @@
             let char_ids = [];
             char_names = [];
             CharIndexList = [];
-            energyTypeList = [];
             UserData = await response.json();
             const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
             Weapondata = await Weaponresponse.json();
@@ -883,7 +880,6 @@
             // ニックネームをHTMLに出力する
             const nicknameElement = document.getElementById('nickname');
             const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
-            const energyTypeIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.energyType);
             console.log(avatarIds);
             nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
                             "<br>";
@@ -897,7 +893,6 @@
                     char_names.push(CharDataJson["CharMap"][charId.toString()]["名前"]);
                     char_ids.push(charId);
                     CharIndexList.push(i);
-                    energyTypeList.push(energyTypeIds[i]);
                 }
             }
             const images = [];
@@ -990,7 +985,6 @@
         {
             let CharConstellationsChange = [0, 1, 2, 2, 3, 3, 4];
             CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
-            energyType = energyTypeList[CharIndexList[SortOrder]];
             CharFriendshipLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].fetterInfo.expLevel;
             CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
             // talentIdList が存在するかどうかを確認し、その長さを取得
@@ -1486,7 +1480,6 @@
         {
             const nicknameElement = document.getElementById('nickname');
             const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
-            const energyTypeIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.energyType);
             console.log(avatarIds);
             nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
                             "<br>";
@@ -1500,7 +1493,6 @@
                     char_names.push(CharDataJson["CharMap"][charId.toString()]["名前"]);
                     char_ids.push(charId);
                     CharIndexList.push(i);
-                    energyTypeList.push(energyTypeIds[i]);
                 }
             }
             const images = [];

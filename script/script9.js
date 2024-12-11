@@ -1923,7 +1923,7 @@ async function generate() {
     const elementIndexList = ["",0,1,5,3,2,"",4,6]
     if (ElementTypeId[0] == 7)
     {
-      ElementTypeId = elementIndexList[energyType];
+      ElementTypeId = 2;
     }
     const ChartOptions = [
       { size: 460, fontSize: 28, X_value: 1455 , y_value: -35 }, // 3変数
