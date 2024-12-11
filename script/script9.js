@@ -1920,7 +1920,6 @@ async function generate() {
     let dltScore = 0;
     let indexCount = 0;
     let ElementTypeId = char_propaty[0];
-    const elementIndexList = ["",0,1,5,3,2,"",4,6]
     if (ElementTypeId[0] == 7)
     {
       ElementTypeId = 2;
@@ -1943,8 +1942,8 @@ async function generate() {
       { bgTheory: "rgba(255,204,0,0.5)", borderTheory: "rgba(255,204,0,0.8)", bgOwn: "rgba(255,255,153,0.5)", borderOwn: "rgba(255,255,153,1)" }      // 岩: 黄色
     ];
 
-    const colorData = ChartColor[char_propaty[0]];
-    const charElementType = ElementType[Number(char_propaty[0])]
+    const colorData = ChartColor[ElementTypeId];
+    const charElementType = ElementType[Number(ElementTypeId)]
     const [base_status, af_main_status_buff] = await Promise.all([
         calculate_base_status(),
         calculate_af_main_status_buff(),
@@ -2174,7 +2173,7 @@ async function generate() {
     //最適メインステータス
     // ゴブレットのメインステータス設定
     GobletMainStatus = OptimizedStatus[1] === 7 
-    ? ElementTypeList[Number(char_propaty[0])] + main_status_name[7] 
+    ? ElementTypeList[Number(ElementTypeId)] + main_status_name[7] 
     : main_status_name[OptimizedStatus[1]];
 
     // サークレットのメインステータス設定
