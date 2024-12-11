@@ -885,6 +885,8 @@
             const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
             const energyTypeIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.energyType);
             console.log(avatarIds);
+            console.log(energyTypeIds);
+            
             nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
                             "<br>";
             
@@ -897,7 +899,7 @@
                     char_names.push(CharDataJson["CharMap"][charId.toString()]["名前"]);
                     char_ids.push(charId);
                     CharIndexList.push(i);
-                    energyTypeList.push(energyTypeIds[i])
+                    energyTypeList.push(energyTypeIds[i]);
                 }
             }
             const images = [];
@@ -990,6 +992,7 @@
         {
             let CharConstellationsChange = [0, 1, 2, 2, 3, 3, 4];
             CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
+            console.log(energyTypeList);
             energyType = energyTypeList[CharIndexList[SortOrder]];
             CharFriendshipLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].fetterInfo.expLevel;
             CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
