@@ -1922,7 +1922,7 @@ async function generate() {
     let ElementTypeId = char_propaty[0];
     if (ElementTypeId[0] == 7)
     {
-      ElementTypeId = 2;
+      ElementTypeId = CharJsonData["CharMap"][selectedCharId.toString()]["元素"];
     }
     const ChartOptions = [
       { size: 460, fontSize: 28, X_value: 1455 , y_value: -35 }, // 3変数
@@ -1943,7 +1943,7 @@ async function generate() {
     ];
 
     const colorData = ChartColor[ElementTypeId];
-    const charElementType = ElementType[Number(ElementTypeId)]
+    const charElementType = ElementType[ElementTypeId];
     const [base_status, af_main_status_buff] = await Promise.all([
         calculate_base_status(),
         calculate_af_main_status_buff(),

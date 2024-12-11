@@ -3,47 +3,56 @@
         "0": {
             "名前": "ディシア",
             "name": "dehya",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":0
         },
         "1": {
             "名前": "宵宮",
             "name": "yoimiya",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":0
         },
         "2": {
             "名前": "胡桃",
             "name": "hutao",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":0
         },
         "3": {
             "名前": "クレー",
             "name": "klee",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":0
         },
         "4": {
             "名前": "ディルック",
             "name": "diluc",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":0
         },
         "5": {
             "名前": "トーマ",
             "name": "thoma",
-            "Artifact":[3,7,5]
+            "Artifact":[3,7,5],
+            "元素":0
         },
         "6": {
             "名前": "煙緋",
             "name": "yanfei",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":0
         },
         "7": {
             "名前": "辛炎",
             "name": "xinyan",
-            "Artifact":[4,8,5]
+            "Artifact":[4,8,5],
+            "元素":0
         },
         "8": {
             "名前": "ベネット",
             "name": "bennett",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":0
         },
         "9": {
             "名前": "香菱",
@@ -53,372 +62,446 @@
         "10": {
             "名前": "アンバー",
             "name": "amber",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":0
         },
         "11": {
             "名前": "ニィロウ",
             "name": "nirou",
-            "Artifact":[0,7,6]
+            "Artifact":[0,7,6],
+            "元素":1
         },
         "12": {
             "名前": "夜蘭",
             "name": "yelan",
-            "Artifact":[3,7,5]
+            "Artifact":[3,7,5],
+            "元素":1
         },
         "13": {
             "名前": "神里綾人",
             "name": "kamisatoayato",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":1
         },
         "14": {
             "名前": "珊瑚宮心海",
             "name": "sangonomiyakokomi",
-            "Artifact":[0,7,0]
+            "Artifact":[0,7,0],
+            "元素":1
         },
         "15": {
             "名前": "タルタリヤ",
             "name": "tartaglia",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":1
         },
         "16": {
             "名前": "モナ",
             "name": "mona",
-            "Artifact":[3,7,5]
+            "Artifact":[3,7,5],
+            "元素":1
         },
         "17": {
             "名前": "キャンディス",
             "name": "candace",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":1
         },
         "18": {
             "名前": "バーバラ",
             "name": "barbara",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":1
         },
         "19": {
             "名前": "行秋",
             "name": "xingqiu",
-            "Artifact":[3,7,5]
+            "Artifact":[3,7,5],
+            "元素":1
         },
         "20": {
             "名前": "申鶴",
             "name": "shenhe",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "21": {
             "名前": "神里綾華",
             "name": "kamisatoayaka",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "22": {
             "名前": "エウルア",
             "name": "eula",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "23": {
             "名前": "甘雨",
             "name": "ganyu",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":2
         },
         "24": {
             "名前": "七七",
             "name": "qiqi",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "25": {
             "名前": "アーロイ",
             "name": "aloy",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "26": {
             "名前": "ミカ",
             "name": "mika",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "27": {
             "名前": "レイラ",
             "name": "layla",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "28": {
             "名前": "ロサリア",
             "name": "rosaria",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "29": {
             "名前": "ディオナ",
             "name": "diona",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "30": {
             "名前": "重雲",
             "name": "chongyun",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":2
         },
         "31": {
             "名前": "ガイア",
             "name": "kaeya",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":2
         },
         "32": {
             "名前": "セノ",
             "name": "cyno",
-            "Artifact":[2,7,6]
+            "Artifact":[2,7,6],
+            "元素":3
         },
         "33": {
             "名前": "八重神子",
             "name": "yaemiko",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":3
         },
         "34": {
             "名前": "雷電将軍",
             "name": "raidenshougun",
-            "Artifact":[3,4,5]
+            "Artifact":[3,4,5],
+            "元素":3
         },
         "35": {
             "名前": "刻晴",
             "name": "keqing",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":3
         },
         "36": {
             "名前": "ドリー",
             "name": "dori",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":3
         },
         "37": {
             "名前": "久岐忍",
             "name": "kukishinobu",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":3
         },
         "38": {
             "名前": "九条裟羅",
             "name": "kujousara",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":3
         },
         "39": {
             "名前": "フィッシュル",
             "name": "fischl",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":3
         },
         "40": {
             "名前": "北斗",
             "name": "beidou",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":3
         },
         "41": {
             "名前": "レザー",
             "name": "razor",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":3
         },
         "42": {
             "名前": "リサ",
             "name": "lisa",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":3
         },
         "43": {
             "名前": "雷旅人",
             "name": "travelarelectro",
-            "Artifact":[3,4,5]
+            "Artifact":[3,4,5],
+            "元素":3
         },
         "44": {
             "名前": "放浪者",
             "name": "wanderer",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":4
         },
         "45": {
             "名前": "楓原万葉",
             "name": "kazuhakaedehara",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":4
         },
         "46": {
             "名前": "魈",
             "name": "xiao",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":4
         },
         "47": {
             "名前": "ウェンティ",
             "name": "venti",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":4
         },
         "48": {
             "名前": "ジン",
             "name": "jean",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":4
         },
         "49": {
             "名前": "ファルザン",
             "name": "faruzan",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":4
         },
         "50": {
             "名前": "鹿野院平蔵",
             "name": "shikanoinheizou",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":4
         },
         "51": {
             "名前": "早柚",
             "name": "sayu",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":4
         },
         "52": {
             "名前": "スクロース",
             "name": "sucrose",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":4
         },
         "53": {
             "名前": "風旅人",
             "name": "traveraranemo",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":4
         },
         "54": {
             "名前": "白朮",
             "name": "baizhu",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":5
         },
         "55": {
             "名前": "アルハイゼン",
             "name": "alhaitham",
-            "Artifact":[2,7,5]
+            "Artifact":[2,7,5],
+            "元素":5
         },
         "56": {
             "名前": "ナヒーダ",
             "name": "nahida",
-            "Artifact":[2,2,2]
+            "Artifact":[2,2,2],
+            "元素":5
         },
         "57": {
             "名前": "ティナリ",
             "name": "tighnari",
-            "Artifact":[2,7,5]
+            "Artifact":[2,7,5],
+            "元素":5
         },
         "58": {
             "名前": "綺良々",
             "name": "kirara",
-            "Artifact":[0,7,6]
+            "Artifact":[0,7,6],
+            "元素":5
         },
         "59": {
             "名前": "カーヴェ",
             "name": "kaveh",
-            "Artifact":[2,7,5]
+            "Artifact":[2,7,5],
+            "元素":5
         },
         "60": {
             "名前": "ヨォーヨ",
             "name": "yaoyao",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":5
         },
         "61": {
             "名前": "コレイ",
             "name": "collei",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":5
         },
         "62": {
             "名前": "草旅人",
             "name": "travelardendro",
-            "Artifact":[2,2,2]
+            "Artifact":[2,2,2],
+            "元素":5
         },
         "63": {
             "名前": "荒瀧一斗",
             "name": "aratakiitto",
-            "Artifact":[1,7,5]
+            "Artifact":[1,7,5],
+            "元素":6
         },
         "64": {
             "名前": "アルベド",
             "name": "albedo",
-            "Artifact":[1,1,5]
+            "Artifact":[1,1,5],
+            "元素":6
         },
         "65": {
             "名前": "鍾離",
             "name": "zhongli",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":6
         },
         "66": {
             "名前": "雲菫",
             "name": "yunjin",
-            "Artifact":[1,7,5]
+            "Artifact":[1,7,5],
+            "元素":6
         },
         "67": {
             "名前": "ゴロー",
             "name": "gorou",
-            "Artifact":[1,7,5]
+            "Artifact":[1,7,5],
+            "元素":6
         },
         "68": {
             "名前": "ノエル",
             "name": "noelle",
-            "Artifact":[3,7,6]
+            "Artifact":[3,7,6],
+            "元素":6
         },
         "69": {
             "名前": "凝光",
             "name": "ningguang",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":6
         },
         "70": {
             "名前": "岩旅人",
             "name": "travelergeo",
-            "Artifact":[4,7,5]
+            "Artifact":[4,7,5],
+            "元素":6
         },
         "71": {
             "名前": "リネ",
             "name": "Lyney",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":0
         },
         "72": {
             "名前": "ヌヴィレット",
             "name": "Neuvillette",
-            "Artifact":[0,7,6]
+            "Artifact":[0,7,6],
+            "元素":1
         },
         "73": {
             "名前": "リオセスリ",
             "name": "Wriothesley",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":2
         },
         "74": {
             "名前": "フリーナ",
             "name": "Furina",
-            "Artifact":[3,0,5]
+            "Artifact":[3,0,5],
+            "元素":1
         },
         "75": {
             "名前": "ナヴィア",
             "name": "Navia",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":6
         },
         "76": {
             "名前": "嘉明",
             "name": "gaming",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":0
         },
         "77": {
             "名前": "千織",
             "name": "chiori",
-            "Artifact":[1,7,5]
+            "Artifact":[1,7,5],
+            "元素":6
         },
         "78": {
             "名前": "アルレッキーノ",
             "name": "Arlecchino",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":0
         },
         "79": {
             "名前": "クロリンデ",
             "name": "Clorinde",
-            "Artifact":[4,7,6]
+            "Artifact":[4,7,6],
+            "元素":3
         },
         "80": {
             "名前": "ムアラニ",
             "name": "mualani",
-            "Artifact":[0,7,6]
+            "Artifact":[0,7,6],
+            "元素":2
         },
         "81": {
             "名前": "カチーナ",
             "name": "Kachina",
-            "Artifact":[1,7,5]
+            "Artifact":[1,7,5],
+            "元素":6
         },
         "82": {
             "名前": "シグウィン",
             "name": "Sigewinne",
-            "Artifact":[0,7,5]
+            "Artifact":[0,7,5],
+            "元素":1
         },
         "83": {
             "名前": "セトス",
             "name": "sethos",
-            "Artifact":[2,7,5]
+            "Artifact":[2,7,5],
+            "元素":3
         }
     }
 }
