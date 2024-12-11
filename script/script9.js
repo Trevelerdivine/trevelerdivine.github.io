@@ -1921,7 +1921,7 @@ async function generate() {
     let indexCount = 0;
     let ElementTypeId = char_propaty[0];
     const elementIndexList = ["",0,1,5,3,2,"",4,6]
-    if (ElementTypeId[0] = 7)
+    if (ElementTypeId[0] == 7)
     {
       ElementTypeId = elementIndexList[energyType];
     }
