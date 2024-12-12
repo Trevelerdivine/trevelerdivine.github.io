@@ -448,7 +448,17 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
-
+  else if (selectedWeaponId == "167") {
+    buff_group = [
+      createweaponLabel("MountainKingbuff_count", "山の王の長牙：懸木の祝福 "),
+      createweaponSelectList("MountainKingbuff_count", 0, 6, "", "層", 6),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
   else if (selectedWeaponId == "156") {
     buff_group = [
       createweaponLabel("Verdict_buff_count", "裁断：契印獲得枚数 "),

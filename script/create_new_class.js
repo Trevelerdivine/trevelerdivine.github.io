@@ -134,6 +134,9 @@ async function create_char_instance(base_status, parameter) {
       case "50":
         char_instance = new shikanoinheizou(base_status, parameter);
         break;
+      case "84":
+        char_instance = new kinich(base_status, parameter);
+        break;
       case "55":
         char_instance = new alhaitham(base_status, parameter);
         break;
@@ -675,6 +678,9 @@ async function create_char_instance(base_status, parameter) {
         break;
       case "166":
         weapon_instance = new SilvershowerHeartstrings(base_status);
+        break;
+      case "167":
+        weapon_instance = new FangoftheMountainKing(base_status);
         break;
       default:
         // 未知の武器IDに対する処理を追加することもできます

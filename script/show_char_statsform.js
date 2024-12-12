@@ -1528,6 +1528,15 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
+    else if (selectedCharId == "84")
+    {   
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "元素スキル（懸狩り・宙の遊猟）", value: "16" },
+        { text: "元素爆発(偉大なる聖龍を崇拝せよ)", value: "21" },
+      ];
+      createchar_attackmethod(options);
+    }
     else if (selectedCharId == "55")
     {   
       traits = [

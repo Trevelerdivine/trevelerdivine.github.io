@@ -701,6 +701,11 @@
                 "名前": "裁断",
                 "url": "../weapon_img/Claymore/Verdict.webp",
                 "id":"156"
+            },
+            "13": {
+                "名前": "山の王の長牙",
+                "url": "../weapon_img/Claymore/FangoftheMountainKing.png",
+                "id":"167"
             }
         },
         "長柄":{
