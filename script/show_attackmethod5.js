@@ -2816,6 +2816,108 @@ async function show_attack_method()
       attack_method_prop.appendChild(document.createElement("br"));
     }
   }
+  else if (selectedCharId == "84")
+  {      
+    let agg_traeats;
+    if (attack_method == 16)
+    {
+      if (CharConstellations < 2)
+      {
+        traits = [
+          createLabel("kinich_skill_count1", "　円軌道射撃ヒット回数："),
+          createSelectList("kinich_skill_count1", 0, 30, "", "回", 1),
+          document.createElement("br"),
+          document.createElement("br"),
+          createLabel("", "　廻狩貫鱗砲ヒット回数"),
+          document.createElement("br"),
+          createLabel("kinich_skill_count2", "　　狩人の心得０層："),
+          createSelectList("kinich_skill_count2", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("kinich_skill_count3", "　　狩人の心得１層："),
+          createSelectList("kinich_skill_count3", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("kinich_skill_count4", "　　狩人の心得２層："),
+          createSelectList("kinich_skill_count4", 0, 5, "", "回", 0),
+          document.createElement("br"),
+        ];
+        
+        agg_traeats = [
+          createLabel("kinich_react_count1", "　円軌道射撃反応回数："),
+          createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
+          document.createElement("br"),
+          createLabel("kinich_react_count2", "　廻狩貫鱗砲反応回数"),
+          createSelectList("kinich_react_count2", 0, 30, "", "回", 1),
+          document.createElement("br"),
+        ];
+      }
+      else
+      {
+        traits = [
+          createLabel("kinich_skill_count1", "　円軌道射撃攻撃回数："),
+          createSelectList("kinich_skill_count1", 0, 30, "", "回", 15),
+          document.createElement("br"),
+          document.createElement("br"),
+          createLabel("", "　廻狩貫鱗砲初回ヒット回数"),
+          document.createElement("br"),
+          createLabel("kinich_skill_count2", "　　狩人の心得０層："),
+          createSelectList("kinich_skill_count2", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("kinich_skill_count3", "　　狩人の心得１層："),
+          createSelectList("kinich_skill_count3", 0, 5, "", "回", 1),
+          document.createElement("br"),
+          createLabel("kinich_skill_count4", "　　狩人の心得２層："),
+          createSelectList("kinich_skill_count4", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          document.createElement("br"),
+          createLabel("", "　廻狩貫鱗砲二回目以降ヒット回数"),
+          document.createElement("br"),
+          createLabel("kinich_skill_count5", "　　狩人の心得０層："),
+          createSelectList("kinich_skill_count5", 0, 5, "", "回", 4),
+          document.createElement("br"),
+          createLabel("kinich_skill_count6", "　　狩人の心得１層："),
+          createSelectList("kinich_skill_count6", 0, 5, "", "回", 0),
+          document.createElement("br"),
+        ];
+
+        agg_traeats = [
+          createLabel("", "草激化回数"),
+          document.createElement("br"),
+          createLabel("kinich_react_count1", "　　円軌道射撃："),
+          createSelectList("kinich_react_count1", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("kinich_react_count2", "　　廻狩貫鱗砲初撃："),
+          createSelectList("kinich_react_count2", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("kinich_react_count3", "　　廻狩貫鱗砲二回目以降："),
+          createSelectList("kinich_react_count3", 0, 5, "", "回", 0),
+          document.createElement("br"),
+        ];
+      }
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("kinich_skill_count1", "　爆発ダメージヒット回数："),
+        createSelectList("kinich_skill_count1", 0, 1, "", "回", 1),
+        document.createElement("br"),
+        createLabel("kinich_skill_count2", "　龍の息ヒット回数："),
+        createSelectList("kinich_skill_count2", 0, 10, "", "回", 10),
+        document.createElement("br"),
+      ];
+
+      agg_traeats = [
+        createLabel("kinich_react_count1", "　草激化回数："),
+        createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
+        document.createElement("br"),
+      ];
+    }
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+    agg_traeats.forEach(element => {
+      elemental_reaction.appendChild(element);
+    });
+  }
   else if (selectedCharId == "55")
   {      
     let alhaitham_agg_count;

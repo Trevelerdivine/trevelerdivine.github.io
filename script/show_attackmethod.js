@@ -2851,16 +2851,16 @@ async function show_attack_method()
       {
         traits = [
           createLabel("kinich_skill_count1", "　円軌道射撃ヒット回数："),
-          createSelectList("kinich_skill_count1", 0, 30, "", "回", 1),
+          createSelectList("kinich_skill_count1", 0, 30, "", "回", 15),
           document.createElement("br"),
           document.createElement("br"),
           createLabel("", "　廻狩貫鱗砲ヒット回数"),
           document.createElement("br"),
           createLabel("kinich_skill_count2", "　　狩人の心得０層："),
-          createSelectList("kinich_skill_count2", 0, 5, "", "回", 0),
+          createSelectList("kinich_skill_count2", 0, 5, "", "回", 4),
           document.createElement("br"),
           createLabel("kinich_skill_count3", "　　狩人の心得１層："),
-          createSelectList("kinich_skill_count3", 0, 5, "", "回", 0),
+          createSelectList("kinich_skill_count3", 0, 5, "", "回", 1),
           document.createElement("br"),
           createLabel("kinich_skill_count4", "　　狩人の心得２層："),
           createSelectList("kinich_skill_count4", 0, 5, "", "回", 0),
@@ -2869,10 +2869,10 @@ async function show_attack_method()
         
         agg_traeats = [
           createLabel("kinich_react_count1", "　円軌道射撃反応回数："),
-          createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
+          createSelectList("kinich_react_count1", 0, 30, "", "回", 0),
           document.createElement("br"),
           createLabel("kinich_react_count2", "　廻狩貫鱗砲反応回数"),
-          createSelectList("kinich_react_count2", 0, 30, "", "回", 1),
+          createSelectList("kinich_react_count2", 0, 30, "", "回", 0),
           document.createElement("br"),
         ];
       }
@@ -2927,13 +2927,13 @@ async function show_attack_method()
         createSelectList("kinich_skill_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
         createLabel("kinich_skill_count2", "　龍の息ヒット回数："),
-        createSelectList("kinich_skill_count2", 0, 10, "", "回", 10),
+        createSelectList("kinich_skill_count2", 0, 10, "", "回", 6),
         document.createElement("br"),
       ];
 
       agg_traeats = [
         createLabel("kinich_react_count1", "　草激化回数："),
-        createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
+        createSelectList("kinich_react_count1", 0, 30, "", "回", 0),
         document.createElement("br"),
       ];
     }

@@ -8593,6 +8593,228 @@
     }
   }
   
+  class kinich {
+    constructor(base_status_array, parameter) {
+      this.base_status_array = base_status_array;
+      this.parameter = parameter;
+      this.agg_count1 = 0;
+      this.agg_count2 = 0;
+      this.agg_count3 = 0;
+      this.reaction_coeff = 0;
+      this.talent2_buff = 0;
+      this.first_conste_buff = 0;
+      this.second_conste_buff = 0;
+      this.fourth_conste_buff = 0;
+      this.sixth_conste_buff = 0;
+      this.char_constellations = 0;
+      this.attack_count1 = 0;
+      this.attack_count2 = 0;
+      this.attack_count3 = 0;
+      this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    }
+  
+    async dmg_rate_data() {
+      this.char_constellations = document.getElementById("char_constellations").value;
+  
+      const reaction_check = document.getElementById("reactionon_flag");
+      if (reaction_check.checked)
+      {
+        this.reaction_coeff = 1.25
+      }    
+    
+      // JSON データを取得
+      const response = await fetch("../data/character/char_data/kinich.json");
+      const data = await response.json();
+    
+      // 攻撃方法に応じてダメージ率を計算
+      let dmg_rate;
+      let dmg_attck_rate = [0,0,0];
+  
+      if (attack_method == 16) {
+        if (this.char_constellations > 0)
+        {
+          this.first_conste_buff = 1;
+          if (this.char_constellations > 1)
+          {
+            this.second_conste_buff = 1;
+          }
+        }
+        
+        const attack_count1 = parseInt(document.getElementById("kinich_skill_count1").value);
+        const attack_count2 = parseInt(document.getElementById("kinich_skill_count2").value);
+        const attack_count3 = parseInt(document.getElementById("kinich_skill_count3").value);
+        const attack_count4 = parseInt(document.getElementById("kinich_skill_count4").value);
+        this.agg_count1 = parseInt(document.getElementById("kinich_react_count1").value);
+        this.agg_count2 = parseInt(document.getElementById("kinich_react_count2").value);
+  
+        this.attack_count1 = attack_count1 * 2;
+        this.attack_count2 = attack_count2 + attack_count3 + attack_count4;
+  
+        dmg_attck_rate[0] = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * this.attack_count1;
+        dmg_attck_rate[1] = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * this.attack_count2
+                          + 3.2 * (attack_count3 + attack_count4 * 2);
+    
+        if (this.char_constellations > 1)
+        {
+          const attack_count5 = parseInt(document.getElementById("kinich_skill_count5").value);
+          const attack_count6 = parseInt(document.getElementById("kinich_skill_count6").value);
+  
+          this.attack_count3 += attack_count5 + attack_count6;
+          this.agg_count3 = parseInt(document.getElementById("kinich_react_count3").value);
+          dmg_attck_rate[2] = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count5 + attack_count6)
+                            + 3.2 * attack_count6;
+          if(this.char_constellations == 4)
+          {
+            dmg_attck_rate[1] += 7 * this.attack_count2;
+            dmg_attck_rate[2] += 7 * this.attack_count3;
+          }
+        }
+  
+        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+      }
+      else if (attack_method == 21) {
+        if (this.char_constellations > 2)
+        {
+          this.fourth_conste_buff = 0.7;
+        }
+        const attack_count1 = parseInt(document.getElementById("kinich_skill_count1").value);
+        const attack_count2 = parseInt(document.getElementById("kinich_skill_count2").value);
+        this.agg_count1 = parseInt(document.getElementById("kinich_react_count1").value);
+  
+        const dmg_attck_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
+                              + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
+        
+        this.attack_count1 = attack_count1 + attack_count2;
+        
+        dmg_rate = [0, 0, 0, 0, dmg_attck_rate1, 0, 0];
+      }
+  
+      return dmg_rate;
+    }
+    
+    calculate_char_fixed_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_dmg_buff(fixstatus,status) {
+      return this.fourth_conste_buff;
+    }
+  
+    calculate_char_result_dmg_buff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_basic_dmg(dmg_rate, status) {
+      if (this.reaction_coeff > 0)
+      {
+        if (attack_method == 16)
+        { 
+          const agg_bonus = this.reaction_coeff * this.parameter[1] * (1 + 5 * status[2] / (status[2] + 1200));
+          const critical_coeff = (1 + status[5] * (this.first_conste_buff + status[6])) / (1 + status[5] * status[6]);
+  
+          const basicDmg1 = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.attack_count1, status, this.weapon_rank, this.base_dmgbuff)
+                          + this.agg_count1 * agg_bonus;
+          const basicDmg2 = (status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.attack_count2, status, this.weapon_rank, this.base_dmgbuff)
+                          + this.agg_count2 * agg_bonus) * (1 + status[7] + this.second_conste_buff) / (1 + status[7]);
+          const basicDmg3 = status[4] * dmg_rate[4][2] + calculate_weapon_basedmg(this.attack_count3, status, this.weapon_rank, this.base_dmgbuff)
+                          + this.agg_count3 * agg_bonus;
+          const basicDmg = basicDmg1 + (basicDmg2 + basicDmg3) * critical_coeff;
+          return basicDmg;
+        }
+        else if (attack_method == 21)
+        { 
+          const total_rate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_count1, status, this.weapon_rank, this.base_dmgbuff);
+          let basicDmg = (total_rate + this.agg_count1 * this.reaction_coeff * this.parameter[1] * (1 + 5 * status[2] / (status[2] + 1200)));
+          return basicDmg;
+        }
+      }
+      else
+      {
+        if (attack_method == 16)
+        {
+          const critical_coeff = (1 + status[5] * (this.first_conste_buff + status[6])) / (1 + status[5] * status[6]);
+  
+          const basicDmg1 = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.attack_count1, status, this.weapon_rank, this.base_dmgbuff);
+          const basicDmg2 = (status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.attack_count2, status, this.weapon_rank, this.base_dmgbuff))
+                          * (1 + status[7] + this.second_conste_buff) / (1 + status[7]);
+          const basicDmg3 = status[4] * dmg_rate[4][2] + calculate_weapon_basedmg(this.attack_count3, status, this.weapon_rank, this.base_dmgbuff);
+          const basicDmg = basicDmg1 + (basicDmg2 + basicDmg3) * critical_coeff;
+          return basicDmg;
+        }
+        else if (attack_method == 21)
+        {
+          const total_rate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_count1, status, this.weapon_rank, this.base_dmgbuff);;
+          return total_rate;
+        }
+      }
+    }
+  
+    calculate_char_debuff() {
+      let char_debuff = [0,0,0];
+      if (this.char_constellations > 1)
+      {
+        char_debuff[0] = 0.3;
+      }
+      return char_debuff;
+    }
+  }
+  
+
   class alhaitham {
     constructor(base_status_array, parameter) {
       this.base_status_array = base_status_array;
