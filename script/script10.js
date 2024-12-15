@@ -1295,7 +1295,7 @@ async function monte_carlo_calculate()
     const depend_status = await calculate_depend_status();
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-    const TryCount = 40000;
+    const TryCount = 80000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let MyAfStatusSave = await SetMyAfStatus();
