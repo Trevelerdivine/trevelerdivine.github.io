@@ -1295,7 +1295,7 @@ async function monte_carlo_calculate()
     const depend_status = await calculate_depend_status();
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-    const TryCount = 80000;
+    const TryCount = 60000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let MyAfStatusSave = await SetMyAfStatus();
@@ -1455,17 +1455,6 @@ async function monte_carlo_calculate()
 
     hideLoadingSpinner();
 
-
-    document.getElementById("clock1").innerHTML = (AfPartsNum[0] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock2").innerHTML = (AfPartsNum[1] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock3").innerHTML = (AfPartsNum[2] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock4").innerHTML = (AfPartsNum[3] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock5").innerHTML = (AfPartsNum[4] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("goblet1").innerHTML = (AfPartsNum[0] !== 0 ? (AfPartsRate[0] * 100 / AfPartsNum[0]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet2").innerHTML = (AfPartsNum[1] !== 0 ? (AfPartsRate[1] * 100 / AfPartsNum[1]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet3").innerHTML = (AfPartsNum[2] !== 0 ? (AfPartsRate[2] * 100 / AfPartsNum[2]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet4").innerHTML = (AfPartsNum[3] !== 0 ? (AfPartsRate[3] * 100 / AfPartsNum[3]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet5").innerHTML = (AfPartsNum[4] !== 0 ? (AfPartsRate[4] * 100 / AfPartsNum[4]).toFixed(1) : "100") + "％";
     document.getElementById("circlet1").innerHTML = (((1 - AfPartsRate[0] / AfPartsNum[0]) / (AfSquareRate[0] / AfPartsNum[0] - (AfPartsRate[0] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
     document.getElementById("circlet2").innerHTML = (((1 - AfPartsRate[1] / AfPartsNum[1]) / (AfSquareRate[1] / AfPartsNum[1] - (AfPartsRate[1] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
     document.getElementById("circlet3").innerHTML = (((1 - AfPartsRate[2] / AfPartsNum[2]) / (AfSquareRate[2] / AfPartsNum[2] - (AfPartsRate[2] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
