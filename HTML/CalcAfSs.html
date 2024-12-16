@@ -1428,7 +1428,7 @@
                 const image = {
                     src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
                     alt: `Image ${i}`,
-                    id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                    id: char_ids[i] * 100 + i // 画像に割り当てるID属性を生成
                     
                 };
                 images.push(image);
@@ -1447,8 +1447,8 @@
                     // クリックされた画像のsrc属性を取得
                     const imageUrl = this.src;
                     const CharId = this.id;
-                    SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
-                    let APICharId = Math.floor(CharId / 10);
+                    SelectId = CharId % 100; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    let APICharId = Math.floor(CharId / 100);
                     // 画像を表示するdiv要素を取得
                     selectedCharId = CharDataJson["CharMap"][APICharId]["id"]; // 文字列を数値に変換
                     console.log(selectedCharId);
@@ -2304,7 +2304,7 @@
                 const image = {
                     src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
                     alt: `Image ${i}`,
-                    id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                    id: char_ids[i] * 100 + i // 画像に割り当てるID属性を生成
                     
                 };
                 images.push(image);
@@ -2322,8 +2322,8 @@
                     // クリックされた画像のsrc属性を取得
                     const imageUrl = this.src;
                     const CharId = this.id;
-                    SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
-                    let APICharId = Math.floor(CharId / 10);
+                    SelectId = CharId % 100; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    let APICharId = Math.floor(CharId / 100);
                     // 画像を表示するdiv要素を取得
                     selectedCharId = CharDataJson["CharMap"][APICharId]["id"]; // 文字列を数値に変換
                     console.log(selectedCharId);
