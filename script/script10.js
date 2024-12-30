@@ -1468,8 +1468,16 @@ async function monte_carlo_calculate()
 
     for (let i = 0; i < 5; i++) {
       let probVariable = ((1 - AfPartsRate[i] / AfPartsNum[i]) / (AfSquareRate[i] / AfPartsNum[i] - (AfPartsRate[i] / TryCount) ** 2) ** 0.5);
-      probVariable = probVariable.toFixed(2);
-      pdfProbList[i] = ((1 - pdfData[probVariable]) * 100).toFixed(2);
+      if(probVariable > 0)
+      {
+        probVariable = probVariable.toFixed(2);
+        pdfProbList[i] = ((1 - pdfData[probVariable]) * 100).toFixed(2);
+      }
+      else
+      {
+        probVariable = probVariable.toFixed(2);
+        pdfProbList[i] = ((pdfData[-probVariable]) * 100).toFixed(2);
+      }
     }
 
     console.log(pdfProbList);
