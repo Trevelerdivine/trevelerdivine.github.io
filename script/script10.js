@@ -1469,16 +1469,16 @@ async function monte_carlo_calculate()
     for (let i = 0; i < 5; i++) {
       let probVariable = ((1 - AfPartsRate[i] / AfPartsNum[i]) / (AfSquareRate[i] / AfPartsNum[i] - (AfPartsRate[i] / TryCount) ** 2) ** 0.5);
       probVariable = probVariable.toFixed(2);
-      pdfProbList[i] = ((1 - pdfData[probVariable]) * 100).toFixed(1);
+      pdfProbList[i] = ((1 - pdfData[probVariable]) * 100).toFixed(2);
     }
 
     console.log(pdfProbList);
 
-    document.getElementById("clock1").innerHTML = (AfUpdateNum[0] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock2").innerHTML = (AfUpdateNum[1] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock3").innerHTML = (AfUpdateNum[2] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock4").innerHTML = (AfUpdateNum[3] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock5").innerHTML = (AfUpdateNum[4] * 100 / TryCount).toFixed(1) + "％";
+    document.getElementById("clock1").innerHTML = (AfUpdateNum[0] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock2").innerHTML = (AfUpdateNum[1] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock3").innerHTML = (AfUpdateNum[2] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock4").innerHTML = (AfUpdateNum[3] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock5").innerHTML = (AfUpdateNum[4] * 100 / TryCount).toFixed(2) + "％";
     document.getElementById("goblet1").innerHTML = pdfProbList[0] + "％";
     document.getElementById("goblet2").innerHTML = pdfProbList[1] + "％";
     document.getElementById("goblet3").innerHTML = pdfProbList[2] + "％";
