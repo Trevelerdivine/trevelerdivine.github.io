@@ -1474,11 +1474,11 @@ async function monte_carlo_calculate()
 
     console.log(pdfProbList);
 
-    document.getElementById("clock1").innerHTML = (AfPartsNum[0] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock2").innerHTML = (AfPartsNum[1] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock3").innerHTML = (AfPartsNum[2] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock4").innerHTML = (AfPartsNum[3] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock5").innerHTML = (AfPartsNum[4] * 100 / TryCount).toFixed(1) + "％";
+    document.getElementById("clock1").innerHTML = (AfUpdateNum[0] * 100 / TryCount).toFixed(1) + "％";
+    document.getElementById("clock2").innerHTML = (AfUpdateNum[1] * 100 / TryCount).toFixed(1) + "％";
+    document.getElementById("clock3").innerHTML = (AfUpdateNum[2] * 100 / TryCount).toFixed(1) + "％";
+    document.getElementById("clock4").innerHTML = (AfUpdateNum[3] * 100 / TryCount).toFixed(1) + "％";
+    document.getElementById("clock5").innerHTML = (AfUpdateNum[4] * 100 / TryCount).toFixed(1) + "％";
     document.getElementById("goblet1").innerHTML = pdfProbList[0] + "％";
     document.getElementById("goblet2").innerHTML = pdfProbList[1] + "％";
     document.getElementById("goblet3").innerHTML = pdfProbList[2] + "％";
