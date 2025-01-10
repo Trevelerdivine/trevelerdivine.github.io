@@ -68,6 +68,10 @@ async function calculate_char_base_status()
       char_base_attck += 3;
     }
   }
+  else if (selectedCharId == 85 && char_constellations > 1)
+  {
+    char_base_attck += 200;
+  }
 
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];

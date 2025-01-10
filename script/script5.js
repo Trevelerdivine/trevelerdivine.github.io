@@ -89,6 +89,19 @@ async function calculate_base_status() {
       base_dmg_buff += WeaponEquipData.statValue / 100;
   }
 
+  if (selectedCharId == 62 || selectedCharId == 70)
+  {
+    const special_buff_check = document.getElementById("special_buff");
+    if(special_buff_check.checked)
+    {
+      base_attck += 3;
+    }
+  }
+  else if (selectedCharId == 85 && CharConstellations > 1)
+  {
+    base_attck += 200;
+  }
+
   // 基礎ステータス配列を作成
   const base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
   return base_status;
