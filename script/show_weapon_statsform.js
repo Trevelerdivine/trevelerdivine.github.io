@@ -94,6 +94,19 @@ async function show_weapon_statsform() {
       return selectList;
     }
   }
+  else if (selectedWeaponId == "168") {
+    buff_group = [
+      createweaponCheckbox("BlazingSuns_effect1", true),
+      createweaponLabel("BlazingSuns_effect1", "焚光：会心ダメージ,攻撃力アップ"),
+      document.createElement("br"),
+      createweaponCheckbox("BlazingSuns_effect2", true),
+      createweaponLabel("BlazingSuns_effect2", "夜魂の加護"),
+      document.createElement("br"),
+    ];
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }  
   else if (selectedWeaponId == "159") {
     buff_group = [
       createweaponTextNode("赦罪"),

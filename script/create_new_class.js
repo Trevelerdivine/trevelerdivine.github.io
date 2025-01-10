@@ -2,6 +2,9 @@ async function create_char_instance(base_status, parameter) {
     let char_instance;
   
     switch (selectedCharId) {
+      case "85":
+        char_instance = new Mavuika(base_status, parameter);
+        break;
       case "71":
         char_instance = new Lyney(base_status, parameter);
         break;
@@ -681,6 +684,9 @@ async function create_char_instance(base_status, parameter) {
         break;
       case "167":
         weapon_instance = new FangoftheMountainKing(base_status);
+        break;
+      case "168":
+        weapon_instance = new AThousandBlazingSuns(base_status);
         break;
       default:
         // 未知の武器IDに対する処理を追加することもできます

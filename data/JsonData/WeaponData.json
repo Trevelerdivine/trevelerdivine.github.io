@@ -706,6 +706,11 @@
                 "名前": "山の王の長牙",
                 "url": "../weapon_img/Claymore/FangoftheMountainKing.png",
                 "id":"167"
+            },
+            "14": {
+                "名前": "千烈の日輪",
+                "url": "../weapon_img/Claymore/AThousandBlazingSuns.png",
+                "id":"168"
             }
         },
         "長柄":{

@@ -1,4 +1,4 @@
-class AThousandFloatingDreams {
+  class AThousandFloatingDreams {
     constructor(base_status_array) {
       this.base_status_array = base_status_array;
       this.select1 = 0; // select1の初期値を0に設定
@@ -13139,6 +13139,103 @@ class AThousandFloatingDreams {
         weapon_dmg_buff = 0.025 * (WeaponConstellations + 3) * buff_count;
       }
       return weapon_dmg_buff;
+    }
+  
+    calculate_weapon_result_dmg_buff(fixstatus,status) {
+      return 0
+    }
+  
+    calculate_weapon_debuff() {
+      const weapon_debuff = [0,0];
+      return weapon_debuff
+    }
+  }
+
+  class AThousandBlazingSuns {
+    constructor(base_status_array) {
+      this.base_status_array = base_status_array;
+    }
+  
+    calculate_weapon_fixed_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_attck(fixstatus,status) {
+      let attackBuff = 0;
+      const BlazingSunsFlag = document.getElementById("BlazingSuns_effect1");
+      if (BlazingSunsFlag.checked)
+      {
+        attackBuff = 0.07 * (WeaponConstellations + 3) * this.base_status_array[4];
+        const YakonFlag = document.getElementById("BlazingSuns_effect2");
+        if (YakonFlag.checked)
+        {
+          attackBuff *= 1.75;
+        }
+      }
+      return attackBuff;
+    }
+  
+    calculate_weapon_result_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_result_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_cd(fixstatus,status) {
+      let CdBuff = 0;
+      const BlazingSunsFlag = document.getElementById("BlazingSuns_effect1");
+      if (BlazingSunsFlag.checked)
+      {
+        CdBuff = 0.05 * (WeaponConstellations + 3);
+        const YakonFlag = document.getElementById("BlazingSuns_effect2");
+        if (YakonFlag.checked)
+        {
+          CdBuff *= 1.75;
+        }
+      }
+      return CdBuff;
+    }
+  
+    calculate_weapon_result_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_weapon_fixed_dmg_buff(fixstatus,status) {
+      return 0;
     }
   
     calculate_weapon_result_dmg_buff(fixstatus,status) {

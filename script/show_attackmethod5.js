@@ -259,6 +259,141 @@ async function show_attack_method()
       });
     }
   }
+  else if (selectedCharId == "85")
+  {
+    if (attack_method == 1)
+    {
+      const mavuika_tention_text = createTextNode("　戦意：");
+      const mavuika_tention_list = createanySelectList("mavuika_tention", 0, 20, "", "", 20, 10);
+      attack_method_prop.appendChild(mavuika_tention_text);
+      attack_method_prop.appendChild(mavuika_tention_list);
+      attack_method_prop.appendChild(document.createElement("br"));
+      attack_method_prop.appendChild(document.createElement("br"));
+
+      elementsToAddToCharTalent = [
+        createLabel("", "　通常攻撃ヒット回数"),
+        document.createElement("br"),
+        createLabel("mavuika_count1", "　　1段目："),
+        createSelectList("mavuika_count1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_count2", "　　2段目："),
+        createSelectList("mavuika_count2", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_count3", "　　3段目："),
+        createSelectList("mavuika_count3", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_count4", "　　4段目："),
+        createSelectList("mavuika_count4", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_count5", "　　5段目："),
+        createSelectList("mavuika_count5", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsReactionToAddToCharTalent = [
+        createLabel("", "　通常攻撃反応回数"),
+        document.createElement("br"),
+        createLabel("mavuika_react1", "　　1段目："),
+        createSelectList("mavuika_react1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_react2", "　　2段目："),
+        createSelectList("mavuika_react2", 0, 15, "", "回", 0),
+        document.createElement("br"),
+        createLabel("mavuika_react3", "　　3段目："),
+        createSelectList("mavuika_react3", 0, 15, "", "回", 0),
+        document.createElement("br"),
+        createLabel("mavuika_react4", "　　4段目："),
+        createSelectList("mavuika_react4", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_react5", "　　5段目："),
+        createSelectList("mavuika_react5", 0, 15, "", "回", 0),
+        document.createElement("br"),
+      ];
+    }
+    else if (attack_method == 6)
+    {
+      const mavuika_tention_text = createTextNode("　戦意：");
+      const mavuika_tention_list = createanySelectList("mavuika_tention", 0, 20, "", "", 20, 10);
+      attack_method_prop.appendChild(mavuika_tention_text);
+      attack_method_prop.appendChild(mavuika_tention_list);
+      attack_method_prop.appendChild(document.createElement("br"));
+      attack_method_prop.appendChild(document.createElement("br"));
+
+      elementsToAddToCharTalent = [
+        createLabel("", "　重撃ヒット回数"),
+        document.createElement("br"),
+        createLabel("mavuika_count1", "　　連続重撃："),
+        createSelectList("mavuika_count1", 0, 15, "", "回", 8),
+        document.createElement("br"),
+        createLabel("mavuika_count2", "　　重撃フィニッシュ："),
+        createSelectList("mavuika_count2", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsReactionToAddToCharTalent = [
+        createLabel("", "　重撃反応回数"),
+        document.createElement("br"),
+        createLabel("mavuika_react1", "　　連続重撃："),
+        createSelectList("mavuika_react1", 0, 15, "", "回", 3),
+        document.createElement("br"),
+        createLabel("mavuika_react2", "　　重撃フィニッシュ："),
+        createSelectList("mavuika_react2", 0, 15, "", "回", 0),
+        document.createElement("br"),
+      ];
+    }
+    else if (attack_method == 16)
+    {
+      elementsToAddToCharTalent = [
+        createLabel("", "　元素スキルヒット回数"),
+        document.createElement("br"),
+        createLabel("mavuika_count1", "　　スキル初撃："),
+        createSelectList("mavuika_count1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_count2", "　　焚曜の輪："),
+        createSelectList("mavuika_count2", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsReactionToAddToCharTalent = [
+        createLabel("", "　元素スキル反応回数："),
+        document.createElement("br"),
+        createLabel("mavuika_react1", "　　スキル初撃："),
+        createSelectList("mavuika_react1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("mavuika_react2", "　　焚曜の輪："),
+        createSelectList("mavuika_react2", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+    }
+    else if (attack_method == 21)
+    {
+      const mavuika_tention_text = createTextNode("　戦意：");
+      const mavuika_tention_list = createanySelectList("mavuika_tention", 0, 20, "", "", 20, 10);
+      attack_method_prop.appendChild(mavuika_tention_text);
+      attack_method_prop.appendChild(mavuika_tention_list);
+      attack_method_prop.appendChild(document.createElement("br"));
+      attack_method_prop.appendChild(document.createElement("br"));
+
+      elementsToAddToCharTalent = [
+        createLabel("", "　元素爆発ヒット回数："),
+        createSelectList("mavuika_count1", 0, 5, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsReactionToAddToCharTalent = [
+        createLabel("", "　元素爆発反応回数："),
+        createSelectList("mavuika_react1", 0, 5, "", "回", 1),
+        document.createElement("br"),
+      ];
+    }
+
+    elementsToAddToCharTalent.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+    elementsReactionToAddToCharTalent.forEach(element => {
+      select_reaction_method.appendChild(element);
+    });
+  }
   else if (selectedCharId == "71")
   {
     if (attack_method == 6)

@@ -1,3 +1,294 @@
+class Mavuika {
+  constructor(base_status_array, parameter){
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.char_constellations = 0;
+    this.reaction_coeff = 0;
+    this.skill_buff = 0;
+    this.second_conste_debuff = 0;
+    this.sixth_conste_debuff = 0;
+    this.react_attack_count = 0;
+    this.nonreact_attack_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
+  }
+
+  async dmg_rate_data(){
+    this.char_constellations = document.getElementById("char_constellations").value;
+    const reaction_flag = document.getElementById("reactionon_flag");
+    const Vaporize_pyro = document.getElementById("Vaporize_pyro");
+    if (Vaporize_pyro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 1.5;
+    }
+    const Melt_pyro = document.getElementById("Melt-pyro");
+    if (Melt_pyro.checked && reaction_flag.checked)
+    {
+      this.reaction_coeff = 2;
+    }
+  
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/Mavuika.json");
+    const data = await response.json();
+
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attack_rate = 0;
+    if (attack_method == 1)
+    {
+      const attack_count1 = parseInt(document.getElementById("mavuika_count1").value);
+      const attack_count2 = parseInt(document.getElementById("mavuika_count2").value);
+      const attack_count3 = parseInt(document.getElementById("mavuika_count3").value);
+      const attack_count4 = parseInt(document.getElementById("mavuika_count4").value);
+      const attack_count5 = parseInt(document.getElementById("mavuika_count5").value);
+      const reaction_count1 = parseInt(document.getElementById("mavuika_react1").value);
+      const reaction_count2 = parseInt(document.getElementById("mavuika_react2").value);
+      const reaction_count3 = parseInt(document.getElementById("mavuika_react3").value);
+      const reaction_count4 = parseInt(document.getElementById("mavuika_react4").value);
+      const reaction_count5 = parseInt(document.getElementById("mavuika_react5").value);
+      const Attack_bonus = parseFloat(data["元素爆発"]["詳細"][2]["数値"][this.parameter[3]]);
+      const Tention_point = parseInt(document.getElementById("mavuika_tention").value);
+      const BurstBuff_flag = document.getElementById("mavuika_burst1");
+      if (this.char_constellations == 4)
+      {
+        this.sixth_conste_debuff = 0.2;
+      }
+
+      let attack_react_dmgrate = reaction_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                               + reaction_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                               + reaction_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                               + reaction_count4 * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]])
+                               + reaction_count5 * parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
+      let attack_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                                  + (attack_count2 - reaction_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                                  + (attack_count3 - reaction_count3) * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                                  + (attack_count4 - reaction_count4) * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]])
+                                  + (attack_count5 - reaction_count5) * parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
+
+      this.react_attack_count = reaction_count1 
+                              + reaction_count2
+                              + reaction_count3
+                              + reaction_count4
+                              + reaction_count5;
+      
+      this.nonreact_attack_count = attack_count1 - reaction_count1
+                                 + attack_count2 - reaction_count2
+                                 + attack_count3 - reaction_count3
+                                 + attack_count4 - reaction_count4
+                                 + attack_count5 - reaction_count5;
+      if (BurstBuff_flag.checked)
+      {
+        attack_react_dmgrate += this.react_attack_count * Attack_bonus * Tention_point;
+        attack_nonreact_dmgrate += this.nonreact_attack_count * Attack_bonus * Tention_point;
+      }
+      if (this.char_constellations > 1)
+      {
+        attack_react_dmgrate += this.react_attack_count * 0.6;
+        attack_nonreact_dmgrate += this.nonreact_attack_count * 0.6;
+      }
+
+      dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
+    }
+    else if (attack_method == 6)
+    {
+      const attack_count1 = parseInt(document.getElementById("mavuika_count1").value);
+      const attack_count2 = parseInt(document.getElementById("mavuika_count2").value);
+      const reaction_count1 = parseInt(document.getElementById("mavuika_react1").value);
+      const reaction_count2 = parseInt(document.getElementById("mavuika_react2").value);
+      const Attack_bonus = parseFloat(data["元素爆発"]["詳細"][3]["数値"][this.parameter[3]]);
+      const Tention_point = parseInt(document.getElementById("mavuika_tention").value);
+      const BurstBuff_flag = document.getElementById("mavuika_burst1");
+      if (this.char_constellations == 4)
+      {
+        this.sixth_conste_debuff = 0.2;
+      }
+
+      let attack_react_dmgrate = reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                               + reaction_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      let attack_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]])
+                                  + (attack_count2 - reaction_count2) * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
+
+      this.react_attack_count = reaction_count1 
+                              + reaction_count2;
+      
+      this.nonreact_attack_count = attack_count1 - reaction_count1
+                                 + attack_count2 - reaction_count2;
+
+      if (BurstBuff_flag.checked)
+      {
+        attack_react_dmgrate += this.react_attack_count * Attack_bonus * Tention_point;
+        attack_nonreact_dmgrate += this.nonreact_attack_count * Attack_bonus * Tention_point;
+      }
+
+      if (this.char_constellations > 1)
+      {
+        attack_react_dmgrate += this.react_attack_count * 0.9;
+        attack_nonreact_dmgrate += this.nonreact_attack_count * 0.9;
+      }
+
+      dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
+    }
+    else if (attack_method == 16)
+    {
+      const attack_count1 = parseInt(document.getElementById("mavuika_count1").value);
+      const attack_count2 = parseInt(document.getElementById("mavuika_count2").value);
+      const reaction_count1 = parseInt(document.getElementById("mavuika_react1").value);
+      const reaction_count2 = parseInt(document.getElementById("mavuika_react2").value);
+
+      let attack_react_dmgrate = reaction_count1 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                                + reaction_count2 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+      let attack_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                                  + (attack_count2 - reaction_count2) * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+
+      this.react_attack_count = reaction_count1 
+                              + reaction_count2;
+      
+      this.nonreact_attack_count = attack_count1 - reaction_count1
+                                  + attack_count2 - reaction_count2;
+                  
+      if(this.char_constellations > 1)
+      {
+        this.second_conste_debuff = 0.2;
+      }
+
+      dmg_rate = [0, 0, 0, 0, [attack_react_dmgrate, attack_nonreact_dmgrate], 0, 0];
+    }
+    else if (attack_method == 21)
+    {
+      const attack_count1 = parseInt(document.getElementById("mavuika_count1").value);
+      const reaction_count1 = parseInt(document.getElementById("mavuika_react1").value);
+      const Attack_bonus = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+      const Tention_point = parseInt(document.getElementById("mavuika_tention").value);
+
+      if (this.char_constellations == 4)
+      {
+        this.sixth_conste_debuff = 0.2;
+      }
+
+      let elm_react_dmgrate = reaction_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      this.react_attack_count = reaction_count1;
+      this.nonreact_attack_count = attack_count1 - reaction_count1;
+
+      elm_react_dmgrate += this.react_attack_count * Attack_bonus * Tention_point;
+      elm_nonreact_dmgrate += this.nonreact_attack_count * Attack_bonus * Tention_point;
+
+      if (this.char_constellations > 1)
+      {
+        elm_react_dmgrate += this.react_attack_count * 1.2;
+        elm_nonreact_dmgrate += this.nonreact_attack_count * 1.2;
+      }
+
+      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+    }
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    let Attack_buff = 0;
+    const talent1_flag = document.getElementById("mavuika_talent1");
+    if (talent1_flag.checked)
+    {
+      Attack_buff += this.base_status_array[4] * 0.3;
+    }
+    if (this.char_constellations > 0)
+    {
+      const Conste1_flag = document.getElementById("traitCheckbox1");
+      if (Conste1_flag.checked)
+      {
+        Attack_buff += this.base_status_array[4] * 0.4;
+      }
+    }
+    return Attack_buff;
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    let dmg_buff = parseInt(document.getElementById("mavuika_talent2").value) / 100;
+    return dmg_buff;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status){
+    let basicDmg;
+    let attckRate;
+      if (this.reaction_coeff > 0)
+      {
+        attckRate = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus +2.78 * status[2] / (status[2] + 1400))
+                  + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+      }
+      else
+      {
+        basicDmg =  (dmg_rate[4][0] + dmg_rate[4][1]) * status[4] + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+      }
+      return basicDmg;
+  }
+
+  calculate_char_debuff() {
+    let deff_debuff = this.second_conste_debuff + this.sixth_conste_debuff;
+    let char_debuff = [0,deff_debuff,0];
+    return char_debuff;
+  }
+}
+
 class Lyney {
   constructor(base_status_array, parameter){
     this.base_status_array = base_status_array;
