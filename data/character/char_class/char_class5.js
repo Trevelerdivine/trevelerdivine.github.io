@@ -4937,6 +4937,225 @@
     }
   }
   
+  class citlali {
+    constructor(base_status_array, parameter) {
+      this.base_status_array = base_status_array;
+      this.parameter = parameter;
+      this.reaction_coeff = 0;
+      this.talent1_buff = 0;
+      this.talent2_buff = 0;
+      this.react_attack_count = 0;
+      this.nonreact_attack_count = 0;
+      const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+      const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+      this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+      this.reaction_bonus = calculate_reaction_bonus (WeaponConstellations);
+    }
+  
+    async dmg_rate_data() {
+  
+      const Melt_cyro = document.getElementById("Melt-cyro");
+      const reaction_flag = document.getElementById("reactionon_flag");
+      if (Melt_cyro.checked && reaction_flag.checked) {
+        this.reaction_coeff = 1.5;
+      }
+    
+      // JSON データを取得
+      const response = await fetch("../data/character/char_data/Citlali.json");
+      const data = await response.json();
+    
+      // 攻撃方法に応じてダメージ率を計算
+      let dmg_rate;
+      let dmg_attack_rate = 0;
+      let elm_react_dmgrate = 0;
+      let elm_nonreact_dmgrate = 0;
+  
+      if (attack_method == 1)
+      {
+        const attack_count1 = parseInt(document.getElementById("citlali_count1").value);
+        const attack_count2 = parseInt(document.getElementById("citlali_count2").value);
+        const attack_count3 = parseInt(document.getElementById("citlali_count3").value);
+        const reaction_count1 = parseInt(document.getElementById("citlali_react1").value);
+        const reaction_count2 = parseInt(document.getElementById("citlali_react2").value);
+        const reaction_count3 = parseInt(document.getElementById("citlali_react3").value);
+  
+        let elm_react_dmgrate = reaction_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                              + reaction_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                              + reaction_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+        let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                                 + (attack_count2 - reaction_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                                 + (attack_count3 - reaction_count3) * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+  
+        this.react_attack_count = reaction_count1 
+                                + reaction_count2
+                                + reaction_count3;
+        
+        this.nonreact_attack_count = attack_count1 - reaction_count1
+                                   + attack_count2 - reaction_count2
+                                   + attack_count3 - reaction_count3;
+  
+        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      }
+      else if (attack_method == 6)
+      {
+        const attack_count1 = parseInt(document.getElementById("citlali_count1").value);
+        const reaction_count1 = parseInt(document.getElementById("citlali_react1").value);
+  
+        let elm_react_dmgrate = reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+        let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+  
+        this.react_attack_count = reaction_count1;
+        this.nonreact_attack_count = attack_count1 - reaction_count1;
+  
+        dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      }
+      else if (attack_method == 16)
+      {
+        const attack_count1 = parseInt(document.getElementById("citlali_count1").value);
+        const attack_count2 = parseInt(document.getElementById("citlali_count2").value);
+        const reaction_count1 = parseInt(document.getElementById("citlali_react1").value);
+        const reaction_count2 = parseInt(document.getElementById("citlali_react2").value);
+  
+        let elm_react_dmgrate = reaction_count1 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                              + reaction_count2 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+        let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
+                                 + (attack_count2 - reaction_count2) * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]);
+  
+        this.react_attack_count = reaction_count1 
+                                + reaction_count2;
+        
+        this.nonreact_attack_count = attack_count1 - reaction_count1
+                                   + attack_count2 - reaction_count2;
+  
+        dmg_rate = [0, 0, [0.9 * reaction_count2, 0.9 * (attack_count2 - reaction_count2)], 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      }
+      else if (attack_method == 21)
+      {
+        const attack_count1 = parseInt(document.getElementById("citlali_count1").value);
+        const attack_count2 = parseInt(document.getElementById("citlali_count2").value);
+        const reaction_count1 = parseInt(document.getElementById("citlali_react1").value);
+        const reaction_count2 = parseInt(document.getElementById("citlali_react2").value);
+  
+        let elm_react_dmgrate = reaction_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                              + reaction_count2 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        let elm_nonreact_dmgrate = (attack_count1 - reaction_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]])
+                                 + (attack_count2 - reaction_count2) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+  
+        this.react_attack_count = reaction_count1 
+                                + reaction_count2;
+        
+        this.nonreact_attack_count = attack_count1 - reaction_count1
+                                   + attack_count2 - reaction_count2;
+  
+        dmg_rate = [0, 0, [12 * reaction_count1, 12 * (attack_count1 - reaction_count1)], 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
+      }
+      return dmg_rate;
+    }
+    
+    calculate_char_fixed_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_hp(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_attck(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_deff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm(fixstatus,status) {
+      let elm_buff = 0;
+      if (CharConstellations > 1)
+      {
+        elm_buff = 125;
+      }
+      return elm_buff;
+    }
+  
+    calculate_char_result_elm(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_elm_charge(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_cr(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_result_cd(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_char_fixed_dmg_buff(fixstatus,status) {
+      let dmg_buff = 0;
+      if (CharConstellations == 4)
+      {
+        const buff_count = parseInt(document.getElementById("citlali_sixth").value);
+        dmg_buff = buff_count * 0.025
+      }
+      return dmg_buff;
+    }
+  
+    calculate_char_result_dmg_buff(fixstatus,status) {
+      return 0;
+    }
+  
+    calculate_basic_dmg(dmg_rate, status) {
+      let basicDmg;
+      let attckRate;
+      if (this.reaction_coeff > 0)
+      {
+        attckRate = status[2] * dmg_rate[2][0] + status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.react_attack_count, status, WeaponConstellations, this.base_dmgbuff);
+        basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
+                  + status[2] * dmg_rate[2][1] + status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.nonreact_attack_count, status, WeaponConstellations, this.base_dmgbuff);
+      }
+      else
+      {
+        if (attack_method_index == 3 || attack_method_index == 4)
+        {
+          basicDmg = status[2] * (dmg_rate[2][0] + dmg_rate[2][1]) + status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, WeaponConstellations, this.base_dmgbuff);
+        }
+        else
+        {
+          basicDmg = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, WeaponConstellations, this.base_dmgbuff);
+        }
+      }
+      return basicDmg;
+    }
+  
+    calculate_char_debuff() {
+      let char_debuff = [0,0,0];
+      return char_debuff;
+    }
+  }
+
   class Wriothesley {
     constructor(base_status_array, parameter) {
       this.base_status_array = base_status_array;

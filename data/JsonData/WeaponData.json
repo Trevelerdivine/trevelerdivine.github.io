@@ -805,6 +805,11 @@
                 "名前": "サーフィンタイム",
                 "url": "../weapon_img/Catalyst/SurfsUp.jpg",
                 "id":"160"
+            },
+            "17": {
+                "名前": "祭星者の眺め",
+                "url": "../weapon_img/Catalyst/StarcallersWatch.png",
+                "id":"169"
             }
         },
         "弓":{

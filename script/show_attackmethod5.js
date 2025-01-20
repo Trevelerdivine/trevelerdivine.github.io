@@ -1847,6 +1847,110 @@ async function show_attack_method()
       select_reaction_method.appendChild(document.createElement("br"));
     }
   }
+  else if (selectedCharId == "86")
+  {
+    let elementsToAddToCharTalent;
+    if (attack_method == 1)
+    {
+      elementsToAddToCharTalent = [
+        createLabel("", "　通常攻撃ヒット回数"),
+        document.createElement("br"),
+        createLabel("citlali_count1", "　　1段目："),
+        createSelectList("citlali_count1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("citlali_count2", "　　2段目："),
+        createSelectList("citlali_count2", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("citlali_count3", "　　3段目："),
+        createSelectList("citlali_count3", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsReactionToAddToCharTalent = [
+        createLabel("", "　通常攻撃溶解回数"),
+        document.createElement("br"),
+        createLabel("citlali_react1", "　　1段目："),
+        createSelectList("citlali_react1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+        createLabel("citlali_react2", "　　2段目："),
+        createSelectList("citlali_react2", 0, 15, "", "回", 0),
+        document.createElement("br"),
+        createLabel("citlali_react3", "　　3段目："),
+        createSelectList("citlali_react3", 0, 15, "", "回", 0),
+        document.createElement("br"),
+      ];
+    }
+    else if (attack_method == 6)
+    {
+      elementsToAddToCharTalent = [
+        createLabel("citlali_count1", "　重撃ヒット回数："),
+        createSelectList("citlali_count1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsReactionToAddToCharTalent = [
+        createLabel("citlali_react1", "　重撃溶解回数："),
+        createSelectList("citlali_react1", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+    }
+    else if (attack_method == 16)
+    {
+      elementsToAddToCharTalent = [
+        createLabel("", "　スキルヒット回数"),
+        document.createElement("br"),
+        createLabel("citlali_count1", "　　黒曜ツィツィミメ："),
+        createSelectList("citlali_count1", 0, 5, "", "回", 1),
+        document.createElement("br"),
+        createLabel("citlali_count2", "　　霜落の嵐："),
+        createSelectList("citlali_count2", 0, 15, "", "回", 10),
+        document.createElement("br"),
+      ];
+  
+      elementsReactionToAddToCharTalent = [
+        createLabel("", "　スキル溶解回数"),
+        document.createElement("br"),
+        createLabel("citlali_react1", "　　黒曜ツィツィミメ："),
+        createSelectList("citlali_react1", 0, 5, "", "回", 1),
+        document.createElement("br"),
+        createLabel("citlali_react2", "　　霜落の嵐："),
+        createSelectList("citlali_react2", 0, 15, "", "回", 5),
+        document.createElement("br"),
+      ];
+    }
+    else if (attack_method == 21)
+    {
+      elementsToAddToCharTalent = [
+        createLabel("", "　スキルヒット回数"),
+        document.createElement("br"),
+        createLabel("citlali_count1", "　　氷晶の嵐："),
+        createSelectList("citlali_count1", 0, 5, "", "回", 1),
+        document.createElement("br"),
+        createLabel("citlali_count2", "　　憑霊のスカル："),
+        createSelectList("citlali_count2", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+
+      elementsReactionToAddToCharTalent = [
+        createLabel("", "　スキル溶解回数"),
+        document.createElement("br"),
+        createLabel("citlali_react1", "　　氷晶の嵐："),
+        createSelectList("citlali_react1", 0, 5, "", "回", 1),
+        document.createElement("br"),
+        createLabel("citlali_react2", "　　憑霊のスカル："),
+        createSelectList("citlali_react2", 0, 15, "", "回", 1),
+        document.createElement("br"),
+      ];
+    }
+
+    elementsToAddToCharTalent.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+
+    elementsReactionToAddToCharTalent.forEach(element => {
+      select_reaction_method.appendChild(element);
+    });
+  }
   else if (selectedCharId == "73")
   {
     let elementsToAddToCharTalent;

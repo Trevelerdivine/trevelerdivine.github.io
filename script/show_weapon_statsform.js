@@ -1378,6 +1378,19 @@ async function show_weapon_statsform() {
     });
   }
 
+  else if (selectedWeaponId == "169")
+  {
+    buff_group = [
+      createweaponCheckbox("StarcallersWatch_effect", true),
+      createweaponLabel("StarcallersWatch_effect", "祭星者の眺め：シールド生成後、与えるダメージアップ "),
+      document.createElement("br"),
+    ];
+  
+    buff_group.forEach(element => {
+      weaponInfo.appendChild(element);
+    });
+  }
+
   else if (selectedWeaponId == "160") {
     buff_group = [
       createweaponLabel("SurfsUp_count", "盛夏：通常攻撃ダメージアップ "),

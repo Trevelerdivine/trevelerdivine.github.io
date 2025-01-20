@@ -919,6 +919,25 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "86")
+    {
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "元素スキル", value: "16" },
+        { text: "元素爆発", value: "21" },
+      ];
+    
+      createchar_attackmethod(options);
+      if (char_constellations == 4)
+      {
+        let talent2_label = createLabel("citlali_sixth", "第6重：秘律カウント ");
+        const citlali_talent1_list = createSelectList("citlali_sixth", 0, 40, "", "", 40);
+        char_talent.appendChild(talent2_label);
+        char_talent.appendChild(citlali_talent1_list);
+      }
+    }
     else if (selectedCharId == "73")
     {
       elementsToAddToCharTalent = [
