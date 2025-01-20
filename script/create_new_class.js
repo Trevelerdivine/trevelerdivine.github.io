@@ -691,6 +691,9 @@ async function create_char_instance(base_status, parameter) {
       case "168":
         weapon_instance = new AThousandBlazingSuns(base_status);
         break;
+      case "169":
+        weapon_instance = new StarcallersWatch(base_status);
+        break;
       default:
         // 未知の武器IDに対する処理を追加することもできます
         break;
