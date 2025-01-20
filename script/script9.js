@@ -2237,7 +2237,7 @@ async function generate() {
         if (paramsName) {
             const value = ["HP", "攻撃力", "防御力", "元素熟知"].includes(paramsName)
                 ? buffValue
-                : `${buffValue}%`;
+                : `${buffValue.toFixed(1)}%`;
             return AfSubDisp(urlName, paramsName, value, ColorFlag, 380 + 381 * j, 900 + 53 * i);
         }
     }).filter(Boolean)
