@@ -1367,6 +1367,9 @@
     // fetchData() 関数を定義
     async function fetchData() {
         fetchButton.disabled = true;
+        const spinner = document.getElementById('spinner');
+        spinner.style.visibility = "visible"; // スピナーを可視化
+
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
@@ -1489,6 +1492,7 @@
             });
         } catch (error) {
             fetchButton.disabled = false;
+            spinner.style.visibility = "hidden"; // スピナーを非表示にする
             const nicknameElement = document.getElementById('nickname');
             if(ErrorId == 500)
             {
@@ -1505,6 +1509,7 @@
             }
             return;
         }
+        spinner.style.visibility = "hidden"; // スピナーを非表示にする
         startCountdown();
     }
 
