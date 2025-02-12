@@ -764,7 +764,7 @@ details summary {
    align-items: center;
    justify-content: center;
    position: fixed; /* 常に画面基準で固定 */
-   font-size: 50px;
+   font-size: 25px;
    font-weight: bold;
    white-space: nowrap; /* 文字が折り返されないようにする */
 }
@@ -772,6 +772,7 @@ details summary {
 .jump {
    display: inline-block;
    animation: jumpAnimation 3.0s infinite ease-in-out;
+   color: lightblue; /* 文字色を水色に変更 */
 }
 
 @keyframes jumpAnimation {

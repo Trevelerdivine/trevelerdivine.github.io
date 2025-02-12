@@ -1378,6 +1378,9 @@
     // fetchData() 関数を定義
     async function fetchData() {
         fetchButton.disabled = true;
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex"; // flexbox の影響で中央に配置される
+
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
@@ -1514,8 +1517,10 @@
                 console.error('Error fetching data:', error);
                 nicknameElement.textContent = "入力したUIDに問題があるようです。";
             }
+            loading.style.display = "hidden";
             return;
         }
+        loading.style.display = "hidden";
         startCountdown();
     }
 
