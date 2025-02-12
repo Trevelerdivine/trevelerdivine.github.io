@@ -1387,7 +1387,7 @@
             const nicknameElement = document.getElementById('nickname');
             if(ErrorId == 500)
             {
-                nicknameElement.textContent = "EnkaNetWorkサーバーのエラー　大型アップデートの日はメンテナンスにより利用できません。";
+                nicknameElement.textContent = nicknameElement.innerHTML = "EnkaNetWorkサーバーのエラー<br>大型アップデートの日はメンテナンスにより利用できません。";
             }
             else if(ErrorId == 404)
             {
