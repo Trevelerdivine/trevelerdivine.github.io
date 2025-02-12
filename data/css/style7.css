@@ -760,7 +760,7 @@ details summary {
    transform: translate(-50%, -50%);
    width: 100px; /* スピナーの幅を40pxに変更 */
    height: 100px; /* スピナーの高さを40pxに変更 */
-   display: flex;
+   display: none;
    align-items: center;
    justify-content: center;
    position: fixed; /* 常に画面基準で固定 */
