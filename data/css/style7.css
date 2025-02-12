@@ -772,7 +772,7 @@ details summary {
 .jump {
    display: inline-block;
    animation: jumpAnimation 3.0s infinite ease-in-out;
-   color: lightblue; /* 文字色を水色に変更 */
+   color: #d3d3d3;
 }
 
 @keyframes jumpAnimation {
