@@ -125,13 +125,15 @@
         <div class="image-grid" id="imageGrid">
         </div>
         <br>
-        <div id="spinner" class="hidden">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+        <div id="loading">
+            <span class="jump">デ</span>
+            <span class="jump">ー</span>
+            <span class="jump">タ</span>
+            <span class="jump">を</span>
+            <span class="jump">取</span>
+            <span class="jump">得</span>
+            <span class="jump">中</span>
+            <span class="jump">！</span>
         </div>
         <br>
         <div id="Attention" class="AttentionDetails" style="display: none;">
@@ -943,6 +945,14 @@
                     スコア計算開始
                 </div>
             </div>
+            <div id="spinner" class="hidden">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
             <div id="response"></div>
             <div id="result"></div>
             <br>
@@ -1368,9 +1378,6 @@
     // fetchData() 関数を定義
     async function fetchData() {
         fetchButton.disabled = true;
-        const spinner = document.getElementById('spinner');
-        spinner.style.visibility = "visible"; // スピナーを可視化
-
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
@@ -1493,7 +1500,6 @@
             });
         } catch (error) {
             fetchButton.disabled = false;
-            spinner.style.visibility = "hidden"; // スピナーを非表示にする
             const nicknameElement = document.getElementById('nickname');
             if(ErrorId == 500)
             {
@@ -1510,7 +1516,6 @@
             }
             return;
         }
-        spinner.style.visibility = "hidden"; // スピナーを非表示にする
         startCountdown();
     }
 
