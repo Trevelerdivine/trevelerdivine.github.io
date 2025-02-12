@@ -772,7 +772,7 @@ details summary {
 .jump {
    display: inline-block;
    animation: jumpAnimation 3.0s infinite ease-in-out;
-   color: #d3d3d3;
+   color: #696969;
 }
 
 @keyframes jumpAnimation {
