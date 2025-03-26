@@ -10332,7 +10332,7 @@ class Mavuika {
     calculate_basic_dmg(dmg_rate, status) {
       if (this.reaction_coeff > 0)
       {
-        const attckRate = status[4] * (dmg_rate[4] + this.first_conste_buff)
+        const attckRate = status[4] * dmg_rate[4]
                         + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
         let basicDmg = (attckRate + this.aggcount * this.reaction_coeff * (this.parameter[1]) * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
