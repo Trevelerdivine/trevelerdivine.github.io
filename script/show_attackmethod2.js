@@ -3412,6 +3412,65 @@ async function show_attack_method()
     elemental_reaction.appendChild(kirara_agg_count); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));
   }
+  else if (selectedCharId == "61")
+  {
+    let collei_agg_count;
+    if (attack_method == 16)
+    {
+      if (char_constellations > 1)
+      {
+        traits = [
+          createLabel("", "　スキルヒット回数"),
+          document.createElement("br"),
+          createLabel("collei_skill_count1", "　　リーフブーメラン："),
+          createSelectList("collei_skill_count1", 0, 5, "", "回", 2),
+          document.createElement("br"),
+          createLabel("collei_skill_count2", "　　芽生え："),
+          createSelectList("collei_skill_count2", 0, 5, "", "回", 4),
+          document.createElement("br"),
+        ];
+        
+        collei_agg_count = createSelectList("collei_agg_count", 0, 10, "", "回", 4);
+      }
+      else
+      {
+        traits = [
+          createLabel("", "　スキルヒット回数"),
+          document.createElement("br"),
+          createLabel("collei_skill_count1", "　　リーフブーメラン："),
+          createSelectList("collei_skill_count1", 0, 5, "", "回", 2),
+          document.createElement("br"),
+          createLabel("collei_skill_count2", "　　芽生え："),
+          createSelectList("collei_skill_count2", 0, 5, "", "回", 2),
+          document.createElement("br"),
+        ];
+        
+        collei_agg_count = createSelectList("collei_agg_count", 0, 10, "", "回", 3);
+      }
+    }
+    else if (attack_method == 21)
+    {
+      traits = [
+        createLabel("", "　元素爆発ヒット回数"),
+        document.createElement("br"),
+        createLabel("collei_skill_count1", "　　爆発ダメージ："),
+        createSelectList("collei_skill_count1", 0, 5, "", "回", 1),
+        document.createElement("br"),
+        createLabel("collei_skill_count2", "　　ジャンプダメージ："),
+        createSelectList("collei_skill_count2", 0, 20, "", "回", 12),
+        document.createElement("br"),
+      ];
+
+      collei_agg_count = createSelectList("collei_agg_count", 0, 10, "", "回", 2);
+    }
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    }); 
+
+    elemental_reaction.appendChild(Spread_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(collei_agg_count); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
   else if (selectedCharId == "62")
   {
     let travelardendro_agg_count;

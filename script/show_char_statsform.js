@@ -1762,6 +1762,32 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "61")
+    {
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+      traits = [
+        { id: "traitCheckbox1", label: "第1重：控え時、元素チャージ効率+20%" },
+      ];
+
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "スキル（花触葉讃）", value: "16" },
+        { text: "元素爆発（ニャンコトレジャー）", value: "21" },
+      ];
+      createchar_attackmethod(options);
+    
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+        
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+    }
     else if (selectedCharId == "62")
     {     
       elementsToAddToCharTalent = [
