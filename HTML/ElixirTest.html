@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エリクシル聖遺物 更新確率計算機</title>
+    <link rel="stylesheet" href="../data/css/style7.css">
+    <script src="../script/script12.js"></script>
+    <script src="../script/create_new_class.js"></script>
+    <script src="../data/character/char_class/char_class5.js"></script>
+    <script src="../data/weapon/weapon_class/weapon_class5.js"></script>
+    <script src="../data/artifact/af_class.js"></script>
+    <script src="../script/show_char_statsform5.js"></script>
+    <script src="../script/show_weapon_statsform5.js"></script>
+    <script src="../script/show_artifact.js"></script>
+    <script src="../script/show_attackmethod5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
+    crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url('../data/BackImg.png'); /* 背景画像のパス */
+            background-repeat: repeat; /* 画像を繰り返し */
+            background-size: auto; /* デフォルトサイズを使用 */
+            background-attachment: scroll; /* 背景を固定 */
+            overflow-y: scroll;
+            background-size: 50%;
+            height: auto;
+            padding: 0 !important;  /* 「アンカー広告」がページを押し下げないように指定 */
+        }
+
+        #uidInput {
+            padding: 10px;
+            font-size: 16px;
+            width: 150px; /* この要素にのみ幅を指定 */
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .image-grid {
+                margin: 0 auto; /* 左右の余白を自動的に均等に設定 */
+                max-width: 480px; /* 最大の横幅を設定 */
+                display: grid;
+                grid-template-columns: repeat(4, 1fr); /* 4列のグリッド */
+                grid-template-rows: repeat(2, 1fr); /* 2行のグリッド */
+                gap: 20px; /* 画像の間隔 */
+            }
+        .image-grid img {
+                width: 100%; /* 画像の幅を100%に設定 */
+                height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+            }
+        }
+
+        @media (max-width: 767px) {
+            .image-grid {
+                margin: 0 auto; /* 左右の余白を自動的に均等に設定 */
+                display: grid;
+                grid-template-columns: repeat(4, 1fr); /* 4列のグリッド */
+                grid-template-rows: repeat(2, 1fr); /* 2行のグリッド */
+                gap: 10px; /* 画像の間隔 */
+            }
+            .image-grid img {
+                width: 100%; /* 画像の幅を100%に設定 */
+                height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+            }
+            body {
+                background-size: 100%; /* スマートフォンでは画像を縮小して繰り返し */
+            }
+        }
+
+        /* 画像を左上から順に配置 */
+        .image-grid img:nth-child(n) {
+            grid-column: auto; /* 列の位置は自動 */
+            grid-row: auto; /* 行の位置は自動 */
+        }
+
+        .image-grid img:nth-child(1) { grid-column: 1; grid-row: 1; }
+        .image-grid img:nth-child(2) { grid-column: 2; grid-row: 1; }
+        .image-grid img:nth-child(3) { grid-column: 3; grid-row: 1; }
+        .image-grid img:nth-child(4) { grid-column: 4; grid-row: 1; }
+        .image-grid img:nth-child(5) { grid-column: 1; grid-row: 2; }
+        .image-grid img:nth-child(6) { grid-column: 2; grid-row: 2; }
+        .image-grid img:nth-child(7) { grid-column: 3; grid-row: 2; }
+        .image-grid img:nth-child(8) { grid-column: 4; grid-row: 2; }
+
+        footer {
+            padding: 5px;
+            text-align: center;
+        }
+        footer p {
+            font-size: 10px; /* または適切なサイズに調整 */
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+    <label for="drawer-toggle" id="drawer-toggle-label"></label>
+    <header style="font-size: 24px;">エリクシル更新確率テスト</header>
+    <nav id="drawer">
+    <ul>
+        <li><a href="../index.html">・最適化スコア計算機</a></li>
+        <li><a href="./UidScoreCalc.html">・UIDから最適化スコア計算</a></li>
+        <li><a href="./ScoreFix.html">・最適ステータス計算機</a></li>
+        <li><a href="./UpdataDaysCalc.html">・必要厳選日数計算機</a></li>
+        <li><a href="./UpdataElixirCalc.html">・エリクシル更新確率計算機</a></li>
+        <li><a href="./CreateBuildCard.html">・ビルドカード作成ツール</a></li>
+        <li><a href="./HowToUse.html">・使い方</a></li>
+        <li><a href="./policy.html">・プライバシーポリシー</a></li>
+        <li><a href="./Contact.html">・お問い合わせ</a></li>
+    </ul>
+    </nav>
+    <div id="page-content">
+        <br>
+        <div id="drawer-toggle-label-alt" style="color: #00aaff;">
+            他のコンテンツはこちらから
+        </div>
+        <input type="text" id="uidInput" placeholder="UIDを入力してください" style="width: 200px;">
+        <br>
+        <br>
+        <button id="fetchButton" disabled>データを取得する</button>
+        <div id="countdown"></div>
+        <br>
+        <div id="nickname">
+        </div>
+        <br>
+        <br>
+        <div class="image-grid" id="imageGrid">
+        </div>
+        <br>
+        <div id="Attention" class="AttentionDetails" style="display: none;">
+            <div class="centered-details">
+                <details>
+                    <summary>キャラクターが表示されない場合</summary>
+                    <p>
+                        以下の場合にはキャラクターが表示されません。<br>
+                        &nbsp;&nbsp;1. キャラクター&武器の突破段階が4未満(レベル60突破無し)<br>
+                        &nbsp;&nbsp;2. キャラクター、武器、聖遺物のいずれかが当計算機で計算可能な状態でない。<br>
+                        &nbsp;&nbsp;3. 聖遺物が4セット効果を持っていない。<br>
+                    </p>
+                </details>
+            </div>
+        </div>        
+        <br>         
+        <br>
+        <div id = "WholeDisplay" style="display: none;">
+            <div class="wrapper">
+                <div>
+                    <div>
+                        <div>
+                            <table>
+                                <td id = choose_char_weapon >
+                                    <span id="CharLevel" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px; padding-right: 7px; font-weight: 600;">
+                                        Lv.
+                                    </span>
+                                    <br>
+                                    <span id="CharConstellations" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px;padding-right: 7px;  font-weight:600;">
+                                        C
+                                    </span>                                                                                                                        
+                                </td>
+                                <td>
+                                    <label class="open_char" for="pop-up_char">
+                                        <div id = "CharImage">
+                                            <img src="" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+                                        </div>
+                                    </label>
+                                    <div id="Charindex-display" style=" display: flex; justify-content: center; align-items: center;">
+                                    </div>
+                                </td>
+                            </table>
+                        </div>
+                        <br>
+                        <table>
+                            <div>
+                                <td>
+                                    <span id="WeaponLevel" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px; padding-right: 7px; font-weight: 600;">
+                                        Lv.90
+                                    </span>
+                                    <br>
+                                    <span id="WeaponRank" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px;padding-right: 7px;  font-weight:600;">
+                                        R10
+                                    </span>                                                                                                                        
+                                </td>
+                                <td>
+                                    <div id = "WeaponImage">
+                                        <img src="" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+                                    </div>
+                                    <div id="Weaponindex-display" style = "display: flex; justify-content: center; align-items: center;"></div>
+                                </td>
+                            </div>
+                        </table>
+                    </div>
+                    <fieldset id="attack-setting" style="margin-bottom: 20px; margin-top: 20px; max-width: 476px;">
+                        <legend>攻撃方法の設定</legend>
+                        <div id="attack_method">
+                        </div>
+                        <span class="property">天賦レベル</span>   
+                        <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 2em;">
+                            <span style="width: 30%;">
+                                <div>通常攻撃</div>
+                                <div id="NormalTalentLevel"></div>
+                            </span>
+                            <span style="width: 30%;">
+                                <div>元素スキル</div>
+                                <div id="SkillTalentLevel"></div>
+                            </span>
+                            <span style="width: 30%;">
+                                <div>元素爆発</div>
+                                <div id="BurstTalentLevel"></div>
+                            </span>
+                        </div>
+                        <br>
+                        <div style="justify-content: space-between; max-width: 476px;">
+                            <div id = "AfConditon">
+                            </div>
+                            <div id = "ElmChargeStrict">
+                            </div>
+                        </div>
+                        <span class="property">スキルプロパティ</span>        
+                        <br>
+                        <span id = "attack_method_prop">
+                        </span>
+                        <br>
+                        <span class="property">元素反応</span>
+                        <div id = "element_action">
+                        </div>
+                        <br>
+                        <span class="property">蒸発、溶解反応箇所</span>
+                        <div id = "select_reaction_method">
+                        </div>
+                    </fieldset>
+                </div>
+                <div>
+                    <div>
+                        <label class="open" for="pop-up" style="display: inline-block;">
+                            <img id ="AfImage1" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+                            <img id ="AfImage2" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+                        </label>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
+                        <span style="width: 30%;">
+                            <div>時の砂</div>
+                            <div id="ClockMainStatus"></div>
+                        </span>
+                        <span style="width: 35%;">
+                            <div>空の杯</div>
+                            <div id="GobletMainStatus"></div>
+                        </span>
+                        <span style="width: 30%;">
+                            <div>理の冠</div>
+                            <div id="CircletMainStatus"></div>
+                        </span>
+                    </div>    
+                    <br>          
+                    <div id="index-display"></div>
+                    <fieldset id="artifactInfo" style="max-width: 476px;">
+                        <legend>作成する聖遺物設定</legend>
+                        <div style="display: flex; justify-content: center; max-width: 476px;">
+                            <span style="width: 30%; margin-right: 20px;"> <!-- ここで余白を追加 -->
+                                <div>花</div>
+                                <div>メイン</div>
+                                <div>HP実数値</div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="flower_sub1" onchange="changeSubSelectedValue(0)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="flower_sub2" onchange="changeSubSelectedValue(0)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span style="width: 35%;"> <!-- ここで余白を追加 -->
+                                <div>羽</div>
+                                <div>メイン</div>
+                                <div>攻撃力実数値</div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="feather_sub1" onchange="changeSubSelectedValue(1)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="feather_sub2" onchange="changeSubSelectedValue(1)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                        </div>                        
+                        <br>
+                        <div style="display: flex; justify-content: space-between; max-width: 476px;">
+                            <span style="width: 30%;">
+                                <div>時計</div>
+                                <div>メイン</div>
+                                <div>
+                                    <select id="clock_main" onchange="changeMainSelectedValue(2)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ効率</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="clock_sub1" onchange="changeSubSelectedValue(2)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="clock_sub2" onchange="changeSubSelectedValue(2)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span style="width: 35%; margin-left: auto;">
+                                <div>杯</div>
+                                <div>メイン</div>
+                                <div>
+                                    <select id="goblet_main" onchange="changeMainSelectedValue(3)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="10">炎元素ダメバフ</option>
+                                        <option value="11">水元素ダメバフ</option>
+                                        <option value="12">氷元素ダメバフ</option>
+                                        <option value="13">雷元素ダメバフ</option>
+                                        <option value="14">風元素ダメバフ</option>
+                                        <option value="15">草元素ダメバフ</option>
+                                        <option value="16">岩元素ダメバフ</option>
+                                        <option value="17">物理ダメバフ</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="goblet_sub1" onchange="changeSubSelectedValue(3)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="goblet_sub2" onchange="changeSubSelectedValue(3)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                            <span style="width: 30%;">
+                                <div>冠</div>
+                                <div>メイン</div>
+                                <div>
+                                    <select id="circlet_main" onchange="changeMainSelectedValue(4)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                        <option value="18">治療効果バフ</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div>サブ</div>
+                                <div>
+                                    <select id="circlet_sub1" onchange="changeSubSelectedValue(4)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="circlet_sub2" onchange="changeSubSelectedValue(4)" style="width: 100px; height: 25px;">
+                                        <option value="0">HP%</option>
+                                        <option value="4">攻撃力%</option>
+                                        <option value="1">防御力%</option>
+                                        <option value="2">元素熟知</option>
+                                        <option value="3">元素チャージ</option>
+                                        <option value="5">会心率</option>
+                                        <option value="6">会心ダメージ</option>
+                                    </select>
+                                </div>
+                            </span>
+                        </div>                        
+                    </fieldset>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="wrapper">
+                <div>
+                    <div id="team_buff_info">
+                        <form class="team-buff-form">
+                            <table class="table-borderless" style="width: auto;">
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th>固定値バフ</th>
+                                <th></th>
+                                <th>変動バフ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="team_hp_form" style="display: none;">
+                                <td><label for="fix_hp_buff">HP実数値</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_hp_buff" required min="0" name="fix_hp_buff" placeholder="HP実数値">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_hp_buff" required min="0" name="dynamic_hp_buff" placeholder="HP実数値">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_hprate_form" style="display: none;">
+                                <td><label for="fix_hp%_buff">HP%</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_hp%_buff" required min="0" name="fix_hp%_buff" placeholder="HP%">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_hp%_buff" required min="0" name="dynamic_hp%_buff" placeholder="HP%">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_attack_form" style="display: none;">
+                                <td><label for="fix_attack_buff">攻撃力実数値</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_attack_buff" required min="0" name="fix_attack_buff" placeholder="攻撃力実数値">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_attack_buff" required min="0" name="dynamic_attack_buff" placeholder="攻撃力実数値">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_attackrate_form" style="display: none;">
+                                <td><label for="fix_attack%_buff">攻撃力％</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_attack%_buff" required min="0" name="fix_attack%_buff" placeholder="攻撃力％">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_attack%_buff" required min="0" name="dynamic_attack%_buff" placeholder="攻撃力％">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_deff_form" style="display: none;">
+                                <td><label for="fix_deff_buff">防御力実数値</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_deff_buff" required min="0" name="fix_deff_buff" placeholder="防御力実数値">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_deff_buff" required min="0" name="dynamic_deff_buff" placeholder="防御力実数値">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_deffrate_form" style="display: none;">
+                                <td><label for="fix_deff%_buff">防御力％</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_deff%_buff" required min="0" name="fix_deff%_buff" placeholder="防御力％">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_deff%_buff" required min="0" name="dynamic_deff%_buff" placeholder="防御力％">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_elm_form" style="display: none;">
+                                <td><label for="fix_elm_buff">元素熟知</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_elm_buff" required min="0" name="fix_elm_buff" placeholder="元素熟知">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_elm_buff" required min="0" name="dynamic_elm_buff" placeholder="元素熟知">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_elm_charge_form" style="display: none;">
+                                <td><label for="fix_elm_charge_buff">元素チャージ効率</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_elm_charge_buff" required min="0" name="fix_elm_charge_buff" placeholder="元素チャージ効率">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_elm_charge_buff" required min="0" name="dynamic_elm_charge_buff" placeholder="元素チャージ効率">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_cr_form" style="display: none;">
+                                <td><label for="fix_cr_buff">会心率</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_cr_buff" required min="0" name="fix_cr_buff" placeholder="会心率">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_cr_buff" required min="0" name="dynamic_cr_buff" placeholder="会心率">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_cd_form" style="display: none;">
+                                <td><label for="fix_cd_buff">会心ダメージ</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_cd_buff" required min="0" name="fix_cd_buff" placeholder="会心ダメージ">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_cd_buff" required min="0" name="dynamic_cd_buff" placeholder="会心ダメージ">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_dmg_buff_form">
+                                <td><label for="fix_dmg_buff">ダメージバフ</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_dmg_buff" required min="0" name="fix_dmg_buff" placeholder="ダメージバフ">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_dmg_buff" required min="0" name="dynamic_dmg_buff" placeholder="ダメージバフ">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_basedmg_buff_form">
+                                <td><label for="fix_basedmg_buff">基礎ダメージバフ/1hit</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_basedmg_buff" required min="0" name="fix_basedmg_buff" placeholder="基礎ダメージバフ">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_basedmg_buff" required min="0" name="dynamic_basedmg_buff" placeholder="基礎ダメージバフ">
+                                    </div>
+                                </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <div style = "text-align: center;">
+                    <button id = "parameterbutton1" class="button-1" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
+                    <button id = "parameterbutton2" class="button-1" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
+                    <button id = "parameterbutton3" class="button-1" onclick="showOption('option3', 'parameterbutton3')">敵ステータス</button>
+                    </div>
+                    <div class = "option-field" id = "option1">
+                    <fieldset style="width: auto;">
+                        <legend>キャラクターバフ</legend>
+                        <div id ="char_talent">
+                        </div>
+                        <div id ="temporary_char_talent">
+                        </div>
+                        <div id="characterInfo">
+                        </div>
+                    </fieldset>
+                    <fieldset style="width: auto;">
+                        <legend>装備バフ</legend>
+                        <div id="weaponInfo">
+                        </div>
+                        <div id="artifact_checkbox">
+                        </div>
+                    </fieldset>
+                    </div>
+                    <div class = "option-field" id = "option2">
+                    <fieldset>
+                        <legend>元素共鳴</legend>
+                        <label><input type="checkbox" class="custom-checkbox" id = "pyro_reso"> 炎共鳴：攻撃力+25％</label><br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "hydro_reso"> 水共鳴：HP+25％</label><br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "cyro_reso"> 氷共鳴：会心率+15％</label><br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "dendro_reso"> 草共鳴：元素熟知</label>
+                        <select id="dendro_reso_select">
+                        <option value="50">+50</option>
+                        <option value="80">+80</option>
+                        <option value="100">+100</option>
+                        </select>
+                        <br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "geo_reso"> 岩共鳴：ダメージバフ+15％<br>&nbsp;&nbsp;　　　　　岩元素耐性ダウン</label>
+                        <select id="geo_reso_select">
+                        <option value="0">0%</option>
+                        <option value="20">20%</option>
+                        </select>
+                    </fieldset>
+                    </div>
+                    <div class = "option-field" id = "option3" style = "text-align: center;">
+                    <div id= "enemy-status">
+                        <form class="enemy-form">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>敵ステータス</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr id="enemy_level-form">
+                                <td><label for="enemy-level-form">敵レベル</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-level" required min="0" name="enemy-level" placeholder="Lv" value="90">
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-pyroresist-form">
+                                <td><label for="enemy-pyroresist">炎元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-pyroresist" placeholder="炎元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="pyrodebuff-form">
+                                <td><label for="pyrodebuff">炎元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="pyrodebuff" placeholder="炎元素耐性" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-hydroresist-form">
+                                <td><label for="enemy-hydroresist">水元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-hydroresist" placeholder="水元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="hydrodebuff-form">
+                                <td><label for="hydrodebuff">水元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="hydrodebuff" placeholder="水元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-cyroresist-form">
+                                <td><label for="enemy-cyroresist">氷元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-cyroresist" placeholder="氷元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="cyrodebuff-form">
+                                <td><label for="cyrodebuff">氷元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="cyrodebuff" placeholder="氷元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-electroresist-form">
+                                <td><label for="enemy-electroresist">雷元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-electroresist" placeholder="雷元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="electrodebuff-form">
+                                <td><label for="electrodebuff">雷元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="electrodebuff" placeholder="雷元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-anemoresist-form">
+                                <td><label for="enemy-anemoresist">風元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-anemoresist" placeholder="風元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="anemodebuff-form">
+                                <td><label for="anemodebuff">風元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="anemodebuff" placeholder="風元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-dendroresist-form">
+                                <td><label for="enemy-dendroresist">草元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-dendroresist" placeholder="草元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="dendrodebuff-form">
+                                <td><label for="dendrodebuff">草元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="dendrodebuff" placeholder="草元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-georesist-form">
+                                <td><label for="enemy-georesist">岩元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-georesist" placeholder="岩元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="geodebuff-form">
+                                <td><label for="geodebuff">岩元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="geodebuff" placeholder="岩元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-phisicsresist-form">
+                                <td><label for="enemy-phisicsresist">物理耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-phisicsresist" placeholder="物理耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="phisicsdebuff-form">
+                                <td><label for="phisicsdebuff">物理デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="phisicsdebuff" placeholder="物理デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="deff-debuff-form">
+                                <td><label for="deff-debuff-form">防御デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="deff-debuff" required min="0" name="deff-debuff" placeholder="防御デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                    </div>
+                    <br>
+                    <div class = "tablestyle1">
+                    <table  class="status_table" style="table-layout: fixed">
+                        <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 22%;">
+                        <col style="width: 14%;">
+                        <col style="width: 17%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>基礎ステータス</th>
+                            <th>バフ</th>
+                            <th>聖遺物バフ</th>
+                            <th>最終ステータス</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>HP</span>
+                            </th>
+                            <td id = table_base_hp>-</td>
+                            <td id = table_buff_hp>-</td>
+                            <td id = table_af_hp>-</td>
+                            <td id = table_final_hp>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>攻撃力</span>
+                            </th>
+                            <td id = table_base_attck>-</td>
+                            <td id = table_buff_attck>-</td>
+                            <td id = table_af_attck>-</td>
+                            <td id = table_final_attck>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>防御力</span>
+                            </th>
+                            <td id = table_base_deff>-</td>
+                            <td id = table_buff_deff>-</td>
+                            <td id = table_af_deff>-</td>
+                            <td id = table_final_deff>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>元素熟知</span>
+                            </th>
+                            <td id = table_base_elm>-</td>
+                            <td id = table_buff_elm>-</td>
+                            <td id = table_af_elm>-</td>
+                            <td id = table_final_elm>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>元素チャージ効率</span>
+                            </th>
+                            <td id = table_base_elm_charge>-</td>
+                            <td id = table_buff_elm_charge>-</td>
+                            <td id = table_af_elm_charge>-</td>
+                            <td id = table_final_elm_charge>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>会心率</span>
+                            </th>
+                            <td id = table_base_cr>-</td>
+                            <td id = table_buff_cr>-</td>
+                            <td id = table_af_cr>-</td>
+                            <td id = table_final_cr>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>会心ダメージ</span>
+                            </th>
+                            <td id = table_base_cd>-</td>
+                            <td id = table_buff_cd>-</td>
+                            <td id = table_af_cd>-</td>
+                            <td id = table_final_cd>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>ダメージバフ</span>
+                            </th>
+                            <td id = table_base_dmg_buff>-</td>
+                            <td id = table_buff_dmg_buff>-</td>
+                            <td id = table_af_dmg_buff>-</td>
+                            <td id = table_final_dmg_buff>-</td>
+                        </tr>
+                        </tbody>
+                    </table> 
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
+                <div class="button_solid004" onclick="DoCalculate()">
+                    スコア計算開始
+                </div>
+            </div>
+            <div id="spinner" class="hidden">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div id="response"></div>
+            <div id="result"></div>
+            <br>
+            <div class="wrapper">
+                <div>
+                    <div class = "centered-container">
+                        <div id="table4" class="tablestyle1">
+                            <table  class="main_combination_table" style="table-layout: fixed">
+                            <colgroup>
+                                <col style="width: 6.5%;">
+                                <col style="width: 20%;">
+                                <col style="width: 18%;">
+                                <col style="width: 22.3%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th>聖遺物更新確率</th>
+                                <th>ダメージ上昇割合</th>
+                                <th>エリクシル12個当たりの更新確率</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>花</span>
+                                </th>
+                                <td id = clock1>-</td>
+                                <td id = goblet1>-</td>
+                                <td id = circlet1>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>羽</span>
+                                </th>
+                                <td id = clock2>-</td>
+                                <td id = goblet2>-</td>
+                                <td id = circlet2>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>時計</span>
+                                </th>
+                                <td id = clock3>-</td>
+                                <td id = goblet3>-</td>
+                                <td id = circlet3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>杯</span>
+                                </th>
+                                <td id = clock4>-</td>
+                                <td id = goblet4>-</td>
+                                <td id = circlet4>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>冠</span>
+                                </th>
+                                <td id = clock5>-</td>
+                                <td id = goblet5>-</td>
+                                <td id = circlet5>-</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>             
+                </div>
+                <div>
+                </div>
+            </div>
+            <div style="display: none;">
+                <div class="wrapper">
+                    <div>
+                        <div class = "centered-container">
+                        <div class = "centered-div">
+                            <button id = "tablebutton1" class="button-2" onclick="showTable('table1', 'tablebutton1')">各ステータス</button>
+                            <button id = "tablebutton2" class="button-2" onclick="showTable('table2', 'tablebutton2')">スコア分布</button>
+                            <button id = "tablebutton3" class="button-2" onclick="showTable('table3', 'tablebutton3')">サブステータス分布</button>
+                        </div>
+                        <div id="table1" class="tablestyle">
+                            <!-- 表1の内容 -->
+                            <table  class="status_table" style="table-layout: fixed">
+                            <colgroup>
+                                <col style="width: 30%;">
+                                <col style="width: 35%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th>自己ステータス</th>
+                                <th>最適化ステータス</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>HP</span>
+                                </th>
+                                <td id = my_result_hp>-</td>
+                                <td id = appro_result_hp>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>攻撃力</span>
+                                </th>
+                                <td id = my_result_attck>-</td>
+                                <td id = appro_result_attck>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>防御力</span>
+                                </th>
+                                <td id = my_result_deff>-</td>
+                                <td id = appro_result_deff>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>元素熟知</span>
+                                </th>
+                                <td id = my_result_elm>-</td>
+                                <td id = appro_result_elm>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>元素チャージ効率</span>
+                                </th>
+                                <td id = my_result_elm_charge>-</td>
+                                <td id = appro_result_elm_charge>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>会心率</span>
+                                </th>
+                                <td id = my_result_cr>-</td>
+                                <td id = appro_result_cr>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>会心ダメージ</span>
+                                </th>
+                                <td id = my_result_cd>-</td>
+                                <td id = appro_result_cd>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>ダメージバフ</span>
+                                </th>
+                                <td id = my_result_dmg_buff>-</td>
+                                <td id = appro_result_dmg_buff>-</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        <div id="table2" class="tablestyle">
+                            <!-- 表2の内容 -->
+                        <table  class="status_table" style="table-layout: fixed">
+                        <colgroup>
+                            <col style="width: 21%;">
+                            <col style="width: 19%;">
+                            <col style="width: 19%;">
+                            <col style="width: 19%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                            <th></th>
+                            <th>自己スコア分布</th>
+                            <th>最適スコア分布</th>
+                            <th>聖遺物スコア差</th>
+                            <th>サブステ伸び回数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>聖遺物スコア</span>
+                            </th>
+                            <td id = my_af_score>-</td>
+                            <td id = appro_af_score>-</td>
+                            <td id = dlt_af_score>-</td>
+                            <td id = count_af_score>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>HP</span>
+                            </th>
+                            <td id = my_hp_score>-</td>
+                            <td id = appro_hp_score>-</td>
+                            <td id = dlt_hp_score>-</td>
+                            <td id = count_hp_score>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>攻撃力</span>
+                            </th>
+                            <td id = my_attck_score>-</td>
+                            <td id = appro_attck_score>-</td>
+                            <td id = dlt_attck_score>-</td>
+                            <td id = count_attck_score>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>防御力</span>
+                            </th>
+                            <td id = my_deff_score>-</td>
+                            <td id = appro_deff_score>-</td>
+                            <td id = dlt_deff_score>-</td>
+                            <td id = count_deff_score>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>元素熟知</span>
+                            </th>
+                            <td id = my_elm_score>-</td>
+                            <td id = appro_elm_score>-</td>
+                            <td id = dlt_elm_score>-</td>
+                            <td id = count_elm_score>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>元素チャージ効率</span>
+                            </th>
+                            <td id = my_elm_charge_score>-</td>
+                            <td id = appro_elm_charge_score>-</td>
+                            <td id = dlt_elm_charge_score>-</td>
+                            <td id = count_elm_charge_score>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>会心率</span>
+                            </th>
+                            <td id = my_cr_score>-</td>
+                            <td id = appro_cr_score>-</td>
+                            <td id = dlt_cr_score>-</td>
+                            <td id = count_cr_score>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>会心ダメージ</span>
+                            </th>
+                            <td id = my_cd_score>-</td>
+                            <td id = appro_cd_score>-</td>
+                            <td id = dlt_cd_score>-</td>
+                            <td id = count_cd_score>-</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                        <div id="table3" class="tablestyle">
+                            <!-- 表3の内容 -->
+                            <table  class="status_table" style="table-layout: fixed">
+                            <colgroup>
+                                <col style="width: 18%;">
+                                <col style="width: 23%;">
+                                <col style="width: 23%;">
+                                <col style="width: 18%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th>自己サブステータス分布</th>
+                                <th>最適サブステータス分布</th>
+                                <th>サブステータス差</th>
+                                <th>サブステ伸び回数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>聖遺物スコア</span>
+                                </th>
+                                <td id = my_af_score3>-</td>
+                                <td id = appro_af_score3>-</td>
+                                <td id = dlt_af_score3>-</td>
+                                <td id = count_af_score3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>HP</span>
+                                </th>
+                                <td id = my_af_hp>-</td>
+                                <td id = appro_af_hp>-</td>
+                                <td id = dlt_af_hp>-</td>
+                                <td id = count_hp_score3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>攻撃力</span>
+                                </th>
+                                <td id = my_af_attck>-</td>
+                                <td id = appro_af_attck>-</td>
+                                <td id = dlt_af_attck>-</td>
+                                <td id = count_attck_score3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>防御力</span>
+                                </th>
+                                <td id = my_af_deff>-</td>
+                                <td id = appro_af_deff>-</td>
+                                <td id = dlt_af_deff>-</td>
+                                <td id = count_deff_score3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>元素熟知</span>
+                                </th>
+                                <td id = my_af_elm>-</td>
+                                <td id = appro_af_elm>-</td>
+                                <td id = dlt_af_elm>-</td>
+                                <td id = count_elm_score3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>元素チャージ効率</span>
+                                </th>
+                                <td id = my_af_elm_charge>-</td>
+                                <td id = appro_af_elm_charge>-</td>
+                                <td id = dlt_af_elm_charge>-</td>
+                                <td id = count_elm_charge_score3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>会心率</span>
+                                </th>
+                                <td id = my_af_cr>-</td>
+                                <td id = appro_af_cr>-</td>
+                                <td id = dlt_af_cr>-</td>
+                                <td id = count_cr_score3>-</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="1" style="text-align: left;">
+                                    <span>会心ダメージ</span>
+                                </th>
+                                <td id = my_af_cd>-</td>
+                                <td id = appro_af_cd>-</td>
+                                <td id = dlt_af_cd>-</td>
+                                <td id = count_cd_score3>-</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="chart-container">
+                        <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+        <br>
+        <br>
+        <footer>
+            <p>本サイト内の画像およびデータはHoYoverse/COGNOSPHEREの著作物です。</p>
+            <p> Copyright © COGNOSPHERE. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+
+<script>
+    let selectedCharId = "56";
+    let selectedWeaponId = "127";
+    let CharLevel;
+    let CharAdvanceRank;
+    let CharConstellations;
+    let CharTalentLevel = [0,0,0,0,0];
+    let WeaponLevel;
+    let WeaponAdvanceRank;
+    let WeaponConstellations;
+    let Weapondata;
+    let char_propaty = [5,0];
+    let selectedImageIds = [0,0];
+    let char_names = [];
+    let CharDataJson;
+    let UserData;
+    let afdata;
+    let AfNameList
+    let SelectId;
+    let CharJsonData;
+    let WeaponJsonData;
+    let CharIndexList = [];
+    let EquipNumber;
+    // ローカルストレージに保存するキー
+    const SessionStorageKey = "countdownEndTime";
+    // カウントダウンのインターバル（ミリ秒）
+    const countdownInterval = 1000;
+    // ボタン要素
+    const fetchButton = document.getElementById("fetchButton");
+
+    function showTable(tableId, buttonId)
+    {
+        // すべての表コンテナを非表示にする
+        let tableContainers = document.getElementsByClassName("tablestyle");
+        let buttonstyle = document.getElementsByClassName("button-2");
+        for (var i = 0; i < tableContainers.length; i++) 
+        {
+        tableContainers[i].classList.remove("active");
+        buttonstyle[i].classList.remove("button-active");
+        }
+        // 選択された表コンテナを表示する
+        document.getElementById(tableId).classList.add("active");
+        document.getElementById(buttonId).classList.add("button-active");
+    }
+
+    function showOption(tableId, buttonId)
+    {
+        // すべての表コンテナを非表示にする
+        let optionContainers = document.getElementsByClassName("option-field");
+        let buttonstyle = document.getElementsByClassName("button-1");
+        for (let i = 0; i < optionContainers.length; i++) 
+        {
+            optionContainers[i].classList.remove("active");
+            buttonstyle[i].classList.remove("button-active");
+        }
+        // 選択された表コンテナを表示する
+        document.getElementById(tableId).classList.add("active");
+        document.getElementById(buttonId).classList.add("button-active");
+    }
+
+    // fetchData() 関数を定義
+    async function fetchData() {
+        fetchButton.disabled = true;
+        let ErrorId;
+        const img_grid = document.getElementById("imageGrid");
+        img_grid.innerHTML = "";
+        let div = document.getElementById("WholeDisplay");
+        div.style.display = "none"; // または必要に応じて適切なdisplay値を使用します
+        const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
+
+        // uidが空白の場合はメッセージを表示して処理を中断
+        if (uid === '') {
+            const nicknameElement = document.getElementById('nickname');
+            nicknameElement.textContent = "UIDを入力してください";
+            fetchButton.disabled = false;
+            return;
+        }
+
+        const url = `https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi?uid=${uid}`;
+
+        try {
+            const response = await fetch(url);
+            ErrorId = response.status;
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            let char_ids = [];
+            char_names = [];
+            CharIndexList = [];
+            UserData = await response.json();
+            const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
+            Weapondata = await Weaponresponse.json();
+            const afresponse = await fetch("../data/JsonData/url.json");
+            afdata = await afresponse.json();
+            const AfNameresponse = await fetch("../data/JsonData/MainStatusName.json");
+            AfNameList = await AfNameresponse.json();
+            console.log(UserData);
+            sessionStorage.setItem("UserData", JSON.stringify(UserData));
+            // ニックネームをHTMLに出力する
+            const nicknameElement = document.getElementById('nickname');
+            const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+            console.log(avatarIds);
+            nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
+                            "<br>";
+            
+            for (let i = 0; i < avatarIds.length; i++)
+            {
+                let charId = parseInt(avatarIds[i]) - 10000000;
+                let PossibleFlag = await CharExecution(i, charId);
+                if(PossibleFlag == 0)
+                {
+                    char_names.push(CharDataJson["CharMap"][charId.toString()]["名前"]);
+                    char_ids.push(charId);
+                    CharIndexList.push(i);
+                }
+            }
+            const images = [];
+
+            // 画像を生成して配列に追加
+            for (let i = 0; i < char_ids.length; i++) {
+                const image = {
+                    src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
+                    alt: `Image ${i}`,
+                    id: char_ids[i] * 100 + i // 画像に割り当てるID属性を生成
+                    
+                };
+                images.push(image);
+            }
+            let divAttention = document.getElementById("Attention");
+            divAttention.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
+            // 画像要素を生成し、動的にHTMLに追加する
+            const imageGrid = document.getElementById("imageGrid");
+            images.forEach(image => {
+                const imgElement = document.createElement("img");
+                imgElement.src = image.src;
+                imgElement.alt = image.alt;
+                imgElement.id = image.id; // 画像にID属性を設定
+                imgElement.addEventListener("click", async function() {
+                    ResetParameter();
+                    // クリックされた画像のsrc属性を取得
+                    const imageUrl = this.src;
+                    const CharId = this.id;
+                    SelectId = CharId % 100; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    let APICharId = Math.floor(CharId / 100);
+                    // 画像を表示するdiv要素を取得
+                    selectedCharId = CharDataJson["CharMap"][APICharId]["id"]; // 文字列を数値に変換
+                    console.log(selectedCharId);
+                    const imageContainer = document.getElementById("CharImage");
+                    await DisplayCharStatus(SelectId, APICharId);
+                    AfSetReffer(SelectId);
+                    await SetMainStatus(SelectId);
+                    await show_char_statsform();
+                    await show_weapon_statsform();
+                    await show_artifact()
+                    const initial_index = [0,0,0,0,1,1,1];
+                    const myStatus = [0,0,0,0,0,0,0];
+                    const TheoreticalStatus = [0,0,0,0,100,100,100];
+                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
+
+                    // 画像を置き換える
+                    const existingImage = imageContainer.querySelector("img");
+                    if (existingImage) {
+                        existingImage.src = imageUrl;
+                        existingImage.alt = "Clicked Image";
+                    } else {
+                        // 既存の画像が存在しない場合は新しい画像を追加
+                        const imageElement = document.createElement("img");
+                        imageElement.src = imageUrl;
+                        imageElement.alt = "Clicked Image";
+                        imageContainer.appendChild(imageElement);
+                    }
+                    let div = document.getElementById("WholeDisplay");
+                    div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+
+                    const scrollableContainer = document.documentElement;
+                    scrollableContainer.scrollBy({
+                        top: 400, // スクロールする距離（ピクセル）
+                        behavior: 'smooth' // スクロールをスムーズにする
+                    });
+                });
+                imageGrid.appendChild(imgElement);
+            });
+        } catch (error) {
+            fetchButton.disabled = false;
+            const nicknameElement = document.getElementById('nickname');
+            if(ErrorId == 500)
+            {
+                nicknameElement.innerHTML = "EnkaNetWorkサーバーのエラー<br>大型アップデートの日はメンテナンスにより利用できません。";
+            }
+            else if(ErrorId == 404)
+            {
+                nicknameElement.textContent = "正しいUIDを入力してください。";
+            }
+            else
+            {
+                console.error('Error fetching data:', error);
+                nicknameElement.textContent = "入力したUIDに問題があるようです。";
+            }
+            return;
+        }
+        startCountdown();
+    }
+
+    async function DisplayCharStatus(SortOrder, APICharIndex){
+        // SortOrder の値が有効なインデックスであることを確認
+        if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
+        {
+            let CharConstellationsChange = [0, 1, 2, 2, 3, 3, 4];
+            CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
+            CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
+            // talentIdList が存在するかどうかを確認し、その長さを取得
+            const CharConstellationsIndex = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
+            CharConstellations = CharConstellationsChange[CharConstellationsIndex];
+            const CharTalentLevelList = Object.values(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
+            const LevelDisplay = document.getElementById("CharLevel");
+            const ConsteDisplay = document.getElementById("CharConstellations");
+            const charIndexDisplay = document.getElementById('Charindex-display');
+            const NormalTalent = document.getElementById('NormalTalentLevel');
+            const SkillTalent = document.getElementById('SkillTalentLevel');
+            const BurstTalent = document.getElementById('BurstTalentLevel');
+
+            if(APICharIndex == 33)
+            {
+                CharTalentLevelList[0] += 1;
+            }
+            else if(APICharIndex == 21)
+            {
+                let NormalTalentLevel = CharTalentLevelList[2];
+                let BurstTalentLevel = CharTalentLevelList[0];
+                CharTalentLevelList[0] =  NormalTalentLevel;
+                CharTalentLevelList[2] =  BurstTalentLevel;
+            }
+
+            if (CharConstellationsIndex > 2)
+            {
+                CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["3重"]] +=3;
+                if(CharConstellationsIndex > 4)
+                {
+                    CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["5重"]] +=3;
+                }
+            };
+
+            charIndexDisplay.innerHTML = char_names[SortOrder]
+            LevelDisplay.innerHTML = "Lv." + CharLevel;
+            ConsteDisplay.innerHTML = "命の星座" + CharConstellationsIndex + "重";
+            NormalTalent.innerHTML = "Lv." + CharTalentLevelList[0];
+            SkillTalent.innerHTML = "Lv." + CharTalentLevelList[1];
+            BurstTalent.innerHTML = "Lv." + CharTalentLevelList[2];
+            console.log(CharTalentLevelList);
+
+            CharTalentLevel[0] = CharTalentLevelList[0];
+            CharTalentLevel[1] = CharTalentLevelList[0];
+            CharTalentLevel[2] = CharTalentLevelList[0];
+            CharTalentLevel[3] = CharTalentLevelList[1];
+            CharTalentLevel[4] = CharTalentLevelList[2];
+            console.log(CharTalentLevel);
+        }
+        else
+        {
+            console.error("Invalid SortOrder value");
+        }
+    }
+
+    async function DisplayWeaponStatus(index,SortOrder,id){
+        WeaponLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.level;
+        WeaponConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.affixMap[100000 + id] + 1;
+        let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+        let ExecuteFlag;
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+            }
+        });
+        let WeapomListIndex = AfIdList.length;
+        WeaponAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[WeapomListIndex-1].weapon.promoteLevel;
+        const LevelDisplay = document.getElementById("WeaponLevel");
+        const ConsteDisplay = document.getElementById("WeaponRank");
+        LevelDisplay.innerHTML = "Lv." + WeaponLevel;
+        ConsteDisplay.innerHTML = "精錬ランク" + WeaponConstellations;
+    }
+
+    async function AfSetReffer(SortOrder){
+        let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+            }
+        });
+
+        // 各リスト内の文字列の上2文字を取り出して数字に変換する
+        let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
+
+        // 数値の出現回数を記録するオブジェクトを作成
+        const countMap = {};
+        AfNumList.forEach(num => {
+            if (countMap[num]) {
+                countMap[num]++;
+            } else {
+                countMap[num] = 1;
+            }
+        });
+
+        // キーを数値の小さい順にソート
+        const sortedKeys = Object.keys(countMap).sort((a, b) => a - b);
+
+        // ソートされたキーの配列を使って、数値とその個数のペアを作成
+        const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
+        SelectedAfId = [];
+        for (let i = 0; i < result.length; i++) {
+            if (result[i][1] > 1 && result[i][1] < 4)
+            {
+                SelectedAfId.push(result[i][0]);
+            }
+            else if (result[i][1] > 3 && result[i][1] < 6)
+            {
+                SelectedAfId.push(result[i][0]);
+                SelectedAfId.push(result[i][0]);
+            }
+        }
+        if(SelectedAfId.length == 0)
+        {
+            SelectedAfId = [-1,-1];
+        }
+        else if(SelectedAfId.length == 1)
+        {
+            SelectedAfId.push(-1);
+        }
+
+        // 選択された聖遺物の画像設定
+        const selectedImageSrc1 = afdata["AfMap"][SelectedAfId[0].toString()]["url"] || '';
+        const selectedImageSrc2 = afdata["AfMap"][SelectedAfId[1].toString()]["url"] || '';
+        document.getElementById("AfImage1").src = selectedImageSrc1;
+        document.getElementById("AfImage2").src = selectedImageSrc2;
+        selectedImageIds[0] = afdata["AfMap"][SelectedAfId[0].toString()]["id"] || -1;
+        selectedImageIds[1] = afdata["AfMap"][SelectedAfId[1].toString()]["id"] || -1;
+
+        return result;
+    }
+
+    async function selectOptionByValue(id, main_select, substatus1, substatus2, clock_id) {
+    // select要素を取得
+        const mainoptions = main_select.options;
+        const suboptions1 = substatus1.options;
+        const suboptions2 = substatus2.options;
+
+        for (let j = 0; j < 12; j++) {
+            if (mainoptions[j])
+            {
+                mainoptions[j].selected = false;
+            }
+            if (suboptions1[j])
+            {
+                suboptions1[j].selected = false;
+                suboptions2[j].selected = false;
+                suboptions1[j].disabled = false;
+                suboptions2[j].disabled = false;
+            }
+        }
+
+        if (id != 5 && id != 6)
+        {
+            // valueに一致するoptionを選択
+            for (let j = 0; j < mainoptions.length; j++) {
+                if (mainoptions[j].value == id)
+                {
+                    mainoptions[j].selected = true;
+                    for (let i = 0; i < suboptions1.length; i++)
+                    {
+                        if (suboptions1[i].value == id) 
+                        {
+                            suboptions1[i].disabled = true;
+                            suboptions2[i].disabled = true;
+                            break; // 一致するものが見つかったら終了
+                        }
+                    }
+                }
+            }
+            suboptions1[5].selected = true;
+            suboptions2[6].selected = true;
+            suboptions1[6].disabled = true;
+            suboptions2[5].disabled = true;
+        }
+        else if(id == 5)
+        {
+            mainoptions[4].selected = true;
+            suboptions1[6].selected = true;
+            suboptions1[5].disabled = true;
+            suboptions2[5].disabled = true;
+            suboptions2[6].disabled = true;
+            for (let i = 0; i < suboptions2.length; i++)
+            {
+                if (suboptions2[i].value == clock_id) 
+                {
+                    suboptions1[i].disabled = true;
+                    suboptions2[i].selected = true;
+                    break; // 一致するものが見つかったら終了
+                }
+            }
+        }
+        else
+        {
+            mainoptions[5].selected = true;
+            suboptions1[5].selected = true;
+            suboptions1[6].disabled = true;
+            suboptions2[5].disabled = true;
+            suboptions2[6].disabled = true;
+            for (let i = 0; i < suboptions2.length; i++)
+            {
+                if (suboptions2[i].value == clock_id) 
+                {
+                    suboptions1[i].disabled = true;
+                    suboptions2[i].selected = true;
+                    break; // 一致するものが見つかったら終了
+                }
+            }
+        }
+    }
+
+    function changeMainSelectedValue(id) {
+        let main_index;
+        if (id== 2)
+        {
+            const mainElement = document.getElementById('clock_main');
+            const sub1Element = document.getElementById('clock_sub1');
+            const sub2Element = document.getElementById('clock_sub2');
+            main_index = mainElement.value;
+            for (let j = 0; j < 7; j++) {
+                if (sub1Element[j].value == main_index)
+                {
+                    sub1Element[j].disabled = true;
+                    sub2Element[j].disabled = true;
+                }
+                else
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+            }
+            sub1Element.value = 5;
+            sub2Element.value = 6;
+            sub1Element[6].disabled = true;
+            sub2Element[5].disabled = true;
+        }
+        else if (id == 3)
+        {
+            const mainElement = document.getElementById('goblet_main');
+            const sub1Element = document.getElementById('goblet_sub1');
+            const sub2Element = document.getElementById('goblet_sub2');
+            main_index = mainElement.value;
+            for (let j = 0; j < 7; j++) {
+                if (sub1Element[j].value == main_index)
+                {
+                    sub1Element[j].disabled = true;
+                    sub2Element[j].disabled = true;
+                }
+                else
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+            }
+            sub1Element.value = 5;
+            sub2Element.value = 6;
+            sub1Element[6].disabled = true;
+            sub2Element[5].disabled = true;
+        }
+        else if (id == 4)
+        {
+            let clock_id =  document.getElementById('clock_main').value;
+            const mainElement = document.getElementById('circlet_main');
+            const sub1Element = document.getElementById('circlet_sub1');
+            const sub2Element = document.getElementById('circlet_sub2');
+            main_index = mainElement.value;
+            if (main_index == 5)
+            {
+                for (let j = 0; j < 7; j++)
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+                sub1Element.value = 6;          
+                sub1Element[5].disabled = true;
+                sub2Element[5].disabled = true;
+                sub2Element[6].disabled = true;
+
+                for (let i = 0; i < sub2Element.length; i++)
+                {
+                    if (sub2Element[i].value == clock_id) 
+                    {
+                        sub1Element[i].disabled = true;
+                        sub2Element.value = clock_id; 
+                        break; // 一致するものが見つかったら終了
+                    }
+                }
+            }
+            else if (main_index == 6)
+            {
+                for (let j = 0; j < 7; j++)
+                {
+                    sub1Element[j].disabled = false;
+                    sub2Element[j].disabled = false;
+                }
+                sub1Element.value = 5;               
+                sub1Element[6].disabled = true;
+                sub2Element[6].disabled = true;
+                sub2Element[5].disabled = true;
+
+                for (let i = 0; i < sub2Element.length; i++)
+                {
+                    if (sub2Element[i].value == clock_id) 
+                    {
+                        sub1Element[i].disabled = true;
+                        sub2Element.value = clock_id; 
+                        break; // 一致するものが見つかったら終了
+                    }
+                }
+            }
+            else
+            {
+                const mainElement = document.getElementById('circlet_main');
+                const sub1Element = document.getElementById('circlet_sub1');
+                const sub2Element = document.getElementById('circlet_sub2');
+                main_index = mainElement.value;
+                for (let j = 0; j < 7; j++) {
+                    if (sub1Element[j].value == main_index)
+                    {
+                        sub1Element[j].disabled = true;
+                        sub2Element[j].disabled = true;
+                    }
+                    else
+                    {
+                        sub1Element[j].disabled = false;
+                        sub2Element[j].disabled = false;
+                    }
+                }
+                sub1Element.value = 5;
+                sub2Element.value = 6;
+                sub1Element[6].disabled = true;
+                sub2Element[5].disabled = true;
+            }
+        }
+    }
+
+
+    function changeSubSelectedValue(id) {
+        let main_index = 100;
+        let sub1Element;
+        let sub2Element;
+        if (id == 0)
+        {
+            sub1Element = document.getElementById('flower_sub1');
+            sub2Element = document.getElementById('flower_sub2');
+        }
+        else if (id == 1)
+        {
+            sub1Element = document.getElementById('feather_sub1');
+            sub2Element = document.getElementById('feather_sub2');
+        }
+        else if (id == 2)
+        {
+            main_index = document.getElementById('clock_main').value;
+            sub1Element = document.getElementById('clock_sub1');
+            sub2Element = document.getElementById('clock_sub2');
+        }
+        else if (id == 3)
+        {
+            main_index = document.getElementById('goblet_main').value;
+            sub1Element = document.getElementById('goblet_sub1');
+            sub2Element = document.getElementById('goblet_sub2');
+        }
+        else if (id == 4)
+        {
+            main_index = document.getElementById('circlet_main').value;
+            sub1Element = document.getElementById('circlet_sub1');
+            sub2Element = document.getElementById('circlet_sub2');
+        }
+
+        for (let j = 0; j < 7; j++) {
+            sub1Element[j].disabled = false;
+            sub2Element[j].disabled = false;
+            if (sub1Element[j].value == sub2Element.value || sub1Element[j].value == main_index)
+            {
+                sub1Element[j].disabled = true;
+            }
+            if (sub2Element[j].value == sub1Element.value || sub1Element[j].value == main_index)
+            {
+                sub2Element[j].disabled = true;
+            }
+        }
+    }
+
+
+    async function SetMainStatus(SortOrder){
+        const Afresponse = await fetch("../data/JsonData/AfSubStatusData.json");
+        SubstatusData = await Afresponse.json();
+        let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
+        let ClockMainStatus = "装備無し";
+        let GobletMainStatus = "装備無し";
+        let CircletMainStatus = "装備無し";
+        let PropName;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+
+        const AfConditon = document.getElementById("AfConditon");
+        const ElmChargeStrict = document.getElementById("ElmChargeStrict");
+        AfConditon.innerHTML = "";
+        ElmChargeStrict.innerHTML = "";
+
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+            }
+        });
+        EquipNumber = AfIdList.length;
+        let WeaponPopId = AfIdList.pop();
+        await DisplayWeaponStatus(EquipNumber, SortOrder, WeaponPopId);
+        await DisplayWeaponImg(WeaponPopId);
+
+        const fourthDigits = AfIdList.map(number => {
+            const numberAsString = number.toString();
+            const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
+            return parseInt(fourthDigit); // 文字列から数値に変換して返す
+        });
+
+        let clock_id
+        const flower_substatus1 = document.getElementById("flower_sub1");
+        const flower_substatus2 = document.getElementById("flower_sub2");
+        const feather_sub2_substatus1 = document.getElementById("feather_sub1");
+        const feather_sub2_substatus2 = document.getElementById("feather_sub2");
+        const flower_suboptions1 = flower_substatus1.options;
+        const flower_suboptions2 = flower_substatus2.options;
+        const feather_suboptions1 = feather_sub2_substatus1.options;
+        const feather_suboptions2 = feather_sub2_substatus2.options;
+        flower_suboptions1[5].selected = true;
+        flower_suboptions2[6].selected = true;
+        flower_suboptions1[6].disabled = true;
+        flower_suboptions2[5].disabled = true;
+        feather_suboptions1[5].selected = true;
+        feather_suboptions2[6].selected = true;
+        feather_suboptions1[6].disabled = true;
+        feather_suboptions2[5].disabled = true;
+        for (let i = 0; i <fourthDigits.length; i++) {
+            if (fourthDigits[i] == 5)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                ClockMainStatus = AfNameList[PropName]["名前"];
+                clock_id = SubstatusData[PropName]["id"];
+
+                const clock_main_select = document.getElementById("clock_main");
+                const substatus1 = document.getElementById("clock_sub1");
+                const substatus2 = document.getElementById("clock_sub2");
+                
+                await selectOptionByValue(clock_id, clock_main_select, substatus1, substatus2, clock_id);
+            }
+            else if (fourthDigits[i] == 1)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                GobletMainStatus = AfNameList[PropName]["名前"];
+                let goblet_id = SubstatusData[PropName]["id"];
+
+                const goblet_main_select = document.getElementById("goblet_main");
+                const substatus1 = document.getElementById("goblet_sub1");
+                const substatus2 = document.getElementById("goblet_sub2");
+                
+                await selectOptionByValue(goblet_id, goblet_main_select, substatus1, substatus2, clock_id);
+            }
+            else if (fourthDigits[i] == 3)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                CircletMainStatus = AfNameList[PropName]["名前"];
+                let circlet_id = SubstatusData[PropName]["id"];
+
+                const circlet_main_select = document.getElementById("circlet_main");
+                const substatus1 = document.getElementById("circlet_sub1");
+                const substatus2 = document.getElementById("circlet_sub2");
+                
+                await selectOptionByValue(circlet_id, circlet_main_select, substatus1, substatus2, clock_id);
+            }
+        }
+
+        document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
+        document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
+        document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
+    }
+
+    async function DisplayWeaponImg(Id){
+        let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
+        let ChangeWeaponIdList = [0, 1, 2, 4, 3];
+        let weaponRank = ["星3", "星4", "星5"]
+        let numberString = Id.toString();
+
+        // 数値を分割して配列に格納
+        let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
+        let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
+        let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
+
+        let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
+
+        const WeaponImgContainer = document.getElementById("WeaponImage");
+        const existingImage = WeaponImgContainer.querySelector("img");
+        char_propaty[1] = ChangeWeaponIdList[WeaponList[0]-1];
+        selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"];
+        existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
+        existingImage.alt = "Clicked Image";
+        const charIndexDisplay = document.getElementById('Weaponindex-display');
+        charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
+}
+
+    async function CharExecution(index, charId){
+        let AfJsonList = UserData.data.avatarInfoList[index].equipList;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+        let AfLevelList = [];
+        let ExecuteFlag = 0;
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+                //if (status.hasOwnProperty("reliquary")) {
+                //AfLevelList .push(status.reliquary.level);
+                //}
+            }
+        });
+        let WeapomListIndex = AfIdList.length;
+        let WeaponPopId = AfIdList.pop();
+
+        // 各リスト内の文字列の上2文字を取り出して数字に変換する
+        let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
+
+        // 数値の出現回数を記録するオブジェクトを作成
+        const countMap = {};
+        AfNumList.forEach(num => {
+            if (countMap[num]) {
+                countMap[num]++;
+            } else {
+                countMap[num] = 1;
+            }
+        });
+
+        // キーを数値の小さい順にソート
+        const sortedKeys = Object.keys(countMap).sort((a, b) => a - b);
+
+        // ソートされたキーの配列を使って、数値とその個数のペアを作成
+        const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
+        let SelectedAfId = [];
+        let AfSpecialEffect = 0;
+        for (let i = 0; i < result.length; i++) {
+            if (result[i][1] > 3 && result[i][1] < 6)
+            {
+                SelectedAfId.push(result[i][0]);
+                SelectedAfId.push(result[i][0]);
+                AfSpecialEffect +=2
+            }
+        }
+
+        if(AfSpecialEffect < 2)
+        {
+            ExecuteFlag = 1;
+        }
+
+        let AfSerch;
+        for (let i = 0; i < SelectedAfId.length; i++) {
+            AfSerch = afdata["AfMap"][SelectedAfId[i].toString()] || 0;
+            if (AfSerch == 0)
+            {
+                ExecuteFlag = 1;
+                return ExecuteFlag;
+            }
+        }
+        CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].ival;
+        WeaponAdvanceRank = UserData.data.avatarInfoList[index].equipList[WeapomListIndex-1].weapon.promoteLevel;
+        if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
+        {
+            ExecuteFlag = 1;
+            return ExecuteFlag;
+        }
+
+        let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
+        let weaponRank = ["星3", "星4", "星5"]
+        let numberString = WeaponPopId.toString();
+
+        // 数値を分割して配列に格納
+        let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
+        let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
+        let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
+        let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
+
+        const WeaponImgContainer = document.getElementById("WeaponImage");
+        const existingImage = WeaponImgContainer.querySelector("img");
+
+        // 条件部分でプロパティが存在するかどうかをチェック
+        if (Weapondata[weaponRank[WeaponList[1]-3]] &&
+            WeaponType[WeaponList[0]-1] &&
+            Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]] &&
+            WeaponList[2] &&
+            Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()] &&
+            Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"]) {
+            selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"];
+        } else {
+            selectedWeaponId = -1;
+        }
+
+        if(selectedWeaponId == -1)
+        {
+            ExecuteFlag = 1;
+            return ExecuteFlag;
+        }
+        return ExecuteFlag;
+    }
+    
+    function ResetParameter(){
+        for (let i = 1; i <= 6; i++) {
+            ["clock", "goblet", "circlet"].forEach(type => {
+                let element = document.getElementById(`${type}${i}`);
+                if (element) {
+                    element.innerHTML = "-";
+                    element.classList.remove("rankSS", "rankS", "rankA", "rankB", "rankC");
+                }
+            });
+        }
+
+        ["my_result_hp", "appro_result_hp", "my_hp_score", "appro_hp_score", "dlt_hp_score", "count_hp_score", "my_af_hp", "appro_af_hp", "dlt_af_hp", "count_hp_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_deff", "appro_result_deff", "my_deff_score", "appro_deff_score", "dlt_deff_score", "count_deff_score", "my_af_deff", "appro_af_deff", "dlt_af_deff", "count_deff_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_elm", "appro_result_elm", "my_elm_score", "appro_elm_score", "dlt_elm_score", "count_elm_score", "my_af_elm", "appro_af_elm", "dlt_af_elm", "count_elm_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_elm_charge", "appro_result_elm_charge", "my_elm_charge_score", "appro_elm_charge_score", "dlt_elm_charge_score", "count_elm_charge_score", "my_af_elm_charge", "appro_af_elm_charge", "dlt_af_elm_charge", "count_elm_charge_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_attck", "appro_result_attck", "my_attck_score", "appro_attck_score", "dlt_attck_score", "count_attck_score", "my_af_attck", "appro_af_attck", "dlt_af_attck", "count_attck_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_cr", "appro_result_cr", "my_cr_score", "appro_cr_score", "dlt_cr_score", "count_cr_score", "my_af_cr", "appro_af_cr", "dlt_af_cr", "count_cr_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_cd", "appro_result_cd", "my_cd_score", "appro_cd_score", "dlt_cd_score", "count_cd_score", "my_af_cd", "appro_af_cd", "dlt_af_cd", "count_cd_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_dmg_buff", "appro_result_dmg_buff", "my_af_score", "appro_af_score", "dlt_af_score", "my_af_score3", "appro_af_score3", "dlt_af_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+
+        ["hp", "deff", "elm", "elm_charge", "attck", "cr", "cd", "dmg_buff"].forEach(id => {
+            document.getElementById(`table_base_${id}`).innerHTML = "-";
+            document.getElementById(`table_buff_${id}`).innerHTML = "-";
+            document.getElementById(`table_af_${id}`).innerHTML = "-";
+            document.getElementById(`table_final_${id}`).innerHTML = "-";
+        });
+
+        [
+            "dlt_hp_score", "dlt_af_hp",
+            "dlt_deff_score", "dlt_af_deff",
+            "dlt_elm_score", "dlt_af_elm",
+            "dlt_elm_charge_score", "dlt_af_elm_charge",
+            "dlt_attck_score", "dlt_af_attck",
+            "dlt_cr_score", "dlt_af_cr",
+            "dlt_cd_score", "dlt_af_cd"
+        ].forEach(id => {
+        let element = document.getElementById(id);
+        element.style.color = "black";
+        });
+
+        document.getElementById("result").innerHTML = "";
+    }
+    
+
+    function startCountdown() {
+
+        // ローカルストレージからカウントダウン終了時刻を取得
+        const endTime = sessionStorage.getItem(SessionStorageKey);
+        // 現在時刻を取得
+        const currentTime = new Date().getTime();
+
+        // カウントダウン終了時刻が現在時刻より未来の場合、再計算してカウントダウンを再開
+        if (endTime && parseInt(endTime) > currentTime) {
+            // APIのttlを再計算
+            const remainingTime = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+
+            // カウントダウンを表示する要素
+            const countdownElement = document.getElementById("countdown");
+
+            // カウントダウンを更新する関数
+            function updateCountdown() {
+                // 残り時間を計算
+                let remainingTime = Math.ceil((parseInt(endTime) - new Date().getTime()) / 1000);
+
+                // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
+                if (remainingTime <= 0) {
+                clearInterval(intervalId);
+                countdownElement.textContent = "";
+                fetchButton.disabled = false;
+                } else {
+                // カウントダウンを表示
+                countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
+                }
+            }
+
+            // カウントダウンを最初に更新
+            updateCountdown();
+
+            // 残り時間を1秒ごとに更新
+            const intervalId = setInterval(updateCountdown, countdownInterval);
+        } else {
+            // カウントダウン終了時刻が現在時刻より過去の場合は、通常のカウントダウンを開始
+            const apiTTL = 60; // APIのttl（秒）
+            const endTime = new Date().getTime() + apiTTL * 1000;
+
+            // ローカルストレージにカウントダウン終了時刻を保存
+            sessionStorage.setItem(SessionStorageKey, endTime);
+
+            // カウントダウンを再開
+            startCountdown();
+        }
+    }
+
+    // ページの読み込みが完了したら、カウントダウンを再開
+    window.onload = async function() {
+        fetchButton.disabled = true;
+
+        document.getElementById('drawer-toggle-label-alt').addEventListener('click', function() {
+            const drawerToggle = document.getElementById('drawer-toggle');
+            drawerToggle.checked = !drawerToggle.checked; // チェック状態を切り替える
+        });
+
+        const JsonData1 = await fetch("../data/JsonData/DisplayCharData.json");
+        CharJsonData = await JsonData1.json();
+        const JsonData2 = await fetch("../data/JsonData/DisplayWeaponData.json");
+        WeaponJsonData = await JsonData2.json();
+        showTable("table1","tablebutton1");
+        showOption("option1", "parameterbutton1");
+        const DataResponse = await fetch("../data/JsonData/CharacterData.json");
+        let char_ids = [];
+        CharDataJson = await DataResponse.json();
+        console.log(CharDataJson);
+        // ローカルストレージからカウントダウン終了時刻を取得
+        const endTime = sessionStorage.getItem(SessionStorageKey);
+        // 現在時刻を取得
+        const currentTime = new Date().getTime();
+
+        // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
+        if (endTime && parseInt(endTime) > currentTime) {
+            // APIのttlを計算
+            const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+            // 再度カウントダウンを開始
+            startCountdown();
+        }
+        else
+        {
+            fetchButton.disabled = false;
+        };
+        UserData = JSON.parse(sessionStorage.getItem("UserData"));
+        const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
+        Weapondata = await Weaponresponse.json();
+        const afresponse = await fetch("../data/JsonData/url.json");
+        afdata = await afresponse.json();
+        const AfNameresponse = await fetch("../data/JsonData/MainStatusName.json");
+        AfNameList = await AfNameresponse.json();
+        if (UserData !== null)
+        {
+            const nicknameElement = document.getElementById('nickname');
+            const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+            console.log(avatarIds);
+            nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
+                            "<br>";
+            
+            for (let i = 0; i < avatarIds.length; i++)
+            {
+                let charId = parseInt(avatarIds[i]) - 10000000;
+                let PossibleFlag = await CharExecution(i, charId);
+                if(PossibleFlag == 0)
+                {
+                    char_names.push(CharDataJson["CharMap"][charId.toString()]["名前"]);
+                    char_ids.push(charId);
+                    CharIndexList.push(i);
+                }
+            }
+            const images = [];
+
+            // 画像を生成して配列に追加
+            for (let i = 0; i < char_ids.length; i++) {
+                const image = {
+                    src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
+                    alt: `Image ${i}`,
+                    id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                    
+                };
+                images.push(image);
+            }
+            // 画像要素を生成し、動的にHTMLに追加する
+            const imageGrid = document.getElementById("imageGrid");
+            images.forEach(image => {
+                const imgElement = document.createElement("img");
+                imgElement.src = image.src;
+                imgElement.alt = image.alt;
+                imgElement.id = image.id; // 画像にID属性を設定
+                imgElement.style.cursor = "pointer"; 
+                imgElement.addEventListener("click", async function() {
+                    ResetParameter();
+                    // クリックされた画像のsrc属性を取得
+                    const imageUrl = this.src;
+                    const CharId = this.id;
+                    SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    let APICharId = Math.floor(CharId / 10);
+                    // 画像を表示するdiv要素を取得
+                    selectedCharId = CharDataJson["CharMap"][APICharId]["id"]; // 文字列を数値に変換
+                    console.log(selectedCharId);
+                    const imageContainer = document.getElementById("CharImage");
+                    await DisplayCharStatus(SelectId, APICharId);
+                    AfSetReffer(SelectId);
+                    await SetMainStatus(SelectId);
+                    await show_char_statsform();
+                    await show_weapon_statsform();
+                    await show_artifact();
+
+                    const initial_index = [0,0,0,0,1,1,1];
+                    const myStatus = [0,0,0,0,0,0,0];
+                    const TheoreticalStatus = [0,0,0,0,100,100,100];
+                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
+
+                    // 画像を置き換える
+                    const existingImage = imageContainer.querySelector("img");
+                    if (existingImage) {
+                        existingImage.src = imageUrl;
+                        existingImage.alt = "Clicked Image";
+                    } else {
+                        // 既存の画像が存在しない場合は新しい画像を追加
+                        const imageElement = document.createElement("img");
+                        imageElement.src = imageUrl;
+                        imageElement.alt = "Clicked Image";
+                        imageContainer.appendChild(imageElement);
+                    }
+                    let div = document.getElementById("WholeDisplay");
+                    div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+
+                    const scrollableContainer = document.documentElement;
+                    scrollableContainer.scrollBy({
+                        top: 400, // スクロールする距離（ピクセル）
+                        behavior: 'smooth' // スクロールをスムーズにする
+                    });
+                });
+                imageGrid.appendChild(imgElement);
+            });
+        }
+        fetchButton.disabled = false;
+
+        const checkboxIds = ["pyro_reso", "hydro_reso", "cyro_reso", "dendro_reso", "geo_reso"];
+        checkboxIds.forEach(function(id) {
+            document.getElementById(id).checked = false;
+        });
+
+        (function() {
+            const checkboxes = document.querySelectorAll('.custom-checkbox');
+            const maxSelected = 2;
+            const selectedCheckboxes = [];
+
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    selectedCheckboxes.push(checkbox);
+                    if (selectedCheckboxes.length > maxSelected) {
+                    const oldestSelected = selectedCheckboxes.shift();
+                    oldestSelected.checked = false;
+                    }
+                } else {
+                    const indexToRemove = selectedCheckboxes.indexOf(checkbox);
+                    if (indexToRemove !== -1) {
+                    selectedCheckboxes.splice(indexToRemove, 1);
+                    }
+                }
+                });
+            });
+            })();
+    }
+
+    document.getElementById('attack_method').addEventListener('change', show_attack_method);
+    document.getElementById('char_talent').addEventListener('change', calculate_table_status);
+    document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
+    document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
+    document.getElementById('option2').addEventListener('change', calculate_table_status);
+    document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
+    document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
+    document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
+    // ボタンをクリックしたときに fetchData() 関数を実行する
+    document.getElementById('fetchButton').onclick = function() {
+        fetchData();
+    };
+
+</script>
+</html>
