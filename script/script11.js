@@ -1203,7 +1203,7 @@ async function createAf(paramList) {
   
     for (let i = 0; i < optionNum; i++) {
         let randomRange = 4;
-        if (optionNum - i < 3 || UpCount[0] + UpCount[1] < 2)
+        if (optionNum - i < 3 && UpCount[0] + UpCount[1] < 2)
         {
             randomRange = 2;
         }
