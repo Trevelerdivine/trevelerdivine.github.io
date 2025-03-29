@@ -1495,8 +1495,8 @@ async function monte_carlo_calculate()
       }
       else
       {
-        probVariable = probVariable.toFixed(2);
-        pdfProbList[i] = ((pdfData[-probVariable]) * 100).toFixed(2);
+        probVariable = (-probVariable).toFixed(2);
+        pdfProbList[i] = ((pdfData[probVariable]) * 100).toFixed(2);
       }
     }
 
