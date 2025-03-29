@@ -1095,7 +1095,7 @@ async function createAf(paramList) {
     let subStatusList = [];
     let mainBuffList = [];
     const subStatusBaseIndex = [0.583, 0.729, 2.331, 0.648, 0.583, 0.389, 0.777, 29.875, 1.945, 2.315];
-
+  
     if (paramList[0] == 0) {
       mainBuffList = [0, 80 * subStatusBaseIndex[0]];
     }
@@ -1150,12 +1150,12 @@ async function createAf(paramList) {
     else if (paramList[0] == 16) {
       mainBuffList = [18, 0];
     }
-
+  
     for (let i = 0; i < 3; i++)
     {
       if (paramList[i] < 10) {
           const lists = [fixBuffList, rateList, criticalList];
-
+  
           for (const list of lists) {
               const index = list.indexOf(paramList[i]);
               if (index !== -1) {
@@ -1165,18 +1165,18 @@ async function createAf(paramList) {
           }
       }
     }
-
+  
     for (let i = 0; i < 2; i++)
     {
         const randomBuffInt = 10 - Math.floor(Math.random() * 4);
         const selectedList = [paramList[i + 1], randomBuffInt];
         subStatusList.push(selectedList);
     }
-
+  
     for (let i = 0; i < 2; i++) {
         const baseNum = 6 * fixBuffList.length + 4 * rateList.length + 3 * criticalList.length;
         const randomTypeIndex = Math.floor(Math.random() * baseNum);
-
+  
         if (randomTypeIndex < 6 * fixBuffList.length) {
             const randomBuffInt = 10 - Math.floor(Math.random() * 4);
             const randomBuffIndex = Math.floor(Math.random() * fixBuffList.length);
@@ -1197,10 +1197,10 @@ async function createAf(paramList) {
             criticalList.splice(randomBuffIndex, 1);
         }
     }
-
+  
     const optionNum = Math.random() < 1/3 ? 5 : 4;
     let UpCount = [0,0,0,0];
-
+  
     for (let i = 0; i < optionNum; i++) {
         let randomRange = 4;
         if (optionNum - i < 3 || UpCount[0] + UpCount[1] < 2)
@@ -1212,14 +1212,14 @@ async function createAf(paramList) {
         UpCount[randomBuffIndex1] += 1;
         subStatusList[randomBuffIndex1][1] += randomBuffIndex2;
     }
-
+  
     for (let i = 0; i < 4; i++) {
         subStatusList[i][1] *= subStatusBaseIndex[subStatusList[i][0]];
     }
-
+  
     const afInfoList = [mainBuffList, subStatusList];
     return afInfoList;
-}
+  }
 
 async function SetMyAfStatus(){
     const Afresponse = await fetch("../data/JsonData/AfSubStatusData.json");
@@ -1315,7 +1315,7 @@ async function monte_carlo_calculate()
     const depend_status = await calculate_depend_status();
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-    const TryCount = 40000;
+    const TryCount = 60000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let MyAfStatusSave = await SetMyAfStatus();
@@ -1327,7 +1327,10 @@ async function monte_carlo_calculate()
     let fixed_status = [0,0,0,0,0,0,0,0];
     let result_status = [0,0,0,0,0,0,0,0];
     let AfPartsNum = [0,0,0,0,0];
+    let AfUpdateNum = [0,0,0,0,0];
     let AfPartsRate = [0,0,0,0,0];
+    let AfUpdateRate = [0,0,0,0,0];
+    let AfSquareRate= [0,0,0,0,0];
 
     const char_instance = await create_char_instance(base_status, char_parameter);
     const weapon_instance = await create_weapon_instance(base_status);
@@ -1465,31 +1468,55 @@ async function monte_carlo_calculate()
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];
         }
-        if (exp_dmg > my_exp_dmg)
+
+        AfPartsNum[AfPartIndex] += 1;
+        AfPartsRate[AfPartIndex] += exp_dmg / my_exp_dmg;
+        AfSquareRate[AfPartIndex] += (exp_dmg / my_exp_dmg) ** 2;
+      if (exp_dmg > my_exp_dmg)
         {
-            AfPartsNum[AfPartIndex] += 1;
-            AfPartsRate[AfPartIndex] += exp_dmg / my_exp_dmg;
-        }   
+          AfUpdateNum[AfPartIndex] += 1;
+          AfUpdateRate[AfPartIndex] += exp_dmg / my_exp_dmg;
+        }
+        
     }
 
     hideLoadingSpinner();
 
+    const pdfJson = await fetch("../data/JsonData/pdfData.json");
+    const pdfData = await pdfJson.json();
+    const pdfProbList = [0,0,0,0,0];
 
-    document.getElementById("clock1").innerHTML = (AfPartsNum[0] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock2").innerHTML = (AfPartsNum[1] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock3").innerHTML = (AfPartsNum[2] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock4").innerHTML = (AfPartsNum[3] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("clock5").innerHTML = (AfPartsNum[4] * 100 / TryCount).toFixed(1) + "％";
-    document.getElementById("goblet1").innerHTML = (AfPartsNum[0] !== 0 ? (AfPartsRate[0] * 100 / AfPartsNum[0]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet2").innerHTML = (AfPartsNum[1] !== 0 ? (AfPartsRate[1] * 100 / AfPartsNum[1]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet3").innerHTML = (AfPartsNum[2] !== 0 ? (AfPartsRate[2] * 100 / AfPartsNum[2]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet4").innerHTML = (AfPartsNum[3] !== 0 ? (AfPartsRate[3] * 100 / AfPartsNum[3]).toFixed(1) : "100") + "％";
-    document.getElementById("goblet5").innerHTML = (AfPartsNum[4] !== 0 ? (AfPartsRate[4] * 100 / AfPartsNum[4]).toFixed(1) : "100") + "％";
-    document.getElementById("circlet1").innerHTML = ((1 - (1 -AfPartsNum[0] / TryCount) ** 12) * 100).toFixed(1) + "％";
-    document.getElementById("circlet2").innerHTML = ((1 - (1 -AfPartsNum[1] / TryCount) ** 12) * 100).toFixed(1) + "％";
-    document.getElementById("circlet3").innerHTML = ((1 - (1 -AfPartsNum[2] / TryCount) ** 6) * 100).toFixed(1) + "％";
-    document.getElementById("circlet4").innerHTML = ((1 - (1 -AfPartsNum[3] / TryCount) ** 3) * 100).toFixed(1) + "％";
-    document.getElementById("circlet5").innerHTML = ((1 - (1 -AfPartsNum[4] / TryCount) ** 4) * 100).toFixed(1) + "％";
+    for (let i = 0; i < 5; i++) {
+      let probVariable = ((1 - AfPartsRate[i] / AfPartsNum[i]) / (AfSquareRate[i] / AfPartsNum[i] - (AfPartsRate[i] / TryCount) ** 2) ** 0.5);
+      if(probVariable > 0)
+      {
+        probVariable = probVariable.toFixed(2);
+        pdfProbList[i] = ((1 - pdfData[probVariable]) * 100).toFixed(2);
+      }
+      else
+      {
+        probVariable = probVariable.toFixed(2);
+        pdfProbList[i] = ((pdfData[-probVariable]) * 100).toFixed(2);
+      }
+    }
+
+    console.log(pdfProbList);
+
+    document.getElementById("clock1").innerHTML = (AfUpdateNum[0] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock2").innerHTML = (AfUpdateNum[1] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock3").innerHTML = (AfUpdateNum[2] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock4").innerHTML = (AfUpdateNum[3] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("clock5").innerHTML = (AfUpdateNum[4] * 100 / TryCount).toFixed(2) + "％";
+    document.getElementById("goblet1").innerHTML = pdfProbList[0] + "％";
+    document.getElementById("goblet2").innerHTML = pdfProbList[1] + "％";
+    document.getElementById("goblet3").innerHTML = pdfProbList[2] + "％";
+    document.getElementById("goblet4").innerHTML = pdfProbList[3] + "％";
+    document.getElementById("goblet5").innerHTML = pdfProbList[4] + "％";
+    document.getElementById("circlet1").innerHTML = (((1 - AfPartsRate[0] / AfPartsNum[0]) / (AfSquareRate[0] / AfPartsNum[0] - (AfPartsRate[0] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
+    document.getElementById("circlet2").innerHTML = (((1 - AfPartsRate[1] / AfPartsNum[1]) / (AfSquareRate[1] / AfPartsNum[1] - (AfPartsRate[1] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
+    document.getElementById("circlet3").innerHTML = (((1 - AfPartsRate[2] / AfPartsNum[2]) / (AfSquareRate[2] / AfPartsNum[2] - (AfPartsRate[2] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
+    document.getElementById("circlet4").innerHTML = (((1 - AfPartsRate[3] / AfPartsNum[3]) / (AfSquareRate[3] / AfPartsNum[3] - (AfPartsRate[3] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
+    document.getElementById("circlet5").innerHTML = (((1 - AfPartsRate[4] / AfPartsNum[4]) / (AfSquareRate[4] / AfPartsNum[4] - (AfPartsRate[4] / TryCount) ** 2) ** 0.5) * 10 + 50).toFixed(1);
 
     
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示

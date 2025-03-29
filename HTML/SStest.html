@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エリクシル聖遺物 更新確率計算機</title>
     <link rel="stylesheet" href="../data/css/style7.css">
-    <script src="../script/script11.js"></script>
+    <script src="../script/script10.js"></script>
     <script src="../script/create_new_class.js"></script>
     <script src="../data/character/char_class/char_class5.js"></script>
     <script src="../data/weapon/weapon_class/weapon_class5.js"></script>
@@ -15,8 +15,6 @@
     <script src="../script/show_artifact.js"></script>
     <script src="../script/show_attackmethod5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
-    crossorigin="anonymous"></script>
     <style>
         body {
             background-image: url('../data/BackImg.png'); /* 背景画像のパス */
@@ -125,6 +123,17 @@
         <br>
         <br>
         <div class="image-grid" id="imageGrid">
+        </div>
+        <br>
+        <div id="loading">
+            <span class="jump">デ</span>
+            <span class="jump">ー</span>
+            <span class="jump">タ</span>
+            <span class="jump">を</span>
+            <span class="jump">取</span>
+            <span class="jump">得</span>
+            <span class="jump">中</span>
+            <span class="jump">！</span>
         </div>
         <br>
         <div id="Attention" class="AttentionDetails" style="display: none;">
@@ -962,8 +971,8 @@
                                 <tr>
                                 <th></th>
                                 <th>聖遺物更新確率</th>
-                                <th>ダメージ上昇割合</th>
-                                <th>エリクシル12個当たりの更新確率</th>
+                                <th>正規分布更新確率</th>
+                                <th>聖遺物偏差値</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1369,6 +1378,9 @@
     // fetchData() 関数を定義
     async function fetchData() {
         fetchButton.disabled = true;
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex"; // flexbox の影響で中央に配置される
+
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
@@ -1494,7 +1506,7 @@
             const nicknameElement = document.getElementById('nickname');
             if(ErrorId == 500)
             {
-                nicknameElement.innerHTML = "EnkaNetWorkサーバーのエラー<br>大型アップデートの日はメンテナンスにより利用できません。";
+                nicknameElement.textContent = "EnkaNetWorkサーバーのエラー";
             }
             else if(ErrorId == 404)
             {
@@ -1505,8 +1517,10 @@
                 console.error('Error fetching data:', error);
                 nicknameElement.textContent = "入力したUIDに問題があるようです。";
             }
+            loading.style.display = "none";
             return;
         }
+        loading.style.display = "none";
         startCountdown();
     }
 
@@ -2306,7 +2320,7 @@
                 const image = {
                     src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
                     alt: `Image ${i}`,
-                    id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                    id: char_ids[i] * 100 + i // 画像に割り当てるID属性を生成
                     
                 };
                 images.push(image);
@@ -2324,8 +2338,8 @@
                     // クリックされた画像のsrc属性を取得
                     const imageUrl = this.src;
                     const CharId = this.id;
-                    SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
-                    let APICharId = Math.floor(CharId / 10);
+                    SelectId = CharId % 100; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    let APICharId = Math.floor(CharId / 100);
                     // 画像を表示するdiv要素を取得
                     selectedCharId = CharDataJson["CharMap"][APICharId]["id"]; // 文字列を数値に変換
                     console.log(selectedCharId);
