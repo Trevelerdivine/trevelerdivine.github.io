@@ -1207,14 +1207,14 @@ async function createAf(paramList) {
         {
             if(UpCount[0] + UpCount[1] == 0)
             {
-            randomRange = 2;
+                randomRange = 2;
             }
         }
         else if (optionNum - i == 1)
         {
             if(UpCount[0] + UpCount[1] == 1)
             {
-            randomRange = 2;
+                randomRange = 2;
             }
         }
         const randomBuffIndex1 = Math.floor(Math.random() * randomRange);
