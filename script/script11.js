@@ -1203,9 +1203,19 @@ async function createAf(paramList) {
   
     for (let i = 0; i < optionNum; i++) {
         let randomRange = 4;
-        if (optionNum - i < 3 && UpCount[0] + UpCount[1] < 2)
+        if (optionNum - i == 2)
         {
+            if(UpCount[0] + UpCount[1] == 0)
+            {
             randomRange = 2;
+            }
+        }
+        else if (optionNum - i == 1)
+        {
+            if(UpCount[0] + UpCount[1] == 1)
+            {
+            randomRange = 2;
+            }
         }
         const randomBuffIndex1 = Math.floor(Math.random() * randomRange);
         const randomBuffIndex2 = 10 - Math.floor(Math.random() * 4);
