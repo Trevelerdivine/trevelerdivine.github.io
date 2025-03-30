@@ -1095,7 +1095,7 @@ async function createAf(paramList) {
     let subStatusList = [];
     let mainBuffList = [];
     const subStatusBaseIndex = [0.583, 0.729, 2.331, 0.648, 0.583, 0.389, 0.777, 29.875, 1.945, 2.315];
-
+  
     if (paramList[0] == 0) {
       mainBuffList = [0, 80 * subStatusBaseIndex[0]];
     }
@@ -1150,12 +1150,12 @@ async function createAf(paramList) {
     else if (paramList[0] == 16) {
       mainBuffList = [18, 0];
     }
-
+  
     for (let i = 0; i < 3; i++)
     {
       if (paramList[i] < 10) {
           const lists = [fixBuffList, rateList, criticalList];
-
+  
           for (const list of lists) {
               const index = list.indexOf(paramList[i]);
               if (index !== -1) {
@@ -1165,18 +1165,18 @@ async function createAf(paramList) {
           }
       }
     }
-
+  
     for (let i = 0; i < 2; i++)
     {
         const randomBuffInt = 10 - Math.floor(Math.random() * 4);
         const selectedList = [paramList[i + 1], randomBuffInt];
         subStatusList.push(selectedList);
     }
-
+  
     for (let i = 0; i < 2; i++) {
         const baseNum = 6 * fixBuffList.length + 4 * rateList.length + 3 * criticalList.length;
         const randomTypeIndex = Math.floor(Math.random() * baseNum);
-
+  
         if (randomTypeIndex < 6 * fixBuffList.length) {
             const randomBuffInt = 10 - Math.floor(Math.random() * 4);
             const randomBuffIndex = Math.floor(Math.random() * fixBuffList.length);
@@ -1197,39 +1197,22 @@ async function createAf(paramList) {
             criticalList.splice(randomBuffIndex, 1);
         }
     }
-
+  
     const optionNum = Math.random() < 1/3 ? 5 : 4;
-    let UpCount = [0,0,0,0];
-    
+
     for (let i = 0; i < optionNum; i++) {
-      let randomRange = 4;
-      if (optionNum - i == 2)
-      {
-          if(UpCount[0] + UpCount[1] == 0)
-          {
-              randomRange = 2;
-          }
-      }
-      else if (optionNum - i == 1)
-      {
-          if(UpCount[0] + UpCount[1] == 1)
-          {
-              randomRange = 2;
-          }
-      }
-      const randomBuffIndex1 = Math.floor(Math.random() * randomRange);
+      const randomBuffIndex1 = Math.floor(Math.random() * 4);
       const randomBuffIndex2 = 10 - Math.floor(Math.random() * 4);
-      UpCount[randomBuffIndex1] += 1;
       subStatusList[randomBuffIndex1][1] += randomBuffIndex2;
     }
-
+  
     for (let i = 0; i < 4; i++) {
         subStatusList[i][1] *= subStatusBaseIndex[subStatusList[i][0]];
     }
-
+  
     const afInfoList = [mainBuffList, subStatusList];
     return afInfoList;
-}
+  }
 
 async function SetMyAfStatus(){
     const Afresponse = await fetch("../data/JsonData/AfSubStatusData.json");
